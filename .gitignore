@@ -1,0 +1,35 @@
+# Mac metadata
+.DS_Store
+
+# Sensitive/ephemeral runtime files
+history.jsonl
+.last-cleanup
+mcp-needs-auth-cache.json
+policy-limits.json
+
+# Large ephemeral directories
+sessions/
+paste-cache/
+cache/
+session-env/
+shell-snapshots/
+telemetry/
+backups/
+file-history/
+
+# Conversation/session logs everywhere
+**/*.jsonl
+
+
+# Auto-managed by Claude Code — not user config
+plugins/marketplaces/
+
+# Ephemeral session task data
+tasks/
+
+# Session UUID directories under projects (memory/ subdirs don't match *-*-*-*-*)
+projects/*/*-*-*-*-*/
+
+# Ephemeral tool/agent output within projects
+projects/**/tool-results/
+projects/**/subagents/

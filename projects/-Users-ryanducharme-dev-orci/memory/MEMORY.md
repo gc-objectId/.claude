@@ -1,0 +1,16 @@
+- [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps, prefers teaching mode then "just do it"
+- [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
+- [Jira conventions](feedback_jira_conventions.md) — assign+transition immediately, keep epic descriptions factual, no editorial commentary
+- [QA suite status](project_qa_suite_consolidation.md) — OR-2348 complete, OR-2384 next (module-based restructuring)
+- [SSO smoke tests needed](project_sso_smoke_tests.md) — OR-2330 under OR-2384, blocked on M365 test account
+- [Agent team setup](project_agent_team_setup.md) — 4 agents, orci-cmd command center, approval gates, test ownership split
+- [Git push and PR creation](feedback_git_push_command.md) — I run git push + gh pr create directly; don't hand over the command
+- [Git/PR workflow](feedback_git_pr_workflow.md) — full end-to-end flow: Jira → branch from main → commits → push+PR → feedback → post-merge cleanup
+- [PR replies manual](feedback_pr_replies_manual.md) — draft reply text, don't post it; Ryan paraphrases and posts himself
+- [Maven stale classpath](project_maven_stale_classpath.md) — `mvn -pl orci test` can fail with phantom "cannot find symbol" — pre-install siblings
+- [No Co-Authored-By](feedback_no_coauthored_by.md) — never add Co-Authored-By trailers; all commit credit goes to Ryan only
+- [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md, not README.md
+- [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml change before staging; local overrides must never slip into commits
+- [PR test plans](feedback_pr_test_plans.md) — only include test plan in PR if steps can be done before merge; post-deploy steps go in the Jira ticket instead
+- [Confirm before push/PR](feedback_confirm_before_push.md) — always ask before git push or gh pr create; never do it autonomously
+- [Security review habit](feedback_security_review.md) — run /security-review before PRs touching auth/file I/O/input validation; verify guards fire at the right moment, not just that they exist
