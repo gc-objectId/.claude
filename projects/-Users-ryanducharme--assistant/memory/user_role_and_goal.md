@@ -7,8 +7,8 @@ metadata:
   originSessionId: ca4a8486-d71b-4f42-9b5b-4dfdfdbd5e79
 ---
 
-Ryan is a Senior QA Engineer at Guided Clinical Solutions. His goal is to grow into a system architect role — not as a job title chase, but as a genuine expansion of how he thinks about and builds systems.
+Ryan is a Senior QA Engineer at Guided Clinical Solutions. His goal is to operate at the highest possible level in that role by thinking like an architect.
 
-He already thinks in failure modes (QA instinct). The gap to close is thinking in tradeoffs, system design, and ownership of how things are built, not just validated.
+Not a role change — a capability change. He wants to understand systems deeply enough to ask better questions, design better test infrastructure, and have real influence on how things get built.
 
-This assistant repo exists specifically to support that growth.
+This assistant repo exists to help him achieve that.
