@@ -50,14 +50,43 @@ When drafting replies to PR feedback or any response Ryan will post, write in Cl
 
 ### Standard ticket flow (follow this every time)
 
-1. **Start of work** — Check Jira for the epic/story. Assign to Ryan and transition to In Progress.
-2. **Branch** — Run `git status` and `git branch --show-current`. If not already on a branch named for the ticket, create one from `main` (always from main, never from another feature branch) and push to remote immediately. Naming convention: `epic/OR-XXXX-slug` for epics, `feature/OR-XXXX-slug` for stories. Never silently create or switch branches — propose the name and wait for approval.
-3. **Implement** — Make changes, commit at logical checkpoints. Ask before each commit.
-4. **Test locally** — After implementation, provide explicit test steps for Ryan to run locally. Wait for Ryan to confirm testing passed before proceeding.
-5. **Diff review** — Tell Ryan it's time to review the local diff. Wait for Ryan to confirm the diff looks good before committing or pushing anything.
-6. **Commit + Push + PR** — Once diff is approved, commit. Then stop and confirm with Ryan before pushing. After Ryan confirms, push to the remote branch, then confirm again before creating the PR via `gh pr create`. Ryan will manually add reviewers. **Never chain commit + push in a single command without a confirmation gate between them.**
-7. **PR feedback** — Address feedback together. Provide test steps for any non-trivial fixes. Once fixes are done, prompt Ryan to review the diff again before pushing the feedback commits.
-8. **After merge** — Ryan merges manually (remote branch is auto-deleted). When Ryan confirms the merge: transition the Jira story/epic to Done, strikethrough completed stories in the epic description, `git checkout main`, `git pull`, then prune stale local branches.
+**This flow triggers any time Ryan authorizes code changes — including a "yes" answer to a proposed feature, fix, or test addition. Do not write any files before completing step 1.**
+
+1. **Identify the ticket** — If the OR ticket number is not explicit in the request, ask before doing anything else. Do not infer or guess. Once confirmed, check Jira for the epic/story, assign to Ryan, and transition to In Progress.
+2. **Confirm context** — Run `git branch --show-current`. The branch is already created by `workon` before this session started — do not run `git checkout -b` or switch branches. If the branch doesn't match the ticket, surface it before touching anything. Run `git status` — if there are uncommitted changes from a prior task, surface them before writing any new files.
+3. **Implement** — Make changes. At the end of implementation, provide the exact commands Ryan needs to validate the work: a `cd` command to the relevant directory and the specific test command for any tests created or updated (e.g. `mvn test -Dtest=MyTest` or `npx playwright test --grep "TC-XXX"`). If there are no automated tests for the change, provide explicit manual validation steps instead.
+4. **Test locally** — Ryan runs the provided command. Wait for Ryan to confirm tests pass before committing anything.
+5. **Commit → Push → PR** — Once tests pass, ask before committing. Then stop and confirm with Ryan before pushing. After Ryan confirms, push to the remote branch, then confirm again before creating the PR via `gh pr create --draft`. **All PRs open as drafts.** Ryan marks ready for review manually. **Never chain commit + push in a single command without a confirmation gate between them.**
+6. **PR feedback** — Address feedback together. Provide test commands for any non-trivial fixes. Wait for Ryan to confirm before pushing feedback commits.
+7. **After merge** — Ryan merges manually (remote branch is auto-deleted). When Ryan confirms the merge: transition the Jira story/epic to Done, strikethrough completed stories in the epic description, then run `worktree-done` from inside the worktree directory. **⚠ HARD REMINDER: Always run `worktree-done` from inside the worktree after merge — stale worktrees accumulate and the branch lingers locally.**
+
+### Multi-session isolation (git worktrees)
+
+`~/dev/orci` is the primary working directory. When a second ticket needs file changes while another session is already active there, create an isolated worktree instead of switching branches.
+
+**Check first:**
+```bash
+git worktree list
+```
+
+**Create a worktree** using the `workon` shell function (run from any directory, before launching Claude):
+```bash
+workon OR-1234 auth-refactor     # fetches origin, creates branch + worktree, cds in
+claude                           # launch agent in the isolated directory
+```
+
+The worktree lands at `~/dev/worktrees/OR-1234-auth-refactor/` on branch `feature/OR-1234-auth-refactor`. Branch, commit, push, and PR all happen from there. `~/dev/orci` is unaffected.
+
+**Teardown** after PR merges, from inside the worktree:
+```bash
+worktree-done    # removes worktree directory + deletes local branch
+```
+
+**Rules:**
+- Never run `git checkout`, `git branch -b`, or `git reset` in `~/dev/orci` while another session has an open worktree — branch switches affect running services (Spring Boot, Vite).
+- A branch checked out in a worktree cannot also be checked out in `~/dev/orci` — git enforces this with an error.
+- Worktrees are only needed for concurrent sessions. Single-ticket work stays in `~/dev/orci` as normal.
+- Full reference: `~/dev/worktrees/CLAUDE.md`
 
 ### Rules
 
@@ -67,7 +96,7 @@ When drafting replies to PR feedback or any response Ryan will post, write in Cl
 - Never add co-author metadata to PR descriptions either
 - After rebasing from GitHub UI, use `git pull --rebase` locally to sync
 - Always use `workflow_dispatch` on a branch to validate new CI workflows before merging to main
-- Uncommitted changes on the current branch must be surfaced and resolved before creating a new branch
+- Uncommitted changes on the current branch must be surfaced before creating a new branch. Resolution is always a stash (`git stash push -m "WIP: <description>"`) — never discard, never mix into the new branch without explicit direction from Ryan.
 - **Config file vigilance** — Before staging any changes to `application.yml`, `application-*.yml`, or any Spring config file, audit every changed line and confirm it belongs on that branch. Local testing overrides (e.g. `tenants.demo.qa.enabled: true`, feature flags, debug settings) must never slip into committed config. Flag any config diff for Ryan to review before staging.
 - **No post-merge test plans in PRs** — Only include a test plan section in a PR description if there are steps verifiable before merge. Steps that require a deployment or merged build belong in the Jira ticket as a comment, not in the PR.
 - **Security review before opening PRs** — Run `/security-review` before opening any PR that touches authentication, file I/O, path handling, ZIP/archive processing, or input validation. When implementing security guards, verify they fire at the right moment with the right value — not just that they exist. For blocking I/O calls in particular, confirm whether the method completes fully before control returns to the check.

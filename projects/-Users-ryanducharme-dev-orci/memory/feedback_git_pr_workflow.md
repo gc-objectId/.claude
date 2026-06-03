@@ -18,3 +18,5 @@ Follow this sequence every time work begins on a ticket:
 **Why:** Ryan established this as the standard flow — consistent across all tickets, removes ambiguity about when to push/PR/close.
 
 **How to apply:** Every ticket from the start. Don't deviate unless Ryan explicitly says so for a specific case.
+
+**Authorization shortcut:** When Ryan confirms "tests pass locally", that is standing authorization to commit + push + open draft PR as a single uninterrupted flow — no additional confirmation gates needed between those three steps.
