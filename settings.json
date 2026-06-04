@@ -2,11 +2,11 @@
   "env": {
     "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "model": "sonnet[1m]",
-  "effortLevel": "high",
-  "teammateMode": "tmux",
-  "skipAutoPermissionPrompt": true,
   "permissions": {
     "defaultMode": "auto"
-  }
+  },
+  "model": "opus[1m]",
+  "effortLevel": "high",
+  "teammateMode": "tmux",
+  "skipAutoPermissionPrompt": true
 }

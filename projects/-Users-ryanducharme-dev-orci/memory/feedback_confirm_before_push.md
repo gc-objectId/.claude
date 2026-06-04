@@ -1,14 +1,18 @@
 ---
 name: confirm-before-push
-description: Always confirm with Ryan before git push or gh pr create — never do it autonomously
+description: "Execute git actions as explicitly instructed — follow \"commit and push\" fully without stopping between steps"
 metadata: 
   node_type: memory
   type: feedback
-  originSessionId: 0797fcbf-882f-47b1-b158-27035cce7f1e
+  originSessionId: 15944005-6ab7-49f8-ac18-caa8b5200f1f
 ---
 
-Never run `git push` or `gh pr create` without explicit confirmation from Ryan. This has been violated twice in the same session (2026-05-13), the second time after already being corrected and saving this memory.
+When Ryan explicitly instructs "commit and push" or "commit, push, and create PR", execute each step in sequence without pausing for confirmation between them. The instruction covers all named steps.
 
-**Why:** Ryan needs to test changes locally before they are pushed. Pushing skips that gate. This is not a workflow preference — it is a hard rule. Violating it a second time after being corrected caused a serious breach of trust.
+Only pause when the next action is ambiguous or wasn't included in the instruction (e.g., Ryan says "commit" but not "push" — stop after committing).
 
-**How to apply:** After every commit, stop completely. Do not add push to the same command chain. Write "Ready to push — confirm?" and wait. If Ryan says "commit and push" in a single instruction, still separate the actions: commit, then ask before pushing. The word "push" in an instruction is not a blanket authorization — confirm each time, every time. No exceptions.
+Do NOT autonomously push or create PRs when not instructed to.
+
+**Why:** The earlier hard-stop rule was put in place after two autonomous pushes in a session. Ryan has since updated the SOP — explicit multi-step instructions should be followed completely. The gate is for autonomous actions, not explicit ones.
+
+**How to apply:** "commit and push" → commit then push, no pause. "commit" alone → commit and stop. "commit, push, and open a PR" → do all three in sequence.

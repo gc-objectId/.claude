@@ -1,11 +1,14 @@
 ---
-name: Git push and PR creation
-description: I run git push and gh pr create as part of the standard workflow — no longer handing push commands to Ryan
-type: feedback
-originSessionId: e7f868ae-1b22-4cf8-8154-3cefcbb5ce39
+name: git-push-and-pr-creation
+description: I run git push and gh pr create when explicitly instructed — follow multi-step git instructions fully in sequence
+metadata: 
+  node_type: memory
+  type: feedback
+  originSessionId: 15944005-6ab7-49f8-ac18-caa8b5200f1f
 ---
-As of the new standard workflow, I run `git push` and `gh pr create` myself (after Ryan confirms work is done). Do NOT hand over a push command for Ryan to run — just execute it directly.
 
-**Why:** Ryan switched to a fully-automated push+PR flow. The old pattern of handing over the push command was superseded.
+Run `git push` and `gh pr create` myself when Ryan's instruction includes them. Do not hand the command over for Ryan to run.
 
-**How to apply:** After Ryan confirms a round of work is complete, run `git push` then `gh pr create` in the same turn. Still ask before each commit. For PR feedback rounds, push the commits directly after Ryan confirms.
+**Why:** Ryan uses explicit multi-step instructions ("commit and push", "commit, push, and create PR") as the authorization. Execute each named step in order without stopping between them.
+
+**How to apply:** Follow the instruction completely. Only pause if the next step wasn't named. See [[confirm-before-push]] for the full rule.
