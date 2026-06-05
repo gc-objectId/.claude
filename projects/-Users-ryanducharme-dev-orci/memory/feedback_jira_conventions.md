@@ -1,20 +1,21 @@
 ---
 name: Jira ticket conventions
-description: How Ryan wants Jira tickets managed — statuses, assignments, descriptions
+description: How Ryan wants Jira tickets managed — lifecycle is manual, descriptions factual
 type: feedback
 originSessionId: 334727a1-469f-4329-adb2-b6df2acca153
 ---
-When starting a ticket: assign to Ryan and transition to In Progress.
-When a ticket's PR is merged: then transition to Done and strikethrough the ticket in the epic description.
-Do NOT transition to Done or strikethrough the epic entry when the PR is only open/in review — only on merge.
+Ryan manages Jira ticket lifecycle **manually** — do NOT auto-assign or auto-transition status (changed 2026-06-04 in global CLAUDE.md; reverses the earlier "assign + transition to In Progress on start, Done on merge" rule). A GitHub–Jira integration may also move status automatically on merge.
 
-Epic descriptions should be concise:
+Create and edit ticket *content* freely when asked, but leave assignee and status alone unless Ryan explicitly says to set them.
+
+Epic descriptions should be concise and factual:
 - Use phase labels like "Complete" or "Pending" — let ticket statuses convey detailed state
 - Do not add "PR pending", "approved plan", or similar editorial commentary — it can confuse other readers
 - PRs are linked automatically via GitHub integration, don't mention them manually
 - Comments are fine for additional context if needed
-- No empty parent tickets — repurpose or close them
+- No empty parent tickets — repurpose or create with real content
+- Show draft tickets for approval before creating — unless Ryan says to create them all at once
 
-**Why:** Theo and others read the epic; editorial language like "approved plan" implies organizational approval that hasn't happened. Keep it factual.
+**Why:** Ryan owns his board's workflow and wants control over assignment/status; automated changes interfere with that and the GitHub integration. Theo and others read the epic, so editorial language like "approved plan" implies approval that hasn't happened — keep it factual.
 
-**How to apply:** When updating the epic, state facts (Complete, Blocked, Deferred) and let the Jira workflow do the rest.
+**How to apply:** State facts (Complete, Blocked, Deferred) in descriptions and let the Jira workflow do the rest. Relates to [[feedback_git_pr_workflow]].

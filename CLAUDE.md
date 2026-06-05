@@ -36,13 +36,11 @@ When drafting replies to PR feedback or any response Ryan will post, write in Cl
 
 ## Jira Ticket Management
 
-- When completing a ticket: assign to me and transition to Done immediately
-- When starting a ticket: assign to me and transition to In Progress
+- I handle Jira ticket lifecycle manually (assignment, status transitions, epic updates) — do not auto-assign or auto-transition tickets. A GitHub–Jira integration may also move status on merge.
 - Never create empty shell parent tickets — repurpose existing tickets or create new ones
 - Epic descriptions should be factual — use "Complete" or "Pending" for phases, no editorial commentary like "approved plan" or "PR pending"
 - Let ticket statuses and GitHub PR links convey state automatically — don't duplicate manually in descriptions
 - When a ticket's scope changes during implementation, update the ticket description and create new tickets for broken-out work
-- Always update the parent epic when child tickets are completed, created, or change status
 - Prefix blocked/deferred ticket titles with [BLOCKED] or [DEFERRED]
 - Show draft tickets for approval before creating — unless I say to create them all at once
 
@@ -52,13 +50,13 @@ When drafting replies to PR feedback or any response Ryan will post, write in Cl
 
 **This flow triggers any time Ryan authorizes code changes — including a "yes" answer to a proposed feature, fix, or test addition. Do not write any files before completing step 1.**
 
-1. **Identify the ticket** — If the OR ticket number is not explicit in the request, ask before doing anything else. Do not infer or guess. Once confirmed, check Jira for the epic/story, assign to Ryan, and transition to In Progress.
+1. **Identify the ticket** — If the OR ticket number is not explicit in the request, ask before doing anything else. Do not infer or guess. Once confirmed, check Jira for the epic/story for context. Do not auto-assign or transition status — Ryan manages ticket lifecycle.
 2. **Confirm context** — Run `git branch --show-current`. The branch is already created by `workon` before this session started — do not run `git checkout -b` or switch branches. If the branch doesn't match the ticket, surface it before touching anything. Run `git status` — if there are uncommitted changes from a prior task, surface them before writing any new files.
 3. **Implement** — Make changes. At the end of implementation, provide the exact commands Ryan needs to validate the work: a `cd` command to the relevant directory and the specific test command for any tests created or updated (e.g. `mvn test -Dtest=MyTest` or `TEST_ENV=local npx playwright test --grep "TC-XXX"`). Always prefix Playwright commands with `TEST_ENV=local`. If there are no automated tests for the change, provide explicit manual validation steps instead.
 4. **Test locally** — Ryan runs the provided command. Wait for Ryan to confirm tests pass before committing anything.
 5. **Commit → Push → PR** — Follow Ryan's explicit instructions fully in sequence. When Ryan says "commit and push" or "commit, push, and create PR", execute each step in order without stopping for confirmation between them. Only pause when the next action is ambiguous or wasn't explicitly included in the instruction. **All PRs open as drafts** via `gh pr create --draft`. Ryan marks ready for review manually.
 6. **PR feedback** — Address feedback together. Provide test commands for any non-trivial fixes. Wait for Ryan to confirm before pushing feedback commits.
-7. **After merge** — Ryan merges manually (remote branch is auto-deleted). When Ryan confirms the merge: transition the Jira story/epic to Done, strikethrough completed stories in the epic description, then run `worktree-done` from inside the worktree directory. **⚠ HARD REMINDER: Always run `worktree-done` from inside the worktree after merge — stale worktrees accumulate and the branch lingers locally.**
+7. **After merge** — Ryan merges manually (remote branch is auto-deleted). When Ryan confirms the merge, run `worktree-done` from inside the worktree directory. **⚠ HARD REMINDER: Always run `worktree-done` from inside the worktree after merge — stale worktrees accumulate and the branch lingers locally.**
 
 ### Multi-session isolation (git worktrees)
 
