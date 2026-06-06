@@ -5,6 +5,19 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash|Read|Edit|Grep",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$HOME/.claude/hooks/block-env-read.sh"
+          }
+        ]
+      }
+    ]
+  },
   "model": "opus[1m]",
   "effortLevel": "high",
   "teammateMode": "tmux",
