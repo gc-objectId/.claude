@@ -99,6 +99,18 @@ worktree-done    # removes worktree directory + deletes local branch
 - **No post-merge test plans in PRs** — Only include a test plan section in a PR description if there are steps verifiable before merge. Steps that require a deployment or merged build belong in the Jira ticket as a comment, not in the PR.
 - **Security review before opening PRs** — Run `/security-review` before opening any PR that touches authentication, file I/O, path handling, ZIP/archive processing, or input validation. When implementing security guards, verify they fire at the right moment with the right value — not just that they exist. For blocking I/O calls in particular, confirm whether the method completes fully before control returns to the check.
 
+## Validation Protocol
+
+When I ask you to "validate" a ticket — e.g. "pull OR-XXXX for context and validate" — that phrase means the full flow below, not just reading the code:
+
+1. **Pull the ticket for context** — read the Jira ticket and understand what shipped: the mechanism, the rules/files touched, and the acceptance examples. Find the merged implementation. (At Guided, dev work merges to `main` *before* validation, so the running app under test is the `main` build — see "validate against main" in memory.)
+2. **Validate manually first** — exercise the change against the running `main` build:
+   - Run the **positive** scenario (the behavior should happen) *and* the **negative/inverse** (it should NOT happen). The negative is usually where the ticket's value lives.
+   - **Confirm any "should not happen" check can actually fail.** Temporarily flip the triggering condition so the thing *would* happen, confirm the check flips red, then revert. A green absence assertion is meaningless until you've watched it go red. This flip-and-revert is the core of the manual-validation step.
+3. **Then automate where applicable** — write automated tests for the scenarios worth locking in. Check existing coverage first (don't duplicate solid unit tests); favor the negative/edge cases. Apply the same can-it-fail check to every absence assertion. Put edge-case/negative rule tests in the supplemental suite, not core (core = mandatory every-run coverage).
+4. Provide the exact run commands and wait for my confirmation, per the ticket flow.
+5. **Close out after merge** — I'll return to this session (whenever the PR merges) and confirm it was merged and ask to clean up. That's your cue to run `worktree-done` from inside the worktree (removes the worktree directory + local branch). After it succeeds, I exit the session. If `worktree-done` refuses (unmerged branch), surface that instead of forcing it.
+
 ## Testing & Development
 
 - Always test against local before committing
