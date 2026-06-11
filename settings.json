@@ -5,6 +5,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
+  "model": "claude-fable-5[1m]",
   "hooks": {
     "PreToolUse": [
       {
@@ -18,7 +19,6 @@
       }
     ]
   },
-  "model": "opus[1m]",
   "effortLevel": "high",
   "teammateMode": "tmux",
   "skipAutoPermissionPrompt": true

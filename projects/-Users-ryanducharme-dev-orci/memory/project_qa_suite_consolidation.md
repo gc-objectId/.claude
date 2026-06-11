@@ -1,12 +1,19 @@
 ---
 name: QA suite consolidation epic
-description: Epic OR-2348 complete, OR-2384 is the active epic for module-based restructuring of qa-suite
+description: Epics OR-2348 and OR-2384 complete; OR-2585 is the active epic (tag-based tiers + per-family organization)
 type: project
 originSessionId: 79c4eb1b-b80e-44f2-b076-e4995a36ded9
 ---
 **OR-2348 (Complete):** Migrated Java Playwright e2e tests to TypeScript qa-suite, automated clinical validation tests, unified CI into qa-suite.yml. All phases done.
 
-**OR-2384 (In Progress):** Restructure qa-suite into module-based architecture. Modules: smoke, clinical-rules, app-features, integrations, scanner, security.
+**OR-2384 (Complete, confirmed 2026-06-10):** Restructured qa-suite into module-based architecture. Modules: smoke, clinical-rules, app-features, integrations, scanner, security.
+
+**OR-2585 (Epic, created 2026-06-10):** Tag-based test tiers + per-family organization, suite-wide. Motivated by Theo's review on PR #3974 (OR-2546) — same rule's positive/negative tests were split across CR-001/CR-002 by tier. Tags (`@core`/`@supplemental`) are the source of truth for tiers, selected by CLI grep (`npm run core` / `npm run sweep`); no hand-maintained catalog; pretest guard enforces exactly-one-tier-tag + unique IDs/prefixes. Test IDs move from TC-XXX to suite-unique family prefixes (Ryan approved).
+Children:
+- OR-2586 — tier tags suite-wide + grep run selection + tag guard + CI (foundation, do first)
+- OR-2587 — split CR-001/CR-002 into per-rule-family specs, merge the two clinical-rules projects, prefixed IDs
+- OR-2588 — prefixed IDs in smoke/app-features/integrations/scanner/security (mechanical, after 2586)
+After OR-2588 lands, update global CLAUDE.md "TC-XXX naming convention" line to the prefix convention.
 
 **Child tickets:**
 - OR-2330 — [BLOCKED] SSO/M365 login flow tests (needs M365 test account)

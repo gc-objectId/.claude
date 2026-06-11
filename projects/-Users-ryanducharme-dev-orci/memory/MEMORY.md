@@ -1,7 +1,7 @@
 - [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps, prefers teaching mode then "just do it"
 - [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
 - [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition), keep epic descriptions factual
-- [QA suite status](project_qa_suite_consolidation.md) — OR-2348 complete, OR-2384 next (module-based restructuring)
+- [QA suite status](project_qa_suite_consolidation.md) — OR-2348 + OR-2384 complete; OR-2585 epic active: tag-based tiers (OR-2586) + per-family specs (OR-2587) + prefixed IDs (OR-2588)
 - [SSO smoke tests needed](project_sso_smoke_tests.md) — OR-2330 under OR-2384, blocked on M365 test account
 - [Agent team setup](project_agent_team_setup.md) — 4 agents, orci-cmd command center, approval gates, test ownership split
 - [Git push and PR creation](feedback_git_push_command.md) — I run git push + gh pr create directly; don't hand over the command
