@@ -7,7 +7,7 @@ originSessionId: e7f868ae-1b22-4cf8-8154-3cefcbb5ce39
 Follow this sequence every time work begins on a ticket:
 
 1. Check Jira for the epic/story. Assign to Ryan and transition to In Progress.
-2. Run `git status` + `git branch --show-current`. Propose a branch name and wait for approval before creating. Always branch from `main`. Naming: `epic/OR-XXXX-slug` (epics) or `feature/OR-XXXX-slug` (stories). Push to remote immediately after creation.
+2. Run `git status` + `git branch --show-current`. Propose a branch name and wait for approval before creating. Always branch from `main`. Naming: prefix must match the Jira issue type — `epic/OR-XXXX-slug` (Epic), `feature/OR-XXXX-slug` (Story/Task), `bugfix/OR-XXXX-slug` (Bug), `hotfix/` (urgent prod fix); see [[feedback-branch-naming]]. Push to remote immediately after creation.
 3. Implement and commit at logical checkpoints (ask before each commit).
 4. Provide explicit test steps for Ryan to run locally. Wait for Ryan to confirm testing passed.
 5. Tell Ryan it's time to review the local diff. Wait for confirmation before committing or pushing.

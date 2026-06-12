@@ -46,13 +46,26 @@ When drafting replies to PR feedback or any response Ryan will post, write in Cl
 
 ## Git/PR Workflow
 
+### Branch naming
+
+The branch prefix must match the Jira issue type of the ticket being worked:
+
+| Jira issue type | Branch prefix | Example |
+| --------------- | ------------- | ------- |
+| Epic            | `epic/`       | `epic/OR-2585-tag-based-tiers-tests-restructure` |
+| Story / Task    | `feature/`    | `feature/OR-2402-patient-search` |
+| Bug             | `bugfix/`     | `bugfix/OR-2584-procedure-start-lockout-race` |
+| Urgent prod fix | `hotfix/`     | `hotfix/OR-XXXX-slug` |
+
+`workon` takes the type as an optional third argument (`workon OR-1234 slug epic`); it defaults to `feature`. **Always check the ticket's issue type in Jira before creating or accepting a branch** — if the current branch's prefix doesn't match the ticket type, rename it (`git branch -m`) before pushing and flag it to Ryan.
+
 ### Standard ticket flow (follow this every time)
 
 **This flow triggers any time Ryan authorizes code changes — including a "yes" answer to a proposed feature, fix, or test addition. Do not write any files before completing step 1.**
 
 1. **Identify the ticket** — If the OR ticket number is not explicit in the request, ask before doing anything else. Do not infer or guess. Once confirmed, check Jira for the epic/story for context. Do not auto-assign or transition status — Ryan manages ticket lifecycle.
-2. **Confirm context** — Run `git branch --show-current`. The branch is already created by `workon` before this session started — do not run `git checkout -b` or switch branches. If the branch doesn't match the ticket, surface it before touching anything. Run `git status` — if there are uncommitted changes from a prior task, surface them before writing any new files.
-3. **Implement** — Make changes. At the end of implementation, provide the exact commands Ryan needs to validate the work: a `cd` command to the relevant directory and the specific test command for any tests created or updated (e.g. `mvn test -Dtest=MyTest` or `TEST_ENV=local npx playwright test --grep "TC-XXX"`). Always prefix Playwright commands with `TEST_ENV=local`. If there are no automated tests for the change, provide explicit manual validation steps instead.
+2. **Confirm context** — Run `git branch --show-current`. The branch is already created by `workon` before this session started — do not run `git checkout -b` or switch branches. If the branch doesn't match the ticket, or its prefix doesn't match the ticket's Jira issue type (see Branch naming), surface it before touching anything. Run `git status` — if there are uncommitted changes from a prior task, surface them before writing any new files.
+3. **Implement** — Make changes. At the end of implementation, provide the exact commands Ryan needs to validate the work: a `cd` command to the relevant directory and the specific test command for any tests created or updated (e.g. `mvn test -Dtest=MyTest` or `npm run test:local -- --grep "ARD-001" --project=clinical-rules --no-deps`). For qa-suite, always provide the npm `:local` script variants (`test:local`, `core:local`, `sweep:local`, `smoke:local`) with any extra Playwright flags passed after `--` — never raw `TEST_ENV=local npx playwright ...` commands. If there are no automated tests for the change, provide explicit manual validation steps instead.
 4. **Test locally** — Ryan runs the provided command. Wait for Ryan to confirm tests pass before committing anything.
 5. **Commit → Push → PR** — Follow Ryan's explicit instructions fully in sequence. When Ryan says "commit and push" or "commit, push, and create PR", execute each step in order without stopping for confirmation between them. Only pause when the next action is ambiguous or wasn't explicitly included in the instruction. **All PRs open as drafts** via `gh pr create --draft`. Ryan marks ready for review manually.
 6. **PR feedback** — Address feedback together. Provide test commands for any non-trivial fixes. Wait for Ryan to confirm before pushing feedback commits.
@@ -70,10 +83,11 @@ git worktree list
 **Create a worktree** using the `workon` shell function (run from any directory, before launching Claude):
 ```bash
 workon OR-1234 auth-refactor     # fetches origin, creates branch + worktree, cds in
+workon OR-1234 some-epic epic    # optional third arg sets the branch type (default: feature)
 claude                           # launch agent in the isolated directory
 ```
 
-The worktree lands at `~/dev/worktrees/OR-1234-auth-refactor/` on branch `feature/OR-1234-auth-refactor`. Branch, commit, push, and PR all happen from there. `~/dev/orci` is unaffected.
+The worktree lands at `~/dev/worktrees/OR-1234-auth-refactor/` on branch `feature/OR-1234-auth-refactor` (or `epic/`/`bugfix/`/`hotfix/` per the type argument — match the Jira issue type). Branch, commit, push, and PR all happen from there. `~/dev/orci` is unaffected.
 
 **Teardown** after PR merges, from inside the worktree:
 ```bash
@@ -114,8 +128,8 @@ When I ask you to "validate" a ticket — e.g. "pull OR-XXXX for context and val
 ## Testing & Development
 
 - Always test against local before committing
-- Use `npx playwright test --project=cv-core --no-deps` for fast iteration (skip smoke dependencies)
-- Test names must follow TC-XXX naming convention consistently
+- Use `npm run test:local -- --project=clinical-rules --no-deps` for fast iteration (skip smoke dependencies)
+- qa-suite test names follow `PREFIX-NNN: Description` — one short prefix per spec file (e.g. `ARD`, `AUTH`, `NDC`), plus exactly one tier tag (`@core`/`@supplemental`); `npm run check:tags` enforces both
 - Tests should be ordered numerically in spec files
 - When porting tests from old frameworks, verify current app behavior — don't assume old assertions are still valid
 - Admin user for API setup, tenant user for UI interactions in clinical validation tests
@@ -136,7 +150,7 @@ When agent teams are enabled (`CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS=1`), the mai
 
 1. Run `git status` and `git branch --show-current`. Check both the current branch *and* whether there are uncommitted changes.
 2. If there are uncommitted changes, stop and surface them to the user before doing anything else — they may be in-progress work for a different ticket that shouldn't be mixed in.
-3. If on `main`/`master`: ask the user whether to create a feature branch. Propose a name following the existing convention (e.g., `feature/OR-2402-description` or `epic/OR-XXXX-slug`). Wait for approval before running `git checkout -b`.
+3. If on `main`/`master`: ask the user whether to create a branch. Propose a name whose prefix matches the ticket's Jira issue type per the Branch naming table (`epic/`, `feature/`, `bugfix/`, `hotfix/`). Wait for approval before running `git checkout -b`.
 4. If already on a feature branch: confirm with the user that this branch is the right place for the work, then proceed.
 5. Never silently create or switch branches.
 
