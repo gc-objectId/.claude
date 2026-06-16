@@ -1,0 +1,18 @@
+{
+  "name": "session-fffe3155",
+  "createdAt": 1781618314754,
+  "leadAgentId": "team-lead@session-fffe3155",
+  "leadSessionId": "fffe3155-3df9-40cc-9f92-4b28ac10b4ac",
+  "members": [
+    {
+      "agentId": "team-lead@session-fffe3155",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1781618314754,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2585-epic-tag-based-tiers-tests-restructure",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

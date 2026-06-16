@@ -1,0 +1,18 @@
+{
+  "name": "session-de099387",
+  "createdAt": 1781618285120,
+  "leadAgentId": "team-lead@session-de099387",
+  "leadSessionId": "de099387-6543-455f-9a74-7d7c2fb0d82f",
+  "members": [
+    {
+      "agentId": "team-lead@session-de099387",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1781618285120,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2557-mayo-integration-FHIR",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
