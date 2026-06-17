@@ -57,7 +57,7 @@ The branch prefix must match the Jira issue type of the ticket being worked:
 | Bug             | `bugfix/`     | `bugfix/OR-2584-procedure-start-lockout-race` |
 | Urgent prod fix | `hotfix/`     | `hotfix/OR-XXXX-slug` |
 
-`workon` takes the type as an optional third argument (`workon OR-1234 slug epic`); it defaults to `feature`. **Always check the ticket's issue type in Jira before creating or accepting a branch** — if the current branch's prefix doesn't match the ticket type, rename it (`git branch -m`) before pushing and flag it to Ryan.
+`workon` auto-detects the prefix from the ticket's Jira issue type (Bug→`bugfix/`, Epic→`epic/`, Story/Task→`feature/`); an explicit third argument overrides it and is required for `hotfix` (not a Jira type). On lookup failure (no keychain token / offline) it falls back to `feature/` with a warning. **As a safety net, always confirm the current branch's prefix matches the ticket's Jira issue type before creating or accepting a branch** — if it doesn't, rename it (`git branch -m`) before pushing and flag it to Ryan.
 
 ### Standard ticket flow (follow this every time)
 

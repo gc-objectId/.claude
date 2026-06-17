@@ -20,3 +20,4 @@
 - [Validation protocol](feedback_validation_protocol.md) — "validate" = pull ticket, run positive + negative manually with flip-and-revert can-it-fail check, then automate edge cases in supplemental suite
 - [Branch naming](feedback_branch_naming.md) — branch prefix must match Jira issue type: epic/, feature/, bugfix/, hotfix/; workon takes type as 3rd arg
 - [npm-script test commands](feedback_npm_script_test_commands.md) — give qa-suite commands as npm :local scripts with `--` pass-through, never raw TEST_ENV=local npx playwright
+- [Keychain -w truncation](reference_keychain_w_truncation.md) — macOS `security -w` prompt truncates long pastes (~128 chars); write secrets from a `$VAR` instead
