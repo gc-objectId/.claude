@@ -1,0 +1,18 @@
+{
+  "name": "session-c4fc206c",
+  "createdAt": 1781728252655,
+  "leadAgentId": "team-lead@session-c4fc206c",
+  "leadSessionId": "c4fc206c-8035-41ed-9fd5-96b97a2e5410",
+  "members": [
+    {
+      "agentId": "team-lead@session-c4fc206c",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1781728252655,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2584-duplicate-rule-alerts",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

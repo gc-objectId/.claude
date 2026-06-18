@@ -1,0 +1,18 @@
+{
+  "name": "session-eef5f421",
+  "createdAt": 1781705699243,
+  "leadAgentId": "team-lead@session-eef5f421",
+  "leadSessionId": "eef5f421-4594-41ad-b694-373200eef231",
+  "members": [
+    {
+      "agentId": "team-lead@session-eef5f421",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1781705699243,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/orci",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

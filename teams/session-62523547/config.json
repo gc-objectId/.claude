@@ -1,0 +1,18 @@
+{
+  "name": "session-62523547",
+  "createdAt": 1781728217077,
+  "leadAgentId": "team-lead@session-62523547",
+  "leadSessionId": "62523547-d3ae-41e9-9531-0dad00918394",
+  "members": [
+    {
+      "agentId": "team-lead@session-62523547",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1781728217077,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2581-antiemetic-admin-compliance",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

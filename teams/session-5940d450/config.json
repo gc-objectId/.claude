@@ -1,0 +1,18 @@
+{
+  "name": "session-5940d450",
+  "createdAt": 1781728313608,
+  "leadAgentId": "team-lead@session-5940d450",
+  "leadSessionId": "5940d450-613b-424c-b5f6-ae13f8038365",
+  "members": [
+    {
+      "agentId": "team-lead@session-5940d450",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1781728313608,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2593-getNumericObservationValue-NPE",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
