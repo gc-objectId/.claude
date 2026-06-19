@@ -1,14 +1,14 @@
 {
-  "name": "session-c4fc206c",
-  "createdAt": 1781728252655,
-  "leadAgentId": "team-lead@session-c4fc206c",
-  "leadSessionId": "c4fc206c-8035-41ed-9fd5-96b97a2e5410",
+  "name": "session-46571646",
+  "createdAt": 1781795062904,
+  "leadAgentId": "team-lead@session-46571646",
+  "leadSessionId": "46571646-f359-42c6-906c-47e5a69049d7",
   "members": [
     {
-      "agentId": "team-lead@session-c4fc206c",
+      "agentId": "team-lead@session-46571646",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1781728252655,
+      "joinedAt": 1781795062904,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2584-duplicate-rule-alerts",
       "subscriptions": [],
