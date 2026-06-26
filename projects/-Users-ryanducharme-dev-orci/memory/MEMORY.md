@@ -21,3 +21,4 @@
 - [Branch naming](feedback_branch_naming.md) — branch prefix must match Jira issue type: epic/, feature/, bugfix/, hotfix/; workon takes type as 3rd arg
 - [npm-script test commands](feedback_npm_script_test_commands.md) — give qa-suite commands as npm :local scripts with `--` pass-through, never raw TEST_ENV=local npx playwright
 - [Keychain -w truncation](reference_keychain_w_truncation.md) — macOS `security -w` prompt truncates long pastes (~128 chars); write secrets from a `$VAR` instead
+- [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — suspected gap: CLOSE_APP hits RuleEngineService.handleCaseStop (no re-eval), not EventService's; verifying in TST

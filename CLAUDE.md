@@ -36,7 +36,8 @@ When drafting replies to PR feedback or any response Ryan will post, write in Cl
 
 ## Jira Ticket Management
 
-- I handle Jira ticket lifecycle manually (assignment, status transitions, epic updates) — do not auto-assign or auto-transition tickets. A GitHub–Jira integration may also move status on merge.
+- I handle Jira ticket lifecycle manually (assignment, status transitions, epic updates) — do not auto-assign or auto-transition tickets mid-work. A GitHub–Jira integration may also move status on merge.
+- **Exception — closing tickets at cleanup:** as part of post-merge cleanup, proactively *ask* whether I want the completed ticket(s) moved to Done. First surface which ticket(s) the session worked on and which are actually complete (merged) vs. still open — I may not remember after a gap. Only transition after I confirm; this gates it so I can do it myself, but lets it happen as part of the workflow. For an epic, list its child stories with current status and don't close the epic while any child is still open unless I say so.
 - Never create empty shell parent tickets — repurpose existing tickets or create new ones
 - Epic descriptions should be factual — use "Complete" or "Pending" for phases, no editorial commentary like "approved plan" or "PR pending"
 - Let ticket statuses and GitHub PR links convey state automatically — don't duplicate manually in descriptions
@@ -69,7 +70,7 @@ The branch prefix must match the Jira issue type of the ticket being worked:
 4. **Test locally** — Ryan runs the provided command. Wait for Ryan to confirm tests pass before committing anything.
 5. **Commit → Push → PR** — Follow Ryan's explicit instructions fully in sequence. When Ryan says "commit and push" or "commit, push, and create PR", execute each step in order without stopping for confirmation between them. Only pause when the next action is ambiguous or wasn't explicitly included in the instruction. **All PRs open as drafts** via `gh pr create --draft`. Ryan marks ready for review manually.
 6. **PR feedback** — Address feedback together. Provide test commands for any non-trivial fixes. Wait for Ryan to confirm before pushing feedback commits.
-7. **After merge** — Ryan merges manually (remote branch is auto-deleted). When Ryan confirms the merge, run `worktree-done` from inside the worktree directory. **⚠ HARD REMINDER: Always run `worktree-done` from inside the worktree after merge — stale worktrees accumulate and the branch lingers locally.**
+7. **After merge** — Ryan merges manually (remote branch is auto-deleted). When Ryan confirms the merge, run `worktree-done` from inside the worktree directory. **⚠ HARD REMINDER: Always run `worktree-done` from inside the worktree after merge — stale worktrees accumulate and the branch lingers locally.** As part of cleanup, also surface which ticket(s) the session worked on with their current status and **ask whether to move the completed one(s) to Done** — transition only on confirmation (see Jira Ticket Management → closing tickets at cleanup).
 
 ### Multi-session isolation (git worktrees)
 
@@ -124,7 +125,7 @@ When I ask you to "validate" a ticket — e.g. "pull OR-XXXX for context and val
    - **Prefer the real app UI when the scenario is reachable through it.** If the fix can be exercised end-to-end through the running app — normal workflow, admin endpoints, or the In-App Debugger to inject data — do that before falling back to the test harness; it catches wiring/integration gaps that mocked unit tests miss. Local is usually fastest (logs in the run console, no CloudWatch). Caveat: dev (and a current local build) runs `main`, so once the fix is merged the UI confirms the *post-fix* behavior only — to watch the bug actually fire (the can-it-fail red), use the flip-and-revert at the test level or run a pre-fix build.
 3. **Then automate where applicable** — write automated tests for the scenarios worth locking in. Check existing coverage first (don't duplicate solid unit tests); favor the negative/edge cases. Apply the same can-it-fail check to every absence assertion. Put edge-case/negative rule tests in the supplemental suite, not core (core = mandatory every-run coverage).
 4. Provide the exact run commands and wait for my confirmation, per the ticket flow.
-5. **Close out after merge** — I'll return to this session (whenever the PR merges) and confirm it was merged and ask to clean up. That's your cue to run `worktree-done` from inside the worktree (removes the worktree directory + local branch). After it succeeds, I exit the session. If `worktree-done` refuses (unmerged branch), surface that instead of forcing it.
+5. **Close out after merge** — I'll return to this session (whenever the PR merges) and confirm it was merged and ask to clean up. That's your cue to run `worktree-done` from inside the worktree (removes the worktree directory + local branch), and to surface the worked tickets and ask whether to move the completed one(s) to Done (transition only on confirmation — see Jira Ticket Management). After it succeeds, I exit the session. If `worktree-done` refuses (unmerged branch), surface that instead of forcing it.
 
 ## Testing & Development
 
