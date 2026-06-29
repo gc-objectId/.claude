@@ -1,22 +1,18 @@
 ---
 name: project_or2581_compliance_casestop_wiring
-description: "OR-2581 ERAS antiemetics compliance — suspected case-stop re-eval wiring gap, verifying in TST"
+description: "OR-2581 ERAS antiemetics compliance — VALIDATED in real Epic TST flow, no gap"
 metadata: 
   node_type: memory
   type: project
   originSessionId: 62523547-d3ae-41e9-9531-0dad00918394
 ---
 
-OR-2581: ERAS antiemetics firing should flip SILENT non-compliant → compliant when a 2nd antiemetic class is documented after the alert but before anesthesia stop. The re-eval logic (`ErasAntiemeticsComplianceEvaluator` + `RuleComplianceService.evaluateComplianceForCaseOnStop`) is correct in isolation and unit-tested.
+OR-2581: ERAS antiemetics firing should flip non-compliant → compliant when a 2nd antiemetic class is documented after the alert but before anesthesia stop.
 
-**Suspected gap (found 2026-06-24, not yet confirmed):** manual local validation against the `main` build did NOT flip the record after `CLOSE_APP`. Two case-stop handlers exist:
-- `EventService.handleCaseStop` (EventService.java:170) — DOES call `evaluateComplianceForCaseOnStop`; only reachable via `handleEvent(CaseStopEvent)`.
-- `RuleEngineService.handleCaseStop` (RuleEngineService.java:221) — the path `CLOSE_APP` actually hits (via `executeNotificationRules:180`); only stops the operation + sends notification, NO re-eval.
+**RESOLVED (2026-06-26): validated, works on main.** Ryan ran the real Epic TST → Guided integration flow (hysterectomy ERAS case) and has screenshots of the same firing showing non-compliant, then flipping to compliant a couple minutes after he documented a 2nd antiemetic class post-procedure-stop. It would not have changed without that 2nd med — so it's a genuine re-eval, not a default. Positive + can-it-fail both confirmed. No code fix needed.
 
-Nothing dispatches a `CaseStopEvent` into `EventService.handleEvent` (the only one constructed, RuleEngineService:183, goes to RuleEngineService's own handler). So `evaluateComplianceForCaseOnStop` looks like dead code in prod — would affect all 4 categories it covers (med-administered/MRSA, not-administered, antibiotic-redose, ERAS antiemetics). There's a `// TODO revisit why we don't see this event` on the CLOSE_APP branch.
+**Earlier false alarm (corrected):** my local manual repro used the admin endpoint `POST /api/admin/events/category-event` with `CLOSE_APP`, which routes through `RuleEngineService.handleCaseStop` (stops op + notifies, NO re-eval) rather than the real integration path. So it was a false negative from non-representative tooling, not a prod gap. (Static analysis still shows `evaluateComplianceForCaseOnStop` has one real caller, `EventService.handleCaseStop:170`, reachable only via `handleEvent(CaseStopEvent)`, and nothing constructs a CaseStopEvent for handleEvent — so the actual real-flow flip trigger is most likely the **medication-administration re-eval** (`evaluateComplianceOnMedicationAdministration`) firing once the op was closed, not the case-stop path. Outcome correct either way; exact trigger not formally confirmed.)
 
-**Why not certain:** unit/integration tests (incl. the `ErasAntiemeticsCaseStopComplianceTest` I added) call `evaluateComplianceForCaseOnStop` directly, so they pass and mask any wiring gap. Theo (author, OR-2451/OR-2201) wasn't sure either.
+**Gotcha for any future manual test:** a case is only ERAS (`erasOperation=true`) when started through the real case-launch/event flow (orci `OperationService:169` derives it from the surgical record's HYSTERECTOMY procedure code). The admin `createOperation` endpoint does NOT set it. ERAS antiemetics rule short-circuits ("Not ERAS operation") otherwise. Drive via Epic (real flow) or flip `eras_operation` in DB.
 
-**Decision:** verify end-to-end in TST — run the real ERAS workflow, document 2nd antiemetic before close, then check if compliance flips. Cleanest signal: tail TST logs for `"Evaluating compliance for case stop"` / `"Found N rule firings to evaluate at case stop"` after CLOSE_APP — if absent, re-eval isn't invoked. Ryan driving this in a TST session with Alex (~2026-06-25). Also check the MRSA/med-administered case since same path.
-
-Local repro data left in `demo-demo`: patients/ops `OR2581POS` / `OR2581NEG`. Admin API auth = USER token via `X-API-Key`; tenant via `X-Tenant-Id` header; local DB reachable as orci/orci on localhost:5432. Compliance verdict only surfaces in `compliance_results` / admin `GET /api/admin/rule/evaluations/fired`, not the clinician UI. SILENT can't be produced via UI (logged-in user forces INTERACTIVE).
+Untracked artifact on branch feature/OR-2581-antiemetic-admin-compliance: `orci/src/test/java/com/guided/orci/services/ErasAntiemeticsCaseStopComplianceTest.java` (@SpringBootTest; tests evaluateComplianceForCaseOnStop updates the row in place). Largely redundant with existing ErasAntiemeticsComplianceEvaluatorTest + RuleComplianceServiceTest. Pending keep-or-drop decision before worktree-done.
