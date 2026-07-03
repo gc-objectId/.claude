@@ -1,0 +1,18 @@
+{
+  "name": "session-f3b02edb",
+  "createdAt": 1783019872085,
+  "leadAgentId": "team-lead@session-f3b02edb",
+  "leadSessionId": "f3b02edb-a587-45e2-b1e8-ebb0d0a64c23",
+  "members": [
+    {
+      "agentId": "team-lead@session-f3b02edb",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1783019872085,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2601-update-rules-fired-event-notifs",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

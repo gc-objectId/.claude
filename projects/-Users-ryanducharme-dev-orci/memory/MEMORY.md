@@ -22,3 +22,4 @@
 - [npm-script test commands](feedback_npm_script_test_commands.md) — give qa-suite commands as npm :local scripts with `--` pass-through, never raw TEST_ENV=local npx playwright
 - [Keychain -w truncation](reference_keychain_w_truncation.md) — macOS `security -w` prompt truncates long pastes (~128 chars); write secrets from a `$VAR` instead
 - [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — VALIDATED in real Epic TST flow (non-compliant→compliant w/ screenshots); earlier "gap" was admin-endpoint false negative; no fix needed
+- [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
