@@ -23,3 +23,4 @@
 - [Keychain -w truncation](reference_keychain_w_truncation.md) — macOS `security -w` prompt truncates long pastes (~128 chars); write secrets from a `$VAR` instead
 - [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — VALIDATED in real Epic TST flow (non-compliant→compliant w/ screenshots); earlier "gap" was admin-endpoint false negative; no fix needed
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
+- [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
