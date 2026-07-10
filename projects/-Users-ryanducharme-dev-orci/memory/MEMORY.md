@@ -1,5 +1,6 @@
 - [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps, prefers teaching mode then "just do it"
 - [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
+- [Concise code comments](feedback_concise_code_comments.md) — Theo flagged verbose PR comments; one line per constraint, no reviewer-directed justification
 - [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition), keep epic descriptions factual
 - [QA suite status](project_qa_suite_consolidation.md) — OR-2348 + OR-2384 complete; OR-2585 epic active: tag-based tiers (OR-2586) + per-family specs (OR-2587) + prefixed IDs (OR-2588)
 - [SSO smoke tests needed](project_sso_smoke_tests.md) — OR-2330 under OR-2384, blocked on M365 test account
@@ -24,3 +25,4 @@
 - [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — VALIDATED in real Epic TST flow (non-compliant→compliant w/ screenshots); earlier "gap" was admin-endpoint false negative; no fix needed
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
 - [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
+- [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR family; OR-2557 done (PR #4090)
