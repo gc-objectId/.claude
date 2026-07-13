@@ -1,0 +1,18 @@
+{
+  "name": "session-7d335fe0",
+  "createdAt": 1783713186322,
+  "leadAgentId": "team-lead@session-7d335fe0",
+  "leadSessionId": "7d335fe0-9067-4838-b9d9-cc91d4f74fac",
+  "members": [
+    {
+      "agentId": "team-lead@session-7d335fe0",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1783713186322,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2647-pre-merge-PR-gate-CI",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -13,4 +13,6 @@ Theo (reviewer) flagged Ryan's PRs as having too-verbose comments (2026-07-09, f
 
 **How to apply:** Default to zero comments; when one is warranted, one line stating the non-obvious constraint (e.g. "Exact message distinguishes not-found from OAuth failures."). Never restate the test name or narrate what the next line does. Cross-references to docs (file names) are fine. Same discipline in qa-suite companion .md files — skip boilerplate sections that don't carry test-specific content.
 
+Reinforced 2026-07-10 on the OR-2647 workflow (PR #4098): applies equally to CI/workflow YAML — no "runtime levers" narration, no performance-tradeoff justification, no dead-image history in comments. That story lives in the PR description and commit messages.
+
 Related: [[terse-no-summaries]]

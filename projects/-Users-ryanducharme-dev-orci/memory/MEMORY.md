@@ -26,3 +26,4 @@
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
 - [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
 - [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR family; OR-2557 done (PR #4090)
+- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647: boot app in PR CI + run core tier; feasibility is first AC; merge-queue follow-up if it lands
