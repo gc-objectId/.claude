@@ -11,7 +11,9 @@ Validation of the Mayo FHIR command tickets under epic OR-2434, handled **one ti
 
 **⚠️ Staged work lives at `~/dev/worktrees/.pending/`** — per-ticket unit tests + a reference e2e spec written in the OR-2557 session, waiting for their own worktrees. READ ITS README AT PICKUP: files are May-2026-era and main has moved (practitioner command was rewritten PROVID→PERID after they were written; infection-status + family-member-history commands now exist). Always diff the command under test against current main and check for an existing test on main before copying anything in.
 
-**OR-2557 (Get Practitioner): DONE** (2026-07-09) — validated live, PR #4090 (draft) has the tests: 4 unit edge cases added to main's `MayoGetPractitionerR4CommandTest` + qa-suite `MFHIR-001..003`. Open review question for Theo/Jordan in the PR: whether harness-coupled live e2e belongs in qa-suite long-term — **check their answer before extending the MFHIR family**.
+**OR-2557 (Get Practitioner): CLOSED** — ticket Done 2026-07-09, PR #4090 merged 2026-07-16 (Jordan approved), worktree torn down. Tests on main: 4 unit edge cases in `MayoGetPractitionerR4CommandTest` + qa-suite `MFHIR-001..003`. Jordan raised no objection to harness-coupled live e2e in qa-suite — pattern is accepted; extend the MFHIR family for sibling tickets.
+
+**Tenant key: use `mayo-mayo`** (single-tenant collapse per Theo 7/9; key exists on main and works on dev — verified live 2026-07-16). The facility keys mayo-rosmc/mayo-rormc still exist but are being phased out; MFHIR spec already targets mayo-mayo.
 
 **Conventions established:**
 - qa-suite e2e family for Mayo FHIR commands = `MFHIR` prefix in `qa-suite/integrations/mayo-fhir-commands.spec.ts`, all `@supplemental` (live-Epic tests stay out of hermetic @core). `MAYO` prefix is taken by mayo-tenants.spec.ts.
