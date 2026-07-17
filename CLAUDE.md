@@ -20,6 +20,10 @@ Always check the codebase before writing new code. If something already exists t
 
 If you spot redundancy, dead code, or a missing abstraction while working on a task, flag it briefly.
 
+### Comments
+
+Default to zero. When one is warranted: one line stating the non-obvious constraint. Never narrate the next line, justify the change to a reviewer, or record history — that belongs in the PR description. Over one line = defect unless the constraint genuinely can't fit. Applies everywhere: code, YAML, test companion docs.
+
 ### Standards & Best Practices
 
 Default to the most idiomatic, industry-standard approach for the language, framework, and ecosystem. When multiple valid options exist, prefer the one that is most maintainable, most readable, and most consistent with the existing codebase. Clever or novel approaches need to clearly earn their complexity.

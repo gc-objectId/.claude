@@ -1,0 +1,18 @@
+{
+  "name": "session-90bccb2a",
+  "createdAt": 1784214288294,
+  "leadAgentId": "team-lead@session-90bccb2a",
+  "leadSessionId": "90bccb2a-1e72-49a7-9a9d-38c073eb7d0c",
+  "members": [
+    {
+      "agentId": "team-lead@session-90bccb2a",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784214288294,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2661-no-antibiotic-recommended-alert",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

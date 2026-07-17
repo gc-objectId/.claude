@@ -15,4 +15,6 @@ Theo (reviewer) flagged Ryan's PRs as having too-verbose comments (2026-07-09, f
 
 Reinforced 2026-07-10 on the OR-2647 workflow (PR #4098): applies equally to CI/workflow YAML — no "runtime levers" narration, no performance-tradeoff justification, no dead-image history in comments. That story lives in the PR description and commit messages.
 
+Reinforced 2026-07-16 on OR-2661 (PR #4120): wrote 3-line comments and wordy companion-doc parentheticals to justify a one-line fixture choice. Fixed to one line each. Rule is now codified in global CLAUDE.md (Code Quality → Comments); Ryan chose not to change the repo CLAUDE.md. Treat any comment over one line as a defect unless the constraint genuinely can't fit.
+
 Related: [[terse-no-summaries]]

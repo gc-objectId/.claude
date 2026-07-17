@@ -1,0 +1,18 @@
+{
+  "name": "session-abfca6e0",
+  "createdAt": 1784212997718,
+  "leadAgentId": "team-lead@session-abfca6e0",
+  "leadSessionId": "abfca6e0-a003-469f-969b-158a9eed83e1",
+  "members": [
+    {
+      "agentId": "team-lead@session-abfca6e0",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784212997718,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2537-FHIR-get-admission-date",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

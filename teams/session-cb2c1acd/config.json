@@ -1,0 +1,18 @@
+{
+  "name": "session-cb2c1acd",
+  "createdAt": 1784213158981,
+  "leadAgentId": "team-lead@session-cb2c1acd",
+  "leadSessionId": "cb2c1acd-5227-4ba3-8ecc-25c858af4cea",
+  "members": [
+    {
+      "agentId": "team-lead@session-cb2c1acd",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784213158981,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2552-FHIR-get-glucose",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

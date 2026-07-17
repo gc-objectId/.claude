@@ -1,0 +1,18 @@
+{
+  "name": "session-b044d038",
+  "createdAt": 1784212771318,
+  "leadAgentId": "team-lead@session-b044d038",
+  "leadSessionId": "b044d038-fd0b-4bee-8979-c7ece7f9902e",
+  "members": [
+    {
+      "agentId": "team-lead@session-b044d038",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784212771318,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2555-FHIR-get-QTc-interval",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "session-fe0a58b4",
+  "createdAt": 1784234731913,
+  "leadAgentId": "team-lead@session-fe0a58b4",
+  "leadSessionId": "fe0a58b4-376b-475c-b2da-ff3cf6b0e3fb",
+  "members": [
+    {
+      "agentId": "team-lead@session-fe0a58b4",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784234731913,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/mayo-integration-testing",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

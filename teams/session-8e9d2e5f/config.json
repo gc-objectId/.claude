@@ -1,0 +1,18 @@
+{
+  "name": "session-8e9d2e5f",
+  "createdAt": 1784212877957,
+  "leadAgentId": "team-lead@session-8e9d2e5f",
+  "leadSessionId": "8e9d2e5f-11a2-45f0-a518-c6aa251be4b6",
+  "members": [
+    {
+      "agentId": "team-lead@session-8e9d2e5f",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784212877957,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2436-FHIR-observations",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
