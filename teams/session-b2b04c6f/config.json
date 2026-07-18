@@ -1,0 +1,18 @@
+{
+  "name": "session-b2b04c6f",
+  "createdAt": 1784314080243,
+  "leadAgentId": "team-lead@session-b2b04c6f",
+  "leadSessionId": "b2b04c6f-42b7-4087-b9f1-46a895efc310",
+  "members": [
+    {
+      "agentId": "team-lead@session-b2b04c6f",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784314080243,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2636-expose-HL7-inbound-for-testing",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

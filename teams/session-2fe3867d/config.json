@@ -1,0 +1,18 @@
+{
+  "name": "session-2fe3867d",
+  "createdAt": 1784314181946,
+  "leadAgentId": "team-lead@session-2fe3867d",
+  "leadSessionId": "2fe3867d-c48e-4cd1-b6ca-3282b7c42038",
+  "members": [
+    {
+      "agentId": "team-lead@session-2fe3867d",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784314181946,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2638-filter-noisy-mayo-observations",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

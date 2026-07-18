@@ -1,0 +1,18 @@
+{
+  "name": "session-416bbe89",
+  "createdAt": 1784313685663,
+  "leadAgentId": "team-lead@session-416bbe89",
+  "leadSessionId": "416bbe89-21c3-4111-84a3-8929646687d3",
+  "members": [
+    {
+      "agentId": "team-lead@session-416bbe89",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784313685663,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2631-LazyInitializationException-bolusMedAdmins",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

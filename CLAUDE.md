@@ -24,6 +24,8 @@ If you spot redundancy, dead code, or a missing abstraction while working on a t
 
 Default to zero. When one is warranted: one line stating the non-obvious constraint. Never narrate the next line, justify the change to a reviewer, or record history — that belongs in the PR description. Over one line = defect unless the constraint genuinely can't fit. Applies everywhere: code, YAML, test companion docs.
 
+No ticket numbers in code comments unless absolutely necessary — traceability lives in commit messages, PRs, and companion docs, not the source. This includes section-divider comments in spec files.
+
 ### Standards & Best Practices
 
 Default to the most idiomatic, industry-standard approach for the language, framework, and ecosystem. When multiple valid options exist, prefer the one that is most maintainable, most readable, and most consistent with the existing codebase. Clever or novel approaches need to clearly earn their complexity.

@@ -1,0 +1,18 @@
+{
+  "name": "session-e2b3172b",
+  "createdAt": 1784314281601,
+  "leadAgentId": "team-lead@session-e2b3172b",
+  "leadSessionId": "e2b3172b-0b76-44f6-bbe6-38f3299b5496",
+  "members": [
+    {
+      "agentId": "team-lead@session-e2b3172b",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784314281601,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2644-support-templated-HL7",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

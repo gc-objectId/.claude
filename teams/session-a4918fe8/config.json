@@ -1,0 +1,18 @@
+{
+  "name": "session-a4918fe8",
+  "createdAt": 1784299824722,
+  "leadAgentId": "team-lead@session-a4918fe8",
+  "leadSessionId": "a4918fe8-dea8-4069-bceb-91043601c649",
+  "members": [
+    {
+      "agentId": "team-lead@session-a4918fe8",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784299824722,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2440-HL7-lab-results",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "session-9c5ff1aa",
+  "createdAt": 1784314224580,
+  "leadAgentId": "team-lead@session-9c5ff1aa",
+  "leadSessionId": "9c5ff1aa-a176-4cff-894f-155d61066fbc",
+  "members": [
+    {
+      "agentId": "team-lead@session-9c5ff1aa",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784314224580,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2639-validation-induction-time-setting",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

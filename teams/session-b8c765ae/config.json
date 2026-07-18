@@ -1,0 +1,18 @@
+{
+  "name": "session-b8c765ae",
+  "createdAt": 1784299993741,
+  "leadAgentId": "team-lead@session-b8c765ae",
+  "leadSessionId": "b8c765ae-773b-49e2-8a95-00c81582fd45",
+  "members": [
+    {
+      "agentId": "team-lead@session-b8c765ae",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784299993741,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2582-drop-medication_selection.ndc_pattern_id-column",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

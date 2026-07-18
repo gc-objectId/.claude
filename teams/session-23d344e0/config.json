@@ -1,0 +1,18 @@
+{
+  "name": "session-23d344e0",
+  "createdAt": 1784300048438,
+  "leadAgentId": "team-lead@session-23d344e0",
+  "leadSessionId": "23d344e0-2893-4dc6-a60f-26e83da4fa4a",
+  "members": [
+    {
+      "agentId": "team-lead@session-23d344e0",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784300048438,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2602-DataIntegrityViolationException",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

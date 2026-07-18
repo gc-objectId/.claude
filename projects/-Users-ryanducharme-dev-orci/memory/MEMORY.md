@@ -1,6 +1,6 @@
 - [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps, prefers teaching mode then "just do it"
 - [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
-- [Concise code comments](feedback_concise_code_comments.md) — Theo flagged verbose PR comments; one line per constraint, no reviewer-directed justification
+- [Concise code comments](feedback_concise_code_comments.md) — Theo flagged verbose PR comments; one line per constraint, no reviewer-directed justification, no ticket numbers in code comments
 - [No tickets/dates in code](feedback_no_tickets_dates_in_code.md) — no OR-XXXX numbers, dates, or PR refs in code or companion md; describe the command/case; provenance lives in commits/Jira
 - [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition), keep epic descriptions factual
 - [QA suite status](project_qa_suite_consolidation.md) — OR-2348 + OR-2384 complete; OR-2585 epic active: tag-based tiers (OR-2586) + per-family specs (OR-2587) + prefixed IDs (OR-2588)
@@ -26,7 +26,7 @@
 - [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — VALIDATED in real Epic TST flow (non-compliant→compliant w/ screenshots); earlier "gap" was admin-endpoint false negative; no fix needed
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
 - [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
-- [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR ID registry inside is authoritative per ticket (next free 025; 004/005 collision RESOLVED: OR-2555/#4124 keeps them, OR-2435→021/022 + OR-2552→023/024 must renumber); OR-2557/2555/2435/2436/2441/2537/2538/2552 done
+- [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR ID registry inside is authoritative per ticket (v2: strictly sequential, no gaps, Ryan walking sessions through renumber in line order; 2555/2435/2436/2437/2441/2537/2538/2539 ✅, 2552 ⚠️ pending at 025/026; next free 027); OR-2557/2555/2435/2436/2437/2441/2537/2538/2539/2552 done
 - [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647: boot app in PR CI + run core tier; feasibility is first AC; merge-queue follow-up if it lands
 - [Dev deploy flakiness](project_dev_deploy_flakiness.md) — OR-2662: CI deploy "failures" usually converge on their own; don't rerun; blank pages = mixed-version rollout
 - [worktree-done false success](reference_worktree_done_false_success.md) — prints "Done" even on failure; verify worktree+branch gone; squash merges need `branch -D`

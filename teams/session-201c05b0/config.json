@@ -1,0 +1,18 @@
+{
+  "name": "session-201c05b0",
+  "createdAt": 1784299861709,
+  "leadAgentId": "team-lead@session-201c05b0",
+  "leadSessionId": "201c05b0-bf13-42cb-96dc-103cdb344704",
+  "members": [
+    {
+      "agentId": "team-lead@session-201c05b0",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784299861709,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2486-HL7-surgical-case-scheduling",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

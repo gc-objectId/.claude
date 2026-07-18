@@ -1,0 +1,18 @@
+{
+  "name": "session-ae5018b9",
+  "createdAt": 1784299908666,
+  "leadAgentId": "team-lead@session-ae5018b9",
+  "leadSessionId": "ae5018b9-6fa4-446f-9253-dbeca14ff369",
+  "members": [
+    {
+      "agentId": "team-lead@session-ae5018b9",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784299908666,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2526-track-ISC-mayo",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

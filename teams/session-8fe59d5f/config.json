@@ -1,0 +1,18 @@
+{
+  "name": "session-8fe59d5f",
+  "createdAt": 1784313569343,
+  "leadAgentId": "team-lead@session-8fe59d5f",
+  "leadSessionId": "8fe59d5f-cb1f-47c6-b5bc-d6afa5180f06",
+  "members": [
+    {
+      "agentId": "team-lead@session-8fe59d5f",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784313569343,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2629-LazyInitializationException-procedureTypes",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

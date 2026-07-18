@@ -17,4 +17,6 @@ Reinforced 2026-07-10 on the OR-2647 workflow (PR #4098): applies equally to CI/
 
 Reinforced 2026-07-16 on OR-2661 (PR #4120): wrote 3-line comments and wordy companion-doc parentheticals to justify a one-line fixture choice. Fixed to one line each. Rule is now codified in global CLAUDE.md (Code Quality → Comments); Ryan chose not to change the repo CLAUDE.md. Treat any comment over one line as a defect unless the constraint genuinely can't fit.
 
+Reinforced 2026-07-17 on OR-2555 (PR #4124): **no ticket numbers in code comments unless absolutely necessary** — includes section-divider comments in spec files (`// --- OR-XXXX: ... ---` → `// --- Feature ---`). Traceability lives in commits/PRs/companion docs. Added to global CLAUDE.md Comments section.
+
 Related: [[terse-no-summaries]]
