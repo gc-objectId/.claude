@@ -15,6 +15,7 @@
 - [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml change before staging; local overrides must never slip into commits
 - [PR test plans](feedback_pr_test_plans.md) — only include test plan in PR if steps can be done before merge; post-deploy steps go in the Jira ticket instead
 - [Confirm before push/PR](feedback_confirm_before_push.md) — always ask before git push or gh pr create; never do it autonomously
+- [Green-light close-out](feedback_green_light_closeout.md) — "all tests green" = run full sequence: commit → push → draft PR → Jira validation comment → close ticket if appropriate
 - [Security review habit](feedback_security_review.md) — run /security-review before PRs touching auth/file I/O/input validation; verify guards fire at the right moment, not just that they exist
 - [qa-suite branch SOP](feedback_qa_suite_branch_sop.md) — qa-suite is part of orci (not a separate repo); worktree constraint applies — run tests from inside the worktree
 - [Draft PRs](feedback_draft_prs.md) — always open PRs with `gh pr create --draft`; Ryan marks ready for review manually

@@ -1,14 +1,14 @@
 {
-  "name": "session-69e0bf70",
-  "createdAt": 1784213047864,
-  "leadAgentId": "team-lead@session-69e0bf70",
-  "leadSessionId": "69e0bf70-493a-4c49-ac24-6f423d054481",
+  "name": "session-7ea270f0",
+  "createdAt": 1784753694440,
+  "leadAgentId": "team-lead@session-7ea270f0",
+  "leadSessionId": "7ea270f0-ca64-4671-80f9-b78a06b59754",
   "members": [
     {
-      "agentId": "team-lead@session-69e0bf70",
+      "agentId": "team-lead@session-7ea270f0",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1784213047864,
+      "joinedAt": 1784753694440,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2538-FHIR-get-infection-status",
       "subscriptions": [],

@@ -1,14 +1,14 @@
 {
-  "name": "session-1de2d09b",
-  "createdAt": 1784234673178,
-  "leadAgentId": "team-lead@session-1de2d09b",
-  "leadSessionId": "1de2d09b-2728-44ea-8b62-743d95098af6",
+  "name": "session-1c776432",
+  "createdAt": 1784753145168,
+  "leadAgentId": "team-lead@session-1c776432",
+  "leadSessionId": "1c776432-5277-44a8-99ed-1ae66883786d",
   "members": [
     {
-      "agentId": "team-lead@session-1de2d09b",
+      "agentId": "team-lead@session-1c776432",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1784234673178,
+      "joinedAt": 1784753145168,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2647-pre-merge-PR-gate-CI",
       "subscriptions": [],

@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: e993ffa1-c4ff-4c35-97c4-b4d3a892c915
+  modified: 2026-07-23T13:47:51.346Z
 ---
 
 Ryan's goal of ephemeral per-PR environments (catch regressions before merge) was re-scoped on 2026-07-10 into OR-2647: a GitHub Actions PR check that boots the app inside the CI job (Postgres/Redis/Kafka service containers, `-P package-webapp` jar, CI profile) and runs the Playwright core tier against `localhost:8080`. No deployed infra — ephemeral by construction.
@@ -26,4 +27,7 @@ Implemented 2026-07-10 (PR #4098, draft): `.github/workflows/pr-gate.yml`. Feasi
 - `pull_request` checks out the MERGE ref (branch + current main), so the gate auto-tests against latest main every run — no rebase needed to pick up new main regressions.
 - All four gate credentials are generated per run (Postgres/Redis/admin via openssl; tenant password + its bcrypt hash via `htpasswd -bnBC 12`, normalized `$2y`→`$2b`, Spring-compatible). No literal password/hash in the workflow. Prompted by Theo flagging passwords repeatedly; three-of-four-per-run inconsistency is what kept drawing the question.
 - The gate runs NO Spring profile: base `application.yml` is the localhost config (localhost datasource/redis, tenants present); deployed envs override via `SPRING_PROFILES_ACTIVE` in the container. Gate needs only two env overrides (`TENANTS_DEMO_QA_ENABLED`, `TENANTS_MAYO_ENABLED`), not a new `application-ci.yml`.
-- Plan: merge with gate ADVISORY (not required), soak, then flip to required in branch protection. OR-2653 tracks the committed jasypt default (all ENC() values repo-decryptable), spun out of PR #4098 review. Merge-queue follow-up still un-ticketed. JEphron approved 2026-07-16; waiting on Theo.
+- Plan: merge with gate ADVISORY (not required), soak, then flip to required in branch protection. JEphron approved 2026-07-16; Theo reviewing.
+- Short-circuit (Theo's ask): can't gate the gate's START without serializing and slowing every green PR (~+9min). Solution shipped = `pr-gate-cancel.yml`, a `workflow_run` workflow that cancels the in-progress gate run when CI Build or Check Typescript concludes failure. Stays parallel on green PRs, kills wasted compute on broken ones. workflow_run fires only from the default branch, so it activates after merge.
+- Follow-up tickets from PR #4098 review: OR-2653 (committed jasypt default → all ENC() values repo-decryptable), OR-2681 (share one webapp-bundled build between CI Build and the gate → kills duplicate compile + native `needs:` short-circuit, retire pr-gate-cancel.yml then; deferred until Theo's CI restructure lands). Merge-queue follow-up still un-ticketed.
+- As of 2026-07-23 the gate is GREEN — all three regressions it caught (OR-2645/2661/2671) fixed on main.

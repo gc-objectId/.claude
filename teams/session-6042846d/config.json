@@ -1,14 +1,14 @@
 {
-  "name": "session-ae5018b9",
-  "createdAt": 1784299908666,
-  "leadAgentId": "team-lead@session-ae5018b9",
-  "leadSessionId": "ae5018b9-6fa4-446f-9253-dbeca14ff369",
+  "name": "session-6042846d",
+  "createdAt": 1784753797588,
+  "leadAgentId": "team-lead@session-6042846d",
+  "leadSessionId": "6042846d-9384-471b-a718-2bd099695ae7",
   "members": [
     {
-      "agentId": "team-lead@session-ae5018b9",
+      "agentId": "team-lead@session-6042846d",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1784299908666,
+      "joinedAt": 1784753797588,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2526-track-ISC-mayo",
       "subscriptions": [],
