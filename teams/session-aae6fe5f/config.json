@@ -1,0 +1,18 @@
+{
+  "name": "session-aae6fe5f",
+  "createdAt": 1784820407101,
+  "leadAgentId": "team-lead@session-aae6fe5f",
+  "leadSessionId": "aae6fe5f-a4ca-4a69-873e-4f061577d30e",
+  "members": [
+    {
+      "agentId": "team-lead@session-aae6fe5f",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784820407101,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2621-track-meds-anes-start-stop-not-mapped",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

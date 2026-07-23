@@ -2,7 +2,7 @@
 - [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
 - [Concise code comments](feedback_concise_code_comments.md) — Theo flagged verbose PR comments; one line per constraint, no reviewer-directed justification, no ticket numbers in code comments
 - [No tickets/dates in code](feedback_no_tickets_dates_in_code.md) — no OR-XXXX numbers, dates, or PR refs in code or companion md; describe the command/case; provenance lives in commits/Jira
-- [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition), keep epic descriptions factual
+- [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition) except green-light close-out; keep epic descriptions factual
 - [QA suite status](project_qa_suite_consolidation.md) — OR-2348 + OR-2384 complete; OR-2585 epic active: tag-based tiers (OR-2586) + per-family specs (OR-2587) + prefixed IDs (OR-2588)
 - [SSO smoke tests needed](project_sso_smoke_tests.md) — OR-2330 under OR-2384, blocked on M365 test account
 - [Agent team setup](project_agent_team_setup.md) — 4 agents, orci-cmd command center, approval gates, test ownership split
@@ -15,7 +15,7 @@
 - [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml change before staging; local overrides must never slip into commits
 - [PR test plans](feedback_pr_test_plans.md) — only include test plan in PR if steps can be done before merge; post-deploy steps go in the Jira ticket instead
 - [Confirm before push/PR](feedback_confirm_before_push.md) — always ask before git push or gh pr create; never do it autonomously
-- [Green-light close-out](feedback_green_light_closeout.md) — "all tests green" = run full sequence: commit → push → draft PR → Jira validation comment → close ticket if appropriate
+- [Green-light close-out](feedback_green_light_closeout.md) — "all green" = full sequence: commit → push → draft PR → check status → mode-dependent Jira comment → move to Done (canonical in workon skill)
 - [Security review habit](feedback_security_review.md) — run /security-review before PRs touching auth/file I/O/input validation; verify guards fire at the right moment, not just that they exist
 - [qa-suite branch SOP](feedback_qa_suite_branch_sop.md) — qa-suite is part of orci (not a separate repo); worktree constraint applies — run tests from inside the worktree
 - [Draft PRs](feedback_draft_prs.md) — always open PRs with `gh pr create --draft`; Ryan marks ready for review manually
@@ -33,3 +33,5 @@
 - [worktree-done false success](reference_worktree_done_false_success.md) — prints "Done" even on failure; verify worktree+branch gone; squash merges need `branch -D`
 - [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes .env.{suffix} directly; `> .env` redirect truncates .env to empty
 - [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — dev/guidedor secret lacks DB creds since 2026-05-14; stage/prod work; dev RDS needs VPN
+- [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — MayoHL7RasMedAdminProcessorIntegrationTest date tests need -Duser.timezone=America/Chicago locally
+- [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead

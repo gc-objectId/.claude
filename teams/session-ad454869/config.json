@@ -1,0 +1,18 @@
+{
+  "name": "session-ad454869",
+  "createdAt": 1784820459689,
+  "leadAgentId": "team-lead@session-ad454869",
+  "leadSessionId": "ad454869-4f90-4afd-8740-f88922d25b8f",
+  "members": [
+    {
+      "agentId": "team-lead@session-ad454869",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784820459689,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2622-track-unmapped-procedures",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

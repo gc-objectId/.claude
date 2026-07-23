@@ -1,0 +1,18 @@
+{
+  "name": "session-f4525dfe",
+  "createdAt": 1784819850398,
+  "leadAgentId": "team-lead@session-f4525dfe",
+  "leadSessionId": "f4525dfe-29fe-4f12-9c81-987678dcd281",
+  "members": [
+    {
+      "agentId": "team-lead@session-f4525dfe",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784819850398,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2607-a-known-procedure-antibiotic-not-recommended",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

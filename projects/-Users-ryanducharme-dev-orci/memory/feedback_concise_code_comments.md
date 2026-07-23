@@ -5,6 +5,7 @@ metadata:
   node_type: memory
   type: feedback
   originSessionId: 60db3a7f-4d1f-47ac-8015-aaa66c56fc87
+  modified: 2026-07-23T15:44:04.464Z
 ---
 
 Theo (reviewer) flagged Ryan's PRs as having too-verbose comments (2026-07-09, first surfaced on the Mayo test PRs).
@@ -19,4 +20,8 @@ Reinforced 2026-07-16 on OR-2661 (PR #4120): wrote 3-line comments and wordy com
 
 Reinforced 2026-07-17 on OR-2555 (PR #4124): **no ticket numbers in code comments unless absolutely necessary** — includes section-divider comments in spec files (`// --- OR-XXXX: ... ---` → `// --- Feature ---`). Traceability lives in commits/PRs/companion docs. Added to global CLAUDE.md Comments section.
 
-Related: [[terse-no-summaries]]
+Reinforced 2026-07-23 on OR-2526 (PR #4188): wrote a 5-line test-class javadoc explaining what coverage was missing and what the comparison suite omits — reviewer-talk again, this time in javadoc form (javadoc counts as a code comment). Ryan's calibration: comments **can** be long when the constraint genuinely needs it — the test is *purpose*, not a hard line cap. Ask: does this document the code (constraint/invariant/non-obvious behavior), or address the reviewer (justify the change, compare to other files, record what was missing)? The latter always goes to the PR/Jira regardless of length. A pre-commit comment sweep is now step 1 of the workon green-light close-out.
+
+Reinforced 2026-07-23 on OR-2612 (PR #4192, "DEEP EYEROLL"): the green-light comment sweep ran and **passed my own comments** — an 11-line block narrating what the tests do (that's the companion .md's job), plus multi-line notes restating the assertions directly below them. The sweep failed because I graded against the file's existing verbose comments ("matches ARD-003/004 convention") instead of the rule. Older code in the same file is not a defense — legacy comments predate the feedback. Sweep test: if deleting the comment loses nothing the code, test name, or companion doc doesn't already say, delete it.
+
+Related: [[terse-no-summaries]], [[feedback_green_light_closeout]]
