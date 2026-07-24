@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: e993ffa1-c4ff-4c35-97c4-b4d3a892c915
-  modified: 2026-07-23T13:47:51.346Z
+  modified: 2026-07-23T20:15:40.873Z
 ---
 
 Ryan's goal of ephemeral per-PR environments (catch regressions before merge) was re-scoped on 2026-07-10 into OR-2647: a GitHub Actions PR check that boots the app inside the CI job (Postgres/Redis/Kafka service containers, `-P package-webapp` jar, CI profile) and runs the Playwright core tier against `localhost:8080`. No deployed infra — ephemeral by construction.
@@ -31,3 +31,5 @@ Implemented 2026-07-10 (PR #4098, draft): `.github/workflows/pr-gate.yml`. Feasi
 - Short-circuit (Theo's ask): can't gate the gate's START without serializing and slowing every green PR (~+9min). Solution shipped = `pr-gate-cancel.yml`, a `workflow_run` workflow that cancels the in-progress gate run when CI Build or Check Typescript concludes failure. Stays parallel on green PRs, kills wasted compute on broken ones. workflow_run fires only from the default branch, so it activates after merge.
 - Follow-up tickets from PR #4098 review: OR-2653 (committed jasypt default → all ENC() values repo-decryptable), OR-2681 (share one webapp-bundled build between CI Build and the gate → kills duplicate compile + native `needs:` short-circuit, retire pr-gate-cancel.yml then; deferred until Theo's CI restructure lands). Merge-queue follow-up still un-ticketed.
 - As of 2026-07-23 the gate is GREEN — all three regressions it caught (OR-2645/2661/2671) fixed on main.
+- 2026-07-23 hardening (PR #4198, draft, branch feature/OR-2647-pr-gate-hardening): Theo's PR #4182 gate showed "cancelled" — actually the 40-min job timeout firing while `playwright install --with-deps` stalled on apt (dpkg lock / mirror hang); GitHub reports a timed-out job as "cancelled", not "failure". Fix = `timeout-minutes: 5` on the Playwright step (fail fast) + build with `-Dmaven.test.skip=true` instead of `-DskipTests` (gate runs no Java tests; test-jars in orci-models/orci-repositories are produced but not consumed in-reactor, so safe). Validated via workflow_dispatch on the branch.
+- CLOSE-OUT TODO (missed last go-round — do it this time): after #4198 merges, run worktree-done and move OR-2647 to Done on Ryan's confirmation. Gating loose end for a clean close = the merge-queue follow-up ticket (OR-2647's last AC) is STILL un-ticketed as of 2026-07-23 — OR-2507 is the broader trunk-based CD story and routes around a merge queue, not a substitute. Offer to draft that follow-up ticket at close-out.
