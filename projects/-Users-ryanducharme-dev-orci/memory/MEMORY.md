@@ -28,10 +28,12 @@
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
 - [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
 - [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR ID registry inside is authoritative per ticket (v2: strictly sequential, no gaps; MERGED to main: OR-2557 001-003, OR-2555 004/005, OR-2435 006/007, OR-2436 008-010, OR-2437 011-013, OR-2441 014/015, OR-2537 016-019; rest pushed pending merge; next free 027); OR-2557/2555/2435/2436/2437/2441/2537/2538/2539/2552 done
-- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647: boot app in PR CI + run core tier; feasibility is first AC; merge-queue follow-up if it lands
+- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 DONE (in-CI gate, hardened via #4198); AWS-per-PR-env approach dead (OR-2452 epic; OR-2494/2507 → [WON'T DO]); merge-queue dropped; OR-2508 upload-key still open
 - [Dev deploy flakiness](project_dev_deploy_flakiness.md) — OR-2662: CI deploy "failures" usually converge on their own; don't rerun; blank pages = mixed-version rollout
 - [worktree-done false success](reference_worktree_done_false_success.md) — prints "Done" even on failure; verify worktree+branch gone; squash merges need `branch -D`
 - [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes .env.{suffix} directly; `> .env` redirect truncates .env to empty
 - [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — dev/guidedor secret lacks DB creds since 2026-05-14; stage/prod work; dev RDS needs VPN
+- [Claude config backup](reference_claude_config_backup.md) — ~/.claude auto-pushed daily via launchd; log at ~/Library/Logs/claude-backup.log; fix drift here
 - [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — MayoHL7RasMedAdminProcessorIntegrationTest date tests need -Duser.timezone=America/Chicago locally
+- [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds PR merged into main; stale branch + moved main = compile fail local build misses; rebase before push
 - [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead

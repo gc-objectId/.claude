@@ -1,0 +1,18 @@
+{
+  "name": "session-729dae13",
+  "createdAt": 1784902852745,
+  "leadAgentId": "team-lead@session-729dae13",
+  "leadSessionId": "729dae13-bf65-47f6-86b3-e5509701f0e3",
+  "members": [
+    {
+      "agentId": "team-lead@session-729dae13",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1784902852745,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2632-mayo-track-med-admins-RXA-2",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
