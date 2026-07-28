@@ -76,8 +76,8 @@ If any step fails (push rejected, transition unavailable), stop the sequence and
 
 ## PR feedback (either mode)
 
-Address feedback together: draft reply text for Ryan to post (never post PR replies directly), provide test commands for non-trivial fixes, and wait for Ryan's confirmation before pushing feedback commits.
+Address feedback together: draft reply text for Ryan to post — in Ryan's voice, super simple, high level, conversational (never post PR replies directly) — provide test commands for non-trivial fixes, and wait for Ryan's confirmation before pushing feedback commits.
 
 ## After merge (either mode)
 
-When Ryan confirms the merge: run `worktree-done` from inside the worktree and verify the worktree + local branch are actually gone (it prints "Done" even on failure; squash merges need `branch -D`). If the ticket wasn't already moved to Done at the deploy-ready close-out or green light, surface it and ask.
+When Ryan confirms the merge: run `worktree-done` from inside the worktree and verify the worktree + local branch are actually gone (it prints "Done" even on failure; squash merges need `branch -D`). If the ticket wasn't already moved to Done at the deploy-ready close-out or green light — e.g. the close-out was deferred while a validation-surfaced fix merged — the deploy-ready verdict lands now: post the validation comment and move it to Done, no ask. Only ask if the ticket's completeness is genuinely ambiguous.

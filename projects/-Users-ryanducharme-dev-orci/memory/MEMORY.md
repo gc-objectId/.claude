@@ -8,7 +8,7 @@
 - [Agent team setup](project_agent_team_setup.md) — 4 agents, orci-cmd command center, approval gates, test ownership split
 - [Git push and PR creation](feedback_git_push_command.md) — I run git push + gh pr create directly; don't hand over the command
 - [Git/PR workflow](feedback_git_pr_workflow.md) — full end-to-end flow: Jira → branch from main → commits → push+PR → feedback → post-merge cleanup
-- [PR replies manual](feedback_pr_replies_manual.md) — draft reply text, don't post it; Ryan paraphrases and posts himself
+- [PR replies manual](feedback_pr_replies_manual.md) — draft reply text in Ryan's voice (simple, high-level, conversational), don't post it; Ryan paraphrases and posts himself
 - [Maven stale classpath](project_maven_stale_classpath.md) — `mvn -pl orci test` can fail with phantom "cannot find symbol" — pre-install siblings
 - [No Co-Authored-By](feedback_no_coauthored_by.md) — never add Co-Authored-By trailers OR "Generated with Claude Code" footers to commits or PR bodies
 - [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md, not README.md
