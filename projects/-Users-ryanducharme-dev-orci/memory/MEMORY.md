@@ -1,6 +1,7 @@
 - [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps, prefers teaching mode then "just do it"
 - [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
 - [Concise code comments](feedback_concise_code_comments.md) — Theo flagged verbose PR comments; one line per constraint, no reviewer-directed justification, no ticket numbers in code comments
+- [Correct end-state over precedent](feedback_correct_end_state_over_precedent.md) — don't follow existing structure if it's wrong; reorg to correct it, scope creep to fix organization is fine (e.g. qa-suite test-utilities/ split)
 - [No tickets/dates in code](feedback_no_tickets_dates_in_code.md) — no OR-XXXX numbers, dates, or PR refs in code or companion md; describe the command/case; provenance lives in commits/Jira
 - [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition) except green-light close-out; keep epic descriptions factual
 - [QA suite status](project_qa_suite_consolidation.md) — OR-2348 + OR-2384 complete; OR-2585 epic active: tag-based tiers (OR-2586) + per-family specs (OR-2587) + prefixed IDs (OR-2588)
@@ -27,6 +28,7 @@
 - [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — VALIDATED in real Epic TST flow (non-compliant→compliant w/ screenshots); earlier "gap" was admin-endpoint false negative; no fix needed
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
 - [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
+- [OR-2630 Mayo null-op admins](project_or2630_mayo_null_operation_admins.md) — not a live bug (closed); size orphan bugs by bucket test (admin-in-real-case-window), verify happy path via tracking_id→rule_execution_contexts
 - [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR ID registry inside is authoritative per ticket (v2: strictly sequential, no gaps; MERGED to main: OR-2557 001-003, OR-2555 004/005, OR-2435 006/007, OR-2436 008-010, OR-2437 011-013, OR-2441 014/015, OR-2537 016-019; rest pushed pending merge; next free 027); OR-2557/2555/2435/2436/2437/2441/2537/2538/2539/2552 done
 - [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 DONE (in-CI gate, hardened via #4198); AWS-per-PR-env approach dead (OR-2452 epic; OR-2494/2507 → [WON'T DO]); merge-queue dropped; OR-2508 upload-key still open
 - [Dev deploy flakiness](project_dev_deploy_flakiness.md) — OR-2662: CI deploy "failures" usually converge on their own; don't rerun; blank pages = mixed-version rollout
@@ -37,3 +39,4 @@
 - [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — MayoHL7RasMedAdminProcessorIntegrationTest date tests need -Duser.timezone=America/Chicago locally
 - [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds PR merged into main; stale branch + moved main = compile fail local build misses; rebase before push
 - [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead
+- [Repo test placement](feedback_repo_test_placement.md) — repository/@DataJpaTest tests live in orci-repositories (not orci); `*Test` runs in CI, `*IntegrationTest` is excluded/manual; verify canonical suite location before modeling a new test

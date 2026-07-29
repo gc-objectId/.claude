@@ -32,6 +32,10 @@ Default to the most idiomatic, industry-standard approach for the language, fram
 
 If the codebase deviates from best practices in a way that's relevant to the current task, flag it — but stay focused unless I ask to go deeper.
 
+### Correct end-state over precedent
+
+Aim for the correct structure, not the one that matches what's already there. Much of our tooling (the qa-suite especially) is only months old and was grown incrementally through me — "this is how it's done here" is weak evidence it's right. When the existing organization is wrong, propose the reorg that fixes it rather than adding to the mess for consistency's sake. Scope creep in service of the correct end-state is nearly always acceptable: if fixing the taxonomy means moving sibling files that predate the current task, move them too (call it out first). Precedent informs; it doesn't bind.
+
 ## Communication Style
 
 Be terse and direct — no trailing summaries or recaps. Don't over-explain things I've already demonstrated understanding of. When in teaching mode, walk through the reasoning but let me execute manually. When I say "just do it," switch to execution mode and stop explaining.

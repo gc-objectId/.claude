@@ -1,14 +1,14 @@
 {
-  "name": "session-729dae13",
-  "createdAt": 1784902852745,
-  "leadAgentId": "team-lead@session-729dae13",
-  "leadSessionId": "729dae13-bf65-47f6-86b3-e5509701f0e3",
+  "name": "session-c842e2c4",
+  "createdAt": 1785251570946,
+  "leadAgentId": "team-lead@session-c842e2c4",
+  "leadSessionId": "c842e2c4-63a3-4f82-91b3-0d18bae895c1",
   "members": [
     {
-      "agentId": "team-lead@session-729dae13",
+      "agentId": "team-lead@session-c842e2c4",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1784902852745,
+      "joinedAt": 1785251570946,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2632-mayo-track-med-admins-RXA-2",
       "subscriptions": [],
