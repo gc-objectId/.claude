@@ -1,0 +1,18 @@
+{
+  "name": "session-bbc92170",
+  "createdAt": 1785419808389,
+  "leadAgentId": "team-lead@session-bbc92170",
+  "leadSessionId": "bbc92170-e4aa-458f-9a1a-08144bcc6528",
+  "members": [
+    {
+      "agentId": "team-lead@session-bbc92170",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785419808389,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2323-procedure-type-wrong-antibiotic",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

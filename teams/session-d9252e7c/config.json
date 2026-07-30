@@ -1,0 +1,18 @@
+{
+  "name": "session-d9252e7c",
+  "createdAt": 1785419929524,
+  "leadAgentId": "team-lead@session-d9252e7c",
+  "leadSessionId": "d9252e7c-42ae-4793-8f9f-c50e0db108d3",
+  "members": [
+    {
+      "agentId": "team-lead@session-d9252e7c",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785419929524,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2322-procedure-type-missing-antibiotic",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
