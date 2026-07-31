@@ -1,0 +1,18 @@
+{
+  "name": "session-06910925",
+  "createdAt": 1785502844595,
+  "leadAgentId": "team-lead@session-06910925",
+  "leadSessionId": "06910925-6c03-47c0-8eee-36d01b0d97b1",
+  "members": [
+    {
+      "agentId": "team-lead@session-06910925",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785502844595,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2649-facility-label-operations",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

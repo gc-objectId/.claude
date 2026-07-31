@@ -38,5 +38,6 @@
 - [Claude config backup](reference_claude_config_backup.md) — ~/.claude auto-pushed daily via launchd; log at ~/Library/Logs/claude-backup.log; fix drift here
 - [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — MayoHL7RasMedAdminProcessorIntegrationTest date tests need -Duser.timezone=America/Chicago locally
 - [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds PR merged into main; stale branch + moved main = compile fail local build misses; rebase before push
+- [Webapp has no unit runner](reference_webapp_no_unit_runner.md) — OR-2702 to add vitest; validate pure frontend TS via esbuild-in-node; qa-suite e2e can't test unmerged frontend
 - [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead
 - [Repo test placement](feedback_repo_test_placement.md) — repository/@DataJpaTest tests live in orci-repositories (not orci); `*Test` runs in CI, `*IntegrationTest` is excluded/manual; verify canonical suite location before modeling a new test

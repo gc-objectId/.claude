@@ -1,0 +1,18 @@
+{
+  "name": "session-9c53c91d",
+  "createdAt": 1785502589644,
+  "leadAgentId": "team-lead@session-9c53c91d",
+  "leadSessionId": "9c53c91d-1fdf-491f-b57f-ea4f0f88a76c",
+  "members": [
+    {
+      "agentId": "team-lead@session-9c53c91d",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785502589644,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2640-mayo-infusion-support",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

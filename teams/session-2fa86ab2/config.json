@@ -1,0 +1,18 @@
+{
+  "name": "session-2fa86ab2",
+  "createdAt": 1785420066436,
+  "leadAgentId": "team-lead@session-2fa86ab2",
+  "leadSessionId": "2fa86ab2-0025-4a1c-835c-5c0d70c9d87b",
+  "members": [
+    {
+      "agentId": "team-lead@session-2fa86ab2",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785420066436,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2613-a-antibiotic-redose-reminder-no-crcl",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

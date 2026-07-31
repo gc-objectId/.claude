@@ -1,0 +1,18 @@
+{
+  "name": "session-9927eda7",
+  "createdAt": 1785502741194,
+  "leadAgentId": "team-lead@session-9927eda7",
+  "leadSessionId": "9927eda7-e654-4b05-b7fd-acdfab185889",
+  "members": [
+    {
+      "agentId": "team-lead@session-9927eda7",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785502741194,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2641-mayo-intraop-observation-values",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

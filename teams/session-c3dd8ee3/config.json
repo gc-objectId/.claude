@@ -1,0 +1,18 @@
+{
+  "name": "session-c3dd8ee3",
+  "createdAt": 1785503057498,
+  "leadAgentId": "team-lead@session-c3dd8ee3",
+  "leadSessionId": "c3dd8ee3-16a1-4077-acc2-91fb44cb7664",
+  "members": [
+    {
+      "agentId": "team-lead@session-c3dd8ee3",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785503057498,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2660-cefazolin-antibiotic-recommendation-none",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
