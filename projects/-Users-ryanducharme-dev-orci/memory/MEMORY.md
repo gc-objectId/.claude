@@ -11,6 +11,7 @@
 - [Git/PR workflow](feedback_git_pr_workflow.md) — full end-to-end flow: Jira → branch from main → commits → push+PR → feedback → post-merge cleanup
 - [PR replies manual](feedback_pr_replies_manual.md) — draft reply text in Ryan's voice (simple, high-level, conversational), don't post it; Ryan paraphrases and posts himself
 - [Maven stale classpath](project_maven_stale_classpath.md) — `mvn -pl orci test` can fail with phantom "cannot find symbol" — pre-install siblings
+- [Run worktree app on 8081](reference_run_worktree_app_second_port.md) — Ryan keeps main on 8080/3000; never say "restart your local", give explicit second-instance commands
 - [No Co-Authored-By](feedback_no_coauthored_by.md) — never add Co-Authored-By trailers OR "Generated with Claude Code" footers to commits or PR bodies
 - [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md, not README.md
 - [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml change before staging; local overrides must never slip into commits
@@ -30,7 +31,7 @@
 - [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
 - [OR-2630 Mayo null-op admins](project_or2630_mayo_null_operation_admins.md) — not a live bug (closed); size orphan bugs by bucket test (admin-in-real-case-window), verify happy path via tracking_id→rule_execution_contexts
 - [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR ID registry inside is authoritative per ticket (v2: strictly sequential, no gaps; MERGED to main: OR-2557 001-003, OR-2555 004/005, OR-2435 006/007, OR-2436 008-010, OR-2437 011-013, OR-2441 014/015, OR-2537 016-019; rest pushed pending merge; next free 027); OR-2557/2555/2435/2436/2437/2441/2537/2538/2539/2552 done
-- [OR-2660 antibiotic None gaps](project_or2660_antibiotic_none_gaps.md) — NOT test-only: None+CEFAZOLIN@0 alerts on both paths; Gap 1 = existsNone ignores qualifier/candidates, Gap 2 = importer drops NONE rank/qualifier; repro on demo p-laparoscopic
+- [OR-2660 antibiotic None gaps](project_or2660_antibiotic_none_gaps.md) — CLOSED no-code → OR-2728 (rule ignores candidates/qualifier) + OR-2729 (importer drops NONE qualifier); Alex: None = not required, rank only orders antibiotics; repro on demo p-laparoscopic
 - [OR-2640 infusion netting](project_or2640_infusion_netting.md) — RXA-2 sub-id upsert IS the netting (same sub-id = edit in place); Epic restates prior events on rate change → 75/75/75; resume arrives as NewBag; real stream in stage mayo-rormc MCID 24000-24015
 - [Local HL7 inject auth](reference_local_hl7_inject_auth.md) — POST /api/admin/hl7-inbound-messages/send + X-Tenant-Id; httpBasic won't work, form-login /api/login/basic, send the XSRF-TOKEN *cookie* not the /csrf JSON token
 - [OR-2641 Mayo intraop observations](project_or2641_mayo_intraop_observations.md) — DONE; glucose+TOF confirmed via MSH-3-2 flowsheet route; TOF_RATIO absent by design (changeset 201); new FLOW qa-suite family + fixtures/hl7-api.ts
@@ -53,3 +54,5 @@
 - [HL7 validation methodology](reference_hl7_admin_send_validation_path.md) — admin send = real processTenantMessage path (unlike OR-2581 trap); real fixture pos/neg pairs; prove a null isn't a dropped message; pairs with [Local HL7 inject auth](reference_local_hl7_inject_auth.md)
 - [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead
 - [Repo test placement](feedback_repo_test_placement.md) — repository/@DataJpaTest tests live in orci-repositories (not orci); `*Test` runs in CI, `*IntegrationTest` is excluded/manual; verify canonical suite location before modeling a new test
+- [OR-2663 doxycycline rule was inert](project_or2663_doxycycline_inert_rule.md) — self-set lockout defeated AppLaunchRule's SET NX claim; app-launch rule tests all call evaluate() not apply(), and a mocked RuleMemoryService can't catch it
+- [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — mayo-mayo tenant; UI blocked by Epic OAuth so POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2; doxycycline PO resolves by ERX 2625

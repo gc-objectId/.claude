@@ -1,0 +1,18 @@
+{
+  "name": "session-02938cbf",
+  "createdAt": 1785939192216,
+  "leadAgentId": "team-lead@session-02938cbf",
+  "leadSessionId": "02938cbf-9332-4b85-a16b-b11f3f1b6e5b",
+  "members": [
+    {
+      "agentId": "team-lead@session-02938cbf",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1785939192216,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2663-a-preop-doxycycline-check",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

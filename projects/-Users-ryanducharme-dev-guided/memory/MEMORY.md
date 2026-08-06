@@ -1,0 +1,2 @@
+- [~/dev/guided workspace](project_guided_dir_purpose.md) — non-code company/career docs; engineering memory lives in the orci project dir and must be read explicitly
+- [2026/2027 goal cycle](project_goal_cycle_2026.md) — Aug 2026–Jul 2027, Nov 1 Q1 deadline; 3 self-picked goals + up to 3 founder growth goals; draft in goals-2026-draft.md
