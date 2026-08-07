@@ -5,15 +5,18 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 02938cbf-9332-4b85-a16b-b11f3f1b6e5b
-  modified: 2026-08-06T13:35:55.947Z
+  modified: 2026-08-06T14:01:39.017Z
 ---
 
 Driving a **Mayo** case through the local app (validating app-launch rules against real HL7).
 
 **Which build to point at:** the 8080 app is `main`. To exercise an unmerged branch fix you need a second
 instance from the worktree — see [[running-a-worktree-build-alongside-the-main-local-app]] for the 8081 commands.
-This flow is **API-only** (the UI is blocked by Epic OAuth, below), so skip `-P package-webapp` and no Vite is
-needed. JUnit tests never need a running app at all — a `main` rebuild is irrelevant to them.
+JUnit tests never need a running app at all — a `main` rebuild is irrelevant to them.
+
+**Always build 8081 with `-P package-webapp`, even for an API-only flow.** "API-only, so skip the frontend" is a
+trap: sign-in goes through the React login page, so without the profile `/login` renders blank and there is no way
+to establish a session for the API calls either. Cost that mistake a full rebuild.
 
 - `application-local.yml` enables `tenants.mayo.enabled: true`; the local tenant key is **`mayo-mayo`**
   (selector also offers `demo-demo`, `demo-qa`, `mgb-mgh`, `mgb-icsnh`).

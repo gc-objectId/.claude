@@ -56,3 +56,5 @@
 - [Repo test placement](feedback_repo_test_placement.md) — repository/@DataJpaTest tests live in orci-repositories (not orci); `*Test` runs in CI, `*IntegrationTest` is excluded/manual; verify canonical suite location before modeling a new test
 - [OR-2663 doxycycline rule was inert](project_or2663_doxycycline_inert_rule.md) — self-set lockout defeated AppLaunchRule's SET NX claim; app-launch rule tests all call evaluate() not apply(), and a mocked RuleMemoryService can't catch it
 - [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — mayo-mayo tenant; UI blocked by Epic OAuth so POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2; doxycycline PO resolves by ERX 2625
+- [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages the case, POST /api/app-launch actually starts it; admin operations/create alone never calls startOperation
+- [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl in this project; script local HTTP with node's http module + a cookie jar

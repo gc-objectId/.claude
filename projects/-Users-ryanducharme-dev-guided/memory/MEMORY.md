@@ -1,2 +1,7 @@
 - [~/dev/guided workspace](project_guided_dir_purpose.md) — non-code company/career docs; engineering memory lives in the orci project dir and must be read explicitly
-- [2026/2027 goal cycle](project_goal_cycle_2026.md) — Aug 2026–Jul 2027, Nov 1 Q1 deadline; 3 self-picked goals + up to 3 founder growth goals; draft in goals-2026-draft.md
+- [2026/2027 goal cycle](project_goal_cycle_2026.md) — Aug 2026–Jul 2027; Ryan's three goals v2 after Theo's 1:1; draft in goals-2026-draft.md
+- [Ryan's real role scope](project_ryan_role_scope.md) — started 2026-03-18; Mayo integration lead, release sign-off, MGH badge/scrub access, Honeywell vendor owner; review feedback themes; who's who
+- [Mayo go-live + monitoring](project_mayo_golive_monitoring.md) — live ~late Jul 2026; soak to Aug 27; interim analysis at 5k operations; error rate inflated by missing data not noncompliance
+- [Advocate Aurora](project_advocate_aurora.md) — likely next client, ~500k ops/yr vs MGH's 100k; the reason the onboarding playbook matters
+- [Unowned tickets are by design](project_unowned_tickets_by_design.md) — the unassigned Jira pile is a deliberate issue register at a 5-person company; don't flag it as a problem
+- [Slack huddle canvases](reference_slack_huddle_canvases.md) — Theo's AI huddle notes live as Slack canvases Granola never sees; always sweep both
