@@ -20,7 +20,7 @@ Drive a ticket end-to-end from its Jira status. The `workon` shell function alre
 
 ## Step 2 — Pull context (parallel where possible)
 
-- **Jira:** `getJiraIssue` with comments (`fields` including `comment`, `parent`); `getJiraIssueRemoteIssueLinks` for Sentry/other links. Read the parent epic if there is one. Do **not** assign or transition at this stage — the only sanctioned transitions are the deploy-ready close-out (VALIDATE step 3) and the green-light close-out below.
+- **Jira:** `getJiraIssue` with comments (`fields` including `comment`, `parent`); `getJiraIssueRemoteIssueLinks` for Sentry/other links. Read the parent epic if there is one. Do **not** assign or transition at this stage — the only sanctioned transitions are the deploy-ready close-out (VALIDATE step 3) and the verified close-out below.
 - **GitHub:** `gh pr list --search "OR-NNNN" --state all --json number,title,state,url,mergedAt` and `git log --all --grep="OR-NNNN" --oneline`. If a PR exists, pull its diff (`gh pr diff`) — for validate mode it *is* the thing under test; for implement mode it's prior/related work to build on.
 - **Sentry-created tickets** embed the error + a Sentry link in the description — extract ip/uri/userAgent/message clues from there.
 
@@ -43,7 +43,7 @@ Goal: one-shot a production-quality implementation. Questions are welcome — bu
 2. **Clarify if genuinely ambiguous.** If the ticket admits multiple reasonable implementations, ask (AskUserQuestion) with a recommendation — one round of questions, then execute.
 3. **Implement to the codebase's standards.** Reuse existing utilities/patterns (check before writing new code), idiomatic and industry-standard, thorough — handle the edge cases the deep dive surfaced. Add/update automated tests where the change warrants them.
 4. **Guardrails:** config-file vigilance (no local overrides in the diff); run `/security-review` before any PR touching auth, file I/O, path/archive handling, or input validation.
-5. **Hand off for local testing:** end with the exact validation commands (`cd` + test command; qa-suite always via npm `:local` scripts with `--` pass-through), or explicit manual steps if no automated tests. Then wait for Ryan's tests-pass confirmation — that green light triggers the full close-out sequence below.
+5. **Verify, then close out:** run the tests yourself per the verification gate below, report the actual output, and continue into the close-out unless a hard stop applies. Always print the exact commands you ran (`cd` + test command; qa-suite always via npm `:local` scripts with `--` pass-through) so Ryan can re-run them, and give explicit manual steps when there are no automated tests.
 
 ## VALIDATE mode
 
@@ -57,11 +57,24 @@ Goal: a manual-validation verdict that closes the ticket (= deploy-ready), plus 
 3. **Deploy-ready close-out — post the validation comment and move the ticket to Done as soon as the verdict is deploy-ready.** Don't wait for the automation work: the Done transition is the team's signal that the change is deploy-ready, even though a tests PR usually follows. The comment (Claude's voice, first person): verdict line, how it was validated (positive, negative, and the flip-and-revert red check — one line each), a link to the merged implementation PR by full URL, and the automation plan (coverage to be added, or why none is warranted). Keep it tight — a reader skimming the ticket should get the whole story in ~10 lines. If the verdict is **not** deploy-ready, post nothing, skip the transition, and surface the blockers instead.
 4. **Automation assessment.** Survey existing coverage (backend unit/integration in `orci/src/test`, qa-suite e2e) for this behavior. Decide per gap: unit vs integration vs e2e, and whether it's worth locking in at all. Don't duplicate solid existing tests; favor negative/edge cases.
 5. **Write the tests that made the cut.** Edge-case/negative tests go in the supplemental tier, not core. qa-suite conventions: `PREFIX-NNN` IDs, exactly one tier tag, numeric order, `npm run check:tags` passes, `npx tsc --noEmit` clean.
-6. **Hand off:** run commands from *inside this worktree* (qa-suite npm `:local` scripts). Ryan's green light triggers the close-out sequence below.
+6. **Verify, then close out:** run the tests from *inside this worktree* (qa-suite npm `:local` scripts), report the actual output, and continue into the close-out unless a hard stop applies — see the verification gate below.
 
-## Green light — close-out (either mode)
+## Verification gate (either mode)
 
-When Ryan reports all green (tests pass locally, or equivalent confirmation), that is standing authorization to run this **entire sequence without pausing between steps**:
+Run the tests yourself and report the real output — pasted counts, not a summary of your intent. For **backend unit/integration tests** that is the gate: a passing run is standing authorization to continue straight into the close-out below without pausing. Re-running the same command in the same JVM against the same database catches nothing; what actually needs a human is whether the diff is the right work, and that happens on the draft PR.
+
+**Hard stops — report and wait, do not proceed:**
+
+- **A test had to change to pass.** An assertion loosened, an expected value edited, a case deleted or `@Disabled`. That is a claim about what correct behavior is, and it is Ryan's call.
+- **Production code was touched to get green.** Same reason, higher stakes.
+- **The run surfaced something about the feature** — an unexpected failure, a warning that implies a real gap, coverage that turned out to be inert. Green with a surprise in it is not green.
+- **qa-suite e2e or anything against a shared environment.** One local pass is weak evidence there: flake and environment drift are real, and `demo-qa` gets reset out from under you. Report the run and wait.
+
+Everything else in the close-out is unchanged — draft PRs only, comment sweep before staging, `/security-review` before any PR touching auth, file I/O, path/archive handling, or input validation.
+
+## Close-out (either mode)
+
+Triggered by your own passing verification with no hard stop (see the gate above), or by Ryan reporting all green. Either way, run this **entire sequence without pausing between steps**:
 
 1. **Comment sweep, then commit.** Before staging, re-read every comment in the diff (javadoc included) and ask: does this document the code — a constraint, invariant, or non-obvious behavior the code can't show? Delete anything addressed to the reviewer: justifying the change, explaining what coverage was missing, comparing to other tests/files, or recording history — that content belongs in the PR body or Jira. Length follows need: a one-line constraint stays one line; a genuinely complex invariant can take more. Commit message follows repo convention (`OR-NNNN - Description`), no Co-Authored-By or generated-with footers.
 2. **Push** (`--force-with-lease` only if the branch was rebased).
@@ -80,4 +93,4 @@ Address feedback together: draft reply text for Ryan to post — in Ryan's voice
 
 ## After merge (either mode)
 
-When Ryan confirms the merge: run `worktree-done` from inside the worktree and verify the worktree + local branch are actually gone (it prints "Done" even on failure; squash merges need `branch -D`). If the ticket wasn't already moved to Done at the deploy-ready close-out or green light — e.g. the close-out was deferred while a validation-surfaced fix merged — the deploy-ready verdict lands now: post the validation comment and move it to Done, no ask. Only ask if the ticket's completeness is genuinely ambiguous.
+When Ryan confirms the merge: run `worktree-done` from inside the worktree. It removes the worktree, deletes the branch (including the squash-merge case, which it detects against `origin/main`), and verifies its own result — exit 0 means both are gone, so no re-checking is needed. A non-zero exit means the branch was genuinely unmerged and was left in place; surface that rather than forcing it. If the ticket wasn't already moved to Done at the deploy-ready close-out or verified close-out — e.g. the close-out was deferred while a validation-surfaced fix merged — the deploy-ready verdict lands now: post the validation comment and move it to Done, no ask. Only ask if the ticket's completeness is genuinely ambiguous.

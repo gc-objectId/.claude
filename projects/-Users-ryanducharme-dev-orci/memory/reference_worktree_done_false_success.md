@@ -1,14 +1,22 @@
 ---
 name: worktree-done-false-success
-description: "worktree-done prints \"Done. Worktree removed.\" even when removal/branch-delete failed — always verify"
+description: "worktree-done now handles squash merges and verifies its own result — trust the exit code, stop re-checking by hand"
 metadata: 
   node_type: memory
   type: reference
-  originSessionId: 7db59caa-cbb0-46b3-b808-9206670a4ca0
+  originSessionId: b2316851-3433-41f5-ab26-841372a03a54
+  modified: 2026-08-07T20:28:52.584Z
 ---
 
-**FIXED 2026-07-21** in `~/.zshrc` `worktree-done()`: now checks `git worktree remove`'s exit status (aborts with `return 1` + a `--force` hint if it fails), and reports branch state honestly — "Worktree and branch removed" (both gone), "already gone", or "NOT fully merged — left in place" with a `git branch -D` hint and `return 2`. No more unconditional "Done." ⚠️ Takes effect in NEW shells/sessions only — a session's shell-snapshot froze the old buggy function at startup, so already-open worktree sessions still have it until they restart.
+**Trust the exit code.** As of 2026-08-07 `~/.zshrc` `worktree-done()` verifies its own teardown before returning, so there is nothing to re-check:
 
-Original bug (pre-fix): printed "Done. Worktree removed." unconditionally — even when `git worktree remove` refused (untracked files present) and the branch delete was skipped. Squash merges always trip the branch check since the tip is never an ancestor of main.
+- **0** — worktree directory gone, local branch gone, no stale entry in `git worktree list`. All three are actually asserted, not assumed.
+- **1** — `git worktree remove` failed (usually untracked strays). Fix and rerun, or `git worktree remove --force`.
+- **2** — the branch is genuinely not merged into `origin/main`; the worktree was removed and the branch deliberately left. Surface this rather than forcing it.
+- **3** — teardown incomplete; specific WARNING lines say which check failed.
 
-**How to apply:** with the fix, trust the exit status/message. In a stale session (old snapshot), still verify with `git worktree list` and `git branch --list "*NNNN*"` from `~/dev/orci`. Untracked strays block removal — delete them and rerun (or `git worktree remove --force`). For squash-merged branches, confirm the PR is MERGED via `gh pr view`, then `git branch -D`.
+**Squash merges are handled automatically.** `git branch -d` refuses them, because a squashed branch's commits never land on main — only their combined tree does. The function now fetches, replays the branch tree as one commit off the merge base, and asks `git cherry origin/main` whether main already carries an equivalent patch; only on a positive match does it `git branch -D`. It compares against `origin/main`, not local `main`, which is routinely stale — that alone broke the naive version.
+
+Known-safe failure mode: if the squash commit on main differs textually from the branch diff (conflicts resolved at merge time, or main moved and the squash was computed against a newer base), patch-ids won't match and you get exit 2 instead of an auto-delete. That is conservative by design — verify the PR merged, then `git branch -D` yourself.
+
+⚠️ Shell-function changes take effect in **new** shells only; a session's shell snapshot freezes the old function at startup. Invoke through `zsh -ic '...'` to pick up the current definition mid-session.

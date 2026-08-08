@@ -1,14 +1,14 @@
 ---
 name: feedback_green_light_closeout
-description: "\"All green\" is standing authorization for the full close-out: commit → push → draft PR → check ticket status → Jira comment (mode-dependent) → move to Done"
+description: "Passing verification — yours or Ryan's — is standing authorization for the full close-out: commit → push → draft PR → check ticket status → Jira comment (mode-dependent) → move to Done"
 metadata:
   node_type: memory
   type: feedback
   originSessionId: a4918fe8-dea8-4069-bceb-91043601c649
-  modified: 2026-07-23T18:58:20.557Z
+  modified: 2026-08-07T20:28:36.632Z
 ---
 
-When Ryan replies that all tests are green (or equivalent confirmation the work passes locally), that is standing authorization to run the **entire** close-out sequence without pausing between steps:
+A passing test run is standing authorization to run the **entire** close-out sequence without pausing between steps. As of 2026-08-07 the run is normally **yours** — you execute the tests, report the real output, and continue; Ryan replying "all green" works the same way but is no longer required. Four hard stops still send it back to him: a test had to change to pass, production code was touched to get green, the run surfaced something about the feature, or the tests are qa-suite e2e against a shared environment. The sequence:
 
 1. commit (repo convention `OR-NNNN - Description`, no co-author/generated footers)
 2. push (`--force-with-lease` only if the branch was rebased)
@@ -25,4 +25,4 @@ Then the flow continues normally: PR feedback loop (replies still drafted, per [
 
 **Why:** Established 2026-07-17 (OR-2440), fully codified 2026-07-23 (OR-2526 session) — Ryan asked to document it in the workon skill because he intends to run an agent pool on tickets with less input from him. The green-light reply is the explicit instruction that opens the whole sequence; it's the sanctioned exception to [[feedback_jira_conventions]]'s no-auto-transition rule and refines [[feedback_confirm_before_push]].
 
-**How to apply:** The canonical sequence lives in `~/.claude/skills/workon/SKILL.md` ("Green light — close-out") — follow it there. On any step failure (push rejected, transition unavailable), stop and surface rather than skipping ahead. Relates to [[feedback_git_pr_workflow]] and [[feedback_validation_protocol]].
+**How to apply:** The canonical sequence lives in `~/.claude/skills/workon/SKILL.md` ("Verification gate" then "Close-out") — follow it there. On any step failure (push rejected, transition unavailable), stop and surface rather than skipping ahead. Relates to [[feedback_git_pr_workflow]] and [[feedback_validation_protocol]].

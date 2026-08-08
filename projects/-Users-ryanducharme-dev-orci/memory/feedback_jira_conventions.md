@@ -3,12 +3,12 @@ name: Jira ticket conventions
 description: How Ryan wants Jira tickets managed — lifecycle is manual, descriptions factual
 type: feedback
 originSessionId: 334727a1-469f-4329-adb2-b6df2acca153
-modified: 2026-07-28T13:09:56.986Z
+modified: 2026-08-07T20:31:35.449Z
 ---
 Ryan manages Jira ticket lifecycle **manually** — do NOT auto-assign or auto-transition status (changed 2026-06-04 in global CLAUDE.md; reverses the earlier "assign + transition to In Progress on start, Done on merge" rule). A GitHub–Jira integration may also move status automatically on merge.
 
 **Sanctioned exceptions (2026-07-23):**
-- The green-light close-out — see [[feedback_green_light_closeout]]. When Ryan reports all green in a workon ticket flow, posting the mode-appropriate Jira comment and transitioning to Done is part of the authorized sequence.
+- The verified close-out — see [[feedback_green_light_closeout]]. When tests pass in a workon ticket flow — your own run, or Ryan reporting all green — posting the mode-appropriate Jira comment and transitioning to Done is part of the authorized sequence.
 - The VALIDATE-mode deploy-ready close-out: as soon as manual validation reaches a deploy-ready verdict, post the validation comment and move the ticket to Done immediately — no ask — don't wait for the automation/tests PR. The Done transition signals the team the change is deploy-ready; automation work continues afterward under the normal flow. If validation surfaced a gap needing a code fix, the deploy-ready verdict lands when that fix merges — run the same close-out then (post comment + Done, no ask); do NOT fall into the "ask whether to move it" cleanup fallback, which is only for genuinely ambiguous completeness. Canonical in the workon skill.
 
 Create and edit ticket *content* freely when asked, but leave assignee and status alone unless Ryan explicitly says to set them.
