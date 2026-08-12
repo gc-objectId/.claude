@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: c3dd8ee3-16a1-4077-acc2-91fb44cb7664
-  modified: 2026-08-05T20:55:32.960Z
+  modified: 2026-08-11T22:37:34.494Z
 ---
 
 OR-2660 "Testing antibiotic recommendations - None/CEFAZOLIN" (Task under epic OR-2434) claimed to be "purely a testing ticket." **It wasn't** — the behavior it asserts (a procedure listing both `None` and an antibiotic → *both* options compliant) does not hold. **CLOSED Done 2026-08-05 with no code written**: investigation complete, gaps split into **OR-2728** (Gap 1) and **OR-2729** (Gap 2), both Bug/To Do under OR-2434 (neither is Mayo-only — Gap 1 reproduces on demo config on main).
@@ -14,7 +14,21 @@ OR-2660 "Testing antibiotic recommendations - None/CEFAZOLIN" (Task under epic O
 
 **Alex's ruling 2026-08-05 (authoritative on semantics):** "None means no antibiotics requires. 0 is first priority, 1 is second priority." So `None` = blanket *no antibiotic required* for the procedure; the rank column only orders the antibiotics for when one **is** given. **Consequence: the importer discarding rank on NONE rows is CORRECT** — I first mis-flagged that as Gap 2's root cause. The real blocker is the dropped **qualifier** (see Gap 2 below).
 
-**Where the data lives.** Mixed config arrives via open PR **#4248** (`mayo-config-fix`, re-landing the 7.29 delivery that `73fc075e9` added and `49aeb7c93` reverted). Its Mayo `antibiotic-candidates.csv` lines 56–58 give the same **14 gyn procedures** `None`@0 / `CEFAZOLIN`@0 / `CIPROFLOXACIN`@1 (hysteroscopy, ovarian cystectomy+torsion lap/robotic, oophorectomy & salpingo-oophorectomy lap/robotic/endoscopic, ectopic pregnancy lap/robotic, gyn ablation). Main's Mayo CSV has one pure-`None` row, **zero** overlap — unreachable on main via Mayo data.
+**Where the data lives.** Mixed config arrives via open PR **#4248** (`mayo-config-fix`, re-landing the 7.29 delivery that `73fc075e9` added and `49aeb7c93` reverted). Its Mayo `antibiotic-candidates.csv` lines 56–58 give the same **14 gyn procedures** `None`@0 / `CEFAZOLIN`@0 / `CIPROFLOXACIN`@1 (hysteroscopy, ovarian cystectomy+torsion lap/robotic, oophorectomy & salpingo-oophorectomy lap/robotic/endoscopic, ectopic pregnancy lap/robotic, gyn ablation). **STALE AS OF 2026-08-11 — the config landed.** `73fc075e9` (7.29 update) + `bae85982b` (export repair) are on main. Figures below verified against **origin/main on 2026-08-11**:
+
+| | mayo | demo & mgb |
+| --- | --- | --- |
+| procedures | 431 | 81 |
+| marked `None` | 74 | 21 |
+| 2+ rank-0 entries | 34 | 14 |
+| `None` + antibiotic | **13** | 2 |
+| exact dup (cand,rank) | 3 | 6 |
+
+Mayo was previously one pure-`None` row with zero overlap. Gap 1 and Gap 2 are now reachable on **Mayo production config**, not just demo — ahead of the Aug 27 go-live. Mayo's 13 are all gyn (oophorectomy/salpingo-oophorectomy lap/robotic/endoscopic, ovarian cystectomy + torsion lap/robotic, ectopic pregnancy lap/robotic, gyn ablation). Demo's 2 remain `p-laparoscopic` + `p-cystourethroscopy`.
+
+**Multiple rank-0 rows are legitimate and work** (e.g. `p-duodenal-ulcer`: `CEFAZOLIN`@0 *and* `CEFAZOLIN | METRONIDAZOLE`@0 — alternative first-line regimens). `getPreferredCandidates` collects every candidate at a rank before walking to the next. Present in all three orgs; do not confuse with the `None`@0 problem. Exact duplicate rows (same candidate+rank from overlapping multi-procedure rows) are **harmless** — `seenCandidateKeys` in the importer dedupes and warns. Note the `isNone` branch `continue`s *before* that dedupe check.
+
+**Method:** rows are multi-procedure (pipe-separated) so raw line counts mislead — always expand first. Read demo/mgb CSVs with `encoding='utf-8-sig'`; their `Procedure` header carries a BOM and a plain `DictReader` silently yields zero procedures.
 
 **Already reachable on demo-qa today** (qualifier-split, so intent is unambiguous): `demo/antibiotic-candidates.csv` `p-laparoscopic` = `None`@`elective-low-risk` (line 15) vs `CEFAZOLIN`/`CEFOXITIN`@rank 0 `elective-high-risk` (16–17); same shape for `p-cystourethroscopy`. **This is the repro/e2e target Ryan chose** — no fixture data needed.
 
