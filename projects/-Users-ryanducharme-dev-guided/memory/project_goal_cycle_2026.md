@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 160576e1-880b-4ec9-910a-3f5ca2856439
-  modified: 2026-08-06T19:05:16.689Z
+  modified: 2026-08-13T19:25:35.710Z
 ---
 
 Guided Clinical Solutions goal year runs **Aug 2026 – Jul 2027**; Q1 wrap-up deadline is **Nov 1, 2026**.
@@ -21,16 +21,20 @@ multi-antibiotic cases. New goals include 1–2 sites in contract, AI-enabled pr
 source of truth, onboarding efficiency tooling, **converting Mayo to Interactive Mode (an equity vesting
 milestone)**, and silent-mode analytics Mayo buys into.
 
-**Ryan's three — v2, after the Theo 1:1 on 2026-08-06** (Theo's reshape: combine two into one, add the
-playbook, frame as outcomes not method):
-1. *Build tech that prevents errors* — Mayo reaches interactive mode on test coverage and error rates we
-   trust, silent and interactive both. Broader than the original antibiotic-only framing, and it absorbed the
-   old error-rate/monitoring goal. See [[mayo-golive-monitoring]].
-2. *Have transformative impact* — client onboarding stops being bespoke; a testing playbook with
-   done-with-silent-mode / done-with-interactive-mode definitions and go/no-go checkpoints.
-3. *Have Fun* — shift from QA into **product engineering** with Alex, proven by a feature or internal tool
-   shipped end to end from a markdown spec using Claude Code. Bigger than the earlier "define a spec format"
-   version; Theo explicitly framed it as a role shift.
+**Ryan's three — final, from the Theo 1:1 of 2026-08-06** (Theo's reshape: combine two into one, add the
+playbook, frame as outcomes). Granola note id `7ade1d1c-0de3-43b8-bc02-5a928faf1b05`:
+1. *Build tech that prevents errors* — comprehensive test coverage for **everything new delivered for Mayo
+   go-live**, silent and interactive mode both, plus an error rate with a known baseline and a clear read on
+   what movement means. Ryan is explicit that understanding the error rate is itself part of the goal — he
+   doesn't own it yet. See [[mayo-golive-monitoring]].
+2. *Have transformative impact* — client onboarding playbook/runbook: done-with-silent-mode,
+   done-with-interactive-mode, and go/no-go checkpoints between. See [[advocate-aurora]].
+3. *Have Fun* — **ship a new internal tool or feature** (e.g. the debugger) as a product engineer with Alex;
+   spec-driven development is the *how*, not the goal.
+
+**Drafting lesson:** on the first pass I inflated goal 1 into "Mayo reaches interactive mode" and added
+self-justifying rationale Theo never said. Ryan pushed back. Stay inside the manager's framing and scope —
+the What is the outcome, the How carries the method, and don't upgrade a learning item into an ownership claim.
 
 Backing draft with all evidence: `~/dev/guided/goals-2026-draft.md`. Deliverable for Theo/Karen:
 `~/dev/guided/Guided Goal Setting - Ryan Ducharme.docx`. Remaining contenders if a swap is wanted:

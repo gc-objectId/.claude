@@ -1,0 +1,30 @@
+2026-08-13 11:35:39  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status CHANGED TO "Ready for Testing" AFTER -24h ORDER BY updated ASC
+2026-08-13 11:35:39  POLL  complete
+2026-08-13 11:35:58  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status CHANGED TO "Ready for Testing" AFTER -7d ORDER BY updated ASC
+2026-08-13 11:35:59  WOULD-QUEUE OR-2722  slug=persist-full-msh-3
+2026-08-13 11:35:59  WOULD-QUEUE OR-2715  slug=websocket-guidance-subscriptions-accept
+2026-08-13 11:35:59  WOULD-QUEUE OR-2716  slug=admin-notifications-websocket-destination
+2026-08-13 11:35:59  WOULD-QUEUE OR-2717  slug=guidance-payload-containing-phi
+2026-08-13 11:35:59  WOULD-QUEUE OR-2718  slug=websocket-handshake-accepts-any
+2026-08-13 11:35:59  WOULD-QUEUE OR-2731  slug=import-any-clinical-config
+2026-08-13 11:35:59  WOULD-QUEUE OR-2732  slug=antibiotic-redose-reminders-can
+2026-08-13 11:35:59  WOULD-QUEUE OR-2734  slug=mayo-analytics-discards-every
+2026-08-13 11:35:59  WOULD-QUEUE OR-2736  slug=measurementparseexception
+2026-08-13 11:35:59  WOULD-QUEUE OR-2743  slug=nullpointerexception-cannot-invoke-java
+2026-08-13 11:35:59  WOULD-QUEUE OR-2724  slug=entitynotfoundexception-no-row-with
+2026-08-13 11:35:59  WOULD-QUEUE OR-2725  slug=render-each-recommending-procedure
+2026-08-13 11:35:59  WOULD-QUEUE OR-2597  slug=procedure-prioritization-for-antibiotic
+2026-08-13 11:35:59  WOULD-QUEUE OR-2721  slug=consolidate-antibiotic-candidate-resolution
+2026-08-13 11:35:59  POLL  complete
+2026-08-13 11:36:57  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status = "Ready for Testing" AND status CHANGED TO "Ready for Testing" AFTER -7d ORDER BY updated ASC
+2026-08-13 11:36:58  WOULD-QUEUE OR-2722  slug=persist-full-msh-3
+2026-08-13 11:36:58  WOULD-QUEUE OR-2715  slug=websocket-guidance-subscriptions-accept
+2026-08-13 11:36:58  WOULD-QUEUE OR-2716  slug=admin-notifications-websocket-destination
+2026-08-13 11:36:58  WOULD-QUEUE OR-2717  slug=guidance-payload-containing-phi
+2026-08-13 11:36:58  WOULD-QUEUE OR-2718  slug=websocket-handshake-accepts-any
+2026-08-13 11:36:58  WOULD-QUEUE OR-2731  slug=import-any-clinical-config
+2026-08-13 11:36:58  WOULD-QUEUE OR-2732  slug=antibiotic-redose-reminders-can
+2026-08-13 11:36:58  WOULD-QUEUE OR-2734  slug=mayo-analytics-discards-every
+2026-08-13 11:36:58  WOULD-QUEUE OR-2736  slug=measurementparseexception
+2026-08-13 11:36:58  WOULD-QUEUE OR-2743  slug=nullpointerexception-cannot-invoke-java
+2026-08-13 11:36:58  POLL  complete

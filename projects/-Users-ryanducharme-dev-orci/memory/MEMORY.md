@@ -61,3 +61,5 @@
 - [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — mayo-mayo tenant; UI blocked by Epic OAuth so POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2; doxycycline PO resolves by ERX 2625
 - [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages the case, POST /api/app-launch actually starts it; admin operations/create alone never calls startOperation
 - [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl in this project; script local HTTP with node's http module + a cookie jar
+- [jira-watch auto-validate loop](project_jira_watch_autovalidate.md) — launchd watcher → /workon VALIDATE → mechanical evidence gate; EOD digest review; /rest/api/3/search is 410, quote "OR", chains share PRs
+- [Empty-default secret auth bypass](reference_empty_default_secret_auth_bypass.md) — `${VAR:}` can turn a missing credential into an auth bypass; tenant-disabled ≠ endpoint-disabled; fail closed in the consumer

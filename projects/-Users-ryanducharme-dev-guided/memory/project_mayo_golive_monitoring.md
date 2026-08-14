@@ -5,13 +5,21 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 160576e1-880b-4ec9-910a-3f5ca2856439
-  modified: 2026-08-06T18:09:11.525Z
+  modified: 2026-08-13T19:09:44.990Z
 ---
 
 Mayo reached production around **late July 2026** — prod data started arriving a day early and surfaced
 errors immediately. Ryan led readiness: vendor-services approval, prod client ID, FDI build promotion, HL7
 API credentials, ROJB OR filtering, soak plan. Soak scope was deliberately narrow: confirm interfaces flow
-and FHIR APIs are reachable, not feature parity.
+and FHIR APIs are reachable, not feature parity. **Full go-live is Aug 27, 2026**; a minimum-viable-scope
+conversation was running as of Aug 13. Ryan is out the week of Aug 17.
+
+**FDB is out permanently (reported 2026-08-13).** First Databank's contract red lines prohibit use in
+competing products and they refused to carve out GuidedOR — continuing would be an immediate breach. Mayo
+go-live now runs on Jordan Ephron's in-house **RxNorm + FDA-label** mapping for allergy cross-reaction groups
+(Karen had him build it in advance anticipating this). Consequence: allergy coverage is newly built code
+landing two weeks before go-live, and "no FDB" is a permanent condition inflating the error rate, not a
+temporary gap.
 
 **Core product metric (Ryan's to establish):** `error rate = noncompliance events / med admins`. Needs a Mayo
 baseline plus threshold alerting so post-deploy drops are caught early rather than reactively. Two distinct
