@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fe6c5271-8c44-4138-a478-171873e194b2
-  modified: 2026-08-07T16:14:15.024Z
+  modified: 2026-08-14T19:47:25.000Z
 ---
 
 Ryan's standing setup: `~/dev/orci` on `main`, backend on **8080**, Vite webapp on **3000**. He does not switch that off. Any instruction to test branch code against a running app must be explicit end-to-end commands for a **second instance on another port** — "restart your local on this branch" is not actionable and he will ask for the steps.
@@ -38,5 +38,9 @@ kill $(lsof -ti tcp:8081)
 ```
 
 **Safe to run both:** Quartz has `isClustered: true`, so the two instances coordinate on the shared job tables rather than double-firing.
+
+**Shortcut when the branch equals `main` (e.g. validating a merged PR):** skip the build entirely and relaunch Ryan's already-running app off its own classpath — `ps -p <pid> -o command=`, then re-exec that argv with `-Dserver.port=8081` prepended. Boots in ~3 min with no `mvn install`. This is enough to exercise `ApplicationRunner` against the shared local Postgres, which is a real restart from the DB's point of view (OR-2731 used it to prove the checksum skip).
+
+**Do not clean up with `pkill -f "Dserver.port=808"` or `kill $(lsof -ti tcp:8081)` blind.** Other concurrent Claude sessions in sibling worktrees use 8081/8082 for the same trick, and 8080/3000 can die under the load of two parallel maven integration suites. Record the PID your own launch printed and kill exactly that.
 
 **Shared database is the real caveat:** both instances use the same Postgres and Redis, and qa-suite `globalSetup` resets the `demo-qa` tenant every run — so testing against 8081 still wipes `demo-qa` out from under the 8080 app. Warn Ryan before running if he may have work in flight there. `demo-demo` is never touched.

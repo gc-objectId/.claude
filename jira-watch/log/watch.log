@@ -28,3 +28,17 @@
 2026-08-13 11:36:58  WOULD-QUEUE OR-2736  slug=measurementparseexception
 2026-08-13 11:36:58  WOULD-QUEUE OR-2743  slug=nullpointerexception-cannot-invoke-java
 2026-08-13 11:36:58  POLL  complete
+2026-08-14 11:12:00  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status = "Ready for Testing" AND status CHANGED TO "Ready for Testing" AFTER -7d ORDER BY updated ASC
+2026-08-14 11:12:00  WOULD-QUEUE OR-2722  slug=persist-full-msh-3
+2026-08-14 11:12:00  WOULD-QUEUE OR-2715  slug=websocket-guidance-subscriptions-accept
+2026-08-14 11:12:00  WOULD-QUEUE OR-2716  slug=admin-notifications-websocket-destination
+2026-08-14 11:12:00  WOULD-QUEUE OR-2717  slug=guidance-payload-containing-phi
+2026-08-14 11:12:00  WOULD-QUEUE OR-2718  slug=websocket-handshake-accepts-any
+2026-08-14 11:12:00  WOULD-QUEUE OR-2731  slug=import-any-clinical-config
+2026-08-14 11:12:00  WOULD-QUEUE OR-2732  slug=antibiotic-redose-reminders-can
+2026-08-14 11:12:00  WOULD-QUEUE OR-2734  slug=mayo-analytics-discards-every
+2026-08-14 11:12:00  WOULD-QUEUE OR-2736  slug=measurementparseexception
+2026-08-14 11:12:01  WOULD-QUEUE OR-2743  slug=nullpointerexception-cannot-invoke-java
+2026-08-14 11:12:01  WOULD-QUEUE OR-2765  slug=type-1-goal-range
+2026-08-14 11:12:01  WOULD-QUEUE OR-2767  slug=isc-initialization-mayo-update
+2026-08-14 11:12:01  POLL  complete

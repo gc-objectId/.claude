@@ -1,0 +1,56 @@
+# Ephemeral app-under-test for one validation run. Started with a per-run project name
+# (docker compose -p orci-loop-<run-id>) so several runs can coexist.
+#
+# Deliberate differences from orci/docker-compose.yml:
+#   - no container_name: it would override compose's project prefixing and collide across runs
+#   - postgres/redis publish no host ports: only the app is reachable from the host
+#   - postgres data lives in tmpfs: the whole point is that nothing survives the run
+#
+# Service names must stay postgres/redis — application-docker.yml resolves them by those names.
+
+services:
+  postgres:
+    image: postgres:14.5-alpine
+    environment:
+      POSTGRES_USER: orci
+      POSTGRES_PASSWORD: orci
+    tmpfs:
+      - /var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orci"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  redis:
+    image: valkey/valkey:8.1-alpine
+    # KEA is not optional: the app returns ConfigureRedisAction.NO_OP, so without keyspace
+    # notifications session expiry and destroy events silently stop firing.
+    command:
+      ["valkey-server", "--requirepass", "g76!s4z", "--notify-keyspace-events", "KEA"]
+    healthcheck:
+      test: ["CMD-SHELL", "valkey-cli -a g76!s4z ping | grep -q PONG"]
+      interval: 2s
+      timeout: 3s
+      retries: 30
+
+  orci:
+    image: ${ORCI_IMAGE:?ORCI_IMAGE must be set}
+    ports:
+      - "${ORCI_APP_PORT:?ORCI_APP_PORT must be set}:8080"
+    environment:
+      RUNNING_DOCKER: "true"
+      # docker is listed last so its datasource and redis hosts win; local supplies the
+      # tenant enablement that validation needs. The default_user_* names are passed as -D
+      # rather than env vars because @Value reads those literal underscored property names.
+      # Without them DefaultUserSetupRunner skips, leaving no tenant user for UI validation.
+      JVM_FLAGS: >-
+        -Dspring.profiles.active=local,docker
+        -Ddefault_user_username=${LOOP_USER:-loopuser}
+        -Ddefault_user_password=${LOOP_USER_PASSWORD:-LoopValidate1!}
+        -Ddefault_user_email=${LOOP_USER:-loopuser}@guidedclinical.com
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy

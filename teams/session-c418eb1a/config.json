@@ -1,0 +1,18 @@
+{
+  "name": "session-c418eb1a",
+  "createdAt": 1786732139230,
+  "leadAgentId": "team-lead@session-c418eb1a",
+  "leadSessionId": "c418eb1a-d7fd-4337-9638-40be50c792c2",
+  "members": [
+    {
+      "agentId": "team-lead@session-c418eb1a",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1786732139230,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2732-anit-b-redose-reminders-not-cancelled",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

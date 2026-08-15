@@ -1,0 +1,49 @@
+2026-08-14 11:13:02  OR-2743 status is 'Ready for Testing'
+2026-08-14 11:13:02  Building image from origin/main
+2026-08-14 11:13:03  image=guidedclinical/orci:loop-30118bdca sha=30118bdca4521bd77d9bb0ea52b5b36c084abebb
+2026-08-14 11:13:04  slug=nullpointerexception-cannot-invoke-java
+2026-08-14 11:13:06  worktree=/Users/ryanducharme/dev/worktrees/OR-2743-nullpointerexception-cannot-invoke-java
+2026-08-14 11:13:06  --keep: leaving /Users/ryanducharme/dev/worktrees/OR-2743-nullpointerexception-cannot-invoke-java and environment OR-2743 in place
+2026-08-14 14:18:03  OR-2743 status is 'Ready for Testing'
+2026-08-14 14:18:03  Building image from origin/main
+2026-08-14 14:18:42  image=guidedclinical/orci:loop-9461bc30b sha=9461bc30bba0a293a6af847f4dd9bcb92054f292
+2026-08-14 14:18:43  slug=nullpointerexception-cannot-invoke-java
+2026-08-14 14:18:45  worktree=/Users/ryanducharme/dev/worktrees/OR-2743-nullpointerexception-cannot-invoke-java
+2026-08-14 14:20:05  app under test at http://localhost:53217
+2026-08-14 14:20:05  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2743/session.log)
+2026-08-14 14:44:23  session finished after ~1455s
+Re-verifying freshness for OR-2743 against 9461bc30bba0a293a6af847f4dd9bcb92054f292 (not trusting the session's claim)
+ADMITTED OR-2743 (dry-run — nothing posted, ticket left in 'Ready for Testing')
+--- comment that would be posted ---
+**Validated — deploy-ready.**
+
+I exercised the fix against a throwaway build of `main` (9461bc30b), driving the real rule path: demo-demo case with an active insulin infusion at 2 units/hr, then an eGFR observation followed by a glucose observation to raise `GLUCOSE_UPDATED`.
+
+- **Positive:** with eGFR `>90`, `<15`, and a result-less (null) eGFR row — the exact Sentry condition — the rule evaluated to `true` each time and the alert landed in `rule_fired_results`. It also reads back through the clinician-facing alert API ("Change Insulin Infusion Rate to 6.8 Units/hr"). Ten clean firings, zero rule errors.
+- **Negative:** for every unreadable eGFR the calculation text carries no "ISC has been adjusted for eGFR" clause, and nothing was written to `rule_failure_results`. With DIABETES_TYPE_1 on the patient it correctly shows the Type 1 clause alone.
+- **Red check:** I compiled the pre-fix class into the running container and re-sent the same input — it reproduced the reported NPE at `generateExpandedCalculation`, recorded a rule failure and produced no alert. Restoring the shipped class (md5 verified) made the same input fire cleanly again. I also flipped the eGFR to a numeric `30` to confirm the clause I assert absent can actually appear, then reverted it.
+
+One thing to keep in mind: `<15` is genuinely below the 45 threshold but is still discarded. That is intended here and tracked in OR-2744.
+
+Existing unit coverage in `AdjustInsulinInfusionRateRuleTest` is solid. I will add the missing Type 1 + numeric eGFR combined-clause case, a service-level test for the initial ISC with an unreadable eGFR, and a supplemental qa-suite end-to-end regression.
+
+Implementation: [PR #4312](https://github.com/guidedclinical/orci/pull/4312)
+Validated against `9461bc30bba0a293a6af847f4dd9bcb92054f292` in an isolated ephemeral environment.
+--- end ---
+2026-08-14 14:44:29  --keep: leaving /Users/ryanducharme/dev/worktrees/OR-2743-nullpointerexception-cannot-invoke-java and environment OR-2743 in place
+2026-08-14 16:30:12  OR-2743 status is 'Ready for Testing'
+2026-08-14 16:30:13  OR-2743 moved to Testing
+2026-08-14 16:30:14  baseline: status='Testing' comments=0
+2026-08-14 16:30:14  Building image from origin/main
+2026-08-14 16:30:50  image=guidedclinical/orci:loop-15eaedc41 sha=15eaedc415fe36bbc5d9c12fd32104f41f535749
+2026-08-14 16:30:51  slug=nullpointerexception-cannot-invoke-java
+2026-08-14 16:30:53  worktree=/Users/ryanducharme/dev/worktrees/OR-2743-nullpointerexception-cannot-invoke-java
+2026-08-14 16:32:06  app under test at http://localhost:57959
+2026-08-14 16:32:06  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2743/session.log)
+2026-08-14 16:43:06  session finished after ~660s
+2026-08-14 16:43:06  captured 13175 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2743 against 15eaedc415fe36bbc5d9c12fd32104f41f535749 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2743
+Transitioned OR-2743 to Done

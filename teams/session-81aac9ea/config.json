@@ -1,0 +1,18 @@
+{
+  "name": "session-81aac9ea",
+  "createdAt": 1786732484389,
+  "leadAgentId": "team-lead@session-81aac9ea",
+  "leadSessionId": "81aac9ea-6961-43d9-b15c-994af9bc2d00",
+  "members": [
+    {
+      "agentId": "team-lead@session-81aac9ea",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1786732484389,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2767-isc-initialization-mayo-update",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

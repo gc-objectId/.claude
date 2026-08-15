@@ -1,0 +1,18 @@
+{
+  "name": "session-2f7e9904",
+  "createdAt": 1786732422522,
+  "leadAgentId": "team-lead@session-2f7e9904",
+  "leadSessionId": "2f7e9904-ad1e-42e8-8db5-228f0a72889e",
+  "members": [
+    {
+      "agentId": "team-lead@session-2f7e9904",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1786732422522,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2765-type-1-goal-range-threshold",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

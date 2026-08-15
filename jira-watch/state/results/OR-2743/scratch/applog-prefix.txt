@@ -1,0 +1,545 @@
+2026-08-14T20:39:27.203Z  WARN 1 --- [           main] -/- - - - - org.hibernate.orm.cache                  : HHH90001006: Missing cache region [default-update-timestamps-region] was created with provider-specific default policies. Explicitly configure the region and its policies, or disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2026-08-14T20:39:27.234Z  WARN 1 --- [           main] -/- - - - - org.hibernate.orm.cache                  : HHH90001006: Missing cache region [default-query-results-region] was created with provider-specific default policies. Explicitly configure the region and its policies, or disable this warning by setting 'hibernate.javax.cache.missing_cache_strategy' to 'create'.
+2026-08-14T20:39:28.740Z  WARN 1 --- [           main] -/- - - - - i.m.c.i.c.CompositeMeterRegistry         : A MeterRegistry is being added to this CompositeMeterRegistry that already has registered Meters. Meter recordings (e.g. increments, recordings) that occurred before this registry was added will not be reflected in it. If adding the registry after registering meters was not intentional, update your configuration to add all MeterRegistries to the composite before registering any Meters. Note that subsequent logs will be logged at debug level.
+2026-08-14T20:39:29.126Z DEBUG 1 --- [           main] -/- - - - - c.g.orci.web.filter.AdminAuditFilter     : Filter 'adminAuditFilterRegistration' configured for use
+2026-08-14T20:39:29.127Z DEBUG 1 --- [           main] -/- - - - - c.guided.orci.web.filter.TraceIDFilter   : Filter 'traceIDFilter' configured for use
+2026-08-14T20:39:29.127Z DEBUG 1 --- [           main] -/- - - - - c.guided.orci.web.filter.TenantFilter    : Filter 'tenantFilter' configured for use
+2026-08-14T20:39:29.127Z DEBUG 1 --- [           main] -/- - - - - c.g.o.web.filter.mgb.MGBLoginDeptFilter  : Filter 'MGBLoginDeptFilter' configured for use
+2026-08-14T20:39:29.127Z DEBUG 1 --- [           main] -/- - - - - c.g.o.web.filter.ClearMDCContextFilter   : Filter 'clearMDCContextFilter' configured for use
+2026-08-14T20:39:29.127Z DEBUG 1 --- [           main] -/- - - - - com.guided.orci.web.filter.AuditFilter   : Filter 'auditFilter' configured for use
+2026-08-14T20:39:29.127Z DEBUG 1 --- [           main] -/- - - - - c.g.orci.web.filter.UserIdContextFilter  : Filter 'userIdContextFilter' configured for use
+2026-08-14T20:39:29.201Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.d.DatabaseSchemaConfiguration    : Ensured schema exists: demo-demo
+2026-08-14T20:39:29.201Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.d.DatabaseSchemaConfiguration    : Ensured schema exists: mgb-mgh
+2026-08-14T20:39:29.202Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.d.DatabaseSchemaConfiguration    : Ensured schema exists: mgb-icsnh
+2026-08-14T20:39:29.202Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.d.DatabaseSchemaConfiguration    : Ensured schema exists: mayo-mayo
+2026-08-14T20:39:29.754Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.oauth.EpicOAuthKeyProvider       : Epic OAuth keys not configured - OAuth authentication disabled
+2026-08-14T20:39:30.631Z  INFO 1 --- [           main] -/- - - - - com.guided.orci.service.EventService     : Created semaphore with 1 permits for case starts that auto-releases after 30000 ms
+2026-08-14T20:39:30.714Z  INFO 1 --- [           main] -/- - - - - c.g.o.service.hl7.HL7MessageDispatcher   : Registered 7 HL7 processor mapping(s): [ORU^R01@mayo-mayo, RAS^O17@mayo-mayo, RAS^O25@mayo-mayo, SIU^S12@mayo-mayo, SIU^S13@mayo-mayo, SIU^S14@mayo-mayo, SIU^S15@mayo-mayo]
+2026-08-14T20:39:30.782Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.hl7.HL7Configuration             : Creating HL7 Medication Administration Writer: HL7Configuration(host=localhost, port=12345, useTLS=false, dryRun=true)
+2026-08-14T20:39:31.646Z  WARN 1 --- [           main] -/- - - - - c.g.o.c.WebSocketConfiguration           : application.hostname is not set, so any site may open a websocket as a signed-in user
+2026-08-14T20:39:31.649Z  INFO 1 --- [           main] -/- - - - - c.g.o.c.WebSocketConfiguration           : registered stomp end points: org.springframework.session.web.socket.config.annotation.AbstractSessionWebSocketMessageBrokerConfigurer$SessionStompEndpointRegistry@34a8facf for origins: [*]
+2026-08-14T20:39:34.774Z  INFO 1 --- [           main] -/- - - - - c.g.o.configuration.CorsConfiguration    : Updated cors to allow: [http://localhost:8080]
+2026-08-14T20:39:35.412Z  INFO 1 --- [           main] -/- - - - - c.guided.orci.spring.InitLockAcquirer    : Acquired init lock
+2026-08-14T20:39:35.413Z  INFO 1 --- [32104f41f535749] -/- - - - - c.guided.orci.spring.InitLockAcquirer    : renewed lock app_runner_init_lock_15eaedc415fe36bbc5d9c12fd32104f41f535749
+2026-08-14T20:39:35.415Z  INFO 1 --- [deployment_lock] -/- - - - - c.guided.orci.spring.InitLockAcquirer    : renewed lock app_runner_deployment_lock
+2026-08-14T20:39:35.415Z  INFO 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Initializing Epic configuration for TenantKey[value=mgb-mgh]
+2026-08-14T20:39:35.582Z DEBUG 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Adding redis message listener for TenantKey[value=mgb-mgh]
+2026-08-14T20:39:35.644Z  INFO 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Initializing Epic configuration for TenantKey[value=mgb-icsnh]
+2026-08-14T20:39:35.649Z DEBUG 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Adding redis message listener for TenantKey[value=mgb-icsnh]
+2026-08-14T20:39:35.651Z  INFO 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Initializing Epic configuration for TenantKey[value=demo-demo]
+2026-08-14T20:39:35.654Z DEBUG 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Adding redis message listener for TenantKey[value=demo-demo]
+2026-08-14T20:39:35.654Z  INFO 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Initializing Epic configuration for TenantKey[value=mayo-mayo]
+2026-08-14T20:39:35.658Z DEBUG 1 --- [           main] -/- - - - - c.guided.orci.spring.TenantSetupRunner   : Adding redis message listener for TenantKey[value=mayo-mayo]
+2026-08-14T20:39:35.788Z DEBUG 1 --- [           main] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Rule export is disabled (export-rules=false)
+2026-08-14T20:39:35.892Z DEBUG 1 --- [           main] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Rule export is disabled (export-rules=false)
+2026-08-14T20:39:35.943Z DEBUG 1 --- [           main] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Rule export is disabled (export-rules=false)
+2026-08-14T20:39:35.988Z DEBUG 1 --- [           main] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Rule export is disabled (export-rules=false)
+2026-08-14T20:39:36.033Z DEBUG 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=mgb-mgh]: STARTED
+2026-08-14T20:39:36.034Z DEBUG 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=demo-demo]: STARTED
+2026-08-14T20:39:36.034Z DEBUG 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=mayo-mayo]: STARTED
+2026-08-14T20:39:36.034Z DEBUG 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=mgb-icsnh]: STARTED
+2026-08-14T20:39:36.045Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource master-medication-list.csv Checksum: 56bd14850dfd5eba97f0e6bd23c9bdec
+2026-08-14T20:39:36.074Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of master-medication-list.csv already completed - skipping
+2026-08-14T20:39:36.075Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource FDB_IDs.csv Checksum: d428f2c9a9b0a2d920a97b67fd5553de
+2026-08-14T20:39:36.075Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource master-medication-list.csv Checksum: e5576b78ef873253c05717007f344910
+2026-08-14T20:39:36.077Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of master-medication-list.csv already completed - skipping
+2026-08-14T20:39:36.078Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource master-medication-list.csv Checksum: 941e61b61decd89ee2a580194f0a225d
+2026-08-14T20:39:36.080Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of FDB_IDs.csv already completed - skipping
+2026-08-14T20:39:36.080Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource FDB_IDs.csv Checksum: d428f2c9a9b0a2d920a97b67fd5553de
+2026-08-14T20:39:36.080Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of master-medication-list.csv already completed - skipping
+2026-08-14T20:39:36.081Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource medication-dosing.csv Checksum: 3e5f75bf74c7dbd1c51d9e470716744e
+2026-08-14T20:39:36.081Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource master-medication-list.csv Checksum: 56bd14850dfd5eba97f0e6bd23c9bdec
+2026-08-14T20:39:36.083Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of medication-dosing.csv already completed - skipping
+2026-08-14T20:39:36.083Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of FDB_IDs.csv already completed - skipping
+2026-08-14T20:39:36.084Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource FDB_IDs.csv Checksum: d428f2c9a9b0a2d920a97b67fd5553de
+2026-08-14T20:39:36.084Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource medication-dosing.csv Checksum: 0fa54f7702d1264e499a1669ade00565
+2026-08-14T20:39:36.086Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of master-medication-list.csv already completed - skipping
+2026-08-14T20:39:36.087Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of medication-dosing.csv already completed - skipping
+2026-08-14T20:39:36.090Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of FDB_IDs.csv already completed - skipping
+2026-08-14T20:39:36.090Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource FDB_IDs.csv Checksum: d428f2c9a9b0a2d920a97b67fd5553de
+2026-08-14T20:39:36.091Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource medication-dosing.csv Checksum: bf9399d963fcc6568b66bddb239c162b
+2026-08-14T20:39:36.091Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of FDB_IDs.csv already completed - skipping
+2026-08-14T20:39:36.093Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of medication-dosing.csv already completed - skipping
+2026-08-14T20:39:36.093Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource medication-dosing.csv Checksum: 3e5f75bf74c7dbd1c51d9e470716744e
+2026-08-14T20:39:36.096Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource master-ndc-list.csv Checksum: 948d47d064d5189340f713d3441f7bbf
+2026-08-14T20:39:36.096Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of medication-dosing.csv already completed - skipping
+2026-08-14T20:39:36.098Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of master-ndc-list.csv already completed - skipping
+2026-08-14T20:39:36.099Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource master-rxnorm-list.csv Checksum: 135406f17e6bfcbdda241c32677b805c
+2026-08-14T20:39:36.100Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of master-rxnorm-list.csv already completed - skipping
+2026-08-14T20:39:36.101Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource latest-medication-config.csv Checksum: b757a247b1543a067b852dc6b5b9cf0e
+2026-08-14T20:39:36.101Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource master-ndc-list.csv Checksum: e95c2b84b0babd93dbc634b4aac263fd
+2026-08-14T20:39:36.101Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of latest-medication-config.csv already completed - skipping
+2026-08-14T20:39:36.102Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource master-procedure-types.csv Checksum: 206f08119e8c6681edf8e2053aae9c01
+2026-08-14T20:39:36.103Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of master-ndc-list.csv already completed - skipping
+2026-08-14T20:39:36.104Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of master-procedure-types.csv already completed - skipping
+2026-08-14T20:39:36.104Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource master-rxnorm-list.csv Checksum: 53e687547d749069ee0bde3f5d3cfc89
+2026-08-14T20:39:36.104Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource procedure-codes.csv Checksum: bdcc24048d77be06e14d97d2457f6159
+2026-08-14T20:39:36.106Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of procedure-codes.csv already completed - skipping
+2026-08-14T20:39:36.106Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of master-rxnorm-list.csv already completed - skipping
+2026-08-14T20:39:36.106Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource antibiotic-candidates.csv Checksum: 3c031ff8284c6615b2655da5480cd8c0
+2026-08-14T20:39:36.106Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource latest-medication-config.csv Checksum: b757a247b1543a067b852dc6b5b9cf0e
+2026-08-14T20:39:36.108Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic-candidates.csv already completed - skipping
+2026-08-14T20:39:36.108Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource master-allergen-list.csv Checksum: 44364a52629bb40bcc7591ec3a2fc2ea
+2026-08-14T20:39:36.108Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of latest-medication-config.csv already completed - skipping
+2026-08-14T20:39:36.109Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of master-allergen-list.csv already completed - skipping
+2026-08-14T20:39:36.109Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource allergy-mapping.csv Checksum: 75e173764d4d6b577d581f0f9ad8c514
+2026-08-14T20:39:36.109Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource master-procedure-types.csv Checksum: 03f6a373609e5b55fa047dd4c261d263
+2026-08-14T20:39:36.110Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-mapping.csv already completed - skipping
+2026-08-14T20:39:36.111Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource citations.csv Checksum: 7c6019d55e9a0e74a046241ef2c8af39
+2026-08-14T20:39:36.112Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of citations.csv already completed - skipping
+2026-08-14T20:39:36.112Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of master-procedure-types.csv already completed - skipping
+2026-08-14T20:39:36.113Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource condition_ids.csv Checksum: 92cb4fcabac0f981f2c1dc274304b663
+2026-08-14T20:39:36.115Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of condition_ids.csv already completed - skipping
+2026-08-14T20:39:36.116Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource procedure-codes.csv Checksum: a5cb9213155a9edfcb0daa7f77693ac3
+2026-08-14T20:39:36.118Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource master-ndc-list.csv Checksum: 7bbab0ac67a14e979bbe7c60cae23829
+2026-08-14T20:39:36.118Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of procedure-codes.csv already completed - skipping
+2026-08-14T20:39:36.118Z  INFO 1 --- [     virtual-83] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource ndc-patterns.csv Checksum: 8c25a2e62b7d51d7040e9790712e46a7
+2026-08-14T20:39:36.118Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource antibiotic-candidates.csv Checksum: af0c3721be64c2ff2e5a3e290dea250b
+2026-08-14T20:39:36.119Z  INFO 1 --- [     virtual-84] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource ndc-error-mappings.csv Checksum: de796c4d68c609245cd08d69e3b21c1e
+2026-08-14T20:39:36.120Z  INFO 1 --- [     virtual-85] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource DoseAdjustments.xlsx Checksum: 70e2cc54711109b99dc5e830354e7c9c
+2026-08-14T20:39:36.121Z  INFO 1 --- [     virtual-90] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource ObservationSets.csv Checksum: ea40f32dcbb5002853161a9e9dbd27b6
+2026-08-14T20:39:36.121Z  INFO 1 --- [     virtual-86] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource antibiotic_dosing_schedule.csv Checksum: 21f49e0dc48edbb9636896a33ba7ef07
+2026-08-14T20:39:36.121Z  INFO 1 --- [     virtual-88] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource allergy-reaction-definitions.csv Checksum: 56eb24c810b6239e01dfc2af6b9385a8
+2026-08-14T20:39:36.120Z  INFO 1 --- [     virtual-92] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource indication-thresholds.csv Checksum: 15bc3affc91b240054757cccec9af78a
+2026-08-14T20:39:36.122Z  INFO 1 --- [     virtual-91] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource Conditions.csv Checksum: b18a1164d3aafe650eb79634693b5b23
+2026-08-14T20:39:36.122Z  INFO 1 --- [     virtual-94] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource WarfarinVS.csv Checksum: 03bc124367d32ecc843b45b19dfbb323
+2026-08-14T20:39:36.123Z  INFO 1 --- [     virtual-95] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource DonepezilVS.csv Checksum: 52bf2922d659b17fadc4a08d43dfcd07
+2026-08-14T20:39:36.124Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of master-ndc-list.csv already completed - skipping
+2026-08-14T20:39:36.124Z  INFO 1 --- [     virtual-97] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource MonoAmineOxidaseInhibitorsVS.csv Checksum: eff6e723cdf1277e64409b9bc075f172
+2026-08-14T20:39:36.124Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource master-rxnorm-list.csv Checksum: da92d5c434fe311a88d39876d66cc305
+2026-08-14T20:39:36.125Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource master-ndc-list.csv Checksum: 948d47d064d5189340f713d3441f7bbf
+2026-08-14T20:39:36.125Z  INFO 1 --- [     virtual-96] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource SerotonergicMedicationsVS.csv Checksum: e27d3f473a782b08c434e07ec276d958
+2026-08-14T20:39:36.125Z  INFO 1 --- [     virtual-98] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource HormonalContraceptivesVS.csv Checksum: 04e10c8de5b142cdcbfe04e1c0961c23
+2026-08-14T20:39:36.125Z  INFO 1 --- [     virtual-99] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource InsulinVS.csv Checksum: 0b4d05b24ba5ee771cb0107b65b018e0
+2026-08-14T20:39:36.125Z  INFO 1 --- [    virtual-100] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource NonInsulinAntihyperglycemicsVS.csv Checksum: a3f6cce1969f40437583ff5455b61fa4
+2026-08-14T20:39:36.120Z  INFO 1 --- [     virtual-87] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource cephalosporin-crossrxns.csv Checksum: 7afd02466aeb469c09c27886714360d1
+2026-08-14T20:39:36.128Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic-candidates.csv already completed - skipping
+2026-08-14T20:39:36.128Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource master-allergen-list.csv Checksum: 44364a52629bb40bcc7591ec3a2fc2ea
+2026-08-14T20:39:36.129Z  INFO 1 --- [     virtual-83] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-patterns.csv already completed - skipping
+2026-08-14T20:39:36.130Z  INFO 1 --- [     virtual-86] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic_dosing_schedule.csv already completed - skipping
+2026-08-14T20:39:36.130Z  INFO 1 --- [     virtual-91] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of Conditions.csv already completed - skipping
+2026-08-14T20:39:36.131Z  INFO 1 --- [     virtual-89] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource condition_mapping.csv Checksum: 2aee57a2578ab307d106597ea6d7c0b4
+2026-08-14T20:39:36.132Z  INFO 1 --- [     virtual-92] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of indication-thresholds.csv already completed - skipping
+2026-08-14T20:39:36.132Z  INFO 1 --- [     virtual-97] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of MonoAmineOxidaseInhibitorsVS.csv already completed - skipping
+2026-08-14T20:39:36.133Z  INFO 1 --- [     virtual-94] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of WarfarinVS.csv already completed - skipping
+2026-08-14T20:39:36.134Z  INFO 1 --- [     virtual-88] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-reaction-definitions.csv already completed - skipping
+2026-08-14T20:39:36.135Z  INFO 1 --- [     virtual-89] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of condition_mapping.csv already completed - skipping
+2026-08-14T20:39:36.135Z  INFO 1 --- [     virtual-85] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of DoseAdjustments.xlsx already completed - skipping
+2026-08-14T20:39:36.135Z  INFO 1 --- [     virtual-96] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of SerotonergicMedicationsVS.csv already completed - skipping
+2026-08-14T20:39:36.137Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of master-rxnorm-list.csv already completed - skipping
+2026-08-14T20:39:36.137Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource latest-medication-config.csv Checksum: b757a247b1543a067b852dc6b5b9cf0e
+2026-08-14T20:39:36.137Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of master-ndc-list.csv already completed - skipping
+2026-08-14T20:39:36.137Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource master-rxnorm-list.csv Checksum: 135406f17e6bfcbdda241c32677b805c
+2026-08-14T20:39:36.138Z  INFO 1 --- [    virtual-100] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of NonInsulinAntihyperglycemicsVS.csv already completed - skipping
+2026-08-14T20:39:36.139Z  INFO 1 --- [     virtual-98] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of HormonalContraceptivesVS.csv already completed - skipping
+2026-08-14T20:39:36.139Z  INFO 1 --- [     virtual-99] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of InsulinVS.csv already completed - skipping
+2026-08-14T20:39:36.139Z  INFO 1 --- [     virtual-90] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of ObservationSets.csv already completed - skipping
+2026-08-14T20:39:36.140Z  INFO 1 --- [     virtual-95] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of DonepezilVS.csv already completed - skipping
+2026-08-14T20:39:36.140Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of master-rxnorm-list.csv already completed - skipping
+2026-08-14T20:39:36.141Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of latest-medication-config.csv already completed - skipping
+2026-08-14T20:39:36.141Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource latest-medication-config.csv Checksum: b757a247b1543a067b852dc6b5b9cf0e
+2026-08-14T20:39:36.141Z  INFO 1 --- [     virtual-84] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-error-mappings.csv already completed - skipping
+2026-08-14T20:39:36.141Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource master-procedure-types.csv Checksum: 206f08119e8c6681edf8e2053aae9c01
+2026-08-14T20:39:36.142Z  INFO 1 --- [     virtual-87] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of cephalosporin-crossrxns.csv already completed - skipping
+2026-08-14T20:39:36.143Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of master-allergen-list.csv already completed - skipping
+2026-08-14T20:39:36.143Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of latest-medication-config.csv already completed - skipping
+2026-08-14T20:39:36.144Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource allergy-mapping.csv Checksum: 75e173764d4d6b577d581f0f9ad8c514
+2026-08-14T20:39:36.144Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of master-procedure-types.csv already completed - skipping
+2026-08-14T20:39:36.145Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource master-procedure-types.csv Checksum: 206f08119e8c6681edf8e2053aae9c01
+2026-08-14T20:39:36.145Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource procedure-codes.csv Checksum: bdcc24048d77be06e14d97d2457f6159
+2026-08-14T20:39:36.147Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of master-procedure-types.csv already completed - skipping
+2026-08-14T20:39:36.147Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-mapping.csv already completed - skipping
+2026-08-14T20:39:36.148Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource citations.csv Checksum: 7c6019d55e9a0e74a046241ef2c8af39
+2026-08-14T20:39:36.148Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of procedure-codes.csv already completed - skipping
+2026-08-14T20:39:36.148Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource procedure-codes.csv Checksum: bdcc24048d77be06e14d97d2457f6159
+2026-08-14T20:39:36.148Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource antibiotic-candidates.csv Checksum: 3c031ff8284c6615b2655da5480cd8c0
+2026-08-14T20:39:36.149Z  INFO 1 --- [     virtual-93] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-mgh] Resource client-medication-mappings.csv Checksum: 204dea8d7361497c8abf6e5827692c19
+2026-08-14T20:39:36.149Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of citations.csv already completed - skipping
+2026-08-14T20:39:36.150Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource condition_ids.csv Checksum: 92cb4fcabac0f981f2c1dc274304b663
+2026-08-14T20:39:36.152Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of procedure-codes.csv already completed - skipping
+2026-08-14T20:39:36.153Z  INFO 1 --- [     virtual-93] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : import of client-medication-mappings.csv already completed - skipping
+2026-08-14T20:39:36.153Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic-candidates.csv already completed - skipping
+2026-08-14T20:39:36.153Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource antibiotic-candidates.csv Checksum: 3c031ff8284c6615b2655da5480cd8c0
+2026-08-14T20:39:36.153Z  INFO 1 --- [     virtual-63] -/- mgb-mgh - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=mgb-mgh]: COMPLETED
+2026-08-14T20:39:36.154Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource master-allergen-list.csv Checksum: 44364a52629bb40bcc7591ec3a2fc2ea
+2026-08-14T20:39:36.154Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of condition_ids.csv already completed - skipping
+2026-08-14T20:39:36.154Z  INFO 1 --- [    virtual-103] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource DoseAdjustments.xlsx Checksum: 691247a9fbf3e85119bcea0593b5eb19
+2026-08-14T20:39:36.154Z  INFO 1 --- [    virtual-105] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource cephalosporin-crossrxns.csv Checksum: 7afd02466aeb469c09c27886714360d1
+2026-08-14T20:39:36.155Z  INFO 1 --- [    virtual-106] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource allergy-reaction-definitions.csv Checksum: 36cb2bf029e115d3a46252cce3a000d3
+2026-08-14T20:39:36.155Z  INFO 1 --- [    virtual-101] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource ndc-patterns.csv Checksum: 8c25a2e62b7d51d7040e9790712e46a7
+2026-08-14T20:39:36.155Z  INFO 1 --- [    virtual-104] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource antibiotic_dosing_schedule.csv Checksum: a529fba637d996fa8b9f328fbeb65a07
+2026-08-14T20:39:36.155Z  INFO 1 --- [    virtual-103] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of DoseAdjustments.xlsx already completed - skipping
+2026-08-14T20:39:36.156Z  INFO 1 --- [    virtual-106] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-reaction-definitions.csv already completed - skipping
+2026-08-14T20:39:36.156Z  INFO 1 --- [    virtual-110] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource indication-thresholds.csv Checksum: 15bc3affc91b240054757cccec9af78a
+2026-08-14T20:39:36.156Z  INFO 1 --- [    virtual-101] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-patterns.csv already completed - skipping
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-112] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource WarfarinVS.csv Checksum: 03bc124367d32ecc843b45b19dfbb323
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-108] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource ObservationSets.csv Checksum: 66115daf16d483f7068e58d5ddfa80f0
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-113] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource DonepezilVS.csv Checksum: 52bf2922d659b17fadc4a08d43dfcd07
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-111] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource client-medication-mappings.csv Checksum: 94e53b4927496ec8ddcd3911c79d0fb6
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-114] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource SerotonergicMedicationsVS.csv Checksum: e27d3f473a782b08c434e07ec276d958
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-115] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource MonoAmineOxidaseInhibitorsVS.csv Checksum: eff6e723cdf1277e64409b9bc075f172
+2026-08-14T20:39:36.157Z  INFO 1 --- [    virtual-116] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource HormonalContraceptivesVS.csv Checksum: 04e10c8de5b142cdcbfe04e1c0961c23
+2026-08-14T20:39:36.158Z  INFO 1 --- [    virtual-118] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource NonInsulinAntihyperglycemicsVS.csv Checksum: a3f6cce1969f40437583ff5455b61fa4
+2026-08-14T20:39:36.158Z  INFO 1 --- [    virtual-102] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource ndc-error-mappings.csv Checksum: de796c4d68c609245cd08d69e3b21c1e
+2026-08-14T20:39:36.158Z  INFO 1 --- [    virtual-117] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource InsulinVS.csv Checksum: 0b4d05b24ba5ee771cb0107b65b018e0
+2026-08-14T20:39:36.159Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of master-allergen-list.csv already completed - skipping
+2026-08-14T20:39:36.159Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource allergy-mapping.csv Checksum: 75e173764d4d6b577d581f0f9ad8c514
+2026-08-14T20:39:36.159Z  INFO 1 --- [    virtual-109] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource Conditions.csv Checksum: b18a1164d3aafe650eb79634693b5b23
+2026-08-14T20:39:36.160Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic-candidates.csv already completed - skipping
+2026-08-14T20:39:36.160Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource master-allergen-list.csv Checksum: 44364a52629bb40bcc7591ec3a2fc2ea
+2026-08-14T20:39:36.161Z  INFO 1 --- [    virtual-104] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic_dosing_schedule.csv already completed - skipping
+2026-08-14T20:39:36.161Z  INFO 1 --- [    virtual-105] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of cephalosporin-crossrxns.csv already completed - skipping
+2026-08-14T20:39:36.162Z  INFO 1 --- [    virtual-112] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of WarfarinVS.csv already completed - skipping
+2026-08-14T20:39:36.162Z  INFO 1 --- [    virtual-114] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of SerotonergicMedicationsVS.csv already completed - skipping
+2026-08-14T20:39:36.162Z  INFO 1 --- [    virtual-113] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of DonepezilVS.csv already completed - skipping
+2026-08-14T20:39:36.162Z  INFO 1 --- [    virtual-108] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of ObservationSets.csv already completed - skipping
+2026-08-14T20:39:36.164Z  INFO 1 --- [    virtual-107] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mayo-mayo] Resource condition_mapping.csv Checksum: 0fd6fc07c08645b1ee43c02cc6079e5f
+2026-08-14T20:39:36.164Z  INFO 1 --- [    virtual-111] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of client-medication-mappings.csv already completed - skipping
+2026-08-14T20:39:36.165Z  INFO 1 --- [    virtual-116] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of HormonalContraceptivesVS.csv already completed - skipping
+2026-08-14T20:39:36.165Z  INFO 1 --- [    virtual-118] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of NonInsulinAntihyperglycemicsVS.csv already completed - skipping
+2026-08-14T20:39:36.165Z  INFO 1 --- [    virtual-115] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of MonoAmineOxidaseInhibitorsVS.csv already completed - skipping
+2026-08-14T20:39:36.165Z  INFO 1 --- [    virtual-110] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of indication-thresholds.csv already completed - skipping
+2026-08-14T20:39:36.167Z  INFO 1 --- [    virtual-117] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of InsulinVS.csv already completed - skipping
+2026-08-14T20:39:36.167Z  INFO 1 --- [    virtual-102] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-error-mappings.csv already completed - skipping
+2026-08-14T20:39:36.167Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of master-allergen-list.csv already completed - skipping
+2026-08-14T20:39:36.168Z  INFO 1 --- [    virtual-109] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of Conditions.csv already completed - skipping
+2026-08-14T20:39:36.168Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-mapping.csv already completed - skipping
+2026-08-14T20:39:36.168Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource allergy-mapping.csv Checksum: 75e173764d4d6b577d581f0f9ad8c514
+2026-08-14T20:39:36.168Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource citations.csv Checksum: 7c6019d55e9a0e74a046241ef2c8af39
+2026-08-14T20:39:36.169Z  INFO 1 --- [    virtual-107] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : import of condition_mapping.csv already completed - skipping
+2026-08-14T20:39:36.169Z  INFO 1 --- [     virtual-68] -/- mayo-mayo - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=mayo-mayo]: COMPLETED
+2026-08-14T20:39:36.170Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-mapping.csv already completed - skipping
+2026-08-14T20:39:36.171Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of citations.csv already completed - skipping
+2026-08-14T20:39:36.171Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource citations.csv Checksum: 7c6019d55e9a0e74a046241ef2c8af39
+2026-08-14T20:39:36.171Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource condition_ids.csv Checksum: 92cb4fcabac0f981f2c1dc274304b663
+2026-08-14T20:39:36.173Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of condition_ids.csv already completed - skipping
+2026-08-14T20:39:36.173Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of citations.csv already completed - skipping
+2026-08-14T20:39:36.173Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource condition_ids.csv Checksum: 92cb4fcabac0f981f2c1dc274304b663
+2026-08-14T20:39:36.174Z  INFO 1 --- [    virtual-119] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource ndc-patterns.csv Checksum: 8c25a2e62b7d51d7040e9790712e46a7
+2026-08-14T20:39:36.174Z  INFO 1 --- [    virtual-123] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource cephalosporin-crossrxns.csv Checksum: 7afd02466aeb469c09c27886714360d1
+2026-08-14T20:39:36.174Z  INFO 1 --- [    virtual-124] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource allergy-reaction-definitions.csv Checksum: ceb00f3e41ec37954554f9afd357e210
+2026-08-14T20:39:36.174Z  INFO 1 --- [    virtual-126] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource ObservationSets.csv Checksum: ea40f32dcbb5002853161a9e9dbd27b6
+2026-08-14T20:39:36.175Z  INFO 1 --- [    virtual-128] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource indication-thresholds.csv Checksum: 15bc3affc91b240054757cccec9af78a
+2026-08-14T20:39:36.174Z  INFO 1 --- [    virtual-120] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource ndc-error-mappings.csv Checksum: de796c4d68c609245cd08d69e3b21c1e
+2026-08-14T20:39:36.176Z  INFO 1 --- [    virtual-127] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource Conditions.csv Checksum: b18a1164d3aafe650eb79634693b5b23
+2026-08-14T20:39:36.175Z  INFO 1 --- [    virtual-122] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource antibiotic_dosing_schedule.csv Checksum: 21f49e0dc48edbb9636896a33ba7ef07
+2026-08-14T20:39:36.176Z  INFO 1 --- [    virtual-130] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource WarfarinVS.csv Checksum: 03bc124367d32ecc843b45b19dfbb323
+2026-08-14T20:39:36.176Z  INFO 1 --- [    virtual-132] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource SerotonergicMedicationsVS.csv Checksum: e27d3f473a782b08c434e07ec276d958
+2026-08-14T20:39:36.176Z  INFO 1 --- [    virtual-131] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource DonepezilVS.csv Checksum: 52bf2922d659b17fadc4a08d43dfcd07
+2026-08-14T20:39:36.177Z  INFO 1 --- [    virtual-121] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource DoseAdjustments.xlsx Checksum: 70e2cc54711109b99dc5e830354e7c9c
+2026-08-14T20:39:36.177Z  INFO 1 --- [    virtual-133] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource MonoAmineOxidaseInhibitorsVS.csv Checksum: eff6e723cdf1277e64409b9bc075f172
+2026-08-14T20:39:36.177Z  INFO 1 --- [    virtual-135] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource InsulinVS.csv Checksum: 0b4d05b24ba5ee771cb0107b65b018e0
+2026-08-14T20:39:36.177Z  INFO 1 --- [    virtual-134] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource HormonalContraceptivesVS.csv Checksum: 04e10c8de5b142cdcbfe04e1c0961c23
+2026-08-14T20:39:36.177Z  INFO 1 --- [    virtual-136] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource NonInsulinAntihyperglycemicsVS.csv Checksum: a3f6cce1969f40437583ff5455b61fa4
+2026-08-14T20:39:36.178Z  INFO 1 --- [    virtual-119] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-patterns.csv already completed - skipping
+2026-08-14T20:39:36.180Z  INFO 1 --- [    virtual-127] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of Conditions.csv already completed - skipping
+2026-08-14T20:39:36.180Z  INFO 1 --- [    virtual-125] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource condition_mapping.csv Checksum: 2aee57a2578ab307d106597ea6d7c0b4
+2026-08-14T20:39:36.181Z  INFO 1 --- [    virtual-130] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of WarfarinVS.csv already completed - skipping
+2026-08-14T20:39:36.181Z  INFO 1 --- [    virtual-124] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-reaction-definitions.csv already completed - skipping
+2026-08-14T20:39:36.181Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of condition_ids.csv already completed - skipping
+2026-08-14T20:39:36.181Z  INFO 1 --- [    virtual-120] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-error-mappings.csv already completed - skipping
+2026-08-14T20:39:36.181Z  INFO 1 --- [    virtual-128] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of indication-thresholds.csv already completed - skipping
+2026-08-14T20:39:36.181Z  INFO 1 --- [    virtual-123] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of cephalosporin-crossrxns.csv already completed - skipping
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-133] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of MonoAmineOxidaseInhibitorsVS.csv already completed - skipping
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-137] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource ndc-patterns.csv Checksum: 8c25a2e62b7d51d7040e9790712e46a7
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-138] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource ndc-error-mappings.csv Checksum: de796c4d68c609245cd08d69e3b21c1e
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-141] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource cephalosporin-crossrxns.csv Checksum: 7afd02466aeb469c09c27886714360d1
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-126] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of ObservationSets.csv already completed - skipping
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-142] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource allergy-reaction-definitions.csv Checksum: 56eb24c810b6239e01dfc2af6b9385a8
+2026-08-14T20:39:36.182Z  INFO 1 --- [    virtual-144] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource ObservationSets.csv Checksum: ea40f32dcbb5002853161a9e9dbd27b6
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-148] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource WarfarinVS.csv Checksum: 03bc124367d32ecc843b45b19dfbb323
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-145] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource Conditions.csv Checksum: b18a1164d3aafe650eb79634693b5b23
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-151] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource MonoAmineOxidaseInhibitorsVS.csv Checksum: eff6e723cdf1277e64409b9bc075f172
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-146] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource indication-thresholds.csv Checksum: 15bc3affc91b240054757cccec9af78a
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-121] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of DoseAdjustments.xlsx already completed - skipping
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-139] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource DoseAdjustments.xlsx Checksum: 70e2cc54711109b99dc5e830354e7c9c
+2026-08-14T20:39:36.183Z  INFO 1 --- [    virtual-132] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of SerotonergicMedicationsVS.csv already completed - skipping
+2026-08-14T20:39:36.184Z  INFO 1 --- [    virtual-150] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource SerotonergicMedicationsVS.csv Checksum: e27d3f473a782b08c434e07ec276d958
+2026-08-14T20:39:36.184Z  INFO 1 --- [    virtual-122] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic_dosing_schedule.csv already completed - skipping
+2026-08-14T20:39:36.184Z  INFO 1 --- [    virtual-135] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of InsulinVS.csv already completed - skipping
+2026-08-14T20:39:36.185Z  INFO 1 --- [    virtual-153] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource InsulinVS.csv Checksum: 0b4d05b24ba5ee771cb0107b65b018e0
+2026-08-14T20:39:36.185Z  INFO 1 --- [    virtual-140] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource antibiotic_dosing_schedule.csv Checksum: 21f49e0dc48edbb9636896a33ba7ef07
+2026-08-14T20:39:36.185Z  INFO 1 --- [    virtual-131] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of DonepezilVS.csv already completed - skipping
+2026-08-14T20:39:36.185Z  INFO 1 --- [    virtual-149] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource DonepezilVS.csv Checksum: 52bf2922d659b17fadc4a08d43dfcd07
+2026-08-14T20:39:36.186Z  INFO 1 --- [    virtual-134] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of HormonalContraceptivesVS.csv already completed - skipping
+2026-08-14T20:39:36.186Z  INFO 1 --- [    virtual-152] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource HormonalContraceptivesVS.csv Checksum: 04e10c8de5b142cdcbfe04e1c0961c23
+2026-08-14T20:39:36.187Z  INFO 1 --- [    virtual-145] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of Conditions.csv already completed - skipping
+2026-08-14T20:39:36.188Z  INFO 1 --- [    virtual-137] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-patterns.csv already completed - skipping
+2026-08-14T20:39:36.189Z  INFO 1 --- [    virtual-138] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of ndc-error-mappings.csv already completed - skipping
+2026-08-14T20:39:36.189Z  INFO 1 --- [    virtual-136] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of NonInsulinAntihyperglycemicsVS.csv already completed - skipping
+2026-08-14T20:39:36.189Z  INFO 1 --- [    virtual-154] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource NonInsulinAntihyperglycemicsVS.csv Checksum: a3f6cce1969f40437583ff5455b61fa4
+2026-08-14T20:39:36.189Z  INFO 1 --- [    virtual-146] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of indication-thresholds.csv already completed - skipping
+2026-08-14T20:39:36.190Z  INFO 1 --- [    virtual-148] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of WarfarinVS.csv already completed - skipping
+2026-08-14T20:39:36.190Z  INFO 1 --- [    virtual-144] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of ObservationSets.csv already completed - skipping
+2026-08-14T20:39:36.190Z  INFO 1 --- [    virtual-139] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of DoseAdjustments.xlsx already completed - skipping
+2026-08-14T20:39:36.191Z  INFO 1 --- [    virtual-151] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of MonoAmineOxidaseInhibitorsVS.csv already completed - skipping
+2026-08-14T20:39:36.191Z  INFO 1 --- [    virtual-142] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of allergy-reaction-definitions.csv already completed - skipping
+2026-08-14T20:39:36.193Z  INFO 1 --- [    virtual-125] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of condition_mapping.csv already completed - skipping
+2026-08-14T20:39:36.193Z  INFO 1 --- [    virtual-143] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource condition_mapping.csv Checksum: 2aee57a2578ab307d106597ea6d7c0b4
+2026-08-14T20:39:36.194Z  INFO 1 --- [    virtual-141] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of cephalosporin-crossrxns.csv already completed - skipping
+2026-08-14T20:39:36.194Z  INFO 1 --- [    virtual-153] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of InsulinVS.csv already completed - skipping
+2026-08-14T20:39:36.196Z  INFO 1 --- [    virtual-150] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of SerotonergicMedicationsVS.csv already completed - skipping
+2026-08-14T20:39:36.197Z  INFO 1 --- [    virtual-140] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of antibiotic_dosing_schedule.csv already completed - skipping
+2026-08-14T20:39:36.198Z  INFO 1 --- [    virtual-149] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of DonepezilVS.csv already completed - skipping
+2026-08-14T20:39:36.198Z  INFO 1 --- [    virtual-154] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of NonInsulinAntihyperglycemicsVS.csv already completed - skipping
+2026-08-14T20:39:36.198Z  INFO 1 --- [    virtual-152] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of HormonalContraceptivesVS.csv already completed - skipping
+2026-08-14T20:39:36.199Z  INFO 1 --- [    virtual-143] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of condition_mapping.csv already completed - skipping
+2026-08-14T20:39:36.201Z  INFO 1 --- [    virtual-129] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=demo-demo] Resource client-medication-mappings.csv Checksum: 049bedef64149e60441c62c73fc87eda
+2026-08-14T20:39:36.203Z  INFO 1 --- [    virtual-129] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : import of client-medication-mappings.csv already completed - skipping
+2026-08-14T20:39:36.203Z  INFO 1 --- [    virtual-147] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Tenant: TenantKey[value=mgb-icsnh] Resource client-medication-mappings.csv Checksum: 204dea8d7361497c8abf6e5827692c19
+2026-08-14T20:39:36.203Z  INFO 1 --- [     virtual-67] -/- demo-demo - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=demo-demo]: COMPLETED
+2026-08-14T20:39:36.205Z  INFO 1 --- [    virtual-147] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : import of client-medication-mappings.csv already completed - skipping
+2026-08-14T20:39:36.205Z  INFO 1 --- [     virtual-65] -/- mgb-icsnh - - - c.guided.orci.spring.ApplicationRunner   : Importing data for TenantKey[value=mgb-icsnh]: COMPLETED
+2026-08-14T20:39:36.205Z  INFO 1 --- [           main] -/- - - - - c.guided.orci.spring.ApplicationRunner   : Application runner complete: 0 secs
+2026-08-14T20:39:36.384Z  INFO 1 --- [           main] -/- - - - - c.g.orci.spring.JobCleanerSetupRunner    : Job cleaner already exists for TenantKey[value=mgb-mgh]
+2026-08-14T20:39:36.395Z  INFO 1 --- [           main] -/- - - - - c.g.orci.spring.JobCleanerSetupRunner    : Job cleaner already exists for TenantKey[value=mgb-icsnh]
+2026-08-14T20:39:36.398Z  INFO 1 --- [           main] -/- - - - - c.g.orci.spring.JobCleanerSetupRunner    : Job cleaner already exists for TenantKey[value=demo-demo]
+2026-08-14T20:39:36.401Z  INFO 1 --- [           main] -/- - - - - c.g.orci.spring.JobCleanerSetupRunner    : Job cleaner already exists for TenantKey[value=mayo-mayo]
+2026-08-14T20:39:36.407Z  WARN 1 --- [           main] -/- - - - - c.guided.orci.spring.InitLockReleaser    : Released init lock
+2026-08-14T20:39:36.428Z  INFO 1 --- [           main] -/- - - - - com.guided.orci.OrciApplication          : Started OrciApplication in 12.636 seconds (process running for 12.883)
+2026-08-14T20:39:38.440Z  INFO 1 --- [omcat-handler-0] -/- - - - - c.g.o.c.SecurityConfiguration            : Unauthorized request: /actuator/health, exception: Full authentication is required to access this resource
+2026-08-14T20:39:51.456Z  INFO 1 --- [omcat-handler-3] -/- - - - - c.g.o.web.auth.CustomUserDetailsService  : loadUserByUsername admin: com.guided.orci.models.user.User@d1f22c44
+2026-08-14T20:39:51.562Z  INFO 1 --- [omcat-handler-3] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Password login succeeded for -admin-
+2026-08-14T20:39:51.563Z  WARN 1 --- [omcat-handler-3] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Not auditing USER_LOGIN_SUCCESS for -admin-: no enabled tenant on the request
+2026-08-14T20:39:51.855Z  INFO 1 --- [omcat-handler-7] -/- demo-demo - - - com.guided.orci.service.EventService     : Handling event EventCategoryEvent(sourceEventType=debugger, patientId=PatientId[value=patient-2], caseId=CaseId[value=10001], eventCategories=[GLUCOSE_UPDATED], eventDate=Fri Aug 14 20:39:51 UTC 2026, practitioner=null)
+2026-08-14T20:39:51.945Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - - - o.s.r.d.DefaultInsulinManagementStrategy : Will calculate ISC using: DefaultISCCalculator[priorGlucoseValuesMgDl=[300.0, 300.0, 200.0, 300.0, 200.0, 300.0, 200.0, 300.0], priorGlucoseMgDl=300.0, currentGlucoseMgDl=300.0, nutritionInterrupted=false, priorISC=0.01375]
+2026-08-14T20:39:51.948Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - - - c.g.o.s.r.d.InsulinManagementService     : Updating ISC from 0.01375 to 0.01375 (g>180 & 0≤Δg<75 → no change)
+2026-08-14T20:39:51.949Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - - - c.g.o.s.r.d.InsulinManagementService     : Calculated recommended insulin infusion rate: 3.3
+2026-08-14T20:39:52.129Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule context: EventContext(super=PatientContext(super=OperationContext(super=com.guided.orci.engine.EventContext@ad8293ab, evaluatingUserId=01a001f9-7cbb-7048-81ed-d87b2d048005, enabledFeatureFlags=[], operation=OperationDTO(operationId=01a001fb-ddd3-71c1-b16a-a1f88c0839d6, caseId=10001, startTime=2024-01-31 05:00:00.0, endTime=null, procedureStartTime=null, procedureEndTime=null, inductionStartTime=null, extubationTime=null, admissionDate=null, initialApplicationLaunchTime=2026-08-14 20:34:38.674, baselineMAP=87.166664 mmHg, serviceName=null, pediatricStatus=ADULT, classification=null, asaStatus=null, primaryPractitionerName=null, procedureTypes=[ProcedureTypeDTO[procedureId=p-hysterectomy, procedureName=Hysterectomy, categories=[HYSTERECTOMY], qualifier=null, availableQualifiers=[]]], erasOperation=true), evaluationTime=Fri Aug 14 20:39:52 UTC 2026, zoneId=Etc/UTC, pediatricAgeThreshold=22, pediatricWeightThresholdKg=40), patient=ContextPatient(id=01a001fb-dd84-7d7b-9261-817264ceb2c0, pmrn=patient-2, mrn=patient-2, epicPatientId=Z4c855f27-2372-4d99-b41e-7a914e6c6b3a, fhirDSTU2PatientId=patient-2, fhirDSTU3PatientId=patient-2, fhirR4PatientId=patient-2, firstName=Megtwo, preferredFirstName=null, lastName=Periop, preferredLastName=null, dob=1966-05-01, gender=FEMALE, genderIdentity=null, weight=83.0 kg, height=160.0 cm, creatinine=1.3 , pediatricStatus=ADULT, pregnant=false, crCl=Optional[46.95279013727938], idealWeight=52.38189 kg, actualWeight=83 kg, adjustedWeight=64.62913360595704 kg, leanWeight=46.09747 kg, encounters=[], medicationOrders=[com.guided.orci.dto.rule.context.ContextMedicationOrder@6c18cfb9, com.guided.orci.dto.rule.context.ContextMedicationOrder@46326826], conditions=[com.guided.orci.dto.rule.context.ContextCondition@690aa312, com.guided.orci.dto.rule.context.ContextCondition@d30bd2c, com.guided.orci.dto.rule.context.ContextCondition@277fce34], familyMemberHistories=[], medicationAllergies=[com.guided.orci.dto.rule.context.ContextMedicationAllergy@345606c6], allergies=[ContextAllergy(id=01a001fb-dc22-7b43-8365-fbb3dd77566b, allergenName=Penicillin G, reaction=Fever, displayReaction=Fever, reactions=[FEVER], reactionNotes=null, comments=null, severity=TYPE_II_TYPE_IV, allergen=com.guided.orci.dto.rule.context.ContextAllergen@5adeb197, fdbAllergenId=null, rxnormIdentifier=Optional.empty, snomedIdentifier=Optional.empty), ContextAllergy(id=01a001fb-dc23-7645-9620-482bfe0fd9e5, allergenName=Rocuronium, reaction=Anaphylaxis, displayReaction=Anaphylaxis, reactions=[ANAPHYLAXIS], reactionNotes=null, comments=null, severity=TYPE_I, allergen=null, fdbAllergenId=null, rxnormIdentifier=Optional[68139], snomedIdentifier=Optional.empty)]), suppressedAllergenNames=[], actualPatientAllergenNames=[]), eventCategories=[GLUCOSE_UPDATED], antibiotics=Optional[AntibioticResolution[protocol=CaseAntibioticProtocol[perProcedure=[ProcedureProtocol[procedure=ProcedureTypeDTO[procedureId=p-hysterectomy, procedureName=Hysterectomy, categories=[HYSTERECTOMY], qualifier=null, availableQualifiers=[]], candidates=[ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CEFAZOLIN, displayLabel=CeFAZolin, associatedMedicationCategories=[AMINOGLYCOSIDE, CEF GEN 1, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, CEFAZOLIN, GENTAMICIN, CEPHALOSPORIN, INTRAVENOUS]], MedicationCandidate[medicationCategory=METRONIDAZOLE, displayLabel=MetroNIDAZOLE, associatedMedicationCategories=[PREOP_DEFAULT_DOSE_IV, ANTIBIOTIC, METRONIDAZOLE, PREOP_DEFAULT_DOSE_NON_IV, INTRAVENOUS]]], rank=0, qualifier=null, caseClassification=null), ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CEFOXITIN, displayLabel=CefOXitin, associatedMedicationCategories=[CEF GEN 2, CEFOXITIN, ANTIBIOTIC, CEPHALOSPORIN, INTRAVENOUS]], MedicationCandidate[medicationCategory=METRONIDAZOLE, displayLabel=MetroNIDAZOLE, associatedMedicationCategories=[PREOP_DEFAULT_DOSE_IV, ANTIBIOTIC, METRONIDAZOLE, PREOP_DEFAULT_DOSE_NON_IV, INTRAVENOUS]]], rank=1, qualifier=null, caseClassification=null), ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=GENTAMICIN, displayLabel=Gentamicin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, CEF GEN 1, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, AMPICILLIN, CEFAZOLIN, GENTAMICIN, PENICILLIN, CEPHALOSPORIN, INTRAVENOUS]], MedicationCandidate[medicationCategory=CLINDAMYCIN, displayLabel=Clindamycin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, GENTAMICIN, INTRAVENOUS]]], rank=2, qualifier=null, caseClassification=null), ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CIPROFLOXACIN, displayLabel=CIPROfloxacin, associatedMedicationCategories=[QTC_PROLONGING, ANTIBIOTIC, CIPROFLOXACIN, FLUOROQUINOLONE, INTRAVENOUS]], MedicationCandidate[medicationCategory=CLINDAMYCIN, displayLabel=Clindamycin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, GENTAMICIN, INTRAVENOUS]]], rank=2, qualifier=null, caseClassification=null), ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CLINDAMYCIN, displayLabel=Clindamycin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, GENTAMICIN, INTRAVENOUS]], MedicationCandidate[medicationCategory=LEVOFLOXACIN, displayLabel=LevoFLOXacin, associatedMedicationCategories=[QTC_PROLONGING, LEVOFLOXACIN, ANTIBIOTIC, FLUOROQUINOLONE, INTRAVENOUS]]], rank=3, qualifier=null, caseClassification=null)]]], noProphylaxisProcedures=[], agreed=true], preferred=[ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=GENTAMICIN, displayLabel=Gentamicin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, CEF GEN 1, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, AMPICILLIN, CEFAZOLIN, GENTAMICIN, PENICILLIN, CEPHALOSPORIN, INTRAVENOUS]], MedicationCandidate[medicationCategory=CLINDAMYCIN, displayLabel=Clindamycin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, GENTAMICIN, INTRAVENOUS]]], rank=2, qualifier=null, caseClassification=null), ProcedureAntibioticCandidateDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CIPROFLOXACIN, displayLabel=CIPROfloxacin, associatedMedicationCategories=[QTC_PROLONGING, ANTIBIOTIC, CIPROFLOXACIN, FLUOROQUINOLONE, INTRAVENOUS]], MedicationCandidate[medicationCategory=CLINDAMYCIN, displayLabel=Clindamycin, associatedMedicationCategories=[CLINDAMYCIN, AMINOGLYCOSIDE, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, GENTAMICIN, INTRAVENOUS]]], rank=2, qualifier=null, caseClassification=null)]]], eventDate=Fri Aug 14 20:39:51 UTC 2026)
+2026-08-14T20:39:52.165Z ERROR 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Error processing rule: a-adjust-insulin-infusion-rate
+
+java.lang.NullPointerException: Cannot invoke "java.lang.Float.floatValue()" because the return value of "com.guided.orci.models.observation.Observation.getNumericObservationValue()" is null
+	at com.guided.orci.engine.rule.event.AdjustInsulinInfusionRateRule.generateExpandedCalculation(AdjustInsulinInfusionRateRule.java:210)
+	at com.guided.orci.engine.rule.event.AdjustInsulinInfusionRateRule.evaluate(AdjustInsulinInfusionRateRule.java:178)
+	at com.guided.orci.engine.rule.event.AdjustInsulinInfusionRateRule.evaluate(AdjustInsulinInfusionRateRule.java:33)
+	at com.guided.orci.engine.EventBasedRule.apply(EventBasedRule.java:40)
+	at com.guided.orci.engine.EventBasedRule.apply(EventBasedRule.java:14)
+	at com.guided.orci.engine.RuleEngine.lambda$evaluateRules$0(RuleEngine.java:65)
+	at com.guided.orci.service.TracingService.lambda$withSpanNonDiscardable$2(TracingService.java:71)
+	at com.guided.orci.service.TracingService.withSpan(TracingService.java:58)
+	at com.guided.orci.service.TracingService.withSpanNonDiscardable(TracingService.java:69)
+	at com.guided.orci.engine.RuleEngine.lambda$evaluateRules$1(RuleEngine.java:64)
+	at com.guided.orci.service.metrics.OrciTimer.lambda$record$0(OrciTimer.java:70)
+	at com.guided.orci.service.metrics.OrciTimer.record(OrciTimer.java:56)
+	at com.guided.orci.service.metrics.OrciTimer.record(OrciTimer.java:69)
+	at com.guided.orci.engine.RuleEngine.lambda$evaluateRules$2(RuleEngine.java:56)
+	at com.guided.orci.service.TracingService.lambda$withSpan$1(TracingService.java:38)
+	at com.guided.orci.service.TracingService.withSpan(TracingService.java:58)
+	at com.guided.orci.service.TracingService.withSpan(TracingService.java:37)
+	at com.guided.orci.service.TracingService.withSpan(TracingService.java:44)
+	at com.guided.orci.engine.RuleEngine.evaluateRules(RuleEngine.java:53)
+	at com.guided.orci.engine.RuleEngine.evaluate(RuleEngine.java:43)
+	at com.guided.orci.engine.EventBasedRuleEngine.evaluate(EventBasedRuleEngine.java:33)
+	at com.guided.orci.service.RuleEngineService.executeNotificationRules(RuleEngineService.java:145)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.aop.support.AopUtils.invokeJoinpointUsingReflection(AopUtils.java:359)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.invokeJoinpoint(ReflectiveMethodInvocation.java:190)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:158)
+	at org.springframework.transaction.interceptor.TransactionInterceptor$1.proceedWithInvocation(TransactionInterceptor.java:133)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:371)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
+	at com.guided.orci.service.RuleEngineService$$SpringCGLIB$$0.executeNotificationRules(<generated>)
+	at com.guided.orci.service.EventService$1.lambda$afterCommit$1(EventService.java:372)
+	at com.guided.orci.multitenancy.context.TenantContextHolder.withTenant(TenantContextHolder.java:38)
+	at com.guided.orci.service.EventService$1.afterCommit(EventService.java:371)
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.invokeAfterCommit(TransactionSynchronizationUtils.java:165)
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.triggerAfterCommit(TransactionSynchronizationUtils.java:153)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.triggerAfterCommit(AbstractPlatformTransactionManager.java:1005)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:835)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:757)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:687)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:408)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
+	at com.guided.orci.web.admin.ObservationController$$SpringCGLIB$$0.addObservation(<generated>)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:103)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:252)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:184)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:934)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:853)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:86)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:963)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:866)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1000)
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:903)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:649)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:874)
+	at jakarta.servlet.http.HttpServlet.service(HttpServlet.java:710)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:128)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.UserIdContextFilter.doFilterInternal(UserIdContextFilter.java:36)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.TraceIDFilter.doFilterInternal(TraceIDFilter.java:24)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.ClearMDCContextFilter.doFilterInternal(ClearMDCContextFilter.java:23)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at io.sentry.spring7.SentryUserFilter.doFilterInternal(SentryUserFilter.java:56)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.AdminAuditFilter.doFilterInternal(AdminAuditFilter.java:34)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.AuditFilter.doFilterInternal(AuditFilter.java:34)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.TenantFilter.doFilterInternal(TenantFilter.java:107)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at com.guided.orci.web.filter.mgb.MGBLoginDeptFilter.doFilterInternal(MGBLoginDeptFilter.java:77)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:108)
+	at org.springframework.security.web.FilterChainProxy.lambda$doFilterInternal$2(FilterChainProxy.java:235)
+	at org.springframework.security.web.ObservationFilterChainDecorator$FilterObservation$SimpleFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:491)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$1(ObservationFilterChainDecorator.java:353)
+	at org.springframework.security.web.ObservationFilterChainDecorator.lambda$wrapSecured$0(ObservationFilterChainDecorator.java:84)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:131)
+	at org.springframework.security.web.access.intercept.AuthorizationFilter.doFilter(AuthorizationFilter.java:101)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:126)
+	at org.springframework.security.web.access.ExceptionTranslationFilter.doFilter(ExceptionTranslationFilter.java:120)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:132)
+	at org.springframework.security.web.session.SessionManagementFilter.doFilter(SessionManagementFilter.java:86)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.authentication.AnonymousAuthenticationFilter.doFilter(AnonymousAuthenticationFilter.java:100)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter.doFilter(SecurityContextHolderAwareRequestFilter.java:181)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.savedrequest.RequestCacheAwareFilter.doFilter(RequestCacheAwareFilter.java:63)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at com.guided.orci.configuration.SecurityConfiguration$CsrfCookieFilter.doFilterInternal(SecurityConfiguration.java:468)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.authentication.AuthenticationFilter.doFilterInternal(AuthenticationFilter.java:200)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:245)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:239)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:245)
+	at org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter.doFilter(AbstractAuthenticationProcessingFilter.java:239)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.oauth2.client.web.OAuth2AuthorizationRequestRedirectFilter.doFilterInternal(OAuth2AuthorizationRequestRedirectFilter.java:195)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:110)
+	at org.springframework.security.web.authentication.logout.LogoutFilter.doFilter(LogoutFilter.java:96)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.csrf.CsrfFilter.doFilterInternal(CsrfFilter.java:135)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.header.HeaderWriterFilter.doHeadersAfter(HeaderWriterFilter.java:90)
+	at org.springframework.security.web.header.HeaderWriterFilter.doFilterInternal(HeaderWriterFilter.java:75)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:82)
+	at org.springframework.security.web.context.SecurityContextHolderFilter.doFilter(SecurityContextHolderFilter.java:69)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.context.request.async.WebAsyncManagerIntegrationFilter.doFilterInternal(WebAsyncManagerIntegrationFilter.java:62)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:230)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.session.DisableEncodeUrlFilter.doFilterInternal(DisableEncodeUrlFilter.java:42)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.wrapFilter(ObservationFilterChainDecorator.java:243)
+	at org.springframework.security.web.ObservationFilterChainDecorator$AroundFilterObservation$SimpleAroundFilterObservation.lambda$wrap$0(ObservationFilterChainDecorator.java:336)
+	at org.springframework.security.web.ObservationFilterChainDecorator$ObservationFilter.doFilter(ObservationFilterChainDecorator.java:227)
+	at org.springframework.security.web.ObservationFilterChainDecorator$VirtualFilterChain.doFilter(ObservationFilterChainDecorator.java:140)
+	at org.springframework.security.web.FilterChainProxy.doFilterInternal(FilterChainProxy.java:237)
+	at org.springframework.security.web.FilterChainProxy.doFilter(FilterChainProxy.java:195)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.ServletRequestPathFilter.doFilter(ServletRequestPathFilter.java:52)
+	at org.springframework.web.filter.CompositeFilter$VirtualFilterChain.doFilter(CompositeFilter.java:113)
+	at org.springframework.web.filter.CompositeFilter.doFilter(CompositeFilter.java:74)
+	at org.springframework.security.config.annotation.web.configuration.WebSecurityConfiguration$CompositeFilterChainProxy.doFilter(WebSecurityConfiguration.java:317)
+	at org.springframework.web.filter.DelegatingFilterProxy.invokeDelegate(DelegatingFilterProxy.java:355)
+	at org.springframework.web.filter.DelegatingFilterProxy.doFilter(DelegatingFilterProxy.java:272)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.session.web.http.SessionRepositoryFilter.doFilterInternal(SessionRepositoryFilter.java:143)
+	at org.springframework.session.web.http.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:82)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.ServerHttpObservationFilter.doFilterInternal(ServerHttpObservationFilter.java:110)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at io.sentry.spring7.tracing.SentryTracingFilter.doFilterInternal(SentryTracingFilter.java:120)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:199)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at io.sentry.spring7.SentrySpringFilter.doFilterInternal(SentrySpringFilter.java:80)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:116)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:107)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:165)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:77)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:492)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:113)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:83)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:72)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:341)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:397)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:63)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:1272)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1801)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:52)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+
+2026-08-14T20:39:52.174Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-antibiotic-infusion-pre-incision-completion -> false Unmatched event categories
+2026-08-14T20:39:52.176Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-eras-antiemetics -> false Unmatched event categories
+2026-08-14T20:39:52.178Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-ebl-antibiotic-redose-reminder -> false Unmatched event categories
+2026-08-14T20:39:52.181Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-hypoglycemia-dm1-pregnancy -> false Glucose value is not hypoglycemic (<70 mg/dL)
+2026-08-14T20:39:52.184Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-hypoglycemia -> false Glucose value is not hypoglycemic (<70 mg/dL)
+2026-08-14T20:39:52.185Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-insulin-transition-to-bolus -> false Patient has diabetes type I
+2026-08-14T20:39:52.187Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-known-procedure-no-antibiotic -> false Unmatched event categories
+2026-08-14T20:39:52.188Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-nmb-reversal-extubation -> false Unmatched event categories
+2026-08-14T20:39:52.189Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-restart-infusion-post-hypoglycemia -> false Patient has diabetes type 1
+2026-08-14T20:39:52.190Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-start-insulin-infusion -> false Patient is already on active insulin infusion
+2026-08-14T20:39:52.192Z DEBUG 1 --- [omcat-handler-7] -/- demo-demo - 01a001fb-dd84-7d7b-9261-817264ceb2c0 01a001fb-ddd3-71c1-b16a-a1f88c0839d6 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-known-procedure-missing-antibiotic -> false Unmatched event categories

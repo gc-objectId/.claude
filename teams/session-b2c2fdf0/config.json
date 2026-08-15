@@ -1,0 +1,18 @@
+{
+  "name": "session-b2c2fdf0",
+  "createdAt": 1786732231659,
+  "leadAgentId": "team-lead@session-b2c2fdf0",
+  "leadSessionId": "b2c2fdf0-6d82-4bf9-9e12-60a4b57ce644",
+  "members": [
+    {
+      "agentId": "team-lead@session-b2c2fdf0",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1786732231659,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2736-MeasurementParseException",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -39,14 +39,6 @@ if ! mkdir "$LOCK" 2>/dev/null; then
 fi
 trap 'rmdir "$LOCK" 2>/dev/null || true' EXIT INT TERM
 
-slugify() {
-    printf '%s' "$1" |
-        tr '[:upper:]' '[:lower:]' |
-        tr -cs 'a-z0-9' '-' |
-        cut -d- -f1-4 |
-        sed -e 's/^-*//' -e 's/-*$//'
-}
-
 seen() {
     grep -qxF "$1" "$SEEN" 2>/dev/null
 }
@@ -97,8 +89,7 @@ jira_search_keys "$jql" | while IFS="$(printf '\t')" read -r key summary; do
         continue
     fi
 
-    slug=$(slugify "$summary")
-    [ -n "$slug" ] || slug='ticket'
+    slug=$(jira_slug "$summary")
 
     if [ "$DRY_RUN" = '0' ]; then
         printf '%s\t%s\t%s\n' "$key" "$slug" "$(date -u '+%Y-%m-%dT%H:%M:%SZ')" >>"$QUEUE"

@@ -1,0 +1,9 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What I did against the running app (localhost:57959, demo-demo, patient-2 / case 10001):**
+
+- **Positive** — staged an active insulin infusion + eGFR `">90"` + two glucose observations to fire `GLUCOSE_UPDATED`. The rule evaluated `-> true`, and a `rule_fired_results` row landed with the clinician-facing alert *"Change Insulin Infusion Rate to 0.5 Units/hr"*, calculation reading *"ISC has been adjusted for Type 1 Diabetes"* — no eGFR clause, no NPE.
+- **Negative** — same event against `"<15"`, empty value, no eGFR row, and numeric `90`: no eGFR clause in any of them, alert fired every time (6 consecutive fired rows).
+- **Red check** — compiled the pre-fix class inside the container (explicit slf4j logger since lombok isn't on the runtime classpath), swapped it into `/app/classes`, restarted. The identical scenario produced **no alert row at all** plus `NullPointerException: Cannot invoke "java.lang.Float.floatValue()" ... getNumericObservationValue() is null` at `generateExpandedCalculation` — the exact ticket crash. Restored the shipped class (md5 back to `2897a04c…`), restarted, alert fires again; exactly one NPE in the whole container log. Also did a data flip (eGFR → `30`) and watched the clause reappear, confirming the absence assertion can go red.
+
+Scratch work stayed in `results/OR-2743/scratch`; the worktree is clean and nothing was committed, pushed, or transitioned.

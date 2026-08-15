@@ -1,0 +1,18 @@
+{
+  "name": "session-fcf9ea50",
+  "createdAt": 1786731997381,
+  "leadAgentId": "team-lead@session-fcf9ea50",
+  "leadSessionId": "fcf9ea50-bf86-4d45-a55d-a88b2a19ec62",
+  "members": [
+    {
+      "agentId": "team-lead@session-fcf9ea50",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1786731997381,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2717-guidance-payload-phi",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "session-bc175087",
+  "createdAt": 1786737541571,
+  "leadAgentId": "team-lead@session-bc175087",
+  "leadSessionId": "bc175087-acd3-44f1-8d5a-c0d88325eb08",
+  "members": [
+    {
+      "agentId": "team-lead@session-bc175087",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1786737541571,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2734-analytics-discards-nmb-reversal",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

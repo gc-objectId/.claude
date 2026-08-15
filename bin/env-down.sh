@@ -6,7 +6,9 @@
 # Exit: 0 everything gone (or already absent), 1 usage, 7 something survived teardown.
 set -eu
 
-STATE_ROOT="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}/state/envs"
+LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
+STATE_ROOT="${LOOP_HOME}/state/envs"
+COMPOSE_FILE="${LOOP_COMPOSE_FILE:-${LOOP_HOME}/compose-loop.yml}"
 
 say() { printf '%s\n' "$*" >&2; }
 
@@ -14,32 +16,18 @@ say() { printf '%s\n' "$*" >&2; }
 
 run_id="$1"
 keep_log="${2:-}"
+project="orci-loop-$(printf '%s' "$run_id" | tr '[:upper:]' '[:lower:]')"
 run_dir="${STATE_ROOT}/${run_id}"
-pid_file="${run_dir}/app.pid"
 
-pg_name="orci-loop-pg-${run_id}"
-valkey_name="orci-loop-valkey-${run_id}"
+# The compose file interpolates these, so they must be set even to bring the project down.
+ORCI_IMAGE="${ORCI_IMAGE:-unused}" ORCI_APP_PORT="${ORCI_APP_PORT:-0}" \
+    docker compose -p "$project" -f "$COMPOSE_FILE" down -v --remove-orphans >/dev/null 2>&1 || true
 
-if [ -f "$pid_file" ]; then
-    pid=$(cat "$pid_file")
-    if kill -0 "$pid" 2>/dev/null; then
-        kill "$pid" 2>/dev/null || true
-        waited=0
-        while kill -0 "$pid" 2>/dev/null; do
-            waited=$((waited + 1))
-            [ "$waited" -ge 20 ] && { say "App ${pid} ignored SIGTERM; sending SIGKILL"; kill -9 "$pid" 2>/dev/null || true; break; }
-            sleep 1
-        done
-        say "App process ${pid} stopped"
-    fi
-    rm -f "$pid_file"
-fi
-
-docker rm -f "$pg_name" "$valkey_name" >/dev/null 2>&1 || true
-
-survivors=$(docker ps -aq --filter "name=orci-loop-pg-${run_id}" --filter "name=orci-loop-valkey-${run_id}" | wc -l | tr -d ' ')
+survivors=$(docker ps -aq --filter "label=com.docker.compose.project=${project}" | wc -l | tr -d ' ')
 if [ "$survivors" != '0' ]; then
-    say "Teardown incomplete: ${survivors} container(s) still present for ${run_id}"
+    say "Teardown incomplete: ${survivors} container(s) still present for ${project}"
+    docker ps -a --filter "label=com.docker.compose.project=${project}" \
+        --format '  {{.Names}} {{.Status}}' >&2 || true
     exit 7
 fi
 
@@ -47,4 +35,4 @@ if [ "$keep_log" != '--keep-log' ] && [ -d "$run_dir" ]; then
     rm -rf "$run_dir"
 fi
 
-say "Environment ${run_id} torn down"
+say "Environment ${project} torn down"
