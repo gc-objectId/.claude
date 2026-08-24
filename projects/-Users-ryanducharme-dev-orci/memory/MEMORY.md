@@ -10,7 +10,7 @@
 - [Git push and PR creation](feedback_git_push_command.md) — I run git push + gh pr create directly; don't hand over the command
 - [Git/PR workflow](feedback_git_pr_workflow.md) — full end-to-end flow: Jira → branch from main → commits → push+PR → feedback → post-merge cleanup
 - [PR replies manual](feedback_pr_replies_manual.md) — draft reply text in Ryan's voice (simple, high-level, conversational), don't post it; Ryan paraphrases and posts himself
-- [Maven stale classpath](project_maven_stale_classpath.md) — `mvn -pl orci test` can fail with phantom "cannot find symbol" — pre-install siblings
+- [Maven stale classpath](project_maven_stale_classpath.md) — stale ~/.m2 sibling jar makes `mvn -pl orci` ignore orci-models edits; phantom "cannot find symbol" AND falsely-green flip-and-revert; use `-am`
 - [Run worktree app on 8081](reference_run_worktree_app_second_port.md) — Ryan keeps main on 8080/3000; never say "restart your local", give explicit second-instance commands
 - [No Co-Authored-By](feedback_no_coauthored_by.md) — never add Co-Authored-By trailers OR "Generated with Claude Code" footers to commits or PR bodies
 - [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md, not README.md
@@ -41,7 +41,7 @@
 - [Prettier hook version conflict](reference_prettier_hook_version_conflict.md) — pre-commit pins an older prettier than qa-suite's; only `prettier --write` files you authored or commits loop forever
 - [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 DONE (in-CI gate, hardened via #4198); AWS-per-PR-env approach dead (OR-2452 epic; OR-2494/2507 → [WON'T DO]); merge-queue dropped; OR-2508 upload-key still open
 - [Dev deploy flakiness](project_dev_deploy_flakiness.md) — OR-2662: CI deploy "failures" usually converge on their own; don't rerun; blank pages = mixed-version rollout
-- [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code (0/1/2/3); squash merges auto-detected against origin/main; no manual re-checking
+- [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code (0/1/2/3); squash merges auto-detected against origin/main; but a `command not found: _*` line means verify never ran — check by hand
 - [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes .env.{suffix} directly; `> .env` redirect truncates .env to empty
 - [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — CLOSED 2026-07-20; dev/guidedor gained DB creds via infra PR #105; dev RDS still needs VPN
 - [OR-2616 dev SMTP not rotated](project_or2616_dev_smtp_not_rotated.md) — relocation to secrets[] done, rotation skipped; old task defs still leak the live password
@@ -54,7 +54,7 @@
 - [workon re-run stale index](reference_workon_rerun_stale_index.md) — re-running workon on an existing worktree force-moves branch to new main; week of main shows as staged reversions; recover with stash, diagnose via reflog
 - [Webapp has no unit runner](reference_webapp_no_unit_runner.md) — OR-2702 to add vitest; validate pure frontend TS via esbuild-in-node; qa-suite e2e can't test unmerged frontend
 - [@DataJpaTest can't test migrations](reference_datajpatest_ddl_auto_not_liquibase.md) — BaseDataJpaTest builds schema from entities (ddl-auto=create); migration correctness is manual-only; Envers disabled so no _AUDIT changes needed
-- [HL7 validation methodology](reference_hl7_admin_send_validation_path.md) — admin send = real processTenantMessage path (unlike OR-2581 trap); real fixture pos/neg pairs; prove a null isn't a dropped message; pairs with [Local HL7 inject auth](reference_local_hl7_inject_auth.md)
+- [HL7 validation methodology](reference_hl7_admin_send_validation_path.md) — admin send = real processTenantMessage path (unlike OR-2581 trap); real fixture pos/neg pairs; RAS bolus needs ~18s (rules run in-txn), mayo tenants off by default; pairs with [Local HL7 inject auth](reference_local_hl7_inject_auth.md)
 - [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead
 - [Repo test placement](feedback_repo_test_placement.md) — repository/@DataJpaTest tests live in orci-repositories (not orci); `*Test` runs in CI, `*IntegrationTest` is excluded/manual; verify canonical suite location before modeling a new test
 - [OR-2663 doxycycline rule was inert](project_or2663_doxycycline_inert_rule.md) — self-set lockout defeated AppLaunchRule's SET NX claim; app-launch rule tests all call evaluate() not apply(), and a mocked RuleMemoryService can't catch it

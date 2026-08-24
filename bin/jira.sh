@@ -84,3 +84,27 @@ jira_search_keys() {
         [ -n "$_token_page" ] || break
     done
 }
+
+# Full human-readable ticket context: description and every comment, as markdown on stdout.
+# v2 rather than v3 because v2 returns description and comment bodies as plain strings; v3 returns
+# ADF, which is not worth parsing in shell.
+jira_issue_context() {
+    _jira_curl "${JIRA_BASE}/rest/api/2/issue/$1?fields=summary,description,status,assignee,comment" |
+        jq -r '
+            "# \(.key) — \(.fields.summary)",
+            "",
+            "Status: \(.fields.status.name)   Assignee: \(.fields.assignee.displayName // "unassigned")",
+            "",
+            "## Description",
+            "",
+            (.fields.description // "(no description)"),
+            "",
+            "## Comments (\(.fields.comment.total))",
+            "",
+            (
+                if (.fields.comment.total // 0) == 0 then "(none)"
+                else (.fields.comment.comments[] |
+                    "### \(.author.displayName) — \(.created[0:19])\n\n\(.body)\n")
+                end
+            )'
+}

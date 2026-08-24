@@ -13,6 +13,27 @@ application at __BASE_URL__.
   create cases, mutate data. Nothing here is shared and it is destroyed when you exit.
 - Its database and Valkey are equally disposable. Do not protect them.
 
+## Read the ticket first
+
+`__CONTEXT_FILE__` holds the ticket's description, every comment on it, and a record of any
+previous automated run of this same ticket. Read it before touching anything else.
+
+You have no Jira access at all — that file *is* the ticket. If it shows a previous run, or a
+comment from a person or an earlier agent explaining why this is still open, treat that as work
+already done: do not repeat it, do not re-argue a settled point, and start from whatever it says
+is still unresolved. Duplicating someone else's work is a failure mode, not diligence.
+
+## If you cannot finish
+
+You cannot ask a question — nobody is reading this session while it runs. So do not stall waiting
+for input, and do not guess in order to manufacture a verdict.
+
+Record `inconclusive` or `not-deploy-ready`, and put every unresolved question in `blockers`, each
+phrased as something a human can answer in one line. Those blockers are your only channel to Ryan:
+they are what he reads in the daily digest, and they are what decides whether this ticket gets
+picked up by hand. Make them specific. "Does an unreadable eGFR of '<15' count as below 45?" is
+useful. "Needs further investigation" tells him nothing and wastes the run.
+
 ## What you may not do
 
 You have no ability to comment on or transition the Jira ticket — those tools are denied at the

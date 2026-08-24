@@ -20,6 +20,14 @@ Methodology for validating an inbound Mayo HL7 ticket (SIU/ORU/RAS). For the mec
 - assert a *different* field the same message should still set (Proc Finish sets `procedureEndTime` while the scheduled window stays null); and/or
 - change a non-guarded field in a resend (the `AIL` room) so a first-wins field staying put is provably not a silently skipped message.
 
-Processing is **async after the ACK** — wait ~3-5s before querying.
+Processing is **async after the ACK**, and how long depends on the message. An ORU/SIU lands in a few seconds, but a **RAS bolus took ~18s**: `DefaultHL7ProcessingContext.saveMedAdmin` runs the full EMR-administration rule evaluation *inside* the transaction, so nothing is visible until it commits. Poll for the `Persisted HL7-sourced MedicationAdministration id=...` log line rather than guessing a sleep — querying too early looks exactly like a dropped message and will send you hunting a bug that isn't there.
+
+**Standing up a local instance for this:** Mayo tenants are off by default (`tenants.mayo.enabled: false`), and a request with `X-Tenant-Id: mayo-mayo` is refused by `TenantFilter` with `Rejecting request for disabled tenant`. Pass the flag as a JVM arg — never edit `application.yml`:
+
+```bash
+mvn -o -pl orci spring-boot:run -Dspring-boot.run.jvmArguments="-Dserver.port=8081 -Dtenants.mayo.enabled=true"
+```
+
+Use `-pl orci`, not `-pl orci -am`: with `-am` the plugin targets the root project and dies on "Unable to find a suitable main class". Enabling Mayo makes boot slower (~145s) because the tenant data import runs. Devtools is active, so any `mvn test` in the same worktree triggers a hot restart — stop the app before running tests.
 
 **Timestamp gotcha:** HL7 stamps parse as America/Chicago, then bind in the **JVM default zone** into `timestamp without time zone` (`hibernate.jdbc.time_zone` is a dead key — see the comment in `application.yml`). On an EDT machine 11:05 Chicago reads back as 12:05: correct instant, shifted wall clock, not a bug. See [[reference_mayo_hl7_test_tz_coupling]].

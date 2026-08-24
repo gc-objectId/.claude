@@ -50,6 +50,12 @@ run_dir="${RESULTS}/${run_id}"
 mkdir -p "$run_dir"
 stamp=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
 
+# Previous attempts are kept: a session must be able to see whether this ticket has been run
+# before and what came of it, or it redoes work and re-litigates settled questions.
+if [ -f "${run_dir}/result.json" ]; then
+    cat "${run_dir}/result.json" >>"${run_dir}/history.jsonl"
+fi
+
 # Stamped immediately so a hard failure cannot leave a previous run's record looking like this
 # run's outcome in the digest.
 jq -nc --arg t "$ticket" --arg at "$stamp" \
@@ -169,6 +175,21 @@ jq -nc --arg t "$ticket" --arg image "$image" --arg sha "$sha" --arg url "$base_
 session_json="${run_dir}/session.json"
 scratch_dir="${run_dir}/scratch"
 mkdir -p "$scratch_dir"
+
+# The session gets Jira context as a file rather than Jira access. It cannot then duplicate work
+# another run already did, and it needs no Jira credentials to read the ticket — which is what
+# makes a credential-less sandbox viable later.
+context_file="${run_dir}/context.md"
+{
+    jira_issue_context "$ticket" || printf 'Could not fetch ticket context.\n'
+    if [ -s "${run_dir}/history.jsonl" ]; then
+        printf '\n## Previous automated runs of this ticket\n\n'
+        jq -r '"- \(.at)  \(.disposition): \(.detail)"' "${run_dir}/history.jsonl"
+        printf '\nTreat these as work already done. Do not repeat a settled conclusion; if a\n'
+        printf 'previous run was blocked, start from that blocker rather than from scratch.\n'
+    fi
+} >"$context_file"
+log "wrote ticket context ($(wc -l <"$context_file" | tr -d ' ') lines)"
 prompt=$(sed \
     -e "s|__TICKET__|${ticket}|g" \
     -e "s|__BASE_URL__|${base_url}|g" \
@@ -177,6 +198,7 @@ prompt=$(sed \
     -e "s|__LOOP_USER_PASSWORD__|${LOOP_USER_PASSWORD}|g" \
     -e "s|__SESSION_JSON__|${session_json}|g" \
     -e "s|__SCRATCH_DIR__|${scratch_dir}|g" \
+    -e "s|__CONTEXT_FILE__|${context_file}|g" \
     "$PROMPT_TEMPLATE")
 
 log "Starting unattended session (log: ${run_dir}/session.log)"
