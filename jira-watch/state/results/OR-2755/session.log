@@ -1,0 +1,7 @@
+Validation complete. Verdict recorded in `session.json`: **deploy-ready**.
+
+- **Positive** — fired `a-preop-glucose` and `a-preop-doxycycline-check` on real demo cases via `/api/cds/app-launch`; joined the firings to `rule_definitions` the way the analytics reports do → *Diabetes Management* and *Delayed/Missed/Wrong Antibiotic*. New map live in all four tenant schemas.
+- **Negative** — full 114-rule map diffed pre vs post: exactly 36 rules changed, matching the 36 changed files; no diabetes rule left in *Monitoring* (only the two coag-lab rules remain there).
+- **Red check** — compiled the parent commit's 36 rule classes in-container and swapped them into `/app/classes`: *Diabetes Management* vanished, *Monitoring* 2→15, *Uncategorized* 8→31, firings re-attributed. Separately shadowed the pre-fix enum, producing `No enum constant com.guided.orci.engine.rule.GuidanceCategory.DIABETES_MANAGEMENT` at startup. Both reverted; 41/41 checksums back to shipped and a fresh firing re-confirmed green.
+
+One caveat carried into the Jira comment rather than a blocker: the ticket's CSV attachment isn't readable from this environment, so the delivered mapping was verified as real and complete but not compared against the CSV — the 8 still-uncategorized rule ids are listed in the comment for a quick eyeball. Scratch work stayed outside the worktree; git tree is clean.

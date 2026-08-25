@@ -1,0 +1,9 @@
+Validation complete. Verdict: **deploy-ready**, written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2669/session.json`. Worktree is clean; all scratch work lives outside it.
+
+What was done against the running app at `localhost:62050`:
+
+- **Positive** — Redirected the mayo-mayo tenant's Epic FHIR R4 + OAuth endpoints to a local stub returning an empty searchset, seeded a practitioner with `epic_user_id='1434'`, and refreshed it both through `POST /api/admin/practitioners/{id}/refresh` (200 `NO_MATCH`) and through the async path from the ticket's stack trace (Mayo SIU^S14 with `SCH-20` PERSONID 1434, refresh ran on `[ioner-refresh-1]`). Both logged the INFO `No FHIR practitioner match for epic user id 1434` line, no exception escaped, and `last_refreshed_at` was still written.
+- **Negative** — A resolvable PERID refreshed normally (200 `REFRESHED`, row rewritten, no no-match line); a forced Epic HTTP 500 still produced 502 `FAILED` with the WARN + stack trace, proving the swallow isn't over-broad.
+- **Red check** — Compiled the class with the `RecordNotFoundException` catch removed inside the container, swapped it into `/app/classes`, restarted: the request went 502 `FAILED` and the log reproduced the ticket's exact Sentry stack. Restored the shipped classes, md5s matched all four files, positive case re-ran green.
+
+Caveats recorded: Epic responses were stubbed (real Mayo endpoint unreachable), Sentry is disabled locally so the WARN-with-stack line stood in for Sentry noise, the swapped class was the current source minus the fix rather than the literal pre-refactor parent, and the MGB lookup branch wasn't exercised.

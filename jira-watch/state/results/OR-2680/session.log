@@ -1,0 +1,7 @@
+Validation complete. Verdict: **deploy-ready**, written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2680/session.json`.
+
+- **Positive** — unknown pmrn → HTTP 404 `Patient not found`, no NPE in the container log (demo-demo and mayo-mayo).
+- **Negative** — real patient with a GLUCOSE observation → HTTP 200 with the observation; guard doesn't over-trigger.
+- **Red check** — compiled `ObservationController` from `bfe0654a7^` inside the container, swapped it into `/app/classes`, restarted: same request went 500 with the exact Sentry NPE and the same two stack frames. Restored the shipped classes (md5s match), restarted, re-ran both cases clean.
+
+Worktree is untouched; scratch artifacts live in the results `scratch/` dir.

@@ -1,0 +1,13 @@
+Validation complete. Verdict recorded: **deploy-ready**.
+
+What was exercised against the running app at `localhost:60489`:
+
+**Positive** — Seeded a `mayo-mayo` practitioner with a PERID and `name = NULL`, enabled Epic OAuth in the container with a generated keypair, and pointed the Mayo FHIR/token URLs at a local stub answering the exact shape `MayoGetPractitionerR4Command` builds. Refresh returned `200 REFRESHED` via the direct identifier lookup (`Practitioner?identifier=<person-id-system>|PERID-NONAME-001`), populating name/PROVID/role/email and stamping `last_refreshed_at`. Drove the real UI through a Vite dev server proxied at the container: `mayo-mayo` got `refreshSupported:true`, rendered the bulk and per-row controls, the row button went green ✓ "Refreshed from FHIR", and bulk printed `1 refreshed, 1 no match, 0 skipped, 0 failed`.
+
+**Negative** — An unmatched PERID returned `200 NO_MATCH` (row marker `–`, attempt recorded); the *same* practitioner with the stub Epic killed returned `502 FAILED`, so a clean miss and an outage are distinguishable. `demo-demo` returned `refreshSupported:false` and rendered no refresh controls. MGB unchanged: linked user → `clientUserId` identifier lookup, named → `?name=Mary+Jones`, nameless → short-circuit with no Epic query. 201 ids → `400`.
+
+**Red check** — Compiled the pre-fix `PractitionerService` + `PractitionerAdminController` from `0d3a4f91c^` inside the container, swapped them into `/app/classes`, restarted: `/capabilities` 404'd and the nameless PERID failed with `400 Cannot refresh practitioner: needs either a clientUserId or both epicUserId and name`, with no Epic call and no timestamp. Restored from the tar backup, `md5sum -c` all six OK, positive re-ran green.
+
+One caveat stated in the record: Epic was a local stub (no Mayo OAuth keys on this instance), so the outcome mapping is fully exercised but real Mayo Epic response content is not.
+
+Two housekeeping notes: `orci/src/main/webapp/node_modules` is left installed in the worktree — `rm -rf` was denied by the permission layer. It's gitignored and `git status` is clean, so nothing can be committed by accident, and `worktree-done` will remove it. Your Vite dev server in `~/dev/orci` (pid 12741) was checked and left running.

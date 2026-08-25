@@ -1,0 +1,23 @@
+tenants:
+  mayo:
+    enabled: true
+    show-sample-patients: true
+    oauth-client-id: 4b4c87bc-06ed-4daf-8b72-f79a67594b14
+    fhir-r4-server-base-url: http://host.docker.internal:60777/epic-api/api/FHIR/R4
+    oauth-token-endpoint: http://host.docker.internal:60777/epic-api/oauth2/token
+    observation-system: urn:oid:1.2.840.114350.1.13.451.3.7.2.768282
+    mrn-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.135000
+    person-id-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.135
+    provider-id-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.6
+    case-start-notification-enabled: true
+  demo:
+    show-sample-patients: true
+  mgb:
+    show-sample-patients: true
+
+epic:
+  oauth:
+    key:
+      kid: orci-loop-validation
+      priv: 'MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQDvXSeREug8yaD1gqTZi6bnCmCcynWIRQXHy8Ap0NTSlYzD8eK8b5HBMa2MYtdR7gnG3gIveqOZWCcnV9rVZBvsH60Tkn8BwdWW/1fn/RexRPe8VY5iqwkzrhDXRI+hjEfLxu8BLgf1wgCWPCB8GAEpjtIIJ7cjanLvNYwJRwhiM0/hWpzk8B4lneqdYydY19IzvJkUfSo6hrC0BNeZbi86cJveeLlC4MZcwyQvcLIQZNRfbO7YkN6+923iPu6MfLBDXVvBJz1oRFrt8SzyxNNtWiQFmP3pxoG8rsrqKW5GQlS11LZjwmGtoKyLWSYAik/jHvuIi4kw35cgyXCz7z0hAgMBAAECggEAIIYu3yaLid730QRMdAbmydP+Jq/X4olGbMyBsuzeTjLl6qYOYf5i9rZSV5YCne5TQ8Nc1qi6XBa/Uzg70u0EYkQ3l0Y7nbiB1j+h6TLZqkutwdh6PWvyFySawzVcst3Fz6mbRjTD/h+7Rq6q11HHrqbqYRNMbjKDpX9IJOaS/Ayrk0uyf/OnIZ2Imi2bc2JzacVGR4KH0UcIXqihoxxz1o78uIHHPz61xnQZUMOjeGz7utZttyT5uTm5i3UeU6gqwVef569SBpj1EhmmUv/d4+910+2ZBYx51aVSNYBc8SHwEvMv0PV7mTRCujZ/ySu+Wr5TSX/snNmGfafZehgWpQKBgQD4Wpkgn7EPQ6kU65sawP+TTeAGgcA4e58qSMZG3hDxcJF9sWBMiH721KInxytiTlymxbRVTx4j0Oxzfh+5KPq3nFEjibR/uMKCTTyXCytmDHORIkedFpQlL85xCpEzTwMZlewAFDVNnCUBg6LG6w272AZyg63BT6XcfBiF3rNTJwKBgQD2u7ObJ+Psx6lk3gS3yX7CYmgOT3HYbKHZroOyDt/Q1W7oJQgaXVrpHNhnd+kyUXiMlrKwxwj4cc9yo2fcVYz/pwIQgcFJ3NfXN6ssPM120EKLi8wMA7V4OyRB/TBD5GRPTxOrEO34tZSCG7bjkE+osvbIyXA4JZWC5V0zG1V6dwKBgETGqiM7tgfZH+jYOlLVYbGEXmbO5dF+gpxuHOKhOqXyG4hoZ5eqMSbfyawkXuJRex0AISmCyID4qZJuOhDHxW61jk6+Iss/+jWleAMIJ9OR3SszCAv7pbkKnSv21jEUT3J1by6yafR9Kk5aCuj1TQ9ZCqgJyUOAcBk4EH56JsT/AoGAHCcyyUN1+HCX3ZCPzUDKm/eKlAdwoBdVKHeHQ2v7EeMosoh3MjrwwqSt9LB0BW/SZ4hSf2VWmrKxzwziLvv8CLfPvn5vxbPTVRVfDL8rWqFM1otvDvflXwCwlG8FcNnAsGP/hId7/+MIPQhYiALRdBhnnGWPznhLZRIy3kACMuUCgYAu4zr579p0/bTZgzeY23dFUTtxZw7dhjn3Q69ozkE81SzxX7y6LFdUUk8FkccbmwQiueHfsDndojiFkZ4rLWibJjh2r6ctIPr18zvgKulBs48fW4XrreWDI/dIR8XKjsHxPFI7tk3V/LOKRL9x7+JNdlezsAclybZwdyhWWWUivg=='
+      pub: 'MIICpDCCAYwCCQCMCX3rmPEdjTANBgkqhkiG9w0BAQsFADAUMRIwEAYDVQQDDAlvcmNpLWxvb3AwHhcNMjYwODI0MTg1NTE5WhcNMjYwOTIzMTg1NTE5WjAUMRIwEAYDVQQDDAlvcmNpLWxvb3AwggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDvXSeREug8yaD1gqTZi6bnCmCcynWIRQXHy8Ap0NTSlYzD8eK8b5HBMa2MYtdR7gnG3gIveqOZWCcnV9rVZBvsH60Tkn8BwdWW/1fn/RexRPe8VY5iqwkzrhDXRI+hjEfLxu8BLgf1wgCWPCB8GAEpjtIIJ7cjanLvNYwJRwhiM0/hWpzk8B4lneqdYydY19IzvJkUfSo6hrC0BNeZbi86cJveeLlC4MZcwyQvcLIQZNRfbO7YkN6+923iPu6MfLBDXVvBJz1oRFrt8SzyxNNtWiQFmP3pxoG8rsrqKW5GQlS11LZjwmGtoKyLWSYAik/jHvuIi4kw35cgyXCz7z0hAgMBAAEwDQYJKoZIhvcNAQELBQADggEBAIudVs/zg+iGfiKugZGMw9IHr7fefm2u8faW7+AUkkwObYP99EpnMRVESB6qE4bR67Z0Dj0YsUhAKm42edM5vjeJiBEvFae9vteaaJOVcmVvE439rSsJp0UuU5a+vFGAmVznSNvV6lECe0Kc358u8zMeCmV9eXEiTjAP1zdX9lza/Zm8oZaIjBvXUAo4QfteVy5uADUGegv3rQBe1X/t8b9pinGVepruw2M0lnuQ++oIHM7VsrTMqsAQRWy8m8rmgiydzsJ1xu02kC6G+7e1u8ErRS9Dlc1oxrGv8q0V7eUUPEzefRRiVeckpJ7nnaQRUXQ6BGjmP1Zt8WDEmNbJGvA='

@@ -108,3 +108,15 @@ jira_issue_context() {
                 end
             )'
 }
+
+jira_assign() {
+    _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
+        --data "$(jq -nc --arg a "$2" '{accountId: $a}')" \
+        "${JIRA_BASE}/rest/api/3/issue/$1/assignee"
+}
+
+jira_update_comment() {
+    _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
+        --data "$(jq -nc --arg b "$3" '{body: $b}')" \
+        "${JIRA_BASE}/rest/api/2/issue/$1/comment/$2"
+}

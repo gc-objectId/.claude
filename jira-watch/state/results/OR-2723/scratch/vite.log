@@ -1,0 +1,1857 @@
+[sentry-vite-plugin] Info: Sending telemetry data on issues and performance to Sentry. To disable telemetry, set `options.telemetry` to `false`.
+
+  VITE v8.0.16  ready in 1031 ms
+
+  ➜  Local:   http://localhost:3999/
+  ➜  Network: use --host to expose
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "./custom.scss";
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    src/App.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "bootstrap/scss/bootstrap";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/custom.scss 1:9  @import
+    src/App.scss 1:9     root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "mixins/banner";
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 1:9  @import
+    src/custom.scss 1:9                             @import
+    src/App.scss 1:9                                root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+7 │ @import "functions";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 7:9  @import
+    src/custom.scss 1:9                             @import
+    src/App.scss 1:9                                root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+8 │ @import "variables";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 8:9  @import
+    src/custom.scss 1:9                             @import
+    src/App.scss 1:9                                root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "bootstrap/scss/bootstrap";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/pages/AppLaunch.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "mixins/banner";
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 1:9  @import
+    src/pages/AppLaunch.scss 1:9                    root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+7 │ @import "functions";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 7:9  @import
+    src/pages/AppLaunch.scss 1:9                    root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+8 │ @import "variables";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 8:9  @import
+    src/pages/AppLaunch.scss 1:9                    root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+9 │ @import "maps";
+  │         ^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 9:9  @import
+    src/pages/AppLaunch.scss 1:9                    root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$value"): $value; else: $arg)
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:55  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$key"): $key; else: if($arg == "$value", $value, $arg))
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:30  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($l1 > $l2): divide($l1 + 0.05, $l2 + 0.05); else: divide($l2 + 0.05, $l1 + 0.05))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+177 │   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 177:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/custom.scss 1:9                                 @import
+    src/App.scss 1:9                                    root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass(divide($value, 255) < 0.03928): divide(divide($value, 255), 12.92); else: nth($_luminance-list, $value + 1))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+191 │     $value: if(divide($value, 255) < .03928, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 191:13  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/custom.scss 1:9                                 @import
+    src/App.scss 1:9                                    root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+217 │   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 217:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/custom.scss 1:9                                 @import
+    src/App.scss 1:9                                    root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "bootstrap/scss/bootstrap";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/DosingForm.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "bootstrap/scss/bootstrap";
+  │         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  ╵
+    src/components/Feedback/FeedbackWidget.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+207 │   @return mix(white, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 207:11  tint-color()
+    node_modules/bootstrap/scss/_variables.scss 79:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/custom.scss 1:9                                 @import
+    src/App.scss 1:9                                    root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+212 │   @return mix(black, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 212:11  shade-color()
+    node_modules/bootstrap/scss/_variables.scss 84:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/custom.scss 1:9                                 @import
+    src/App.scss 1:9                                    root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                              ^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:30  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                                                   ^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:51  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.compatible instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+13 │     } @else if not comparable($prev-num, $num) {
+   │                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 13:20  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$value"): $value; else: $arg)
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:55  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$key"): $key; else: if($arg == "$value", $value, $arg))
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:30  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($l1 > $l2): divide($l1 + 0.05, $l2 + 0.05); else: divide($l2 + 0.05, $l1 + 0.05))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+177 │   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 177:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/pages/AppLaunch.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass(divide($value, 255) < 0.03928): divide(divide($value, 255), 12.92); else: nth($_luminance-list, $value + 1))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+191 │     $value: if(divide($value, 255) < .03928, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 191:13  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/pages/AppLaunch.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+217 │   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 217:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/pages/AppLaunch.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "mixins/banner";
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 1:9  @import
+    src/components/DosingForm.scss 1:9              root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+7 │ @import "functions";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 7:9  @import
+    src/components/DosingForm.scss 1:9              root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+8 │ @import "variables";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 8:9  @import
+    src/components/DosingForm.scss 1:9              root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+9 │ @import "maps";
+  │         ^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 9:9  @import
+    src/components/DosingForm.scss 1:9              root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+1 │ @import "mixins/banner";
+  │         ^^^^^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 1:9   @import
+    src/components/Feedback/FeedbackWidget.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+7 │ @import "functions";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 7:9   @import
+    src/components/Feedback/FeedbackWidget.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+8 │ @import "variables";
+  │         ^^^^^^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 8:9   @import
+    src/components/Feedback/FeedbackWidget.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+  ╷
+9 │ @import "maps";
+  │         ^^^^^^
+  ╵
+    node_modules/bootstrap/scss/bootstrap.scss 9:9   @import
+    src/components/Feedback/FeedbackWidget.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │           ^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:11  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                        ^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:24  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [color-functions]: blue() is deprecated. Suggestion:
+
+color.channel($color, "blue", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                                       ^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:39  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/custom.scss 1:9                                @import
+    src/App.scss 1:9                                   root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+207 │   @return mix(white, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 207:11  tint-color()
+    node_modules/bootstrap/scss/_variables.scss 79:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/pages/AppLaunch.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+212 │   @return mix(black, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 212:11  shade-color()
+    node_modules/bootstrap/scss/_variables.scss 84:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/pages/AppLaunch.scss 1:9                        root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                              ^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:30  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                                                   ^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:51  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.compatible instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+13 │     } @else if not comparable($prev-num, $num) {
+   │                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 13:20  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$value"): $value; else: $arg)
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:55  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$key"): $key; else: if($arg == "$value", $value, $arg))
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:30  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($l1 > $l2): divide($l1 + 0.05, $l2 + 0.05); else: divide($l2 + 0.05, $l1 + 0.05))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+177 │   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 177:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/components/DosingForm.scss 1:9                  root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass(divide($value, 255) < 0.03928): divide(divide($value, 255), 12.92); else: nth($_luminance-list, $value + 1))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+191 │     $value: if(divide($value, 255) < .03928, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 191:13  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/components/DosingForm.scss 1:9                  root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+217 │   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 217:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/components/DosingForm.scss 1:9                  root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │           ^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:11  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                        ^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:24  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [color-functions]: blue() is deprecated. Suggestion:
+
+color.channel($color, "blue", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                                       ^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:39  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/pages/AppLaunch.scss 1:9                       root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$value"): $value; else: $arg)
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                                                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:55  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($arg == "$key"): $key; else: if($arg == "$value", $value, $arg))
+
+More info: https://sass-lang.com/d/if-function
+
+   ╷
+58 │       $_args: append($_args, if($arg == "$key", $key, if($arg == "$value", $value, $arg)));
+   │                              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 58:30  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($l1 > $l2): divide($l1 + 0.05, $l2 + 0.05); else: divide($l2 + 0.05, $l1 + 0.05))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+177 │   @return if($l1 > $l2, divide($l1 + .05, $l2 + .05), divide($l2 + .05, $l1 + .05));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 177:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/components/Feedback/FeedbackWidget.scss 1:9     root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass(divide($value, 255) < 0.03928): divide(divide($value, 255), 12.92); else: nth($_luminance-list, $value + 1))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+191 │     $value: if(divide($value, 255) < .03928, divide(divide($value, 255), 12.92), nth($_luminance-list, $value + 1));
+    │             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 191:13  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/components/Feedback/FeedbackWidget.scss 1:9     root stylesheet
+
+DEPRECATION WARNING [if-function]: The Sass if() syntax is deprecated in favor of the modern CSS syntax.
+
+Suggestion: if(sass($weight > 0): shade-color($color, $weight); else: tint-color($color, -$weight))
+
+More info: https://sass-lang.com/d/if-function
+
+    ╷
+217 │   @return if($weight > 0, shade-color($color, $weight), tint-color($color, -$weight));
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 217:11  @import
+    node_modules/bootstrap/scss/bootstrap.scss 7:9      @import
+    src/components/Feedback/FeedbackWidget.scss 1:9     root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+207 │   @return mix(white, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 207:11  tint-color()
+    node_modules/bootstrap/scss/_variables.scss 79:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/components/DosingForm.scss 1:9                  root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+212 │   @return mix(black, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 212:11  shade-color()
+    node_modules/bootstrap/scss/_variables.scss 84:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/components/DosingForm.scss 1:9                  root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                              ^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:30  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                                                   ^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:51  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.compatible instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+13 │     } @else if not comparable($prev-num, $num) {
+   │                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 13:20  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+207 │   @return mix(white, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 207:11  tint-color()
+    node_modules/bootstrap/scss/_variables.scss 79:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/components/Feedback/FeedbackWidget.scss 1:9     root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use color.mix instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+    ╷
+212 │   @return mix(black, $color, $weight);
+    │           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 212:11  shade-color()
+    node_modules/bootstrap/scss/_variables.scss 84:12   @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9      @import
+    src/components/Feedback/FeedbackWidget.scss 1:9     root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                              ^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:30  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.unit instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+11 │     @if $prev-num == null or unit($num) == "%" or unit($prev-num) == "%" {
+   │                                                   ^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 11:51  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [global-builtin]: Global built-in functions are deprecated and will be removed in Dart Sass 3.0.0.
+Use math.compatible instead.
+
+More info and automated migrator: https://sass-lang.com/d/import
+
+   ╷
+13 │     } @else if not comparable($prev-num, $num) {
+   │                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 13:20  -assert-ascending()
+    node_modules/bootstrap/scss/_variables.scss 441:1  @import
+    node_modules/bootstrap/scss/bootstrap.scss 8:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │           ^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:11  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                        ^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:24  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [color-functions]: blue() is deprecated. Suggestion:
+
+color.channel($color, "blue", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                                       ^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:39  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/components/DosingForm.scss 1:9                 root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │           ^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:11  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                        ^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:24  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [color-functions]: blue() is deprecated. Suggestion:
+
+color.channel($color, "blue", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+   ╷
+37 │   @return red($value), green($value), blue($value);
+   │                                       ^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_functions.scss 37:39  to-rgb()
+    node_modules/bootstrap/scss/_functions.scss 61:36  map-loop()
+    node_modules/bootstrap/scss/_maps.scss 6:20        @import
+    node_modules/bootstrap/scss/bootstrap.scss 9:9     @import
+    src/components/Feedback/FeedbackWidget.scss 1:9    root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(100%)
+To emit a CSS abs() now: abs(#{100%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+57 │   $dividend: abs($dividend);
+   │              ^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/vendor/_rfs.scss 57:14         divide()
+    node_modules/bootstrap/scss/mixins/_grid.scss 59:12        row-cols()
+    node_modules/bootstrap/scss/mixins/_grid.scss 85:13        @content
+    node_modules/bootstrap/scss/mixins/_breakpoints.scss 68:5  media-breakpoint-up()
+    node_modules/bootstrap/scss/mixins/_grid.scss 72:5         make-grid-columns()
+    node_modules/bootstrap/scss/_grid.scss 32:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 19:9            @import
+    src/components/DosingForm.scss 1:9                         root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(100%)
+To emit a CSS abs() now: abs(#{100%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+57 │   $dividend: abs($dividend);
+   │              ^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/vendor/_rfs.scss 57:14         divide()
+    node_modules/bootstrap/scss/mixins/_grid.scss 59:12        row-cols()
+    node_modules/bootstrap/scss/mixins/_grid.scss 85:13        @content
+    node_modules/bootstrap/scss/mixins/_breakpoints.scss 68:5  media-breakpoint-up()
+    node_modules/bootstrap/scss/mixins/_grid.scss 72:5         make-grid-columns()
+    node_modules/bootstrap/scss/_grid.scss 32:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 19:9            @import
+    src/components/Feedback/FeedbackWidget.scss 1:9            root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(100%)
+To emit a CSS abs() now: abs(#{100%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+57 │   $dividend: abs($dividend);
+   │              ^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/vendor/_rfs.scss 57:14         divide()
+    node_modules/bootstrap/scss/mixins/_grid.scss 59:12        row-cols()
+    node_modules/bootstrap/scss/mixins/_grid.scss 85:13        @content
+    node_modules/bootstrap/scss/mixins/_breakpoints.scss 68:5  media-breakpoint-up()
+    node_modules/bootstrap/scss/mixins/_grid.scss 72:5         make-grid-columns()
+    node_modules/bootstrap/scss/_grid.scss 32:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 19:9            @import
+    src/custom.scss 1:9                                        @import
+    src/App.scss 1:9                                           root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(100%)
+To emit a CSS abs() now: abs(#{100%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+57 │   $dividend: abs($dividend);
+   │              ^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/vendor/_rfs.scss 57:14         divide()
+    node_modules/bootstrap/scss/mixins/_grid.scss 59:12        row-cols()
+    node_modules/bootstrap/scss/mixins/_grid.scss 85:13        @content
+    node_modules/bootstrap/scss/mixins/_breakpoints.scss 68:5  media-breakpoint-up()
+    node_modules/bootstrap/scss/mixins/_grid.scss 72:5         make-grid-columns()
+    node_modules/bootstrap/scss/_grid.scss 32:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 19:9            @import
+    src/pages/AppLaunch.scss 1:9                               root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+185 │     "r": red($color),
+    │          ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 185:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/components/DosingForm.scss 1:9                            root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+186 │     "g": green($color),
+    │          ^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 186:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/components/DosingForm.scss 1:9                            root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+185 │     "r": red($color),
+    │          ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 185:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/components/Feedback/FeedbackWidget.scss 1:9               root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+185 │     "r": red($color),
+    │          ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 185:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/custom.scss 1:9                                           @import
+    src/App.scss 1:9                                              root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+186 │     "g": green($color),
+    │          ^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 186:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/components/Feedback/FeedbackWidget.scss 1:9               root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+186 │     "g": green($color),
+    │          ^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 186:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/custom.scss 1:9                                           @import
+    src/App.scss 1:9                                              root stylesheet
+
+DEPRECATION WARNING [color-functions]: red() is deprecated. Suggestion:
+
+color.channel($color, "red", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+185 │     "r": red($color),
+    │          ^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 185:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/pages/AppLaunch.scss 1:9                                  root stylesheet
+
+DEPRECATION WARNING [color-functions]: green() is deprecated. Suggestion:
+
+color.channel($color, "green", $space: rgb)
+
+More info: https://sass-lang.com/d/color-functions
+
+    ╷
+186 │     "g": green($color),
+    │          ^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_functions.scss 186:10            luminance()
+    node_modules/bootstrap/scss/_functions.scss 174:8             contrast-ratio()
+    node_modules/bootstrap/scss/_functions.scss 159:22            color-contrast()
+    node_modules/bootstrap/scss/mixins/_table-variants.scss 4:13  table-variant()
+    node_modules/bootstrap/scss/_tables.scss 147:3                @import
+    node_modules/bootstrap/scss/bootstrap.scss 20:9               @import
+    src/pages/AppLaunch.scss 1:9                                  root stylesheet
+
+Warning: React version not specified in eslint-plugin-react settings. See https://github.com/jsx-eslint/eslint-plugin-react#configuration .
+src/main/webapp/src/App.tsx(83,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/MedicationList.tsx(40,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/MedicationList.tsx(61,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/MedicationAdministrationsSimulation.tsx(29,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/AppLaunch.tsx(353,6): React Hook useEffect has a missing dependency: 'guidanceTabs'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(359,6): React Hook useEffect has a missing dependency: 'trackingEventService'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(719,6): React Hook useEffect has missing dependencies: 'guidanceTabs', 'loading', and 'trackingEventService'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(719,7): React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(876,6): React Hook useEffect has missing dependencies: 'addAppLaunchAlerts', 'auth', 'deregisterWindowEventListeners', 'guidanceTabs', 'handleLocalLaunch', 'patientService', 'promptToRestoreTabs', 'queryParams.caseId', 'queryParams.encounterId', 'queryParams.forceLaunch', 'queryParams.patientId', 'queryParams.tenantId', 'queryParams.userId', and 'registerWindowEventListeners'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(903,6): React Hook useEffect has missing dependencies: 'addAppLaunchAlerts' and 'promptForVitalSignAlertsOptIn'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(1184,6): React Hook useEffect has missing dependencies: 'checkForOutstandingTabsFromOtherUsers', 'guidanceTabs', and 'trackingEventService'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(1194,6): React Hook useEffect has missing dependencies: 'guidanceTabs' and 'isOperationEnding'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(1194,50): React Hook useEffect has a complex expression in the dependency array. Extract it to a separate variable so it can be statically checked. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/AppLaunch.tsx(1215,6): React Hook useCallback has a missing dependency: 'trackingEventService'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/admin/MedicationAdministrationSimulation.tsx(64,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/context/AuthContext.tsx(267,5): React Hook useCallback has missing dependencies: 'logout' and 'retrieveUserInfo'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/context/WebsocketContext.tsx(58,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/LoginPage.tsx(67,15): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/DevModeBanner.tsx(17,6): React Hook useEffect has a missing dependency: 'initialize'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(43,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(48,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(202,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(205,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(341,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(344,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(448,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/templates/PatientTemplateList.tsx(452,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(42,6): React Hook useEffect has a missing dependency: 'getPatient'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/admin/ViewPatient.tsx(45,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(52,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(169,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(184,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(188,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(336,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/pages/admin/ViewPatient.tsx(344,6): React Hook useEffect has a missing dependency: 'getOperations'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/pages/admin/ViewPatient.tsx(351,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Admin/QuickPatientLauncher.tsx(62,15): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/context/RuleSettingsContext.tsx(67,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/PatientBanner.tsx(91,27): Missing "key" prop for element in iterator react/jsx-key
+src/main/webapp/src/utils/logger.ts(8,3): Unused eslint-disable directive (no problems were reported from 'no-console').
+src/main/webapp/src/utils/logger.ts(10,3): Unused eslint-disable directive (no problems were reported from 'no-console').
+src/main/webapp/src/components/GuidanceSocket.tsx(77,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/GuidanceSocket.tsx(83,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/GuidanceSocket.tsx(99,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/GuidanceSocket.tsx(121,6): React Hook useEffect has missing dependencies: 'onMedicationScanReminder', 'ruleExecutionResultService', and 'tenantId'. Either include them or remove the dependency array. If 'onMedicationScanReminder' changes too often, find the parent component that defines it and wrap that definition in useCallback. react-hooks/exhaustive-deps
+src/main/webapp/src/components/Home.tsx(60,6): React Hook useEffect has a missing dependency: 'ruleSettings'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/BarcodeInput.tsx(32,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/BarcodeInput.tsx(36,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/BarcodeInput.tsx(62,11): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/BarcodeInput.tsx(63,11): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/BarcodeInput.tsx(82,6): React Hook useEffect has missing dependencies: 'caseId', 'clientId', 'onInvalidMedication', 'onNdcSelection', and 'patientId'. Either include them or remove the dependency array. If 'onNdcSelection' changes too often, find the parent component that defines it and wrap that definition in useCallback. react-hooks/exhaustive-deps
+src/main/webapp/src/components/DosingForm.tsx(260,6): React Hook useEffect has missing dependencies: 'dosingFormState.alerts', 'dosingFormState.perRouteState', 'medication.concentrationOptions', 'medication.defaultNDC', 'medication.ndc', and 'medication.perComponentConcentrations'. Either include them or remove the dependency array. If 'setAvailableConcentrationOptions' needs the current value of 'medication.concentrationOptions', you can also switch to useReducer instead of useState and read 'medication.concentrationOptions' in the reducer. react-hooks/exhaustive-deps
+src/main/webapp/src/components/DosingForm.tsx(364,6): React Hook useEffect has missing dependencies: 'availableConcentrationOptions', 'ndc', and 'ndcMutable'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/DosingForm.tsx(627,6): React Hook useEffect has a missing dependency: 'setCanCloseTab'. Either include it or remove the dependency array. If 'setCanCloseTab' changes too often, find the parent component that defines it and wrap that definition in useCallback. react-hooks/exhaustive-deps
+src/main/webapp/src/components/GuidanceAlert.tsx(41,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/GuidanceAlert.tsx(48,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/GuidanceAlert.tsx(50,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/utils/dosingForm/playAlertAudio.ts(54,3): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/utils/dosingForm/playAlertAudio.ts(56,3): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/utils/windowControl.ts(26,3): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/AppLaunchLoadingDisplay.tsx(28,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Admin/UserPicker.tsx(35,44): React Hook "useField" is called conditionally. React Hooks must be called in the exact same order in every component render. react-hooks/rules-of-hooks
+src/main/webapp/src/services/TrackingEventService.ts(113,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/VitalSignRulesOptInPrompt.tsx(68,50): `'` can be escaped with `&apos;`, `&lsquo;`, `&#39;`, `&rsquo;`. react/no-unescaped-entities
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+65 │     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
+   │                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_alert.scss 65:66    @import
+    node_modules/bootstrap/scss/bootstrap.scss 33:9  @import
+    src/components/DosingForm.scss 1:9               root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+65 │     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
+   │                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_alert.scss 65:66    @import
+    node_modules/bootstrap/scss/bootstrap.scss 33:9  @import
+    src/components/Feedback/FeedbackWidget.scss 1:9  root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+65 │     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
+   │                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_alert.scss 65:66    @import
+    node_modules/bootstrap/scss/bootstrap.scss 33:9  @import
+    src/pages/AppLaunch.scss 1:9                     root stylesheet
+
+src/main/webapp/src/hooks/useGuidanceTabs.ts(124,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/hooks/useGuidanceTabs.ts(134,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/hooks/useGuidanceTabs.ts(219,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/hooks/useGuidanceTabs.ts(232,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/hooks/useGuidanceTabs.ts(235,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/hooks/useGuidanceTabs.ts(277,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/hooks/useGuidanceTabs.ts(280,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/RecentlyAdministeredMeds/RecentlyAdministeredMeds.tsx(153,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/MedicationForm.tsx(75,6): React Hook useEffect has a missing dependency: 'getMedications'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/dosing-form/TimeInput.tsx(169,5): React Hook useMemo has a missing dependency: 'scanTime'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/Debug/Tabs/UserDetails/UserDetailsTab.tsx(19,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/UserDetails/UserDetailsTab.tsx(20,33): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/UserDetails/UserDetailsTab.tsx(48,6): React Hook useMemo has a missing dependency: 'flags'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/Debug/Tabs/Conditions/ConditionsTab.tsx(17,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/Conditions/ConditionsTab.tsx(22,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/Timeline/TimelineTab.tsx(93,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/MedicationAdministrations/MedicationAdministrationTab.tsx(254,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/MedicationAdministrations/MedicationAdministrationTab.tsx(676,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/MedicationAdministrations/MedicationAdministrationTab.tsx(1028,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/TrackedValues/TrackedValuesTab.tsx(70,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/TrackedValues/TrackedValuesTab.tsx(86,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/Observations/ObservationsListingTab.tsx(28,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/Observations/ObservationsListingTab.tsx(34,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/Observations/ObservationsListingTab.tsx(41,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Alert/RuleCitationTooltip.tsx(8,36): Component definition is missing display name react/display-name
+src/main/webapp/src/components/Alert/WeightDoseCalculationTooltip.tsx(8,45): Component definition is missing display name react/display-name
+src/main/webapp/src/components/dosing-form/DosingFormBanner.tsx(33,5): React Hook useMemo has a missing dependency: 'evaluationResultId'. Either include it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/Debug/Tabs/Allergies/AddAllergy.tsx(45,6): React Hook useEffect has missing dependencies: 'getAllergens' and 'getReactions'. Either include them or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/SettingsModal/AllergySettingsTab.tsx(50,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/SettingsModal/AllergySettingsTab.tsx(62,9): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/SettingsModal/AllergySettingsTab.tsx(74,6): React Hook useCallback has an unnecessary dependency: 'tenantId'. Either exclude it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/SettingsModal/ToleratedMedicationsTab.tsx(69,6): React Hook useCallback has an unnecessary dependency: 'tenantId'. Either exclude it or remove the dependency array. react-hooks/exhaustive-deps
+src/main/webapp/src/components/SettingsModal/ToleratedMedicationsTab.tsx(85,5): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/api/generated/client/client.gen.ts(26,5): Definition for rule '@typescript-eslint/no-unused-vars' was not found. @typescript-eslint/no-unused-vars
+src/main/webapp/src/api/generated/client/client.gen.ts(79,7): Definition for rule '@typescript-eslint/no-unused-vars' was not found. @typescript-eslint/no-unused-vars
+src/main/webapp/src/components/Alert/AlertBody.tsx(72,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Alert/AlertBody.tsx(78,7): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Debug/Tabs/Observations/AddObservation.tsx(108,11): Unexpected console statement. Only these console methods are allowed: warn, error. no-console
+src/main/webapp/src/components/Timeline/Filters.tsx(18,22): Component definition is missing display name react/display-name
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+   ╷
+65 │     $alert-color: mix($value, color-contrast($alert-background), abs($alert-color-scale));
+   │                                                                  ^^^^^^^^^^^^^^^^^^^^^^^
+   ╵
+    node_modules/bootstrap/scss/_alert.scss 65:66    @import
+    node_modules/bootstrap/scss/bootstrap.scss 33:9  @import
+    src/custom.scss 1:9                              @import
+    src/App.scss 1:9                                 root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+    ╷
+187 │     $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+    │                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_list-group.scss 187:84  @import
+    node_modules/bootstrap/scss/bootstrap.scss 35:9      @import
+    src/components/Feedback/FeedbackWidget.scss 1:9      root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+    ╷
+187 │     $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+    │                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_list-group.scss 187:84  @import
+    node_modules/bootstrap/scss/bootstrap.scss 35:9      @import
+    src/pages/AppLaunch.scss 1:9                         root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+    ╷
+187 │     $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+    │                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_list-group.scss 187:84  @import
+    node_modules/bootstrap/scss/bootstrap.scss 35:9      @import
+    src/components/DosingForm.scss 1:9                   root stylesheet
+
+DEPRECATION WARNING [abs-percent]: Passing percentage units to the global abs() function is deprecated.
+In the future, this will emit a CSS abs() function to be resolved by the browser.
+To preserve current behavior: math.abs(40%)
+To emit a CSS abs() now: abs(#{40%})
+More info: https://sass-lang.com/d/abs-percent
+
+    ╷
+187 │     $list-group-variant-color: mix($value, color-contrast($list-group-variant-bg), abs($list-group-item-color-scale));
+    │                                                                                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ╵
+    node_modules/bootstrap/scss/_list-group.scss 187:84  @import
+    node_modules/bootstrap/scss/bootstrap.scss 35:9      @import
+    src/custom.scss 1:9                                  @import
+    src/App.scss 1:9                                     root stylesheet
+
+WARNING: 291 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+WARNING: 291 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+WARNING: 297 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+WARNING: 291 repetitive deprecation warnings omitted.
+Run in verbose mode to see all warnings.
+
+3:18:41 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:18:41 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:18:46 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:18:46 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:01 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17635:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:01 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17635:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:06 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:06 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:11 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:11 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:16 PM [vite] ws proxy error:
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17635:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:16 PM [vite] ws proxy socket error:
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17635:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:21 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:21 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:26 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17636:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17644:6)
+    at IncomingMessage.emit (node:events:508:20)
+3:19:26 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17636:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17644:6)
+    at IncomingMessage.emit (node:events:508:20)
+3:19:31 PM [vite] ws proxy error:
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:31 PM [vite] ws proxy socket error:
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:36 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:36 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:41 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:41 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:46 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:46 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:19:51 PM [vite] ws proxy error:
+Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+3:19:51 PM [vite] ws proxy socket error:
+Error: read ECONNRESET
+    at TCP.onStreamRead (node:internal/stream_base_commons:216:20)
+3:19:56 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17637:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17644:6)
+    at IncomingMessage.emit (node:events:508:20)
+3:19:56 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17637:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17644:6)
+    at IncomingMessage.emit (node:events:508:20)
+3:20:06 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:20:06 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:20:12 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:20:12 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:20:27 PM [vite] ws proxy error:
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:20:27 PM [vite] ws proxy socket error:
+Error: write ECONNRESET
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17634:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17647:6)
+    at IncomingMessage.emit (node:events:520:22)
+3:21:14 PM [vite] ws proxy error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17637:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17644:6)
+    at IncomingMessage.emit (node:events:508:20)
+3:21:14 PM [vite] ws proxy socket error:
+Error: write EPIPE
+    at afterWriteDispatched (node:internal/stream_base_commons:159:15)
+    at writeGeneric (node:internal/stream_base_commons:150:3)
+    at Socket._writeGeneric (node:net:1025:11)
+    at Socket._write (node:net:1037:8)
+    at writeOrBuffer (node:internal/streams/writable:570:12)
+    at _write (node:internal/streams/writable:499:10)
+    at Writable.write (node:internal/streams/writable:508:10)
+    at writeChunk (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17637:13)
+    at IncomingMessage.<anonymous> (file:///Users/ryanducharme/dev/worktrees/OR-2723-unify-practitioner-refresh-and/orci/src/main/webapp/node_modules/vite/dist/node/chunks/node.js:17644:6)
+    at IncomingMessage.emit (node:events:508:20)

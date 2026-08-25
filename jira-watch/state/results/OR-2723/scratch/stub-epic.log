@@ -1,0 +1,19 @@
+2026-08-24T18:55:32.142Z stub listening on 60777
+2026-08-24T18:55:34.968Z GET /oauth2/token
+2026-08-24T19:03:26.998Z POST /epic-api/oauth2/token
+2026-08-24T19:03:27.068Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NONAME-001&_format=json
+2026-08-24T19:03:27.479Z GET /epic-api/api/FHIR/R4/PractitionerRole?practitioner=Practitioner%2FePractitionerFhirId001&_format=json
+2026-08-24T19:03:34.927Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NAMED-002&_format=json
+2026-08-24T19:03:34.957Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NONAME-001&_format=json
+2026-08-24T19:03:34.961Z GET /epic-api/api/FHIR/R4/PractitionerRole?practitioner=Practitioner%2FePractitionerFhirId001&_format=json
+2026-08-24T19:03:34.969Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NAMED-002&_format=json
+2026-08-24T19:05:41.176Z stub listening on 60777
+2026-08-24T19:10:39.838Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NAMED-002&_format=json
+2026-08-24T19:14:58.642Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NONAME-001&_format=json
+2026-08-24T19:14:59.124Z GET /epic-api/api/FHIR/R4/PractitionerRole?practitioner=Practitioner%2FePractitionerFhirId001&_format=json
+2026-08-24T19:22:09.916Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NONAME-001&_format=json
+2026-08-24T19:22:09.939Z GET /epic-api/api/FHIR/R4/PractitionerRole?practitioner=Practitioner%2FePractitionerFhirId001&_format=json
+2026-08-24T19:22:13.148Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NAMED-002&_format=json
+2026-08-24T19:22:16.746Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NONAME-001&_format=json
+2026-08-24T19:22:16.750Z GET /epic-api/api/FHIR/R4/PractitionerRole?practitioner=Practitioner%2FePractitionerFhirId001&_format=json
+2026-08-24T19:22:16.763Z GET /epic-api/api/FHIR/R4/Practitioner?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135%7CPERID-NAMED-002&_format=json

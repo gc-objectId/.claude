@@ -1,0 +1,7 @@
+Verdict: **deploy-ready**. Written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2678/session.json`; worktree is clean, scratch work is in the scratch dir.
+
+- **Positive** — real captured `rormc-siu-s14-before.hl7` re-sent through `/api/admin/hl7-inbound-messages/send` (tenant `mayo-mayo`) with ZCS-5 set to the ticket's exact values: `3-Severe Systemic Disease` → `ASA_3`, `2-Mild Systemic Disease` → `ASA_2`, `5-Moribund` → `ASA_5`, legacy `III` → `ASA_3`, confirmed in `mayo-mayo.operations` and over the operations API. Upsert semantics (overwrite / fill / preserve-on-null) also exercised.
+- **Negative** — no ZCS-5, empty ZCS-5, and `9-Made Up` all left `asa_status` NULL, with `classification`/`operating_room_name` from the same message proving nothing was dropped, plus the `Unmapped SIU ASA physical status ZCS-5='9-Made Up'` warn.
+- **Red check** — pre-fix processor compiled in-container and shadowed the shipped jar on the classpath; valid ZCS-5 values then persisted NULL and the warn never fired. Reverted, jar checksum unchanged, positive case re-confirmed.
+
+Flagged caveat: no fixture in the repo actually carries a populated ZCS-5, so the field position came from the ticket's sample rather than a live message.

@@ -1,0 +1,3 @@
+6e8fa21f107817b2f750ba3297c76681ac0d36454243cd0198a143d2e1f737e4  tools/deploy/src/guidedor_deploy/config.py
+b62c59ed33ed9380deab42d7d04f04e5cb86b04942a7f27dbb79394b28223e92  tools/deploy/src/guidedor_deploy/run_pipeline.py
+9c16dbc44aa3ea80336ef2830937b4868b24cbb5e4fe8a5e193f5099bf71ad9b  tools/deploy/src/guidedor_deploy/services/slack.py

@@ -68,6 +68,13 @@ Two techniques that work well for the red check, in rough order of strength:
 Doing both is better than doing one. Neither is risky here: this instance is disposable, and if a
 restore fails the damage dies with the container.
 
+The class swap does not work for every change. If the fix added an enum constant, a column, or
+anything else the running system now depends on, the pre-fix class will fail to *load* — the app
+dies on boot instead of behaving wrongly, and a boot failure is not the behaviour the ticket is
+about. When that happens: restore the shipped class immediately, confirm the app comes back, and
+use the data flip instead. Note in `red_check` that the swap was abandoned and why. Do not leave
+the instance unbootable and do not spend the remaining time fighting it.
+
 If you cannot perform all three against the running app — for any reason, including the app not
 behaving as the ticket implies — the verdict is `inconclusive` or `not-deploy-ready`, and you must
 list concrete blockers. **Reasoning about the source code is not a substitute for exercising the
@@ -93,11 +100,12 @@ Write exactly one file, `__SESSION_JSON__`, and nothing else outside the worktre
   },
   "red_check_signature": "a literal substring of the application log that appeared ONLY while the red check was active — e.g. the exception line and message you provoked. The gate greps the captured log for this exact string, so copy it verbatim, keep it distinctive (at least 20 characters), and do not include the timestamp or thread name, which vary.",
   "blockers": ["required and non-empty unless verdict is deploy-ready"],
+  "caveats": ["anything that limits how far this validation reaches, even when the verdict is deploy-ready — a dependency you had to stub, a path you could not reach in this environment, a branch you did not exercise. One line each, empty array if genuinely none. Declaring a caveat NEVER costs you the verdict; it is recorded alongside it and flagged for Ryan. Omitting one that mattered is the actual failure."],
   "automation": {
     "assessment": "existing coverage, and what is worth locking in (or why nothing is)",
     "proposed_tests": ["one line each, or empty"]
   },
-  "jira_comment": "PLAIN TEXT, ~10 lines, first person, in Claude's voice: verdict, how it was validated (positive/negative/red check, one line each), and the automation plan. Do not include the PR link; the gate inserts it. Use NO markdown whatsoever — no **bold**, no `backticks`, no *bullets*, no [links](...). The comment is posted through an API that does not render markdown, so any syntax shows up as literal punctuation. Structure it with plain prose, blank lines between paragraphs, and lines beginning with '- ' for lists."
+  "jira_comment": "PLAIN TEXT, ~10 lines, IMPERSONAL VOICE — write 'This was validated against...', 'The positive case showed...', 'The pre-fix class was swapped in...'. Never use first person: no 'I', no 'my', no 'we'. The comment is posted under Ryan's Jira account, so first person would read as Ryan claiming he did this by hand. Content: verdict, how it was validated (positive/negative/red check, one line each), and the automation plan. Do not include the PR link; the gate inserts it. Use NO markdown whatsoever — no **bold**, no `backticks`, no *bullets*, no [links](...). The comment is posted through an API that does not render markdown, so any syntax shows up as literal punctuation. Structure it with plain prose, blank lines between paragraphs, and lines beginning with '- ' for lists."
 }
 ```
 

@@ -21,8 +21,9 @@ JOINed against the view — one PASS/FAIL row per scenario. Flip-and-revert by r
 fragment as text keeps the variants to one line each); dependent views survive as long as the
 column list is unchanged.
 
-`query-rds` prod reads may be blocked by the permission classifier while **stage** connects
-fine, and stage carries real Mayo data — see [[reference_mayo_data_lives_in_stage]]. Use it to
+`query-rds` prod reads are sometimes refused by the permission classifier and sometimes fine —
+retry later rather than concluding prod is unreachable. **Stage** connects reliably and carries
+real Mayo data — see [[reference_mayo_data_lives_in_stage]]. Use it to
 confirm the premise a predicate rests on (column populated, no NULLs, no disagreement with the
 source being replaced) even when the row counts are too small to reproduce prod figures.
 

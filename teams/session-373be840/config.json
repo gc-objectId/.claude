@@ -1,0 +1,18 @@
+{
+  "name": "session-373be840",
+  "createdAt": 1787601826358,
+  "leadAgentId": "team-lead@session-373be840",
+  "leadSessionId": "373be840-3658-4e38-bfd4-38f7c83d66fb",
+  "members": [
+    {
+      "agentId": "team-lead@session-373be840",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1787601826358,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2653-jasypt-encryptor-pw",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -1,0 +1,61 @@
+2026-08-24T21:02:04.209Z  INFO 1 --- [omcat-handler-1] -/- - - - - c.g.o.web.auth.CustomUserDetailsService  : loadUserByUsername admin: com.guided.orci.models.user.User@82811705
+2026-08-24T21:02:04.307Z  INFO 1 --- [omcat-handler-1] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Password login succeeded for -admin-
+2026-08-24T21:02:04.307Z  WARN 1 --- [omcat-handler-1] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Not auditing USER_LOGIN_SUCCESS for -admin-: no enabled tenant on the request
+2026-08-24T21:02:04.420Z  INFO 1 --- [omcat-handler-3] -/- mayo-mayo - - - c.guided.orci.service.HL7InboundService  : Received HL7 message: type=ORU^R01, controlId=OR2677GLU7, sender=EPIC^ORU_FLOWSHEET/ROSMC
+2026-08-24T21:02:04.461Z  INFO 1 --- [   async-task-1] -/- mayo-mayo - - - c.g.o.s.hl7.DefaultHL7ProcessingContext  : Applied 2 HL7-sourced observations: 2 inserted/corrected, 0 deleted from hl7MessageId=01a03594-927a-71dc-b671-8892b58608dc
+2026-08-24T21:02:04.466Z  INFO 1 --- [   async-task-1] -/- mayo-mayo - - - com.guided.orci.service.EventService     : Handling event EventCategoryEvent(sourceEventType=ORU_GLUCOSE, patientId=PatientId[value=99677001], caseId=CaseId[value=OR2677CASE1], eventCategories=[GLUCOSE_UPDATED], eventDate=Tue Jun 16 23:55:00 UTC 2026, practitioner=null)
+2026-08-24T21:02:04.488Z  INFO 1 --- [   async-task-1] -/- mayo-mayo - - - c.g.o.s.r.d.InsulinManagementService     : Initialising ISC to 0.03 (Reinitialize (no infusion activity in last 4 hours))
+2026-08-24T21:02:04.490Z DEBUG 1 --- [   async-task-1] -/- mayo-mayo - - - c.g.o.s.r.d.InsulinManagementService     : Calculated recommended insulin infusion rate: 3.9
+2026-08-24T21:02:04.494Z  INFO 1 --- [   async-task-1] -/- mayo-mayo - - - c.g.o.s.r.d.InsulinManagementService     : Skipping ISC update because patient is not on an active insulin infusion at glucose time
+2026-08-24T21:02:04.494Z DEBUG 1 --- [   async-task-1] -/- mayo-mayo - - - c.g.o.s.r.d.InsulinManagementService     : Calculated recommended insulin infusion rate: 3.9
+2026-08-24T21:02:04.501Z ERROR 1 --- [   async-task-1] -/- mayo-mayo - - - c.g.o.service.hl7.HL7MessageDispatcher   : HL7 processor MayoHL7OruProcessor failed for type=ORU^R01 tenant=mayo-mayo message id=01a03594-927a-71dc-b671-8892b58608dc
+
+org.springframework.dao.InvalidDataAccessApiUsageException: No active transaction
+	at org.springframework.orm.jpa.EntityManagerFactoryUtils.convertJpaAccessExceptionIfPossible(EntityManagerFactoryUtils.java:511)
+	at org.springframework.orm.jpa.hibernate.HibernateExceptionTranslator.translateExceptionIfPossible(HibernateExceptionTranslator.java:112)
+	at org.springframework.orm.jpa.vendor.HibernateJpaDialect.translateExceptionIfPossible(HibernateJpaDialect.java:223)
+	at org.springframework.dao.support.DataAccessUtils.translateIfNecessary(DataAccessUtils.java:346)
+	at org.springframework.orm.jpa.JpaTransactionManager$JpaTransactionObject.flush(JpaTransactionManager.java:719)
+	at org.springframework.transaction.support.DefaultTransactionStatus.flush(DefaultTransactionStatus.java:214)
+	at com.guided.orci.service.EventService.lambda$handleEventCategoryEvent$3(EventService.java:365)
+	at org.springframework.transaction.support.TransactionOperations.lambda$executeWithoutResult$0(TransactionOperations.java:68)
+	at org.springframework.transaction.support.TransactionTemplate.execute(TransactionTemplate.java:137)
+	at org.springframework.transaction.support.TransactionOperations.executeWithoutResult(TransactionOperations.java:67)
+	at com.guided.orci.service.EventService.handleEventCategoryEvent(EventService.java:363)
+	at com.guided.orci.service.EventService.handleEvent(EventService.java:150)
+	at com.guided.orci.service.hl7.DefaultHL7ProcessingContext$5.lambda$afterCommit$0(DefaultHL7ProcessingContext.java:543)
+	at java.base/java.lang.Iterable.forEach(Iterable.java:75)
+	at com.guided.orci.service.hl7.DefaultHL7ProcessingContext$5.afterCommit(DefaultHL7ProcessingContext.java:542)
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.invokeAfterCommit(TransactionSynchronizationUtils.java:165)
+	at org.springframework.transaction.support.TransactionSynchronizationUtils.triggerAfterCommit(TransactionSynchronizationUtils.java:153)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.triggerAfterCommit(AbstractPlatformTransactionManager.java:1005)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.processCommit(AbstractPlatformTransactionManager.java:835)
+	at org.springframework.transaction.support.AbstractPlatformTransactionManager.commit(AbstractPlatformTransactionManager.java:757)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.commitTransactionAfterReturning(TransactionAspectSupport.java:687)
+	at org.springframework.transaction.interceptor.TransactionAspectSupport.invokeWithinTransaction(TransactionAspectSupport.java:408)
+	at org.springframework.transaction.interceptor.TransactionInterceptor.invoke(TransactionInterceptor.java:130)
+	at org.springframework.aop.framework.ReflectiveMethodInvocation.proceed(ReflectiveMethodInvocation.java:179)
+	at org.springframework.aop.framework.CglibAopProxy$DynamicAdvisedInterceptor.intercept(CglibAopProxy.java:719)
+	at com.guided.orci.service.hl7.DefaultHL7ProcessingContext$$SpringCGLIB$$0.saveObservations(<generated>)
+	at com.guided.orci.integration.mayo.hl7.MayoHL7OruBaseProcessor.process(MayoHL7OruBaseProcessor.java:69)
+	at com.guided.orci.integration.mayo.hl7.MayoHL7OruProcessor.process(MayoHL7OruProcessor.java:43)
+	at com.guided.orci.service.hl7.HL7MessageDispatcher.dispatch(HL7MessageDispatcher.java:63)
+	at com.guided.orci.service.HL7InboundService.lambda$dispatchAsync$1(HL7InboundService.java:307)
+	at com.guided.orci.service.TracingService.lambda$withSpan$1(TracingService.java:38)
+	at com.guided.orci.service.TracingService.withSpan(TracingService.java:58)
+	at com.guided.orci.service.TracingService.withSpan(TracingService.java:37)
+	at com.guided.orci.service.HL7InboundService.lambda$dispatchAsync$2(HL7InboundService.java:306)
+	at com.guided.orci.multitenancy.context.TenantContextHolder.withTenant(TenantContextHolder.java:38)
+	at com.guided.orci.service.HL7InboundService.lambda$dispatchAsync$3(HL7InboundService.java:305)
+	at io.micrometer.context.ContextSnapshot.lambda$wrap$0(ContextSnapshot.java:91)
+	at java.base/java.util.concurrent.ThreadPerTaskExecutor$TaskRunner.run(ThreadPerTaskExecutor.java:314)
+	at java.base/java.lang.VirtualThread.run(VirtualThread.java:329)
+Caused by: jakarta.persistence.TransactionRequiredException: No active transaction
+	at org.hibernate.internal.AbstractSharedSessionContract.checkTransactionNeededForUpdateOperation(AbstractSharedSessionContract.java:682)
+	at org.hibernate.internal.SessionImpl.checkTransactionNeededForUpdateOperation(SessionImpl.java:158)
+	at org.hibernate.internal.SessionImpl.checkTransactionNeededForUpdateOperation(SessionImpl.java:2308)
+	at org.hibernate.internal.SessionImpl.fireFlush(SessionImpl.java:1453)
+	at org.hibernate.internal.SessionImpl.flush(SessionImpl.java:1446)
+	at org.springframework.orm.jpa.JpaTransactionManager$JpaTransactionObject.flush(JpaTransactionManager.java:716)
+	... 34 common frames omitted
+

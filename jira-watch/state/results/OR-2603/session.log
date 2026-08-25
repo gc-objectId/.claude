@@ -1,0 +1,12 @@
+Validation complete. `session.json` written.
+
+**Verdict: inconclusive** — the SQL is verified, the ticket's acceptance is not.
+
+What was done against the running instance's own database:
+
+- Rebuilt the MGH analytics layer from the shipped `create_analytics_views.sql` in the `"mgb-mgh"` schema (real Liquibase DDL), loaded 9 LA administrations placed on the Eastern/UTC boundary.
+- **Positive** — `last_feb_drop_deepdive.sql` over Jan–Mar returned exactly the 6 in-window rows with rule columns, provider role, case ID, MRN; the did-not-fire case has all three rule columns NULL and resolves its provider through the primary-practitioner fallback; the Eastern Mar-31 22:00 row buckets to March. Counts reconcile with the error-rate report.
+- **Negative** — the three out-of-window rows (Eastern Dec 31 ×2, Apr 1) all absent; 9/9 expectations PASS.
+- **Red check** — ran the pre-fix files verbatim: a spurious `2025-12-01` bucket leaked in and the `2026-03-01` bucket vanished. Root cause reproduced: `timezone('UTC', timezone('US/Eastern','2026-01-01'::date))` returns `2025-12-31 19:00+00`, 10 hours early. Separately flipped the deepdive to the raw-UTC bound its header warns about → 9 PASS became 7 PASS / 2 FAIL. Both reverted, both green again. Working tree clean.
+
+Why not deploy-ready: the deliverable is a *published Metabase card*, and MGB Metabase (partners.org) is unreachable from here. Alexandra's last comment says she couldn't open question 634 from MGH and would retry from home — nothing records that she did. Card 634's name also doesn't match the filename, so `sync-metabase-reports.py` would create a second card rather than update it. Those are the blockers, each answerable in a line.

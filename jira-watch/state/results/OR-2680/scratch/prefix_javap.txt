@@ -1,0 +1,211 @@
+Compiled from "ObservationController.java"
+public class com.guided.orci.web.admin.ObservationController {
+  private com.guided.orci.service.ObservationService observationService;
+
+  private com.guided.orci.repository.ObservationRepository observationRepository;
+
+  private com.guided.orci.service.PatientService patientService;
+
+  private com.guided.orci.service.EventService eventService;
+
+  private com.guided.orci.mappers.ObservationMapper observationMapper;
+
+  private com.guided.orci.service.OperationService operationService;
+
+  public com.guided.orci.web.admin.ObservationController();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.util.Optional<com.guided.orci.web.admin.ObservationController$AddObservationDTO> addObservation(com.guided.orci.types.wrappers.PatientId, com.guided.orci.types.wrappers.CaseId, com.guided.orci.web.admin.ObservationController$AddObservationDTO);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+       4: aload_1
+       5: invokevirtual #13                 // Method com/guided/orci/service/PatientService.findByPmrn:(Lcom/guided/orci/types/wrappers/PatientId;)Lcom/guided/orci/models/patient/Patient;
+       8: astore        4
+      10: aload         4
+      12: ifnonnull     24
+      15: new           #19                 // class com/guided/orci/exceptions/PatientNotFoundException
+      18: dup
+      19: aload_1
+      20: invokespecial #21                 // Method com/guided/orci/exceptions/PatientNotFoundException."<init>":(Lcom/guided/orci/types/wrappers/PatientId;)V
+      23: athrow
+      24: invokestatic  #24                 // Method com/guided/orci/models/observation/Observation.builder:()Lcom/guided/orci/models/observation/Observation$ObservationBuilder;
+      27: aload_3
+      28: getfield      #30                 // Field com/guided/orci/web/admin/ObservationController$AddObservationDTO.type:Lcom/guided/orci/models/observation/ObservationType;
+      31: invokevirtual #36                 // Method com/guided/orci/models/observation/Observation$ObservationBuilder.type:(Lcom/guided/orci/models/observation/ObservationType;)Lcom/guided/orci/models/observation/Observation$ObservationBuilder;
+      34: aload_3
+      35: invokevirtual #41                 // Method com/guided/orci/web/admin/ObservationController$AddObservationDTO.value:()Ljava/lang/String;
+      38: invokevirtual #45                 // Method com/guided/orci/models/observation/Observation$ObservationBuilder.observationValue:(Ljava/lang/String;)Lcom/guided/orci/models/observation/Observation$ObservationBuilder;
+      41: aload_3
+      42: invokevirtual #49                 // Method com/guided/orci/web/admin/ObservationController$AddObservationDTO.units:()Ljava/lang/String;
+      45: invokevirtual #52                 // Method com/guided/orci/models/observation/Observation$ObservationBuilder.observationUnits:(Ljava/lang/String;)Lcom/guided/orci/models/observation/Observation$ObservationBuilder;
+      48: aload_3
+      49: invokevirtual #55                 // Method com/guided/orci/web/admin/ObservationController$AddObservationDTO.date:()Ljava/util/Date;
+      52: invokevirtual #59                 // Method com/guided/orci/models/observation/Observation$ObservationBuilder.effectiveTime:(Ljava/util/Date;)Lcom/guided/orci/models/observation/Observation$ObservationBuilder;
+      55: aload         4
+      57: invokevirtual #63                 // Method com/guided/orci/models/observation/Observation$ObservationBuilder.patient:(Lcom/guided/orci/models/patient/Patient;)Lcom/guided/orci/models/observation/Observation$ObservationBuilder;
+      60: invokevirtual #67                 // Method com/guided/orci/models/observation/Observation$ObservationBuilder.build:()Lcom/guided/orci/models/observation/Observation;
+      63: astore        5
+      65: aload_0
+      66: getfield      #71                 // Field operationService:Lcom/guided/orci/service/OperationService;
+      69: aload         4
+      71: invokevirtual #75                 // Method com/guided/orci/models/patient/Patient.getPatientId:()Lcom/guided/orci/types/wrappers/PatientId;
+      74: aload_2
+      75: invokevirtual #81                 // Method com/guided/orci/service/OperationService.getOperation:(Lcom/guided/orci/types/wrappers/PatientId;Lcom/guided/orci/types/wrappers/CaseId;)Ljava/util/Optional;
+      78: astore        6
+      80: aload         6
+      82: invokevirtual #87                 // Method java/util/Optional.isEmpty:()Z
+      85: ifeq          98
+      88: new           #93                 // class com/guided/orci/exceptions/OperationNotFoundException
+      91: dup
+      92: aload_1
+      93: aload_2
+      94: invokespecial #95                 // Method com/guided/orci/exceptions/OperationNotFoundException."<init>":(Lcom/guided/orci/types/wrappers/PatientId;Lcom/guided/orci/types/wrappers/CaseId;)V
+      97: athrow
+      98: aload         5
+     100: new           #98                 // class com/guided/orci/models/integration/SourceMetadata
+     103: dup
+     104: aload         5
+     106: invokevirtual #100                // Method com/guided/orci/models/observation/Observation.getId:()Ljava/util/UUID;
+     109: invokevirtual #104                // Method java/util/UUID.toString:()Ljava/lang/String;
+     112: getstatic     #109                // Field com/guided/orci/models/integration/SourceType.INTERNAL_API:Lcom/guided/orci/models/integration/SourceType;
+     115: aload_0
+     116: invokevirtual #115                // Method java/lang/Object.getClass:()Ljava/lang/Class;
+     119: invokevirtual #119                // Method java/lang/Class.getName:()Ljava/lang/String;
+     122: invokestatic  #124                // Method org/springframework/web/servlet/support/ServletUriComponentsBuilder.fromCurrentRequest:()Lorg/springframework/web/servlet/support/ServletUriComponentsBuilder;
+     125: invokevirtual #130                // Method org/springframework/web/servlet/support/ServletUriComponentsBuilder.toUriString:()Ljava/lang/String;
+     128: invokespecial #133                // Method com/guided/orci/models/integration/SourceMetadata."<init>":(Ljava/lang/String;Lcom/guided/orci/models/integration/SourceType;Ljava/lang/String;Ljava/lang/String;)V
+     131: invokevirtual #136                // Method com/guided/orci/models/observation/Observation.setSourceMetadata:(Lcom/guided/orci/models/integration/SourceMetadata;)V
+     134: aload_0
+     135: getfield      #140                // Field observationRepository:Lcom/guided/orci/repository/ObservationRepository;
+     138: aload         5
+     140: invokeinterface #144,  2          // InterfaceMethod com/guided/orci/repository/ObservationRepository.save:(Ljava/lang/Object;)Ljava/lang/Object;
+     145: pop
+     146: aload_3
+     147: invokevirtual #150                // Method com/guided/orci/web/admin/ObservationController$AddObservationDTO.type:()Lcom/guided/orci/models/observation/ObservationType;
+     150: getstatic     #153                // Field com/guided/orci/models/observation/ObservationType.GLUCOSE:Lcom/guided/orci/models/observation/ObservationType;
+     153: if_acmpne     204
+     156: aload_0
+     157: getfield      #158                // Field eventService:Lcom/guided/orci/service/EventService;
+     160: invokestatic  #162                // Method com/guided/orci/events/EventCategoryEvent.builder:()Lcom/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder;
+     163: aload         4
+     165: invokevirtual #75                 // Method com/guided/orci/models/patient/Patient.getPatientId:()Lcom/guided/orci/types/wrappers/PatientId;
+     168: invokevirtual #167                // Method com/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder.patientId:(Lcom/guided/orci/types/wrappers/PatientId;)Lcom/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder;
+     171: getstatic     #173                // Field com/guided/orci/models/operation/EventCategory.GLUCOSE_UPDATED:Lcom/guided/orci/models/operation/EventCategory;
+     174: invokestatic  #179                // InterfaceMethod java/util/Set.of:(Ljava/lang/Object;)Ljava/util/Set;
+     177: invokevirtual #185                // Method com/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder.eventCategories:(Ljava/util/Set;)Lcom/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder;
+     180: aload_2
+     181: invokevirtual #189                // Method com/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder.caseId:(Lcom/guided/orci/types/wrappers/CaseId;)Lcom/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder;
+     184: aload         5
+     186: invokevirtual #193                // Method com/guided/orci/models/observation/Observation.getEffectiveTime:()Ljava/util/Date;
+     189: invokevirtual #196                // Method com/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder.eventDate:(Ljava/util/Date;)Lcom/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder;
+     192: ldc           #200                // String debugger
+     194: invokevirtual #202                // Method com/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder.sourceEventType:(Ljava/lang/String;)Lcom/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder;
+     197: invokevirtual #206                // Method com/guided/orci/events/EventCategoryEvent$EventCategoryEventBuilder.build:()Lcom/guided/orci/events/EventCategoryEvent;
+     200: invokevirtual #209                // Method com/guided/orci/service/EventService.handleEvent:(Lcom/guided/orci/events/OrciEvent;)Ljava/util/Optional;
+     203: pop
+     204: aload_3
+     205: invokevirtual #150                // Method com/guided/orci/web/admin/ObservationController$AddObservationDTO.type:()Lcom/guided/orci/models/observation/ObservationType;
+     208: getstatic     #215                // Field com/guided/orci/models/observation/ObservationType.PREGNANCY_STATUS:Lcom/guided/orci/models/observation/ObservationType;
+     211: if_acmpne     223
+     214: aload_0
+     215: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+     218: aload         4
+     220: invokevirtual #218                // Method com/guided/orci/service/PatientService.syncPregnancyStatusFromObservations:(Lcom/guided/orci/models/patient/Patient;)V
+     223: new           #31                 // class com/guided/orci/web/admin/ObservationController$AddObservationDTO
+     226: dup
+     227: aload         5
+     229: invokespecial #222                // Method com/guided/orci/web/admin/ObservationController$AddObservationDTO."<init>":(Lcom/guided/orci/models/observation/Observation;)V
+     232: invokestatic  #225                // Method java/util/Optional.of:(Ljava/lang/Object;)Ljava/util/Optional;
+     235: areturn
+
+  public void deleteObservation(java.lang.String, java.lang.String);
+    Code:
+       0: aload_2
+       1: invokestatic  #228                // Method java/util/UUID.fromString:(Ljava/lang/String;)Ljava/util/UUID;
+       4: astore_3
+       5: aload_0
+       6: getfield      #140                // Field observationRepository:Lcom/guided/orci/repository/ObservationRepository;
+       9: aload_3
+      10: invokeinterface #232,  2          // InterfaceMethod com/guided/orci/repository/ObservationRepository.findById:(Ljava/lang/Object;)Ljava/util/Optional;
+      15: astore        4
+      17: aload         4
+      19: invokedynamic #235,  0            // InvokeDynamic #0:apply:()Ljava/util/function/Function;
+      24: invokevirtual #239                // Method java/util/Optional.map:(Ljava/util/function/Function;)Ljava/util/Optional;
+      27: aconst_null
+      28: invokevirtual #243                // Method java/util/Optional.orElse:(Ljava/lang/Object;)Ljava/lang/Object;
+      31: checkcast     #154                // class com/guided/orci/models/observation/ObservationType
+      34: astore        5
+      36: aload         4
+      38: invokevirtual #87                 // Method java/util/Optional.isEmpty:()Z
+      41: ifeq          45
+      44: return
+      45: aload_0
+      46: getfield      #246                // Field observationService:Lcom/guided/orci/service/ObservationService;
+      49: aload_3
+      50: aload_1
+      51: invokevirtual #250                // Method com/guided/orci/service/ObservationService.deleteObservation:(Ljava/util/UUID;Ljava/lang/String;)V
+      54: aload         5
+      56: getstatic     #215                // Field com/guided/orci/models/observation/ObservationType.PREGNANCY_STATUS:Lcom/guided/orci/models/observation/ObservationType;
+      59: if_acmpne     86
+      62: aload_0
+      63: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+      66: aload_1
+      67: invokevirtual #256                // Method com/guided/orci/service/PatientService.findByPmrn:(Ljava/lang/String;)Lcom/guided/orci/models/patient/Patient;
+      70: astore        6
+      72: aload         6
+      74: ifnull        86
+      77: aload_0
+      78: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+      81: aload         6
+      83: invokevirtual #218                // Method com/guided/orci/service/PatientService.syncPregnancyStatusFromObservations:(Lcom/guided/orci/models/patient/Patient;)V
+      86: return
+
+  public void deleteAllObservations(java.lang.String);
+    Code:
+       0: aload_0
+       1: getfield      #246                // Field observationService:Lcom/guided/orci/service/ObservationService;
+       4: aload_1
+       5: invokevirtual #259                // Method com/guided/orci/service/ObservationService.deleteAllByPMRN:(Ljava/lang/String;)V
+       8: aload_0
+       9: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+      12: aload_1
+      13: invokevirtual #256                // Method com/guided/orci/service/PatientService.findByPmrn:(Ljava/lang/String;)Lcom/guided/orci/models/patient/Patient;
+      16: astore_2
+      17: aload_2
+      18: ifnull        29
+      21: aload_0
+      22: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+      25: aload_2
+      26: invokevirtual #218                // Method com/guided/orci/service/PatientService.syncPregnancyStatusFromObservations:(Lcom/guided/orci/models/patient/Patient;)V
+      29: return
+
+  public java.util.List<com.guided.orci.dto.ObservationDTO> getObservations(com.guided.orci.types.wrappers.PatientId);
+    Code:
+       0: aload_0
+       1: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+       4: aload_1
+       5: invokevirtual #263                // Method com/guided/orci/service/PatientService.getPatient:(Lcom/guided/orci/types/wrappers/PatientId;)Lcom/guided/orci/models/patient/Patient;
+       8: astore_2
+       9: aload_0
+      10: getfield      #7                  // Field patientService:Lcom/guided/orci/service/PatientService;
+      13: aload_2
+      14: invokevirtual #266                // Method com/guided/orci/service/PatientService.getObservations:(Lcom/guided/orci/models/patient/Patient;)Ljava/util/List;
+      17: invokeinterface #270,  1          // InterfaceMethod java/util/List.stream:()Ljava/util/stream/Stream;
+      22: aload_0
+      23: invokedynamic #276,  0            // InvokeDynamic #1:apply:(Lcom/guided/orci/web/admin/ObservationController;)Ljava/util/function/Function;
+      28: invokeinterface #279,  2          // InterfaceMethod java/util/stream/Stream.map:(Ljava/util/function/Function;)Ljava/util/stream/Stream;
+      33: invokeinterface #284,  1          // InterfaceMethod java/util/stream/Stream.toList:()Ljava/util/List;
+      38: areturn
+
+  private com.guided.orci.dto.ObservationDTO lambda$getObservations$0(com.guided.orci.models.observation.Observation);
+    Code:
+       0: aload_0
+       1: getfield      #288                // Field observationMapper:Lcom/guided/orci/mappers/ObservationMapper;
+       4: aload_1
+       5: invokeinterface #292,  2          // InterfaceMethod com/guided/orci/mappers/ObservationMapper.entityToDto:(Lcom/guided/orci/models/observation/Observation;)Lcom/guided/orci/dto/ObservationDTO;
+      10: areturn
+}

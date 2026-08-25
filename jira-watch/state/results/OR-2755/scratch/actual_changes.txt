@@ -1,0 +1,36 @@
+a-adjust-insulin-infusion-rate  Monitoring  ->  Diabetes Management
+a-eras-preop  Uncategorized  ->  ERAS
+a-hypoglycemia  Monitoring  ->  Diabetes Management
+a-hypoglycemia-dm1-pregnancy  Monitoring  ->  Diabetes Management
+a-hypoglycemia-glucose-check-15min  Monitoring  ->  Diabetes Management
+a-insulin-dextrose-check  Monitoring  ->  Diabetes Management
+a-insulin-glucose-check  Monitoring  ->  Diabetes Management
+a-insulin-glucose-check-app-launch  Monitoring  ->  Diabetes Management
+a-insulin-transition-to-bolus  Monitoring  ->  Diabetes Management
+a-no-insulin-glucose-check  Monitoring  ->  Diabetes Management
+a-preop-doxycycline-check  Uncategorized  ->  Delayed/Missed/Wrong Antibiotic
+a-preop-glucose  Monitoring  ->  Diabetes Management
+a-preop-hyperglycemia  Monitoring  ->  Diabetes Management
+a-remifentanil-high-dose  Uncategorized  ->  Wrong Dose
+a-restart-infusion-post-hypoglycemia  Monitoring  ->  Diabetes Management
+a-start-insulin-infusion  Monitoring  ->  Diabetes Management
+a-succinylcholine-high-dose  Uncategorized  ->  Wrong Dose
+i-narcotic-acetaminophen-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-cefazolin-anaphylaxis-unknown-pen-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-ceph-gen3-gen4-gen5-type-i-unknown-pen-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-ceph-no-cross-reaction-type-i-unknown-ceph-gen-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-glycopyrrolate-pregnancy  Uncategorized  ->  Wrong Medication
+w-narcotic-mild-unknown-narcotic-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-nondep-nmb-conditions  Uncategorized  ->  Wrong Medication
+w-pen-mild-ceph-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-pen-mild-pen-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-pen-type-i-unknown-ceph-gen3-gen4-gen5-allergy  Uncategorized  ->  Allergy & Drug-Drug Interactions
+w-sugammadex-hormonal-contraceptive-drug-interactions  Uncategorized  ->  NMB
+w-sux-condition-burn  Uncategorized  ->  Wrong Medication
+w-sux-condition-hyper-k  Uncategorized  ->  Wrong Medication
+w-sux-condition-mh  Uncategorized  ->  Wrong Medication
+w-sux-condition-rhabdo  Uncategorized  ->  Wrong Medication
+w-sux-hyper-k  Uncategorized  ->  Wrong Medication
+w-sux-prior-meds  Uncategorized  ->  Wrong Medication
+w-sux-procedure  Uncategorized  ->  Wrong Medication
+w-vancomycin-renal-disease  Uncategorized  ->  Wrong Medication

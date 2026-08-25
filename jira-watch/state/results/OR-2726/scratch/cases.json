@@ -1,0 +1,76 @@
+{
+  "a": {
+    "pmrn": "CACHEA-fake-d5a4b603-5c38-42ae-bd00-7c8d9591ee13",
+    "uuid": "01a0353f-87bb-765d-bc30-a1a8e49385be",
+    "op": {
+      "operationId": "01a0353f-87fe-75a9-ba56-0ca9cca127ca",
+      "caseId": "10508",
+      "startTime": "2026-08-24T20:29:11.145+00:00",
+      "endTime": null,
+      "procedureStartTime": null,
+      "procedureEndTime": null,
+      "inductionStartTime": null,
+      "extubationTime": null,
+      "admissionDate": null,
+      "initialApplicationLaunchTime": null,
+      "baselineMAP": null,
+      "serviceName": null,
+      "pediatricStatus": "ADULT",
+      "classification": null,
+      "asaStatus": null,
+      "primaryPractitionerName": null,
+      "procedureTypes": [
+        {
+          "procedureId": "p-appendectomy",
+          "procedureName": "Appendectomy",
+          "categories": [
+            "APPENDECTOMY"
+          ],
+          "qualifier": null,
+          "availableQualifiers": []
+        }
+      ],
+      "erasOperation": false,
+      "procedureTypeName": "Appendectomy",
+      "procedureTypeId": "p-appendectomy"
+    }
+  },
+  "b": {
+    "pmrn": "CACHEB-fake-98a4cb2c-6e74-4185-a2e3-af5bf13d1cbb",
+    "uuid": "01a0353f-8823-75da-82e9-dfa314445a6f",
+    "op": {
+      "operationId": "01a0353f-883b-7b18-bd1f-e82dc79b7295",
+      "caseId": "58481",
+      "startTime": "2026-08-24T20:29:11.219+00:00",
+      "endTime": null,
+      "procedureStartTime": null,
+      "procedureEndTime": null,
+      "inductionStartTime": null,
+      "extubationTime": null,
+      "admissionDate": null,
+      "initialApplicationLaunchTime": null,
+      "baselineMAP": null,
+      "serviceName": null,
+      "pediatricStatus": "ADULT",
+      "classification": null,
+      "asaStatus": null,
+      "primaryPractitionerName": null,
+      "procedureTypes": [
+        {
+          "procedureId": "p-hernia-repair",
+          "procedureName": "Hernia Repair",
+          "categories": [],
+          "qualifier": null,
+          "availableQualifiers": [
+            "without mesh uncomplicated",
+            "complicated",
+            "with mesh uncomplicated"
+          ]
+        }
+      ],
+      "erasOperation": false,
+      "procedureTypeName": "Hernia Repair",
+      "procedureTypeId": "p-hernia-repair"
+    }
+  }
+}

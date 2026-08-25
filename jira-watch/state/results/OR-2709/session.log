@@ -1,0 +1,9 @@
+Validation complete. Verdict: **deploy-ready**, written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2709/session.json`.
+
+What was exercised against the running instance (localhost:62666, `loop-e7eeafd6c`, mayo-mayo tenant):
+
+- **Positive** — case with exactly `p-pancreatectomy` + `p-biliary-stent-placement` → `["step 1: PIPERACILLIN_TAZOBACTAM"]`, with the `ProcedureCombinationPathwayService` match logged. Piperacillin allergy → `["step 2: LEVOFLOXACIN, METRONIDAZOLE, and VANCOMYCIN"]`. That's exactly the ticket's rank-0/rank-1 table. `p-whipple` + stent behaves identically.
+- **Negative** — pancreatectomy alone (`CEFAZOLIN and METRONIDAZOLE`), stent alone (`CEFAZOLIN`), both plus a third procedure (per-procedure walk, no combination log), and both under a non-Mayo tenant (no match at all).
+- **Red check** — three flips, all reverted: a class with the combination hook disabled compiled in-container and swapped into `/app/classes` (both combination cases dropped back to per-procedure regimens; shipped classes restored and md5-verified); renaming the `PIPERACILLIN_TAZOBACTAM` category (pathway abandoned with the expected ERROR); deleting the third procedure from the 3-procedure case (combination fired, proving that negative isn't vacuous).
+
+Six caveats recorded — the main ones being that resolution went through the admin `antibiotic-candidates` endpoint rather than the Epic-gated app-launch UI, cases were staged via the admin API rather than a real SIU feed, and alert firing itself wasn't driven end-to-end. Git working tree is clean; all scratch work is under the results directory.

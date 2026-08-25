@@ -71,3 +71,7 @@
 - [Surefire -Dtest skips outer tests](reference_surefire_dtest_nested_skips_outer.md) — with @Nested present, `-Dtest=ClassName` runs 0 outer-class tests and still says BUILD SUCCESS; read per-class counts
 - [Insulin dose/ISC validation surface](reference_insulin_dose_isc_validation_surface.md) — admin insulin-daily-dose trace + isc/initialize give a flip-and-revert loop; Mayo strategy ignores daily dose entirely
 - [Rollback guard tests go inert](reference_rollback_guard_tests_go_inert.md) — rollbackFor only matters for checked exceptions; Jackson wraps row errors as RuntimeException so `isInstanceOf(Exception.class)` passes either way; flip the guard and verify with javap
+- [OR-2734 NMB clipping unfixed](project_or2734_nmb_clipping_unfixed.md) — still OPEN/live in prod (629 of 640 clipped); exemption tried in #4300, reverted by #4416; real fix = clinical timestamp on firings, untracked
+- [Rule flags default to all tenants](reference_rule_flag_defaults_all_tenants.md) — a new rule with no changeset ships ON everywhere; @RuleDefinition has no orgs attr; /api/feature-flags won't show RULE: flags
+- [Mayo RAS injection recipe](reference_mayo_ras_injection_recipe.md) — RAS HL7 med admin locally; parser shifts timestamp +1h; operation attaches only if dose >= case start; use qrtz trigger not selection alert
+- [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — DONE 2026-08-24; per-item gating map; doxycycline all-clients is intentional, don't "fix" it

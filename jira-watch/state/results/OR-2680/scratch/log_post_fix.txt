@@ -1,0 +1,3 @@
+2026-08-24T21:17:23.540Z  INFO 1 --- [mcat-handler-33] -/- - - - - c.g.o.web.auth.CustomUserDetailsService  : loadUserByUsername admin: com.guided.orci.models.user.User@8508a882
+2026-08-24T21:17:23.627Z  INFO 1 --- [mcat-handler-33] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Password login succeeded for -admin-
+2026-08-24T21:17:23.627Z  WARN 1 --- [mcat-handler-33] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Not auditing USER_LOGIN_SUCCESS for -admin-: no enabled tenant on the request

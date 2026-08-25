@@ -1,0 +1,10 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What OR-2691 actually is:** a deploy-tooling/CI change (`tools/deploy` Python + `.github/workflows/deploy.yml`), not application behavior — so the running app at `localhost:62582` was irrelevant and untouched. Two commits: `6b53085a3` (move channel, add app link, skip double-post) and `56f625609` (channel as ID, catch Slack's `ok:false`).
+
+**Evidence gathered:**
+- **Positive** — Production Slack `#notifications-deploys` (C076GD57VV1, the exact ID in `config.py:105`) carries the app link on both CI and local deploys; the prod message shows `guidedor.guidedclinical.com`, confirming the stale-host fix. GitHub deployment API returns `environment_url https://guidedor-dev.guidedclinical.com`, proving `env.APP_HOST` resolves in `environment.url`. Also ran the real `PipelineRunner` in-process with only the Slack HTTP boundary intercepted, and captured the actual request body.
+- **Negative** — Zero deploy notices in `#product-dev` since the merge. The last one landed 2026-08-03 11:22 EDT, **12 minutes before PR #4241 merged at 11:34:51** — an unusually clean natural experiment. Plus the no-double-post and non-silent-rejection inverses.
+- **Red check** — The full pre-fix swap failed to load (unrelated commit `61bc2e4c6` rewrote `run_pipeline` against a new `ImageRef`/`deploy_ecs` signature), so I restored and reverse-patched only the OR-2691 hunks onto current code. All four checks went red simultaneously, and the shipped suite went 40 pass → 7 fail. Restored, checksums verified `OK`, positive re-run green, worktree clean.
+
+**Caveats recorded** (six), the notable ones: the `red_check_signature` won't appear in the app container log the gate greps, since nothing here touches the app; Slack/AWS were intercepted rather than called; and the prod branch of the workflow's `APP_HOST` ternary has never executed because prod deploys go through local `bin/deploy`, not the workflow.

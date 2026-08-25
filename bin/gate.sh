@@ -117,7 +117,16 @@ say "No tampering: status and comment count match the runner's baseline"
 # emitted would appear as literal punctuation. Strip the common markers rather than trusting it.
 comment_body=$(printf '%s' "$comment_body" | sed -e 's/\*\*//g' -e 's/`//g')
 
-full_comment="${comment_body}
+# Caveats go on the ticket as their own block. Buried in prose they get skimmed past, and the
+# whole point is that a reader sees how far the validation actually reached.
+caveats=$(jq -r '(.caveats // []) | map("- " + .) | join("\n")' "$session_json" 2>/dev/null || true)
+caveat_block=''
+[ -n "$caveats" ] && caveat_block="
+
+Caveats:
+${caveats}"
+
+full_comment="${comment_body}${caveat_block}
 
 Implementation: ${pr_url}
 Validated against ${sha} in an isolated ephemeral environment."
@@ -128,7 +137,8 @@ if [ "$commit" != '--commit' ]; then
     printf '%s\n' "$full_comment" >&2
     say '--- end ---'
     jq -nc --arg t "$ticket" --arg pr "$pr_url" --arg c "$full_comment" \
-        '{ticket: $t, admitted: true, dry_run: true, pr: $pr, comment: $c}'
+        --argjson cav "$(jq -c '.caveats // []' "$session_json")" \
+        '{ticket: $t, admitted: true, dry_run: true, pr: $pr, comment: $c, caveats: ($cav | length)}'
     exit 0
 fi
 
@@ -141,4 +151,6 @@ jira_transition_to "$ticket" Done || refuse "comment posted but the Done transit
 say "Transitioned ${ticket} to Done"
 
 jq -nc --arg t "$ticket" --arg pr "$pr_url" \
-    '{ticket: $t, admitted: true, dry_run: false, pr: $pr, posted: true, transitioned: "Done"}'
+    --argjson cav "$(jq -c '.caveats // []' "$session_json")" \
+    '{ticket: $t, admitted: true, dry_run: false, pr: $pr, posted: true, transitioned: "Done",
+      caveats: ($cav | length)}'

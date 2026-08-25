@@ -18,6 +18,7 @@ PROMPT_TEMPLATE="${LOOP_HOME}/prompts/validate.md"
 LOOP_USER="${LOOP_USER:-loopuser}"
 # Extended regex matched against the issue summary. A match means validate but never write.
 LOOP_RESERVED_PATTERN="${LOOP_RESERVED_PATTERN:-^Analytics:}"
+JIRA_ACCOUNT_ID="${JIRA_ACCOUNT_ID:-712020:eb570e67-6608-41f7-877b-09ca17738171}"
 LOOP_USER_PASSWORD="${LOOP_USER_PASSWORD:-LoopValidate1!}"
 SESSION_TIMEOUT="${SESSION_TIMEOUT:-2700}"
 
@@ -66,6 +67,19 @@ record() {
     jq -nc --arg t "$ticket" --arg d "$1" --arg detail "$2" --arg at "$stamp" \
         '{ticket: $t, disposition: $d, detail: $detail, at: $at}' >"${run_dir}/result.json"
     cat "${run_dir}/result.json"
+
+    # Outcomes that will not resolve themselves get pushed straight to Slack. The digest is
+    # pull-only, so without this a blocked ticket waits until someone thinks to look. Successes
+    # stay quiet on purpose: a 25-ticket sweep that pings per success trains you to ignore it.
+    case "$1" in
+        running | admitted) ;;
+        *)
+            _blockers=$(jq -r '(.blockers // []) | map("  - " + .) | join("\n")' \
+                "${run_dir}/session.json" 2>/dev/null || true)
+            "${CLAUDE_BIN}/notify.sh" "$(printf '%s needs you — %s\n%s\n%s' \
+                "$ticket" "$1" "$2" "${_blockers}")" >/dev/null 2>&1 || true
+            ;;
+    esac
 }
 
 # Status is rechecked here, not taken from the queue: a ticket can move between detection and
@@ -102,6 +116,17 @@ if [ "$status" = 'Ready for Testing' ]; then
         fi
     else
         log "dry-run: would move ${ticket} to Testing"
+    fi
+fi
+
+# Assigned at pickup and left that way through Done, so the board shows who owns the outcome.
+# Outside the transition block on purpose: a ticket already sitting in Testing still needs owning.
+# Reserved tickets skip this with everything else, since they belong to another reviewer.
+if [ -n "$commit" ]; then
+    if jira_assign "$ticket" "$JIRA_ACCOUNT_ID"; then
+        log "${ticket} assigned to the configured account"
+    else
+        log "WARNING could not assign ${ticket}; continuing"
     fi
 fi
 
@@ -163,6 +188,7 @@ env_json=$("${CLAUDE_BIN}/env-up.sh" "$run_id" "$image") || {
     exit 0
 }
 base_url=$(printf '%s' "$env_json" | jq -r '.base_url')
+project=$(printf '%s' "$env_json" | jq -r '.project')
 log "app under test at ${base_url}"
 
 jq -nc --arg t "$ticket" --arg image "$image" --arg sha "$sha" --arg url "$base_url" \
@@ -212,12 +238,22 @@ log "Starting unattended session (log: ${run_dir}/session.log)"
         mcp__claude_ai_Atlassian__addCommentToJiraIssue \
         mcp__claude_ai_Atlassian__editJiraIssue \
         mcp__claude_ai_Atlassian__createJiraIssue \
-    >"${run_dir}/session.log" 2>&1 ) &
+    </dev/null >"${run_dir}/session.log" 2>&1 ) &
 session_pid=$!
 
+# A session emits nothing until it exits, so without a heartbeat a healthy 20-minute run and a
+# hung one look identical in the log. The request count is the part that proves actual work.
 waited=0
 while kill -0 "$session_pid" 2>/dev/null; do
     waited=$((waited + 15))
+    if [ $((waited % 300)) -eq 0 ]; then
+        _reqs=$(docker logs "${project}-orci-1" 2>&1 |
+            grep -cE 'Unauthorized request|Rule context|Rule evaluated' 2>/dev/null || echo '?')
+        _appstate='up'
+        docker inspect -f '{{.State.Running}}' "${project}-orci-1" 2>/dev/null | grep -q true ||
+            _appstate='DOWN'
+        log "  … ${ticket} still running (${waited}s elapsed, ${_reqs} app requests, app ${_appstate})"
+    fi
     if [ "$waited" -ge "$SESSION_TIMEOUT" ]; then
         log "session exceeded ${SESSION_TIMEOUT}s — killing it"
         kill -9 "$session_pid" 2>/dev/null || true
@@ -230,7 +266,6 @@ log "session finished after ~${waited}s"
 
 # Captured before teardown: the gate verifies the red check against this, and container logs die
 # with the container.
-project=$(printf '%s' "$env_json" | jq -r '.project')
 docker logs "${project}-orci-1" >"${run_dir}/app.log" 2>&1 || true
 log "captured $(wc -l <"${run_dir}/app.log" | tr -d ' ') lines of application log"
 
@@ -240,7 +275,17 @@ verdict=$(jq -r '.verdict // "none"' "$session_json" 2>/dev/null || echo none)
 if [ "$gate_rc" -eq 0 ] && [ -n "$reserved" ]; then
     record reserved "verdict=${verdict}; reserved for another reviewer — validated locally, nothing posted, ticket untouched"
 elif [ "$gate_rc" -eq 0 ]; then
-    record admitted "verdict=${verdict}; $(printf '%s' "$gate_out" | jq -r 'if .dry_run then "dry-run, nothing posted" else "posted and transitioned" end')"
+    _caveats=$(jq -r '(.caveats // []) | map("  - " + .) | join("\n")' "$session_json" 2>/dev/null || true)
+    _how=$(printf '%s' "$gate_out" | jq -r 'if .dry_run then "dry-run, nothing posted" else "posted and transitioned" end')
+    if [ -n "$_caveats" ]; then
+        # Closed, but with a stated limit on how far the validation reached. A distinct disposition
+        # is what gets it into Slack and to the top of the digest instead of vanishing into the
+        # pile of successes.
+        record admitted_with_caveats "verdict=${verdict}; ${_how}; caveats:
+${_caveats}"
+    else
+        record admitted "verdict=${verdict}; ${_how}"
+    fi
 else
     record refused "verdict=${verdict}; $(printf '%s' "$gate_out" | jq -r '.reason // "gate refused"')"
 fi

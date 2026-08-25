@@ -1,0 +1,6 @@
+2026-08-24T20:54:47.344Z  INFO 1 --- [mcat-handler-18] -/- - - - - c.g.o.web.auth.CustomUserDetailsService  : loadUserByUsername admin: com.guided.orci.models.user.User@82811705
+2026-08-24T20:54:47.436Z  INFO 1 --- [mcat-handler-18] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Password login succeeded for -admin-
+2026-08-24T20:54:47.436Z  WARN 1 --- [mcat-handler-18] -/- - - - - c.g.orci.web.auth.FormLoginAuditHandler  : Not auditing USER_LOGIN_SUCCESS for -admin-: no enabled tenant on the request
+2026-08-24T20:54:47.479Z  INFO 1 --- [mcat-handler-20] -/- mayo-mayo - - - c.guided.orci.service.HL7InboundService  : Received HL7 message: type=ORU^R01, controlId=OR2677GLU2, sender=EPIC^ORU_FLOWSHEET/ROSMC
+2026-08-24T20:54:47.494Z  WARN 1 --- [   async-task-3] -/- mayo-mayo - - - c.g.o.s.hl7.DefaultHL7ProcessingContext  : No operation for glucose observation at Tue Jun 16 10:00:00 UTC 2026 — patient PatientId[value=99677001]; skipping glucose-driven rules
+2026-08-24T20:54:47.494Z  INFO 1 --- [   async-task-3] -/- mayo-mayo - - - c.g.o.s.hl7.DefaultHL7ProcessingContext  : Applied 1 HL7-sourced observations: 1 inserted/corrected, 0 deleted from hl7MessageId=01a0358d-e7b3-7e92-909d-20ece462ef71

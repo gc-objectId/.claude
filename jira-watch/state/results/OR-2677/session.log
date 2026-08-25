@@ -1,0 +1,11 @@
+Validation complete. Verdict: **deploy-ready**.
+
+**What I did against the running app** (`localhost:62189`, image `guidedclinical/orci:loop-e7eeafd6c`, tenant `mayo-mayo`):
+
+- **Positive** — seeded a case via the repo's real SIU^S14 fixture, set `start_time`, then injected a Mayo flowsheet ORU^R01 with `14032053^Glucose^MA451`. `GLUCOSE_UPDATED` dispatched, glucose rules ran, and the `operation_events` row committed. A two-sub-id ORU persisted both events.
+- **Negative** — glucose whose effective time precedes case start: `No operation for glucose observation ... skipping glucose-driven rules`, no event row, observation row still persisted (so provably not a dropped message).
+- **Red check** — reverted the fix's `saveObservations` afterCommit hunk to its parent-commit form, compiled it in-container with javac (lombok copied in as annotation processor only), confirmed via `javap` that `$5` calls `handleEvent` and lost the guard string, swapped and restarted. Reproduced the Sentry failure verbatim — `HL7 processor MayoHL7OruProcessor failed for type=ORU^R01 tenant=mayo-mayo` / `InvalidDataAccessApiUsageException: No active transaction`, stack trace matching the ticket frame-for-frame, event lost. With two glucose results the pre-fix code also abandoned the second one entirely. Restored all eight class files, sha1s identical, positive case re-ran clean.
+
+Recorded 5 caveats — the notable ones: only the glucose/ORU call site was exercised (the fix also rerouted `cancelMedAdmin`/`cancelInfusionAdmin`), and the new per-result try/catch can't be seen containing anything under fixed code. Also flagged an unrelated find: same-code OBX rows with an empty OBX-4 collapse into one observation with a newline-joined, non-numeric value.
+
+`session.json` written; worktree untouched, scratch outside the tree.

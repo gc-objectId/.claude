@@ -91,8 +91,11 @@ done
 
 # The seeded ROLE_USER has an empty allowed_tenants, so without this every session has to grant
 # itself tenant access before it can touch the UI or the user-facing API.
+# stdin must be closed explicitly: `compose exec` attaches stdin even with -T, which suspends the
+# whole pipeline with SIGTTIN when this runs as a background job.
 if compose exec -T postgres psql -U orci -d orci -q -v ON_ERROR_STOP=1 \
-    -c "update public.users set allowed_tenants = '${LOOP_USER_TENANTS}'::json where username = '${LOOP_USER}'" >/dev/null 2>&1; then
+    -c "update public.users set allowed_tenants = '${LOOP_USER_TENANTS}'::json where username = '${LOOP_USER}'" \
+    </dev/null >/dev/null 2>&1; then
     say "Granted ${LOOP_USER} access to ${LOOP_USER_TENANTS}"
 else
     say "WARNING: could not grant tenant access to ${LOOP_USER}; UI and user-facing API work will fail."

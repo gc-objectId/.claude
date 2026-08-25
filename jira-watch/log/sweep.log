@@ -1,0 +1,389 @@
+2026-08-24 16:24:14  OR-2603 status is 'Testing'
+2026-08-24 16:24:15  OR-2603 matches the reserved pattern (^Analytics:) — validating without writing to Jira
+2026-08-24 16:24:15  baseline: status='Testing' comments=2
+2026-08-24 16:24:15  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 16:24:16  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 16:24:17  slug=analytics-last-deepdive
+Jira issue type → branch prefix: feature/
+Preparing worktree (new branch 'feature/OR-2603-analytics-last-deepdive')
+branch 'feature/OR-2603-analytics-last-deepdive' set up to track 'origin/main'.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2603-analytics-last-deepdive
+  Branch: feature/OR-2603-analytics-last-deepdive
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 16:24:21  worktree=/Users/ryanducharme/dev/worktrees/OR-2603-analytics-last-deepdive
+Starting orci-loop-or-2603 (image guidedclinical/orci:loop-e7eeafd6c, app port 61909)
+ Network orci-loop-or-2603_default Creating 
+ Network orci-loop-or-2603_default Created 
+ Container orci-loop-or-2603-redis-1 Creating 
+ Container orci-loop-or-2603-postgres-1 Creating 
+ Container orci-loop-or-2603-redis-1 Created 
+ Container orci-loop-or-2603-postgres-1 Created 
+ Container orci-loop-or-2603-orci-1 Creating 
+ Container orci-loop-or-2603-orci-1 Created 
+ Container orci-loop-or-2603-postgres-1 Starting 
+ Container orci-loop-or-2603-redis-1 Starting 
+ Container orci-loop-or-2603-redis-1 Started 
+ Container orci-loop-or-2603-postgres-1 Started 
+ Container orci-loop-or-2603-redis-1 Waiting 
+ Container orci-loop-or-2603-postgres-1 Waiting 
+ Container orci-loop-or-2603-postgres-1 Healthy 
+ Container orci-loop-or-2603-redis-1 Healthy 
+ Container orci-loop-or-2603-orci-1 Starting 
+ Container orci-loop-or-2603-orci-1 Started 
+ Container orci-loop-or-2603-orci-1 Waiting 
+ Container orci-loop-or-2603-postgres-1 Waiting 
+ Container orci-loop-or-2603-redis-1 Waiting 
+ Container orci-loop-or-2603-orci-1 Healthy 
+ Container orci-loop-or-2603-postgres-1 Healthy 
+ Container orci-loop-or-2603-redis-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 59.602s at http://localhost:61909
+2026-08-24 16:25:28  app under test at http://localhost:61909
+2026-08-24 16:25:29  wrote ticket context (22 lines)
+2026-08-24 16:25:29  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2603/session.log)
+2026-08-24 16:30:14    … OR-2603 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-24 16:35:14    … OR-2603 still running (600s elapsed, 0
+? app requests, app up)
+2026-08-24 16:36:14  session finished after ~645s
+2026-08-24 16:36:15  captured 11049 lines of application log
+{"ticket":"OR-2603","disposition":"refused","detail":"verdict=inconclusive; verdict is 'inconclusive'","at":"2026-08-24T20:24:14Z"}
+2026-08-24 16:36:18  OR-2656 status is 'Ready for Testing'
+2026-08-24 16:36:19  OR-2656 moved to Testing
+2026-08-24 16:36:20  OR-2656 assigned to the configured account
+2026-08-24 16:36:21  baseline: status='Testing' comments=6
+2026-08-24 16:36:21  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 16:36:22  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 16:36:23  OR-2656 has no merged PR — disposing without booting an environment
+{"ticket":"OR-2656","disposition":"no_merged_pr","detail":"no merged PR within the search window; needs a human disposition","at":"2026-08-24T20:36:17Z"}
+2026-08-24 16:36:24  OR-2669 status is 'Ready for Testing'
+2026-08-24 16:36:25  OR-2669 moved to Testing
+2026-08-24 16:36:26  OR-2669 assigned to the configured account
+2026-08-24 16:36:27  baseline: status='Testing' comments=0
+2026-08-24 16:36:27  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 16:36:27  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 16:36:28  slug=recordnotfoundexception-unable-to-find
+Jira issue type → branch prefix: bugfix/
+Preparing worktree (new branch 'bugfix/OR-2669-recordnotfoundexception-unable-to-find')
+branch 'bugfix/OR-2669-recordnotfoundexception-unable-to-find' set up to track 'origin/main'.
+Updating files:  97% (3164/3256)Updating files:  98% (3191/3256)Updating files:  99% (3224/3256)Updating files: 100% (3256/3256)Updating files: 100% (3256/3256), done.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2669-recordnotfoundexception-unable-to-find
+  Branch: bugfix/OR-2669-recordnotfoundexception-unable-to-find
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 16:36:31  worktree=/Users/ryanducharme/dev/worktrees/OR-2669-recordnotfoundexception-unable-to-find
+Starting orci-loop-or-2669 (image guidedclinical/orci:loop-e7eeafd6c, app port 62050)
+ Network orci-loop-or-2669_default Creating 
+ Network orci-loop-or-2669_default Created 
+ Container orci-loop-or-2669-postgres-1 Creating 
+ Container orci-loop-or-2669-redis-1 Creating 
+ Container orci-loop-or-2669-postgres-1 Created 
+ Container orci-loop-or-2669-redis-1 Created 
+ Container orci-loop-or-2669-orci-1 Creating 
+ Container orci-loop-or-2669-orci-1 Created 
+ Container orci-loop-or-2669-redis-1 Starting 
+ Container orci-loop-or-2669-postgres-1 Starting 
+ Container orci-loop-or-2669-redis-1 Started 
+ Container orci-loop-or-2669-postgres-1 Started 
+ Container orci-loop-or-2669-postgres-1 Waiting 
+ Container orci-loop-or-2669-redis-1 Waiting 
+ Container orci-loop-or-2669-redis-1 Healthy 
+ Container orci-loop-or-2669-postgres-1 Healthy 
+ Container orci-loop-or-2669-orci-1 Starting 
+ Container orci-loop-or-2669-orci-1 Started 
+ Container orci-loop-or-2669-postgres-1 Waiting 
+ Container orci-loop-or-2669-redis-1 Waiting 
+ Container orci-loop-or-2669-orci-1 Waiting 
+ Container orci-loop-or-2669-orci-1 Healthy 
+ Container orci-loop-or-2669-redis-1 Healthy 
+ Container orci-loop-or-2669-postgres-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 58.561s at http://localhost:62050
+2026-08-24 16:37:39  app under test at http://localhost:62050
+2026-08-24 16:37:39  wrote ticket context (22 lines)
+2026-08-24 16:37:39  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2669/session.log)
+2026-08-24 16:42:25    … OR-2669 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-24 16:47:25    … OR-2669 still running (600s elapsed, 0
+? app requests, app up)
+2026-08-24 16:49:25  session finished after ~705s
+2026-08-24 16:49:25  captured 1428 lines of application log
+{"ticket":"OR-2669","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - Mayo's real Epic FHIR endpoint (test-tls.mcc.apix.mayo.edu) is not reachable from this instance, so tenants.mayo.fhir-r4-server-base-url and oauth-token-endpoint were overridden to a local stub and a locally generated RSA keypair was supplied via epic.oauth.key.pub/priv; everything from MayoGetPractitionerR4Command inward is the real code path, but the Epic server responses were synthetic.\n  - sentry.enabled is false on localhost, so no actual Sentry event could be observed; the WARN-with-stack log line emitted on the same branch as Sentry.captureException was used as the observable proxy for Sentry noise.\n  - The red check swapped in the current class minus the RecordNotFoundException catch rather than the literal 5e58b9f3f^ file, because that pre-refactor version no longer links against PractitionerAdminController.\n  - Only the Mayo lookup branch (searchPractitioner by epicUserId, practitioner with no linked user) was exercised; the MGB branch (getPractitioner by clientUserId) was not.\n  - The container was restarted twice for the class swap but never recreated, so the app has been running with the stub Epic config since the start of this validation.","at":"2026-08-24T20:36:23Z"}
+2026-08-24 16:49:32  OR-2677 status is 'Ready for Testing'
+2026-08-24 16:49:34  OR-2677 moved to Testing
+2026-08-24 16:49:34  OR-2677 assigned to the configured account
+2026-08-24 16:49:35  baseline: status='Testing' comments=0
+2026-08-24 16:49:35  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 16:49:36  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 16:49:37  slug=invaliddataaccessapiusageexception-no-active-transaction
+Jira issue type → branch prefix: bugfix/
+Preparing worktree (new branch 'bugfix/OR-2677-invaliddataaccessapiusageexception-no-active-transaction')
+branch 'bugfix/OR-2677-invaliddataaccessapiusageexception-no-active-transaction' set up to track 'origin/main'.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2677-invaliddataaccessapiusageexception-no-active-transaction
+  Branch: bugfix/OR-2677-invaliddataaccessapiusageexception-no-active-transaction
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 16:49:39  worktree=/Users/ryanducharme/dev/worktrees/OR-2677-invaliddataaccessapiusageexception-no-active-transaction
+Starting orci-loop-or-2677 (image guidedclinical/orci:loop-e7eeafd6c, app port 62189)
+ Network orci-loop-or-2677_default Creating 
+ Network orci-loop-or-2677_default Created 
+ Container orci-loop-or-2677-postgres-1 Creating 
+ Container orci-loop-or-2677-redis-1 Creating 
+ Container orci-loop-or-2677-redis-1 Created 
+ Container orci-loop-or-2677-postgres-1 Created 
+ Container orci-loop-or-2677-orci-1 Creating 
+ Container orci-loop-or-2677-orci-1 Created 
+ Container orci-loop-or-2677-postgres-1 Starting 
+ Container orci-loop-or-2677-redis-1 Starting 
+ Container orci-loop-or-2677-redis-1 Started 
+ Container orci-loop-or-2677-postgres-1 Started 
+ Container orci-loop-or-2677-redis-1 Waiting 
+ Container orci-loop-or-2677-postgres-1 Waiting 
+ Container orci-loop-or-2677-redis-1 Healthy 
+ Container orci-loop-or-2677-postgres-1 Healthy 
+ Container orci-loop-or-2677-orci-1 Starting 
+ Container orci-loop-or-2677-orci-1 Started 
+ Container orci-loop-or-2677-postgres-1 Waiting 
+ Container orci-loop-or-2677-redis-1 Waiting 
+ Container orci-loop-or-2677-orci-1 Waiting 
+ Container orci-loop-or-2677-postgres-1 Healthy 
+ Container orci-loop-or-2677-redis-1 Healthy 
+ Container orci-loop-or-2677-orci-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 58.977s at http://localhost:62189
+2026-08-24 16:50:46  app under test at http://localhost:62189
+2026-08-24 16:50:47  wrote ticket context (33 lines)
+2026-08-24 16:50:47  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2677/session.log)
+2026-08-24 16:55:32    … OR-2677 still running (300s elapsed, 47 app requests, app up)
+2026-08-24 17:00:33    … OR-2677 still running (600s elapsed, 73 app requests, app up)
+2026-08-24 17:05:18  session finished after ~870s
+2026-08-24 17:05:18  captured 12779 lines of application log
+{"ticket":"OR-2677","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - Only the glucose/ORU call site was exercised at runtime; the same fix also rerouted the cancelMedAdmin and cancelInfusionAdmin afterCommit dispatches (MedicationAdministrationCancelledEvent), which I did not inject RAS cancels for.\n  - operations.start_time was set with SQL rather than by a real case start, because Mayo case start needs Epic FHIR calls this isolated container cannot make; the transaction boundary under test is unaffected by how start_time got there.\n  - The new per-result try/catch guard's containment behaviour could not be observed under the fixed code, since nothing throws on the fixed path - its value was only shown indirectly, by watching the pre-fix code abort the second glucose result.\n  - Validated on tenant mayo-mayo only (the tenant in the Sentry report); the code path is tenant-generic but MGB/demo ORU routes were not exercised.\n  - Unrelated observation surfaced while building fixtures: two OBX rows sharing the same MA451 code and an empty OBX-4 sub-id collapse into one observation whose observation_value is the two values newline-joined ('155\\n161'), which is not numerically parseable; distinct sub-ids are required to get separate observations.","at":"2026-08-24T20:49:32Z"}
+2026-08-24 17:05:25  OR-2678 status is 'Ready for Testing'
+2026-08-24 17:05:27  OR-2678 moved to Testing
+2026-08-24 17:05:27  OR-2678 assigned to the configured account
+2026-08-24 17:05:28  baseline: status='Testing' comments=0
+2026-08-24 17:05:28  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 17:05:29  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 17:05:30  slug=mayo-parse-out-asa
+Jira issue type → branch prefix: feature/
+Preparing worktree (new branch 'feature/OR-2678-mayo-parse-out-asa')
+branch 'feature/OR-2678-mayo-parse-out-asa' set up to track 'origin/main'.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2678-mayo-parse-out-asa
+  Branch: feature/OR-2678-mayo-parse-out-asa
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 17:05:31  worktree=/Users/ryanducharme/dev/worktrees/OR-2678-mayo-parse-out-asa
+Starting orci-loop-or-2678 (image guidedclinical/orci:loop-e7eeafd6c, app port 62333)
+ Network orci-loop-or-2678_default Creating 
+ Network orci-loop-or-2678_default Created 
+ Container orci-loop-or-2678-postgres-1 Creating 
+ Container orci-loop-or-2678-redis-1 Creating 
+ Container orci-loop-or-2678-redis-1 Created 
+ Container orci-loop-or-2678-postgres-1 Created 
+ Container orci-loop-or-2678-orci-1 Creating 
+ Container orci-loop-or-2678-orci-1 Created 
+ Container orci-loop-or-2678-postgres-1 Starting 
+ Container orci-loop-or-2678-redis-1 Starting 
+ Container orci-loop-or-2678-redis-1 Started 
+ Container orci-loop-or-2678-postgres-1 Started 
+ Container orci-loop-or-2678-postgres-1 Waiting 
+ Container orci-loop-or-2678-redis-1 Waiting 
+ Container orci-loop-or-2678-postgres-1 Healthy 
+ Container orci-loop-or-2678-redis-1 Healthy 
+ Container orci-loop-or-2678-orci-1 Starting 
+ Container orci-loop-or-2678-orci-1 Started 
+ Container orci-loop-or-2678-postgres-1 Waiting 
+ Container orci-loop-or-2678-redis-1 Waiting 
+ Container orci-loop-or-2678-orci-1 Waiting 
+ Container orci-loop-or-2678-postgres-1 Healthy 
+ Container orci-loop-or-2678-redis-1 Healthy 
+ Container orci-loop-or-2678-orci-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 56.543s at http://localhost:62333
+2026-08-24 17:06:33  app under test at http://localhost:62333
+2026-08-24 17:06:33  wrote ticket context (17 lines)
+2026-08-24 17:06:33  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2678/session.log)
+2026-08-24 17:11:19    … OR-2678 still running (300s elapsed, 2 app requests, app up)
+2026-08-24 17:14:04  session finished after ~450s
+2026-08-24 17:14:04  captured 12103 lines of application log
+{"ticket":"OR-2678","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - Injection used the admin send endpoint (processMessageForAdmin -> processTenantMessage), which is the same code path as the live integration endpoint apart from apiTokenId; the real Epic-facing /api/integration/hl7 route was not exercised.\n  - No captured Epic SIU in the repo actually carries a populated ZCS-5 - every fixture on disk has 'ZCS|BEFORE|N|ORSCH_S14'. The field position was taken from the ticket's sample text, so if Epic puts ASA in a different ZCS component than ZCS-5-1 in the live feed this validation would not catch it.\n  - Numeric-prefixed forms exercised end-to-end were 2, 3, 4 and 5, plus legacy Roman 'III'. ASA_1 and ASA_6 are covered only by the existing unit tests, not by an injected message.\n  - The red check swapped only the SIU processor class; the AsaStatus enum, the operations.asa_status column and the merge line in DefaultHL7ProcessingContext stayed in place, so it isolates the ZCS-5 extraction rather than the whole changeset.\n  - Downstream consumers of asaStatus that landed in later commits (ProcedureRiskService pancreatectomy risk, the admin ASA edit endpoint and the Debug Operation tab) were not exercised beyond confirming OperationDTO serialises the field.","at":"2026-08-24T21:05:25Z"}
+2026-08-24 17:14:10  OR-2680 status is 'Ready for Testing'
+2026-08-24 17:14:11  OR-2680 moved to Testing
+2026-08-24 17:14:12  OR-2680 assigned to the configured account
+2026-08-24 17:14:12  baseline: status='Testing' comments=0
+2026-08-24 17:14:12  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 17:14:14  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 17:14:14  slug=nullpointerexception-cannot-invoke-com
+Jira issue type → branch prefix: bugfix/
+Preparing worktree (new branch 'bugfix/OR-2680-nullpointerexception-cannot-invoke-com')
+branch 'bugfix/OR-2680-nullpointerexception-cannot-invoke-com' set up to track 'origin/main'.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2680-nullpointerexception-cannot-invoke-com
+  Branch: bugfix/OR-2680-nullpointerexception-cannot-invoke-com
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 17:14:16  worktree=/Users/ryanducharme/dev/worktrees/OR-2680-nullpointerexception-cannot-invoke-com
+Starting orci-loop-or-2680 (image guidedclinical/orci:loop-e7eeafd6c, app port 62476)
+ Network orci-loop-or-2680_default Creating 
+ Network orci-loop-or-2680_default Created 
+ Container orci-loop-or-2680-postgres-1 Creating 
+ Container orci-loop-or-2680-redis-1 Creating 
+ Container orci-loop-or-2680-redis-1 Created 
+ Container orci-loop-or-2680-postgres-1 Created 
+ Container orci-loop-or-2680-orci-1 Creating 
+ Container orci-loop-or-2680-orci-1 Created 
+ Container orci-loop-or-2680-postgres-1 Starting 
+ Container orci-loop-or-2680-redis-1 Starting 
+ Container orci-loop-or-2680-postgres-1 Started 
+ Container orci-loop-or-2680-redis-1 Started 
+ Container orci-loop-or-2680-redis-1 Waiting 
+ Container orci-loop-or-2680-postgres-1 Waiting 
+ Container orci-loop-or-2680-postgres-1 Healthy 
+ Container orci-loop-or-2680-redis-1 Healthy 
+ Container orci-loop-or-2680-orci-1 Starting 
+ Container orci-loop-or-2680-orci-1 Started 
+ Container orci-loop-or-2680-postgres-1 Waiting 
+ Container orci-loop-or-2680-redis-1 Waiting 
+ Container orci-loop-or-2680-orci-1 Waiting 
+ Container orci-loop-or-2680-redis-1 Healthy 
+ Container orci-loop-or-2680-postgres-1 Healthy 
+ Container orci-loop-or-2680-orci-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 56.76s at http://localhost:62476
+2026-08-24 17:15:18  app under test at http://localhost:62476
+2026-08-24 17:15:18  wrote ticket context (22 lines)
+2026-08-24 17:15:18  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2680/session.log)
+2026-08-24 17:20:04    … OR-2680 still running (300s elapsed, 53 app requests, app up)
+2026-08-24 17:20:34  session finished after ~315s
+2026-08-24 17:20:34  captured 11945 lines of application log
+{"ticket":"OR-2680","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - Only the admin REST endpoint was exercised; there is no user-facing UI route for GET /api/admin/observations/patient/{pmrn}/ that was driven end to end.\n  - The pre-fix class used for the red check was recompiled with @Slf4j stripped (the class contains no log usage) rather than being extracted from a pre-fix image build.\n  - Tenants exercised were demo-demo (full positive/negative) and mayo-mayo (404 only); no MGB tenant was touched.\n  - The sibling endpoints on ObservationController (addObservation, delete paths) were only exercised incidentally during setup, not re-validated after the class restore.","at":"2026-08-24T21:14:10Z"}
+2026-08-24 17:20:40  OR-2691 status is 'Ready for Testing'
+2026-08-24 17:20:41  OR-2691 moved to Testing
+2026-08-24 17:20:42  OR-2691 assigned to the configured account
+2026-08-24 17:20:43  baseline: status='Testing' comments=0
+2026-08-24 17:20:43  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 17:20:45  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 17:20:46  slug=update-slack-notifications-for
+Jira issue type → branch prefix: feature/
+Preparing worktree (new branch 'feature/OR-2691-update-slack-notifications-for')
+branch 'feature/OR-2691-update-slack-notifications-for' set up to track 'origin/main'.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2691-update-slack-notifications-for
+  Branch: feature/OR-2691-update-slack-notifications-for
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 17:20:47  worktree=/Users/ryanducharme/dev/worktrees/OR-2691-update-slack-notifications-for
+Starting orci-loop-or-2691 (image guidedclinical/orci:loop-e7eeafd6c, app port 62582)
+ Network orci-loop-or-2691_default Creating 
+ Network orci-loop-or-2691_default Created 
+ Container orci-loop-or-2691-postgres-1 Creating 
+ Container orci-loop-or-2691-redis-1 Creating 
+ Container orci-loop-or-2691-redis-1 Created 
+ Container orci-loop-or-2691-postgres-1 Created 
+ Container orci-loop-or-2691-orci-1 Creating 
+ Container orci-loop-or-2691-orci-1 Created 
+ Container orci-loop-or-2691-redis-1 Starting 
+ Container orci-loop-or-2691-postgres-1 Starting 
+ Container orci-loop-or-2691-postgres-1 Started 
+ Container orci-loop-or-2691-redis-1 Started 
+ Container orci-loop-or-2691-postgres-1 Waiting 
+ Container orci-loop-or-2691-redis-1 Waiting 
+ Container orci-loop-or-2691-postgres-1 Healthy 
+ Container orci-loop-or-2691-redis-1 Healthy 
+ Container orci-loop-or-2691-orci-1 Starting 
+ Container orci-loop-or-2691-orci-1 Started 
+ Container orci-loop-or-2691-orci-1 Waiting 
+ Container orci-loop-or-2691-postgres-1 Waiting 
+ Container orci-loop-or-2691-redis-1 Waiting 
+ Container orci-loop-or-2691-postgres-1 Healthy 
+ Container orci-loop-or-2691-redis-1 Healthy 
+ Container orci-loop-or-2691-orci-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 56.567s at http://localhost:62582
+2026-08-24 17:21:49  app under test at http://localhost:62582
+2026-08-24 17:21:49  wrote ticket context (19 lines)
+2026-08-24 17:21:49  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2691/session.log)
+2026-08-24 17:26:35    … OR-2691 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-24 17:28:50  session finished after ~420s
+2026-08-24 17:28:50  captured 11045 lines of application log
+{"ticket":"OR-2691","disposition":"refused","detail":"verdict=deploy-ready; red_check_signature does not appear in the captured application log — the red check did not happen as described","at":"2026-08-24T21:20:39Z"}
+2026-08-24 17:28:53  OR-2709 status is 'Ready for Testing'
+2026-08-24 17:28:54  OR-2709 moved to Testing
+2026-08-24 17:28:55  OR-2709 assigned to the configured account
+2026-08-24 17:28:56  baseline: status='Testing' comments=3
+2026-08-24 17:28:56  Building image from origin/main
+Image guidedclinical/orci:loop-e7eeafd6c already built for e7eeafd6c — reusing.
+2026-08-24 17:28:57  image=guidedclinical/orci:loop-e7eeafd6c sha=e7eeafd6c15f63ec57599b0bd15c93e781c5bb74
+2026-08-24 17:28:57  slug=pancreatectomy-with-biliary-stent
+Jira issue type → branch prefix: feature/
+Preparing worktree (new branch 'feature/OR-2709-pancreatectomy-with-biliary-stent')
+branch 'feature/OR-2709-pancreatectomy-with-biliary-stent' set up to track 'origin/main'.
+HEAD is now at e7eeafd6c Merge pull request #4466 from guidedclinical/last-metrics-mayo
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2709-pancreatectomy-with-biliary-stent
+  Branch: feature/OR-2709-pancreatectomy-with-biliary-stent
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-24 17:28:59  worktree=/Users/ryanducharme/dev/worktrees/OR-2709-pancreatectomy-with-biliary-stent
+Starting orci-loop-or-2709 (image guidedclinical/orci:loop-e7eeafd6c, app port 62666)
+ Network orci-loop-or-2709_default Creating 
+ Network orci-loop-or-2709_default Created 
+ Container orci-loop-or-2709-postgres-1 Creating 
+ Container orci-loop-or-2709-redis-1 Creating 
+ Container orci-loop-or-2709-postgres-1 Created 
+ Container orci-loop-or-2709-redis-1 Created 
+ Container orci-loop-or-2709-orci-1 Creating 
+ Container orci-loop-or-2709-orci-1 Created 
+ Container orci-loop-or-2709-postgres-1 Starting 
+ Container orci-loop-or-2709-redis-1 Starting 
+ Container orci-loop-or-2709-redis-1 Started 
+ Container orci-loop-or-2709-postgres-1 Started 
+ Container orci-loop-or-2709-redis-1 Waiting 
+ Container orci-loop-or-2709-postgres-1 Waiting 
+ Container orci-loop-or-2709-postgres-1 Healthy 
+ Container orci-loop-or-2709-redis-1 Healthy 
+ Container orci-loop-or-2709-orci-1 Starting 
+ Container orci-loop-or-2709-orci-1 Started 
+ Container orci-loop-or-2709-redis-1 Waiting 
+ Container orci-loop-or-2709-orci-1 Waiting 
+ Container orci-loop-or-2709-postgres-1 Waiting 
+ Container orci-loop-or-2709-redis-1 Healthy 
+ Container orci-loop-or-2709-orci-1 Healthy 
+ Container orci-loop-or-2709-postgres-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 57.208s at http://localhost:62666
+2026-08-24 17:30:01  app under test at http://localhost:62666
+2026-08-24 17:30:01  wrote ticket context (28 lines)
+2026-08-24 17:30:01  Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2709/session.log)
+2026-08-24 17:34:47    … OR-2709 still running (300s elapsed, 484 app requests, app up)
+2026-08-24 17:39:47    … OR-2709 still running (600s elapsed, 950 app requests, app up)
+2026-08-24 17:41:02  session finished after ~660s
+2026-08-24 17:41:02  captured 12744 lines of application log
+{"ticket":"OR-2709","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - Resolution was exercised through GET /api/admin/patients/{pmrn}/operations/{caseId}/antibiotic-candidates, which calls the same ProcedureAntibioticCandidateService.resolve the rule engine calls; the Mayo app-launch UI is unreachable locally because it requires Epic OAuth.\n  - Cases were staged with POST /api/admin/patients/{uuid}/operations/create rather than a real Mayo SIU/Epic case start, so procedure-set derivation from the HL7 feed was not exercised.\n  - Alert firing itself (KnownProcedureNoAntibioticRule / KnownProcedureAntibioticNotRecommendedRule) was not driven end-to-end on a combination case; only the resolution the rules read was observed, confirmed present in the MedicationSelectionContext debug dump.\n  - The demo-demo org negative returned an empty list because demo has no configured pathways for those two procedures, so the direct observation there is the absent combination log line rather than a differing non-empty regimen.\n  - The pre-fix class swap disabled only the combination hook inside the HEAD class rather than restoring the parent commit's file verbatim, because post-merge DTO renames make the parent source uncompilable against the shipped classpath.\n  - Acuity was never set on any case (classification null throughout), so the interaction between a combination pathway and acuity-scoped configuration was not exercised at runtime.","at":"2026-08-24T21:28:52Z"}

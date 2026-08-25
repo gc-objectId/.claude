@@ -1,0 +1,14 @@
+tenants:
+  mayo:
+    enabled: true
+    show-sample-patients: true
+    oauth-client-id: 4b4c87bc-06ed-4daf-8b72-f79a67594b14
+    observation-system: urn:oid:1.2.840.114350.1.13.451.3.7.2.768282
+    mrn-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.135000
+    person-id-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.135
+    provider-id-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.6
+    case-start-notification-enabled: true
+  demo:
+    show-sample-patients: true
+  mgb:
+    show-sample-patients: true

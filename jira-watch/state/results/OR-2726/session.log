@@ -1,0 +1,11 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What I exercised against the running app (localhost:61175, demo-demo):**
+
+- **Positive** — a case with zero configured pathways (`p-hernia-repair`) now stores its empty resolution in Valkey (`antibiotic-resolution-v2/tenant:demo-demo/op:…`, hash field = user id, TTL 86382) and the second event served it with zero `ProcedureAntibioticCandidateService` log lines. I also proved the *whole* resolution is served by editing the cached body of an appendectomy case to prefer its step-3 option — the admin `antibiotic-candidates` endpoint returned `step 3: VANCOMYCIN, LEVOFLOXACIN, and METRONIDAZOLE` instead of the `step 1: CEFAZOLIN and METRONIDAZOLE` a recompute yields. A `loopuser` scan added its own field alongside admin's on the same key.
+
+- **Negative** — with that edited entry in place, `PATCH …/classification` deleted the case key outright; the next resolve recomputed (`Finished … resolve - 28.32 ms`) and rewrote step 1, so the superseded answer was never handed back. One case-scoped write dropped both users' fields together. A legacy plain-string entry at the case key was refused and dropped rather than served.
+
+- **Red check** — two flips, both reverted: (1) `HDEL` the cached field → the recompute log came straight back, then the rewrite restored the quiet hit; (2) stored a body with `agreed=false` and non-empty `preferred`, tripping `AntibioticResolution`'s precondition → `Discarding an unusable cached antibiotic resolution` + `ValueInstantiationException: … drugs can only be preferred on the authority of procedures that agree on a protocol`, while the request still returned 200 with the correct drugs. Pre-fix class swap was not attempted — the class was rewritten to `AntibioticPathwayRepository` by later tickets and the parent version won't compile against the shipped classpath.
+
+Automation gaps recorded: nothing today asserts the empty resolution is stored and reused, the precondition-RuntimeException branch (existing test fails at the parser instead), case- vs user-scoped invalidation, or the launch/scheduling paths dropping the key after commit.
