@@ -13,6 +13,7 @@ set -eu
 LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.claude/bin}"
 RESULTS="${LOOP_HOME}/state/results"
+SKIP_FILE="${LOOP_HOME}/state/skip"
 WORKTREE_ROOT="${WORKTREE_ROOT:-$HOME/dev/worktrees}"
 ORCI_ROOT="${ORCI_ROOT:-$HOME/dev/orci}"
 PROJECT="${JIRA_WATCH_PROJECT:-OR}"
@@ -40,6 +41,12 @@ jql="project = \"${PROJECT}\" AND sprint in openSprints() AND status IN (\"${STA
 emitted=0
 jira_search_keys "$jql" | while IFS="$(printf '\t')" read -r key _summary; do
     [ -n "$key" ] || continue
+
+    # Tickets deliberately taken out of the sweep by unblock.sh — usually not locally validatable.
+    if [ -f "${SKIP_FILE}" ] && grep -qxF "$key" "${SKIP_FILE}"; then
+        printf 'skip %s: on the skip list\n' "$key" >&2
+        continue
+    fi
 
     if [ -n "$(find "$WORKTREE_ROOT" -maxdepth 1 -name "${key}-*" -print -quit 2>/dev/null)" ]; then
         printf 'skip %s: worktree exists\n' "$key" >&2

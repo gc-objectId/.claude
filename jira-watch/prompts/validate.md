@@ -100,6 +100,7 @@ Write exactly one file, `__SESSION_JSON__`, and nothing else outside the worktre
   },
   "red_check_signature": "a literal substring of the application log that appeared ONLY while the red check was active — e.g. the exception line and message you provoked. The gate greps the captured log for this exact string, so copy it verbatim, keep it distinctive (at least 20 characters), and do not include the timestamp or thread name, which vary.",
   "blockers": ["required and non-empty unless verdict is deploy-ready"],
+  "ship_risk": "none | material — of the caveats below, would ANY of them make a reviewer hesitate to deploy this? 'material' means yes: something load-bearing was substituted, or a path that matters was never exercised. 'none' means the caveats are worth recording but nobody should hold the release over them. Answer honestly; nearly every validation has caveats, so if everything is marked material the flag stops meaning anything and real risks get lost in the noise.",
   "caveats": ["anything that limits how far this validation reaches, even when the verdict is deploy-ready — a dependency you had to stub, a path you could not reach in this environment, a branch you did not exercise. One line each, empty array if genuinely none. Declaring a caveat NEVER costs you the verdict; it is recorded alongside it and flagged for Ryan. Omitting one that mattered is the actual failure."],
   "automation": {
     "assessment": "existing coverage, and what is worth locking in (or why nothing is)",

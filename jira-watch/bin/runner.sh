@@ -104,6 +104,27 @@ if printf '%s' "$summary" | grep -qE "$LOOP_RESERVED_PATTERN"; then
     log "${ticket} matches the reserved pattern (${LOOP_RESERVED_PATTERN}) — validating without writing to Jira"
 fi
 
+log "Building image from origin/main"
+build=$("${CLAUDE_BIN}/build-image.sh") || die "image build failed"
+image=$(printf '%s' "$build" | jq -r '.image')
+sha=$(printf '%s' "$build" | jq -r '.sha')
+log "image=${image} sha=${sha}"
+
+# Nothing to validate means no environment is worth booting.
+fresh=$("${CLAUDE_BIN}/freshness.sh" "$ticket" "$sha" 2>/dev/null) && fresh_rc=0 || fresh_rc=$?
+case "$fresh_rc" in
+    0) ;;
+    5) log "${ticket} has no merged PR — disposing without booting an environment"
+       record no_merged_pr "no merged PR within the search window; needs a human disposition"
+       exit 0 ;;
+    4) log "${ticket} fix is not in the build"
+       record stale_build "build ${sha} does not contain the ticket's merge commit"
+       exit 0 ;;
+    *) die "freshness check errored (rc=${fresh_rc})" ;;
+esac
+
+# Pickup happens only once there is something to validate. Doing it earlier moved tickets into
+# Testing and assigned them for runs that then aborted on a missing PR — a board change for nothing.
 # Moving to Testing marks the ticket as picked up. It also acts as the in-flight lock: watch.sh
 # only matches tickets currently in Ready for Testing, so this stops a second run being queued.
 if [ "$status" = 'Ready for Testing' ]; then
@@ -136,25 +157,6 @@ fi
 expected_status=$(jira_issue_status "$ticket" 2>/dev/null || true)
 baseline_comments=$(jira_comment_count "$ticket" 2>/dev/null || echo -1)
 log "baseline: status='${expected_status}' comments=${baseline_comments}"
-
-log "Building image from origin/main"
-build=$("${CLAUDE_BIN}/build-image.sh") || die "image build failed"
-image=$(printf '%s' "$build" | jq -r '.image')
-sha=$(printf '%s' "$build" | jq -r '.sha')
-log "image=${image} sha=${sha}"
-
-# Nothing to validate means no environment is worth booting.
-fresh=$("${CLAUDE_BIN}/freshness.sh" "$ticket" "$sha" 2>/dev/null) && fresh_rc=0 || fresh_rc=$?
-case "$fresh_rc" in
-    0) ;;
-    5) log "${ticket} has no merged PR — disposing without booting an environment"
-       record no_merged_pr "no merged PR within the search window; needs a human disposition"
-       exit 0 ;;
-    4) log "${ticket} fix is not in the build"
-       record stale_build "build ${sha} does not contain the ticket's merge commit"
-       exit 0 ;;
-    *) die "freshness check errored (rc=${fresh_rc})" ;;
-esac
 
 slug=$(jira_slug "$summary")
 log "slug=${slug}"
@@ -277,14 +279,21 @@ if [ "$gate_rc" -eq 0 ] && [ -n "$reserved" ]; then
 elif [ "$gate_rc" -eq 0 ]; then
     _caveats=$(jq -r '(.caveats // []) | map("  - " + .) | join("\n")' "$session_json" 2>/dev/null || true)
     _how=$(printf '%s' "$gate_out" | jq -r 'if .dry_run then "dry-run, nothing posted" else "posted and transitioned" end')
-    if [ -n "$_caveats" ]; then
+    _risk=$(jq -r '.ship_risk // "none"' "$session_json" 2>/dev/null || echo none)
+    # Caveats alone are not a flag — almost every run has some. What earns attention is the
+    # session saying one of them should give a reviewer pause.
+    if [ -n "$_caveats" ] && [ "$_risk" = 'material' ]; then
         # Closed, but with a stated limit on how far the validation reached. A distinct disposition
         # is what gets it into Slack and to the top of the digest instead of vanishing into the
         # pile of successes.
         record admitted_with_caveats "verdict=${verdict}; ${_how}; caveats:
 ${_caveats}"
     else
-        record admitted "verdict=${verdict}; ${_how}"
+        if [ -n "$_caveats" ]; then
+            record admitted "verdict=${verdict}; ${_how}; caveats recorded, none material"
+        else
+            record admitted "verdict=${verdict}; ${_how}"
+        fi
     fi
 else
     record refused "verdict=${verdict}; $(printf '%s' "$gate_out" | jq -r '.reason // "gate refused"')"
