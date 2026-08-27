@@ -1,0 +1,12 @@
+OR-2806 validated: **deploy-ready**.
+
+**What the ticket delivered** (PR #4427, three commits): the Mayo HL7 path detected that a RAS message overwrote an administration it already held, but never told the rule evaluator — so every Epic correction re-ran selection rules and re-scored the corrected dose. The fix threads `edit` through to `EMRAdministeredMedicationProcessor` and re-keys the dose-history exclusion on tracking id.
+
+**Evidence against the running app** (mayo-mayo, `localhost:60974`):
+- **Positive** — a RAS correction (same `ORC-2` + `RXA-2` sub-id, dose 60→68 mL, time 20:45→20:49) overwrote the row in place and recorded only a new DOSE firing; the SELECTION count under that tracking id stayed at 2. A second case exercised the tracking-id stamping guard: a bolus that first landed outside the case window (no operation, no tracking id) got stamped on its correction and ran dose rules only.
+- **Negative** — same order, new `RXA-2` sub-id → separate row, new tracking id, selection ran, and the warning's `LOCAL_ANESTHETIC_ADMINISTRATIONS` listed both nerve blocks (50 mg at 20:53 / 170 mg at 20:49) — the ticket's exact shape, correctly reported because there really were two.
+- **Red check** — recompiled `DefaultHL7ProcessingContext` in-container with `.edit(edit)` → `.edit(false)` (the pre-fix value), restarted, and the same correction produced a **duplicate** `w-last-local-anesthetic-max-dose` selection firing plus a never-before-seen log line. Restored the eight class files, all md5sums match the originals, re-ran the positive clean.
+
+Two things worth flagging: the red check reverted the fix at its seam rather than checking out the parent commit (the parent no longer compiles — `Request` dropped `orderId`), and the dose-history exclusion half produced identical numbers with and without the fix here, so only the selection-suppression half was shown to change runtime behaviour. Both are recorded as caveats; `ship_risk: none`.
+
+`session.json` written; no commits, pushes, or Jira writes.

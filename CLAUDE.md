@@ -141,6 +141,40 @@ When I ask you to "validate" a ticket — e.g. "pull OR-XXXX for context and val
 5. Provide the exact run commands and wait for my confirmation, per the ticket flow.
 6. **Close out after merge** — I'll return to this session (whenever the PR merges) and confirm it was merged and ask to clean up. That's your cue to run `worktree-done` from inside the worktree (removes the worktree directory + local branch). If the ticket wasn't already moved to Done at the deploy-ready close-out (step 3) — e.g. because validation surfaced a fix that has now merged — the deploy-ready verdict lands now: post the validation comment and move it to Done, no ask. After it succeeds, I exit the session. If `worktree-done` refuses (unmerged branch), surface that instead of forcing it.
 
+## Validation Loop (jira-watch)
+
+Validating Ready-for-Testing tickets is automated. `~/.claude/jira-watch/` runs the flow above —
+positive, negative, flip-and-revert red check — unattended, against a throwaway build of `main` in a
+disposable containerised environment, and closes the tickets whose evidence holds up. `loopcmd help`
+is the reference; `~/.claude/jira-watch/README.md` has the detail.
+
+- **Default path for a Ready-for-Testing ticket is a sweep**, not a hand-run validation:
+  `loopcmd 8 2`. Manual `workon` + `/workon` remains correct for a one-off, for anything needing
+  supervision, and for all IMPLEMENT-mode work. The two cannot collide: the loop skips any ticket
+  with an existing worktree or branch, and `workon` refuses a ticket the loop is mid-run on.
+- **`loopcmd review` is the daily interaction.** It gathers a briefing and opens a session running
+  the `loop-review` skill, which walks the queue one ticket at a time. Shell does the mechanical
+  work, sessions do the judgment, skills hold the SOP.
+- **Autonomous close-outs are gated, not trusted.** `gate.sh` owns every Jira write and refuses
+  unless the red-check signature actually appears in the captured application log, freshness
+  re-verifies independently of the session's claim, and the ticket's status and comment count are
+  unchanged since pickup. A session cannot certify its own work.
+- **Autonomous validation comments use impersonal voice** ("This was validated against…"), unlike
+  interactive `/workon` close-outs, which stay first person. The loop posts under my account without
+  me having done the work.
+- **Analytics tickets are reserved** — validated in full, but every Jira write is dropped, because
+  Alex validates that work. `LOOP_RESERVED_PATTERN` controls the rule.
+- **Coverage is the point, and it has its own verb.** A sweep proposes tests but never writes them;
+  `automation.sh` is the backlog and `loopcmd review` surfaces it. `loopcmd cover OR-XXXX` turns
+  proposals into a draft PR — curation is a conversation (declining is how I steer), then only the
+  kept proposals get written, run, gated on test-paths-only, and pushed as a draft. A closed ticket
+  whose proposals were never collected is a loss, not a win.
+- **`loopcmd teardown OR-XXXX` is the last step**, after a PR merges: worktree removed, ticket
+  commented and closed. It refuses unless a merged PR actually references the key.
+- **The whole SOP now maps to verbs:** validate + close → `loopcmd 8 2`; review and unblock →
+  `loopcmd review`; discuss + implement automation → `loopcmd cover`; draft PR → end of `cover`;
+  address feedback → mine, on the PR; teardown after merge → `loopcmd teardown`.
+
 ## Testing & Development
 
 - Always test against local before committing

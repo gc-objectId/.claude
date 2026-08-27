@@ -56,8 +56,7 @@ dir="${WORKTREE_ROOT}/${ticket}-${slug}"
 
 [ -d "$ORCI_ROOT/.git" ] || die "$ORCI_ROOT is not a git repository."
 
-# Refusing here is the point: re-running against an existing worktree force-moves the branch
-# onto a fresh main, which surfaces later as a week of main showing up as staged reversions.
+# Re-running against an existing worktree would force-move the branch onto a fresh main.
 existing=$(find "$WORKTREE_ROOT" -maxdepth 1 -name "${ticket}-*" -print -quit 2>/dev/null || true)
 if [ -n "$existing" ]; then
     say "Refusing: a worktree for ${ticket} already exists at ${existing}"
@@ -72,8 +71,7 @@ fi
 env_source="${ORCI_ROOT}/${QA_ENV_REL}"
 [ -f "$env_source" ] || die "${env_source} not found — cannot symlink it into the worktree."
 
-# Creation must be all-or-nothing: a half-built worktree would make every retry hit the
-# already-exists guard instead, stranding the ticket.
+# A half-built worktree would make every retry hit the already-exists guard.
 created=''
 rollback_on_failure() {
     st=$?

@@ -1,0 +1,2 @@
+OR-2743#0	qa-suite (supplemental, INS family): a pair — eGFR "30" makes the calculation cite the eGFR clause; eGFR ">90" makes it absent. The pair is the point: the absence assertion has been seen to fail.
+OR-2743#2	Unit (AdjustInsulinInfusionRateRuleTest): boundary — eGFR 45 produces no clause, 44.9 produces the clause.

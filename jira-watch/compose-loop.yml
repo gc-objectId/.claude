@@ -24,8 +24,7 @@ services:
 
   redis:
     image: valkey/valkey:8.1-alpine
-    # KEA is not optional: the app returns ConfigureRedisAction.NO_OP, so without keyspace
-    # notifications session expiry and destroy events silently stop firing.
+    # KEA is required: the app returns ConfigureRedisAction.NO_OP, so nothing else enables keyspace events.
     command:
       ["valkey-server", "--requirepass", "g76!s4z", "--notify-keyspace-events", "KEA"]
     healthcheck:
@@ -40,10 +39,8 @@ services:
       - "${ORCI_APP_PORT:?ORCI_APP_PORT must be set}:8080"
     environment:
       RUNNING_DOCKER: "true"
-      # docker is listed last so its datasource and redis hosts win; local supplies the
-      # tenant enablement that validation needs. The default_user_* names are passed as -D
-      # rather than env vars because @Value reads those literal underscored property names.
-      # Without them DefaultUserSetupRunner skips, leaving no tenant user for UI validation.
+      # docker last so its datasource wins; local supplies tenant enablement.
+      # default_user_* go via -D because @Value reads those literal underscored names.
       JVM_FLAGS: >-
         -Dspring.profiles.active=local,docker
         -Ddefault_user_username=${LOOP_USER:-loopuser}

@@ -71,9 +71,7 @@ if git -C "$ORCI_ROOT" branch -d "$branch" 2>/dev/null; then
     exit 0
 fi
 
-# -d refuses a squash-merged branch: its commits never land on main, only their combined tree
-# does. Replay that tree as one commit off the merge base and ask whether origin/main already
-# carries an equivalent patch. Compare against origin/main; local main is routinely stale.
+# -d refuses a squash merge, so replay the tree as one commit and ask origin/main via cherry.
 git -C "$ORCI_ROOT" fetch --quiet origin 2>/dev/null || true
 base=$(git -C "$ORCI_ROOT" merge-base origin/main "$branch" 2>/dev/null || true)
 tree=$(git -C "$ORCI_ROOT" rev-parse "$branch^{tree}" 2>/dev/null || true)

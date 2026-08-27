@@ -1,0 +1,11 @@
+OR-2782 validated: **deploy-ready**. `session.json` written.
+
+**Positive** — In Room attributed the SIU's SCH-20 nurse (`epic_user_id=9101`); the following Anes Start re-attributed the case to the AIP role-2.10 anesthesiologist (`7001 ALICE ANESDOC`), logging the roster line. Ranking confirmed separately (CRNA 2.20 beat resident 2.60 and SRNA 2.100). The non-Mayo half was exercised on demo via `/api/app-launch`: a relaunch moved ownership `PRIOR OWNER → LOOP LAUNCHER`.
+
+**Negative** — with Anes Start first, a later In Room from a different sender carrying a full roster left the attribution untouched (`last_modified_date` unchanged) despite the message processing end-to-end. An Anes Start with unfilled AIP rows also kept the existing attribution.
+
+**Red check** — both techniques, both reverted:
+- Data flip: changing only the event name (`In Room` → `Anes Start`) on the losing message made the overwrite fire; signature line appeared exactly once.
+- Pre-fix class swap: reverse-applied the OR-2782 hunks to three classes, compiled in-container against the runtime classpath + lombok, shadowed the shipped jars in `/app/classes`. Same scenario produced no attribution and none of the new log lines. Restored, md5sums verified identical, positive case reproduced on a fresh case.
+
+Notable finding recorded as a caveat rather than a blocker: `OperationService.startOperation` now overwrites an existing attribution outright when a user launches the app — on every tenant, not just Mayo. The commit message describes those semantics as unchanged, which holds only for the no-user branch. It matches the ticket's intent, so it doesn't block the deploy.

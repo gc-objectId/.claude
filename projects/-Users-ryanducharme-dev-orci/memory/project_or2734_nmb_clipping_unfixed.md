@@ -1,30 +1,29 @@
 ---
 name: project-or2734-nmb-clipping-unfixed
-description: OR-2734 NMB reversal clipping is still OPEN and live in prod — the NOTIFICATION exemption was tried, then reverted; real fix is a clinical timestamp on firings
+description: OR-2734 Mayo NMB clipping — FIXED and live in prod via PR 4477's rfr.trigger exemption; OR-2839 is the durable follow-on
 metadata:
   type: project
 ---
 
-Mayo analytics still discards nearly every `a-nmb-reversal-extubation` firing, because
-`mayo_rule_fired_results` bounds firings with `created_date <= end_time` and those are two
-different clocks (`created_date` = ingestion wall clock, `end_time` = clinical Anesthesia Stop
-timestamp). Do not assume this is fixed.
+Mayo analytics used to discard nearly every `a-nmb-reversal-extubation` firing, because
+`mayo_rule_fired_results` bounded firings on `created_date <= end_time` and those are two clocks
+(`created_date` = ingestion wall clock, `end_time` = clinical Anesthesia Stop). **Fixed.**
 
-History, so it is not re-litigated:
+The predicate churned three times — check `origin/main` before describing its state, and re-fetch
+if the checkout is more than a day old (see [[reference_stale_local_main_git.md]]):
 
-- PR 4300 added a `rule_definitions.trigger = 'NOTIFICATION'` exemption. Never applied to prod's
-  deployed views.
-- PR 4397 (mine) swapped it to `rule_fired_results.trigger` — closed unmerged 2026-08-16 as
-  superseded. See [[reference_rule_definitions_rebuilt_on_boot]] for why the catalog is the wrong
-  source; that reasoning is still sound and worth reusing.
-- PR 4416 (Theo, merged 2026-08-20) removed the exemption entirely and made the Mayo and MGH base
-  views identical, moving the closed-case rule into `*_shared_metric_operations_v`. The exemption
-  approach is rejected: a firing's `created_date` is not to be special-cased by trigger.
+- PR 4300 (2026-08-11) — exemption via a `rule_definitions` join. Never applied to prod's views.
+- PR 4397 (mine) — swapped it to `rule_fired_results.trigger`; closed unmerged 2026-08-16.
+- PR 4416 (2026-08-20) — removed the exemption entirely.
+- **PR 4477 (2026-08-25) — re-landed it as `rfr.trigger = 'NOTIFICATION'`**, the form from 4397,
+  with the `syncDefinitions()` reasoning in its commit body. Applied to prod; rollups refreshed.
 
-Recorded direction is to give a firing **its own clinical timestamp** rather than exempting it
-from the bound. As of 2026-08-24 that work has no ticket, and OR-2734 stays open at Ready for
-Testing with nothing in `main` to test.
+Prod after the fix: 780 NMB firings in the base view, 764 admitted only by the exemption, 779 in
+`mayo_shared_metric_firing_facts_v` (was 10). The exemption stayed narrow — only NOTIFICATION
+firings clear the bound; SCHEDULED 1,754, SELECTION 306, DOSE 2, LAUNCH 1 still clipped.
 
-Prod evidence 2026-08-24: 640 NMB firings, 629 clipped, 11 surviving, 10 reaching
-`mayo_shared_metric_firing_facts_v`. Stage's deployed view is drifted — still carries PR 4300's
-exemption — which is knowingly left alone.
+OR-2734 closed Done 2026-08-26. **OR-2839** is the durable replacement: add
+`rule_fired_results.evaluation_time`, backfill to `created_date`, NOT NULL so the bound stays an
+indexed column, and bound the view on it — removing this trigger carve-out and also recovering the
+clipped SELECTION firings. Reading `EVALUATION_DATE` out of the `details` JSON is the trap: it
+costs the index-only scan, 87 ms to 3,965 ms on mgb-mgh. MGH needs the same treatment after Mayo.

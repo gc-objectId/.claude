@@ -1,0 +1,11 @@
+Validation complete. Verdict: **deploy-ready**.
+
+**What was done** — repointed the disposable instance's mayo tenant at a mock Epic R4 FHIR server (plus mock OAuth token endpoint and a generated RSA keypair), then drove both changed commands through the real admin integration-harness path for `mayo-mayo`.
+
+- **Positive**: `SEE COMMENT` and a full paragraph survived whole with no unit; `120 mm Hg` parsed as `120` + `mm Hg`; a CORRECTED QTc was accepted; both commands logged their status mix.
+- **Negative**: cancelled potassium and entered-in-error PTT absent from both fetches, with per-row skip warnings. Flipping those rows to `preliminary`/`registered` made them reappear — so preliminary still reaches the rules, as the ticket requires.
+- **Red check**: compiled the parent-commit Mayo commands + pre-fix `getValueAndUnit` into the container's `/app/classes` (shadowing the module jars) and restarted. Every symptom in the ticket returned — `CANCELED` as a potassium value, `SPECIMEN`/`CLOTTED`, `SEE`/`COMMENT`, `mm Hg` truncated to `mm`, CORRECTED QTc discarded. Classes removed, jar checksums verified unchanged, positive run reproduced.
+
+Signature for the gate: `has invalid status CORRECTED for QTC_INTERVAL` (one occurrence, red-check window only).
+
+No new automation proposed — every branch exercised is already pinned by the 29 `FhirUtilsTest` cases and the two Mayo command test classes, and Mayo staging has no cancelled/entered-in-error result to build a deterministic e2e on. Six caveats recorded, chief among them that Epic itself was never contacted, so this validates parsing/filtering rather than which R4 codes Mayo actually emits.

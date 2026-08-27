@@ -32,14 +32,21 @@ while [ $# -gt 0 ]; do
     shift
 done
 
-# Both statuses on purpose. A ticket left in Testing by a run that died is stranded — it would
-# otherwise never be offered again — and the worktree/branch/running guards below are what stop us
-# stomping a ticket someone is genuinely working.
-# Oldest first: a ticket that has waited two weeks earns the slot over one that landed this morning.
+# Testing is included so a ticket stranded by a dead run is still reachable; the guards below
+# are what prevent stomping live work.
 jql="project = \"${PROJECT}\" AND sprint in openSprints() AND status IN (\"${STATUS}\", \"Testing\") ORDER BY created ASC"
 
+# Subtasks never match `sprint in openSprints()`, so reach them by parent instead.
+candidates=$(jira_search_keys "$jql")
+parents=$(printf '%s\n' "$candidates" | cut -f1 | paste -sd, - || true)
+if [ -n "$parents" ]; then
+    sub_jql="project = \"${PROJECT}\" AND parent in (${parents}) AND status IN (\"${STATUS}\", \"Testing\") ORDER BY created ASC"
+    subs=$(jira_search_keys "$sub_jql" || true)
+    [ -n "$subs" ] && candidates=$(printf '%s\n%s\n' "$candidates" "$subs")
+fi
+
 emitted=0
-jira_search_keys "$jql" | while IFS="$(printf '\t')" read -r key _summary; do
+printf '%s\n' "$candidates" | awk 'NF && !seen[$1]++' | while IFS="$(printf '\t')" read -r key _summary; do
     [ -n "$key" ] || continue
 
     # Tickets deliberately taken out of the sweep by unblock.sh — usually not locally validatable.
@@ -61,13 +68,11 @@ jira_search_keys "$jql" | while IFS="$(printf '\t')" read -r key _summary; do
         prev=$(jq -r '.disposition // "?"' "${RESULTS}/${key}/result.json" 2>/dev/null || echo '?')
         case "$prev" in
             running)
-                # A killed run leaves "running" behind forever, which would bar the ticket for
-                # good. Anything older than a session could possibly take is stale, not live.
+                # Older than any session could run means the record is stale, not live.
                 _at=$(jq -r '.at // ""' "${RESULTS}/${key}/result.json" 2>/dev/null || true)
                 _age=999999
                 if [ -n "$_at" ]; then
-                    # -u so the Z timestamp is read as UTC; without it the local offset
-                    # alone exceeds STALE_RUN_SECONDS and every live run looks stale.
+                    # -u or the Z timestamp is read as local time.
                     _epoch=$(date -u -j -f '%Y-%m-%dT%H:%M:%SZ' "$_at" '+%s' 2>/dev/null || echo 0)
                     [ "$_epoch" -gt 0 ] && _age=$(( $(date '+%s') - _epoch ))
                 fi
@@ -79,8 +84,7 @@ jira_search_keys "$jql" | while IFS="$(printf '\t')" read -r key _summary; do
                 ;;
             admitted | admitted_with_caveats) printf 'skip %s: already admitted\n' "$key" >&2; continue ;;
             *)
-                # Re-run only if the ticket itself moved on: a new comment or a status change is a
-                # human responding to the last refusal. Otherwise the outcome would be identical.
+                # Unchanged since the last failure means the outcome would be identical.
                 prev_comments=$(jq -r '.baseline.comments // -1' "${RESULTS}/${key}/runner.json" 2>/dev/null || echo -1)
                 now_comments=$(jira_comment_count "$key" 2>/dev/null || echo -1)
                 if [ "$prev_comments" -ge 0 ] && [ "$now_comments" = "$prev_comments" ]; then

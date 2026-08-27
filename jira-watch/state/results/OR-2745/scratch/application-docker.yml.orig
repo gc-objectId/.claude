@@ -1,0 +1,9 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://postgres:5432/orci
+    username: orci
+    password: orci
+  data:
+    redis:
+      host: redis
+      password: g76!s4z

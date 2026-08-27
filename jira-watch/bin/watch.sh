@@ -43,8 +43,7 @@ seen() {
     grep -qxF "$1" "$SEEN" 2>/dev/null
 }
 
-# A worktree or branch already carrying the ticket means it is in flight; re-running workon
-# on an existing worktree force-moves the branch to a fresh main and looks like mass reversions.
+# An existing worktree or branch means the ticket is in flight.
 in_flight() {
     if [ -n "$(find "$WORKTREE_ROOT" -maxdepth 1 -name "$1-*" -print -quit 2>/dev/null)" ]; then
         return 0

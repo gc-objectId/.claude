@@ -26,9 +26,7 @@ fi
 
 payload=$(jq -nc --arg t "$text" '{text: $t}')
 
-# Slack answers a valid incoming webhook with 200 and a body of exactly "ok". An invalid path
-# 302-redirects instead, which --fail-with-body treats as success — so both must be checked, or a
-# misconfigured webhook reports "sent" forever while delivering nothing.
+# An invalid webhook path 302s, which --fail-with-body treats as success, so check the body too.
 resp=$(mktemp)
 code=$(printf '%s' "$payload" | curl -sS -o "$resp" -w '%{http_code}' --max-time 15 \
     -X POST -H 'Content-Type: application/json' --data @- "$hook" 2>/dev/null || printf '000')

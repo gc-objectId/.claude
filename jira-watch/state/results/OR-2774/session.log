@@ -1,0 +1,10 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What was done against the running app (localhost:55025, image `loop-5ee1adcde`):**
+
+- **Positive** — 6 simultaneous `POST /api/app-launch` for one demo patient: all 200. With `log_statement='all'`, each refresh opened its transaction with `SELECT set_config('lock_timeout', $1, true)` then `SELECT pg_advisory_xact_lock($1)`. Holding key `558376238` (= `Objects.hash("patient-refresh","demo-demo","patient-1")`) from an outside psql session made the launch block and abort at 10230ms on that exact statement.
+- **Negative** — 0 `unexpected row count` errors; `patient_conditions` stayed at exactly 1 row (replaced, not duplicated) including from an emptied start; a simultaneous *different-patient* launch returned 200 in 280ms rather than queueing.
+- **Red check** — compiled the parent commit's `PatientService.java` (unchanged between fix and HEAD), swapped it into `/app/classes`, restarted. 5 of 6 concurrent launches then failed with `StaleStateException: ... [delete from patient_conditions where id=?]` from `OperationRepository.findByCaseIdAndPatientId → OperationService.startOperation → AppLaunchService.getOrCreatePatientAndOperation` — the Sentry stack frame-for-frame. Also reproduced the silent-duplication ending (4 rows, all 200). Shipped class restored, md5 back to `aafdddb7d9e14a038914035efcf6a241`, positive re-run clean.
+- HL7 half also exercised: 4 concurrent SIU^S14 for an unknown PMRN → exactly one `patients` row.
+
+**Separate bug found, filed only as a caveat (not a blocker):** concurrent SIU messages for the same case abort on `duplicate key ... uk9dj8ufodtosa5mfnq085yr1sh` on the `operations` insert — reproduces with an already-existing patient, so it pre-dates and is independent of this fix.

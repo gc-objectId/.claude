@@ -1,0 +1,9 @@
+Validation complete. Verdict: **deploy-ready**, written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2779/session.json`.
+
+What was exercised against the running instance (build `2cd9104ea`, `localhost:55896`):
+
+- **Positive** — a case staged to look like an HL7-scheduled case (procedures attached, `start_time` NULL, `eras_operation` false) carrying `p-colorectal` (`EVAL_FOR_ERAS`) came back `erasOperation: true` from `POST /api/app-launch`, and `ERAS_OPERATION_END` put `a-eras-antiemetics` into `rule_fired_results`. Mayo's shipped `master-procedure-types.csv` has landed 70 tagged procedures; cases on `p-colectomy`, `p-arthroplasty-knee`, and `p-cholecystectomy + p-spinal-fusion` all came back on the protocol.
+- **Negative** — `p-appendectomy` case: `erasOperation: false`, rule not fired, explanation `Not ERAS operation.` Both directions of the once-only guard held on started cases.
+- **Red check** — recompiled `OperationService` with the OR-2779 hunks reverted (`@Slf4j` swapped for an explicit logger, since lombok isn't on the runtime classpath), swapped it into `/app/classes`, restarted. The same scheduled hysterectomy case then launched with `erasOperation=false` and the alert did not fire. Restored the shipped class, checksum matched the host backup (`d2cb9629…`), re-ran the identical case → `true` and the alert fired.
+
+Caveats recorded: Mayo's Epic-driven case start couldn't be driven locally (covered via the admin endpoint on real shipped tags instead); demo's `p-colorectal` was tagged by hand to get a non-hysterectomy procedure through the launch path; no Maven run, so the new `OperationServiceTest` cases weren't executed here. `case-launcher`'s copy of the change is moot — that module was deleted as unused in the same build.

@@ -16,17 +16,19 @@ RESULTS="${LOOP_HOME}/state/results"
 LOG="${LOOP_HOME}/log/runner.log"
 PROMPT_TEMPLATE="${LOOP_HOME}/prompts/validate.md"
 LOOP_USER="${LOOP_USER:-loopuser}"
-# Extended regex matched against the issue summary. A match means validate but never write.
-LOOP_RESERVED_PATTERN="${LOOP_RESERVED_PATTERN:-^Analytics:}"
+# Case-insensitive ERE against the summary. A match means validate but never write.
+LOOP_RESERVED_PATTERN="${LOOP_RESERVED_PATTERN:-^analytics}"
 JIRA_ACCOUNT_ID="${JIRA_ACCOUNT_ID:-712020:eb570e67-6608-41f7-877b-09ca17738171}"
 LOOP_USER_PASSWORD="${LOOP_USER_PASSWORD:-LoopValidate1!}"
 SESSION_TIMEOUT="${SESSION_TIMEOUT:-2700}"
+ORCI_ROOT_CHECK="${ORCI_ROOT:-$HOME/dev/orci}"
 
 . "${CLAUDE_BIN}/jira.sh"
 
 mkdir -p "$RESULTS" "${LOOP_HOME}/log"
 
-log() { printf '%s  %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "$*" | tee -a "$LOG" >&2; }
+# Parallel sweeps interleave the log, so every line carries its ticket.
+log() { printf '%s  [%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "${ticket:-?}" "$*" | tee -a "$LOG" >&2; }
 die() { log "ERROR $*"; exit 1; }
 
 [ $# -ge 1 ] || { log "Usage: runner.sh <ticket> [--keep] [--commit]"; exit 1; }
@@ -51,14 +53,12 @@ run_dir="${RESULTS}/${run_id}"
 mkdir -p "$run_dir"
 stamp=$(date -u '+%Y-%m-%dT%H:%M:%SZ')
 
-# Previous attempts are kept: a session must be able to see whether this ticket has been run
-# before and what came of it, or it redoes work and re-litigates settled questions.
+# Kept so the next session can see this ticket has been run before.
 if [ -f "${run_dir}/result.json" ]; then
     cat "${run_dir}/result.json" >>"${run_dir}/history.jsonl"
 fi
 
-# Stamped immediately so a hard failure cannot leave a previous run's record looking like this
-# run's outcome in the digest.
+# Stamped now so a hard failure cannot leave the previous record looking like this run.
 jq -nc --arg t "$ticket" --arg at "$stamp" \
     '{ticket: $t, disposition: "running", detail: "run in progress", at: $at}' >"${run_dir}/result.json"
 rm -f "${run_dir}/session.json"
@@ -68,9 +68,7 @@ record() {
         '{ticket: $t, disposition: $d, detail: $detail, at: $at}' >"${run_dir}/result.json"
     cat "${run_dir}/result.json"
 
-    # Outcomes that will not resolve themselves get pushed straight to Slack. The digest is
-    # pull-only, so without this a blocked ticket waits until someone thinks to look. Successes
-    # stay quiet on purpose: a 25-ticket sweep that pings per success trains you to ignore it.
+    # The digest is pull-only, so anything needing a human is pushed. Successes stay quiet.
     case "$1" in
         running | admitted) ;;
         *)
@@ -82,8 +80,7 @@ record() {
     esac
 }
 
-# Status is rechecked here, not taken from the queue: a ticket can move between detection and
-# now, and an IMPLEMENT-mode ticket must never be picked up by an unattended session.
+# Rechecked, not taken from the queue: an IMPLEMENT-mode ticket must never be picked up here.
 status=$(jira_issue_status "$ticket" 2>/dev/null || true)
 log "${ticket} status is '${status:-unknown}'"
 case "$status" in
@@ -94,14 +91,20 @@ esac
 
 summary=$(jira_issue_summary "$ticket" 2>/dev/null || true)
 
-# Some work belongs to a specific reviewer, and silently closing their ticket is worse than not
-# running at all. A reserved ticket is still validated in full — the evidence is just kept local
-# and every Jira write is dropped, so the run is an offer rather than a decision.
+# Reserved work is validated in full but every Jira write is dropped.
 reserved=''
-if printf '%s' "$summary" | grep -qE "$LOOP_RESERVED_PATTERN"; then
+if printf '%s' "$summary" | grep -qiE "$LOOP_RESERVED_PATTERN"; then
     reserved=1
     commit=''
     log "${ticket} matches the reserved pattern (${LOOP_RESERVED_PATTERN}) — validating without writing to Jira"
+fi
+
+# Assigned to someone else means it is theirs, whatever the title says. Unassigned is fair game.
+assignee_id=$(jira_issue_field "$ticket" assignee 'assignee.accountId' 2>/dev/null || true)
+if [ -n "$assignee_id" ] && [ "$assignee_id" != "$JIRA_ACCOUNT_ID" ]; then
+    reserved=1
+    commit=''
+    log "${ticket} is assigned to someone else ($(jira_issue_field "$ticket" assignee 'assignee.displayName' 2>/dev/null || echo unknown)) — validating without writing to Jira"
 fi
 
 log "Building image from origin/main"
@@ -123,10 +126,8 @@ case "$fresh_rc" in
     *) die "freshness check errored (rc=${fresh_rc})" ;;
 esac
 
-# Pickup happens only once there is something to validate. Doing it earlier moved tickets into
-# Testing and assigned them for runs that then aborted on a missing PR — a board change for nothing.
-# Moving to Testing marks the ticket as picked up. It also acts as the in-flight lock: watch.sh
-# only matches tickets currently in Ready for Testing, so this stops a second run being queued.
+# Testing marks it picked up and doubles as the in-flight lock, since watch.sh only
+# matches Ready for Testing.
 if [ "$status" = 'Ready for Testing' ]; then
     if [ -n "$commit" ]; then
         if jira_transition_to "$ticket" Testing; then
@@ -140,9 +141,7 @@ if [ "$status" = 'Ready for Testing' ]; then
     fi
 fi
 
-# Assigned at pickup and left that way through Done, so the board shows who owns the outcome.
-# Outside the transition block on purpose: a ticket already sitting in Testing still needs owning.
-# Reserved tickets skip this with everything else, since they belong to another reviewer.
+# Outside the transition block: a ticket already in Testing still needs owning.
 if [ -n "$commit" ]; then
     if jira_assign "$ticket" "$JIRA_ACCOUNT_ID"; then
         log "${ticket} assigned to the configured account"
@@ -151,9 +150,7 @@ if [ -n "$commit" ]; then
     fi
 fi
 
-# Snapshot taken after the runner's own transition, so anything that moves afterwards was not this
-# script. Tool denial cannot be the boundary — the session runs as Ryan with a reachable keychain —
-# so the gate detects tampering instead, and this is what it compares against.
+# Taken after this script's own writes, so anything moving later was not this script.
 expected_status=$(jira_issue_status "$ticket" 2>/dev/null || true)
 baseline_comments=$(jira_comment_count "$ticket" 2>/dev/null || echo -1)
 log "baseline: status='${expected_status}' comments=${baseline_comments}"
@@ -204,9 +201,7 @@ session_json="${run_dir}/session.json"
 scratch_dir="${run_dir}/scratch"
 mkdir -p "$scratch_dir"
 
-# The session gets Jira context as a file rather than Jira access. It cannot then duplicate work
-# another run already did, and it needs no Jira credentials to read the ticket — which is what
-# makes a credential-less sandbox viable later.
+# Context as a file, not Jira access: the session needs no Jira credentials.
 context_file="${run_dir}/context.md"
 {
     jira_issue_context "$ticket" || printf 'Could not fetch ticket context.\n'
@@ -230,8 +225,7 @@ prompt=$(sed \
     "$PROMPT_TEMPLATE")
 
 log "Starting unattended session (log: ${run_dir}/session.log)"
-# The Jira write tools are denied at the process level so the gate, not the model, owns the
-# comment and the transition.
+# Denied at the process level so the gate, not the model, owns the write.
 ( cd "$worktree" && exec claude -p "$prompt" \
     --permission-mode bypassPermissions \
     --disallowed-tools \
@@ -243,8 +237,7 @@ log "Starting unattended session (log: ${run_dir}/session.log)"
     </dev/null >"${run_dir}/session.log" 2>&1 ) &
 session_pid=$!
 
-# A session emits nothing until it exits, so without a heartbeat a healthy 20-minute run and a
-# hung one look identical in the log. The request count is the part that proves actual work.
+# A session emits nothing until it exits, so a healthy run and a hung one look identical.
 waited=0
 while kill -0 "$session_pid" 2>/dev/null; do
     waited=$((waited + 15))
@@ -266,8 +259,19 @@ while kill -0 "$session_pid" 2>/dev/null; do
 done
 log "session finished after ~${waited}s"
 
-# Captured before teardown: the gate verifies the red check against this, and container logs die
-# with the container.
+# The session should have touched neither the primary checkout nor the remote.
+_dirty=$(git -C "$ORCI_ROOT_CHECK" status --porcelain 2>/dev/null | wc -l | tr -d ' ')
+if [ "$_dirty" != '0' ]; then
+    log "WARNING ${ORCI_ROOT_CHECK} has ${_dirty} uncommitted change(s) after the session — investigate"
+    "${CLAUDE_BIN}/notify.sh" "$(printf '%s: the primary checkout is dirty after the session (%s file(s)). The session should never write there.' "$ticket" "$_dirty")" >/dev/null 2>&1 || true
+fi
+_pushed=$(git -C "$ORCI_ROOT_CHECK" for-each-ref --format='%(refname:short)' 'refs/remotes/origin/**' 2>/dev/null | grep -cE "${ticket}" || true)
+if [ "$_pushed" != '0' ]; then
+    log "WARNING a remote branch referencing ${ticket} exists — the session was told not to push"
+    "${CLAUDE_BIN}/notify.sh" "$(printf '%s: a remote branch for this ticket exists. Validation sessions must not push.' "$ticket")" >/dev/null 2>&1 || true
+fi
+
+# Before teardown: container logs die with the container, and the gate needs this.
 docker logs "${project}-orci-1" >"${run_dir}/app.log" 2>&1 || true
 log "captured $(wc -l <"${run_dir}/app.log" | tr -d ' ') lines of application log"
 
@@ -280,12 +284,9 @@ elif [ "$gate_rc" -eq 0 ]; then
     _caveats=$(jq -r '(.caveats // []) | map("  - " + .) | join("\n")' "$session_json" 2>/dev/null || true)
     _how=$(printf '%s' "$gate_out" | jq -r 'if .dry_run then "dry-run, nothing posted" else "posted and transitioned" end')
     _risk=$(jq -r '.ship_risk // "none"' "$session_json" 2>/dev/null || echo none)
-    # Caveats alone are not a flag — almost every run has some. What earns attention is the
-    # session saying one of them should give a reviewer pause.
+    # Almost every run has caveats; only a material one earns attention.
     if [ -n "$_caveats" ] && [ "$_risk" = 'material' ]; then
-        # Closed, but with a stated limit on how far the validation reached. A distinct disposition
-        # is what gets it into Slack and to the top of the digest instead of vanishing into the
-        # pile of successes.
+        # A distinct disposition is what reaches Slack and the top of the digest.
         record admitted_with_caveats "verdict=${verdict}; ${_how}; caveats:
 ${_caveats}"
     else

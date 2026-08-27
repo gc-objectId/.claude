@@ -61,9 +61,7 @@ say "Starting ${project} (image ${image}, app port ${app_port})"
 compose up -d --wait --wait-timeout 120 >&2 ||
     die "compose up failed for ${project}"
 
-# /actuator/health is behind Spring Security here (403), and Tomcat starts serving before
-# ApplicationRunner finishes importing clinical config — so the only signal that means
-# "fully initialised" is Spring's own startup line, which logs after every SmartLifecycle bean.
+# /actuator/health is authenticated, and Tomcat serves before config import finishes.
 health_ok() {
     compose logs --no-color orci 2>/dev/null | grep -q 'Started OrciApplication in'
 }
@@ -89,10 +87,8 @@ until health_ok; do
     sleep 5
 done
 
-# The seeded ROLE_USER has an empty allowed_tenants, so without this every session has to grant
-# itself tenant access before it can touch the UI or the user-facing API.
-# stdin must be closed explicitly: `compose exec` attaches stdin even with -T, which suspends the
-# whole pipeline with SIGTTIN when this runs as a background job.
+# The seeded ROLE_USER has no tenant access until this runs.
+# compose exec attaches stdin even with -T, so a background sweep takes SIGTTIN without </dev/null.
 if compose exec -T postgres psql -U orci -d orci -q -v ON_ERROR_STOP=1 \
     -c "update public.users set allowed_tenants = '${LOOP_USER_TENANTS}'::json where username = '${LOOP_USER}'" \
     </dev/null >/dev/null 2>&1; then

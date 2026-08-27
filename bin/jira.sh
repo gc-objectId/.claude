@@ -33,8 +33,7 @@ jira_comment_count() {
     _jira_curl "${JIRA_BASE}/rest/api/3/issue/$1?fields=comment" | jq -r '.fields.comment.total // 0'
 }
 
-# Transitions are resolved by target status name, not a hardcoded id: which transitions exist
-# depends on the issue's current status, so an id valid from one state can be absent from another.
+# Which transition ids exist depends on the issue's current status.
 jira_transition_to() {
     _tt_id=$(_jira_curl "${JIRA_BASE}/rest/api/3/issue/$1/transitions" |
         jq -r --arg s "$2" '.transitions[] | select(.to.name == $s) | .id' | head -1)
@@ -47,8 +46,7 @@ jira_transition_to() {
         "${JIRA_BASE}/rest/api/3/issue/$1/transitions"
 }
 
-# v2 rather than v3: v3 requires the comment body as ADF, and converting markdown to ADF in shell
-# is not worth it. Consequence: markdown link syntax will not render, so post bare URLs.
+# v3 requires ADF; v2 takes a plain string, so post bare URLs.
 jira_add_comment() {
     _jira_curl -o /dev/null -X POST -H 'Content-Type: application/json' \
         --data "$(jq -nc --arg b "$2" '{body: $b}')" \
@@ -85,9 +83,7 @@ jira_search_keys() {
     done
 }
 
-# Full human-readable ticket context: description and every comment, as markdown on stdout.
-# v2 rather than v3 because v2 returns description and comment bodies as plain strings; v3 returns
-# ADF, which is not worth parsing in shell.
+# Description and every comment, as markdown on stdout. v2 returns them as plain strings; v3 returns ADF.
 jira_issue_context() {
     _jira_curl "${JIRA_BASE}/rest/api/2/issue/$1?fields=summary,description,status,assignee,comment" |
         jq -r '
@@ -119,4 +115,19 @@ jira_update_comment() {
     _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
         --data "$(jq -nc --arg b "$3" '{body: $b}')" \
         "${JIRA_BASE}/rest/api/2/issue/$1/comment/$2"
+}
+
+# v2 so the description can be plain text rather than ADF.
+jira_create_issue() {
+    _jira_curl -X POST -H 'Content-Type: application/json' \
+        --data "$(jq -nc --arg p "$1" --arg t "$2" --arg s "$3" --arg d "$4" \
+            '{fields: {project: {key: $p}, issuetype: {name: $t}, summary: $s, description: $d}}')" \
+        "${JIRA_BASE}/rest/api/2/issue" | jq -r '.key // empty'
+}
+
+jira_link_issues() {
+    _jira_curl -o /dev/null -X POST -H 'Content-Type: application/json' \
+        --data "$(jq -nc --arg a "$1" --arg b "$2" \
+            '{type: {name: "Relates"}, inwardIssue: {key: $a}, outwardIssue: {key: $b}}')" \
+        "${JIRA_BASE}/rest/api/2/issueLink"
 }

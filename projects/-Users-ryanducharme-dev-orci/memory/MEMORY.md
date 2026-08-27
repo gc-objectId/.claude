@@ -61,7 +61,7 @@
 - [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — mayo-mayo tenant; UI blocked by Epic OAuth so POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2; doxycycline PO resolves by ERX 2625
 - [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages the case, POST /api/app-launch actually starts it; admin operations/create alone never calls startOperation
 - [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl in this project; script local HTTP with node's http module + a cookie jar
-- [jira-watch auto-validate loop](project_jira_watch_autovalidate.md) — launchd watcher → /workon VALIDATE → mechanical evidence gate; EOD digest review; /rest/api/3/search is 410, quote "OR", chains share PRs
+- [jira-watch validation loop](project_jira_watch_autovalidate.md) — **the SOP now** for Ready-for-Testing: `loopcmd 8 2` validates+closes, `loopcmd review` opens a session; gate re-verifies rather than trusting the session
 - [Empty-default secret auth bypass](reference_empty_default_secret_auth_bypass.md) — `${VAR:}` can turn a missing credential into an auth bypass; tenant-disabled ≠ endpoint-disabled; fail closed in the consumer
 - [Analytics SQL local validation](reference_analytics_sql_local_validation.md) — validate view files on a throwaway local DB running the shipped create_analytics_views.sql; prod reads may be blocked while stage works
 - [rule_definitions is rebuilt on boot](reference_rule_definitions_rebuilt_on_boot.md) — deleteAll+saveAll untransacted; never read it to classify a past event, use rule_fired_results.trigger
@@ -71,7 +71,9 @@
 - [Surefire -Dtest skips outer tests](reference_surefire_dtest_nested_skips_outer.md) — with @Nested present, `-Dtest=ClassName` runs 0 outer-class tests and still says BUILD SUCCESS; read per-class counts
 - [Insulin dose/ISC validation surface](reference_insulin_dose_isc_validation_surface.md) — admin insulin-daily-dose trace + isc/initialize give a flip-and-revert loop; Mayo strategy ignores daily dose entirely
 - [Rollback guard tests go inert](reference_rollback_guard_tests_go_inert.md) — rollbackFor only matters for checked exceptions; Jackson wraps row errors as RuntimeException so `isInstanceOf(Exception.class)` passes either way; flip the guard and verify with javap
-- [OR-2734 NMB clipping unfixed](project_or2734_nmb_clipping_unfixed.md) — still OPEN/live in prod (629 of 640 clipped); exemption tried in #4300, reverted by #4416; real fix = clinical timestamp on firings, untracked
+- [OR-2734 NMB clipping FIXED](project_or2734_nmb_clipping_unfixed.md) — PR 4477 rfr.trigger exemption live in prod (779 firings vs 10), ticket Done; predicate churned 4x so re-fetch main before describing it; OR-2839 = durable evaluation_time fix
 - [Rule flags default to all tenants](reference_rule_flag_defaults_all_tenants.md) — a new rule with no changeset ships ON everywhere; @RuleDefinition has no orgs attr; /api/feature-flags won't show RULE: flags
 - [Mayo RAS injection recipe](reference_mayo_ras_injection_recipe.md) — RAS HL7 med admin locally; parser shifts timestamp +1h; operation attaches only if dose >= case start; use qrtz trigger not selection alert
 - [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — DONE 2026-08-24; per-item gating map; doxycycline all-clients is intentional, don't "fix" it
+- [MGH data not in AWS RDS](reference_mgh_data_not_in_aws_rds.md) — no mgb-mgh schema in dev/stage/prod; MGB self-hosts on OpenShift, query only via their Metabase
+- [Mayo matview refresh manual](project_or2747_mayo_matview_refresh.md) — OR-2747 To Do; rollups refreshed by hand, no staleness indicator; verify freshness before quoting a Mayo error rate

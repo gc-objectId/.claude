@@ -1,0 +1,20 @@
+const { Client } = require('./client');
+const T = 'demo-demo';
+(async () => {
+  const c = new Client();
+  await c.login('admin', 'admin');
+  const H = { 'X-Tenant-Id': T };
+  let r = await c.post('/api/admin/patients/', { body: { prmnPrefix: 'or2840', firstName: 'Glu', lastName: 'Buffer', dob: '1960-05-05' }, headers: H });
+  console.log('createPatient', r.status, r.body);
+  const p = JSON.parse(r.body);
+  const pmrn = p.pmrn.value ?? p.pmrn;
+  const uuid = p.uuid.value ?? p.uuid;
+  console.log('pmrn', pmrn, 'uuid', uuid);
+  r = await c.post(`/api/admin/patients/${pmrn}/conditions`, { body: { conditionId: 'c-diabetes-mellitus', tags: ['DIABETES'], onsetDate: '2020-01-01T00:00:00Z' }, headers: H });
+  console.log('condition', r.status, r.body);
+  const start = new Date(Date.now() - 60 * 60 * 1000).toISOString();
+  r = await c.post(`/api/admin/patients/${uuid}/operations/create`, { body: { startTime: start, procedureTypes: [{ id: 'p-appendectomy', qualifier: null }] }, headers: H });
+  console.log('operation', r.status, r.body.slice(0, 600));
+  const op = JSON.parse(r.body);
+  console.log('CASEID', op.caseId?.value ?? op.caseId);
+})();

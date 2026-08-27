@@ -18,8 +18,7 @@ die() { say "Error: $*"; exit 1; }
 command -v mvn >/dev/null 2>&1 || die "mvn is not on PATH."
 command -v docker >/dev/null 2>&1 || die "docker is not on PATH."
 
-# The build worktree is shared, and a concurrent runner would checkout and compile underneath this
-# one. Wait rather than fail: the other build usually produces the very image this run wants.
+# The build worktree is shared; wait for a concurrent build rather than failing.
 BUILD_LOCK="${BUILD_TREE}.lock"
 waited=0
 until mkdir "$BUILD_LOCK" 2>/dev/null; do

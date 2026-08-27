@@ -20,6 +20,12 @@ EDITOR_CMD="${EDITOR:-nano}"
 mkdir -p "$(dirname "$SKIP_FILE")"
 touch "$SKIP_FILE"
 
+# Warn rather than refuse: acting on a ticket the sweep is not touching is safe.
+if pgrep -f 'jira-watch/bin/runner.sh' >/dev/null 2>&1; then
+    printf 'NOTE: a sweep is running right now. Tickets it is still working are not listed here\n'
+    printf '      (only finished outcomes are), but its results will change under you.\n\n'
+fi
+
 needs_human() {
     case "$1" in
         refused | no_merged_pr | aborted | env_failed | session_timeout | stale_build) return 0 ;;
@@ -84,8 +90,7 @@ handle() {
             fi
             ;;
         r)
-            # Clearing the record is what makes backlog.sh treat it as never-run; a comment-count
-            # comparison alone would skip it, since nothing about the ticket changed.
+            # Clearing the record is what makes backlog.sh treat it as never-run.
             rm -f "$d/result.json"
             printf 'cleared %s — it will be picked up again as if new.\n' "$ticket"
             ;;
@@ -106,6 +111,32 @@ handle() {
     return 0
 }
 
+# Non-interactive forms so a session takes the same actions as the prompts.
+case "${1:-}" in
+    answer)
+        t="${2:?need a ticket}"; text="${3:?need the answer text}"
+        jira_add_comment "$t" "$text" && printf 'posted on %s; it will be offered again.\n' "$t"
+        exit $?
+        ;;
+    retry)
+        t="${2:?need a ticket}"
+        rm -f "${RESULTS}/${t}/result.json"
+        printf 'cleared %s — it reads as never-run.\n' "$t"
+        exit 0
+        ;;
+    skip)
+        t="${2:?need a ticket}"
+        grep -qxF "$t" "$SKIP_FILE" || printf '%s\n' "$t" >>"$SKIP_FILE"
+        printf 'added %s to the skip list.\n' "$t"
+        exit 0
+        ;;
+    inprogress)
+        t="${2:?need a ticket}"
+        jira_transition_to "$t" 'In Progress' && printf 'moved %s to In Progress.\n' "$t"
+        exit $?
+        ;;
+esac
+
 if [ $# -gt 0 ]; then
     handle "$1" || true
     exit 0
@@ -117,6 +148,11 @@ for dir in "$RESULTS"/*/; do
     [ -f "${dir}result.json" ] || continue
     disp=$(jq -r '.disposition' "${dir}result.json" 2>/dev/null || echo '?')
     needs_human "$disp" || continue
+    # Already dealt with; re-offering it every review is how the queue stops being trusted.
+    if grep -qxF "$t" "$SKIP_FILE" 2>/dev/null; then
+        printf 'skipping %s (on the skip list)\n' "$t"
+        continue
+    fi
     found=$((found + 1))
     handle "$t" || break
 done

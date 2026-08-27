@@ -1,0 +1,12 @@
+{
+  "a": {
+    "pmrn": "erasPos-fake-892fc4d0-e8ce-49d1-8d7f-b89f7eaf3ed9",
+    "uuid": "01a03f6e-5d1a-7119-99ba-ade0fd4768f9",
+    "op": "{\"operationId\":\"01a03f6e-5d63-7515-b348-789f673cfa91\",\"caseId\":\"53650\",\"startTime\":null,\"endTime\":null,\"procedureStartTime\":null,\"procedureEndTime\":null,\"inductionStartTime\":null,\"extubationTime\":null,\"admissionDate\":null,\"initialApplicationLaunchTime\":null,\"baselineMAP\":null,\"serviceName\":null,\"pediatricStatus\":\"ADULT\",\"acuity\":null,\"asaStatus\":null,\"primaryPractitionerName\":null,\"procedureTypes\":[{\"procedureId\":\"p-hysterectomy\",\"procedureName\":\"Hysterectomy\",\"categories\":[\"EVAL_FOR_ERAS\"],\"qualifier\":null,\"availableQualifiers\":[]}],\"erasOperation\":true,\"procedureTypeName\":\"Hysterectomy\",\"procedureTypeId\":\"p-hysterectomy\"}"
+  },
+  "b": {
+    "pmrn": "erasNeg-fake-b347c8f4-3fe9-4820-9773-4ed4582ed04e",
+    "uuid": "01a03f6e-5d8f-751a-af1a-607534733efc",
+    "op": "{\"operationId\":\"01a03f6e-5d9e-7ee2-9264-505c4c387380\",\"caseId\":\"09342\",\"startTime\":null,\"endTime\":null,\"procedureStartTime\":null,\"procedureEndTime\":null,\"inductionStartTime\":null,\"extubationTime\":null,\"admissionDate\":null,\"initialApplicationLaunchTime\":null,\"baselineMAP\":null,\"serviceName\":null,\"pediatricStatus\":\"ADULT\",\"acuity\":null,\"asaStatus\":null,\"primaryPractitionerName\":null,\"procedureTypes\":[{\"procedureId\":\"p-appendectomy\",\"procedureName\":\"Appendectomy\",\"categories\":[\"APPENDECTOMY\"],\"qualifier\":null,\"availableQualifiers\":[]}],\"erasOperation\":false,\"procedureTypeName\":\"Appendectomy\",\"procedureTypeId\":\"p-appendectomy\"}"
+  }
+}

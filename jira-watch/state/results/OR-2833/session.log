@@ -1,0 +1,9 @@
+Validation complete — verdict `deploy-ready`, written to `session.json`.
+
+**What was exercised on the running build (100ab1bd9 @ localhost:61153):**
+
+- **Positive** — demo-demo case launch (`patient-1` / `CL83301`) returned 200 with a full `ApplicationLaunchContext`; `orci.case.launch` registered with `availableTags: [mode]` only. No `case-launcher` key in `/actuator/env`, no `caselauncher` bean, no case-launcher jar in `/app/libs`.
+- **Negative** — reinstated `case-launcher.enabled=true` via `/application.properties` in the container (confirmed bound in `/actuator/env`); launch still returned 200 and no `case_launcher` tag appeared. The flag is inert.
+- **Red check (two flips, both reverted)** — swapped the parent-commit `AppLaunchController` into `/app/classes` with the flag true → 500 and `java.lang.UnsupportedOperationException: need to implement this` in the log; restored by md5 and re-ran green. Separately un-applied the metric hunk on the built SHA's own `OperationService`/`TracingService` → `case_launcher: ["false"]` tag reappeared on `orci.case.launch`; restored, `/application.properties` removed, positive re-verified.
+
+The worktree is clean; all scratch work stayed in the results scratch dir, and the container was returned to shipped checksums.

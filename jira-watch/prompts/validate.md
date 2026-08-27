@@ -82,6 +82,21 @@ app.** An evidence field describing what the code does rather than what you obse
 a failed validation, not a passed one. Say so plainly; a truthful `inconclusive` is a good outcome
 and costs nothing. A fabricated `deploy-ready` is the only real failure mode here.
 
+## Some tickets cannot be validated against a running app
+
+Not every ticket has a runtime surface. CI workflow changes, deploy scripts, build config, analytics
+SQL published to a tool this instance cannot reach — for these there is nothing to exercise here, and
+no red check is possible.
+
+Say so. Verdict `inconclusive`, with a blocker naming what would actually be needed ("this changes
+`.github/workflows/deploy.yml`; validating it needs a real workflow run, not a local app"). That is a
+correct, useful outcome and costs you nothing.
+
+What is **not** acceptable is inventing an app-level red check to satisfy the format. The gate greps
+the captured application log for your `red_check_signature`, so a signature that never appeared gets
+the run refused anyway — and a refusal reading "the red check did not happen as described" is far
+less useful to Ryan than you simply saying the ticket is not locally validatable.
+
 ## Output
 
 Keep scratch work (helper scripts, saved payloads, pre-fix sources) in `__SCRATCH_DIR__`, which is
@@ -106,7 +121,7 @@ Write exactly one file, `__SESSION_JSON__`, and nothing else outside the worktre
     "assessment": "existing coverage, and what is worth locking in (or why nothing is)",
     "proposed_tests": ["one line each, or empty"]
   },
-  "jira_comment": "PLAIN TEXT, ~10 lines, IMPERSONAL VOICE — write 'This was validated against...', 'The positive case showed...', 'The pre-fix class was swapped in...'. Never use first person: no 'I', no 'my', no 'we'. The comment is posted under Ryan's Jira account, so first person would read as Ryan claiming he did this by hand. Content: verdict, how it was validated (positive/negative/red check, one line each), and the automation plan. Do not include the PR link; the gate inserts it. Use NO markdown whatsoever — no **bold**, no `backticks`, no *bullets*, no [links](...). The comment is posted through an API that does not render markdown, so any syntax shows up as literal punctuation. Structure it with plain prose, blank lines between paragraphs, and lines beginning with '- ' for lists."
+  "jira_comment": "PLAIN TEXT, IMPERSONAL VOICE, AND SHORT. Ryan reads these on a phone. Hard shape, no deviation:\n\nVerdict: deploy-ready.\n\nPositive: <ONE sentence — what was done, what was observed>\nNegative: <ONE sentence>\nRed check: <ONE sentence — what was flipped, what went red>\n\nAutomation: <ONE sentence>\n\nThat is the whole comment. Twelve lines maximum. One sentence per line, and a sentence is not a paragraph with semicolons in it. Do not restate the ticket, do not name every endpoint and identifier you touched, do not explain the mechanism, do not list what you did not do — the full account is already in your evidence fields and nobody reads it twice. Never use first person: no I, my, we. No markdown: no **bold**, no backticks, no bullets, no [links](). Omit the PR link and the caveats; the gate appends those."
 }
 ```
 

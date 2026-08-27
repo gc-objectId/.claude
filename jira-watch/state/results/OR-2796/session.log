@@ -1,0 +1,7 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+- **Positive** — reproduced the Sentry shape (firing whose `created_date` trailed the operation end while its documented `EVALUATION_DATE` sat inside the case, patient carrying an infusion), stopped the case, got a clean compliance verdict crediting the administration documented inside the lag; zero `Invalid range` / `Unable to evaluate compliance` lines.
+- **Negative** — moved `EVALUATION_DATE` past the operation end: `is not intraoperative` warning, `compliant=t`, no error; reverting flipped it back. Also exercised the ERAS null-start guard both ways.
+- **Red check** — compiled the pre-fix `IInfusionMedicationAdministration` + `AbstractMedicationAdministeredComplianceEvaluator` in the container, swapped them into `/app/classes`, restarted, and the identical case stop reproduced the ticket's exception with the same frames and line numbers. Restored by checksum and re-verified the positive.
+
+Worktree is clean; container classes are back to the shipped build.

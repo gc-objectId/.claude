@@ -12,6 +12,7 @@ set -eu
 
 LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
 RESULTS="${LOOP_HOME}/state/results"
+SKIP_FILE="${LOOP_HOME}/state/skip"
 
 [ -d "$RESULTS" ] || { printf 'No runs recorded yet.\n'; exit 0; }
 
@@ -46,9 +47,14 @@ case "${1:-}" in
     *)       printf 'usage: digest.sh [--since DATE | --all | TICKET]\n' >&2; exit 1 ;;
 esac
 
+# Skip-listed tickets are handled; leaving them under NEEDS YOU means it never empties.
+skipped=''
+[ -f "$SKIP_FILE" ] && skipped=$(tr '\n' ' ' <"$SKIP_FILE")
+
 records=$(find "$RESULTS" -name 'result.json' -maxdepth 2 2>/dev/null |
     while IFS= read -r f; do jq -c --arg s "$since" 'select(.at >= $s)' "$f" 2>/dev/null || true; done |
-    jq -sc '.')
+    jq -sc --arg skip "$skipped" '($skip | split(" ")) as $s
+        | [.[] | select((.ticket | IN($s[])) | not)]')
 
 total=$(printf '%s' "$records" | jq 'length')
 if [ "$total" -eq 0 ]; then
@@ -75,4 +81,7 @@ section 'Session timed out' session_timeout
 section 'Closed, with stated limits' admitted_with_caveats
 section 'Closed clean' admitted
 
+if [ -n "$(printf '%s' "$skipped" | tr -d ' ')" ]; then
+    printf 'Skip-listed, not shown above: %s\n' "$skipped"
+fi
 printf 'Detail on any one: digest.sh <TICKET>\n'

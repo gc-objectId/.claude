@@ -1,0 +1,13 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+What was exercised against the running app at `localhost:61555`:
+
+**Positive** — Staged a diabetic demo-demo case with no recent glucose, drove a real case start (`START_MONITORING` category event) so `a-preop-glucose` fired through the silent app-launch path (`evaluation_mode=SILENT`, `EVALUATION_DATE=21:23:12.945Z`, fire-time compliance row `compliant=f`). Posted a glucose at 21:26:00Z (2m47s later), sent `CLOSE_APP` → the case-stop pass found the firing and `compliant` flipped to `t`, confirmed both in `compliance_results` and via `GET /api/admin/rule/evaluations/fired`.
+
+**Negative** — Same firing, glucose moved to 3m13s *before* it → `f`; glucose at 10m17s *after* it, with case end later so the window was the full ten minutes → `f`.
+
+**Red check** — Two flips, both reverted:
+1. Data flip across the edge: glucose at +10m17s → `f`, same glucose at +9m47s → `t`.
+2. Pre-fix code swap: removed `GlucoseCheckComplianceEvaluator.class` from `/app/classes` and restarted (clean boot — `AlertComplianceEvaluator` reclaims the firing when no override bean exists, which is exactly the pre-fix behaviour). Identical data then produced `compliant=f`, including a second case created and stopped entirely inside that window. Class restored with md5 re-verified, restarted, verdict returned to `t`.
+
+Recorded caveats worth noting: the pre-fix state logs no exception, so the red-check signature is the case-stop line for the pre-fix-only case rather than a provoked error; only `a-preop-glucose` was driven end to end (the other two rules were confirmed at runtime to carry `COMPLIANCE_GLUCOSE_CHECK`, and `a-no-insulin-glucose-check` is Mayo-flag-gated); and the corrected verdict only lands at case stop, so a case that never emits `CLOSE_APP` keeps its non-compliant fire-time row — which the commit message states as intended. Worktree is clean and the container is back to its shipped state.

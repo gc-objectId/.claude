@@ -1,0 +1,9 @@
+Validation complete. `session.json` written.
+
+**Verdict: deploy-ready** (ship_risk: none)
+
+- **Positive** — all 17 procedures the ticket names import with exactly the two specified pathways in `mayo-mayo`, and all 17 were driven through real cases via `GET /api/admin/patients/{pmrn}/operations/{caseId}/antibiotic-candidates`. 34 scenarios (with/without cefazolin allergy), 0 failures; each route fell to its own fallback as the ticket specifies.
+- **Negative** — `p-hysterectomy-open`, `p-duodenectomy`, `p-cholecystectomy`, `p-colonoscopy` did not pick up these pathways. The 17 identifiers don't exist in the demo/MGB catalogs at all, so Mayo-only is correct.
+- **Red check** — flipped the bundled CSV inside the container two ways (duodenal-ulcer route back to the pre-update bare `CEFAZOLIN`; `p-hysterectomy-open` added to the gyn bare-cefazolin route). Both checks went red: `ALL_CONTRAINDICATED` with `Procedure p-duodenal-ulcer recommends nothing: 1 of its 2 pathways survived no option` (zero occurrences pre-flip), and hysterectomy-open offering the reserved regimens. Restored, checksum re-verified against the extracted original, all observations back to green.
+
+One thing for the record, captured as a caveat: the shipped GI pathway 1 is `CEFAZOLIN -> VANCOMYCIN`, not the ticket's literal `CEFAZOLIN`. The fallback was added later, and the red check demonstrates exactly why — without it a cefazolin-allergic duodenal-ulcer case gets no guidance at all.

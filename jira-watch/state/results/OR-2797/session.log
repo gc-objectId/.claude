@@ -1,0 +1,7 @@
+Validation complete. `session.json` written with verdict **deploy-ready**; git working tree untouched, app left running the shipped class (md5 verified).
+
+- **Positive**: 6 simultaneous `POST /api/integration/mgh/event` notifications naming one stale practitioner → 6 staleness triggers, 5 `a refresh is already in flight` skips, **1** outbound Epic Practitioner search, one per-practitioner Valkey claim key with TTL 4s.
+- **Negative**: two distinct stale practitioners hit concurrently each got their own lookup (no cross-suppression, separate keys matching their row UUIDs); a just-refreshed practitioner triggered no refresh and no Redis call; with valkey stopped, all messages logged `Could not claim the refresh window … refreshing anyway` and still refreshed (fail-open).
+- **Red check**: compiled the parent commit's `PractitionerService` in-container and swapped it into `/app/classes` → 6 refresh triggers for the one practitioner, 0 skip lines, no claim key, 4 concurrent duplicate Epic lookups. Restored the shipped class, checksum re-verified, positive case re-ran clean.
+
+Caveats recorded — chief among them that the merged change deliberately does **not** fix the Sentry HTTP 500 the ticket was filed from (the commit calls it an upstream Epic failure), and that the 5s claim window is shorter than an Epic lookup that is timing out.

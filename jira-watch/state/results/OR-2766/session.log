@@ -1,0 +1,13 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What was exercised** against the running instance (mayo-mayo, image `loop-5ee1adcde`):
+
+- **Positive** — insulin bolus on an open case armed the `post-insulin-glucose-check` job (log + `job_metadata` + `qrtz_triggers`); an ongoing insulin infusion drove it end-to-end to a real `a-insulin-glucose-check` firing; a procedure-finish event no longer cancels the reminder, case close does.
+- **Negative** — after `CLOSE_APP`, a second insulin administration timed *inside* the case window but delivered after close logged `Case CaseId[value=36665] is already closed - skip insulin scheduling` and armed nothing. The rule's own abstain was shown separately: same job, same infusion, only `end_time` set → evaluation context written, no fired result.
+- **Red check** — two pre-fix class swaps. Before swapping, the unmodified worktree source was compiled and `javap -c`-diffed against the shipped class: **0 differing lines**, so the image is provably that source. With the `handleInsulin` guard removed, the identical closed-case scenario armed a job whose `job_metadata.created_date` was two hours past `end_time` — the exact production signature in the ticket. With the rule's `case ended` abstain removed, the same trigger alerted three minutes past case end. Both restored, md5s matched the originals, and both scenarios re-run green.
+
+**Two things flagged for Ryan** (recorded as caveats, neither blocking):
+- Fix item 3 (cancelling `PostInsulinGlucoseCheckJob.JOB_GROUP` in `handleCaseStop`) never actually runs on the `CLOSE_APP` path — `OperationService.stopOperation` calls `jobService.deleteAllJobs(caseId)` first, so the `Cancelled ... (case stop)` log never appeared in any run. Outcome is right; the new code is redundancy.
+- Injection used the admin bolus/infusion debugger endpoints, which dispatch the same `MedicationAdministrationEvent` as HL7 RAS; the Mayo RAS parse/persist leg upstream of that dispatch wasn't exercised.
+
+Worktree is clean; all scratch work lives outside it.

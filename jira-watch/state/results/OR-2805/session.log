@@ -1,0 +1,7 @@
+Validation complete. Verdict written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2805/session.json`: **deploy-ready**.
+
+- **Positive** — reproduced the ticket's exact row (36.9 kg adult, TOF 2, `r-sugammadex-dose-2`) through `POST /api/cds/medication-selection`; default dose is now 75 mg with "rounded to the nearest 25 mg", and the 4/16 mg/kg options come back 150/600 mg on the same step. The 16 mg/kg high-rocuronium branch was exercised separately and also rounds to 25 mg.
+- **Negative** — 45 kg and exactly-40 kg adults keep the configured 50 mg step; a pediatric patient abstains entirely with no 25 mg leakage.
+- **Red check** — compiled the parent commit's rule class in-container, swapped it into `/app/classes`, restarted, and watched the bug return (73.8 / 147.6 / 590.4 mg, unrounded) with log marker `OR2805-REDCHECK-PREFIX-DEFAULT-DOSE=73.8`; restored the shipped class, md5 matches, positive case re-confirmed.
+
+Git worktree is clean; all scratch artifacts live outside it.
