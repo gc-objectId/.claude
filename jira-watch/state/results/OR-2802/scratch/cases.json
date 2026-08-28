@@ -1,0 +1,10 @@
+{
+  "positive": {
+    "pmrn": "cov-pos-fake-a5ff803e-8bf4-459d-be6b-df0bf3c2754a",
+    "caseId": "41094"
+  },
+  "negative": {
+    "pmrn": "cov-neg-fake-0db2ba27-8baa-4496-adcb-c256b0cc838f",
+    "caseId": "55340"
+  }
+}

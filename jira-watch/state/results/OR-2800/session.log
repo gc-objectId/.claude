@@ -1,0 +1,9 @@
+Validation complete. `session.json` written.
+
+**Verdict: deploy-ready** (ship_risk: none)
+
+- **Positive** — boot imported the shipped files for all four tenants (mayo 463, demo/mgb-mgh/mgb-icsnh 64 each), and the tables encode the notation exactly: `->` → `step_number`, `OR` → option `position`, `AND` → join rows with `position` preserving file order, parentheses stripped, `None` → `no_prophylaxis=t` with zero options, plus Risk/Acuity scoping. Also driven at runtime through `POST /api/admin/config-imports/antibiotic-pathways/upload`.
+- **Negative** — unimportable files (unknown categories, wrong header) were refused with an explicit `IllegalStateException` and the populated tenant kept all 64 pathways, on both the admin and startup paths.
+- **Red check** — a pre-fix build (delete-before-parse, no `@Transactional`) compiled and swapped into `/app/classes` left the tenant at 0 on the startup path; the admin path did *not* go red because an ambient transaction masks it, which is itself worth knowing. Classes and CSV restored, md5s confirmed, positive re-run green.
+
+Two findings recorded as caveats rather than blockers: a header-only CSV silently empties a populated tenant (200, no error), and the demo/MGB pathway files name 16 procedure identifiers those tenants don't define, so 23 of 87 rows drop at boot — the build-time guard can't see it because it seeds procedure types from the pathway file itself.

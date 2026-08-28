@@ -1,0 +1,114 @@
+a-acetaminophen-early-redose|Wrong Dose
+a-acetaminophen-max-dose-save|Wrong Dose
+a-acetaminophen-max-dose-scan|Wrong Dose
+a-acetaminophen-max-single-dose|Wrong Dose
+a-adjust-insulin-infusion-rate|Diabetes Management
+a-antibiotic-early-redose|Delayed/Missed/Wrong Antibiotic
+a-antibiotic-early-redose-no-crcl|Delayed/Missed/Wrong Antibiotic
+a-antibiotic-infusion-pre-incision-completion|Delayed/Missed/Wrong Antibiotic
+a-antibiotic-redose-reminder|Delayed/Missed/Wrong Antibiotic
+a-antibiotic-redose-reminder-no-crcl|Delayed/Missed/Wrong Antibiotic
+a-ceph-ceph-class-allergy|Allergy & Drug-Drug Interactions
+a-ceph-cross-reaction-ceph-allergy|Allergy & Drug-Drug Interactions
+a-ceph-gen1-gen2-type-i-unknown-pen-allergy|Allergy & Drug-Drug Interactions
+a-ceph-pen-carb-type-ii-iv-ceph-allergy|Allergy & Drug-Drug Interactions
+a-ceph-pen-carb-type-ii-iv-pen-allergy|Allergy & Drug-Drug Interactions
+a-ceph-same-ceph-allergy|Allergy & Drug-Drug Interactions
+a-clinda-vanc-with-pen-allergy|Allergy & Drug-Drug Interactions
+a-ebl-antibiotic-redose-reminder|Delayed/Missed/Wrong Antibiotic
+a-eras-antiemetics|ERAS
+a-eras-preop|ERAS
+a-general-allergy|Allergy & Drug-Drug Interactions
+a-high-systolic-bp|Vital Signs
+a-hypoglycemia|Diabetes Management
+a-hypoglycemia-dm1-pregnancy|Diabetes Management
+a-hypoglycemia-glucose-check-15min|Diabetes Management
+a-insulin-dextrose-check|Diabetes Management
+a-insulin-glucose-check|Diabetes Management
+a-insulin-glucose-check-app-launch|Diabetes Management
+a-insulin-transition-to-bolus|Diabetes Management
+a-ketorolac-early-redose|Wrong Dose
+a-ketorolac-low-crcl|Wrong Medication
+a-ketorolac-max-dose-save|Wrong Dose
+a-ketorolac-max-dose-scan|Wrong Dose
+a-known-procedure-antibiotic-not-recommended|Delayed/Missed/Wrong Antibiotic
+a-known-procedure-missing-antibiotic|Delayed/Missed/Wrong Antibiotic
+a-known-procedure-no-antibiotic|Delayed/Missed/Wrong Antibiotic
+a-known-procedure-wrong-antibiotic|Delayed/Missed/Wrong Antibiotic
+a-local-anesthetic-max-dose-save|Wrong Dose
+a-local-anesthetic-max-dose-scan|Wrong Dose
+a-low-heart-rate|Vital Signs
+a-low-map|Vital Signs
+a-low-o2-saturation|Vital Signs
+a-maoi-drug-interactions|Allergy & Drug-Drug Interactions
+a-map-below-baseline-cardiac-risk|Vital Signs
+a-meperidine-renal-redose|Wrong Medication
+a-methylene-blue-serotonergic-drug-interactions|Allergy & Drug-Drug Interactions
+a-narcotic-type-i-iv-narcotic-allergy|Allergy & Drug-Drug Interactions
+a-nmb-reversal-extubation|NMB
+a-nmb-reversal-scan|NMB
+a-no-arterial-line-bp|Vital Signs
+a-no-bp-induction-agent|Vital Signs
+a-no-insulin-glucose-check|Diabetes Management
+a-no-nibp|Vital Signs
+a-nsaid-gi-bleed|Wrong Medication
+a-parkinsons-contraindications|Wrong Medication
+a-pen-moderate-unknown-pen-allergy|Allergy & Drug-Drug Interactions
+a-pen-type-i-unknown-ceph-class-allergy|Allergy & Drug-Drug Interactions
+a-pen-type-i-unknown-ceph-gen1-gen2-allergy|Allergy & Drug-Drug Interactions
+a-preop-doxycycline-check|Delayed/Missed/Wrong Antibiotic
+a-preop-glucose|Diabetes Management
+a-preop-hyperglycemia|Diabetes Management
+a-preop-pt-inr|Monitoring
+a-preop-ptt|Monitoring
+a-remifentanil-high-dose|Wrong Dose
+a-restart-infusion-post-hypoglycemia|Diabetes Management
+a-start-insulin-infusion|Diabetes Management
+a-succinylcholine-high-dose|Wrong Dose
+a-sux-condition-hyper-k|Wrong Medication
+a-sux-condition-intraocular-pressure|Wrong Medication
+a-sux-condition-mh|Wrong Medication
+a-sux-condition-myasthenia-gravis|Wrong Medication
+i-fluid-infusion-medication|Uncategorized
+i-last-local-anesthetic|Uncategorized
+i-latest-glucose|Uncategorized
+i-latest-medication|Uncategorized
+i-narcotic-acetaminophen-allergy|Allergy & Drug-Drug Interactions
+w-acetaminophen-max-dose|Wrong Dose
+w-antibiotic-previous-doses|Uncategorized
+w-calcium-blood-transfusion|Uncategorized
+w-cefazolin-anaphylaxis-unknown-pen-allergy|Allergy & Drug-Drug Interactions
+w-cefepime-default-dose-adjustment|Wrong Dose
+w-ceph-gen3-gen4-gen5-type-i-unknown-pen-allergy|Allergy & Drug-Drug Interactions
+w-ceph-no-cross-reaction-type-i-unknown-ceph-gen-allergy|Allergy & Drug-Drug Interactions
+w-dantrolene-default-dose|Wrong Dose
+w-default-dose-adjustment|Wrong Dose
+w-dose-option-adjustment|Wrong Dose
+w-fluconazole-slow-administer|Uncategorized
+w-glycopyrrolate-pregnancy|Wrong Medication
+w-indication-dose-options|Wrong Dose
+w-insulin-default-dose|Wrong Dose
+w-ketorolac-dose-adjustment|Wrong Dose
+w-ketorolac-max-dose|Wrong Dose
+w-last-local-anesthetic-max-dose|Wrong Dose
+w-maoi-drug-interactions|Allergy & Drug-Drug Interactions
+w-meperedine-crcl-dose-adjustment|Wrong Dose
+w-meperedine-low-crcl-dose-adjustment|Wrong Dose
+w-mrsa-infection-status|Delayed/Missed/Wrong Antibiotic
+w-narcotic-mild-unknown-narcotic-allergy|Allergy & Drug-Drug Interactions
+w-nondep-nmb-conditions|Wrong Medication
+w-pen-mild-ceph-allergy|Allergy & Drug-Drug Interactions
+w-pen-mild-pen-allergy|Allergy & Drug-Drug Interactions
+w-pen-type-i-unknown-ceph-gen3-gen4-gen5-allergy|Allergy & Drug-Drug Interactions
+w-qtc-prolonging-medications|Wrong Medication
+w-sugammadex-default-dose|Wrong Dose
+w-sugammadex-hormonal-contraceptive-drug-interactions|NMB
+w-sux-condition-burn|Wrong Medication
+w-sux-condition-hyper-k|Wrong Medication
+w-sux-condition-mh|Wrong Medication
+w-sux-condition-rhabdo|Wrong Medication
+w-sux-hyper-k|Wrong Medication
+w-sux-prior-meds|Wrong Medication
+w-sux-procedure|Wrong Medication
+w-vancomycin-renal-disease|Wrong Medication
+w-weight-type-adjustment|Uncategorized

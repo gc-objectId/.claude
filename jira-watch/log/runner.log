@@ -547,3 +547,172 @@ Re-verifying freshness for OR-2840 against 100ab1bd94aa9a1b3ede4edd65ceb147ec1ea
 No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-2840
 Transitioned OR-2840 to Done
+2026-08-27 14:25:07  [OR-2748] OR-2748 status is 'Ready for Testing'
+2026-08-27 14:25:07  [OR-2755] OR-2755 status is 'Ready for Testing'
+2026-08-27 14:25:08  [OR-2748] Building image from origin/main
+2026-08-27 14:25:08  [OR-2755] Building image from origin/main
+2026-08-27 14:25:48  [OR-2748] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 14:25:49  [OR-2755] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 14:25:50  [OR-2748] OR-2748 moved to Testing
+2026-08-27 14:25:51  [OR-2748] OR-2748 assigned to the configured account
+2026-08-27 14:25:51  [OR-2755] OR-2755 moved to Testing
+2026-08-27 14:25:51  [OR-2748] baseline: status='Testing' comments=0
+2026-08-27 14:25:51  [OR-2755] OR-2755 assigned to the configured account
+2026-08-27 14:25:51  [OR-2748] slug=local-anesthetic-rules-abort
+2026-08-27 14:25:52  [OR-2755] baseline: status='Testing' comments=0
+2026-08-27 14:25:52  [OR-2755] slug=analytics-update-guidance-categories
+2026-08-27 14:25:53  [OR-2748] worktree=/Users/ryanducharme/dev/worktrees/OR-2748-local-anesthetic-rules-abort
+2026-08-27 14:25:53  [OR-2755] worktree=/Users/ryanducharme/dev/worktrees/OR-2755-analytics-update-guidance-categories
+2026-08-27 14:27:29  [OR-2755] app under test at http://localhost:49572
+2026-08-27 14:27:29  [OR-2755] wrote ticket context (13 lines)
+2026-08-27 14:27:29  [OR-2755] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2755/session.log)
+2026-08-27 14:27:34  [OR-2748] app under test at http://localhost:49571
+2026-08-27 14:27:34  [OR-2748] wrote ticket context (40 lines)
+2026-08-27 14:27:34  [OR-2748] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2748/session.log)
+2026-08-27 14:32:14  [OR-2755]   … OR-2755 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-27 14:32:20  [OR-2748]   … OR-2748 still running (300s elapsed, 923 app requests, app up)
+2026-08-27 14:37:15  [OR-2755]   … OR-2755 still running (600s elapsed, 0
+? app requests, app up)
+2026-08-27 14:37:20  [OR-2748] session finished after ~585s
+2026-08-27 14:37:20  [OR-2748] captured 14512 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2748 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2748
+Transitioned OR-2748 to Done
+2026-08-27 14:37:26  [OR-2782] OR-2782 status is 'Testing'
+2026-08-27 14:37:27  [OR-2782] Building image from origin/main
+2026-08-27 14:37:27  [OR-2782] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 14:37:29  [OR-2782] OR-2782 assigned to the configured account
+2026-08-27 14:37:29  [OR-2782] baseline: status='Testing' comments=0
+2026-08-27 14:37:29  [OR-2782] slug=attributions-from-anesthesia-start
+2026-08-27 14:37:31  [OR-2782] worktree=/Users/ryanducharme/dev/worktrees/OR-2782-attributions-from-anesthesia-start
+2026-08-27 14:39:01  [OR-2782] app under test at http://localhost:49985
+2026-08-27 14:39:01  [OR-2782] wrote ticket context (11 lines)
+2026-08-27 14:39:01  [OR-2782] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2782/session.log)
+2026-08-27 14:42:15  [OR-2755]   … OR-2755 still running (900s elapsed, 0
+? app requests, app up)
+2026-08-27 14:43:46  [OR-2782]   … OR-2782 still running (300s elapsed, 66 app requests, app up)
+2026-08-27 14:44:01  [OR-2755] session finished after ~990s
+2026-08-27 14:44:01  [OR-2755] captured 34615 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2755 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2755
+Transitioned OR-2755 to Done
+2026-08-27 14:44:07  [OR-2795] OR-2795 status is 'Testing'
+2026-08-27 14:44:08  [OR-2795] Building image from origin/main
+2026-08-27 14:44:09  [OR-2795] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 14:44:10  [OR-2795] OR-2795 assigned to the configured account
+2026-08-27 14:44:10  [OR-2795] baseline: status='Testing' comments=0
+2026-08-27 14:44:10  [OR-2795] slug=read-every-observation-value
+2026-08-27 14:44:12  [OR-2795] worktree=/Users/ryanducharme/dev/worktrees/OR-2795-read-every-observation-value
+2026-08-27 14:45:25  [OR-2795] app under test at http://localhost:50209
+2026-08-27 14:45:26  [OR-2795] wrote ticket context (68 lines)
+2026-08-27 14:45:26  [OR-2795] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2795/session.log)
+2026-08-27 14:48:47  [OR-2782]   … OR-2782 still running (600s elapsed, 151 app requests, app up)
+2026-08-27 14:50:11  [OR-2795]   … OR-2795 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-27 14:53:47  [OR-2782] session finished after ~885s
+2026-08-27 14:53:47  [OR-2782] captured 15232 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2782 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2782
+Transitioned OR-2782 to Done
+2026-08-27 14:53:53  [OR-2819] OR-2819 status is 'Ready for Testing'
+2026-08-27 14:53:54  [OR-2819] Building image from origin/main
+2026-08-27 14:53:55  [OR-2819] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 14:53:57  [OR-2819] OR-2819 moved to Testing
+2026-08-27 14:53:57  [OR-2819] OR-2819 assigned to the configured account
+2026-08-27 14:53:58  [OR-2819] baseline: status='Testing' comments=0
+2026-08-27 14:53:58  [OR-2819] slug=open-the-debugger-on
+2026-08-27 14:54:00  [OR-2819] worktree=/Users/ryanducharme/dev/worktrees/OR-2819-open-the-debugger-on
+2026-08-27 14:55:12  [OR-2795]   … OR-2795 still running (600s elapsed, 0
+? app requests, app up)
+2026-08-27 14:55:13  [OR-2819] app under test at http://localhost:50453
+2026-08-27 14:55:13  [OR-2819] wrote ticket context (26 lines)
+2026-08-27 14:55:13  [OR-2819] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2819/session.log)
+2026-08-27 14:59:58  [OR-2819]   … OR-2819 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-27 15:00:12  [OR-2795]   … OR-2795 still running (900s elapsed, 0
+? app requests, app up)
+2026-08-27 15:02:57  [OR-2795] session finished after ~1050s
+2026-08-27 15:02:57  [OR-2795] captured 13381 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2795 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2795
+Transitioned OR-2795 to Done
+2026-08-27 15:03:03  [OR-2800] OR-2800 status is 'Ready for Testing'
+2026-08-27 15:03:03  [OR-2800] Building image from origin/main
+2026-08-27 15:03:04  [OR-2800] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 15:03:06  [OR-2800] OR-2800 moved to Testing
+2026-08-27 15:03:07  [OR-2800] OR-2800 assigned to the configured account
+2026-08-27 15:03:08  [OR-2800] baseline: status='Testing' comments=1
+2026-08-27 15:03:08  [OR-2800] slug=add-the-pathway-configuration
+2026-08-27 15:03:09  [OR-2800] worktree=/Users/ryanducharme/dev/worktrees/OR-2800-add-the-pathway-configuration
+2026-08-27 15:03:59  [OR-2819] session finished after ~525s
+2026-08-27 15:03:59  [OR-2819] captured 11131 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2819 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2819
+Transitioned OR-2819 to Done
+2026-08-27 15:04:05  [OR-2801] OR-2801 status is 'Ready for Testing'
+2026-08-27 15:04:05  [OR-2801] Building image from origin/main
+2026-08-27 15:04:06  [OR-2801] image=guidedclinical/orci:loop-8ed789637 sha=8ed789637fdd0e073c194deaebe073148dfbf5f4
+2026-08-27 15:04:08  [OR-2801] OR-2801 moved to Testing
+2026-08-27 15:04:09  [OR-2801] OR-2801 assigned to the configured account
+2026-08-27 15:04:09  [OR-2801] baseline: status='Testing' comments=0
+2026-08-27 15:04:09  [OR-2801] slug=resolve-a-single-procedure
+2026-08-27 15:04:12  [OR-2801] worktree=/Users/ryanducharme/dev/worktrees/OR-2801-resolve-a-single-procedure
+2026-08-27 15:04:22  [OR-2800] app under test at http://localhost:50638
+2026-08-27 15:04:23  [OR-2800] wrote ticket context (19 lines)
+2026-08-27 15:04:23  [OR-2800] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2800/session.log)
+2026-08-27 15:05:25  [OR-2801] app under test at http://localhost:50666
+2026-08-27 15:05:25  [OR-2801] wrote ticket context (18 lines)
+2026-08-27 15:05:25  [OR-2801] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2801/session.log)
+2026-08-27 15:09:08  [OR-2800]   … OR-2800 still running (300s elapsed, 0
+? app requests, app up)
+2026-08-27 15:10:11  [OR-2801]   … OR-2801 still running (300s elapsed, 2 app requests, app up)
+2026-08-27 15:14:08  [OR-2800]   … OR-2800 still running (600s elapsed, 0
+? app requests, app up)
+2026-08-27 15:15:11  [OR-2801]   … OR-2801 still running (600s elapsed, 464 app requests, app up)
+2026-08-27 15:19:09  [OR-2800]   … OR-2800 still running (900s elapsed, 0
+? app requests, app up)
+2026-08-27 15:20:09  [OR-2800] session finished after ~945s
+2026-08-27 15:20:09  [OR-2800] captured 14149 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2800 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2800
+2026-08-27 15:20:11  [OR-2801]   … OR-2801 still running (900s elapsed, 1466 app requests, app up)
+Transitioned OR-2800 to Done
+2026-08-27 15:20:16  [OR-2802] OR-2802 status is 'Ready for Testing'
+2026-08-27 15:20:16  [OR-2802] Building image from origin/main
+2026-08-27 15:20:53  [OR-2802] image=guidedclinical/orci:loop-bc52f698f sha=bc52f698f5a69ee6e579a436e81e432e36d97436
+2026-08-27 15:20:55  [OR-2802] OR-2802 moved to Testing
+2026-08-27 15:20:56  [OR-2802] OR-2802 assigned to the configured account
+2026-08-27 15:20:56  [OR-2801] session finished after ~930s
+2026-08-27 15:20:56  [OR-2802] baseline: status='Testing' comments=0
+2026-08-27 15:20:56  [OR-2802] slug=resolve-a-multi-procedure
+2026-08-27 15:20:57  [OR-2801] captured 13852 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2801 against 8ed789637fdd0e073c194deaebe073148dfbf5f4 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+2026-08-27 15:20:58  [OR-2802] worktree=/Users/ryanducharme/dev/worktrees/OR-2802-resolve-a-multi-procedure
+Posted validation comment on OR-2801
+Transitioned OR-2801 to Done
+2026-08-27 15:22:06  [OR-2802] app under test at http://localhost:50972
+2026-08-27 15:22:06  [OR-2802] wrote ticket context (17 lines)
+2026-08-27 15:22:06  [OR-2802] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2802/session.log)
+2026-08-27 15:26:52  [OR-2802]   … OR-2802 still running (300s elapsed, 89 app requests, app up)
+2026-08-27 15:31:37  [OR-2802] session finished after ~570s
+2026-08-27 15:31:37  [OR-2802] captured 12585 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2802 against bc52f698f5a69ee6e579a436e81e432e36d97436 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2802
+Transitioned OR-2802 to Done

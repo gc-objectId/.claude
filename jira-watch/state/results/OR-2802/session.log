@@ -1,0 +1,9 @@
+Validation complete. Verdict: **deploy-ready**, written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2802/session.json`.
+
+What was exercised against the running app at `localhost:50972` (demo-demo tenant, admin debugger endpoint `GET /api/admin/patients/{pmrn}/operations/{caseId}/antibiotic-candidates`, which invalidates the cache and re-runs the real `resolve()`):
+
+- **Positive** — `p-colorectal` + `p-arthroscopy-knee` → `RECOMMENDED`, `[["CEFAZOLIN","METRONIDAZOLE"]]`. The wider configured regimen covered the narrower one; colorectal's `CEFTRIAXONE+METRONIDAZOLE` and the knee's bare `CEFAZOLIN` both `NOT_SELECTED`. Also confirmed per-procedure optionality and "a procedure surviving nothing decides the case" (allergy-driven `ALL_CONTRAINDICATED`, not disagreement).
+- **Negative** — `p-arthroscopy-knee` + `p-eus-fna-cystic-lesion` → `SUPPRESSED_DISAGREEMENT`, empty recommendation, no synthesized `CEFAZOLIN+CEFTRIAXONE`.
+- **Red check** — recompiled the class with `covers()` reverted to exact-set equality (the pre-fix intersection) and swapped it into `/app/classes`. The positive case flipped to `SUPPRESSED_DISAGREEMENT` and logged the suppression line for its operation id, once. A control recompile of the unmodified source first proved the recompile itself was behaviour-neutral. Shipped classes restored, all five md5s match, positive case back to `RECOMMENDED`.
+
+Automation: `AntibioticResolutionSpecTest` already holds 40 tests pinning every ticket bullet by name, so only two optional e2e checks were proposed rather than new unit coverage.

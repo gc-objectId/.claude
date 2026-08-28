@@ -58,6 +58,12 @@ const scenarios = {
                anesRows: [ { role: '2.60^Resident - Anesthesia', personId: '7060', family: 'RESIDENT', given: 'RITA' },
                            { role: '2.20^CRNA', personId: '7020', family: 'CRNA', given: 'CHRIS' },
                            { role: '2.100^Student Nurse Anesthetist', personId: '7100', family: 'SRNA', given: 'SAM' } ] },
+  S_sender_inroom: { mcid: '900060', caseId: 'OR2782SENDER', pmrn: '99887709', csn: '2000009887709', event: 'In Room',
+               senderId: '9101', senderName: ['OPTIME','PERIOP','NURSE'], anesRows: roster({}) },
+  S_sender_anesstart: { mcid: '900061', caseId: 'OR2782SENDER', pmrn: '99887709', csn: '2000009887709', event: 'Anes Start',
+               senderId: '7060', senderName: ['RESIDENT','RITA','A'],
+               anesRows: [ { role: '2.60^Resident - Anesthesia', personId: '7060', family: 'RESIDENT', given: 'RITA' },
+                           { role: '2.10^Anesthesiologist', personId: '7001', family: 'ANESDOC', given: 'ALICE' } ] },
 };
 
 (async () => {

@@ -1,0 +1,192 @@
+commit 3f64952a9022a66205b205de0aa95d0e1a760408
+Author: Theodore Nguyen-Cao <theo@guidedclinical.com>
+Date:   Mon Aug 24 18:22:59 2026 -0400
+
+    OR-2782: attribute the case to its anesthesia clinician at Anes Start
+    
+    Anesthesia Start owns the case's attribution and In Room only fills an absent
+    one, so the two milestones settle on the same answer whichever order they
+    arrive in.
+    
+    Who that clinician is comes from the case's AIP roster rather than the stored
+    FHIR credential, because Mayo's Epic reports roughly half of Resident and
+    Fellow as surgical, while AIP-4 records the role a person holds on this case,
+    which is the question being asked. The roster is keyed on PERID: the previous
+    lookup read client_user_id, a column nothing on this path writes, so it never
+    once resolved a practitioner.
+    
+    The column is written by guarded statements rather than through the entity
+    merge because two scheduling messages for one case are processed concurrently,
+    and a read-then-write lets a stale "nobody attributed yet" land after the
+    owning milestone has committed. OperationService.startOperation moves onto the
+    same guarded statement for that reason; its fill-if-null semantics are
+    unchanged for every tenant.
+    
+    A failure to resolve the highest-ranked clinician abandons the overwrite
+    instead of falling through to a lower-ranked one, because the overwrite is
+    unconditional and a replay would otherwise make that downgrade permanent.
+
+diff --git a/client-integration-api/src/main/java/com/guided/orci/integration/hl7/HL7ProcessingContext.java b/client-integration-api/src/main/java/com/guided/orci/integration/hl7/HL7ProcessingContext.java
+index b7d279ce6..3e1454264 100644
+--- a/client-integration-api/src/main/java/com/guided/orci/integration/hl7/HL7ProcessingContext.java
++++ b/client-integration-api/src/main/java/com/guided/orci/integration/hl7/HL7ProcessingContext.java
+@@ -121,17 +121,23 @@ public interface HL7ProcessingContext {
+      * read, and those columns are written by timing events through targeted JPQL that a snapshot cannot
+      * see, so handing one back re-persists stale values. Leave fields the message omits null; the
+      * implementation preserves the stored value rather than overwriting it, and never copies a clock
+-     * column at all.
++     * column at all. The one field a caller can deliberately overwrite is the primary practitioner.
+      *
+      * <p>Retry on {@link org.springframework.dao.DataIntegrityViolationException} to absorb a concurrent
+      * insert of the same (caseId, patient): the second attempt resolves the row the other writer
+      * committed and applies the same values as an update.
+      *
+-     * @param operation           the Operation as parsed from the message (patient and caseId must be set)
+-     * @param procedureNames      AIS-3-2 procedure names to map to ProcedureTypes via NAME codes (may be empty)
+-     * @param hl7InboundMessageId the id of the originating HL7InboundMessage record
++     * <p>{@code primaryPractitioner} is filled but never overwritten unless {@code overwritePrimaryPractitioner}
++     * is set, and a fill cannot displace an owning milestone's answer under concurrency.
++     *
++     * @param operation                      the Operation as parsed from the message (patient and caseId must be set)
++     * @param procedureNames                 AIS-3-2 procedure names to map to ProcedureTypes via NAME codes (may be empty)
++     * @param hl7InboundMessageId            the id of the originating HL7InboundMessage record
++     * @param overwritePrimaryPractitioner   replace an already-attributed primary practitioner rather than
++     *                                       only filling an absent one
+      */
+-    void saveOperation(Operation operation, List<String> procedureNames, UUID hl7InboundMessageId);
++    void saveOperation(Operation operation, List<String> procedureNames, UUID hl7InboundMessageId,
++                       boolean overwritePrimaryPractitioner);
+ 
+     /**
+      * Fires OR timing-event categories for a case identified by the supplied caseId.
+diff --git a/orci-repositories/src/main/java/com/guided/orci/repository/OperationRepository.java b/orci-repositories/src/main/java/com/guided/orci/repository/OperationRepository.java
+index 9662c8a01..1e371a405 100644
+--- a/orci-repositories/src/main/java/com/guided/orci/repository/OperationRepository.java
++++ b/orci-repositories/src/main/java/com/guided/orci/repository/OperationRepository.java
+@@ -2,6 +2,7 @@ package com.guided.orci.repository;
+ 
+ import com.guided.orci.models.patient.Operation;
+ import com.guided.orci.models.patient.Patient;
++import com.guided.orci.models.user.Practitioner;
+ import com.guided.orci.types.wrappers.CaseId;
+ import com.guided.orci.types.wrappers.PatientId;
+ import jakarta.transaction.Transactional;
+@@ -129,6 +130,24 @@ public interface OperationRepository
+     @Query("UPDATE Operation o SET o.endTime = :endTime, o.lastModifiedDate = :modifiedAt WHERE o.caseId = :#{#caseId.value()}")
+     public void updateEndTime(@Param("caseId") CaseId caseId, @Param("endTime") Date endTime, @Param("modifiedAt") Instant modifiedAt);
+ 
++    // One statement, not a read-then-write: messages for a case are processed concurrently. Scoped by
++    // patient because case ids repeat. lastModifiedDate is set by hand, as updateEndTime above does.
++    @Modifying
++    @Transactional
++    @Query("UPDATE Operation o SET o.primaryPractitioner = :practitioner, o.lastModifiedDate = :modifiedAt "
++            + "WHERE o.caseId = :#{#caseId.value()} and o.patient.id = :patientId")
++    public void updatePrimaryPractitioner(@Param("caseId") CaseId caseId, @Param("patientId") UUID patientId,
++                                          @Param("practitioner") Practitioner practitioner,
++                                          @Param("modifiedAt") Instant modifiedAt);
++
++    @Modifying
++    @Transactional
++    @Query("UPDATE Operation o SET o.primaryPractitioner = :practitioner, o.lastModifiedDate = :modifiedAt "
++            + "WHERE o.caseId = :#{#caseId.value()} and o.patient.id = :patientId and o.primaryPractitioner is null")
++    public void updatePrimaryPractitionerIfNotSet(@Param("caseId") CaseId caseId, @Param("patientId") UUID patientId,
++                                                  @Param("practitioner") Practitioner practitioner,
++                                                  @Param("modifiedAt") Instant modifiedAt);
++
+     @Query("from Operation op left join fetch op.patient p where op.id = :id")
+     Optional<Operation> findByIdWithPatient(@Param("id") UUID id);
+ 
+diff --git a/orci/src/main/java/com/guided/orci/service/OperationService.java b/orci/src/main/java/com/guided/orci/service/OperationService.java
+index c8f60ef17..d94207578 100644
+--- a/orci/src/main/java/com/guided/orci/service/OperationService.java
++++ b/orci/src/main/java/com/guided/orci/service/OperationService.java
+@@ -233,9 +233,17 @@ public class OperationService {
+                 operation.setPediatricStatus(pediatricStatus);
+                 modified = true;
+             }
+-            if (operation.getPrimaryPractitioner() == null && practitioner != null) {
+-                operation.setPrimaryPractitioner(practitioner);
+-                modified = true;
++            // A launching clinician is attributed outright; a case start carries no user and only fills.
++            // Guarded statements, not a read-then-write, because a milestone can attribute this case
++            // concurrently. Deliberately leaves modified alone so the entity save cannot write it back.
++            if (practitioner != null) {
++                if (user.isPresent()) {
++                    operationRepository.updatePrimaryPractitioner(
++                            caseId, patient.getId(), practitioner, Instant.now());
++                } else {
++                    operationRepository.updatePrimaryPractitionerIfNotSet(
++                            caseId, patient.getId(), practitioner, Instant.now());
++                }
+             }
+             if (modified) {
+                 operation = this.operationRepository.save(operation);
+diff --git a/orci/src/main/java/com/guided/orci/service/hl7/DefaultHL7ProcessingContext.java b/orci/src/main/java/com/guided/orci/service/hl7/DefaultHL7ProcessingContext.java
+index e00502138..7d1e33b58 100644
+--- a/orci/src/main/java/com/guided/orci/service/hl7/DefaultHL7ProcessingContext.java
++++ b/orci/src/main/java/com/guided/orci/service/hl7/DefaultHL7ProcessingContext.java
+@@ -39,6 +39,7 @@ import org.springframework.transaction.annotation.Transactional;
+ import org.springframework.transaction.support.TransactionSynchronization;
+ import org.springframework.transaction.support.TransactionSynchronizationManager;
+ 
++import java.time.Instant;
+ import java.time.ZoneId;
+ import java.util.*;
+ import java.util.stream.Collectors;
+@@ -630,7 +631,8 @@ public class DefaultHL7ProcessingContext implements HL7ProcessingContext {
+      */
+     @Override
+     @Transactional
+-    public void saveOperation(Operation incoming, List<String> procedureNames, UUID hl7InboundMessageId) {
++    public void saveOperation(Operation incoming, List<String> procedureNames, UUID hl7InboundMessageId,
++                              boolean overwritePrimaryPractitioner) {
+         // Re-fetch the patient within this transaction so Hibernate can lazy-load observations
+         // (the caller's session is closed; the patient entity arrives detached).
+         Patient patient = patientRepository.findById(incoming.getPatient().getId()).orElseThrow();
+@@ -650,6 +652,18 @@ public class DefaultHL7ProcessingContext implements HL7ProcessingContext {
+         // reference a managed operation — mirrors OperationService.startOperation's two-save flow.
+         Operation saved = operationRepository.save(operation);
+ 
++        // Written as its own guarded statement, never merged onto the entity (see OperationRepository).
++        // On the insert path the value rides the INSERT, so only an existing case needs the update.
++        if (storedCase != null && incoming.getPrimaryPractitioner() != null) {
++            if (overwritePrimaryPractitioner) {
++                operationRepository.updatePrimaryPractitioner(
++                        saved.getCaseId(), patient.getId(), incoming.getPrimaryPractitioner(), Instant.now());
++            } else {
++                operationRepository.updatePrimaryPractitionerIfNotSet(
++                        saved.getCaseId(), patient.getId(), incoming.getPrimaryPractitioner(), Instant.now());
++            }
++        }
++
+         // Both inputs a cached antibiotic resolution was computed from and does not re-read: the
+         // case's procedures, and its acuity.
+         boolean antibioticInputsChanged =
+@@ -697,13 +711,15 @@ public class DefaultHL7ProcessingContext implements HL7ProcessingContext {
+      * Copies the fields a scheduling message owns onto an already-managed case, never overwriting a
+      * populated value with null.
+      *
++     * <p>The primary practitioner is deliberately absent; {@link #saveOperation} writes it.
++     *
+      * <p>This list is deliberately exhaustive and deliberately excludes every column a timing event
+      * writes. Adding a clock column here would reintroduce the lost-update it exists to prevent, since
+      * the value would come from whatever the scheduling message knew rather than from the event stream
+      * that owns it.
+      *
+      * <p>Static and package-private so the merge rules can be pinned by a plain unit test. The rules
+-     * (never overwrite with null, provider fills only, case window is first-wins) are the kind that
++     * (never overwrite with null, case window is first-wins) are the kind that
+      * regress silently, and the persistence test that exercises them through the database only runs
+      * under {@code -P integration-tests}, which no CI workflow uses.
+      */
+@@ -713,10 +729,6 @@ public class DefaultHL7ProcessingContext implements HL7ProcessingContext {
+         if (incoming.getEncounterId().value() != null) existing.setEncounterId(incoming.getEncounterId().value());
+         if (incoming.getClassification() != null) existing.setClassification(incoming.getClassification());
+         if (incoming.getAsaStatus() != null) existing.setAsaStatus(incoming.getAsaStatus());
+-        // Only fill the anesthesia provider; never overwrite an existing one with a (likely) null.
+-        if (existing.getPrimaryPractitioner() == null && incoming.getPrimaryPractitioner() != null) {
+-            existing.setPrimaryPractitioner(incoming.getPrimaryPractitioner());
+-        }
+         // Estimated case window is first-wins: set it at the first case-start SIU, then never move it.
+         if (existing.getScheduledStartTime() == null && incoming.getScheduledStartTime() != null)
+             existing.setScheduledStartTime(incoming.getScheduledStartTime());

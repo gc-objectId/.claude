@@ -1,0 +1,45 @@
+2026-08-27T18:51:28.340Z mock epic listening on 8899
+2026-08-27T18:51:29.371Z GET /mgb/R4/Observation?patient=MGBPT1
+2026-08-27T18:51:29.372Z   -> mgb scenario=positive observations=4
+2026-08-27T18:51:42.463Z mock epic listening on 8899
+2026-08-27T18:51:43.978Z GET /mgb/R4/Patient?x=1
+2026-08-27T18:53:08.949Z GET /mgb/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.362.3.7.3.737384.0%7C30001006705&_format=json
+2026-08-27T18:53:09.415Z GET /mgb/R4/Observation?patient=urn%3Auuid%3AMGBPT1&code=http%3A%2F%2Floinc.org%7C2160-0%2Chttp%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3&_format=json
+2026-08-27T18:53:09.417Z   -> mgb scenario=positive observations=4
+2026-08-27T18:53:16.837Z POST /oauth2/token
+2026-08-27T18:53:16.866Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:53:16.885Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&code=http%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200034%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910205397%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910200223%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911038615%2Chttp%3A%2F%2Floinc.org%7C98979-8%2Chttp%3A%2F%2Floinc.org%7C2160-0%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200033%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C182003&_format=json
+2026-08-27T18:53:16.885Z   -> mayo scenario=positive observations=5
+2026-08-27T18:53:24.972Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:53:24.989Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&category=laboratory&date=ge2026-08-26T18%3A53%3A24-05%3A00&_format=json
+2026-08-27T18:53:24.990Z   -> mayo scenario=positive observations=5
+2026-08-27T18:53:29.185Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:53:29.191Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&category=laboratory&date=ge2026-08-26T18%3A53%3A29-05%3A00&_format=json
+2026-08-27T18:53:29.191Z   -> mayo scenario=positive observations=5
+2026-08-27T18:53:34.421Z GET /mgb/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.362.3.7.3.737384.0%7C30001006705&_format=json
+2026-08-27T18:53:34.425Z GET /mgb/R4/Observation?patient=urn%3Auuid%3AMGBPT1&code=http%3A%2F%2Floinc.org%7C2160-0%2Chttp%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3&_format=json
+2026-08-27T18:53:34.426Z   -> mgb scenario=negative observations=4
+2026-08-27T18:53:34.640Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:53:34.644Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&code=http%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200034%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910205397%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910200223%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911038615%2Chttp%3A%2F%2Floinc.org%7C98979-8%2Chttp%3A%2F%2Floinc.org%7C2160-0%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200033%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C182003&_format=json
+2026-08-27T18:53:34.645Z   -> mayo scenario=negative observations=5
+2026-08-27T18:54:48.605Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:54:49.168Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&code=http%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200034%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910205397%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910200223%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911038615%2Chttp%3A%2F%2Floinc.org%7C98979-8%2Chttp%3A%2F%2Floinc.org%7C2160-0%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200033%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C182003&_format=json
+2026-08-27T18:54:49.169Z   -> mayo scenario=positive observations=5
+2026-08-27T18:55:52.291Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:55:52.821Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&code=http%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200034%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910205397%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910200223%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911038615%2Chttp%3A%2F%2Floinc.org%7C98979-8%2Chttp%3A%2F%2Floinc.org%7C2160-0%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200033%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C182003&_format=json
+2026-08-27T18:55:52.822Z   -> mayo scenario=positive observations=5
+2026-08-27T18:55:53.203Z GET /mgb/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.362.3.7.3.737384.0%7C30001006705&_format=json
+2026-08-27T18:55:53.217Z GET /mgb/R4/Observation?patient=urn%3Auuid%3AMGBPT1&code=http%3A%2F%2Floinc.org%7C2160-0%2Chttp%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3&_format=json
+2026-08-27T18:55:53.217Z   -> mgb scenario=positive observations=4
+2026-08-27T18:57:08.174Z GET /mgb/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.362.3.7.3.737384.0%7C30001006705&_format=json
+2026-08-27T18:57:08.196Z GET /mgb/R4/Observation?patient=urn%3Auuid%3AMGBPT1&code=http%3A%2F%2Floinc.org%7C2160-0%2Chttp%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3&_format=json
+2026-08-27T18:57:08.196Z   -> mgb scenario=string observations=2
+2026-08-27T18:57:08.426Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T18:57:08.435Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&code=http%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200034%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910205397%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910200223%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911038615%2Chttp%3A%2F%2Floinc.org%7C98979-8%2Chttp%3A%2F%2Floinc.org%7C2160-0%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200033%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C182003&_format=json
+2026-08-27T18:57:08.436Z   -> mayo scenario=string observations=2
+2026-08-27T19:00:12.015Z GET /mayo/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.451.3.7.5.737384.135000%7C30001006705&_format=json
+2026-08-27T19:00:12.497Z GET /mayo/R4/Observation?patient=urn%3Auuid%3AMAYOPT1&code=http%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200034%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910205397%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1910200223%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911038615%2Chttp%3A%2F%2Floinc.org%7C98979-8%2Chttp%3A%2F%2Floinc.org%7C2160-0%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C1911200033%2Curn%3Aoid%3A1.2.840.114350.1.13.451.3.7.2.768282%7C182003&_format=json
+2026-08-27T19:00:12.498Z   -> mayo scenario=positive observations=5
+2026-08-27T19:00:31.186Z GET /mgb/R4/Patient?identifier=urn%3Aoid%3A1.2.840.114350.1.13.362.3.7.3.737384.0%7C30001006705&_format=json
+2026-08-27T19:00:31.213Z GET /mgb/R4/Observation?patient=urn%3Auuid%3AMGBPT1&code=http%3A%2F%2Floinc.org%7C2160-0%2Chttp%3A%2F%2Floinc.org%7C2823-3%2Chttp%3A%2F%2Floinc.org%7C8302-2%2Chttp%3A%2F%2Floinc.org%7C29463-7%2Chttp%3A%2F%2Floinc.org%7C82810-3&_format=json
+2026-08-27T19:00:31.213Z   -> mgb scenario=narrative observations=1

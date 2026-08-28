@@ -1,0 +1,45 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mayo-egfr-string-comparator",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "98979-8",
+          "display": "eGFR"
+        }
+      ],
+      "text": "eGFR"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueString": ">90"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-pregnancy-codeableconcept",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "82810-3",
+          "display": "Pregnancy status"
+        }
+      ],
+      "text": "Pregnancy status"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueCodeableConcept": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "77386006",
+          "display": "Pregnant"
+        }
+      ],
+      "text": "Pregnant"
+    }
+  }
+]

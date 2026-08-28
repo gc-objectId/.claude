@@ -1,0 +1,45 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mgb-creat-string-comparator-range",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "2160-0",
+          "display": "Creatinine"
+        }
+      ],
+      "text": "Creatinine"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueString": ">1.0-5.0"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mgb-pregnancy-codeableconcept",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "82810-3",
+          "display": "Pregnancy status"
+        }
+      ],
+      "text": "Pregnancy status"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueCodeableConcept": {
+      "coding": [
+        {
+          "system": "http://snomed.info/sct",
+          "code": "77386006",
+          "display": "Pregnant"
+        }
+      ],
+      "text": "Pregnant"
+    }
+  }
+]

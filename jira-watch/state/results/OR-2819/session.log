@@ -1,0 +1,9 @@
+Validation complete. Verdict recorded in `session.json`: **deploy-ready**, `ship_risk: material`.
+
+**What was exercised** against the running instance at `localhost:50453` (demo-demo tenant, two hand-staged patients/operations forced to `SILENT`):
+
+- **Positive** — `GET /api/admin/patients/{patientUuid}/operations/{operationUuid}/context` returned 200 with the full launch-context shape. A before/after snapshot of row counts across all 99 tenant tables showed exactly one behavioural change: the `ADMIN_OPERATION` audit row carrying `action=VIEW_OPERATION`. Operation left at `SILENT`, `initial_app_launch_time` null, `last_modified_date` untouched, zero sessions, zero launch events.
+- **Negative** — cross-patient operation uuid → 404 with no audit row written; zero `APP_LAUNCH` audit rows anywhere; non-admin → 403; cross-tenant → 404.
+- **Red check** — ran the real `POST /api/app-launch` on the same case. Every absence assertion went red simultaneously (mode → INTERACTIVE, launch event, session, patient snapshot, tracked value, activity span, `APP_LAUNCH` audit row), with a matching log signature appearing exactly once. Reverted all of it, re-snapshotted to the prior state, and re-ran the positive read clean.
+
+**The gap worth knowing about:** this container ships no frontend assets — `/app` has no `index.html`, and the SPA route returns a Spring whitelabel 404. So the View Operation button, the new `/admin/patients/:patientUuid/operations/:operationUuid/debugger` page, and all three frontend fix commits (leading slash, `useFeatureFlag` substring bug, `FeatureKey` union) were never rendered. That is why ship risk is flagged material despite the backend guarantee being proven hard. `/api/feature-flags` also returns `[]` here, so even the data condition behind the unknown-flag-id fix is absent.

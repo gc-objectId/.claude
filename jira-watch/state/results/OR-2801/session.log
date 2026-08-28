@@ -1,0 +1,9 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What was exercised** (mayo-mayo tenant on localhost:50666, via the antibiotic-candidates debugger endpoint and the tenant-facing medication-selection endpoint):
+
+- **Positive** — `p-duodenal-ulcer` (two pathways) and `p-oophorectomy-laparoscopic` (`None` + `CEFAZOLIN -> CIPROFLOXACIN`) confirmed all five walk rules: an AND option dying whole without its safe partner being named unsafe, a step surviving on one of its alternatives, a pathway stopping at its first surviving step (a drug the patient is anaphylactic to at step 2 was neither offered nor reported contraindicated), each pathway keeping its own fallback, and `OPTIONAL_PROPHYLAXIS` for the procedure offering both. The alert named the three survivors, not the configured cefazolin regimens.
+- **Negative** — killing both steps of pathway 0 gave `ALL_CONTRAINDICATED` with pathway 1's survivors withheld (`recommends nothing: 1 of its 2 pathways survived no option`), and the selection alert abstained entirely. The applicable `None` pathway did not turn a dead procedure into `NO_PROPHYLAXIS_INDICATED`.
+- **Red check** — two, both reverted: recompiled the service in the container with rule 5 neutered and swapped it into `/app/classes`, which made the case actively recommend the sibling pathway's regimen; and scoped the drug pathway out by risk so the contraindicated verdict became `NO_PROPHYLAXIS_INDICATED`. Shipped classes restored and checksum-verified, pathway rows back to null risk, all scenarios re-run green.
+
+Recorded caveats: mayo-only (demo/mgb ship no procedure with this shape), contraindication driven only by documented allergies, the swap flipped the guard rather than restoring pre-fix code since no commit references OR-2801.

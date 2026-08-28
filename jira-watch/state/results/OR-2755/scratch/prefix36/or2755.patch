@@ -1,0 +1,709 @@
+commit 2b76db0761b81a243b6ac8839f03251477f30708
+Author: Theodore Nguyen-Cao <theo@guidedclinical.com>
+Date:   Tue Aug 11 15:38:13 2026 -0400
+
+    OR-2755: recategorize rule guidance categories
+    
+    The analytics error-count and monthly-breakdown reports join
+    rule_definitions.guidance_category live, so these moves re-attribute
+    historical firings as well as future ones: past Monitoring counts shift
+    into Diabetes Management and Uncategorized shrinks. Previously published
+    breakdowns will not reconcile with a re-run.
+    
+    i-dantrolene-default-dose is absent because #4341 already moves it to
+    Wrong Dose.
+
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/ErasPreopCheckRule.java b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/ErasPreopCheckRule.java
+index 309398aa3..c7892e830 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/ErasPreopCheckRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/ErasPreopCheckRule.java
+@@ -4,6 +4,7 @@ package com.guided.orci.engine.rule.applaunch;
+ import com.guided.orci.dto.PatientContext;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.IMedicationAdministration;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.patient.ConditionSet;
+@@ -23,7 +24,11 @@ import java.time.temporal.TemporalAmount;
+ import java.util.*;
+ import java.util.stream.Collectors;
+ 
+-@RuleDefinition(id = ErasPreopCheckRule.ID, description = "Alerts if ERAs patient did not receive Acetaminophen and Celecoxib before the start of the case", trigger = RuleTrigger.LAUNCH, type = RuleType.ALERT)
++@RuleDefinition(id = ErasPreopCheckRule.ID,
++        description = "Alerts if ERAs patient did not receive Acetaminophen and Celecoxib before the start of the case",
++        trigger = RuleTrigger.LAUNCH,
++        type = RuleType.ALERT,
++        guidanceCategory = GuidanceCategory.ERAS)
+ @Slf4j
+ @Component
+ public class ErasPreopCheckRule extends AppLaunchRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PostInsulinGlucoseCheckAppLaunchRule.java b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PostInsulinGlucoseCheckAppLaunchRule.java
+index 366c48c84..8be5d3478 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PostInsulinGlucoseCheckAppLaunchRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PostInsulinGlucoseCheckAppLaunchRule.java
+@@ -35,7 +35,7 @@ import java.util.Optional;
+         description = "Alerts if patient has not had glucose checked in a timely manner after being given insulin",
+         trigger = RuleTrigger.LAUNCH,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Slf4j
+ @Component
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopDoxycyclineCheckRule.java b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopDoxycyclineCheckRule.java
+index f8c8b4d70..5af12d869 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopDoxycyclineCheckRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopDoxycyclineCheckRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.applaunch;
+ import com.guided.orci.dto.PatientContext;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.IMedicationAdministration;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.medication.MedicationRoute;
+@@ -34,7 +35,8 @@ import java.util.Set;
+         id = PreopDoxycyclineCheckRule.ID,
+         description = "Alerts at case start when oral Doxycycline was not administered within 4 hours before anesthesia start for D&E/D&C cases.",
+         trigger = RuleTrigger.LAUNCH,
+-        type = RuleType.ALERT
++        type = RuleType.ALERT,
++        guidanceCategory = GuidanceCategory.DELAYED_MISSED_OR_WRONG_ANTIBIOTIC
+ )
+ public class PreopDoxycyclineCheckRule extends AppLaunchRule {
+     public static final String ID = "a-preop-doxycycline-check";
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopGlucoseCheckRule.java b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopGlucoseCheckRule.java
+index c4c5366d2..831c88c0d 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopGlucoseCheckRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopGlucoseCheckRule.java
+@@ -41,7 +41,7 @@ import java.util.stream.Collectors;
+         description = "Alerts if patient with diabetes or on antihyperglycemics has not had glucose tested day of surgery",
+         trigger = RuleTrigger.LAUNCH,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Slf4j
+ @Component
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopHyperglycemiaRule.java b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopHyperglycemiaRule.java
+index 79190ffd3..bff8c027b 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopHyperglycemiaRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopHyperglycemiaRule.java
+@@ -33,7 +33,7 @@ import java.util.Optional;
+         description = "Alerts when pre-op glucose measurement is >= 180 mg/dL at case start.",
+         trigger = RuleTrigger.LAUNCH,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ public class PreopHyperglycemiaRule extends AppLaunchRule {
+     public static final String ID = "a-preop-hyperglycemia";
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/event/AdjustInsulinInfusionRateRule.java b/orci/src/main/java/com/guided/orci/engine/rule/event/AdjustInsulinInfusionRateRule.java
+index 51af62305..a3c9ff33e 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/event/AdjustInsulinInfusionRateRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/event/AdjustInsulinInfusionRateRule.java
+@@ -37,7 +37,7 @@ import static com.guided.orci.service.rules.diabetes.InsulinManagementService.IS
+         description = "Alert for insulin infusion rate changes based on ISC and glucose",
+         trigger = RuleTrigger.NOTIFICATION,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class AdjustInsulinInfusionRateRule extends GlucoseEventBasedRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaDiabetesRule.java b/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaDiabetesRule.java
+index dac364732..b401bd54a 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaDiabetesRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaDiabetesRule.java
+@@ -25,7 +25,7 @@ import static com.guided.orci.engine.EvaluationResultPromptTemplate.CITATION_TOO
+         description = "Alert for hypoglycemia with insulin infusion management, for patients with diabetes type I or who are pregnant",
+         trigger = RuleTrigger.NOTIFICATION,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class HypoglycemiaDiabetesRule extends BaseHypoglycemiaRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaRule.java b/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaRule.java
+index 5df90b7e0..be58051d2 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/event/HypoglycemiaRule.java
+@@ -26,7 +26,7 @@ import static com.guided.orci.engine.EvaluationResultPromptTemplate.CITATION_TOO
+         description = "Alert for hypoglycemia with insulin infusion management, for non-diabetic non-pregnant patients",
+         trigger = RuleTrigger.NOTIFICATION,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class HypoglycemiaRule extends BaseHypoglycemiaRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/event/InsulinTransitionToBolusRule.java b/orci/src/main/java/com/guided/orci/engine/rule/event/InsulinTransitionToBolusRule.java
+index 264fb733a..4610b2eb0 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/event/InsulinTransitionToBolusRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/event/InsulinTransitionToBolusRule.java
+@@ -39,7 +39,7 @@ import java.util.stream.Stream;
+         description = "Alert to consider transitioning to insulin bolus when infusion rate < 0.5 Units/hr",
+         trigger = RuleTrigger.NOTIFICATION,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class InsulinTransitionToBolusRule extends GlucoseEventBasedRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/event/RestartInsulinInfusionPostHypoglycemiaRule.java b/orci/src/main/java/com/guided/orci/engine/rule/event/RestartInsulinInfusionPostHypoglycemiaRule.java
+index 96977298b..3c4d7afad 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/event/RestartInsulinInfusionPostHypoglycemiaRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/event/RestartInsulinInfusionPostHypoglycemiaRule.java
+@@ -36,7 +36,7 @@ import java.util.stream.Stream;
+         description = "Alert to restart insulin infusion after hypoglycemia resolved",
+         trigger = RuleTrigger.NOTIFICATION,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class RestartInsulinInfusionPostHypoglycemiaRule extends GlucoseEventBasedRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/event/StartInsulinInfusionRule.java b/orci/src/main/java/com/guided/orci/engine/rule/event/StartInsulinInfusionRule.java
+index fb2e84357..0587ad0b9 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/event/StartInsulinInfusionRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/event/StartInsulinInfusionRule.java
+@@ -44,7 +44,7 @@ import static com.guided.orci.engine.EvaluationResultPromptTemplate.CITATION_TOO
+         description = "Alert for starting insulin infusion when glucose > 180 mg/dL for two consecutive readings despite insulin bolus",
+         trigger = RuleTrigger.NOTIFICATION,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class StartInsulinInfusionRule extends GlucoseEventBasedRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighRemifentanilDoseRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighRemifentanilDoseRule.java
+index 4a3ecabd9..1705376eb 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighRemifentanilDoseRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighRemifentanilDoseRule.java
+@@ -1,6 +1,7 @@
+ package com.guided.orci.engine.rule.medication.administration;
+ 
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.guidance.Citation;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -21,7 +22,11 @@ import static com.guided.orci.units.Units.KILOGRAM;
+  * mcg/kg can lead to hypotension, bradycardia and chest rigidity. Consider
+  * reducing dose.
+  */
+-@RuleDefinition(id = HighRemifentanilDoseRule.ID, description = "Alerts if remifentanil dose is greater than 8 micrograms/kg", trigger = RuleTrigger.DOSE, type = RuleType.ALERT)
++@RuleDefinition(id = HighRemifentanilDoseRule.ID,
++        description = "Alerts if remifentanil dose is greater than 8 micrograms/kg",
++        trigger = RuleTrigger.DOSE,
++        type = RuleType.ALERT,
++        guidanceCategory = GuidanceCategory.WRONG_DOSE)
+ @Component
+ public class HighRemifentanilDoseRule extends HighDoseRule {
+     private static final String REMIFENTANIL = "m-remifentanil";
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighSuccinylcholineDoseRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighSuccinylcholineDoseRule.java
+index 9c5016e74..f06dadb3a 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighSuccinylcholineDoseRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/administration/HighSuccinylcholineDoseRule.java
+@@ -12,6 +12,7 @@ import com.guided.orci.engine.EvaluationResultPromptTemplate;
+ import com.guided.orci.engine.RuleDefinition;
+ import com.guided.orci.engine.RuleTrigger;
+ import com.guided.orci.engine.RuleType;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Component;
+ 
+@@ -25,7 +26,11 @@ import static com.guided.orci.units.Units.KILOGRAM;
+  * postoperative myalgias.
+  * 
+  */
+-@RuleDefinition(id = HighSuccinylcholineDoseRule.ID, description = "Alerts if succinylcholine dose is greater than 2 micrograms/kg", trigger = RuleTrigger.DOSE, type = RuleType.ALERT)
++@RuleDefinition(id = HighSuccinylcholineDoseRule.ID,
++        description = "Alerts if succinylcholine dose is greater than 2 micrograms/kg",
++        trigger = RuleTrigger.DOSE,
++        type = RuleType.ALERT,
++        guidanceCategory = GuidanceCategory.WRONG_DOSE)
+ @Slf4j
+ @Component
+ public class HighSuccinylcholineDoseRule extends HighDoseRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CefazolinWithAnaphylaxisOrUnknownPenicillinAllergyRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CefazolinWithAnaphylaxisOrUnknownPenicillinAllergyRule.java
+index 4621d41f5..1f91c8ea7 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CefazolinWithAnaphylaxisOrUnknownPenicillinAllergyRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CefazolinWithAnaphylaxisOrUnknownPenicillinAllergyRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.dto.rule.context.ContextAllergy;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.engine.rule.RuleCategory;
+ import com.guided.orci.models.allergy.AllergyReaction;
+ import com.guided.orci.models.allergy.AllergySeverity;
+@@ -18,10 +19,11 @@ import java.util.Map;
+ 
+ @RuleDefinition(
+         id = CefazolinWithAnaphylaxisOrUnknownPenicillinAllergyRule.ID,
+-        description = "Alerts if cefazolin is selected for a patient with an anaphylaxis or unknown reaction to penicillin",
++        description = "Warns if cefazolin is selected for a patient with an anaphylaxis or unknown reaction to penicillin",
+         trigger = RuleTrigger.SELECTION,
+         type = RuleType.WARNING,
+-        categories = {RuleCategory.FILTERS_ANTIBIOTIC_CANDIDATES, RuleCategory.ALLERGY}
++        categories = {RuleCategory.FILTERS_ANTIBIOTIC_CANDIDATES, RuleCategory.ALLERGY},
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS
+ )
+ @Component
+ public class CefazolinWithAnaphylaxisOrUnknownPenicillinAllergyRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephGen3OrGen4OrGen5WithType1OrUnknownPenicillinAllergyRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephGen3OrGen4OrGen5WithType1OrUnknownPenicillinAllergyRule.java
+index f4420893a..b2127e098 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephGen3OrGen4OrGen5WithType1OrUnknownPenicillinAllergyRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephGen3OrGen4OrGen5WithType1OrUnknownPenicillinAllergyRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.dto.AllergyDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.allergy.AllergySeverity;
+ import com.guided.orci.models.allergy.IAllergy;
+ import com.guided.orci.models.medication.MedicationCategory;
+@@ -24,7 +25,8 @@ import java.util.Set;
+ @RuleDefinition(id = CephGen3OrGen4OrGen5WithType1OrUnknownPenicillinAllergyRule.ID,
+         description = "Warns if 3rd, 4th, or 5th generation cephalosporin is selected for a patient with Type I or unknown penicillin allergy",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS)
+ @Component
+ public class CephGen3OrGen4OrGen5WithType1OrUnknownPenicillinAllergyRule extends AbstractProcedureTypeAwareMedicationSelectionRule {
+     public static final String ID = "w-ceph-gen3-gen4-gen5-type-i-unknown-pen-allergy";
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephalosporinWithNoCrossReactionsTypeIOrUnknownCephalosporinAllergyRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephalosporinWithNoCrossReactionsTypeIOrUnknownCephalosporinAllergyRule.java
+index 99e4bdccb..8b5b0949c 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephalosporinWithNoCrossReactionsTypeIOrUnknownCephalosporinAllergyRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/CephalosporinWithNoCrossReactionsTypeIOrUnknownCephalosporinAllergyRule.java
+@@ -4,6 +4,7 @@ import com.guided.orci.dto.AllergyDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.dto.rule.context.ContextAllergy;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.allergy.AlertableCephalosporinCrossReaction;
+ import com.guided.orci.models.allergy.AllergySeverity;
+ import com.guided.orci.models.medication.MedicationCategory;
+@@ -24,7 +25,8 @@ import static com.guided.orci.engine.rule.medication.selection.AbstractProcedure
+ @RuleDefinition(id = CephalosporinWithNoCrossReactionsTypeIOrUnknownCephalosporinAllergyRule.ID,
+         description = "Warns when selected cephalosporin does not cross reaction with other cephalosporins and patient has a Type I or unknown cephalosporin (generation only) allergy",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS)
+ @Component
+ public class CephalosporinWithNoCrossReactionsTypeIOrUnknownCephalosporinAllergyRule extends MedicationSelectionRule {
+     public static final String ID = "w-ceph-no-cross-reaction-type-i-unknown-ceph-gen-allergy";
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/GlycopyrrolatePregnancyWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/GlycopyrrolatePregnancyWarningRule.java
+index eda5a3841..7f0981b68 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/GlycopyrrolatePregnancyWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/GlycopyrrolatePregnancyWarningRule.java
+@@ -2,6 +2,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -17,7 +18,8 @@ import java.util.Map;
+         id = GlycopyrrolatePregnancyWarningRule.ID,
+         description = "Warns that patient is pregnant when selecting glycopyrrolate",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED
+ )
+ @Slf4j
+ @Component
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticAcetaminophenAllergyInfoRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticAcetaminophenAllergyInfoRule.java
+index df1215370..758cf6e57 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticAcetaminophenAllergyInfoRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticAcetaminophenAllergyInfoRule.java
+@@ -4,6 +4,7 @@ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.dto.rule.context.ContextAllergen;
+ import com.guided.orci.dto.rule.context.ContextAllergy;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.service.CitationService;
+ import com.guided.orci.utils.StringUtils;
+@@ -18,7 +19,8 @@ import java.util.Set;
+         id = NarcoticAcetaminophenAllergyInfoRule.ID,
+         description = "Display if an ACETAMINOPHEN is selected and the patient has an allergy with the ACETAMINOPHEN and NARCOTIC tags",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.INFO
++        type = RuleType.INFO,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS
+ )
+ @Component
+ public class NarcoticAcetaminophenAllergyInfoRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticWithMildOrUnknownNarcoticAllergyWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticWithMildOrUnknownNarcoticAllergyWarningRule.java
+index df722a514..724ca8e3f 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticWithMildOrUnknownNarcoticAllergyWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NarcoticWithMildOrUnknownNarcoticAllergyWarningRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.dto.AllergyDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.allergy.AllergySeverity;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.service.CitationService;
+@@ -19,7 +20,8 @@ import java.util.stream.Collectors;
+         id = NarcoticWithMildOrUnknownNarcoticAllergyWarningRule.ID,
+         description = "Warn if a narcotic is selected when patient has a mild or unknown allergy to the same narcotic",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS
+ )
+ @Component
+ public class NarcoticWithMildOrUnknownNarcoticAllergyWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NonDepolarizingNMBConditionsWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NonDepolarizingNMBConditionsWarningRule.java
+index dbf86846a..41bfb7258 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NonDepolarizingNMBConditionsWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/NonDepolarizingNMBConditionsWarningRule.java
+@@ -1,6 +1,7 @@
+ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.rules.CitationDefinition;
+@@ -16,7 +17,8 @@ import java.util.Set;
+ @RuleDefinition(id = NonDepolarizingNMBConditionsWarningRule.ID,
+         description = "Warns when a non-depolarizing NMB is selected for patients having certain conditions",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class NonDepolarizingNMBConditionsWarningRule extends AbstractMedicationConditionsRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildCephAllergyWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildCephAllergyWarningRule.java
+index e1174d6e4..2b8b576bb 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildCephAllergyWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildCephAllergyWarningRule.java
+@@ -4,6 +4,7 @@ import com.guided.orci.dto.AllergyDTO;
+ import com.guided.orci.dto.MedicationDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.allergy.AllergySeverity;
+ import com.guided.orci.models.allergy.IAllergy;
+ import com.guided.orci.models.medication.MedicationCategory;
+@@ -23,7 +24,8 @@ import java.util.*;
+         id = PenicillinWithMildCephAllergyWarningRule.ID,
+         description = "Warn if penicillin is selected and patient has mild cephalosporin (all generations and class) allergy. Recommend test dose.",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS
+ )
+ @Slf4j
+ @Component
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildPenicillinAllergyWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildPenicillinAllergyWarningRule.java
+index 431e7b9e3..4974c75f5 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildPenicillinAllergyWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithMildPenicillinAllergyWarningRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.dto.AllergyDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.allergy.AllergySeverity;
+ import com.guided.orci.models.allergy.IAllergy;
+ import com.guided.orci.models.medication.MedicationCategory;
+@@ -24,7 +25,8 @@ import java.util.Set;
+         id = PenicillinWithMildPenicillinAllergyWarningRule.ID,
+         description = "Warn if penicillin is selected and patient has mild penicillin allergy. Recommend test dose.",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS
+ )
+ @Component
+ public class PenicillinWithMildPenicillinAllergyWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithTypeIOrUnknownCephGen3Gen4Gen5AllergyRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithTypeIOrUnknownCephGen3Gen4Gen5AllergyRule.java
+index d0cd6e273..009d60220 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithTypeIOrUnknownCephGen3Gen4Gen5AllergyRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/PenicillinWithTypeIOrUnknownCephGen3Gen4Gen5AllergyRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.dto.AllergyDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.allergy.AllergySeverity;
+ import com.guided.orci.models.allergy.IAllergy;
+ import com.guided.orci.models.medication.MedicationCategory;
+@@ -24,7 +25,8 @@ import static com.guided.orci.engine.rule.medication.selection.AbstractProcedure
+         id = PenicillinWithTypeIOrUnknownCephGen3Gen4Gen5AllergyRule.ID,
+         description = "Warn if penicillin is selected and patient has Type I (moderate) or unknown 3rd, 4th, or 5th generation cephalosporin allergy. Recommend test dose.",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.ALLERGY_AND_INTERACTIONS
+ )
+ @Component
+ public class PenicillinWithTypeIOrUnknownCephGen3Gen4Gen5AllergyRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineBurnWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineBurnWarningRule.java
+index 67e28dfe6..15bc8073e 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineBurnWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineBurnWarningRule.java
+@@ -1,6 +1,7 @@
+ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -16,7 +17,8 @@ import java.util.Set;
+ @RuleDefinition(id = SuccinylcholineBurnWarningRule.ID,
+         description = "Warns when succinylcholine is selected for patients with a burn",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholineBurnWarningRule extends AbstractSuccinylcholineConditionsWarningRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaConditionWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaConditionWarningRule.java
+index 5d052e983..61d309d2e 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaConditionWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaConditionWarningRule.java
+@@ -2,6 +2,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.dto.rule.context.ContextCondition;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -15,7 +16,8 @@ import java.util.*;
+ @RuleDefinition(id = SuccinylcholineHyperkalemiaConditionWarningRule.ID,
+         description = "Warns when succinylcholine is selected for patients with the risk of hyperkalemia",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholineHyperkalemiaConditionWarningRule extends AbstractSuccinylcholineConditionsWarningRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaWarningRule.java
+index 536d084ef..de2b52b24 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineHyperkalemiaWarningRule.java
+@@ -2,6 +2,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.observation.ObservationType;
+ import com.guided.orci.models.rules.CitationDefinition;
+@@ -17,9 +18,10 @@ import java.util.List;
+ import java.util.Map;
+ 
+ @RuleDefinition(id = SuccinylcholineHyperkalemiaWarningRule.ID,
+-        description = "Alerts when succinylcholine is selected for patients with hyperkalemia",
++        description = "Warns when succinylcholine is selected for patients with hyperkalemia",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholineHyperkalemiaWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineMalignantHyperthermiaWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineMalignantHyperthermiaWarningRule.java
+index 129b528ab..0637642f1 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineMalignantHyperthermiaWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineMalignantHyperthermiaWarningRule.java
+@@ -1,6 +1,7 @@
+ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -15,7 +16,8 @@ import java.util.Set;
+ @RuleDefinition(id = SuccinylcholineMalignantHyperthermiaWarningRule.ID,
+         description = "Warns when succinylcholine is selected for patients with the risk of malignant hyperthermia",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholineMalignantHyperthermiaWarningRule extends AbstractSuccinylcholineConditionsWarningRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholinePriorMedicationAdministrationWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholinePriorMedicationAdministrationWarningRule.java
+index 2f093e9fe..e775d4f0c 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholinePriorMedicationAdministrationWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholinePriorMedicationAdministrationWarningRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.data.DataKey;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.*;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -21,9 +22,10 @@ import java.util.Map;
+ import java.util.Set;
+ 
+ @RuleDefinition(id = SuccinylcholinePriorMedicationAdministrationWarningRule.ID,
+-        description = "Alerts when succinylcholine is selected for patients with prior medication administrations of specific medications",
++        description = "Warns when succinylcholine is selected for patients with prior medication administrations of specific medications",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholinePriorMedicationAdministrationWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineProcedureWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineProcedureWarningRule.java
+index bb604e0c8..4d7e73c1b 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineProcedureWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineProcedureWarningRule.java
+@@ -3,6 +3,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ import com.guided.orci.dto.OperationDTO;
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.procedure.ProcedureType;
+@@ -24,7 +25,8 @@ import java.util.stream.Stream;
+ @RuleDefinition(id = SuccinylcholineProcedureWarningRule.ID,
+         description = "Warns when succinylcholine is selected during certain procedures",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholineProcedureWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineRhabdomyolysisWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineRhabdomyolysisWarningRule.java
+index 4af215d4a..7a80b202f 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineRhabdomyolysisWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SuccinylcholineRhabdomyolysisWarningRule.java
+@@ -1,6 +1,7 @@
+ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.rules.CitationDefinition;
+ import com.guided.orci.service.CitationService;
+@@ -15,7 +16,8 @@ import java.util.Set;
+ @RuleDefinition(id = SuccinylcholineRhabdomyolysisWarningRule.ID,
+         description = "Warns when succinylcholine is selected for patients with risk of rhabdomyolysis",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Component
+ @Slf4j
+ public class SuccinylcholineRhabdomyolysisWarningRule extends AbstractSuccinylcholineConditionsWarningRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SugammadexHormonalContraceptiveDrugInteractionsWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SugammadexHormonalContraceptiveDrugInteractionsWarningRule.java
+index f0aea111d..a7dcc2c8d 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SugammadexHormonalContraceptiveDrugInteractionsWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/SugammadexHormonalContraceptiveDrugInteractionsWarningRule.java
+@@ -2,6 +2,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.medication.MedicationNote;
+ import com.guided.orci.models.medication.MedicationNoteStatus;
+@@ -20,7 +21,8 @@ import java.util.Map;
+ @RuleDefinition(id = SugammadexHormonalContraceptiveDrugInteractionsWarningRule.ID,
+         description = "Warns when sugammadex is selected for patients on hormonal contraceptives",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.NMB)
+ @Component
+ @Slf4j
+ public class SugammadexHormonalContraceptiveDrugInteractionsWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/VancomycinRenalDiseaseWarningRule.java b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/VancomycinRenalDiseaseWarningRule.java
+index 51dbb9b2e..8d80226cd 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/VancomycinRenalDiseaseWarningRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/medication/selection/VancomycinRenalDiseaseWarningRule.java
+@@ -2,6 +2,7 @@ package com.guided.orci.engine.rule.medication.selection;
+ 
+ import com.guided.orci.dto.rule.EvaluationResult;
+ import com.guided.orci.engine.*;
++import com.guided.orci.engine.rule.GuidanceCategory;
+ import com.guided.orci.models.medication.MedicationCategory;
+ import com.guided.orci.models.patient.ConditionTag;
+ import com.guided.orci.models.rules.CitationDefinition;
+@@ -21,7 +22,8 @@ import java.util.Map;
+ @RuleDefinition(id = VancomycinRenalDiseaseWarningRule.ID,
+         description = "Warns to consult pharmacy if vancomycin is selected for patients that may have renal disease with a recent administration of vancomyin",
+         trigger = RuleTrigger.SELECTION,
+-        type = RuleType.WARNING)
++        type = RuleType.WARNING,
++        guidanceCategory = GuidanceCategory.WRONG_MED)
+ @Slf4j
+ @Component
+ public class VancomycinRenalDiseaseWarningRule extends MedicationSelectionRule {
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/HypoglycemiaGlucoseCheckScheduledRule.java b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/HypoglycemiaGlucoseCheckScheduledRule.java
+index 782803aad..b131865b6 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/HypoglycemiaGlucoseCheckScheduledRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/HypoglycemiaGlucoseCheckScheduledRule.java
+@@ -26,7 +26,7 @@ import java.util.Optional;
+         description = "Alerts if patient with hypoglycemia has not had glucose checked within 15 minutes of the last glucose test",
+         trigger = RuleTrigger.SCHEDULED,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class HypoglycemiaGlucoseCheckScheduledRule extends ScheduledRule
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/NoInsulinGlucoseCheckScheduledRule.java b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/NoInsulinGlucoseCheckScheduledRule.java
+index ca3872620..37cb1f794 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/NoInsulinGlucoseCheckScheduledRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/NoInsulinGlucoseCheckScheduledRule.java
+@@ -27,7 +27,7 @@ import java.util.Optional;
+         description = "Alerts if a diabetic patient who has not received intraop insulin has not had glucose checked in the past 2 hours",
+         trigger = RuleTrigger.SCHEDULED,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class NoInsulinGlucoseCheckScheduledRule extends ScheduledRule
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinDextroseCheckScheduledRule.java b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinDextroseCheckScheduledRule.java
+index 59d095267..2648bcc0b 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinDextroseCheckScheduledRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinDextroseCheckScheduledRule.java
+@@ -25,7 +25,7 @@ import java.util.Map;
+         description = "Alerts if patient on insulin infusion does not have a documented dextrose",
+         trigger = RuleTrigger.CONTINUOUS,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class PostInsulinDextroseCheckScheduledRule extends ScheduledRule
+diff --git a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinGlucoseCheckScheduledRule.java b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinGlucoseCheckScheduledRule.java
+index 44440983b..e6688f3d3 100644
+--- a/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinGlucoseCheckScheduledRule.java
++++ b/orci/src/main/java/com/guided/orci/engine/rule/scheduled/PostInsulinGlucoseCheckScheduledRule.java
+@@ -30,7 +30,7 @@ import java.util.Optional;
+         description = "Alerts if patient has not had glucose checked in a timely manner after being given insulin",
+         trigger = RuleTrigger.CONTINUOUS,
+         type = RuleType.ALERT,
+-        guidanceCategory = GuidanceCategory.MONITORING
++        guidanceCategory = GuidanceCategory.DIABETES_MANAGEMENT
+ )
+ @Component
+ public class PostInsulinGlucoseCheckScheduledRule extends ScheduledRule

@@ -1,0 +1,14 @@
+Validation complete — `deploy-ready` recorded in `session.json`.
+
+**What was exercised** (running instance at `localhost:50209`, built from `8ed789637`):
+
+- Pointed both Epic tenants (`mayo-mayo`, `mgb-mgh`) at a local mock Epic FHIR R4 server via `-D` overrides in the container entrypoint, plus a mock OAuth token endpoint and a self-signed `epic.oauth` key pair so the Mayo OAuth path would come up. Verified the override landed in `public.tenants.epic_integration_config`.
+- Drove the real commands through `POST /api/admin/integration-harness/{tenant}/GET_OBSERVATIONS_LATEST` and `GET_OBSERVATIONS_LAST_24_HRS`.
+
+**Positive:** `valueRange` → `1-5` mg/dL, `valueRatio` → `4.2:1` mmol/L, comparator `Quantity` → `>180` cm / `<15`, `valueString` → `70.5` kg; the ticket's exact `>1.0-5.0` stored whole with no unit; `CodeableConcept` pregnancy status still `Pregnant`. The Calculator guard also fired for real: `Non-numeric value for GESTATIONAL_AGE_BIRTH: 252-266` with a 200 response.
+
+**Negative:** Ratio missing a side, unitless Range where units are required, wrong-unit Range, and canceled/preliminary results all refused — empty result, no exception, each log line naming the FHIR type.
+
+**Red check (two, both reverted and verified):** the parent commit's `FhirUtils` compiled in-container and shadowed into `/app/classes` dropped the comparator (`<15` → `15`) and lost the Range and Ratio entirely; the parent commit's `Calculator` turned the gestational-age request into a 500 NPE. `diff -r` against a pre-swap backup confirmed the restore, shipped behavior re-confirmed at runtime, entrypoint restored.
+
+Notable caveats recorded: the MGB single-observation and pediatric commands (and the BP component guards) aren't reachable from any endpoint here, so they rest on unit tests; MGB now stores a narrative string (`SEE COMMENT`) as a creatinine value where the quantity-only filter used to drop it; and `MGBGetQTCIntervalR4Command` is still `valueQuantity`-only, silently, which is a follow-up rather than a defect in this change.

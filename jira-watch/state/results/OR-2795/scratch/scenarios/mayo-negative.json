@@ -1,0 +1,117 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mayo-egfr-range-empty",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "98979-8",
+          "display": "eGFR"
+        }
+      ],
+      "text": "eGFR"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRange": {}
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-k-ratio-nodenom",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "2823-3",
+          "display": "Potassium"
+        }
+      ],
+      "text": "Potassium"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRatio": {
+      "numerator": {
+        "value": 4.2,
+        "unit": "mmol"
+      }
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-glucose-cancelled",
+    "status": "cancelled",
+    "code": {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.451.3.7.2.768282",
+          "code": "1911200034",
+          "display": "Glucose"
+        },
+        {
+          "system": "http://loinc.org",
+          "code": "X-1911200034",
+          "display": "Glucose"
+        }
+      ],
+      "text": "Glucose"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueQuantity": {
+      "value": 200,
+      "unit": "mg/dL"
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-qtc-preliminary",
+    "status": "preliminary",
+    "code": {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.451.3.7.2.768282",
+          "code": "182003",
+          "display": "QTc"
+        },
+        {
+          "system": "http://loinc.org",
+          "code": "X-182003",
+          "display": "QTc"
+        }
+      ],
+      "text": "QTc"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueQuantity": {
+      "value": 500,
+      "unit": "ms"
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-weight-range-lb",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "29463-7",
+          "display": "Body weight"
+        }
+      ],
+      "text": "Body weight"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRange": {
+      "low": {
+        "value": 150,
+        "unit": "lb"
+      },
+      "high": {
+        "value": 160,
+        "unit": "lb"
+      }
+    }
+  }
+]

@@ -1,0 +1,6 @@
+Procedure,Risk,Acuity,Pathway
+p-angiogram-arm,,,CEFAZOLIN AND METRONIDAZOLE -> (CIPROFLOXACIN AND METRONIDAZOLE) OR (CIPROFLOXACIN AND CLINDAMYCIN) -> VANCOMYCIN
+p-angiogram-cerebral,,,None
+p-angiogram-femoral | p-angiogram-foot,,elective | urgent,GENTAMICIN OR CEFAZOLIN
+p-angiogram-leg,low,,CEFAZOLIN
+p-angiogram-leg,high,,VANCOMYCIN

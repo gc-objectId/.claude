@@ -1,0 +1,14 @@
+{
+  "a": {
+    "pmrn": "cov-opt-mixed-fake-3b8cb1b3-b151-4d40-bdd2-40c074ac9895",
+    "caseId": "39254"
+  },
+  "b": {
+    "pmrn": "cov-opt-both-fake-a9d21c58-9945-412c-aabe-762f6525fbda",
+    "caseId": "60150"
+  },
+  "c": {
+    "pmrn": "cov-narrow-wide-fake-75615762-8fee-4326-92c6-a6346d67af7e",
+    "caseId": "95358"
+  }
+}

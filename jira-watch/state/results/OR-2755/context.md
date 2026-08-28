@@ -1,6 +1,6 @@
 # OR-2755 — Analytics: Update guidance categories
 
-Status: Ready for Testing   Assignee: unassigned
+Status: Testing   Assignee: Ryan Ducharme
 
 ## Description
 

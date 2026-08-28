@@ -1,0 +1,94 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mgb-creat-ratio-nodenom",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "2160-0",
+          "display": "Creatinine"
+        }
+      ],
+      "text": "Creatinine"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRatio": {
+      "numerator": {
+        "value": 1,
+        "unit": "mg/dL"
+      }
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mgb-k-range-nounits",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "2823-3",
+          "display": "Potassium"
+        }
+      ],
+      "text": "Potassium"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRange": {
+      "low": {
+        "value": 3.5
+      },
+      "high": {
+        "value": 5
+      }
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mgb-height-range-inches",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "8302-2",
+          "display": "Body height"
+        }
+      ],
+      "text": "Body height"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRange": {
+      "low": {
+        "value": 70,
+        "unit": "in"
+      },
+      "high": {
+        "value": 72,
+        "unit": "in"
+      }
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mgb-weight-cancelled",
+    "status": "cancelled",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "29463-7",
+          "display": "Body weight"
+        }
+      ],
+      "text": "Body weight"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueQuantity": {
+      "value": 70,
+      "unit": "kg"
+    }
+  }
+]

@@ -1,0 +1,120 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mayo-egfr-comparator",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "98979-8",
+          "display": "eGFR"
+        }
+      ],
+      "text": "eGFR"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueQuantity": {
+      "comparator": "<",
+      "value": 15,
+      "unit": "mL/min/1.73m2"
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-glucose-range",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.451.3.7.2.768282",
+          "code": "1911200034",
+          "display": "Glucose"
+        },
+        {
+          "system": "http://loinc.org",
+          "code": "X-1911200034",
+          "display": "Glucose"
+        }
+      ],
+      "text": "Glucose"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRange": {
+      "low": {
+        "value": 60,
+        "unit": "mg/dL"
+      },
+      "high": {
+        "value": 70,
+        "unit": "mg/dL"
+      }
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-ptt-ratio",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "urn:oid:1.2.840.114350.1.13.451.3.7.2.768282",
+          "code": "1910205397",
+          "display": "PTT"
+        },
+        {
+          "system": "http://loinc.org",
+          "code": "X-1910205397",
+          "display": "PTT"
+        }
+      ],
+      "text": "PTT"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueRatio": {
+      "numerator": {
+        "value": 1
+      },
+      "denominator": {
+        "value": 16
+      }
+    }
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-k-string",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "2823-3",
+          "display": "Potassium"
+        }
+      ],
+      "text": "Potassium"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueString": "4.2 mmol/L"
+  },
+  {
+    "resourceType": "Observation",
+    "id": "mayo-weight-quantity",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "29463-7",
+          "display": "Body weight"
+        }
+      ],
+      "text": "Body weight"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueQuantity": {
+      "value": 70,
+      "unit": "kg"
+    }
+  }
+]

@@ -1,0 +1,7 @@
+OR-2748 validated: **deploy-ready**.
+
+- **Positive** — a 150 kg patient with no derivable IBW gives Lidocaine-EPINEPHrine 2% a 1,050 mg nerve-block ceiling; after a 10 mg prior admin, `NERVE_BLOCK_REMAINING_ALLOWED_DOSE` = `"1,039.5"` (comma) while `..._AMOUNT_MG` = `1039.5`. `w-last-local-anesthetic-max-dose` fired cleanly and quoted the remaining dose plus the non-exhausted citation.
+- **Negative** — exhausting the allowance flipped both reads (prompt → ceiling, citation → `-max` variant), so the numeric detail genuinely drives the branch.
+- **Red check** — compiled the parent commit's `AbstractLocalAnestheticWarningOrInfoRule` into `/app/classes` and restarted: the warning rule vanished from the response and the log showed `java.lang.NumberFormatException: For input string: "1,039.5"` at `getMatchingCitationDefinitions:461`. Restored, md5s match, positive green again, exception appears exactly once.
+
+Session written to `state/results/OR-2748/session.json`; worktree is clean.

@@ -1,11 +1,9 @@
-OR-2782 validated: **deploy-ready**. `session.json` written.
+OR-2782 validated: **deploy-ready**.
 
-**Positive** — In Room attributed the SIU's SCH-20 nurse (`epic_user_id=9101`); the following Anes Start re-attributed the case to the AIP role-2.10 anesthesiologist (`7001 ALICE ANESDOC`), logging the roster line. Ranking confirmed separately (CRNA 2.20 beat resident 2.60 and SRNA 2.100). The non-Mayo half was exercised on demo via `/api/app-launch`: a relaunch moved ownership `PRIOR OWNER → LOOP LAUNCHER`.
+- **Positive** — In Room SIU attributed the sending perioperative nurse; a following Anes Start SIU overwrote it with the AIP-rostered anesthesiologist (`epic_user_id=7001`). Rank ordering, sender-in-roster, and empty-roster branches all confirmed.
+- **Negative** — Anes Start first, then In Room from a different sender: row and `last_modified_date` untouched.
+- **Red check** — two, both reverted: (1) compiled the parent commit's three changed classes into `/app/classes` (which shadows `/app/libs`), restarted clean, and the case ended with `primary_practitioner_id` NULL and no attribution log line; restored by checksum and re-verified green. (2) Data flip — changed only the event name `In Room` → `Anes Start` on the message that had just failed to overwrite, and the attribution moved. Also flipped the `OperationService.startOperation` hunk alone to confirm its effect on demo.
 
-**Negative** — with Anes Start first, a later In Room from a different sender carrying a full roster left the attribution untouched (`last_modified_date` unchanged) despite the message processing end-to-end. An Anes Start with unfilled AIP rows also kept the existing attribution.
+Notable finding recorded as a caveat rather than a blocker: the `startOperation` change is *not* "fill-if-null unchanged for every tenant" as the commit message claims — with a user present it is now an unconditional overwrite on all tenants, so a second clinician launching an already-attributed case takes ownership. Verified at runtime, and it is covered by a shipped unit test, so it reads as intended — the message just understates it. Also flagged: a rostered trainee who sends the Anes Start outranks a rostered attending, which matches the ticket wording but not the ranking rationale.
 
-**Red check** — both techniques, both reverted:
-- Data flip: changing only the event name (`In Room` → `Anes Start`) on the losing message made the overwrite fire; signature line appeared exactly once.
-- Pre-fix class swap: reverse-applied the OR-2782 hunks to three classes, compiled in-container against the runtime classpath + lombok, shadowed the shipped jars in `/app/classes`. Same scenario produced no attribution and none of the new log lines. Restored, md5sums verified identical, positive case reproduced on a fresh case.
-
-Notable finding recorded as a caveat rather than a blocker: `OperationService.startOperation` now overwrites an existing attribution outright when a user launches the app — on every tenant, not just Mayo. The commit message describes those semantics as unchanged, which holds only for the no-user branch. It matches the ticket's intent, so it doesn't block the deploy.
+Verdict and evidence written to `session.json`; worktree is clean.

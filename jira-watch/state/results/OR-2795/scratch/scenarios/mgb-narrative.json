@@ -1,0 +1,19 @@
+[
+  {
+    "resourceType": "Observation",
+    "id": "mgb-creat-narrative",
+    "status": "final",
+    "code": {
+      "coding": [
+        {
+          "system": "http://loinc.org",
+          "code": "2160-0",
+          "display": "Creatinine"
+        }
+      ],
+      "text": "Creatinine"
+    },
+    "effectiveDateTime": "2026-08-20T10:00:00-05:00",
+    "valueString": "SEE COMMENT"
+  }
+]

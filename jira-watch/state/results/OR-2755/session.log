@@ -1,7 +1,11 @@
-Validation complete. Verdict recorded in `session.json`: **deploy-ready**.
+Validation complete. `session.json` written with verdict **deploy-ready**.
 
-- **Positive** — fired `a-preop-glucose` and `a-preop-doxycycline-check` on real demo cases via `/api/cds/app-launch`; joined the firings to `rule_definitions` the way the analytics reports do → *Diabetes Management* and *Delayed/Missed/Wrong Antibiotic*. New map live in all four tenant schemas.
-- **Negative** — full 114-rule map diffed pre vs post: exactly 36 rules changed, matching the 36 changed files; no diabetes rule left in *Monitoring* (only the two coag-lab rules remain there).
-- **Red check** — compiled the parent commit's 36 rule classes in-container and swapped them into `/app/classes`: *Diabetes Management* vanished, *Monitoring* 2→15, *Uncategorized* 8→31, firings re-attributed. Separately shadowed the pre-fix enum, producing `No enum constant com.guided.orci.engine.rule.GuidanceCategory.DIABETES_MANAGEMENT` at startup. Both reverted; 41/41 checksums back to shipped and a fresh firing re-confirmed green.
+**What was done against the running instance (localhost:49572, built from `8ed789637`):**
 
-One caveat carried into the Jira comment rather than a blocker: the ticket's CSV attachment isn't readable from this environment, so the delivered mapping was verified as real and complete but not compared against the CSV — the 8 still-uncategorized rule ids are listed in the comment for a quick eyeball. Scratch work stayed outside the worktree; git tree is clean.
+- **Positive** — all 36 rules touched by PR #4346 carry the new guidance categories in `rule_definitions` (written by the app itself at boot from the `@RuleDefinition` annotations), identical across all four tenant schemas. `Diabetes Management` is a new category holding exactly the 13 insulin/glucose rules.
+- **Negative** — scraped rule-id → category from source at the built SHA for all 113 extractable rules and compared row-by-row against what the app wrote: 0 mismatches. Exactly 36 rules changed relative to the parent commit, none others. The only remaining `Monitoring` rows are the two coagulation lab rules; all 8 remaining `Uncategorized` rows are outside the change set.
+- **Red check** — enabled Hibernate bind-parameter TRACE so the boot-time INSERT logs its values, then compiled all 36 pre-fix rule classes in-container against the app's own classpath and swapped them into `/app/classes`. App booted cleanly (the new enum constant was deliberately left in place so the pre-fix classes would load); `Diabetes Management` went to 0 rows, `Uncategorized` 8 → 31, `Monitoring` 2 → 15, and the pre-fix cefazolin description appeared in the log once per tenant. Restored from backup, md5-verified all 41 class files, restarted — DB byte-identical to the pre-red baseline.
+
+Signature `<- [Alerts if cefazolin is selected for a patient with an anaphylaxis or unknown reaction to penicillin]` appears 4 times in the container log, only inside the red window.
+
+Caveats recorded: the ticket's source CSV wasn't available here (verified against the merged commit's intent instead), the Metabase consumers aren't reachable from this instance, and the recategorization re-attributes historical firings so old breakdowns won't reconcile. Automation gap flagged — nothing currently asserts any rule's guidance category.
