@@ -56,6 +56,17 @@ if [ "$status" = 'Done' ]; then
     exit 0
 fi
 
+# Only close a ticket that was already staged for testing. In Progress or To Do means someone is
+# still working it, whatever merged; the worktree is cleaned up either way.
+case "$status" in
+    'Ready for Testing' | 'Testing') ;;
+    *)
+        say "${ticket} is '${status}' — worktree cleaned up, but leaving the ticket alone."
+        say "Close it by hand if the merge really finished it."
+        exit 0
+        ;;
+esac
+
 say "${ticket} is '${status}' — closing it out"
 jira_add_comment "$ticket" "The work for this ticket merged in ${pr_url} and the branch has been cleaned up.
 

@@ -1,0 +1,8 @@
+.github/workflows/deploy.yml
+bin/lib/notify-slack.sh
+tools/deploy/src/guidedor_deploy/config.py
+tools/deploy/src/guidedor_deploy/run_pipeline.py
+tools/deploy/src/guidedor_deploy/services/slack.py
+tools/deploy/tests/conftest.py
+tools/deploy/tests/test_run_pipeline.py
+tools/deploy/tests/test_slack.py

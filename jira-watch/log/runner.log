@@ -716,3 +716,31 @@ Re-verifying freshness for OR-2802 against bc52f698f5a69ee6e579a436e81e432e36d97
 No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-2802
 Transitioned OR-2802 to Done
+2026-08-28 16:16:10  [OR-2804] OR-2804 status is 'Ready for Testing'
+2026-08-28 16:16:10  [OR-2803] OR-2803 status is 'Ready for Testing'
+2026-08-28 16:16:11  [OR-2803] Building image from origin/main
+2026-08-28 16:16:11  [OR-2804] Building image from origin/main
+2026-08-28 16:16:54  [OR-2803] image=guidedclinical/orci:loop-7fb395e9c sha=7fb395e9cdb195bd32152b45d0d05f5482247d97
+2026-08-28 16:16:57  [OR-2803] OR-2803 moved to Testing
+2026-08-28 16:16:58  [OR-2803] OR-2803 assigned to the configured account
+2026-08-28 16:16:59  [OR-2803] baseline: status='Testing' comments=0
+2026-08-28 16:16:59  [OR-2803] slug=scope-pathways-by-procedure
+2026-08-28 16:17:01  [OR-2803] worktree=/Users/ryanducharme/dev/worktrees/OR-2803-scope-pathways-by-procedure
+2026-08-28 16:17:02  [OR-2804] image=guidedclinical/orci:loop-7fb395e9c sha=7fb395e9cdb195bd32152b45d0d05f5482247d97
+2026-08-28 16:17:04  [OR-2804] OR-2804 moved to Testing
+2026-08-28 16:17:04  [OR-2804] OR-2804 assigned to the configured account
+2026-08-28 16:17:05  [OR-2804] baseline: status='Testing' comments=0
+2026-08-28 16:17:05  [OR-2804] slug=scope-pathways-by-case
+2026-08-28 16:17:07  [OR-2804] worktree=/Users/ryanducharme/dev/worktrees/OR-2804-scope-pathways-by-case
+2026-08-28 16:18:50  [OR-2803] app under test at http://localhost:56363
+2026-08-28 16:18:50  [OR-2803] wrote ticket context (15 lines)
+2026-08-28 16:18:50  [OR-2803] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2803/session.log)
+2026-08-28 16:18:55  [OR-2804] app under test at http://localhost:56375
+2026-08-28 16:18:55  [OR-2804] wrote ticket context (17 lines)
+2026-08-28 16:18:55  [OR-2804] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2804/session.log)
+2026-08-28 16:23:36  [OR-2803]   … OR-2803 still running (300s elapsed, 73 app requests, app up)
+2026-08-28 16:23:41  [OR-2804]   … OR-2804 still running (300s elapsed, 150 app requests, app up)
+2026-08-28 16:28:36  [OR-2803]   … OR-2803 still running (600s elapsed, 589 app requests, app up)
+2026-08-28 16:28:41  [OR-2804]   … OR-2804 still running (600s elapsed, 503 app requests, app up)
+2026-08-28 16:29:06  [OR-2803]   … OR-2803 still running (615s elapsed, 589 app requests, app up)
+2026-08-28 16:31:41  [OR-2804]   … OR-2804 still running (765s elapsed, 503 app requests, app up)

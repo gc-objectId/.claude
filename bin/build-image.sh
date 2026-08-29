@@ -61,7 +61,9 @@ else
 
     say "Building ${image} from ${sha}"
     # jib:dockerBuild, never jib:build — the latter would push to a registry.
-    ( cd "$BUILD_TREE" && mvn -B -P build-image -DskipTests \
+    # package-webapp is what CI and releases use; without it the image ships no frontend and every
+    # UI deliverable is silently unreachable.
+    ( cd "$BUILD_TREE" && mvn -B -P build-image,package-webapp -DskipTests -DskipAudioGeneration=true \
         -Dbuild.image.tag="$tag" -pl orci -am package jib:dockerBuild >&2 ) ||
         die "image build failed for ${sha}."
 fi

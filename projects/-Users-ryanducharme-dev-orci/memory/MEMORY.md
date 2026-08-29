@@ -77,3 +77,8 @@
 - [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — DONE 2026-08-24; per-item gating map; doxycycline all-clients is intentional, don't "fix" it
 - [MGH data not in AWS RDS](reference_mgh_data_not_in_aws_rds.md) — no mgb-mgh schema in dev/stage/prod; MGB self-hosts on OpenShift, query only via their Metabase
 - [Mayo matview refresh manual](project_or2747_mayo_matview_refresh.md) — OR-2747 To Do; rollups refreshed by hand, no staleness indicator; verify freshness before quoting a Mayo error rate
+- [OR-2620 HL7 auth Sentry noise](project_or2620_hl7_auth_sentry_noise.md) — DONE; entry point logs WARN unconditionally; Sentry reopens a Done ticket on a new event against a resolved issue
+- [Prod RDS blocked, stage allowed](reference_prod_rds_blocked_stage_allowed.md) — auto-mode classifier denies prod psql but allows stage; stage mayo-mayo has ~20 firing facts so it only answers schema/config questions
+- [OR-2656 MGH med admin room scope](project_or2656_mgh_med_admin_room_scope.md) — DONE no-code; notifications only in `MGH OR NN` (99.7% vs 0.1%); source_type EMR=notifications, OTHER=launch snapshot
+- [Sentry events have no release](reference_sentry_events_have_no_release.md) — can't date a build from an event; match stack line numbers to git (range only), fall back to `oc get deployment/guidedor`; MGB = mgb-mgh / guidedor.partners.org
+- [OR-2774 stale state is MGB-only](project_or2774_stale_state_mgb.md) — reopen events name the wrong entity + wrong path vs the ticket; MGB's deployed build still unread; AutoReleaseSemaphore is a counting throttle, its 30s auto-release is OR-2857

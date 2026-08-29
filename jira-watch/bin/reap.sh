@@ -7,12 +7,16 @@
 # A worktree whose ticket the loop has run, with no live run and nothing of value in it, blocks
 # that ticket forever: backlog.sh skips it with "worktree exists". This reclaims exactly those.
 #
-# Deliberately conservative — it will not touch a worktree unless ALL of the following hold, so a
-# worktree you created by hand is never at risk:
-#   - a results directory exists for the ticket, i.e. the loop ran it
-#   - no runner or session process is currently alive
+# Will not touch a worktree unless ALL of the following hold:
+#   - no live process has its cwd inside it
+#   - a results directory exists for the ticket, i.e. the loop ran it at some point
+#   - no loop runner is currently mid-sweep
 #   - the branch has no commits of its own beyond origin/main
 #   - the working tree has no modified or untracked files
+#
+# The cwd check is the one that matters. state/results/<ticket>/ persists forever, so a hand-made
+# worktree for a ticket the loop ran weeks ago looks stranded the moment it is clean and
+# uncommitted — which is exactly what a session you started an hour ago looks like.
 set -eu
 
 LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
@@ -29,10 +33,25 @@ if pgrep -f 'jira-watch/bin/runner.sh' >/dev/null 2>&1; then
     exit 0
 fi
 
+# One lsof for every process's cwd, rather than one per candidate.
+CWDS=$(lsof -w -d cwd -F pn 2>/dev/null |
+    awk '/^p/{pid=substr($0,2)} /^n/{print pid "\t" substr($0,2)}' || true)
+
+in_use() {
+    printf '%s\n' "$CWDS" | awk -F'\t' -v d="$1" '
+        $2 == d || index($2, d "/") == 1 { print $1; found=1; exit }
+        END { exit !found }'
+}
+
 found=0
 for dir in "$WORKTREE_ROOT"/OR-*; do
     [ -d "$dir" ] || continue
     ticket=$(basename "$dir" | sed -E 's/^(OR-[0-9]+).*/\1/')
+
+    holder=$(in_use "$dir") && {
+        printf 'keep   %-12s in use — pid %s has its cwd in there\n' "$ticket" "$holder"
+        continue
+    }
 
     [ -d "${RESULTS}/${ticket}" ] || continue
 

@@ -50,46 +50,9 @@ evidence.red_check:
 files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2709
 ```
 
-# Also in this group: OR-2776
-
-## Proposals still open
+## Grouping
 
 ```
-OR-2776#0
-  Parameterize allergyToTheFirstStepFallsToTheCombinationsFallback over shippedCombinations() so the whipple pair's step-2 LEVOFLOXACIN+METRONIDAZOLE+VANCOMYCIN fallback is pinned, not just the pancreatectomy pair's.
-
-OR-2776#1
-  Parameterize aFurtherProcedureFallsBackToThePerProcedureWalk over shippedCombinations() so the exact-set match is pinned for whipple + biliary stent + appendectomy (observed SUPPRESSED_DISAGREEMENT at runtime).
-
-OR-2776#2
-  Add a ProcedureBasedWrongAntibioticRule case driven by the shipped whipple + biliary-stent resolution rather than mocked candidates, asserting cefazolin fires the alert naming Piperacillin-Tazobactam and pip-tazo abstains.
-```
-
-## The validation that produced them
-
-```
-=== OR-2776 ===
-
-disposition : admitted
-detail      : verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-ran at      : 2026-08-26T18:49:19Z
-verdict     : deploy-ready
-built from  : 2cd9104ea3c7fa05ed45a99339f842b802ebb1cf
-
-caveats:
-  - The org component of the combination key was not exercised at runtime: neither demo-demo nor the mgb tenants seed p-whipple or p-biliary-stent-placement, so 'a non-Mayo tenant with the same pair gets nothing' rests on the unit test only.
-  - Cases were built through the admin create-operation endpoint, so the Epic procedure-name mapping to p-whipple (7 NAME rows in mayo/procedures/procedure-codes.csv) was not exercised end to end from a feed.
-  - The Mayo web UI was not driven directly (tenant login is Epic OAuth-gated); the user-facing behaviour was exercised through the tenant-facing /api/cds/medication-selection API as loopuser plus the admin antibiotic-candidates debugger.
-  - Compiling the pre-fix class in place required substituting an explicit org.slf4j.Logger for @Slf4j because lombok is absent from the runtime classpath; nothing else in the pre-fix source was altered.
-
-evidence.positive:
-  Against the running app at localhost:55752 (image built from 2cd9104ea), created a mayo-mayo patient and case carrying exactly p-whipple + p-biliary-stent-placement via POST /api/admin/patients/ and .../operations/create (pmrn or2776-fake-7b1c5782-d29b-4497-b047-14054146ae43, caseId 98502). GET /api/admin/patients/{pmrn}/operations/98502/antibiotic-candidates returned outcome=RECOMMENDED with reco
-
-evidence.negative:
-  Built three further mayo-mayo cases and read the same debugger endpoint. p-whipple alone (case 95782): outcome=NOT_CONFIGURED, recommended=(none), log 'Operation ... has no antibiotic pathways to walk under tenant TenantKey[value=mayo-mayo]: [p-whipple drug=0 none=false] (tenant holds 463 pathways)' - the combination did not leak onto a single-procedure case. p-biliary-stent-placement alone (case 
-
-evidence.red_check:
-  Two independent red checks, both reverted. (1) Pre-fix class swap: extracted ProcedureCombinationPathwayService.java at e95fa7ae3^ (diffed against HEAD - the only difference is the OR-2776 change), replaced @Slf4j with an explicit org.slf4j.Logger field since lombok is not on the runtime classpath, compiled it inside the container with javac against $(cat /app/jib-classpath-file), backed up the sh
-
-files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2776
+  loopcmd cover OR-2709 OR-2776
+      2 shared test files, e.g. orci/src/test/java/com/guided/orci/services/ProcedureCombinationPathwayServiceTest.java
 ```

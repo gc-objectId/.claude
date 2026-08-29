@@ -139,6 +139,90 @@ next_added_id() {
     printf '%s#a%s' "$1" "$((_n + 1))"
 }
 
+PR_FILES_CACHE="${LOOP_HOME}/state/pr-files"
+
+# Which tickets' coverage would land in the same place. Three signals, strongest first: the same
+# merged PR, a shared Jira parent, or overlapping changed files.
+cmd_groups() {
+    mkdir -p "$PR_FILES_CACHE"
+    repo=$(git -C "${ORCI_ROOT:-$HOME/dev/orci}" remote get-url origin |
+        sed -e 's#^git@github.com:##' -e 's#^https://github.com/##' -e 's#\.git$##')
+
+    tickets=$(each_proposal | while IFS="$(printf '\t')" read -r id _; do
+        [ "$(status_of "$id")" = 'open' ] && printf '%s\n' "${id%#*}"
+    done | sort -u)
+    [ -n "$tickets" ] || { printf 'Nothing in the backlog.\n'; return 0; }
+
+    facts="${LOOP_HOME}/state/.group-facts"
+    : >"$facts"
+    for t in $tickets; do
+        pr=$(jq -r '.freshness.merge_commits[0].number // empty' "${RESULTS}/${t}/runner.json" 2>/dev/null || true)
+        parent=$(jira_issue_field "$t" parent 'parent.key' 2>/dev/null || true)
+        files=''
+        if [ -n "$pr" ]; then
+            cache="${PR_FILES_CACHE}/${pr}.txt"
+            [ -s "$cache" ] || gh pr diff "$pr" --repo "$repo" --name-only >"$cache" 2>/dev/null || true
+            # Test paths only: the question is where the new coverage lands, and a shared main-code
+            # file chains half the repo into one group.
+            files=$(grep -E '(src/test/|qa-suite/)' "$cache" 2>/dev/null | tr '\n' ' ' || true)
+        fi
+        printf '%s\t%s\t%s\t%s\n' "$t" "${pr:--}" "${parent:--}" "$files" >>"$facts"
+    done
+
+    python3 - "$facts" <<'PYEOF'
+import sys, collections
+rows = [l.rstrip("\n").split("\t") for l in open(sys.argv[1]) if l.strip()]
+parent = {t: p for t, _, p, _ in rows}
+pr = {t: n for t, n, _, _ in rows}
+files = {t: set(f.split()) for t, _, _, f in rows}
+
+counts = collections.Counter(f for s in files.values() for f in s)
+common = {f for f, c in counts.items() if c > max(2, len(rows) // 3)}
+
+def related(a, b):
+    if pr[a] != "-" and pr[a] == pr[b]:
+        return "same PR #" + pr[a]
+    if parent[a] != "-" and parent[a] == parent[b]:
+        return "same parent " + parent[a]
+    shared = (files[a] & files[b]) - common
+    if len(shared) >= 2:
+        return "%d shared test files, e.g. %s" % (len(shared), sorted(shared)[0])
+    return None
+
+tickets = [r[0] for r in rows]
+seen, groups = set(), []
+for t in tickets:
+    if t in seen:
+        continue
+    grp, why, queue = [t], [], [t]
+    seen.add(t)
+    while queue:
+        cur = queue.pop()
+        for o in tickets:
+            if o in seen:
+                continue
+            r = related(cur, o)
+            if r:
+                seen.add(o)
+                grp.append(o)
+                queue.append(o)
+                why.append(r)
+    if len(grp) > 1:
+        groups.append((sorted(grp), why[0]))
+
+if not groups:
+    print("No grouping candidates - every ticket stands alone.")
+else:
+    print("Coverage that belongs together:")
+    print("")
+    for g, why in groups:
+        print("  loopcmd cover " + " ".join(g))
+        print("      " + why)
+        print("")
+PYEOF
+    rm -f "$facts"
+}
+
 # Oldest source ticket still carrying open proposals.
 cmd_next() {
     each_proposal | while IFS="$(printf '\t')" read -r id _; do
@@ -149,6 +233,7 @@ cmd_next() {
 case "${1:-}" in
     ''|--all)  cmd_list "${1:-}" ;;
     next)      cmd_next ;;
+    groups)    cmd_groups ;;
     amend)
         printf '%s\t%s\n' "${2:?need an ID}" "${3:?need the new text}" >>"$AMEND_FILE"
         printf 'amended %s\n' "$2"
@@ -162,5 +247,5 @@ case "${1:-}" in
     done)      set_status "${2:?need an ID}" done "${3:-}"; printf 'marked %s done\n' "$2" ;;
     decline)   set_status "${2:?need an ID}" declined "${3:-}"; printf 'declined %s\n' "$2" ;;
     ticket)    cmd_ticket "${2:?need a source ticket}" "${3:-}" ;;
-    *)         printf 'usage: automation.sh [--all | next | open TICKET | amend ID "text" | add TICKET "text" | done ID | decline ID "why" | ticket TICKET [--create]]\n' >&2; exit 1 ;;
+    *)         printf 'usage: automation.sh [--all | next | groups | open TICKET | amend ID "text" | add TICKET "text" | done ID | decline ID "why" | ticket TICKET [--create]]\n' >&2; exit 1 ;;
 esac

@@ -38,7 +38,10 @@ jql="project = \"${PROJECT}\" AND sprint in openSprints() AND status IN (\"${STA
 
 # Subtasks never match `sprint in openSprints()`, so reach them by parent instead.
 candidates=$(jira_search_keys "$jql")
-parents=$(printf '%s\n' "$candidates" | cut -f1 | paste -sd, - || true)
+
+# Parents are collected regardless of their own status: OR-2790 sat in Ready for Testing under a
+# parent still In Progress, so keying off parents that were themselves ready missed it entirely.
+parents=$(jira_search_keys "project = \"${PROJECT}\" AND sprint in openSprints()" | cut -f1 | paste -sd, - || true)
 if [ -n "$parents" ]; then
     sub_jql="project = \"${PROJECT}\" AND parent in (${parents}) AND status IN (\"${STATUS}\", \"Testing\") ORDER BY created ASC"
     subs=$(jira_search_keys "$sub_jql" || true)
@@ -83,6 +86,11 @@ printf '%s\n' "$candidates" | awk 'NF && !seen[$1]++' | while IFS="$(printf '\t'
                 printf 'note %s: stale running record (%ss old), offering again\n' "$key" "$_age" >&2
                 ;;
             admitted | admitted_with_caveats) printf 'skip %s: already admitted\n' "$key" >&2; continue ;;
+            # Infrastructure failures say nothing about the ticket, so retry without waiting for it
+            # to change. Only a real verdict (refused, no_merged_pr) waits for new information.
+            aborted | env_failed | session_timeout | stale_build)
+                printf 'note %s: last run was %s, offering again\n' "$key" "$prev" >&2
+                ;;
             *)
                 # Unchanged since the last failure means the outcome would be identical.
                 prev_comments=$(jq -r '.baseline.comments // -1' "${RESULTS}/${key}/runner.json" 2>/dev/null || echo -1)

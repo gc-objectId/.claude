@@ -1,0 +1,7 @@
+mayo-client-integration/src/main/java/com/guided/orci/integration/mayo/hl7/MayoHL7SiuCaseSchedulingProcessor.java
+mayo-client-integration/src/test/java/com/guided/orci/integration/mayo/hl7/MayoHL7SiuCaseSchedulingProcessorTest.java
+orci-models/src/main/java/com/guided/orci/models/patient/AsaStatus.java
+orci-models/src/main/java/com/guided/orci/models/patient/Operation.java
+orci-models/src/test/java/com/guided/orci/models/patient/AsaStatusTest.java
+orci/src/main/resources/db/liquibase/tenant/change-sets/207-add-asa-status-to-operations.xml
+orci/src/main/resources/db/liquibase/tenant/db.changelog-master.xml

@@ -10,6 +10,18 @@
 # Exit: 0 ran to a decision (admitted or refused), 1 setup error, 9 aborted before validating.
 set -eu
 
+# sh reads a script incrementally, so editing this file mid-run makes a live instance resume at a
+# byte offset that now points into different code. Run from a private snapshot instead.
+if [ -z "${RUNNER_SNAPSHOT:-}" ]; then
+    _snap=$(mktemp -t runner) || exit 1
+    cat "$0" >"$_snap"
+    RUNNER_SNAPSHOT="$_snap" export RUNNER_SNAPSHOT
+    sh "$_snap" "$@"
+    _rc=$?
+    rm -f "$_snap"
+    exit "$_rc"
+fi
+
 LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.claude/bin}"
 RESULTS="${LOOP_HOME}/state/results"
@@ -147,6 +159,24 @@ if [ -n "$commit" ]; then
         log "${ticket} assigned to the configured account"
     else
         log "WARNING could not assign ${ticket}; continuing"
+    fi
+
+    # Claiming and advancing a parent are one trigger: only from Ready for Testing, only if nobody
+    # else owns it. In Progress means someone is still working it.
+    parent=$(jira_issue_field "$ticket" parent 'parent.key' 2>/dev/null || true)
+    if [ -n "$parent" ]; then
+        parent_status=$(jira_issue_status "$parent" 2>/dev/null || true)
+        parent_owner=$(jira_issue_field "$parent" assignee 'assignee.accountId' 2>/dev/null || true)
+        if [ "$parent_status" != 'Ready for Testing' ]; then
+            log "parent ${parent} is '${parent_status}' — left alone"
+        elif [ -n "$parent_owner" ] && [ "$parent_owner" != "$JIRA_ACCOUNT_ID" ]; then
+            log "parent ${parent} belongs to someone else — left alone"
+        else
+            [ -n "$parent_owner" ] || jira_assign "$parent" "$JIRA_ACCOUNT_ID" || true
+            jira_transition_to "$parent" Testing &&
+                log "parent ${parent} claimed and moved to Testing" ||
+                log "WARNING could not move parent ${parent} to Testing"
+        fi
     fi
 fi
 

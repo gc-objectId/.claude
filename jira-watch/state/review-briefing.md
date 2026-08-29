@@ -1,55 +1,38 @@
-# Validation loop review — 2026-08-27 09:35
+# Validation loop review — 2026-08-28 10:04
 
 ## Stranded worktrees
 
 ```
 stranded OR-2656    /Users/ryanducharme/dev/worktrees/OR-2656-missing-med-admins-question
 keep   OR-2743      1 commits ahead, 0 dirty files — has work in it
+stranded OR-2774    /Users/ryanducharme/dev/worktrees/OR-2774-ObjectOptimisticLockingFailureException
+stranded OR-2780    /Users/ryanducharme/dev/worktrees/OR-2780-wrong-dose-error-rate-deep-dive
 
-1 stranded. Re-run with --apply to clear them.
+3 stranded. Re-run with --apply to clear them.
 ```
 
 ## Digest
 
 ```
-Validation digest — 15 runs since 2026-08-26T13:35:19Z
+Validation digest — 8 runs since 2026-08-27T14:04:26Z
 
-NEEDS YOU — no merged PR, nothing to validate (1)
-  OR-2780  no merged PR within the search window; needs a human disposition
+Closed, with stated limits (1)
+  OR-2819  verdict=deploy-ready; posted and transitioned; caveats:
 
-Closed clean (12)
-  OR-2840  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2792  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2766  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2774  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2745  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2806  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2796  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2797  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2779  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2776  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2833  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2805  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+Closed clean (7)
+  OR-2795  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2801  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2800  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2755  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2748  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2782  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2802  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
 
-Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 
+Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 OR-2780 
 Detail on any one: digest.sh <TICKET>
 ```
 
 ## Tickets needing a decision
-
-### OR-2780
-
-```
-=== OR-2780 ===
-
-disposition : no_merged_pr
-detail      : no merged PR within the search window; needs a human disposition
-ran at      : 2026-08-26T20:27:26Z
-verdict     : 
-built from  : 
-
-files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2780
-```
 
 ## Coverage backlog
 
@@ -109,10 +92,16 @@ OR-2726  (admitted)
   OR-2726#3    OperationService/DefaultHL7ProcessingContext tests: a launch or scheduling message that moves a case
   OR-2726#4    An integration test that round-trips through a real Redis/Valkey rather than a mocked RedisService, 
 
-OR-2755  (reserved)
-  OR-2755#0    orci: classpath-scan every @RuleDefinition and assert no rule is UNCATEGORIZED except an explicit al
-  OR-2755#1    orci: assert every rule whose identifier or class is insulin/glucose/hypoglycemia-related declares G
-  OR-2755#2    orci: assert MONITORING is now claimed only by the coagulation-lab rules (a-preop-pt-inr, a-preop-pt
+OR-2748  (admitted)
+  OR-2748#0    Unit (extend LocalAnestheticHighRemainingDoseTest): with a four-figure remaining dose and NO prior a
+  OR-2748#1    Unit (same class): with the allowance exhausted at a four-figure ceiling, assert the citation is the
+  OR-2748#2    qa-suite supplemental e2e (new LAST spec): stage a patient whose dosing weight puts a local anesthet
+
+OR-2755  (admitted)
+  OR-2755#0    Unit test that scans every @RuleDefinition-annotated class and asserts the full rule-id -> GuidanceC
+  OR-2755#1    Unit test asserting no rule declares GuidanceCategory.UNCATEGORIZED outside a small explicit allow-l
+  OR-2755#2    Unit test pinning GuidanceCategory.getFriendlyName() for every constant and asserting uniqueness, si
+  OR-2755#3    Repository-level test that after startup sync, rule_definitions.guidance_category is non-null for ev
 
 OR-2766  (admitted)
   OR-2766#0    INS-008 (@supplemental): insulin administration posted on a case whose end_time is already set arms 
@@ -133,22 +122,41 @@ OR-2779  (admitted)
   OR-2779#1    PatientController (admin create-operation): a hand-built case whose procedures include an EVAL_FOR_E
   OR-2779#2    OperationServiceTest: a multi-procedure case where only one of several procedures carries EVAL_FOR_E
 
-OR-2782  (running)
-  OR-2782#0    qa-suite HL7 e2e: inject an In Room SIU then an Anes Start SIU whose AIP 2.10 row names a PERID, and
-  OR-2782#1    qa-suite HL7 e2e negative: Anes Start first, then an In Room SIU from a different sender carrying a 
-  OR-2782#2    qa-suite HL7 e2e edge: an Anes Start whose AIP anesthesia rows carry no identifier leaves the existi
-  OR-2782#3    Give the practitioner race coverage a CI-run surface - a *Test-named variant of DefaultHL7Processing
-  OR-2782#4    Backend test on a non-Mayo tenant that a second app-launch by a different user takes ownership of an
+OR-2782  (admitted)
+  OR-2782#0    Get the two *IntegrationTest classes for this path into a job that actually runs, or split their non
+  OR-2782#1    Repository test: updatePrimaryPractitionerIfNotSet must not touch a row whose primary_practitioner_i
+  OR-2782#2    Processor test: an In Room SIU that arrives after Anes Start leaves primary_practitioner and last_mo
+  OR-2782#3    Processor test: an Anes Start sent by a rostered trainee attributes the trainee over a rostered atte
+  OR-2782#4    qa-suite supplemental spec in a new SIU family: inject In Room then Anes Start through the HL7 admin
 
 OR-2792  (admitted)
   OR-2792#0    Extend bundledMayoFileEncodesTheOR2792Pathways to all 14 gyn/urogyn identifiers rather than a 3-proc
   OR-2792#1    Add a negative assertion to the same importer test: the p-hysterectomy-open/-laparoscopic/-robotic/-
   OR-2792#2    Add a resolution test that walks the real bundled Mayo config (not synthetic categories) for a cefaz
 
+OR-2795  (admitted)
+  OR-2795#0    FhirUtils extraction driven from a parsed Epic-shaped R4 JSON bundle fixture (valueQuantity with com
+  OR-2795#1    MGBGetQTCIntervalR4Command: assert current behavior for a Range/Ratio/String-valued QTc and that the
+  OR-2795#2    MGB latest-observations: lock in that a narrative valueString now reaches CREATININE, so the widened
+
 OR-2796  (admitted)
   OR-2796#0    Integration test over EventService CLOSE_APP -> evaluateComplianceForCaseOnStop: firing with EVALUAT
   OR-2796#1    Same integration fixture with EVALUATION_DATE moved past the operation end, asserting compliant=true
   OR-2796#2    Repository-level test that getAdministrationsByMedicationCategoryInDateRange returns empty rather th
+
+OR-2800  (admitted)
+  OR-2800#0    Importer test: importing a header-only file into a tenant that already holds pathways must throw rat
+  OR-2800#1    Importer test or build guard: seed procedure types from each tenant's master-procedure-types.csv ins
+  OR-2800#2    Repository/integration test on the startup path: an unimportable antibiotic-pathways.csv leaves the 
+
+OR-2801  (admitted)
+  OR-2801#0    Controller test on GET /api/admin/patients/{pmrn}/operations/{caseId}/antibiotic-candidates assertin
+  OR-2801#1    A guard over the shipped mayo, demo and mgb antibiotic-pathways.csv files that fails when a procedur
+  OR-2801#2    Rule test that a-known-procedure-wrong-antibiotic abstains when ALL_CONTRAINDICATED was reached thro
+
+OR-2802  (admitted)
+  OR-2802#0    qa-suite: a multi-procedure demo case (p-colorectal + p-arthroscopy-knee) asserting the antibiotic-c
+  OR-2802#1    qa-suite: a non-covering pair (p-arthroscopy-knee + p-eus-fna-cystic-lesion) asserting outcome SUPPR
 
 OR-2805  (admitted)
   OR-2805#0    qa-suite supplemental: 36.9 kg adult with prior vecuronium and TOF 2 selecting sugammadex returns do
@@ -160,6 +168,13 @@ OR-2806  (admitted)
   OR-2806#1    Integration test: same order, new RXA-2 sub-id, and assert a second administration row with its own 
   OR-2806#2    Integration test: a bolus that lands outside the case window (no operation, no tracking id) followed
 
+OR-2819  (admitted_with_caveats)
+  OR-2819#0    Integration test: GET the context endpoint for a persisted operation and assert the operation row is
+  OR-2819#1    Integration test: assert the read writes exactly one audit_events row with event_type ADMIN_OPERATIO
+  OR-2819#2    Integration test: a non-admin session gets 403 on the context endpoint, and an admin under a differe
+  OR-2819#3    Integration test: a 404 from a cross-patient operation uuid writes no audit row at all.
+  OR-2819#4    Frontend unit test once a runner exists (OR-2702): useFeatureFlags drops unknown ids from the respon
+
 OR-2840  (admitted)
   OR-2840#0    Integration test: a CLOSE_APP category event on a case carrying a SILENT glucose-alert firing plus a
   OR-2840#1    Same integration test's inverse: a glucose one minute past the buffer leaves the row non-compliant, 
@@ -167,11 +182,11 @@ OR-2840  (admitted)
   OR-2840#3    qa-suite supplemental clinical-rules spec: stage a diabetic demo case, drive START_MONITORING, post 
   OR-2840#4    Move ObservationRepositoryGlucoseWindowTest to orci-repositories so it sits with the other repositor
 
-72 open of 75 proposed.
+92 open of 95 proposed.
 mark: automation.sh done <ID>   |   drop: automation.sh decline <ID> "why"
 bundle into a ticket: automation.sh ticket <SOURCE-TICKET>
 ```
 
 ## Eligible for the next sweep
 
-10 ticket(s)
+2 ticket(s)

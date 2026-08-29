@@ -1,0 +1,22 @@
+[
+  {
+    "label": "ELECTIVE",
+    "pmrn": "ACUELECTIVE-fake-3ad7a8ca-c578-4af2-99a1-22eaa66e2ce0",
+    "caseId": "73672"
+  },
+  {
+    "label": "URGENT",
+    "pmrn": "ACUURGENT-fake-a96639ab-4328-475b-a936-c1f66a771752",
+    "caseId": "81421"
+  },
+  {
+    "label": "NOACUITY",
+    "pmrn": "ACUNOACUITY-fake-e6d23272-fb32-4b21-baa6-7cc6d1e62ed4",
+    "caseId": "79896"
+  },
+  {
+    "label": "NONURGENT",
+    "pmrn": "ACUNONURGENT-fake-26be2edd-55f8-46ef-8901-620a1498ed48",
+    "caseId": "61486"
+  }
+]

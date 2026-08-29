@@ -1,0 +1,9 @@
+Validation complete. `session.json` written.
+
+**Verdict: deploy-ready** (ship_risk: none)
+
+- **Positive** — mayo-mayo `p-cesarean-delivery` case with acuity `ELECTIVE` resolved to `[CEFAZOLIN]`; `URGENT` resolved to `[CEFAZOLIN+AZITHROMYCIN]`, with `appliesToCase` inverted between the two pathways. Import warning present at boot. Cache drop exercised over real Epic SIU^S14: acuity change `Elec`→`Urg` removed the `antibiotic-resolution-v3/...` valkey key and the case then read back with azithromycin.
+- **Negative** — acuity-less and `NON_URGENT` cases both `NOT_CONFIGURED` with the INFO no-match log; unscoped (blank Acuity) pathways still matched at every acuity including none; an SIU repeating the same acuity left the cache key in place.
+- **Red check** — two reverted DB flips: retargeting the elective pathway to `NON_URGENT` dropped the elective case to `NOT_CONFIGURED` and produced the one-and-only log line `...case acuity ELECTIVE` (the signature); adding `ELECTIVE` to the azithromycin pathway made the elective case offer `CEFAZOLIN+AZITHROMYCIN`. Pre-fix class swap was skipped deliberately — the pre-fix entity has no `acuities`/`appliesTo`, so it would fail to link rather than mis-scope.
+
+Automation gap flagged: `saveOperation`'s acuity-driven cache drop has no test (only the static `applySchedulingFields` merge is covered).

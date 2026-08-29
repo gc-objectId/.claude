@@ -1,0 +1,15 @@
+client-integration-api/src/main/java/com/guided/orci/integration/fhir/FhirUtils.java
+client-integration-api/src/test/java/com/guided/orci/integration/fhir/FhirUtilsTest.java
+mayo-client-integration/src/test/java/com/guided/orci/integration/mayo/commands/MayoGetLaboratoryValuesR4CommandTest.java
+mayo-client-integration/src/test/java/com/guided/orci/integration/mayo/commands/MayoGetLatestObservationsR4CommandTest.java
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/commands/r4/MGBGetInpatientBloodPressureValuesR4Command.java
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/commands/r4/MGBGetLatestObservationR4Command.java
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/commands/r4/MGBGetLatestObservationsR4Command.java
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/commands/r4/MGBGetOutpatientBloodPressureValuesR4Command.java
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/commands/r4/MGBGetPediatricObservationsR4Command.java
+mgb-client-integration/src/test/java/com/guided/orci/integration/mgb/commands/r4/MGBBloodPressureComponentValueR4Test.java
+mgb-client-integration/src/test/java/com/guided/orci/integration/mgb/commands/r4/MGBGetLatestObservationR4CommandTest.java
+mgb-client-integration/src/test/java/com/guided/orci/integration/mgb/commands/r4/MGBGetLatestObservationsR4CommandTest.java
+mgb-client-integration/src/test/java/com/guided/orci/integration/mgb/commands/r4/MGBGetPediatricObservationsR4CommandTest.java
+orci-models/src/main/java/com/guided/orci/utils/Calculator.java
+orci-models/src/test/java/com/guided/orci/utils/CalculatorGestationalAgeTest.java

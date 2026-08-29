@@ -1,0 +1,13 @@
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/commands/r4/MGBPractitionerByNameAndEpicUserIdR4Command.java
+mgb-client-integration/src/test/java/com/guided/orci/integration/mgb/r4/MGBPractitionerByNameAndEpicUserIdR4CommandTest.java
+orci/src/main/java/com/guided/orci/service/CommandFactoryProvider.java
+orci/src/main/java/com/guided/orci/service/PractitionerRefreshService.java
+orci/src/main/java/com/guided/orci/service/PractitionerService.java
+orci/src/main/java/com/guided/orci/web/admin/PractitionerAdminController.java
+orci/src/main/webapp/src/api/generated/@tanstack/react-query.gen.ts
+orci/src/main/webapp/src/api/generated/sdk.gen.ts
+orci/src/main/webapp/src/api/generated/types.gen.ts
+orci/src/main/webapp/src/components/Admin/ManageData/PractitionersTab.tsx
+orci/src/test/java/com/guided/orci/service/PractitionerRefreshServiceTest.java
+orci/src/test/java/com/guided/orci/service/PractitionerServiceTest.java
+orci/src/test/java/com/guided/orci/web/admin/PractitionerAdminControllerTest.java

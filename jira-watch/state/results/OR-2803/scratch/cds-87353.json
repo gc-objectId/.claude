@@ -1,0 +1,71 @@
+{
+ "patient": {
+  "id": "01a04a0a-d67c-7809-a65e-f859f8947001",
+  "firstName": "High",
+  "preferredFirstName": null,
+  "lastName": "RiskPt",
+  "preferredLastName": null,
+  "mrn": "highrisk-fake-1e5e8286-1f58-41bf-804f-6249872a143a",
+  "height": "180 cm",
+  "heightInCustomaryFormat": "5' 10.9''",
+  "weight": "80 kg",
+  "weightInCustomaryFormat": "176 lbs",
+  "weightValue": 80,
+  "weightUnits": "kg",
+  "gender": "NON_BINARY",
+  "genderIdentity": "OTHER",
+  "epicPatientId": null,
+  "pmrn": "highrisk-fake-1e5e8286-1f58-41bf-804f-6249872a143a",
+  "birthWeight": null,
+  "birthHeight": null,
+  "gestationalAgeAtBirth": null,
+  "postmenstrualAge": null,
+  "pediatricStatus": "ADULT",
+  "pregnant": false,
+  "dob": "01/01/1946",
+  "fullName": "RiskPt, High",
+  "age": 80
+ },
+ "operation": {
+  "operationId": "01a04a0a-d691-75bc-9311-9b264a300279",
+  "caseId": "87353",
+  "startTime": "2026-08-28T21:23:39.401+00:00",
+  "endTime": null,
+  "procedureStartTime": null,
+  "procedureEndTime": null,
+  "inductionStartTime": null,
+  "extubationTime": null,
+  "admissionDate": null,
+  "initialApplicationLaunchTime": null,
+  "baselineMAP": null,
+  "serviceName": null,
+  "pediatricStatus": "ADULT",
+  "acuity": null,
+  "asaStatus": null,
+  "primaryPractitionerName": null,
+  "procedureTypes": [
+   {
+    "procedureId": "p-pancreatectomy",
+    "procedureName": "Pancreatectomy",
+    "categories": [],
+    "qualifier": null,
+    "availableQualifiers": []
+   }
+  ],
+  "erasOperation": false,
+  "procedureTypeName": "Pancreatectomy",
+  "procedureTypeId": "p-pancreatectomy"
+ },
+ "conditionProfile": {
+  "cardiacRiskConditions": [],
+  "conditions": []
+ },
+ "alerts": [],
+ "hasPreviouslyUnresolvedTabs": false,
+ "launchBlocked": false,
+ "launchBlockedReason": null,
+ "integrationFailures": [],
+ "allowVitalSignOptIn": false,
+ "vitalSignRulesOptIn": null,
+ "integrationFailureMessage": null
+}

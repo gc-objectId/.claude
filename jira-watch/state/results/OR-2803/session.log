@@ -1,0 +1,9 @@
+Validation complete. Verdict: **deploy-ready**, written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2803/session.json`.
+
+**What was exercised** (mayo-mayo tenant on the running instance at `:56363`):
+
+- **Positive** — shipped `antibiotic-pathways.csv` Risk column imported as two `p-pancreatectomy` rows (`LOW`/`HIGH`). A case rated high resolved to `CEFTRIAXONE + METRONIDAZOLE`; rated low resolved to `CEFAZOLIN + METRONIDAZOLE`; a case with `calculated_attributes = {}` (never rated) resolved to the LOW pathway with `procedureRisk=null`. A `risk=null` pathway applied at both risks.
+- **Negative** — the other-risk pathway came back `appliesToCase=false`, all steps `NOT_SELECTED`, absent from both `recommended` and `contraindicated` — filtered before the walk, so it neither survived nor died.
+- **Red check** — two reverted data flips: setting both rows to `HIGH` took a low-risk case to `NOT_CONFIGURED` and logged `matched no antibiotic pathway for p-pancreatectomy: 2 configured, procedure risk LOW case acuity none`; clearing the HIGH row's risk put ceftriaxone back in front of a low-risk case. Also uploaded a CSV with `Risk=medium`, which logged the row reject plus `Dropping the risk-scoped pathways for p-pancreatectomy`. Shipped CSV re-uploaded and all three cases re-confirmed.
+
+**Main caveat** (recorded, ship_risk `none`): the risk *rating* was written into `operation_procedure_types.calculated_attributes` rather than produced by `ProcedureRiskService` — `applyProcedureRisk` only runs inside `startOperation`, reachable only via `/api/app-launch`, which needs the real Mayo Epic FHIR endpoint. The rating itself is a different ticket; the scoping this ticket delivers reads that value and was fully exercised.

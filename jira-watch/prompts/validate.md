@@ -82,6 +82,20 @@ app.** An evidence field describing what the code does rather than what you obse
 a failed validation, not a passed one. Say so plainly; a truthful `inconclusive` is a good outcome
 and costs nothing. A fabricated `deploy-ready` is the only real failure mode here.
 
+## A deliverable you could not reach is not a caveat
+
+Read what the ticket actually delivers. If part of it — a UI route, a button, an endpoint, a job —
+could not be exercised **at all** in this environment, that is not a footnote. Two rules:
+
+- Set `ship_risk` to `material` and say plainly which deliverable was unreachable and why. A
+  reviewer deciding whether to ship needs to know half the ticket was never rendered.
+- If the unreachable part is the substance of the ticket rather than an adjunct, the verdict is
+  `inconclusive`, not `deploy-ready`. Validating the backend half of a frontend ticket and calling
+  it deploy-ready is the failure this rule exists to prevent.
+
+Judgment call: a ticket whose main fix is a backend mechanism, with a small UI change alongside, can
+be `deploy-ready` with the UI gap declared material. A ticket whose point *is* the UI cannot.
+
 ## Some tickets cannot be validated against a running app
 
 Not every ticket has a runtime surface. CI workflow changes, deploy scripts, build config, analytics
