@@ -1,1 +1,1 @@
-{"ticket":"OR-2803","disposition":"aborted","detail":"runner killed mid-run by an in-place edit to runner.sh; session finished but the app log was never captured","at":"2026-08-28T20:43:17Z"}
+{"ticket":"OR-2803","disposition":"running","detail":"run in progress","at":"2026-08-31T13:55:10Z"}

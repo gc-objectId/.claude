@@ -744,3 +744,26 @@ Transitioned OR-2802 to Done
 2026-08-28 16:28:41  [OR-2804]   … OR-2804 still running (600s elapsed, 503 app requests, app up)
 2026-08-28 16:29:06  [OR-2803]   … OR-2803 still running (615s elapsed, 589 app requests, app up)
 2026-08-28 16:31:41  [OR-2804]   … OR-2804 still running (765s elapsed, 503 app requests, app up)
+2026-08-31 09:55:10  [OR-2803] OR-2803 status is 'Testing'
+2026-08-31 09:55:10  [OR-2790] OR-2790 status is 'Ready for Testing'
+2026-08-31 09:55:11  [OR-2790] Building image from origin/main
+2026-08-31 09:55:11  [OR-2803] Building image from origin/main
+2026-08-31 09:56:01  [OR-2803] image=guidedclinical/orci:loop-db2154e3b sha=db2154e3b7b902e2d044e4e6b4327e839fa6d4cb
+2026-08-31 09:56:04  [OR-2803] OR-2803 assigned to the configured account
+2026-08-31 09:56:06  [OR-2803] parent OR-2799 is 'Testing' — left alone
+2026-08-31 09:56:07  [OR-2803] baseline: status='Testing' comments=0
+2026-08-31 09:56:07  [OR-2803] slug=scope-pathways-by-procedure
+2026-08-31 09:56:09  [OR-2803] worktree=/Users/ryanducharme/dev/worktrees/OR-2803-scope-pathways-by-procedure
+2026-08-31 09:56:12  [OR-2790] image=guidedclinical/orci:loop-db2154e3b sha=db2154e3b7b902e2d044e4e6b4327e839fa6d4cb
+2026-08-31 09:56:14  [OR-2790] OR-2790 moved to Testing
+2026-08-31 09:56:15  [OR-2790] OR-2790 assigned to the configured account
+2026-08-31 09:56:16  [OR-2790] parent OR-2783 is 'In Progress' — left alone
+2026-08-31 09:56:17  [OR-2790] baseline: status='Testing' comments=0
+2026-08-31 09:56:17  [OR-2790] slug=using-rxnorm-mapping-match
+2026-08-31 09:56:20  [OR-2790] worktree=/Users/ryanducharme/dev/worktrees/OR-2790-using-rxnorm-mapping-match
+2026-08-31 09:59:19  [OR-2803] app under test at http://localhost:58045
+2026-08-31 09:59:20  [OR-2803] wrote ticket context (22 lines)
+2026-08-31 09:59:20  [OR-2803] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2803/session.log)
+2026-08-31 09:59:24  [OR-2790] app under test at http://localhost:58062
+2026-08-31 09:59:25  [OR-2790] wrote ticket context (11 lines)
+2026-08-31 09:59:25  [OR-2790] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2790/session.log)

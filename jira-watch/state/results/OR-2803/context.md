@@ -13,3 +13,10 @@ Let a procedure state a different route per infection risk, so the pancreatectom
 ## Comments (0)
 
 (none)
+
+## Previous automated runs of this ticket
+
+- 2026-08-28T20:43:17Z  aborted: runner killed mid-run by an in-place edit to runner.sh; session finished but the app log was never captured
+
+Treat these as work already done. Do not repeat a settled conclusion; if a
+previous run was blocked, start from that blocker rather than from scratch.

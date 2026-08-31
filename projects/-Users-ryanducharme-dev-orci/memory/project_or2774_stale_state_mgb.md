@@ -16,8 +16,16 @@ do not match the ticket text: the entity is `PatientCondition`/`patient_conditio
 `MGBNotificationService.handleTimingEvent`, not the interactive app launch. Sentry kept the original
 Aug-12 title while the fingerprint collected MGB events.
 
-Whether MGB runs the fix is **unresolved** — its deployed image was never read. See
-[[reference-sentry-events-have-no-release]] for why the build could not be dated from the event.
+**Resolved:** MGB runs image tag `0.1.90`, cut 2026-08-12 20:33, which does **not** contain the
+fix — `PatientRefreshLock.java` is absent from that tag entirely. The fix merged to main
+2026-08-13 17:03, so the first release carrying it is `orci-project-0.1.91` (2026-08-15). MGB simply
+never received it. No code work; OR-2774 needs a deploy of >= 0.1.91 to MGB, nothing more.
+
+Release tags are named `orci-project-X.Y.Z` (maven-release-plugin). To answer "does this deployment
+have commit C", use `git merge-base --is-ancestor <C> orci-project-<tag>`. See
+[[reference-sentry-events-have-no-release]] for reading the deployed tag off the cluster.
+
+MGB prod was 6 releases and 437 commits behind main when this was found (2026-08-31).
 
 On current main the lock *is* the first DB action on all three refresh entry points
 (`AppLaunchController`, the MGB/HL7 timing-event route, `DefaultHL7ProcessingContext.findOrCreatePatient`) —
