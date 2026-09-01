@@ -1,32 +1,27 @@
-# Validation loop review — 2026-08-28 10:04
+# Validation loop review — 2026-08-31 14:20
 
 ## Stranded worktrees
 
 ```
-stranded OR-2656    /Users/ryanducharme/dev/worktrees/OR-2656-missing-med-admins-question
-keep   OR-2743      1 commits ahead, 0 dirty files — has work in it
-stranded OR-2774    /Users/ryanducharme/dev/worktrees/OR-2774-ObjectOptimisticLockingFailureException
+keep   OR-2653      in use — pid 83393 has its cwd in there
+keep   OR-2732      in use — pid 75067 has its cwd in there
+keep   OR-2754      in use — pid 16178 has its cwd in there
 stranded OR-2780    /Users/ryanducharme/dev/worktrees/OR-2780-wrong-dose-error-rate-deep-dive
 
-3 stranded. Re-run with --apply to clear them.
+1 stranded. Re-run with --apply to clear them.
 ```
 
 ## Digest
 
 ```
-Validation digest — 8 runs since 2026-08-27T14:04:26Z
+Validation digest — 3 runs since 2026-08-30T18:20:45Z
 
 Closed, with stated limits (1)
-  OR-2819  verdict=deploy-ready; posted and transitioned; caveats:
+  OR-2790  verdict=deploy-ready; posted and transitioned; caveats:
 
-Closed clean (7)
-  OR-2795  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2801  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2800  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2755  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2748  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2782  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2802  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+Closed clean (2)
+  OR-2803  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-2804  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
 
 Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 OR-2780 
 Detail on any one: digest.sh <TICKET>
@@ -129,6 +124,12 @@ OR-2782  (admitted)
   OR-2782#3    Processor test: an Anes Start sent by a rostered trainee attributes the trainee over a rostered atte
   OR-2782#4    qa-suite supplemental spec in a new SIU family: inject In Room then Anes Start through the HL7 admin
 
+OR-2790  (admitted_with_caveats)
+  OR-2790#0    orci-repositories: @DataJpaTest for MedicationRxNormMappingRepository.findByRxnormCodeIn covering mu
+  OR-2790#1    mgb-client-integration: verify MGBGetPatientInfoStrategy calls associateAllergiesViaRxNormMapping wh
+  OR-2790#2    mayo-client-integration: verify MayoGetPatientInfoStrategy calls associateAllergiesViaRxNormMapping 
+  OR-2790#3    AllergyAssociationServiceTest: add a case asserting an allergy carrying neither an RxNorm nor a SNOM
+
 OR-2792  (admitted)
   OR-2792#0    Extend bundledMayoFileEncodesTheOR2792Pathways to all 14 gyn/urogyn identifiers rather than a 3-proc
   OR-2792#1    Add a negative assertion to the same importer test: the p-hysterectomy-open/-laparoscopic/-robotic/-
@@ -158,6 +159,18 @@ OR-2802  (admitted)
   OR-2802#0    qa-suite: a multi-procedure demo case (p-colorectal + p-arthroscopy-knee) asserting the antibiotic-c
   OR-2802#1    qa-suite: a non-covering pair (p-arthroscopy-knee + p-eus-fna-cystic-lesion) asserting outcome SUPPR
 
+OR-2803  (admitted)
+  OR-2803#0    Extend MayoProcedureConfigImportIntegrationTest to pin the shipped p-pancreatectomy pair: exactly tw
+  OR-2803#1    Add an importer assertion that no shipped org file leaves a procedure with a partially covered risk 
+  OR-2803#2    Add a supplemental qa-suite clinical-rules case: low-risk pancreatectomy plus ceftriaxone raises a-k
+  OR-2803#3    Add the inverse supplemental qa-suite case: cefazolin on a high-risk pancreatectomy raises the wrong
+
+OR-2804  (admitted)
+  OR-2804#0    MayoHL7SiuCaseSchedulingProcessorTest: an SIU whose PV1-4 changes an existing case's acuity verifies
+  OR-2804#1    MayoHL7SiuCaseSchedulingProcessorTest: an SIU repeating the acuity already stored, with no AIS segme
+  OR-2804#2    MayoHL7SiuCaseSchedulingProcessorTest: an SIU with an unmapped PV1-4 leaves the stored acuity untouc
+  OR-2804#3    AntibioticPathwayResolutionSpecTest: assert the 'matched no antibiotic pathway' diagnostic is emitte
+
 OR-2805  (admitted)
   OR-2805#0    qa-suite supplemental: 36.9 kg adult with prior vecuronium and TOF 2 selecting sugammadex returns do
   OR-2805#1    qa-suite supplemental: assert absence -- the same response contains no 73.8/147.6/590.4 mg option, s
@@ -182,11 +195,11 @@ OR-2840  (admitted)
   OR-2840#3    qa-suite supplemental clinical-rules spec: stage a diabetic demo case, drive START_MONITORING, post 
   OR-2840#4    Move ObservationRepositoryGlucoseWindowTest to orci-repositories so it sits with the other repositor
 
-92 open of 95 proposed.
+104 open of 107 proposed.
 mark: automation.sh done <ID>   |   drop: automation.sh decline <ID> "why"
 bundle into a ticket: automation.sh ticket <SOURCE-TICKET>
 ```
 
 ## Eligible for the next sweep
 
-2 ticket(s)
+0 ticket(s)

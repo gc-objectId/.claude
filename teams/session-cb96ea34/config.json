@@ -1,0 +1,18 @@
+{
+  "name": "session-cb96ea34",
+  "createdAt": 1788202020687,
+  "leadAgentId": "team-lead@session-cb96ea34",
+  "leadSessionId": "cb96ea34-ea42-4ee9-b9be-8ab298611808",
+  "members": [
+    {
+      "agentId": "team-lead@session-cb96ea34",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1788202020687,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2789-PR-gate-updates",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

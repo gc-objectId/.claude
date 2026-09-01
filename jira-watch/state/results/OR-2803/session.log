@@ -1,0 +1,19 @@
+Validation complete. `session.json` written with verdict **deploy-ready**.
+
+**What was exercised** (mayo-mayo tenant, shipped config, running instance at :58045):
+
+| Case | risk attribute | LOW pathway | HIGH pathway | Recommended |
+|---|---|---|---|---|
+| 40633 | `low` | appliesToCase=true | **false**, NOT_SELECTED | CEFAZOLIN + METRONIDAZOLE |
+| 43997 | `high` | **false**, NOT_SELECTED | appliesToCase=true | CEFTRIAXONE + METRONIDAZOLE |
+| 60620 | *(absent)* | appliesToCase=true | **false** | CEFAZOLIN + METRONIDAZOLE |
+
+Confirmed on the clinician-facing path too (`POST /api/cds/medication-selection`): `a-known-procedure-wrong-antibiotic` challenges ceftriaxone on the low-risk case and cefazolin on the high-risk case, and stays silent for each risk's own drug. An added unscoped row applied at both risks.
+
+**Red check** — two config flips through the admin import endpoint, both reverted and the restore diffed byte-for-byte against the container's CSV:
+- Blanking the Risk column put CEFTRIAXONE back onto the low-risk case and silenced the wrong-antibiotic alert (the pre-fix "tiers of one ladder" behaviour).
+- Scoping both rows `high` tripped the importer guard: `Dropping the risk-scoped pathways for p-pancreatectomy: only [HIGH] configured…` — one occurrence in the log, only during the flip. That's the recorded signature.
+
+**Main caveat** (recorded, `ship_risk: none`): the risk value was written directly into the `risk` calculated attribute rather than produced by a live rating — `ProcedureRiskService` only rates pancreatectomy, only Mayo configures it, and Mayo's `/api/app-launch` needs Epic OAuth this instance can't reach. The rating half is OR-2623's territory.
+
+**Automation gap worth noting:** `MayoProcedureConfigImportIntegrationTest` only asserts a total count > 400 and spot-checks appendectomy — if either pancreatectomy row were edited, the incomplete-risk-scope guard would silently drop both and no test would fail.

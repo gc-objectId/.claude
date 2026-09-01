@@ -1,3 +1,27 @@
 OR-2743#0	done	2026-08-26T20:37:21Z	
 OR-2743#1	done	2026-08-26T20:37:21Z	
 OR-2743#2	done	2026-08-26T20:37:21Z	
+OR-2800#2	declined	2026-08-31T19:55:45Z	duplicate: keepsTheConfiguredPathwaysWhenTheFileCannotBeParsed already asserts existing rows survive a parse failure; the real hole is OR-2800#0
+OR-2802#1	declined	2026-08-31T20:05:41Z	duplicate: AntibioticResolutionSpecTest n01-n19 already pin non-covering pairs and SUPPRESSED_DISAGREEMENT at unit level; OR-2802#0 alone buys the cached-path round trip
+OR-2726#4	declined	2026-08-31T20:05:41Z	cost/benefit: a real Redis testcontainer to assert hash shape and 24h TTL is heavy infra for a low-probability regression; OR-2726#0-#2 pin every caller-visible behaviour. Revisit if a Redis container lands for other reasons
+OR-2804#3	declined	2026-08-31T20:05:41Z	brittle and duplicative: asserts a log string, while caseWithoutAcuityAgainstFullyScopedProcedure_isNotConfigured already pins the outcome. If the log is the only config-gap signal, the fix is a real diagnostic on the resolution result
+OR-2669#2	declined	2026-08-31T20:08:02Z	duplicate: PractitionerAdminControllerTest already covers REFRESHED/NO_MATCH 200s and FAILED 502
+OR-2677#3	declined	2026-08-31T20:08:02Z	log-scraping assertion for a symptom whose cause OR-2677#0 already fails on
+OR-2678#0	declined	2026-08-31T20:08:02Z	no marginal value: the processor test already covers ZCS-5 numeric, Roman, absent and unmapped; only fixture provenance differs
+OR-2678#1	declined	2026-08-31T20:08:02Z	duplicate: DefaultHL7ProcessingContextSchedulingFieldsTest already pins the non-null merge, and the validation found nothing uncovered in parsing or merge logic
+OR-2774#1	declined	2026-08-31T20:08:02Z	self-declared optional; the run's own assessment says nothing further is needed for OR-2774 itself
+OR-2755#0	declined	2026-08-31T20:09:18Z	maintenance tax over signal: a golden rule-id -> category table forces an edit for every new rule, which trains blind updates. OR-2755#1 and #3 catch the real regressions
+OR-2840#3	declined	2026-08-31T20:09:18Z	third level of the same assertion: OR-2840#0/#1 close the only gap the assessment names, this adds HTTP plumbing in front of it
+OR-2680#1	declined	2026-08-31T20:11:34Z	absorbed into OR-2680#0 - one small MockMvc class carries the guard and its control
+OR-2723#2	declined	2026-08-31T20:11:34Z	duplicate and partly unwritable: PractitionerAdminControllerTest covers the 200/NO_MATCH vs 502/FAILED split, and Epic-unavailable is not reachable from qa-suite
+OR-2723#3	declined	2026-08-31T20:11:34Z	duplicate: PractitionerAdminControllerTest already covers the 200-id cap at and over the limit
+OR-2819#4	declined	2026-08-31T20:11:34Z	blocked on OR-2702 - no webapp unit test runner exists. Nothing to fix or file; revive when the runner lands
+OR-2691#1	declined	2026-08-31T20:11:35Z	duplicate: an existing tools/deploy test already asserts the channel default is an ID
+OR-2691#4	declined	2026-08-31T20:11:35Z	brittle harness-building: rendering GitHub Actions expressions in a test to cover one ternary, when OR-2691#3 (actionlint) and #2 catch it far more cheaply
+OR-2603#0	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work
+OR-2603#1	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work
+OR-2603#2	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work
+OR-2603#3	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work
+OR-2603#4	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work
+OR-2603#5	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work
+OR-2603#6	declined	2026-08-31T20:11:35Z	analytics ticket - reserved, Alex owns validation and coverage for this work

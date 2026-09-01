@@ -1,0 +1,9 @@
+Validation complete. `session.json` written.
+
+**Verdict: deploy-ready** (ship_risk: material)
+
+- **Positive** — Enabled `RXNORM_ALLERGY_MAPPING` for `mgb-mgh`, app-launched MGB sample patient MegOne (pmrn 30001024563) against the live partners.org TST Epic. Her `ROCURONIUM` allergy (rxnorm 68139, allergen_id NULL, ANAPHYLAXIS) produced a medication-level row → `m-rocuronium`, and selecting Rocuronium raised `a-general-allergy` with allergen "Rocuronium" / reaction "Anaphylaxis". Breadth check on a 7-allergy patient matched exactly the mapping table and nothing more.
+- **Negative** — Three inverses: shipped flag default → no row, no alert; flag globally enabled but scoped to `mgb-icsnh` → still nothing for `mgb-mgh`; unmapped codes (amoxicillin 723, cefixime 25033) and a code-less allergy (PENICILLINS) produced no spurious matches.
+- **Red check** — Two flips, both reverted. Flag flip made `Rule evaluated: a-general-allergy -> true null` appear (only ever inside flag-on windows). Separately compiled the parent-commit `MGBGetPatientInfoStrategy` and shadowed it into `/app/classes`; the app booted clean, the positive went red, screening fell back to the FDB path (403). Restored — jar md5 unchanged, `/app/classes` back to original, positive returned.
+
+Notable gap recorded as material: the Mayo half of the wiring was never executed — this instance has no Epic OAuth keys, so `MayoGetPatientInfoStrategy` could not be reached. Also flagged that `rxnorm 2670` (codeine) maps to `m-promethazine-oral` in the shipped mgb-mgh data, which is worth a clinical eyeball but isn't a defect in this change.

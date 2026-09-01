@@ -329,3 +329,11 @@ ${_caveats}"
 else
     record refused "verdict=${verdict}; $(printf '%s' "$gate_out" | jq -r '.reason // "gate refused"')"
 fi
+
+# A parent whose last subtask just closed is complete. Declines on its own if any sibling is still
+# open, if the parent is not staged for testing, or if someone else owns it.
+if [ "$gate_rc" -eq 0 ] && [ -n "$commit" ]; then
+    "${CLAUDE_BIN}/close-parent.sh" "$ticket" --commit 2>&1 | while IFS= read -r line; do
+        log "close-parent: ${line}"
+    done
+fi

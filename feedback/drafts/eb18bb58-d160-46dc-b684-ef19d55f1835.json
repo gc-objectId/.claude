@@ -1,0 +1,31 @@
+{
+  "draft_id": "eb18bb58-d160-46dc-b684-ef19d55f1835",
+  "created_at": "2026-08-31T18:33:48.194Z",
+  "source_session_id": "2c031145-ab69-49a6-8d15-d36b4b11018f",
+  "cwd": "/Users/ryanducharme/dev/orci",
+  "model": "claude-opus-5[1m]",
+  "cli_version": "2.1.251",
+  "os": "darwin arm64",
+  "request_ids": [
+    "req_011CebJgGEdauFHRLJvQPCz8",
+    "req_011CebJgqqDKc454RtE37A3H",
+    "req_011CebJhRcU6vMMK3YkLrGJ2"
+  ],
+  "type": "bug",
+  "title": "/security-review gathers git context from the main working directory, not the active git worktree",
+  "details": "- **What happened:** Invoked `/security-review` while working in a git worktree. The skill's injected context showed `On branch main`, `Your branch is up to date with 'origin/main'`, an empty FILES MODIFIED / COMMITS / DIFF CONTENT, and an untracked file belonging to the primary working directory. The branch under review was `bugfix/OR-2862-...` in a worktree with 6 changed files. Expected the diff for the worktree's branch; got the primary directory's clean state, so the review had nothing to analyze.\n- **What the user said:** User didn't comment; observed by the model.\n- **Repro:** Create a worktree (`git worktree add`), make changes on its branch, invoke `/security-review` from a session whose primary working directory is the main checkout. The skill reports the main checkout's git state instead of the worktree's.\n- **Evidence:** Session working directory `~/dev/orci`; worktree `~/dev/worktrees/OR-2862-allergy-reaction-paren-drift` on branch `bugfix/OR-2862-allergy-reaction-paren-drift`. Bash tool emitted `Shell cwd was reset to /Users/ryanducharme/dev/orci` after each call, which is the likely mechanism — the skill's `git` invocations run in the reset cwd rather than the directory the work is in.\n- **Cause:** Verified in-session that the harness resets Bash cwd to the primary working directory between calls; the skill's git commands therefore target the wrong repository checkout. Worked around by pulling `git -C <worktree> diff` manually and reviewing that.",
+  "area": "security-review skill",
+  "task_category": "review",
+  "trigger": "model_judgment",
+  "effort": "high",
+  "thinking_type": "adaptive",
+  "message_count": 628,
+  "assistant_turn_count": 103,
+  "subagent_count": 0,
+  "transcript_ref": {
+    "session_file": "/Users/ryanducharme/.claude/projects/-Users-ryanducharme-dev-orci/2c031145-ab69-49a6-8d15-d36b4b11018f.jsonl",
+    "message_range": null,
+    "project_dir_key": "-Users-ryanducharme-dev-orci"
+  },
+  "status": "queued"
+}

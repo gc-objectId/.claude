@@ -83,3 +83,8 @@
 - [Sentry events have no release](reference_sentry_events_have_no_release.md) — can't date a build from an event; match stack line numbers to git (range only), fall back to `oc get deployment/guidedor`; MGB = mgb-mgh / guidedor.partners.org
 - [OR-2774 stale state is MGB-only](project_or2774_stale_state_mgb.md) — reopen was MGB running 0.1.90, which predates the fix (first in 0.1.91); no code work, needs a deploy; AutoReleaseSemaphore is a counting throttle, its 30s auto-release is OR-2857
 - [OR-2780 wrong dose deep dive](project_or2780_wrong_dose_deep_dive.md) — all LAST-protocol rules; 71% is a flat 100 mg IV lidocaine bolus vs a 1.5 mg/kg cap; cocaine was a LOCAL_ANESTHETIC miscategorization already fixed
+- [eGFR adjustment is Type-1-only](reference_egfr_adjustment_type1_only.md) — eGFR < 45 drops the rate under the 0.5 floor, so non-Type-1 patients silently abstain; reasons live in rule_not_fired_results.explanation
+- [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — posting a GLUCOSE observation fires GLUCOSE_UPDATED synchronously; getFiredRuleEvaluations exposes details.EXPANDED_CALCULATION, no browser needed
+- [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — Epic picklist drift silently drops severity; exact-match lookup, blanket paren-stripping would lose SJS/TENS TYPE_II_TYPE_IV
+- [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; base /actuator/health 403s and the "Started OrciApplication in" line fires before runners
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD method; root cause is custom.scss importing Bootstrap before the brand vars; snapshots must be CI-generated

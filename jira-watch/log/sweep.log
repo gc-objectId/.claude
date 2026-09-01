@@ -2602,3 +2602,71 @@ App fully initialised in 173.869s at http://localhost:58062
 2026-08-31 09:59:24  [OR-2790] app under test at http://localhost:58062
 2026-08-31 09:59:25  [OR-2790] wrote ticket context (11 lines)
 2026-08-31 09:59:25  [OR-2790] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2790/session.log)
+2026-08-31 10:04:05  [OR-2803]   … OR-2803 still running (300s elapsed, 15 app requests, app up)
+2026-08-31 10:04:10  [OR-2790]   … OR-2790 still running (300s elapsed, 3 app requests, app up)
+2026-08-31 10:09:06  [OR-2803]   … OR-2803 still running (600s elapsed, 1616 app requests, app up)
+2026-08-31 10:09:10  [OR-2790]   … OR-2790 still running (600s elapsed, 190 app requests, app up)
+2026-08-31 10:10:36  [OR-2803] session finished after ~675s
+2026-08-31 10:10:36  [OR-2803] captured 24971 lines of application log
+{"ticket":"OR-2803","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-08-31T13:55:10Z"}
+2026-08-31 10:10:43  [OR-2804] OR-2804 status is 'Testing'
+2026-08-31 10:10:43  [OR-2804] Building image from origin/main
+Image guidedclinical/orci:loop-db2154e3b already built for db2154e3b — reusing.
+2026-08-31 10:10:45  [OR-2804] image=guidedclinical/orci:loop-db2154e3b sha=db2154e3b7b902e2d044e4e6b4327e839fa6d4cb
+2026-08-31 10:10:46  [OR-2804] OR-2804 assigned to the configured account
+2026-08-31 10:10:47  [OR-2804] parent OR-2799 is 'Testing' — left alone
+2026-08-31 10:10:48  [OR-2804] baseline: status='Testing' comments=0
+2026-08-31 10:10:48  [OR-2804] slug=scope-pathways-by-case
+Jira issue type → branch prefix: feature/
+Preparing worktree (new branch 'feature/OR-2804-scope-pathways-by-case')
+branch 'feature/OR-2804-scope-pathways-by-case' set up to track 'origin/main'.
+HEAD is now at db2154e3b Merge pull request #4490 from guidedclinical/bugfix/OR-2743-insulin-egfr-coverage
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2804-scope-pathways-by-case
+  Branch: feature/OR-2804-scope-pathways-by-case
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+
+2026-08-31 10:10:50  [OR-2804] worktree=/Users/ryanducharme/dev/worktrees/OR-2804-scope-pathways-by-case
+Starting orci-loop-or-2804 (image guidedclinical/orci:loop-db2154e3b, app port 58842)
+ Network orci-loop-or-2804_default Creating 
+ Network orci-loop-or-2804_default Created 
+ Container orci-loop-or-2804-postgres-1 Creating 
+ Container orci-loop-or-2804-redis-1 Creating 
+ Container orci-loop-or-2804-postgres-1 Created 
+ Container orci-loop-or-2804-redis-1 Created 
+ Container orci-loop-or-2804-orci-1 Creating 
+ Container orci-loop-or-2804-orci-1 Created 
+ Container orci-loop-or-2804-redis-1 Starting 
+ Container orci-loop-or-2804-postgres-1 Starting 
+ Container orci-loop-or-2804-redis-1 Started 
+ Container orci-loop-or-2804-postgres-1 Started 
+ Container orci-loop-or-2804-redis-1 Waiting 
+ Container orci-loop-or-2804-postgres-1 Waiting 
+ Container orci-loop-or-2804-postgres-1 Healthy 
+ Container orci-loop-or-2804-redis-1 Healthy 
+ Container orci-loop-or-2804-orci-1 Starting 
+ Container orci-loop-or-2804-orci-1 Started 
+ Container orci-loop-or-2804-redis-1 Waiting 
+ Container orci-loop-or-2804-orci-1 Waiting 
+ Container orci-loop-or-2804-postgres-1 Waiting 
+ Container orci-loop-or-2804-postgres-1 Healthy 
+ Container orci-loop-or-2804-orci-1 Healthy 
+ Container orci-loop-or-2804-redis-1 Healthy 
+2026-08-31 10:14:11  [OR-2790]   … OR-2790 still running (900s elapsed, 426 app requests, app up)
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 193.71s at http://localhost:58842
+2026-08-31 10:14:11  [OR-2804] app under test at http://localhost:58842
+2026-08-31 10:14:11  [OR-2804] wrote ticket context (24 lines)
+2026-08-31 10:14:11  [OR-2804] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2804/session.log)
+2026-08-31 10:18:57  [OR-2804]   … OR-2804 still running (300s elapsed, 135 app requests, app up)
+2026-08-31 10:19:11  [OR-2790]   … OR-2790 still running (1200s elapsed, 678 app requests, app up)
+2026-08-31 10:20:26  [OR-2790] session finished after ~1260s
+2026-08-31 10:20:26  [OR-2790] WARNING /Users/ryanducharme/dev/orci has 1 uncommitted change(s) after the session — investigate
+2026-08-31 10:20:27  [OR-2790] captured 53060 lines of application log
+{"ticket":"OR-2790","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - The Mayo half of the change (MayoGetPatientInfoStrategy) was never executed: this instance logs 'Epic OAuth keys not configured - OAuth authentication disabled', so no Mayo patient-info fetch is possible and the Mayo call site was validated only by MGB exercising the same shared method.\n  - FDB returns 403 Forbidden from this instance, so the flag-off fallback was confirmed to be taken (FDB screen request logged) but its real output could not be compared before and after.\n  - Validation exercised the RxNorm-code-to-formulary-medication path this ticket delivers; the shipped AllergyAssociationService on main has since grown SNOMED and cross-reaction-group handling that was not the subject of this run.\n  - The mgb-mgh mapping data maps rxnorm 2670 (codeine) to m-promethazine-oral, so a codeine allergy flags oral promethazine; the code faithfully applies the data but the mapping itself is worth a clinical eyeball.\n  - Relaunching the same case appends duplicate patient_medication_allergies rows rather than replacing them; this affects the pre-existing antibiotic path identically and is not introduced by this change.","at":"2026-08-31T13:55:10Z"}
+2026-08-31 10:23:57  [OR-2804]   … OR-2804 still running (600s elapsed, 323 app requests, app up)
+2026-08-31 10:26:57  [OR-2804] session finished after ~765s
+2026-08-31 10:26:58  [OR-2804] WARNING /Users/ryanducharme/dev/orci has 1 uncommitted change(s) after the session — investigate
+2026-08-31 10:26:58  [OR-2804] captured 48816 lines of application log
+{"ticket":"OR-2804","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-08-31T14:10:42Z"}

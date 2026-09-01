@@ -1,0 +1,309 @@
+{
+ "context": {
+  "id": "01a0581c-0629-70a6-9556-b7f5df1a1b3f",
+  "medicationName": "CefTRIAXone",
+  "medicationFullName": "CefTRIAXone",
+  "medicationIdentifier": "m-ceftriaxone",
+  "defaultNDC": "0409733503",
+  "ndc": null,
+  "concentrationOptions": [],
+  "perComponentConcentrations": [],
+  "availableRoutes": [
+   "INTRAVENOUS",
+   "INTRAOSSEOUS"
+  ],
+  "colorLabelSetting": {
+   "topColor": "#FFFFFF",
+   "bottomColor": "#FFFFFF",
+   "thickness": null,
+   "hatched": false
+  },
+  "isScanned": false
+ },
+ "results": [
+  {
+   "resultId": "01a05825-4924-7d92-8be1-0caf40e57765",
+   "ruleId": "w-default-dose-adjustment",
+   "ruleTrigger": "SELECTION",
+   "explanation": null,
+   "error": null,
+   "details": {
+    "MEDICATION_IDENTIFIER": "m-ceftriaxone",
+    "WEIGHT_TYPE": "recorded weight",
+    "EVALUATION_DATE": "2026-08-31T14:07:13.635+00:00",
+    "MEDICATION_NAME": "CefTRIAXone",
+    "TYPED_WEIGHT": {
+     "quantity": {
+      "value": 80,
+      "unit": "kg"
+     },
+     "calculationType": "ACTUAL"
+    },
+    "WEIGHT_CLASSIFICATION": "NORMAL",
+    "CITATIONS": [
+     {
+      "id": "r-ceftriaxone-default-dose",
+      "label": "Ceftriaxone Dosing Guidelines",
+      "citation": "See Adult Dosing, Surgical Prophylaxis.<br/>Adult dose: 2 g",
+      "url": "https://online.lexi.com/lco/action/doc/retrieve/docid/patch_f/6563?cesid=54zFOxar87D&searchUrl=%2Flco%2Faction%2Fsearch%3Fq%3Dceftriaxone%26t%3Dname%26acs%3Dfalse%26acq%3Dceftriaxone#doa"
+     }
+    ],
+    "SUPPRESSED_ALLERGIES": [],
+    "PATIENT_ALLERGIES_FULL": [],
+    "WEIGHT_CALCULATION_TYPE": "ACTUAL"
+   },
+   "needsAction": true,
+   "prompt": {
+    "ruleIdentifier": "w-default-dose-adjustment",
+    "trigger": null,
+    "type": "WARNING",
+    "title": null,
+    "tabName": null,
+    "description": null,
+    "acceptText": null,
+    "rejectText": null,
+    "rejectReasons": [],
+    "citations": [
+     {
+      "id": "r-ceftriaxone-default-dose",
+      "label": "Ceftriaxone Dosing Guidelines",
+      "citation": "See Adult Dosing, Surgical Prophylaxis.<br/>Adult dose: 2 g",
+      "url": "https://online.lexi.com/lco/action/doc/retrieve/docid/patch_f/6563?cesid=54zFOxar87D&searchUrl=%2Flco%2Faction%2Fsearch%3Fq%3Dceftriaxone%26t%3Dname%26acs%3Dfalse%26acq%3Dceftriaxone#doa"
+     }
+    ],
+    "citationsLocation": "NEXT_TO_DOSE_OPTIONS",
+    "promptText": null,
+    "routeBasedPromptText": {},
+    "routeBasedCitations": {},
+    "allowSuppression": false,
+    "allowAllergySuppression": false,
+    "allowMarkTolerated": false,
+    "relevantAllergies": [],
+    "createdDate": "2026-08-31T14:07:13.700897263Z",
+    "lastModifiedDate": null,
+    "prompty": false
+   },
+   "groupKey": null,
+   "suppressionAllowed": false,
+   "routeDoseOptionOverride": {},
+   "routeWeightBasedDoseOptionOverride": {},
+   "routeDefaultDoseOverride": {
+    "INTRAVENOUS": {
+     "doseAmount": 2,
+     "doseUnits": "g",
+     "defaultOption": true,
+     "calculatedDoseAmount": "2",
+     "calculatedDoseUnits": "g",
+     "weightBasedDoseCalculation": null,
+     "weightBased": false,
+     "calculatedLabel": "2 g",
+     "rawLabel": "2 g"
+    },
+    "INTRAOSSEOUS": {
+     "doseAmount": 2,
+     "doseUnits": "g",
+     "defaultOption": true,
+     "calculatedDoseAmount": "2",
+     "calculatedDoseUnits": "g",
+     "weightBasedDoseCalculation": null,
+     "weightBased": false,
+     "calculatedLabel": "2 g",
+     "rawLabel": "2 g"
+    }
+   },
+   "defaultDoseOverride": null,
+   "maxDose": null,
+   "maxDoseBuffer": null,
+   "routeBasedMaxDose": {},
+   "routeIndicationDoseOptions": {},
+   "suppressed": false
+  }
+ ],
+ "dosingFormState": {
+  "trackingTabId": "01a05825-48e1-704a-b629-c40fad39397b",
+  "guidance": [
+   {
+    "executionId": "01a05825-4937-7490-aa9a-7d0166f02b6b",
+    "resultId": "01a05825-4924-7d92-8be1-0caf40e57765",
+    "ruleId": "w-default-dose-adjustment",
+    "actions": [
+     {
+      "action": {
+       "defaultDose": {
+        "doseAmount": 2,
+        "doseUnits": "g",
+        "defaultOption": true,
+        "calculatedDoseAmount": "2",
+        "calculatedDoseUnits": "g",
+        "weightBasedDoseCalculation": null,
+        "weightBased": false,
+        "calculatedLabel": "2 g",
+        "rawLabel": "2 g"
+       },
+       "type": "SET_DEFAULT_DOSE",
+       "priority": 0
+      },
+      "criteria": {
+       "applicableRoutes": [
+        "INTRAVENOUS"
+       ]
+      },
+      "priority": 1,
+      "type": "PREDICATE"
+     },
+     {
+      "action": {
+       "defaultDose": {
+        "doseAmount": 2,
+        "doseUnits": "g",
+        "defaultOption": true,
+        "calculatedDoseAmount": "2",
+        "calculatedDoseUnits": "g",
+        "weightBasedDoseCalculation": null,
+        "weightBased": false,
+        "calculatedLabel": "2 g",
+        "rawLabel": "2 g"
+       },
+       "type": "SET_DEFAULT_DOSE",
+       "priority": 0
+      },
+      "criteria": {
+       "applicableRoutes": [
+        "INTRAOSSEOUS"
+       ]
+      },
+      "priority": 1,
+      "type": "PREDICATE"
+     },
+     {
+      "citation": {
+       "id": "r-ceftriaxone-default-dose",
+       "label": "Ceftriaxone Dosing Guidelines",
+       "citation": "See Adult Dosing, Surgical Prophylaxis.<br/>Adult dose: 2 g",
+       "url": "https://online.lexi.com/lco/action/doc/retrieve/docid/patch_f/6563?cesid=54zFOxar87D&searchUrl=%2Flco%2Faction%2Fsearch%3Fq%3Dceftriaxone%26t%3Dname%26acs%3Dfalse%26acq%3Dceftriaxone#doa"
+      },
+      "evaluationResultId": "01a05825-4924-7d92-8be1-0caf40e57765",
+      "ruleId": "w-default-dose-adjustment",
+      "location": "NEXT_TO_DOSE_OPTIONS",
+      "type": "ADD_CITATION",
+      "priority": 0
+     }
+    ],
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-ceftriaxone",
+     "WEIGHT_TYPE": "recorded weight",
+     "EVALUATION_DATE": "Mon Aug 31 14:07:13 UTC 2026",
+     "MEDICATION_NAME": "CefTRIAXone",
+     "TYPED_WEIGHT": "TypedWeight[quantity=80 kg, calculationType=ACTUAL]",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "CITATIONS": "[Citation(id=CitationId[value=r-ceftriaxone-default-dose], label=Ceftriaxone Dosing Guidelines, citation=See Adult Dosing, Surgical Prophylaxis.<br/>Adult dose: 2 g, url=https://online.lexi.com/lco/action/doc/retrieve/docid/patch_f/6563?cesid=54zFOxar87D&searchUrl=%2Flco%2Faction%2Fsearch%3Fq%3Dceftriaxone%26t%3Dname%26acs%3Dfalse%26acq%3Dceftriaxone#doa)]",
+     "SUPPRESSED_ALLERGIES": "[]",
+     "PATIENT_ALLERGIES_FULL": "[]",
+     "WEIGHT_CALCULATION_TYPE": "ACTUAL"
+    }
+   }
+  ],
+  "alerts": [],
+  "perRouteState": {
+   "INTRAVENOUS": {
+    "warnings": [],
+    "infos": [],
+    "doseOptions": [
+     {
+      "doseAmount": 1,
+      "doseUnits": "g",
+      "defaultOption": false,
+      "calculatedDoseAmount": "1",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "1 g",
+      "rawLabel": "1 g"
+     },
+     {
+      "doseAmount": 2,
+      "doseUnits": "g",
+      "defaultOption": true,
+      "calculatedDoseAmount": "2",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "2 g",
+      "rawLabel": "2 g"
+     }
+    ],
+    "indicationDoseOptions": {},
+    "doseUnits": {
+     "units": "g",
+     "label": "g"
+    },
+    "maxDoses": [],
+    "citations": [
+     {
+      "evaluationResultId": "01a05825-4924-7d92-8be1-0caf40e57765",
+      "citation": {
+       "id": "r-ceftriaxone-default-dose",
+       "label": "Ceftriaxone Dosing Guidelines",
+       "citation": "See Adult Dosing, Surgical Prophylaxis.<br/>Adult dose: 2 g",
+       "url": "https://online.lexi.com/lco/action/doc/retrieve/docid/patch_f/6563?cesid=54zFOxar87D&searchUrl=%2Flco%2Faction%2Fsearch%3Fq%3Dceftriaxone%26t%3Dname%26acs%3Dfalse%26acq%3Dceftriaxone#doa",
+       "ruleId": "w-default-dose-adjustment"
+      },
+      "location": "NEXT_TO_DOSE_OPTIONS"
+     }
+    ],
+    "pendingDefaultDose": null
+   },
+   "INTRAOSSEOUS": {
+    "warnings": [],
+    "infos": [],
+    "doseOptions": [
+     {
+      "doseAmount": 1,
+      "doseUnits": "g",
+      "defaultOption": false,
+      "calculatedDoseAmount": "1",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "1 g",
+      "rawLabel": "1 g"
+     },
+     {
+      "doseAmount": 2,
+      "doseUnits": "g",
+      "defaultOption": true,
+      "calculatedDoseAmount": "2",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "2 g",
+      "rawLabel": "2 g"
+     }
+    ],
+    "indicationDoseOptions": {},
+    "doseUnits": {
+     "units": "g",
+     "label": "g"
+    },
+    "maxDoses": [],
+    "citations": [
+     {
+      "evaluationResultId": "01a05825-4924-7d92-8be1-0caf40e57765",
+      "citation": {
+       "id": "r-ceftriaxone-default-dose",
+       "label": "Ceftriaxone Dosing Guidelines",
+       "citation": "See Adult Dosing, Surgical Prophylaxis.<br/>Adult dose: 2 g",
+       "url": "https://online.lexi.com/lco/action/doc/retrieve/docid/patch_f/6563?cesid=54zFOxar87D&searchUrl=%2Flco%2Faction%2Fsearch%3Fq%3Dceftriaxone%26t%3Dname%26acs%3Dfalse%26acq%3Dceftriaxone#doa",
+       "ruleId": "w-default-dose-adjustment"
+      },
+      "location": "NEXT_TO_DOSE_OPTIONS"
+     }
+    ],
+    "pendingDefaultDose": null
+   }
+  }
+ },
+ "trackingTabId": "01a05825-48e1-704a-b629-c40fad39397b",
+ "restoredTab": false,
+ "needsAction": true
+}

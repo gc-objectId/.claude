@@ -1,0 +1,9 @@
+client-integration-api/pom.xml
+client-integration-api/src/main/java/com/guided/orci/integration/service/AllergyAssociationService.java
+client-integration-api/src/test/java/com/guided/orci/integration/service/AllergyAssociationServiceTest.java
+mayo-client-integration/src/main/java/com/guided/orci/integration/mayo/MayoGetPatientInfoStrategy.java
+mgb-client-integration/src/main/java/com/guided/orci/integration/mgb/MGBGetPatientInfoStrategy.java
+orci-models/src/main/java/com/guided/orci/types/wrappers/FeatureId.java
+orci-repositories/src/main/java/com/guided/orci/repository/MedicationRxNormMappingRepository.java
+orci/src/main/resources/db/liquibase/platform/change-sets/037-feature-flag-rxnorm-allergy-mapping.xml
+orci/src/main/resources/db/liquibase/platform/db.changelog-master.xml

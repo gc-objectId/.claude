@@ -1,0 +1,309 @@
+{
+ "context": {
+  "id": "01a0581c-05d0-7f52-b2d0-31c6ed26820e",
+  "medicationName": "CeFAZolin",
+  "medicationFullName": "CeFAZolin",
+  "medicationIdentifier": "m-cefazolin",
+  "defaultNDC": "4456770725",
+  "ndc": null,
+  "concentrationOptions": [],
+  "perComponentConcentrations": [],
+  "availableRoutes": [
+   "INTRAVENOUS",
+   "INTRAOSSEOUS"
+  ],
+  "colorLabelSetting": {
+   "topColor": "#FFFFFF",
+   "bottomColor": "#FFFFFF",
+   "thickness": null,
+   "hatched": false
+  },
+  "isScanned": false
+ },
+ "results": [
+  {
+   "resultId": "01a05826-6001-7ef3-b66e-890394b12dab",
+   "ruleId": "w-default-dose-adjustment",
+   "ruleTrigger": "SELECTION",
+   "explanation": null,
+   "error": null,
+   "details": {
+    "MEDICATION_IDENTIFIER": "m-cefazolin",
+    "WEIGHT_TYPE": "recorded weight",
+    "EVALUATION_DATE": "2026-08-31T14:08:25.066+00:00",
+    "MEDICATION_NAME": "CeFAZolin",
+    "TYPED_WEIGHT": {
+     "quantity": {
+      "value": 80,
+      "unit": "kg"
+     },
+     "calculationType": "ACTUAL"
+    },
+    "WEIGHT_CLASSIFICATION": "NORMAL",
+    "CITATIONS": [
+     {
+      "id": "r-cefazolin-default-dose",
+      "label": "Hospital Antibiotic Dosing Guidelines",
+      "citation": "See Appendix Table 2.<br/>Dose: 2 g for patient wt <120 kg",
+      "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+     }
+    ],
+    "SUPPRESSED_ALLERGIES": [],
+    "PATIENT_ALLERGIES_FULL": [],
+    "WEIGHT_CALCULATION_TYPE": "ACTUAL"
+   },
+   "needsAction": true,
+   "prompt": {
+    "ruleIdentifier": "w-default-dose-adjustment",
+    "trigger": null,
+    "type": "WARNING",
+    "title": null,
+    "tabName": null,
+    "description": null,
+    "acceptText": null,
+    "rejectText": null,
+    "rejectReasons": [],
+    "citations": [
+     {
+      "id": "r-cefazolin-default-dose",
+      "label": "Hospital Antibiotic Dosing Guidelines",
+      "citation": "See Appendix Table 2.<br/>Dose: 2 g for patient wt <120 kg",
+      "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+     }
+    ],
+    "citationsLocation": "NEXT_TO_DOSE_OPTIONS",
+    "promptText": null,
+    "routeBasedPromptText": {},
+    "routeBasedCitations": {},
+    "allowSuppression": false,
+    "allowAllergySuppression": false,
+    "allowMarkTolerated": false,
+    "relevantAllergies": [],
+    "createdDate": "2026-08-31T14:08:25.089964462Z",
+    "lastModifiedDate": null,
+    "prompty": false
+   },
+   "groupKey": null,
+   "suppressionAllowed": false,
+   "routeDoseOptionOverride": {},
+   "routeWeightBasedDoseOptionOverride": {},
+   "routeDefaultDoseOverride": {
+    "INTRAVENOUS": {
+     "doseAmount": 2,
+     "doseUnits": "g",
+     "defaultOption": true,
+     "calculatedDoseAmount": "2",
+     "calculatedDoseUnits": "g",
+     "weightBasedDoseCalculation": null,
+     "weightBased": false,
+     "calculatedLabel": "2 g",
+     "rawLabel": "2 g"
+    },
+    "INTRAOSSEOUS": {
+     "doseAmount": 2,
+     "doseUnits": "g",
+     "defaultOption": true,
+     "calculatedDoseAmount": "2",
+     "calculatedDoseUnits": "g",
+     "weightBasedDoseCalculation": null,
+     "weightBased": false,
+     "calculatedLabel": "2 g",
+     "rawLabel": "2 g"
+    }
+   },
+   "defaultDoseOverride": null,
+   "maxDose": null,
+   "maxDoseBuffer": null,
+   "routeBasedMaxDose": {},
+   "routeIndicationDoseOptions": {},
+   "suppressed": false
+  }
+ ],
+ "dosingFormState": {
+  "trackingTabId": "01a05826-5fe8-7a9c-a59d-f6ebfb7b9ae7",
+  "guidance": [
+   {
+    "executionId": "01a05826-6014-7d4f-9c6f-6800ec3ce49b",
+    "resultId": "01a05826-6001-7ef3-b66e-890394b12dab",
+    "ruleId": "w-default-dose-adjustment",
+    "actions": [
+     {
+      "action": {
+       "defaultDose": {
+        "doseAmount": 2,
+        "doseUnits": "g",
+        "defaultOption": true,
+        "calculatedDoseAmount": "2",
+        "calculatedDoseUnits": "g",
+        "weightBasedDoseCalculation": null,
+        "weightBased": false,
+        "calculatedLabel": "2 g",
+        "rawLabel": "2 g"
+       },
+       "type": "SET_DEFAULT_DOSE",
+       "priority": 0
+      },
+      "criteria": {
+       "applicableRoutes": [
+        "INTRAVENOUS"
+       ]
+      },
+      "priority": 1,
+      "type": "PREDICATE"
+     },
+     {
+      "action": {
+       "defaultDose": {
+        "doseAmount": 2,
+        "doseUnits": "g",
+        "defaultOption": true,
+        "calculatedDoseAmount": "2",
+        "calculatedDoseUnits": "g",
+        "weightBasedDoseCalculation": null,
+        "weightBased": false,
+        "calculatedLabel": "2 g",
+        "rawLabel": "2 g"
+       },
+       "type": "SET_DEFAULT_DOSE",
+       "priority": 0
+      },
+      "criteria": {
+       "applicableRoutes": [
+        "INTRAOSSEOUS"
+       ]
+      },
+      "priority": 1,
+      "type": "PREDICATE"
+     },
+     {
+      "citation": {
+       "id": "r-cefazolin-default-dose",
+       "label": "Hospital Antibiotic Dosing Guidelines",
+       "citation": "See Appendix Table 2.<br/>Dose: 2 g for patient wt <120 kg",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+      },
+      "evaluationResultId": "01a05826-6001-7ef3-b66e-890394b12dab",
+      "ruleId": "w-default-dose-adjustment",
+      "location": "NEXT_TO_DOSE_OPTIONS",
+      "type": "ADD_CITATION",
+      "priority": 0
+     }
+    ],
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-cefazolin",
+     "WEIGHT_TYPE": "recorded weight",
+     "EVALUATION_DATE": "Mon Aug 31 14:08:25 UTC 2026",
+     "MEDICATION_NAME": "CeFAZolin",
+     "TYPED_WEIGHT": "TypedWeight[quantity=80 kg, calculationType=ACTUAL]",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "CITATIONS": "[Citation(id=CitationId[value=r-cefazolin-default-dose], label=Hospital Antibiotic Dosing Guidelines, citation=See Appendix Table 2.<br/>Dose: 2 g for patient wt <120 kg, url=https://mgb.ellucid.com/documents/view/45172/active/1)]",
+     "SUPPRESSED_ALLERGIES": "[]",
+     "PATIENT_ALLERGIES_FULL": "[]",
+     "WEIGHT_CALCULATION_TYPE": "ACTUAL"
+    }
+   }
+  ],
+  "alerts": [],
+  "perRouteState": {
+   "INTRAVENOUS": {
+    "warnings": [],
+    "infos": [],
+    "doseOptions": [
+     {
+      "doseAmount": 2,
+      "doseUnits": "g",
+      "defaultOption": true,
+      "calculatedDoseAmount": "2",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "2 g",
+      "rawLabel": "2 g"
+     },
+     {
+      "doseAmount": 3,
+      "doseUnits": "g",
+      "defaultOption": false,
+      "calculatedDoseAmount": "3",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "3 g",
+      "rawLabel": "3 g"
+     }
+    ],
+    "indicationDoseOptions": {},
+    "doseUnits": {
+     "units": "g",
+     "label": "g"
+    },
+    "maxDoses": [],
+    "citations": [
+     {
+      "evaluationResultId": "01a05826-6001-7ef3-b66e-890394b12dab",
+      "citation": {
+       "id": "r-cefazolin-default-dose",
+       "label": "Hospital Antibiotic Dosing Guidelines",
+       "citation": "See Appendix Table 2.<br/>Dose: 2 g for patient wt <120 kg",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+       "ruleId": "w-default-dose-adjustment"
+      },
+      "location": "NEXT_TO_DOSE_OPTIONS"
+     }
+    ],
+    "pendingDefaultDose": null
+   },
+   "INTRAOSSEOUS": {
+    "warnings": [],
+    "infos": [],
+    "doseOptions": [
+     {
+      "doseAmount": 2,
+      "doseUnits": "g",
+      "defaultOption": true,
+      "calculatedDoseAmount": "2",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "2 g",
+      "rawLabel": "2 g"
+     },
+     {
+      "doseAmount": 3,
+      "doseUnits": "g",
+      "defaultOption": false,
+      "calculatedDoseAmount": "3",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": null,
+      "weightBased": false,
+      "calculatedLabel": "3 g",
+      "rawLabel": "3 g"
+     }
+    ],
+    "indicationDoseOptions": {},
+    "doseUnits": {
+     "units": "g",
+     "label": "g"
+    },
+    "maxDoses": [],
+    "citations": [
+     {
+      "evaluationResultId": "01a05826-6001-7ef3-b66e-890394b12dab",
+      "citation": {
+       "id": "r-cefazolin-default-dose",
+       "label": "Hospital Antibiotic Dosing Guidelines",
+       "citation": "See Appendix Table 2.<br/>Dose: 2 g for patient wt <120 kg",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+       "ruleId": "w-default-dose-adjustment"
+      },
+      "location": "NEXT_TO_DOSE_OPTIONS"
+     }
+    ],
+    "pendingDefaultDose": null
+   }
+  }
+ },
+ "trackingTabId": "01a05826-5fe8-7a9c-a59d-f6ebfb7b9ae7",
+ "restoredTab": false,
+ "needsAction": true
+}

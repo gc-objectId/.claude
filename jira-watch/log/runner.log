@@ -767,3 +767,45 @@ Transitioned OR-2802 to Done
 2026-08-31 09:59:24  [OR-2790] app under test at http://localhost:58062
 2026-08-31 09:59:25  [OR-2790] wrote ticket context (11 lines)
 2026-08-31 09:59:25  [OR-2790] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2790/session.log)
+2026-08-31 10:04:05  [OR-2803]   … OR-2803 still running (300s elapsed, 15 app requests, app up)
+2026-08-31 10:04:10  [OR-2790]   … OR-2790 still running (300s elapsed, 3 app requests, app up)
+2026-08-31 10:09:06  [OR-2803]   … OR-2803 still running (600s elapsed, 1616 app requests, app up)
+2026-08-31 10:09:10  [OR-2790]   … OR-2790 still running (600s elapsed, 190 app requests, app up)
+2026-08-31 10:10:36  [OR-2803] session finished after ~675s
+2026-08-31 10:10:36  [OR-2803] captured 24971 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2803 against db2154e3b7b902e2d044e4e6b4327e839fa6d4cb (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2803
+Transitioned OR-2803 to Done
+2026-08-31 10:10:43  [OR-2804] OR-2804 status is 'Testing'
+2026-08-31 10:10:43  [OR-2804] Building image from origin/main
+2026-08-31 10:10:45  [OR-2804] image=guidedclinical/orci:loop-db2154e3b sha=db2154e3b7b902e2d044e4e6b4327e839fa6d4cb
+2026-08-31 10:10:46  [OR-2804] OR-2804 assigned to the configured account
+2026-08-31 10:10:47  [OR-2804] parent OR-2799 is 'Testing' — left alone
+2026-08-31 10:10:48  [OR-2804] baseline: status='Testing' comments=0
+2026-08-31 10:10:48  [OR-2804] slug=scope-pathways-by-case
+2026-08-31 10:10:50  [OR-2804] worktree=/Users/ryanducharme/dev/worktrees/OR-2804-scope-pathways-by-case
+2026-08-31 10:14:11  [OR-2790]   … OR-2790 still running (900s elapsed, 426 app requests, app up)
+2026-08-31 10:14:11  [OR-2804] app under test at http://localhost:58842
+2026-08-31 10:14:11  [OR-2804] wrote ticket context (24 lines)
+2026-08-31 10:14:11  [OR-2804] Starting unattended session (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2804/session.log)
+2026-08-31 10:18:57  [OR-2804]   … OR-2804 still running (300s elapsed, 135 app requests, app up)
+2026-08-31 10:19:11  [OR-2790]   … OR-2790 still running (1200s elapsed, 678 app requests, app up)
+2026-08-31 10:20:26  [OR-2790] session finished after ~1260s
+2026-08-31 10:20:26  [OR-2790] WARNING /Users/ryanducharme/dev/orci has 1 uncommitted change(s) after the session — investigate
+2026-08-31 10:20:27  [OR-2790] captured 53060 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2790 against db2154e3b7b902e2d044e4e6b4327e839fa6d4cb (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2790
+Transitioned OR-2790 to Done
+2026-08-31 10:23:57  [OR-2804]   … OR-2804 still running (600s elapsed, 323 app requests, app up)
+2026-08-31 10:26:57  [OR-2804] session finished after ~765s
+2026-08-31 10:26:58  [OR-2804] WARNING /Users/ryanducharme/dev/orci has 1 uncommitted change(s) after the session — investigate
+2026-08-31 10:26:58  [OR-2804] captured 48816 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2804 against db2154e3b7b902e2d044e4e6b4327e839fa6d4cb (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2804
+Transitioned OR-2804 to Done

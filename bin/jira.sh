@@ -131,3 +131,15 @@ jira_link_issues() {
             '{type: {name: "Relates"}, inwardIssue: {key: $a}, outwardIssue: {key: $b}}')" \
         "${JIRA_BASE}/rest/api/2/issueLink"
 }
+
+# Emits "KEY<TAB>STATUS" per subtask.
+jira_subtask_statuses() {
+    _jira_curl "${JIRA_BASE}/rest/api/2/issue/$1?fields=subtasks" |
+        jq -r '.fields.subtasks[]? | [.key, .fields.status.name] | @tsv'
+}
+
+jira_update_description() {
+    _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
+        --data "$(jq -nc --arg d "$2" '{fields: {description: $d}}')" \
+        "${JIRA_BASE}/rest/api/2/issue/$1"
+}
