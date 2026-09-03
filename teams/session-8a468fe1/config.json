@@ -1,0 +1,18 @@
+{
+  "name": "session-8a468fe1",
+  "createdAt": 1788442781464,
+  "leadAgentId": "team-lead@session-8a468fe1",
+  "leadSessionId": "8a468fe1-b26a-463e-87fc-849522f32917",
+  "members": [
+    {
+      "agentId": "team-lead@session-8a468fe1",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1788442781464,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2846-non-pen-non-ceph-anti-b-allergies",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
