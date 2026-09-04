@@ -1,6 +1,6 @@
 ---
 name: workon
-description: Status-driven SOP for addressing a Jira ticket — or a chain of tickets sharing one code path — after the `workon` shell function has created the worktree. Determines implement-vs-validate mode from each ticket's status, pulls Jira + GitHub context, then executes the standard ticket flow. Use when asked to "work on", "address", "pick up", or "start" an OR ticket, or invoked as /workon [OR-XXXX ...].
+description: Status-driven SOP for addressing a Jira ticket — or a chain of tickets sharing one code path — after the `workon` shell function has created the worktree. Determines implement-vs-validate mode from each ticket's status (epics run in an exploratory local-only mode), pulls Jira + GitHub context, then executes the standard ticket flow. Use when asked to "work on", "address", "pick up", or "start" an OR ticket, or invoked as /workon [OR-XXXX ...].
 ---
 
 # Workon — Ticket SOP
@@ -33,6 +33,8 @@ Steps 2 and 3 run **per ticket**: pull each one's Jira context, and derive each 
 - **Sentry-created tickets** embed the error + a Sentry link in the description — extract ip/uri/userAgent/message clues from there.
 
 ## Step 3 — Determine mode from status
+
+Issue type is checked first: an **Epic** is always **EXPLORE**, whatever its status — an epic is never implemented directly, its children are. Otherwise mode follows status:
 
 | Status | Mode |
 |---|---|
@@ -68,6 +70,19 @@ Every ticket in a chain needs its own verdict. The shared code path gets stood u
 4. **Automation assessment.** Survey existing coverage (backend unit/integration in `orci/src/test`, qa-suite e2e) for this behavior. Decide per gap: unit vs integration vs e2e, and whether it's worth locking in at all. Don't duplicate solid existing tests; favor negative/edge cases.
 5. **Write the tests that made the cut.** Edge-case/negative tests go in the supplemental tier, not core. qa-suite conventions: `PREFIX-NNN` IDs, exactly one tier tag, numeric order, `npm run check:tags` passes, `npx tsc --noEmit` clean.
 6. **Verify, then close out:** run the tests from *inside this worktree* (qa-suite npm `:local` scripts), report the actual output, and continue into the close-out unless a hard stop applies — see the verification gate below.
+
+## EXPLORE mode (epics)
+
+Goal: a local workbench on the `epic/` branch where Ryan drives the running app and describes what he wants while Claude proposes and makes changes. The branch is a proof of concept, not a deliverable — the deliverables are the child tickets it sharpens.
+
+1. **Map the epic.** `searchJiraIssuesUsingJql` with `parent = OR-NNNN` for the children, plus the epic's own description. State the child map with statuses and which children the exploration is likely to touch. Read the memory for the epic if one exists.
+2. **Stand the app up from the worktree, alongside Ryan's main instance — never in place of it.** He keeps `~/dev/orci` on 8080/3000 and does not stop it (see [[running-a-worktree-build-alongside-the-main-local-app]]). For look-and-feel work the fast loop is Vite with HMR proxied to his running backend: `cd orci/src/main/webapp && npm install && VITE_PORT=3001 npm start`. Only build and boot a second backend on 8081 when the exploration needs backend changes. Give the exact commands; record the PID of anything launched and kill only that.
+3. **Walk through together.** Ryan navigates and describes; Claude proposes the change, explains the reasoning briefly, and makes it once agreed. Reuse what exists before adding; when the exploration reveals that the existing structure is wrong, propose the reorg rather than layering on it. Keep a running list of decisions and open questions in the conversation — this is the raw material for step 5.
+4. **Local-only by default.** No push, no PR, no Jira comments or transitions unless Ryan explicitly asks. Local commits at checkpoints are fine — ask when a coherent unit lands, commit message per repo convention. Config-file vigilance still applies to anything committed.
+5. **Route findings into tickets, not the branch.** When a change crystallizes into real work, draft it as a new child story or an edit to an existing child and show it for approval before writing to Jira. The epic branch may end up thrown away; the tickets are what survive.
+6. **Exit is Ryan's call.** "Push it" → push and `gh pr create --draft` against the epic, title carries the epic key, body lists which children it touches. No Jira transition — an epic closes when its children do. "Drop it" → `worktree-done` after confirming nothing on the branch is wanted.
+
+The verification gate and close-out below do not apply in this mode; there is no passing-run trigger and nothing moves to Done.
 
 ## Verification gate (either mode)
 

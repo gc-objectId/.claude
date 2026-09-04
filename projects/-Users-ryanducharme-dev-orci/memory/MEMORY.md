@@ -87,4 +87,5 @@
 - [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — posting a GLUCOSE observation fires GLUCOSE_UPDATED synchronously; getFiredRuleEvaluations exposes details.EXPANDED_CALCULATION, no browser needed
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — Epic picklist drift silently drops severity; exact-match lookup, blanket paren-stripping would lose SJS/TENS TYPE_II_TYPE_IV
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; base /actuator/health 403s and the "Started OrciApplication in" line fires before runners
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD method; root cause is custom.scss importing Bootstrap before the brand vars; snapshots must be CI-generated
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD method; root cause is custom.scss importing Bootstrap before the brand vars; snapshots must be CI-generated; children incl. OR-2879 App Home + OR-2880 rules handbook (needs richer endpoint, xlsx exporter has 13 cols vs 5)
+- [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — 039/040 refuse on non-UTC Macs; pgjdbc sets session TZ from JVM default; boot with -Duser.timezone=UTC
