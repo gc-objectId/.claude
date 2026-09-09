@@ -1,0 +1,18 @@
+{
+  "name": "session-ebfe1f0b",
+  "createdAt": 1788890611649,
+  "leadAgentId": "team-lead@session-ebfe1f0b",
+  "leadSessionId": "ebfe1f0b-a6bc-4162-9864-fe4f4d06aaf6",
+  "members": [
+    {
+      "agentId": "team-lead@session-ebfe1f0b",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1788890611649,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2875-antibiotics-recommendations-all-procedures",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "name": "session-696fbfc0",
+  "createdAt": 1788890709378,
+  "leadAgentId": "team-lead@session-696fbfc0",
+  "leadSessionId": "696fbfc0-c278-4807-b46f-a93cb7c3eaae",
+  "members": [
+    {
+      "agentId": "team-lead@session-696fbfc0",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1788890709378,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2862-allergy-reaction-paren-drift",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
