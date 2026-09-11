@@ -33,6 +33,9 @@ LOOP_RESERVED_PATTERN="${LOOP_RESERVED_PATTERN:-^analytics}"
 JIRA_ACCOUNT_ID="${JIRA_ACCOUNT_ID:-712020:eb570e67-6608-41f7-877b-09ca17738171}"
 LOOP_USER_PASSWORD="${LOOP_USER_PASSWORD:-LoopValidate1!}"
 SESSION_TIMEOUT="${SESSION_TIMEOUT:-2700}"
+# Pinned rather than inherited, so switching the interactive default does not silently change
+# what unattended validations run on.
+LOOP_MODEL="${LOOP_MODEL:-claude-fable-5-1}"
 ORCI_ROOT_CHECK="${ORCI_ROOT:-$HOME/dev/orci}"
 
 . "${CLAUDE_BIN}/jira.sh"
@@ -254,9 +257,10 @@ prompt=$(sed \
     -e "s|__CONTEXT_FILE__|${context_file}|g" \
     "$PROMPT_TEMPLATE")
 
-log "Starting unattended session (log: ${run_dir}/session.log)"
+log "Starting unattended session on ${LOOP_MODEL} (log: ${run_dir}/session.log)"
 # Denied at the process level so the gate, not the model, owns the write.
 ( cd "$worktree" && exec claude -p "$prompt" \
+    --model "$LOOP_MODEL" \
     --permission-mode bypassPermissions \
     --disallowed-tools \
         'mcp__claude_ai_Atlassian__*' \

@@ -1,6 +1,6 @@
 ---
 name: project_or2875_all_procedures_gate
-description: "OR-2875 antibiotic guidance withholds on any unmapped/unconfigured procedure — validated locally against Theo's unmerged PR #4521; tests written on the worktree branch; Done transition deferred to merge"
+description: "OR-2875 antibiotic guidance withholds on any unmapped/unconfigured procedure — DONE; validated locally pre-merge against PR #4521; tests PR #4551 pending merge then worktree-done"
 metadata: 
   node_type: memory
   type: project
@@ -13,11 +13,10 @@ mapped to nothing (`SUPPRESSED_UNMAPPED_PROCEDURE`, read from new jsonb `operati
 tenant changeset 224) or any mapped procedure has no applicable pathway (`SUPPRESSED_UNCONFIGURED_PROCEDURE`).
 `None` counts as an answer; `NOT_CONFIGURED` was renamed `NO_PROCEDURE_PROVIDED` (no analytics/TS consumers).
 
-State on 2026-09-04: implementation is PR #4521 (open, not draft, CI green, unreviewed). Validated locally
-against a build of that branch on 8081 (Mayo SIU path + demo admin path, all scenarios per spec). Validation
-comment posted on the ticket; **ticket left In Progress** — Done only after #4521 merges. Tests written on
+State on 2026-09-10: PR #4521 MERGED; ticket DONE (validation comment + follow-up posted). Tests PR #4551 (draft) open; run `worktree-done` here after it merges. Validated locally
+against a build of that branch on 8081 (Mayo SIU path + demo admin path, all scenarios per spec). Tests written on
 `feature/OR-2875-antibiotics-recommendations-all-procedures` (worktree), which has `origin/OR-2875` merged in
-so the diff includes Theo's commits until his PR lands; open the tests PR after his merge (or rebase onto main).
+then origin/main merged back in once #4521 landed, so the PR diff is qa-suite only.
 
 Coverage added (qa-suite, all @supplemental, API-only): PABX-019/020 (demo: no-antibiotic and
 not-recommended rules abstain on None+unconfigured with firing controls), new PMAP family

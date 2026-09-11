@@ -1,31 +1,29 @@
 ---
 name: project-or2862-allergy-reaction-paren-drift
-description: OR-2862 — Mayo Epic reaction picklist drift silently drops allergy severity; exact-match lookup, naive paren-stripping is unsafe
+description: OR-2862 — closed our resolver PR #4506; real fix was Theo's verbatim CSV seed (#4534); the drift string was dev-only; unmatched reactions still skip silently
 metadata:
   type: project
 ---
 
-OR-2862 (Bug, To Do, filed 2026-08-31): Mayo Epic returns `AllergyIntolerance`
-manifestation text as `TERM (lay description)`. `GetAllergiesR4Command` uppercases it
-raw, then `AllergyReactionRepository.findByReaction` matches **exactly** against the
-seeded list. A mismatch skips the reaction with no log line, leaving the severity
-multimap empty so `getMaxSeverity` returns `OTHER_UNKNOWN` and
-`highestSeverityAllergyReaction` is null. Confirmed on dev: Wilfredo (PMRN 11292547)
-gentamicin reads `HIVES (RAISED, ITCHY, SKIN WELTS)` → `OTHER_UNKNOWN` instead of
-`MODERATE`.
+OR-2862 (Bug, reassigned to Theo 2026-09-10). Our PR #4506 added `AllergyReactionResolver`
+(exact match, then strip a trailing parenthetical and retry). Closed unmerged on 2026-09-10;
+worktree torn down. Theo's PR #4534 seeds the 33 reaction strings Mayo prod actually sends
+(mostly legacy `(RESELECT REACTION)` forms) plus two severity reclassifications
+(HEPARIN-INDUCED THROMBOCYTOPENIA → TYPE_I, UNKNOWN → TYPE_I).
 
-**Why:** the seed CSV mirrors Epic's picklist and *already* stores parenthesized forms
-for 7 entries (`OTHER (SEE COMMENTS)`, `RASH WITH MUCOSAL LESIONS (SJS, TENS)`,
-`DERMATITIS (ALLERGIC CONTACT DERMATITIS)`, …). So this is picklist drift on individual
-rows, not a format mismatch across the board — which makes a blanket fix wrong.
+**Why closed:** the motivating string `HIVES (RAISED, ITCHY, SKIN WELTS)` (Wilfredo, PMRN
+11292547) exists only in Mayo *staging* Epic, never in prod. Paren-stripping would have
+rescued only strings whose base word is seeded; it does nothing for STEVENS-JOHNSON SYNDROME
+or `... (SCAR), UNSPECIFIED`, and can under-classify (unseeded `RASH (WITH BLISTERING)` →
+MILD). Verbatim seeding is the team's approach; `RASH WITH MUCOSAL LESIONS (SJS, TENS)` shows
+why a blanket strip is unsafe.
 
-**How to apply:** never "fix" this by stripping parentheticals unconditionally —
-`RASH WITH MUCOSAL LESIONS (SJS, TENS)` would strip to an unseeded term and lose
-`TYPE_II_TYPE_IV`. Exact match first, *then* strip-and-retry, then fuzzy. The existing
-`tryFuzzyMatchReaction` can't rescue it (distance 3 cap, notes only; real distance ~28)
-and `cleanNote` doesn't touch parens. Same exact-match lookup feeds
-`MedicationAllergy.severity` at `AllergyAssociationService.java:199`, so the degraded
-severity reaches medication-allergy alerting. Related but distinct:
-OR-2837 (unmapped reactions in prod, closed working-as-designed).
+**How to apply:** before coding a matching heuristic for EMR text drift, check what prod
+actually sends (stage/prod `allergy_reactions` text) rather than the dev/staging FHIR patient.
+The real durable gap is visibility: `GetAllergiesR4Command` skips an unmatched reaction with
+no log line (`if (allergyReaction == null) return;`), and `AllergyAssociationService.java:199`
+runs the same exact-match lookup for `MedicationAllergy.severity`. A follow-up ticket for a
+warn/Sentry breadcrumb on unmatched reaction text was proposed, not yet filed. Dev will still
+resolve that gentamicin allergy as OTHER_UNKNOWN after #4534 merges — expected, not a bug.
 
 Ties to [[reference-qa-suite-rule-details-api]] and [[project-mayo-fhir-ticket-validation]].
