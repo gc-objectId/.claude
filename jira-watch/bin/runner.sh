@@ -132,8 +132,17 @@ log "image=${image} sha=${sha}"
 fresh=$("${CLAUDE_BIN}/freshness.sh" "$ticket" "$sha" 2>/dev/null) && fresh_rc=0 || fresh_rc=$?
 case "$fresh_rc" in
     0) ;;
-    5) log "${ticket} has no merged PR — disposing without booting an environment"
-       record no_merged_pr "no merged PR within the search window; needs a human disposition"
+    5) if [ -n "$(jira_subtask_statuses "$ticket" 2>/dev/null || true)" ]; then
+           # An umbrella never gets a PR of its own. Suppress it rather than re-offering it every
+           # sweep; reverse with `unblock.sh unskip`.
+           grep -qxF "$ticket" "${LOOP_HOME}/state/skip" 2>/dev/null ||
+               printf '%s\n' "$ticket" >>"${LOOP_HOME}/state/skip"
+           log "${ticket} is an umbrella with no PR of its own — skip-listed; its children are offered separately"
+           record umbrella "parent ticket with subtasks and no merged PR of its own; skip-listed so it stops being offered"
+       else
+           log "${ticket} has no merged PR — disposing without booting an environment"
+           record no_merged_pr "no merged PR within the search window; needs a human disposition"
+       fi
        exit 0 ;;
     4) log "${ticket} fix is not in the build"
        record stale_build "build ${sha} does not contain the ticket's merge commit"

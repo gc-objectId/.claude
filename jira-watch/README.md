@@ -94,6 +94,7 @@ instance cannot reach — should come back `inconclusive` with a blocker saying 
 needed. The prompt forbids inventing an app-level red check to satisfy the format; the gate would
 refuse it anyway, and "not locally validatable" is the more useful answer.
 | `no_merged_pr` | nothing merged to validate | check whether it shipped at all |
+| `umbrella` | a parent with subtasks and no PR of its own | nothing — it is skip-listed automatically, and its children are offered separately. Reverse with `unblock.sh unskip` |
 | `stale_build` | fix not in the built commit | usually transient; retry |
 | `env_failed` / `session_timeout` | infrastructure, not the ticket | retry |
 

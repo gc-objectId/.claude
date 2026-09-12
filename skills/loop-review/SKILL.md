@@ -34,6 +34,7 @@ uses, and the loop reads their state:
 | Answer the blockers | `unblock.sh answer OR-XXXX "text"` — posts as a Jira comment |
 | Retry unchanged | `unblock.sh retry OR-XXXX` |
 | Never validate locally | `unblock.sh skip OR-XXXX` |
+| Undo a skip | `unblock.sh unskip OR-XXXX` |
 | Not actually implemented | `unblock.sh inprogress OR-XXXX` |
 | Clear stranded worktrees | `reap.sh --apply` |
 | Coverage backlog | report the count only — see below |

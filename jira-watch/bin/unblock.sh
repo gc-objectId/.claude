@@ -124,6 +124,14 @@ case "${1:-}" in
         printf 'cleared %s — it reads as never-run.\n' "$t"
         exit 0
         ;;
+    unskip)
+        t="${2:?need a ticket}"
+        grep -vxF "$t" "$SKIP_FILE" >"${SKIP_FILE}.tmp" 2>/dev/null || true
+        mv "${SKIP_FILE}.tmp" "$SKIP_FILE"
+        rm -f "${RESULTS}/${t}/result.json"
+        printf 'removed %s from the skip list and cleared its record.\n' "$t"
+        exit 0
+        ;;
     skip)
         t="${2:?need a ticket}"
         grep -qxF "$t" "$SKIP_FILE" || printf '%s\n' "$t" >>"$SKIP_FILE"

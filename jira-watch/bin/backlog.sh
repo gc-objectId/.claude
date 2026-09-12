@@ -14,6 +14,10 @@ LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.claude/bin}"
 RESULTS="${LOOP_HOME}/state/results"
 SKIP_FILE="${LOOP_HOME}/state/skip"
+# Reserved work validates but never writes, so a sweep slot spent on it moves nothing. Run one by
+# name when the evidence is actually wanted.
+LOOP_RESERVED_PATTERN="${LOOP_RESERVED_PATTERN:-^analytics}"
+INCLUDE_RESERVED="${LOOP_INCLUDE_RESERVED:-}"
 WORKTREE_ROOT="${WORKTREE_ROOT:-$HOME/dev/worktrees}"
 ORCI_ROOT="${ORCI_ROOT:-$HOME/dev/orci}"
 PROJECT="${JIRA_WATCH_PROJECT:-OR}"
@@ -34,7 +38,9 @@ done
 
 # Testing is included so a ticket stranded by a dead run is still reachable; the guards below
 # are what prevent stomping live work.
-jql="project = \"${PROJECT}\" AND sprint in openSprints() AND status IN (\"${STATUS}\", \"Testing\") ORDER BY created ASC"
+assignee_clause=''
+[ -n "$INCLUDE_RESERVED" ] || assignee_clause=' AND (assignee IS EMPTY OR assignee = currentUser())'
+jql="project = \"${PROJECT}\" AND sprint in openSprints() AND status IN (\"${STATUS}\", \"Testing\")${assignee_clause} ORDER BY created ASC"
 
 # Subtasks never match `sprint in openSprints()`, so reach them by parent instead.
 candidates=$(jira_search_keys "$jql")
@@ -55,6 +61,11 @@ printf '%s\n' "$candidates" | awk 'NF && !seen[$1]++' | while IFS="$(printf '\t'
     # Tickets deliberately taken out of the sweep by unblock.sh — usually not locally validatable.
     if [ -f "${SKIP_FILE}" ] && grep -qxF "$key" "${SKIP_FILE}"; then
         printf 'skip %s: on the skip list\n' "$key" >&2
+        continue
+    fi
+
+    if [ -z "$INCLUDE_RESERVED" ] && printf '%s' "$_summary" | grep -qiE "$LOOP_RESERVED_PATTERN"; then
+        printf 'skip %s: reserved for another reviewer\n' "$key" >&2
         continue
     fi
 

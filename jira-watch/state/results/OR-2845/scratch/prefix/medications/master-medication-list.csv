@@ -1,0 +1,347 @@
+medication_identifier,medication_name,short_name,medication_pronunciation,medication_color_group,medication_components,primary_medication_category,medication_categories
+g-acetaminophen,Acetaminophen,Acetaminophen,,,,ACETAMINOPHEN,ACETAMINOPHEN | NOT_ON_MED_LIST
+m-acetaminophen-325-tablet,Acetaminophen 325 mg Tablet,Acetaminophen,acetaminophen,Miscellaneous White Label,,ACETAMINOPHEN,ACETAMINOPHEN
+m-acetaminophen-500-tablet,Acetaminophen 500 mg Tablet,Acetaminophen,acetaminophen,Miscellaneous White Label,,ACETAMINOPHEN,ACETAMINOPHEN | NOT_ON_MED_LIST
+m-acetaminophen-80-tablet,Acetaminophen 80 mg Tablet,Acetaminophen,acetaminophen,Miscellaneous White Label,,ACETAMINOPHEN,ACETAMINOPHEN
+m-acetaminophen-iv,Acetaminophen IV,Acetaminophen,acetaminophen,Miscellaneous White Label,,ACETAMINOPHEN,ACETAMINOPHEN | INTRAVENOUS
+m-acetaminophen-liquid,Acetaminophen Liquid,Acetaminophen,acetaminophen,Miscellaneous White Label,,ACETAMINOPHEN,ACETAMINOPHEN
+m-acetaminophen-suppository,Acetaminophen Suppository,Acetaminophen,acetaminophen,Miscellaneous White Label,,ACETAMINOPHEN,ACETAMINOPHEN
+g-acetaminophen-codeine,Acetaminophen-Codeine,Acetaminophen-Codeine,,,,ACETAMINOPHEN_CODEINE,ACETAMINOPHEN | CODEINE | NARCOTIC | NOT_ON_MED_LIST
+m-adenosine,Adenosine,Adenosine,adenosine,Miscellaneous White Label,,ADENOSINE,ADENOSINE | INTRAVENOUS
+m-albumin-human,Albumin Human,Albumin Human,albumin,Miscellaneous White Label,,ALBUMIN_HUMAN,ALBUMIN_HUMAN | INTRAVENOUS
+g-albuterol,Albuterol,Albuterol,,,,ALBUTEROL,ALBUTEROL | NOT_ON_MED_LIST
+m-albuterol-hfa-inhaler,Albuterol HFA Inhaler,Albuterol HFA Inhaler,albuterol,Miscellaneous White Label,,ALBUTEROL,ALBUTEROL
+m-albuterol-nebulizer-solution,Albuterol Nebulizer Solution,Albuterol Nebulizer Solution,albuterol,Miscellaneous White Label,,ALBUTEROL,ALBUTEROL
+m-amikacin,Amikacin,Amikacin,amikacin,Miscellaneous White Label,,AMIKACIN,AMIKACIN | ANTIBIOTIC | INTRAVENOUS | AMINOGLYCOSIDE
+m-aminocaproic-acid,Aminocaproic Acid,Aminocaproic Acid,aminocaproic acid,Miscellaneous White Label,,AMINOCAPROIC_ACID,AMINOCAPROIC_ACID | INTRAVENOUS
+m-amiodarone,AmioDARONE,AmioDARONE,amiodarone,Miscellaneous White Label,,AMIODARONE,AMIODARONE | INTRAVENOUS | QTC_PROLONGING
+m-ampicillin,AMPicillin,AMPicillin,ampicillin,Miscellaneous White Label,,AMPICILLIN,AMPICILLIN | ANTIBIOTIC | PENICILLIN | INTRAVENOUS
+g-ampicillin-gentamicin,AMPicillin-Gentamicin,AMPicillin-Gentamicin,,,m-ampicillin | m-gentamicin,AMPICILLIN_GENTAMICIN,AMPICILLIN | ANTIBIOTIC | PENICILLIN | GENTAMICIN | NOT_ON_MED_LIST |EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL | AMINOGLYCOSIDE
+g-ampicillin-heparin,AMPicillin-Heparin,AMPicillin-Heparin,,,m-ampicillin | m-heparin,AMPICILLIN_HEPARIN,AMPICILLIN | ANTIBIOTIC | PENICILLIN | HEPARIN | NOT_ON_MED_LIST | EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL
+m-ampicillin-sulbactamunasyn,AMPicillin-sulbactam(Unasyn),AMPicillin-sulbactam(Unasyn),ampicillin-sulbactam,Miscellaneous White Label,,AMPICILLIN_SULBACTAM,AMPICILLIN_SULBACTAM | ANTIBIOTIC | PENICILLIN | INTRAVENOUS
+m-argatroban,Argatroban,Argatroban,argatroban,Anticoagulant,,ARGATROBAN,ARGATROBAN | INTRAVENOUS
+m-atropine,Atropine,Atropine,atropine,Anticholinergic Agents,,ATROPINE,ATROPINE | INTRAVENOUS
+g-azithromycin,Azithromycin,Azithromycin,,,,AZITHROMYCIN,AZITHROMYCIN | ANTIBIOTIC | NOT_ON_MED_LIST | QTC_PROLONGING
+m-azithromycin-iv,Azithromycin IV,Azithromycin,azithromycin ,Miscellaneous White Label,,AZITHROMYCIN,AZITHROMYCIN | ANTIBIOTIC | INTRAVENOUS | QTC_PROLONGING
+m-azithromycin-oral,Azithromycin Oral,Azithromycin,azithromycin ,Miscellaneous White Label,,AZITHROMYCIN,AZITHROMYCIN | ANTIBIOTIC | INTRAVENOUS | QTC_PROLONGING
+m-aztreonam,Aztreonam,Aztreonam,Aztreonam,Miscellaneous White Label,,AZTREONAM,AZTREONAM | ANTIBIOTIC
+m-bivalirudin,Bivalirudin,Bivalirudin,bivalirudin,Anticoagulant,,BIVALIRUDIN,BIVALIRUDIN | INTRAVENOUS
+m-bupivacaine,Bupivacaine,Bupivacaine,bupivacaine,Local Anesthetics,,BUPIVACAINE,BUPIVACAINE | LOCAL_ANESTHETIC
+g-bupivacaine,Bupivacaine,Bupivacaine,,,,BUPIVACAINE,BUPIVACAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-bupivacaine-pf-0.1,Bupivacaine (PF) 0.1%,Bupivacaine,bupivacaine  ,Local Anesthetics,,BUPIVACAINE,BUPIVACAINE | LOCAL_ANESTHETIC
+m-bupivacaine-pf-0.25,Bupivacaine (PF) 0.25%,Bupivacaine,bupivacaine  ,Local Anesthetics,,BUPIVACAINE,BUPIVACAINE | LOCAL_ANESTHETIC
+m-bupivacaine-pf-0.5,Bupivacaine (PF) 0.5%,Bupivacaine,bupivacaine  ,Local Anesthetics,,BUPIVACAINE,BUPIVACAINE | LOCAL_ANESTHETIC
+m-bupivacaine-pf-0.75,Bupivacaine (PF) 0.75%,Bupivacaine,bupivacaine  ,Local Anesthetics,,BUPIVACAINE,BUPIVACAINE | LOCAL_ANESTHETIC
+m-bupivacaine-dextrose,Bupivacaine-Dextrose,Bupivacaine-Dextrose,bupivacaine  ,Local Anesthetics,,BUPIVACAINE_DEXTROSE,BUPIVACAINE | LOCAL_ANESTHETIC
+m-bupivacaine-0.1-clonidine,Bupivacaine-Clonidine,Bupivacaine-Clonidine,bupivacaine clonidine,Bupivacaine-Clonidine,g-bupivacaine | g-clonidine,BUPIVACAINE_CLONIDINE,BUPIVACAINE | LOCAL_ANESTHETIC | CLONIDINE | NARCOTIC
+g-bupivacaine-clonidine,Bupivacaine-Clonidine,Bupivacaine-Clonidine,,,g-bupivacaine | g-clonidine,BUPIVACAINE_CLONIDINE,BUPIVACAINE | LOCAL_ANESTHETIC | CLONIDINE | NARCOTIC | NOT_ON_MED_LIST
+m-bupivacaine-epinephrine-pf-0.25,Bupivacaine-EPINEPHrine (PF) 0.25%,Bupivacaine-EPINEPHrine,bupivacaine epinephrine,Local Anesthetics,,BUPIVACAINE_EPINEPHRINE,BUPIVACAINE_EPINEPHRINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE
+g-bupivacaine-epinephrine,Bupivacaine-EPINEPHrine,Bupivacaine-EPINEPHrine,,,,BUPIVACAINE_EPINEPHRINE,BUPIVACAINE_EPINEPHRINE | BUPIVACAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST | EPINEPHRINE
+m-bupivacaine-epinephrine-pf-0.5,Bupivacaine-EPINEPHrine (PF) 0.5%,Bupivacaine-EPINEPHrine,bupivacaine epinephrine,Local Anesthetics,,BUPIVACAINE_EPINEPHRINE,BUPIVACAINE_EPINEPHRINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE
+m-bupivacaine-epinephrine-pf-0.75,Bupivacaine-EPINEPHrine (PF) 0.75%,Bupivacaine-EPINEPHrine,bupivacaine epinephrine,Local Anesthetics,,BUPIVACAINE_EPINEPHRINE,BUPIVACAINE_EPINEPHRINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE
+m-bupivacaine-epinephrine-1-20,"Bupivacaine-EPINEPHrine 1:200,000",Bupivacaine-EPINEPHrine,,,,BUPIVACAINE_EPINEPHRINE,BUPIVACAINE_EPINEPHRINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE
+m-calcium-chloride,Calcium Chloride,Calcium Chloride,calcium chloride,Miscellaneous White Label,,CALCIUM_CHLORIDE,CALCIUM_CHLORIDE | CALCIUM | INTRAVENOUS
+m-calcium-gluconate,Calcium Gluconate,Calcium Gluconate,calcium gluconate,Miscellaneous White Label,,CALCIUM_GLUCONATE,CALCIUM_GLUCONATE | CALCIUM | INTRAVENOUS
+m-cefazolin,CeFAZolin,CeFAZolin,cefazolin,Miscellaneous White Label,,CEFAZOLIN,CEFAZOLIN | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 1 | INTRAVENOUS
+g-cefazolin-gentamicin,Cefazolin-Gentamicin,Cefazolin-Gentamicin,,,,CEFAZOLIN_GENTAMICIN,CEFAZOLIN | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 1 | INTRAVENOUS | GENTAMICIN | NOT_ON_MED_LIST | EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL | AMINOGLYCOSIDE
+m-cefepime,CefePIME,CefePIME,cefepime,Miscellaneous White Label,,CEFEPIME,CEFEPIME | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 4 | INTRAVENOUS | PREOP_DEFAULT_DOSE_IV
+m-cefotaxime,Cefotaxime,Cefotaxime,cefotaxime,Miscellaneous White Label,,CEFOTAXIME,CEFOTAXIME | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 3| INTRAVENOUS
+m-cefoxitin,CefOXitin,CefOXitin,cefoxitin,Miscellaneous White Label,,CEFOXITIN,CEFOXITIN | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 2 | INTRAVENOUS
+m-ceftaroline,Ceftaroline,Ceftaroline,sef taro leen,Miscellaneous White Label,,CEFTAROLINE,CEFTAROLINE | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 5 | INTRAVENOUS
+m-ceftazidime,CefTAZidime,CefTAZidime,ceftazidime,Miscellaneous White Label,,CEFTAZIDIME,CEFTAZIDIME | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 3 | INTRAVENOUS
+m-ceftazidime-avibactam,CefTAZidime-Avibactam,CefTAZidime-Avibactam,ceftazidime-avibactam,Miscellaneous White Label,,CEFTAZIDIME_AVIBACTAM,CEFTAZIDIME_AVIBACTAM | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 3 | INTRAVENOUS
+m-ceftolozane-tazobactam,Ceftolozane-Tazobactam,Ceftolozane-Tazobactam,ceftolozane-tazobactam,Miscellaneous White Label,,CEFTOLOZANE_TAZOBACTAM,CEFTOLOZANE_TAZOBACTAM | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 5 | INTRAVENOUS
+m-ceftriaxone,CefTRIAXone,CefTRIAXone,ceftriaxone,Miscellaneous White Label,,CEFTRIAXONE,CEFTRIAXONE | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 3 | INTRAVENOUS
+m-cefuroxime,Cefuroxime,Cefuroxime,sefuroxeme,Miscellaneous White Label,,CEFUROXIME,CEFUROXIME | ANTIBIOTIC | CEPHALOSPORIN | CEF GEN 2 | INTRAVENOUS
+m-celecoxib,Celecoxib,Celecoxib,selecoxib,Miscellaneous White Label,,CELECOXIB,CELECOXIB | NSAID
+m-chloroprocaine,Chloroprocaine,Chloroprocaine,chloroprocaine,Local Anesthetics,,CHLOROPROCAINE,CHLOROPROCAINE | LOCAL_ANESTHETIC
+m-chloroprocaine-pf,Chloroprocaine (PF),Chloroprocaine,chloroprocaine ,Local Anesthetics,,CHLOROPROCAINE,CHLOROPROCAINE | LOCAL_ANESTHETIC
+g-chlorpromazine,Chlorpromazine,Chlorpromazine,,,,CHLORPROMAZINE,CHLORPROMAZINE | NOT_ON_MED_LIST
+m-chlorpromazine-iv,ChlorproMAZINE IV/IM,ChlorproMAZINE,chlor promazine ,Miscellaneous White Label,,CHLORPROMAZINE,CHLORPROMAZINE | INTRAVENOUS
+m-chlorpromazine-oral,ChlorproMAZINE Oral,ChlorproMAZINE,chlor promazine ,Miscellaneous White Label,,CHLORPROMAZINE,CHLORPROMAZINE
+m-ciprofloxacin,CIPROfloxacin,CIPROfloxacin,ciprofloxacin,Miscellaneous White Label,,CIPROFLOXACIN,CIPROFLOXACIN | ANTIBIOTIC | INTRAVENOUS | QTC_PROLONGING | FLUOROQUINOLONE
+m-cisatracurium,Cisatracurium,Cisatracurium,cisatracurium,Muscle Relaxants,,CISATRACURIUM,CISATRACURIUM | NONDEP_NMB | INTRAVENOUS
+m-clindamycin,Clindamycin,Clindamycin,clindamycin,Miscellaneous White Label,,CLINDAMYCIN,CLINDAMYCIN | ANTIBIOTIC | INTRAVENOUS
+g-clindamycin-gentamicin,Clindamycin-Gentamicin,Clindamycin-Gentamicin,,,m-clindamycin | m-gentamicin,CLINDAMYCIN_GENTAMICIN,CLINDAMYCIN | ANTIBIOTIC | INTRAVENOUS | GENTAMICIN | NOT_ON_MED_LIST | EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL | AMINOGLYCOSIDE
+g-clonidine,CloNIDine,CloNIDine,,,,CLONIDINE,CLONIDINE
+m-clonidine-epidural,CloNIDine Epidural/Nerve Bock,CloNIDine,clonidine ,Hypotensive Agents,,CLONIDINE,CLONIDINE
+m-clonidine-oral,CloNIDine Oral,CloNIDine,clonidine ,Hypotensive Agents,,CLONIDINE,CLONIDINE
+m-clonidine-transdermal-0.1,CloNIDine Transdermal 0.1 mg/day,CloNIDine,clonidine ,Hypotensive Agents,,CLONIDINE,CLONIDINE
+m-clonidine-transdermal-0.2,CloNIDine Transdermal 0.2 mg/day,CloNIDine,clonidine ,Hypotensive Agents,,CLONIDINE,CLONIDINE
+m-clonidine-transdermal-0.3,CloNIDine Transdermal 0.3 mg/day,CloNIDine,clonidine ,Hypotensive Agents,,CLONIDINE,CLONIDINE
+g-clonidine-epinephrine-ketorolac-ropivacaine,Clonidine-EPINEPHrine-Ketorolac-Ropivacaine,Clonidine-EPINEPHrine-Ketorolac-Ropivacaine,,,g-clonidine | m-ketorolac | g-ropivacaine,CLONIDINE_EPINEPHRINE_KETOROLAC_ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC | KETOROLAC | CLONIDINE | EPINEPHRINE | NOT_ON_MED_LIST | ROPIVACAINE_EPINEPHRINE | NARCOTIC | NSAID
+g-epinephrine-clonidine-ropivacaine,Clonidine-EPINEPHrine-Ropivacaine,Clonidine-EPINEPHrine-Ropivacaine,,,g-clonidine | g-ropivacaine,EPINEPHRINE_CLONIDINE_ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC  | CLONIDINE | EPINEPHRINE | NOT_ON_MED_LIST | ROPIVACAINE_EPINEPHRINE | NARCOTIC
+m-dantrolene,Dantrolene,Dantrolene,dantrolene,Miscellaneous White Label,,DANTROLENE,DANTROLENE | INTRAVENOUS
+m-daptomycin-iv,DAPTOmycin,DAPTOmycin,daptomycin ,Miscellaneous White Label,,DAPTOMYCIN,DAPTOMYCIN | ANTIBIOTIC | INTRAVENOUS
+m-desmopressin-iv,Desmopressin,Desmopressin,desmopressin ,Miscellaneous White Label,,DESMOPRESSIN,DESMOPRESSIN | INTRAVENOUS
+m-desmopressin-nasal,Desmopressin Nasal,Desmopressin,desmopressin ,Miscellaneous White Label,,DESMOPRESSIN,DESMOPRESSIN
+m-desmopressin-oral,Desmopressin Oral,Desmopressin,desmopressin ,Miscellaneous White Label,,DESMOPRESSIN,DESMOPRESSIN
+m-dexamethasone,Dexamethasone,Dexamethasone,dexamethasone,Miscellaneous White Label,,DEXAMETHASONE,DEXAMETHASONE | INTRAVENOUS | ANTIEMETIC | ANTIEMETIC_STEROID
+g-dexamethasone-lidocaine,Dexamethasone-Lidocaine,Dexamethasone-Lidocaine,,,m-dexamethasone | g-lidocaine,DEXAMETHASONE_LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST | DEXAMETHASONE
+m-dexmedetomidine,DexMEDEtomidine,DexMEDEtomidine,dexmedah tomidine,Induction Agents,,DEXMEDETOMIDINE,DEXMEDETOMIDINE| INTRAVENOUS | INDUCTION_AGENT
+m-dextran-40,Dextran 40,Dextran 40,dextran 40,Miscellaneous White Label,,DEXTRAN_40,DEXTRAN_40 | INTRAVENOUS
+m-dextrose,DextROse,DextROse,dextrose,Miscellaneous White Label,,DEXTROSE,DEXTROSE | INTRAVENOUS
+m-diazepam-iv,DiazePAM IV,DiazePAM,diazepam ,Tranquilizers,,DIAZEPAM,DIAZEPAM | INTRAVENOUS
+m-diazepam-oral,DiazePAM Oral,DiazePAM,diazepam ,Tranquilizers,,DIAZEPAM,DIAZEPAM
+m-diazepam-rectal,DiazePAM Rectal,DiazePAM,diazepam ,Tranquilizers,,DIAZEPAM,DIAZEPAM
+m-digoxin,Digoxin,Digoxin,dijoxin,Miscellaneous White Label,,DIGOXIN,DIGOXIN | INTRAVENOUS
+m-digoxin-immune-fab,Digoxin Immune Fab,Digoxin Immune Fab,dijoxinmune fab,Miscellaneous White Label,,DIGOXIN,DIGOXIN | INTRAVENOUS
+m-diltiazem,DilTIAZem,DilTIAZem,diltiazem,Hypotensive Agents,,DILTIAZEM,DILTIAZEM | INTRAVENOUS
+m-diphenhydramine,DiphenhydrAMINE,DiphenhydrAMINE,diphenhydramine,Miscellaneous White Label,,DIPHENYDRAMINE,DIPHENHYDRAMINE | INTRAVENOUS
+m-doxycycline,Doxycycline,Doxycycline,doxycycline,Miscellaneous White Label,,DOXYCYCLINE,DOXYCYCLINE | ANTIBIOTIC | INTRAVENOUS
+m-droperidol,Droperidol,Droperidol,droperidol,Tranquilizers,,DROPERIDOL,DROPERIDOL | INTRAVENOUS | QTC_PROLONGING
+g-droperidol,Droperidol,Droperidol,,,,DROPERIDOL,DROPERIDOL | INTRAVENOUS | NOT_ON_MED_LIST | QTC_PROLONGING
+m-dulaglutide,Dulaglutide,Dulaglutide,,,,DULAGLUTIDE,NOT_ON_MED_LIST | ANTIHYPERGLYCEMIC
+m-edrophonium,Edrophonium,Edrophonium,edrophonium,Relaxant Antagonists,,EDROPHONIUM,EDROPHONIUM | INTRAVENOUS | NOT_ON_MED_LIST
+m-enalapril-oral,Enalapril,Enalapril,enalapril ,Hypotensive Agents,,ENALAPRIL,ENALAPRIL | ANTIHYPERTENSIVE
+m-enalaprilat,Enalaprilat,Enalaprilat,enalaprilat,Hypotensive Agents,,ENALAPRILAT,ENALAPRILAT | INTRAVENOUS | ANTIHYPERTENSIVE
+m-ephedrine,EPHEDrine,EPHEDrine,ephedrine,Vasopressors,,EPHEDRINE,EPHEDRINE | INTRAVENOUS | VASOPRESSOR | ANTIEMETIC | ANTIEMETIC_SYMPATHOMIMETIC | NOT_ON_MED_LIST
+m-ephedrine-iv,EPHEDrine IV,EPHEDrine,ephedrine,Vasopressors,,EPHEDRINE,EPHEDRINE | INTRAVENOUS | VASOPRESSOR | ANTIEMETIC | ANTIEMETIC_SYMPATHOMIMETIC
+m-ephedrine-im,EPHEDrine IM,EPHEDrine,ephedrine,Vasopressors,,EPHEDRINE,EPHEDRINE | VASOPRESSOR | ANTIEMETIC | ANTIEMETIC_SYMPATHOMIMETIC
+m-ephedrine-50,EPHEDrine,EPHEDrine,ephedrine,Vasopressors,,EPHEDRINE,EPHEDRINE | VASOPRESSOR | ANTIEMETIC | ANTIEMETIC_SYMPATHOMIMETIC | NOT_ON_MED_LIST
+m-epinephrine,EPINEPHrine,EPINEPHrine,epinephrine,Epinephrine,,EPINEPHRINE,EPINEPHRINE | INTRAVENOUS | VASOPRESSOR
+m-ertapenem,Ertapenem,Ertapenem,ertapenem,Miscellaneous White Label,,ERTAPENEM,ERTAPENEM | ANTIBIOTIC | CARBAPENEM | INTRAVENOUS
+m-esmolol,Esmolol,Esmolol,esmolol,Beta Blocker,,ESMOLOL,ESMOLOL | INTRAVENOUS | ANTIHYPERTENSIVE
+m-esomeprazole,Esomeprazole,Esomeprazole,esomeprazole,Miscellaneous White Label,,ESOMEPRAZOLE,ESOMEPRAZOLE | OMEPRAZOLE | NOT_ON_MED_LIST
+m-etomidate,Etomidate,Etomidate,etomidate,Induction Agents,,ETOMIDATE,ETOMIDATE | INTRAVENOUS | INDUCTION_AGENT
+g-famotidine,Famotidine,Famotidine,,,,FAMOTIDINE,FAMOTIDINE | NOT_ON_MED_LIST
+m-famotidine-pf-iv,Famotidine IV (PF),Famotidine,famotidene,Miscellaneous White Label,,FAMOTIDINE,FAMOTIDINE | INTRAVENOUS
+m-famotidine-oral,Famotidine Oral,Famotidine,famotidene,Miscellaneous White Label,,FAMOTIDINE,FAMOTIDINE
+m-intralipid,Intralipid,Intralipid,Intralipid,Miscellaneous White Label,,INTRALIPID,INTRALIPID | INTRAVENOUS
+g-fenoldopam,Fenoldopam,Fenoldopam,,,,FENOLDOPAM,NOT_ON_MED_LIST | ANTIHYPERTENSIVE
+m-fentanyl,FentaNYL,FentaNYL,fentanyl,Narcotics,,FENTANYL,FENTANYL | NARCOTIC | INTRAVENOUS
+g-fentanyl-bupivacaine,Fentanyl-Bupivacaine,FentaNYL-Bupivacaine,,,m-fentanyl | g-bupivacaine,FENTANYL_BUPIVACAINE,FENTANYL | NARCOTIC | BUPIVACAINE | LOCAL_ANESTHETIC| NOT_ON_MED_LIST
+m-fentanyl-bupivacaine,Fentanyl-Bupivacaine,FentaNYL-Bupivacaine,fentanyl bupivacaine,HYDROmorphone-Bupivacaine,m-fentanyl | g-bupivacaine,FENTANYL_BUPIVACAINE,FENTANYL | NARCOTIC | BUPIVACAINE | LOCAL_ANESTHETIC
+m-fluconazole,Fluconazole,Fluconazole,fluconazole,Miscellaneous White Label,,FLUCONAZOLE,FLUCONAZOLE | INTRAVENOUS | QTC_PROLONGING
+m-flumazenil,Flumazenil,Flumazenil,flumazenil,Benzodiazepine antagonist ,,FLUMAZENIL,FLUMAZENIL | INTRAVENOUS
+m-fluorescein,Fluorescein,Fluorescein,fluoresceen,Miscellaneous White Label,,FLUORESCEIN,FLUORESCEIN | INTRAVENOUS
+m-fosphenytoin,Fosphenytoin,Fosphenytoin,fosphenytoin,Miscellaneous White Label,,FOSPHENYTOIN,FOSPHENYTOIN | INTRAVENOUS
+m-furosemide-iv,Furosemide IV,Furosemide,fur ohsemide ,Miscellaneous White Label,,FUROSEMIDE,FUROSEMIDE | INTRAVENOUS
+m-furosemide-oral,Furosemide Oral,Furosemide,fur ohsemide ,Miscellaneous White Label,,FUROSEMIDE,FUROSEMIDE
+m-gabapentin,Gabapentin,Gabapentin,gabapentin,Miscellaneous White Label,,GABAPENTIN,GABAPENTIN
+m-ganciclovir,Ganciclovir,Ganciclovir,ganciclovir,Miscellaneous White Label,,GANCICLOVIR,GANCICLOVIR | INTRAVENOUS
+m-gentamicin,Gentamicin,Gentamicin,gentamicin,Miscellaneous White Label,,GENTAMICIN,GENTAMICIN | ANTIBIOTIC | INTRAVENOUS | AMINOGLYCOSIDE
+m-glucagon,Glucagon,Glucagon,glucagon,Miscellaneous White Label,,GLUCAGON,GLUCAGON | INTRAVENOUS
+m-glycopyrrolate,Glycopyrrolate,Glycopyrrolate,glycoe pie rolate,Anticholinergic Agents,,GLYCOPYRROLATE,GLYCOPYRROLATE | INTRAVENOUS
+m-haloperidol,Haloperidol IV,Haloperidol,haloperidol,Tranquilizers,,HALOPERIDOL,HALOPERIDOL | INTRAVENOUS | ANTIEMETIC | ANTIEMETIC_ANTIDOPAMINERGIC | QTC_PROLONGING
+m-haloperidol-im,Haloperidol IM,Haloperidol,haloperidol,Tranquilizers,,HALOPERIDOL,HALOPERIDOL | ANTIEMETIC | ANTIEMETIC_ANTIDOPAMINERGIC | QTC_PROLONGING
+m-heparin,Heparin,Heparin,heparin,Anticoagulant,,HEPARIN,HEPARIN | INTRAVENOUS
+m-heparin-pf,Heparin (PF),Heparin,heparin,Anticoagulant,,HEPARIN,HEPARIN | INTRAVENOUS
+m-hydralazine-iv,HydrALAZINE IV,HydrALAZINE,hydralazine ,Hypotensive Agents,,HYDRALAZINE,HYDRALAZINE | INTRAVENOUS | ANTIHYPERTENSIVE
+m-hydralazine-oral,HydrALAZINE Oral,HydrALAZINE,hydralazine ,Hypotensive Agents,,HYDRALAZINE,HYDRALAZINE
+m-hydrocortisone-iv,Hydrocortisone IV/IM,Hydrocortisone,hydrocortisone ,Miscellaneous White Label,,HYDROCORTISONE,HYDROCORTISONE | INTRAVENOUS
+m-hydrocortisone-oral,Hydrocortisone Oral,Hydrocortisone,hydrocortisone ,Miscellaneous White Label,,HYDROCORTISONE,HYDROCORTISONE
+g-hydromorphone,HYDROmorphone,HYDROmorphone,,,,HYDROMORPHONE,NOT_ON_MED_LIST | HYDROMORPHONE | INTRAVENOUS | NARCOTIC
+m-hydromorphone-iv,HYDROmorphone Vial (non-PF),HYDROmorphone,hydromorphone  ,Narcotics,,HYDROMORPHONE,HYDROMORPHONE | INTRAVENOUS | NARCOTIC
+m-hydromorphone-pf-iv,HYDROmorphone IV (PF) ,HYDROmorphone,hydromorphone ,Narcotics,,HYDROMORPHONE,HYDROMORPHONE | INTRAVENOUS | NARCOTIC
+m-hydromorphone-oral,HYDROmorphone Oral,HYDROmorphone,hydromorphone,Narcotics,,HYDROMORPHONE,HYDROMORPHONE | NARCOTIC
+m-hydromorphone-rectal,HYDROmorphone Rectal,HYDROmorphone,hydromorphone,Narcotics,,HYDROMORPHONE,HYDROMORPHONE | NARCOTIC
+g-hydromorphone-bupivacaine,Hydromorphone - Bupivacaine,Hydromorphone-Bupivacaine,,,g-hydromorphone | g-bupivacaine,HYDROMORPHONE_BUPIVACAINE,HYDROMORPHONE | NARCOTIC | BUPIVACAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-hydromorphone-bupivacaine-pf-epidural,HYDROmorphone-Bupivacaine (PF) Epidural,HYDROmorphone-Bupivacaine,hydromorphone bupivacaine  ,HYDROmorphone-Bupivacaine,g-hydromorphone | g-bupivacaine,HYDROMORPHONE_BUPIVACAINE,HYDROMORPHONE | BUPIVACAINE | LOCAL_ANESTHETIC | NARCOTIC
+m-hydromorphone-bupivacaine-pf-intrathecal,HYDROmorphone-Bupivacaine (PF) Intrathecal,HYDROmorphone-Bupivacaine,hydromorphone bupivacaine  ,HYDROmorphone-Bupivacaine,g-hydromorphone | g-bupivacaine,HYDROMORPHONE_BUPIVACAINE,HYDROMORPHONE | BUPIVACAINE | LOCAL_ANESTHETIC | NARCOTIC
+g-hydromorphone-bupivacaine-clonidine,Hydromorphone - Bupivacaine - Clonidine,Hydromorphone-Bupivacaine-Clonidine,,,g-hydromorphone | g-bupivacaine | g-clonidine,HYDROMORPHONE_BUPIVACAINE_CLONIDINE,HYDROMORPHONE | NARCOTIC | BUPIVACAINE | LOCAL_ANESTHETIC | CLONIDINE | NOT_ON_MED_LIST
+m-hydromorphone-clonidine-pf,HYDROmorphone-Clonidine (PF),HYDROmorphone-Clonidine,hydromorphone-clonidine ,HYDROmorphone-Clonidine,g-hydromorphone | g-clonidine,HYDROMORPHONE_CLONIDINE,HYDROMORPHONE | NARCOTIC | CLONIDINE
+m-imipenem-cilastatin,Imipenem-Cilastatin,Imipenem-Cilastatin,imipenem-sillahstatin,Miscellaneous White Label,,IMIPENEM_CILASTATIN,IMIPENEM_CILASTATIN | ANTIBIOTIC | INTRAVENOUS | CARBAPENEM
+m-imipenem-cilastatin-relebactam,Imipenem-Cilastatin-Relebactam,Imipenem-Cilastatin-Relebactam,imipenem sillahstatin relebactam,Miscellaneous White Label,,IMIPENEM_CILASTATIN_RELEBACTAM,IMIPENEM_CILASTATIN_RELEBACTAM | ANTIBIOTIC | INTRAVENOUS | CARBAPENEM
+m-indocyanine-green,Indocyanine Green,Indocyanine Green,indocyanine green,Miscellaneous White Label,,INDOCYANINE_GREEN,INDOCYANINE_GREEN | INTRAVENOUS
+g-insulin,Insulin,Insulin,,,,INSULIN,NOT_ON_MED_LIST | INSULIN | ANTIHYPERGLYCEMIC
+m-insulin-regular,Insulin Regular,Insulin Regular,insulin regular,Miscellaneous White Label,,INSULIN_REGULAR,INSULIN_REGULAR | INTRAVENOUS | ANTIHYPERGLYCEMIC | INSULIN
+m-ipratropium-bromide,Ipratropium Bromide,Ipratropium Bromide,ipratropium bromide,Miscellaneous White Label,,IPRATROPIUM_BROMIDE,IPRATROPIUM_BROMIDE
+m-ketamine-iv,Ketamine IV/Oral,Ketamine,ketamine,Induction Agents,,KETAMINE,KETAMINE | INTRAVENOUS | INDUCTION_AGENT | NOT_ON_MED_LIST
+m-ketamine-im,Ketamine IM,Ketamine,ketamine ,Induction Agents,,KETAMINE,KETAMINE | INDUCTION_AGENT | NOT_ON_MED_LIST
+m-ketamine-iv-im,Ketamine IV/IM,Ketamine,ketamine,Induction Agents,,KETAMINE,KETAMINE | INTRAVENOUS | INDUCTION_AGENT
+m-ketamine-oral,Ketamine Oral,Ketamine,ketamine,Induction Agents,,KETAMINE,KETAMINE | INDUCTION_AGENT
+m-ketorolac,Ketorolac,Ketorolac,ketorolac,Miscellaneous White Label,,KETOROLAC,INTRAVENOUS | KETOROLAC | NSAID
+m-labetalol-iv,Labetalol IV,Labetalol,labetalol ,Hypotensive Agents,,LABETALOL,LABETALOL | INTRAVENOUS | ANTIHYPERTENSIVE
+m-labetalol-oral,Labetalol Oral,Labetalol,labetalol ,Hypotensive Agents,,LABETALOL,LABETALOL
+m-lactated-ringers,Lactated Ringers,Lactated Ringers,lactated ringers,Miscellaneous White Label,,LACTATED_RINGERS,LACTATED_RINGERS | INTRAVENOUS | NOT_ON_MED_LIST | FLUID
+m-levetiracetam-keppra-oral,Levetiracetam (Keppra) Oral,Levetiracetam (Keppra),leveh turassetum,Miscellaneous White Label,,LEVETIRACETAM,LEVETIRACETAM
+m-levetiracetam-keppra-iv,Levetiracetam (Keppra) IV,Levetiracetam (Keppra),leveh turassetum,Miscellaneous White Label,,LEVETIRACETAM,LEVETIRACETAM | INTRAVENOUS
+m-levofloxacin-iv,LevoFLOXacin IV,LevoFLOXacin,levofloxacin ,Miscellaneous White Label,,LEVOFLOXACIN,LEVOFLOXACIN | ANTIBIOTIC | INTRAVENOUS | QTC_PROLONGING | FLUOROQUINOLONE
+m-levofloxacin-oral,LevoFLOXacin Oral,LevoFLOXacin,levofloxacin ,Miscellaneous White Label,,LEVOFLOXACIN,LEVOFLOXACIN | ANTIBIOTIC | QTC_PROLONGING | FLUOROQUINOLONE
+m-lidocaine,Lidocaine,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | INTRAVENOUS | LOCAL_ANESTHETIC
+g-lidocaine,Lidocaine,Lidocaine,,,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-lidocaine-pf-0.5,Lidocaine (PF) 0.5%,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC | INTRAVENOUS
+m-lidocaine-pf-0.8,Lidocaine (PF) 0.8%,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC
+m-lidocaine-pf-1.5,Lidocaine (PF) 1.5%,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC
+m-lidocaine-pf-1,Lidocaine (PF) 1%,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC | INTRAVENOUS
+m-lidocaine-pf-2,Lidocaine (PF) 2%,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC
+m-lidocaine-pf-2-iv,Lidocaine (PF) 2% IV,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-lidocaine-topical,Lidocaine Topical,Lidocaine,lidocaine,Local Anesthetics,,LIDOCAINE,LIDOCAINE | LOCAL_ANESTHETIC
+g-lidocaine-ceftriaxone,Lidocaine-Ceftriaxone,Lidocaine-Ceftriaxone,,,g-lidocaine | m-ceftriaxone,LIDOCAINE_CEFTRIAXONE,LIDOCAINE | INTRAVENOUS | CEFTRIAXONE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+g-lidocaine-epinephrine,Lidocaine-EPINEPHrine,Lidocaine-EPINEPHrine,,,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | LOCAL_ANESTHETIC | EPINEPHRINE | NOT_ON_MED_LIST
+m-lidocaine-epinephrine-0.5-20,"Lidocaine-EPINEPHrine 0.5:200,000",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC
+m-lidocaine-epinephrine-1-10,"Lidocaine-EPINEPHrine 1:100,000",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC
+m-lidocaine-epinephrine-1-20,"Lidocaine-EPINEPHrine 1:200,000",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC
+m-lidocaine-epinephrine-pf-1-20,"Lidocaine-EPINEPHrine 1:200,000 (PF)",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC
+m-lidocaine-epinephrine-pf-1.5-20,"Lidocaine-EPINEPHrine 1.5:200,000 (PF)",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC
+m-lidocaine-epinephrine-2-10,"Lidocaine-EPINEPHrine 2:100,000",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-lidocaine-epinephrine-pf-2-20,"Lidocaine-EPINEPHrine 2:200,000 (PF)",Lidocaine-EPINEPHrine,lidocaine epinephrine,Local Anesthetics,,LIDOCAINE_EPINEPHRINE,LIDOCAINE_EPINEPHRINE | LIDOCAINE | EPINEPHRINE | LOCAL_ANESTHETIC
+m-linezolid-iv,Linezolid IV,Linezolid,lynn ehzole id ,Miscellaneous White Label,,LINEZOLID,LINEZOLID | INTRAVENOUS
+m-linezolid-oral,Linezolid Oral,Linezolid,lynn ehzole id ,Miscellaneous White Label,,LINEZOLID,LINEZOLID
+g-lixisenatide,Lixisentide,Lixisentide,,,,LIXISENTIDE,NOT_ON_MED_LIST | ANTIHYPERGLYCEMIC
+m-lorazepam-iv,LORazepam IV,LORazepam,lorazepam ,Tranquilizers,,LORAZEPAM,LORAZEPAM | INTRAVENOUS
+m-lorazepam-oral,LORazepam Oral,LORazepam,lorazepam ,Tranquilizers,,LORAZEPAM,LORAZEPAM
+m-magnesium-sulfate,Magnesium Sulfate,Magnesium Sulfate,magnesium sulfate,Miscellaneous White Label,,MAGNESIUM_SULFATE,MAGNESIUM_SULFATE | INTRAVENOUS
+m-mannitol,Mannitol,Mannitol,mannitol,Miscellaneous White Label,,MANNITOL,MANNITOL | INTRAVENOUS| NOT_ON_MED_LIST | FLUID
+m-meperidine,Meperidine,Meperidine,meperidine,Narcotics,,MEPERIDINE,MEPERIDINE | NARCOTIC | INTRAVENOUS
+g-mepivacaine,Mepivacaine,Mepivacaine,,,,MEPIVACAINE,MEPIVACAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-mepivacaine-1.5,Mepivacaine 1.5%,Mepivacaine,mepiv a cane,Local Anesthetics,,MEPIVACAINE,MEPIVACAINE | LOCAL_ANESTHETIC
+m-mepivacaine-1,Mepivacaine 1%,Mepivacaine,mepiv a cane,Local Anesthetics,,MEPIVACAINE,MEPIVACAINE | LOCAL_ANESTHETIC
+m-mepivacaine-2,Mepivacaine 2%,Mepivacaine,mepiv a cane,Local Anesthetics,,MEPIVACAINE,MEPIVACAINE | LOCAL_ANESTHETIC
+g-mepivacaine-epinephrine,Mepivacaine-EPINEPHrine,Mepivacaine-EPINEPHrine,,,,MEPIVACAINE_EPINEPHRINE,MEPIVACAINE_EPINEPHRINE | EPINEPHRINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-meropenem,Meropenem,Meropenem,meropenem,Miscellaneous White Label,,MEROPENEM,MEROPENEM | ANTIBIOTIC | CARBAPENEM | INTRAVENOUS
+m-methadone-iv,Methadone IV,Methadone,methadone ,Narcotics,,METHADONE,METHADONE | NARCOTIC | INTRAVENOUS | QTC_PROLONGING
+m-methadone-oral,Methadone Oral,Methadone,methadone ,Narcotics,,METHADONE,METHADONE | NARCOTIC | QTC_PROLONGING
+m-methohexital,Methohexital,Methohexital,methohexital,Induction Agents,,METHOHEXITAL,METHOHEXITAL | INTRAVENOUS
+m-methylene-blue,Methylene Blue,Methylene Blue,methylene blue,Miscellaneous White Label,,METHYLENE_BLUE,METHYLENE_BLUE | INTRAVENOUS
+m-methylergonovine-iv,Methylergonovine IV,Methylergonovine,methylergonovine ,Miscellaneous White Label,,METHYLERGONOVINE,METHYLERGONOVINE | INTRAVENOUS
+m-methylergonovine-oral,Methylergonovine Oral,Methylergonovine,methylergonovine ,Miscellaneous White Label,,METHYLERGONOVINE,METHYLERGONOVINE
+m-methylprednisolone-iv,MethylPREDNIsolone IV,MethylPREDNIsolone,methylprednisolone ,Miscellaneous White Label,,METHYLPREDNISOLONE,METHYLPREDNISOLONE | INTRAVENOUS | ANTIEMETIC | ANTIEMETIC_STEROID
+m-methylprednisolone-oral,MethylPREDNIsolone Oral,MethylPREDNIsolone,methylprednisolone ,Miscellaneous White Label,,METHYLPREDNISOLONE,METHYLPREDNISOLONE
+m-methylprednisone-spinal-cord-loading-dose,Methylprednisone Spinal Cord Loading Dose,Methylprednisone,methylprednisone,Miscellaneous White Label,,METHYLPREDNISOLONE,METHYLPREDNISOLONE | NOT_ON_MED_LIST
+m-metoclopramide-iv,Metoclopramide IV,Metoclopramide,metoclopramide ,Miscellaneous White Label,,METOCLOPRAMIDE,METOCLOPRAMIDE | INTRAVENOUS | ANTIEMETIC | ANTIEMETIC_ANTIDOPAMINERGIC
+m-metoclopramide-oral,Metoclopramide Oral,Metoclopramide,metoclopramide ,Miscellaneous White Label,,METOCLOPRAMIDE,METOCLOPRAMIDE | ANTIEMETIC | ANTIEMETIC_ANTIDOPAMINERGIC
+m-metoprolol-iv,METOprolol IV,METOprolol,metoprolol ,Beta Blocker,,METOPROLOL,METOPROLOL | INTRAVENOUS
+m-metoprolol-oral,METOprolol Oral,METOprolol,metoprolol ,Beta Blocker,,METOPROLOL,METOPROLOL
+m-metronidazole-iv,MetroNIDAZOLE IV,MetroNIDAZOLE,metronidazole ,Miscellaneous White Label,,METRONIDAZOLE,METRONIDAZOLE | INTRAVENOUS | ANTIBIOTIC | PREOP_DEFAULT_DOSE_IV
+m-metronidazole-oral,MetroNIDAZOLE Oral,MetroNIDAZOLE,metronidazole ,Miscellaneous White Label,,METRONIDAZOLE,METRONIDAZOLE  | ANTIBIOTIC | PREOP_DEFAULT_DOSE_NON_IV
+m-micafungin,Micafungin,Micafungin,micafungin,Miscellaneous White Label,,MICAFUNGIN,MICAFUNGIN | INTRAVENOUS
+m-midazolam,Midazolam,Midazolam,medazolamb,Tranquilizers,,MIDAZOLAM,MIDAZOLAM | INTRAVENOUS
+m-midazolam-syrup,Midazolam Syrup,Midazolam,medazolamb,Tranquilizers,,MIDAZOLAM,MIDAZOLAM
+m-milrinone,Milrinone,Milrinone,milrinone,Vasopressors,,MILRINONE,MILRINONE | INTRAVENOUS
+m-morphine-iv,MorPHINE IV,MorPHINE,morphine ,Narcotics,,MORPHINE,MORPHINE | NARCOTIC | INTRAVENOUS
+m-morphine-pf-iv,MorPHINE IV (PF),MorPHINE,morphine ,Narcotics,,MORPHINE,MORPHINE | NARCOTIC | INTRAVENOUS
+m-morphine-oral,MorPHINE Oral,MorPHINE,morphine ,Narcotics,,MORPHINE,MORPHINE | NARCOTIC
+m-nafcillin,Nafcillin,Nafcillin,nafcillin,Miscellaneous White Label,,NAFCILLIN,NAFCILLIN | INTRAVENOUS | PENICILLIN | ANTIBIOTIC
+m-nalbuphine,Nalbuphine,Nalbuphine,nalbuefeene,Narcotics,,NALBUPHINE,NALBUPHINE | INTRAVENOUS
+m-naloxone-iv,Naloxone,Naloxone,naloxone ,Narcotic Antagonists,,NALOXONE,NALOXONE | INTRAVENOUS
+m-naloxone-nasal-spray,Naloxone Nasal Spray,Naloxone,naloxone ,Narcotic Antagonists,,NALOXONE,NALOXONE
+m-neostigmine,Neostigmine,Neostigmine,neostigmine,Relaxant Antagonists,,NEOSTIGMINE,NEOSTIGMINE | INTRAVENOUS | NMB_REVERSAL
+m-nicardipine-iv,NiCARdipine IV,NiCARdipine,nihcardipine ,Hypotensive Agents,,NICARDIPINE,NICARDIPINE | INTRAVENOUS | ANTIHYPERTENSIVE
+m-nicardipine-oral,NiCARdipine Oral,NiCARdipine,nihcardipine ,Hypotensive Agents,,NICARDIPINE,NICARDIPINE | ANTIHYPERTENSIVE
+m-nimodipine,NiMODipine,NiMODipine,nimodipine,Hypotensive Agents,,NIMODIPINE,NIMODIPINE
+m-nitroglycerin-iv,Nitroglycerin IV,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN | INTRAVENOUS | ANTIHYPERTENSIVE
+m-nitroglycerin-ointment,Nitroglycerin Ointment,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroglycerin-oral,Nitroglycerin Oral,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroglycerin-spray,Nitroglycerin Spray,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroglycerin-sublingual,Nitroglycerin Sublingual,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroglycerin-transdermal-0.1,Nitroglycerin Transdermal 0.1 mg/hr,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroglycerin-transdermal-0.2,Nitroglycerin Transdermal 0.2 mg/hr,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroglycerin-transdermal-0.4,Nitroglycerin Transdermal 0.4 mg/hr,Nitroglycerin,nitroglycerin ,Hypotensive Agents,,NITROGLYCERIN,NITROGLYCERIN
+m-nitroprusside,Nitroprusside,Nitroprusside,nitroprusside,Hypotensive Agents,,NITROPRUSSIDE,NITROPRUSSIDE | INTRAVENOUS | ANTIHYPERTENSIVE
+m-norepinephrine,NOREPINephrine,NOREPINephrine,norepinephrine,Vasopressors,,NOREPINEPHRINE,NOREPINEPHRINE | INTRAVENOUS | VASOPRESSOR
+m-octreotide,Octreotide,Octreotide,octreotide,Miscellaneous White Label,,OCTREOTIDE,OCTREOTIDE | INTRAVENOUS
+m-omeprazole,Omeprazole,Omeprazole,omeprazole,Miscellaneous White Label,,OMEPRAZOLE,OMEPRAZOLE | NOT_ON_MED_LIST
+m-ondansetron-iv,Ondansetron IV,Ondansetron,ondansetron ,Miscellaneous White Label,,ONDANSETRON,ONDANSETRON | INTRAVENOUS | ANTIEMETIC | ANTIEMETIC_5HT3_ANTAGONIST | QTC_PROLONGING
+m-ondansetron-oral,Ondansetron Oral,Ondansetron,ondansetron ,Miscellaneous White Label,,ONDANSETRON,ONDANSETRON | ANTIEMETIC | ANTIEMETIC_5HT3_ANTAGONIST | QTC_PROLONGING
+m-oxacillin,Oxacillin,Oxacillin,oxacillin,Miscellaneous White Label,,OXACILLIN,OXACILLIN | ANTIBIOTIC | PENICILLIN | INTRAVENOUS
+g-oxycodone,Oxycodone,Oxycodone,,,,OXYCODONE,OXYCODONE | NARCOTIC | NOT_ON_MED_LIST
+m-oxycodone-oral,OxyCODONE Oral,OxyCODONE,oxycodone ,Narcotics,,OXYCODONE,OXYCODONE | NARCOTIC
+g-oxycodone-acetaminophen,Oxycodone Acetaminophen,OxyCODONE-Acetaminophen,,,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE_ACETAMINOPHEN | OXYCODONE | NARCOTIC | ACETAMINOPHEN | NOT_ON_MED_LIST
+m-oxycodone-acetaminophen-10-300,OxyCODONE-Acetaminophen 10 - 300 mg Tablet,OxyCODONE-Acetaminophen,oxycodone-acetaminophen,Narcotics,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE | ACETAMINOPHEN | NARCOTIC
+m-oxycodone-acetaminophen-10-325,OxyCODONE-Acetaminophen 10 - 325 mg Tablet,OxyCODONE-Acetaminophen,oxycodone-acetaminophen,Narcotics,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE | ACETAMINOPHEN | NARCOTIC
+m-oxycodone-acetaminophen-5-300,OxyCODONE-Acetaminophen 5 - 300 mg Tablet,OxyCODONE-Acetaminophen,oxycodone-acetaminophen,Narcotics,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE | ACETAMINOPHEN | NARCOTIC
+m-oxycodone-acetaminophen-5-325,OxyCODONE-Acetaminophen 5 - 325 mg Tablet,OxyCODONE-Acetaminophen,oxycodone-acetaminophen,Narcotics,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE | ACETAMINOPHEN | NARCOTIC
+m-oxycodone-acetaminophen-7.5-325,OxyCODONE-Acetaminophen 7.5 - 325 mg Tablet,OxyCODONE-Acetaminophen,oxycodone-acetaminophen,Narcotics,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE | ACETAMINOPHEN | NARCOTIC
+m-oxycodone-acetaminophen-2.5-325,OxyCODONE-Acetaminophen 2.5 - 325 mg Tablet,OxyCODONE-Acetaminophen,oxycodone-acetaminophen,Narcotics,g-oxycodone | g-acetaminophen,OXYCODONE_ACETAMINOPHEN,OXYCODONE | ACETAMINOPHEN | NARCOTIC
+m-oxytocin,Oxytocin,Oxytocin,oxytocin,Miscellaneous White Label,,OXYTOCIN,OXYTOCIN | INTRAVENOUS
+m-pantoprazole-iv,Pantoprazole IV,Pantoprazole,pantoprazole ,Miscellaneous White Label,,PANTOPRAZOLE,PANTOPRAZOLE | INTRAVENOUS
+m-pantoprazole-oral,Pantoprazole Oral,Pantoprazole,pantoprazole ,Miscellaneous White Label,,PANTOPRAZOLE,PANTOPRAZOLE
+m-penicillin-g-potassium,Penicillin G Potassium,Penicillin G,penicillin g,Miscellaneous White Label,,PENICILLIN,PENICILLIN | ANTIBIOTIC | INTRAVENOUS
+m-penicillin-g-sodium,Penicillin G Sodium,Penicillin G,penicillin g,Miscellaneous White Label,,PENICILLIN,PENICILLIN | ANTIBIOTIC | INTRAVENOUS
+m-phenobarbital-iv,PHENobarbital IV,PHENobarbital,phenobarbital ,Induction Agents,,PHENOBARBITAL,PHENOBARBITAL | INTRAVENOUS
+m-phenobarbital-oral,PHENobarbital Oral,PHENobarbital,phenobarbital ,Induction Agents,,PHENOBARBITAL,PHENOBARBITAL
+m-phentolamine,Phentolamine,Phentolamine,phentolamine,Hypotensive Agents,,PHENTOLAMINE,PHENTOLAMINE | INTRAVENOUS
+m-phenylephrine,Phenylephrine,Phenylephrine,phenylephrine,Vasopressors,,PHENYLEPHRINE,PHENYLEPHRINE | INTRAVENOUS | VASOPRESSOR
+m-physostigmine,Physostigmine,Physostigmine,physostigmine,Relaxant Antagonists,,PHYSOSTIGMINE,PHYSOSTIGMINE | INTRAVENOUS
+m-phytonadione-vit-k-iv,Phytonadione (Vit K) IV,Phytonadione (Vit K),phytonadione,Miscellaneous White Label,,PHYTONADIONE,PHYTONADIONE | INTRAVENOUS
+m-phytonadione-vit-k-oral,Phytonadione (Vit K) Oral,Phytonadione (Vit K),phytonadione,Miscellaneous White Label,,PHYTONADIONE,PHYTONADIONE
+g-piperacillin-tazobactam,Piperacillin-Tazobactam,Piperacillin-Tazobactam,piperacillin-tazobactam,Miscellaneous White Label,,PIPERACILLIN_TAZOBACTAM,PIPERACILLIN_TAZOBACTAM | PENICILLIN | ANTIBIOTIC | INTRAVENOUS | NOT_ON_MED_LIST
+m-piperacillin-tazobactam,Piperacillin-Tazobactam,Piperacillin-Tazobactam,piperacillin-tazobactam,Miscellaneous White Label,,PIPERACILLIN_TAZOBACTAM,PIPERACILLIN_TAZOBACTAM | PENICILLIN | ANTIBIOTIC | INTRAVENOUS | NOT_ON_MED_LIST
+m-piperacillin-tazobactam-2.25,Piperacillin-Tazobactam 2.25 g Vial,Piperacillin-Tazobactam,piperacillin-tazobactam,Miscellaneous White Label,,PIPERACILLIN_TAZOBACTAM,PIPERACILLIN_TAZOBACTAM | PENICILLIN | ANTIBIOTIC | INTRAVENOUS
+m-piperacillin-tazobactam-3.375,Piperacillin-Tazobactam 3.375 g Vial,Piperacillin-Tazobactam,piperacillin-tazobactam,Miscellaneous White Label,,PIPERACILLIN_TAZOBACTAM,PIPERACILLIN_TAZOBACTAM | PENICILLIN | ANTIBIOTIC | INTRAVENOUS
+m-piperacillin-tazobactam-4.5,Piperacillin-Tazobactam 4.5 g Vial,Piperacillin-Tazobactam,piperacillin-tazobactam,Miscellaneous White Label,,PIPERACILLIN_TAZOBACTAM,PIPERACILLIN_TAZOBACTAM | PENICILLIN | ANTIBIOTIC | INTRAVENOUS
+m-pregabalin,Pregabalin,Pregabalin,pree gabalin,Miscellaneous White Label,,PREGABALIN,PREGABALIN
+m-procainamide,Procainamide,Procainamide,procainamide,Miscellaneous White Label,,PROCAINAMIDE,PROCAINAMIDE | INTRAVENOUS | NOT_ON_MED_LIST | QTC_PROLONGING
+m-procainamide-iv,Procainamide IV,Procainamide,procainamide,Miscellaneous White Label,,PROCAINAMIDE,PROCAINAMIDE | INTRAVENOUS | QTC_PROLONGING
+m-procainamide-im,Procainamide IM,Procainamide,procainamide,Miscellaneous White Label,,PROCAINAMIDE,PROCAINAMIDE | QTC_PROLONGING
+m-prochlorperazine-iv,Prochlorperazine IV,Prochlorperazine,prochlorperazine ,Miscellaneous White Label,,PROCHLORPERAZINE,PROCHLORPERAZINE | INTRAVENOUS
+m-prochlorperazine-oral,Prochlorperazine Oral,Prochlorperazine,prochlorperazine ,Miscellaneous White Label,,PROCHLORPERAZINE,PROCHLORPERAZINE
+m-promethazine-oral,PROMETHazine Oral,PROMETHazine,promethazine ,Miscellaneous White Label,,PROMETHAZINE,PROMETHAZINE
+m-propofol,Propofol,Propofol,propofol,Induction Agents,,PROPOFOL,PROPOFOL | INTRAVENOUS | INDUCTION_AGENT
+m-propranolol,Propranolol,Propranolol,propranolol,Hypotensive Agents,,PROPRANOLOL,PROPRANOLOL | INTRAVENOUS
+m-protamine,Protamine,Protamine,protamine,Protamine,,PROTAMINE,PROTAMINE | INTRAVENOUS
+m-pyridostigmine-iv,Pyridostigmine IV,Pyridostigmine,pye rid ohstigmine ,Relaxant Antagonists,,PYRIDOSTIGMINE,PYRIDOSTIGMINE | INTRAVENOUS
+m-pyridostigmine-oral,Pyridostigmine Oral,Pyridostigmine,pye rid ohstigmine ,Relaxant Antagonists,,PYRIDOSTIGMINE,PYRIDOSTIGMINE
+m-remifentanil,Remifentanil,Remifentanil,remi fentanyl,Narcotics,,REMIFENTANIL,REMIFENTANIL | NARCOTIC | INTRAVENOUS
+m-rifampin-iv,Rifampin IV,Rifampin,rifampin ,Miscellaneous White Label,,RIFAMPIN,RIFAMPIN | INTRAVENOUS
+m-rifampin-oral,Rifampin Oral,Rifampin,rifampin ,Miscellaneous White Label,,RIFAMPIN,RIFAMPIN
+m-rocuronium,Rocuronium,Rocuronium,rocuronium,Muscle Relaxants,,ROCURONIUM,ROCURONIUM | NONDEP_NMB | INTRAVENOUS
+g-ropivacaine,Ropivacaine,Ropivacaine,,,,ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+m-ropivacaine-0.2,Ropivacaine 0.2%,Ropivacaine,ropivacaine,Local Anesthetics,,ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC
+m-ropivacaine-0.5,Ropivacaine 0.5%,Ropivacaine,ropivacaine,Local Anesthetics,,ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC
+m-ropivacaine-1,Ropivacaine 1%,Ropivacaine,ropivacaine,Local Anesthetics,,ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC
+g-ropivacaine-epinephrine,Ropivacaine-EPINEPHrine,Ropivacaine-EPINEPHrine,,,,ROPIVACAINE_EPINEPHRINE,ROPIVACAINE_EPINEPHRINE | ROPIVACAINE | EPINEPHRINE | LOCAL_ANESTHETIC| NOT_ON_MED_LIST
+m-scopolamine,Scopolamine,Scopolamine,scopolamine,Anticholinergic Agents,,SCOPOLAMINE,SCOPOLAMINE | ANTIEMETIC | ANTIEMETIC_ANTICHOLINERGIC
+m-secretin,Secretin,Secretin,secretin,Miscellaneous White Label,,SECRETIN,SECRETIN | INTRAVENOUS
+g-semaglutide,Semaglutide,Semaglutide,,,,SEMAGLUTIDE,NOT_ON_MED_LIST | ANTIHYPERGLYCEMIC
+m-sodium-bicarbonate,Sodium Bicarbonate,Sodium Bicarbonate,sodium bicarbonate,Miscellaneous White Label,,SODIUM_BICARBONATE,SODIUM_BICARBONATE | INTRAVENOUS
+m-sodium-chloride-saline,Sodium Chloride (Saline),Sodium Chloride (Saline),Saline,Miscellaneous White Label,,SODIUM_CHLORIDE,SODIUM_CHLORIDE | INTRAVENOUS | NOT_ON_MED_LIST | FLUID
+m-sodium-chloride-saline-nebulization,Sodium Chloride (Saline) Nebulization,Sodium Chloride (Saline),saline,Miscellaneous White Label,,SODIUM_CHLORIDE,SODIUM_CHLORIDE
+m-sodium-citrate,Sodium Citrate,Sodium Citrate,sodium citrate,Miscellaneous White Label,,SODIUM_CITRATE,SODIUM_CITRATE
+m-succinylcholine,Succinylcholine,Succinylcholine,succinylcholine,Succinylcholine,,SUCCINYLCHOLINE,SUCCINYLCHOLINE | INTRAVENOUS
+m-sufentanil,SUFentanil,SUFentanil,sufentanil,Narcotics,,SUFENTANIL,SUFENTANIL | NARCOTIC | INTRAVENOUS
+m-sugammadex,Sugammadex,Sugammadex,sugammadex,Relaxant Antagonists,,SUGAMMADEX,SUGAMMADEX | INTRAVENOUS | NMB_REVERSAL
+m-sulfamethoxazole-trimethoprim-iv,Sulfamethoxazole-Trimethoprim IV,Sulfamethoxazole-Trimethoprim,sulfamethoxazole-trimethoprim ,Miscellaneous White Label,,SULFAMETHOXAZOLE_TRIMETHOPRIM,SULFAMETHOXAZOLE_TRIMETHOPRIM | INTRAVENOUS | PREOP_DEFAULT_DOSE_IV
+m-sulfamethoxazole-trimethoprim-oral,Sulfamethoxazole-Trimethoprim Oral,Sulfamethoxazole-Trimethoprim,sulfamethoxazole-trimethoprim ,Miscellaneous White Label,,SULFAMETHOXAZOLE_TRIMETHOPRIM,SULFAMETHOXAZOLE_TRIMETHOPRIM | PREOP_DEFAULT_DOSE_NON_IV | NOT_ON_MED_LIST
+m-sumatriptan-oral,Sumatriptan Oral,Sumatriptan,sumatriptan ,Miscellaneous White Label,,SUMATRIPTAN,SUMATRIPTAN
+m-sumatriptan-sc,Sumatriptan SC,Sumatriptan,sumatriptan ,Miscellaneous White Label,,SUMATRIPTAN,SUMATRIPTAN
+m-terbutaline-oral,Terbutaline Oral,Terbutaline,terbutaline ,Miscellaneous White Label,,TERBUTALINE,TERBUTALINE
+m-terbutaline-sc,Terbutaline SC,Terbutaline,terbutaline ,Miscellaneous White Label,,TERBUTALINE,TERBUTALINE
+m-tetracaine,Tetracaine,Tetracaine,tetracaine,Local Anesthetics,,TETRACAINE,TETRACAINE
+m-tetracaine-oxymetazoline,Tetracaine-Oxymetazoline,Tetracaine-Oxymetazoline,tetracaine-oxymetazoline,Local Anesthetics,,TETRACAINE,TETRACAINE
+m-thiamine-iv,Thiamine IV,Thiamine,thiameen,Miscellaneous White Label,,THIAMINE,THIAMINE | INTRAVENOUS
+m-thiamine-oral,Thiamine Oral,Thiamine,thiameen,Miscellaneous White Label,,THIAMINE,THIAMINE
+m-tigecycline,Tigecycline,Tigecycline,tigecycline,Miscellaneous White Label,,TIGECYCLINE,TIGECYCLINE | INTRAVENOUS | PREOP_DEFAULT_DOSE_IV
+m-tobramycin,Tobramycin,Tobramycin,tobramycin,Miscellaneous White Label,,TOBRAMYCIN,TOBRAMYCIN | ANTIBIOTIC | INTRAVENOUS | AMINOGLYCOSIDE
+m-tranexamic-acid,Tranexamic Acid,Tranexamic Acid,tranexamic acid,Miscellaneous White Label,,TRANEXAMIC_ACID,TRANEXAMIC_ACID | INTRAVENOUS
+m-valproate-iv,Valproate IV,Valproate,valproate ,Miscellaneous White Label,,VALPROATE,VALPROATE | INTRAVENOUS
+m-valproate-oral,Valproate Oral,Valproate,valproate ,Miscellaneous White Label,,VALPROATE,VALPROATE
+m-vancomycin-iv,Vancomycin IV,Vancomycin,vancomycin ,Miscellaneous White Label,,VANCOMYCIN,VANCOMYCIN | ANTIBIOTIC  | INTRAVENOUS
+m-vancomycin-oral,Vancomycin Oral,Vancomycin,vancomycin ,Miscellaneous White Label,,VANCOMYCIN,VANCOMYCIN | ANTIBIOTIC
+m-vasopressin,Vasopressin,Vasopressin,vasopressin,Vasopressors,,VASOPRESSIN,VASOPRESSIN | INTRAVENOUS
+m-vecuronium,Vecuronium,Vecuronium,vecuronium,Muscle Relaxants,,VECURONIUM,VECURONIUM | NONDEP_NMB | INTRAVENOUS
+m-verapamil-iv,Verapamil IV,Verapamil,verapamil ,Hypotensive Agents,,VERAPAMIL,VERAPAMIL | INTRAVENOUS
+m-verapamil-oral,Verapamil Oral,Verapamil,verapamil ,Hypotensive Agents,,VERAPAMIL,VERAPAMIL
+g-verapamil-lidocaine-nitroglycerin,Verapamil-Lidocaine-Nitroglycerin,Verapamil-Lidocaine-Nitroglycerin,,,m-verapamil-iv | g-lidocaine | m-nitroglycerin-iv,VERAPAMIL_LIDOCAINE_NITROGLYCERIN,LIDOCAINE | VERAPAMIL | NITROGLYCERIN | LOCAL_ANESTHETIC | NOT_ON_MED_LIST
+g-lidocaine-bupivacaine,Lidocaine-Bupivacaine,Lidocaine-Bupivacaine,,,g-lidocaine | g-bupivacaine,LIDOCAINE_BUPIVACAINE,LIDOCAINE | BUPIVACAINE | LOCAL_ANESTHETIC
+g-lidocaine-bupivacaine-epinephrine,Lidocaine-Bupivacaine-EPINEPHrine,Lidocaine-Bupivacaine-EPINEPHrine,,,g-lidocaine | g-bupivacaine,LIDOCAINE_BUPIVACAINE,LIDOCAINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE
+g-mepivacaine-bupivacaine,Mepivacaine-Bupivacaine,Mepivacaine-Bupivacaine,,,g-mepivacaine | g-bupivacaine,MEPIVACAINE_BUPIVACAINE,MEPIVACAINE | BUPIVACAINE | LOCAL_ANESTHETIC
+g-mepivacaine-bupivacaine-epinephrine,Mepivacaine-Bupivacaine-EPINEPHrine,Mepivacaine-Bupivacaine-EPINEPHrine,,,g-mepivacaine | g-bupivacaine,MEPIVACAINE_BUPIVACAINE_EPINEPHRINE,MEPIVACAINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE
+g-warfarin,Warfarin,Warfarin,,,,WARFARIN,WARFARIN | NOT_ON_MED_LIST
+g-donepezil,Donepezil,Donepezil,,,,DONEPEZIL,DONEPEZIL | NOT_ON_MED_LIST
+g-donepezil-memantine,Donepezil-Memantine,Donepezil-Memantine,,,g-donepezil | g-memantine,DONEPEZIL_MEMANTINE,DONEPEZIL | MEMANTINE | NOT_ON_MED_LIST
+g-memantine-donepezil,Memantine-Donepezil,Memantine-Donepezil,,,g-donepezil | g-memantine,DONEPEZIL_MEMANTINE,DONEPEZIL | MEMANTINE | NOT_ON_MED_LIST
+g-galantamine,Galantamine,Galantamine,,,,GALANTAMINE,GALANTAMINE | NOT_ON_MED_LIST
+g-rivastigmine,Rivastigmine,Rivastigmine,,,,RIVASTIGMINE,RIVASTIGMINE | NOT_ON_MED_LIST
+g-pyridostigmine,Pyridostigmine,Pyridostigmine,,,,PYRIDOSTIGMINE,PYRIDOSTIGMINE | NOT_ON_MED_LIST
+g-neostigmine,Neostigmine,Neostigmine,,,,NEOSTIGMINE,NEOSTIGMINE | NMB_REVERSAL | NOT_ON_MED_LIST
+g-memantine,Memantine,Memantine,,,,MEMANTINE,MEMANTINE | NOT_ON_MED_LIST
+m-potassium-chloride,Potassium Chloride,Potassium Chloride,,,,POTASSIUM_CHLORIDE,POTASSIUM_CHLORIDE | NOT_ON_MED_LIST | INFUSION_ONLY
+m-anti-thymocyte-globulin-rabbit,Anti-Thymocyte Globulin (Rabbit),Anti-Thymocyte Globulin (Rabbit),,,,ANTITHYMOCYTE_GLOBULIN_RABBIT,ANTITHYMOCYTE_GLOBULIN_RABBIT | NOT_ON_MED_LIST | INFUSION_ONLY
+m-clevidipine,Clevidipine,Clevidipine,,,,CLEVIDIPINE,CLEVIDIPINE | NOT_ON_MED_LIST | INFUSION_ONLY
+m-acetylsalicylic-acid-81-tablet,Acetylsalicylic Acid (Aspirin) 81 mg Tablet,Acetylsalicylic Acid (Aspirin),acetylsalicylic acid,Miscellaneous White Label,,ACETYLSALICYLIC_ACID,ACETYLSALICYLIC_ACID | NSAID
+g-epinephrine-clonidine-ropivacaine-morphine,Clonidine-EPINEPHrine-Ropivacaine-MorPHINE,Clonidine-EPINEPHrine-Ropivacaine-MorPHINE,,,g-clonidine | g-ropivacaine | g-morphine,EPINEPHRINE_CLONIDINE_ROPIVACAINE_MORPHINE,ROPIVACAINE | LOCAL_ANESTHETIC  | CLONIDINE | EPINEPHRINE | NOT_ON_MED_LIST | ROPIVACAINE_EPINEPHRINE | NARCOTIC | MORPHINE
+g-epinephrine-ketorolac-ropivacaine,EPINEPHrine-Ketorolac-Ropivacaine,EPINEPHrine-Ketorolac-Ropivacaine,,,m-ketorolac | g-ropivacaine,EPINEPHRINE_KETOROLAC_ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC | KETOROLAC | EPINEPHRINE | NOT_ON_MED_LIST | ROPIVACAINE_EPINEPHRINE | NSAID
+g-clonidine-epinephrine-ketorolac-ropivacaine-morphine,Clonidine-EPINEPHrine-Ketorolac-Ropivacaine-MorPHINE,Clonidine-EPINEPHrine-Ketorolac-Ropivacaine-MorPHINE,,,g-clonidine | m-ketorolac | g-ropivacaine | g-morphine,CLONIDINE_EPINEPHRINE_KETOROLAC_ROPIVACAINE_MORPHINE,ROPIVACAINE | LOCAL_ANESTHETIC | KETOROLAC | CLONIDINE | EPINEPHRINE | NOT_ON_MED_LIST | ROPIVACAINE_EPINEPHRINE | NARCOTIC | NSAID | MORPHINE
+m-ropivacaine-epinephrine-pf-0.5-1-20,"ROPivacaine-EPINEPHrine 0.5 %-1:200,000 (PF)",ROPivacaine-EPINEPHrine,ropivacaine epinephrine,Local Anesthetics,,ROPIVACAINE_EPINEPHRINE,ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | ROPIVACAINE_EPINEPHRINE
+m-ropivacaine-epinephrine-0.25-1-40,"ROPivacaine-EPINEPHrine 0.25 %-1:400,000",ROPivacaine-EPINEPHrine,ropivacaine epinephrine,Local Anesthetics,,ROPIVACAINE_EPINEPHRINE,ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | ROPIVACAINE_EPINEPHRINE
+m-ropivacaine-epinephrine-clonidine-ketorolac,ROPivacaine-EPINEPHrine-CloNIDine-Ketorolac (RECK),ROPivacaine-EPINEPHrine-CloNIDine-Ketorolac,ropivacaine epinephrine clonidine ketorolac,Local Anesthetics,,ROPIVACAINE_EPINEPHRINE_CLONIDINE_KETOROLAC,ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | ROPIVACAINE_EPINEPHRINE | KETOROLAC | CLONIDINE | NSAID | NARCOTIC | NOT_ON_MED_LIST
+m-ropivacaine-0.2-epinephrine-clonidine-ketorolac,ROPivacaine 0.2%-EPINEPHrine-CloNIDine-Ketorolac (RECK),ROPivacaine-EPINEPHrine-CloNIDine-Ketorolac,ropivacaine epinephrine clonidine ketorolac,Local Anesthetics,,ROPIVACAINE_EPINEPHRINE_CLONIDINE_KETOROLAC,ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | ROPIVACAINE_EPINEPHRINE | KETOROLAC | CLONIDINE | NSAID | NARCOTIC
+m-ropivacaine-0.25-epinephrine-clonidine-ketorolac,ROPivacaine 0.25%-EPINEPHrine-CloNIDine-Ketorolac (RECK),ROPivacaine-EPINEPHrine-CloNIDine-Ketorolac,ropivacaine epinephrine clonidine ketorolac,Local Anesthetics,,ROPIVACAINE_EPINEPHRINE_CLONIDINE_KETOROLAC,ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | ROPIVACAINE_EPINEPHRINE | KETOROLAC | CLONIDINE | NSAID | NARCOTIC
+m-epinephrine-clonidine-ropivacaine,EPINEPHrine 1mg/mL-CloNIDine 100 mcg/mL-ROPivacaine 0.5%,EPINEPHrine-CloNIDine-ROPivacaine,epinephrine clonidine ropivacaine,Local Anesthetics,,EPINEPHRINE_CLONIDINE_ROPIVACAINE,ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | ROPIVACAINE_EPINEPHRINE | CLONIDINE | NARCOTIC
+g-lidocaine-1-epinephrine-ropivacaine-0.5,Lidocaine 1%-EPINEPHrine-ROPivacaine 0.5%,Lidocaine 1%-EPINEPHrine-ROPivacaine 0.5%,lidocaine epinephrine ropivacaine,Local Anesthetics,g-lidocaine | g-ropivacaine,LIDOCAINE_EPINEPHRINE_ROPIVACAINE,LIDOCAINE | ROPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | NOT_ON_MED_LIST
+g-lidocaine-1-bupivacaine-0.5-epinephrine,Lidocaine 1%-Bupivacaine 0.5%-EPINEPHrine,Lidocaine 1%-Bupivacaine 0.5%-EPINEPHrine,lidocaine bupivacaine epinephrine,Local Anesthetics,g-lidocaine | g-bupivacaine,LIDOCAINE_BUPIVACAINE_0_DOT_5_EPINEPHRINE,LIDOCAINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | NOT_ON_MED_LIST
+g-lidocaine-1-bupivacaine-0.25-epinephrine,Lidocaine 1%-Bupivacaine 0.25%-EPINEPHrine,Lidocaine 1%-Bupivacaine 0.25%-EPINEPHrine,lidocaine bupivacaine epinephrine,Local Anesthetics,g-lidocaine | g-bupivacaine,LIDOCAINE_1_BUPIVACAINE_0_DOT_25_EPINEPHRINE,LIDOCAINE | BUPIVACAINE | LOCAL_ANESTHETIC | EPINEPHRINE | NOT_ON_MED_LIST
+g-exparel,Exparel (Bupivacaine liposome injectable suspension),Exparel,exparel,Local Anesthetics,,EXPAREL ,EXPAREL | LOCAL_ANESTHETIC | NOT_ON_MED_LIST

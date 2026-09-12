@@ -809,3 +809,33 @@ Re-verifying freshness for OR-2804 against db2154e3b7b902e2d044e4e6b4327e839fa6d
 No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-2804
 Transitioned OR-2804 to Done
+2026-09-11 10:07:23  [OR-2845] OR-2845 status is 'Ready for Testing'
+2026-09-11 10:07:23  [OR-2783] OR-2783 status is 'Ready for Testing'
+2026-09-11 10:07:24  [OR-2783] Building image from origin/main
+2026-09-11 10:07:24  [OR-2845] Building image from origin/main
+2026-09-11 10:08:30  [OR-2783] image=guidedclinical/orci:loop-746a21c18 sha=746a21c18fb362a8a5173c6574c49af95560c988
+2026-09-11 10:08:32  [OR-2783] OR-2783 is an umbrella with no PR of its own — skip-listed; its children are offered separately
+2026-09-11 10:08:32  [OR-2878] OR-2878 status is 'Ready for Testing'
+2026-09-11 10:08:33  [OR-2878] Building image from origin/main
+2026-09-11 10:08:34  [OR-2878] image=guidedclinical/orci:loop-746a21c18 sha=746a21c18fb362a8a5173c6574c49af95560c988
+2026-09-11 10:08:35  [OR-2878] OR-2878 has no merged PR — disposing without booting an environment
+2026-09-11 10:08:45  [OR-2845] image=guidedclinical/orci:loop-746a21c18 sha=746a21c18fb362a8a5173c6574c49af95560c988
+2026-09-11 10:08:47  [OR-2845] OR-2845 moved to Testing
+2026-09-11 10:08:47  [OR-2845] OR-2845 assigned to the configured account
+2026-09-11 10:08:49  [OR-2845] baseline: status='Testing' comments=0
+2026-09-11 10:08:49  [OR-2845] slug=cross-reaction-groups-for
+2026-09-11 10:08:50  [OR-2845] worktree=/Users/ryanducharme/dev/worktrees/OR-2845-cross-reaction-groups-for
+2026-09-11 10:09:58  [OR-2845] app under test at http://localhost:62095
+2026-09-11 10:09:58  [OR-2845] wrote ticket context (16 lines)
+2026-09-11 10:09:58  [OR-2845] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2845/session.log)
+2026-09-11 10:14:44  [OR-2845]   … OR-2845 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-11 10:19:44  [OR-2845]   … OR-2845 still running (600s elapsed, 962 app requests, app up)
+2026-09-11 10:20:14  [OR-2845] session finished after ~615s
+2026-09-11 10:20:14  [OR-2845] captured 13143 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2845 against 746a21c18fb362a8a5173c6574c49af95560c988 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2845
+Transitioned OR-2845 to Done
+2026-09-11 10:20:19  [OR-2845] close-parent: OR-2845 is already Done

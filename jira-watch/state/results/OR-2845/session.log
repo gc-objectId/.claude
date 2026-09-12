@@ -1,0 +1,9 @@
+Validation of OR-2845 is complete and recorded in `session.json`. The worktree is clean.
+
+**Verdict: deploy-ready.**
+
+- **Positive.** Injected an RxNorm 9524 (sulfasalazine, a code only the new group can resolve) and a SNOMED 387406002 allergy via the admin endpoint, then evaluated a medication selection for Sulfamethoxazole-Trimethoprim IV. The a-general-allergy rule fired with "Patient has allergy to SULFONAMIDE" and the DB held category-level medication-allergy rows for both patients.
+- **Negative.** An NSAID class allergy, no allergy, and an unmapped RxNorm code all produced no allergy alert for the same medication, while the NSAID control still fired for ketorolac.
+- **Red check.** Swapped the parent commit's demo CSVs into the container and restarted. The boot log read "Imported 1 allergy cross reaction groups", the DB held only NSAID, and the same sulfa allergies produced no alert. Restored the shipped files, confirmed checksums, restarted, and the alert returned. The signature line occurs exactly once in the log.
+
+Caveats recorded: real EMR ingestion is still gated by the RXNORM_ALLERGY_MAPPING flag, which is seeded off (pre-existing OR-2791 behaviour), and selection was exercised on demo-demo only, with mayo and mgb seeds confirmed in the DB. Proposed automation covers the importer test gap and three supplemental e2e scenarios.
