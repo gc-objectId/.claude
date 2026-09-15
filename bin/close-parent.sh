@@ -1,7 +1,11 @@
 #!/bin/sh
-# Closes a parent once every one of its subtasks is Done.
+# Keeps a parent's board state honest as its subtasks close.
 #
 #   close-parent.sh <SUBTASK-OR-PARENT> [--commit]
+#
+# Closes the parent once every subtask is Done; comments on it in the two cases where it cannot
+# be closed but a human would want to know: siblings still open, or all subtasks Done on a parent
+# that was never staged for testing.
 #
 # Exit: 0 closed or nothing to do, 1 usage/error, 8 declined with a reason on stderr.
 set -eu
@@ -17,19 +21,35 @@ ticket="${1:?usage: close-parent.sh <TICKET> [--commit]}"
 commit="${2:-}"
 
 parent=$(jira_issue_field "$ticket" parent 'parent.key' 2>/dev/null || true)
-[ -n "$parent" ] || parent="$ticket"
+child=''
+if [ -n "$parent" ]; then
+    child="$ticket"
+else
+    parent="$ticket"
+fi
+
+# Posts once per distinct marker; a re-run of the same subtask must not add a second comment.
+comment_once() {
+    _marker="$1"
+    _body="$2"
+    if jira_comment_bodies "$parent" 2>/dev/null | grep -qF "$_marker"; then
+        say "${parent} already carries that note"
+        return 0
+    fi
+    if [ "$commit" != '--commit' ]; then
+        say "(dry run — would comment on ${parent})"
+        return 0
+    fi
+    jira_add_comment "$parent" "$_body" || { say "could not comment on ${parent}"; return 1; }
+    say "${parent} commented"
+}
 
 status=$(jira_issue_status "$parent" 2>/dev/null || true)
-case "$status" in
-    Done) say "${parent} is already Done"; exit 0 ;;
-    # Ryan's rule: never advance a ticket that is not already staged for testing.
-    'Ready for Testing' | 'Testing') ;;
-    *) say "${parent} is '${status}' — not closing it"; exit 8 ;;
-esac
+[ "$status" != 'Done' ] || { say "${parent} is already Done"; exit 0; }
 
 owner=$(jira_issue_field "$parent" assignee 'assignee.accountId' 2>/dev/null || true)
 if [ -n "$owner" ] && [ "$owner" != "$JIRA_ACCOUNT_ID" ]; then
-    say "${parent} belongs to someone else — not closing it"
+    say "${parent} belongs to someone else — leaving it alone"
     exit 8
 fi
 
@@ -40,14 +60,27 @@ if [ -z "$subs" ]; then
 fi
 
 total=$(printf '%s\n' "$subs" | grep -c . || true)
-open_subs=$(printf '%s\n' "$subs" | awk -F'\t' '$2 != "Done" { print "  " $1 " is " $2 }')
-if [ -n "$open_subs" ]; then
+open_list=$(printf '%s\n' "$subs" | awk -F'\t' '$2 != "Done" { print "  " $1 " is " $2 }')
+
+if [ -n "$open_list" ]; then
     say "${parent} still has open subtasks:"
-    say "$open_subs"
+    say "$open_list"
+    if [ -n "$child" ]; then
+        marker="Subtask ${child} has been validated and is Done."
+        comment_once "$marker" "${marker}
+
+Still open on this ticket:
+${open_list}
+
+This ticket stays open until every subtask is Done."
+    fi
     exit 8
 fi
 
-say "${parent}: all ${total} subtasks are Done"
+# Closing on the children's state is the one place a parent moves from a status that is not staged
+# for testing: every piece of its work is validated, so no column it sits in makes it incomplete.
+say "${parent}: all ${total} subtasks are Done (parent is '${status}')"
+
 if [ "$commit" != '--commit' ]; then
     say "(dry run — pass --commit to close it)"
     exit 0

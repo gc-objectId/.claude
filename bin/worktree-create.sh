@@ -12,6 +12,7 @@ set -eu
 ORCI_ROOT="${ORCI_ROOT:-$HOME/dev/orci}"
 WORKTREE_ROOT="${WORKTREE_ROOT:-$HOME/dev/worktrees}"
 QA_ENV_REL="${QA_ENV_REL:-qa-suite/.env.local}"
+QA_ENV_DEV_REL="${QA_ENV_DEV_REL:-qa-suite/.env.dev}"
 
 say() { printf '%s\n' "$*" >&2; }
 die() { say "Error: $*"; exit 1; }
@@ -92,11 +93,32 @@ created=1
 ln -s "$env_source" "${dir}/${QA_ENV_REL}" ||
     die "failed to symlink ${QA_ENV_REL} into the worktree at ${dir}/${QA_ENV_REL}"
 
+# The dev env file is optional: test:dev needs it, test:local does not.
+env_dev_source="${ORCI_ROOT}/${QA_ENV_DEV_REL}"
+env_dev_note="no ${QA_ENV_DEV_REL} in ${ORCI_ROOT} — run qa-suite/gen-env.sh aws-dev before test:dev"
+if [ -f "$env_dev_source" ]; then
+    ln -s "$env_dev_source" "${dir}/${QA_ENV_DEV_REL}" ||
+        die "failed to symlink ${QA_ENV_DEV_REL} into the worktree at ${dir}/${QA_ENV_DEV_REL}"
+    env_dev_note="${QA_ENV_DEV_REL} symlinked from ${env_dev_source}"
+fi
+
+# Assign only an unassigned ticket: a validation ticket stays with its developer.
+assignee=$(jira_issue_field "$ticket" assignee 'assignee.displayName' 2>/dev/null || true)
+if [ -n "$assignee" ]; then
+    assign_note="assigned to ${assignee} (unchanged)"
+elif me=$(jira_myself_account_id 2>/dev/null) && [ -n "$me" ] && jira_assign "$ticket" "$me" 2>/dev/null; then
+    assign_note="assigned to you"
+else
+    assign_note="WARNING: couldn't assign ${ticket} (no keychain token / offline) — assign it in Jira by hand"
+fi
+
 say ''
 say 'Worktree ready:'
 say "  Dir:    $dir"
 say "  Branch: $branch"
 say "  ${QA_ENV_REL} symlinked from ${env_source}"
+say "  ${env_dev_note}"
+say "  ${ticket}: ${assign_note}"
 say ''
 
 printf '%s\n' "$dir"

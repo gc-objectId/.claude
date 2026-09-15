@@ -1,94 +1,97 @@
-- [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps, prefers teaching mode then "just do it"
-- [Terse responses](feedback_terse_no_summaries.md) — let user execute commands when learning, don't over-explain
-- [Concise code comments](feedback_concise_code_comments.md) — Theo flagged verbose PR comments; one line per constraint, no reviewer-directed justification, no ticket numbers in code comments
-- [Correct end-state over precedent](feedback_correct_end_state_over_precedent.md) — don't follow existing structure if it's wrong; reorg to correct it, scope creep to fix organization is fine (e.g. qa-suite test-utilities/ split)
-- [No tickets/dates in code](feedback_no_tickets_dates_in_code.md) — no OR-XXXX numbers, dates, or PR refs in code or companion md; describe the command/case; provenance lives in commits/Jira
-- [Jira conventions](feedback_jira_conventions.md) — lifecycle is manual (no auto-assign/transition) except the verified close-out; keep epic descriptions factual
-- [QA suite status](project_qa_suite_consolidation.md) — OR-2348 + OR-2384 complete; OR-2585 epic active: tag-based tiers (OR-2586) + per-family specs (OR-2587) + prefixed IDs (OR-2588)
-- [SSO smoke tests needed](project_sso_smoke_tests.md) — OR-2330 under OR-2384, blocked on M365 test account
-- [Agent team setup](project_agent_team_setup.md) — 4 agents, orci-cmd command center, approval gates, test ownership split
-- [Git push and PR creation](feedback_git_push_command.md) — I run git push + gh pr create directly; don't hand over the command
-- [Git/PR workflow](feedback_git_pr_workflow.md) — full end-to-end flow: Jira → branch from main → commits → push+PR → feedback → post-merge cleanup
-- [PR replies manual](feedback_pr_replies_manual.md) — draft reply text in Ryan's voice (simple, high-level, conversational), don't post it; Ryan paraphrases and posts himself
-- [Maven stale classpath](project_maven_stale_classpath.md) — stale ~/.m2 sibling jar makes `mvn -pl orci` ignore orci-models edits; phantom "cannot find symbol" AND falsely-green flip-and-revert; use `-am`
-- [Run worktree app on 8081](reference_run_worktree_app_second_port.md) — Ryan keeps main on 8080/3000; never say "restart your local", give explicit second-instance commands
-- [No Co-Authored-By](feedback_no_coauthored_by.md) — never add Co-Authored-By trailers OR "Generated with Claude Code" footers to commits or PR bodies
-- [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md, not README.md
-- [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml change before staging; local overrides must never slip into commits
-- [PR test plans](feedback_pr_test_plans.md) — only include test plan in PR if steps can be done before merge; post-deploy steps go in the Jira ticket instead
-- [Confirm before push/PR](feedback_confirm_before_push.md) — push/PR freely on passing verification or an explicit instruction; the ask survives for autonomous action and the four hard stops
-- [Verified close-out](feedback_green_light_closeout.md) — your own passing test run = full sequence: commit → push → draft PR → check status → mode-dependent Jira comment → move to Done (canonical in workon skill)
-- [Security review habit](feedback_security_review.md) — run /security-review before PRs touching auth/file I/O/input validation; verify guards fire at the right moment, not just that they exist
-- [qa-suite branch SOP](feedback_qa_suite_branch_sop.md) — qa-suite is part of orci (not a separate repo); worktree constraint applies — run tests from inside the worktree
-- [Draft PRs](feedback_draft_prs.md) — always open PRs with `gh pr create --draft`; Ryan marks ready for review manually
-- [Validate against main](feedback_validate_against_main.md) — Guided's current SDLC merges to main before validation; app-under-test is the main build, test code lives on the branch
-- [Validation protocol](feedback_validation_protocol.md) — "validate" = pull ticket, run positive + negative manually with flip-and-revert can-it-fail check, then automate edge cases in supplemental suite
-- [Branch naming](feedback_branch_naming.md) — branch prefix must match Jira issue type: epic/, feature/, bugfix/, hotfix/; workon takes type as 3rd arg
-- [npm-script test commands](feedback_npm_script_test_commands.md) — give qa-suite commands as npm :local scripts with `--` pass-through, never raw TEST_ENV=local npx playwright
-- [Keychain -w truncation](reference_keychain_w_truncation.md) — macOS `security -w` prompt truncates long pastes (~128 chars); write secrets from a `$VAR` instead
-- [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — VALIDATED in real Epic TST flow (non-compliant→compliant w/ screenshots); earlier "gap" was admin-endpoint false negative; no fix needed
-- [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save (Reject = override+save); alert button text is per-rule rejectText; Playwright isVisible() never waits
-- [Mayo integration testing](project_mayo_integration_testing.md) — artifacts, terminology (case start not launch), gaps Q9–Q13, first session 2026-07-02; OneDrive tracker is source of truth
-- [OR-2630 Mayo null-op admins](project_or2630_mayo_null_operation_admins.md) — not a live bug (closed); size orphan bugs by bucket test (admin-in-real-case-window), verify happy path via tracking_id→rule_execution_contexts
-- [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; staged tests in ~/dev/worktrees/.pending (read its README first!); MFHIR ID registry inside is authoritative per ticket (v2: strictly sequential, no gaps; MERGED to main: OR-2557 001-003, OR-2555 004/005, OR-2435 006/007, OR-2436 008-010, OR-2437 011-013, OR-2441 014/015, OR-2537 016-019; rest pushed pending merge; next free 027); OR-2557/2555/2435/2436/2437/2441/2537/2538/2539/2552 done
-- [OR-2660 antibiotic None gaps](project_or2660_antibiotic_none_gaps.md) — CLOSED no-code → OR-2728 (rule ignores candidates/qualifier) + OR-2729 (importer drops NONE qualifier); Alex: None = not required, rank only orders antibiotics; repro on demo p-laparoscopic
-- [OR-2321 case classification](project_or2321_case_classification.md) — DONE; acuity fallback + the 2 interaction bugs review caught (qualifier-scoped row set, NONE rows must count); keep NON_URGENT mapped
-- [OR-2640 infusion netting](project_or2640_infusion_netting.md) — RXA-2 sub-id upsert IS the netting (same sub-id = edit in place); Epic restates prior events on rate change → 75/75/75; resume arrives as NewBag; real stream in stage mayo-rormc MCID 24000-24015
-- [Local HL7 inject auth](reference_local_hl7_inject_auth.md) — POST /api/admin/hl7-inbound-messages/send + X-Tenant-Id; httpBasic won't work, form-login /api/login/basic, send the XSRF-TOKEN *cookie* not the /csrf JSON token
-- [OR-2641 Mayo intraop observations](project_or2641_mayo_intraop_observations.md) — DONE; glucose+TOF confirmed via MSH-3-2 flowsheet route; TOF_RATIO absent by design (changeset 201); new FLOW qa-suite family + fixtures/hl7-api.ts
-- [Stale local main (git)](reference_stale_local_main_git.md) — ~/dev/orci main was 153 commits behind origin; always compare against origin/main before claiming something is/isn't merged
-- [Stale local app build](reference_stale_local_app_build.md) — localhost:8080 can be days older than source; check `ps -o lstart=` vs commit date before trusting local validation; Bash cwd persists and silently voids git diff pathspecs
-- [Prettier hook version conflict](reference_prettier_hook_version_conflict.md) — pre-commit pins an older prettier than qa-suite's; only `prettier --write` files you authored or commits loop forever
-- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 DONE (in-CI gate, hardened via #4198); AWS-per-PR-env approach dead (OR-2452 epic; OR-2494/2507 → [WON'T DO]); merge-queue dropped; OR-2508 upload-key still open
-- [Dev deploy flakiness](project_dev_deploy_flakiness.md) — OR-2662: CI deploy "failures" usually converge on their own; don't rerun; blank pages = mixed-version rollout
-- [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code (0/1/2/3); squash merges auto-detected against origin/main; but a `command not found: _*` line means verify never ran — check by hand
-- [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes .env.{suffix} directly; `> .env` redirect truncates .env to empty
-- [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — CLOSED 2026-07-20; dev/guidedor gained DB creds via infra PR #105; dev RDS still needs VPN
-- [OR-2616 dev SMTP not rotated](project_or2616_dev_smtp_not_rotated.md) — relocation to secrets[] done, rotation skipped; old task defs still leak the live password
-- [Mayo data lives in stage](reference_mayo_data_lives_in_stage.md) — mayo-mayo + pre-collapse mayo-rormc/rosmc; old schemas store bare `OR 101` names, break positional parsing
-- [OR-2649 facility derivation](project_or2649_facility_derivation.md) — DONE, no code change; 4th token of operating_room_name; ROJB=Methodist is right; stays in Metabase, don't add repo SQL
-- [Claude config backup](reference_claude_config_backup.md) — ~/.claude auto-pushed daily via launchd; log at ~/Library/Logs/claude-backup.log; fix drift here
-- [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — MayoHL7RasMedAdminProcessorIntegrationTest date tests need -Duser.timezone=America/Chicago locally
-- [Antibiotic candidate sources](reference_antibiotic_candidate_sources.md) — SUPERSEDED: resolves once into CaseAntibioticProtocol/AntibioticResolution; scope rows before a rule sees them; verify narrowing at the service layer
-- [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds PR merged into main; stale branch + moved main = compile fail local build misses; rebase before push
-- [workon re-run stale index](reference_workon_rerun_stale_index.md) — re-running workon on an existing worktree force-moves branch to new main; week of main shows as staged reversions; recover with stash, diagnose via reflog
-- [Webapp has no unit runner](reference_webapp_no_unit_runner.md) — OR-2702 to add vitest; validate pure frontend TS via esbuild-in-node; qa-suite e2e can't test unmerged frontend
-- [@DataJpaTest can't test migrations](reference_datajpatest_ddl_auto_not_liquibase.md) — BaseDataJpaTest builds schema from entities (ddl-auto=create); migration correctness is manual-only; Envers disabled so no _AUDIT changes needed
-- [HL7 validation methodology](reference_hl7_admin_send_validation_path.md) — admin send = real processTenantMessage path (unlike OR-2581 trap); real fixture pos/neg pairs; RAS bolus needs ~18s (rules run in-txn), mayo tenants off by default; pairs with [Local HL7 inject auth](reference_local_hl7_inject_auth.md)
-- [No test-only dismissal](feedback_no_test_only_dismissal.md) — never say "test-only / no production code changes" in PRs; everything merging to main is production code — say "no runtime behavior changes" instead
-- [Repo test placement](feedback_repo_test_placement.md) — repository/@DataJpaTest tests live in orci-repositories (not orci); `*Test` runs in CI, `*IntegrationTest` is excluded/manual; verify canonical suite location before modeling a new test
-- [OR-2663 doxycycline rule was inert](project_or2663_doxycycline_inert_rule.md) — self-set lockout defeated AppLaunchRule's SET NX claim; app-launch rule tests all call evaluate() not apply(), and a mocked RuleMemoryService can't catch it
-- [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — mayo-mayo tenant; UI blocked by Epic OAuth so POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2; doxycycline PO resolves by ERX 2625
-- [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages the case, POST /api/app-launch actually starts it; admin operations/create alone never calls startOperation
-- [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl in this project; script local HTTP with node's http module + a cookie jar
-- [jira-watch validation loop](project_jira_watch_autovalidate.md) — **the SOP now** for Ready-for-Testing: `loopcmd 8 2` validates+closes, `loopcmd review` opens a session; gate re-verifies rather than trusting the session
-- [Empty-default secret auth bypass](reference_empty_default_secret_auth_bypass.md) — `${VAR:}` can turn a missing credential into an auth bypass; tenant-disabled ≠ endpoint-disabled; fail closed in the consumer
-- [Analytics SQL local validation](reference_analytics_sql_local_validation.md) — validate view files on a throwaway local DB running the shipped create_analytics_views.sql; prod reads may be blocked while stage works
-- [rule_definitions is rebuilt on boot](reference_rule_definitions_rebuilt_on_boot.md) — deleteAll+saveAll untransacted; never read it to classify a past event, use rule_fired_results.trigger
-- [Websocket origin validation](reference_websocket_origin_handshake_validation.md) — drive authenticated raw handshakes via node; flip is -Dapplication.hostname, not a code edit; admin session satisfies ROLE_USER
-- [STOMP subscribe validation](reference_stomp_websocket_auth_handshake.md) — CONNECT needs the /csrf *body* token fetched *after* login; a stale one lets CONNECT succeed then refuses every SUBSCRIBE with a generic error that mimics a real rejection
-- [Local guidance fan-out validation](reference_local_guidance_fanout_validation.md) — INDUCTION_START category-event is the trigger that actually publishes to Redis; create-alert 500s, app-launch never uses Redis; re-GET /csrf after login for /api/admin/**
-- [Surefire -Dtest skips outer tests](reference_surefire_dtest_nested_skips_outer.md) — with @Nested present, `-Dtest=ClassName` runs 0 outer-class tests and still says BUILD SUCCESS; read per-class counts
-- [Insulin dose/ISC validation surface](reference_insulin_dose_isc_validation_surface.md) — admin insulin-daily-dose trace + isc/initialize give a flip-and-revert loop; Mayo strategy ignores daily dose entirely
-- [Rollback guard tests go inert](reference_rollback_guard_tests_go_inert.md) — rollbackFor only matters for checked exceptions; Jackson wraps row errors as RuntimeException so `isInstanceOf(Exception.class)` passes either way; flip the guard and verify with javap
-- [OR-2734 NMB clipping FIXED](project_or2734_nmb_clipping_unfixed.md) — PR 4477 rfr.trigger exemption live in prod (779 firings vs 10), ticket Done; predicate churned 4x so re-fetch main before describing it; OR-2839 = durable evaluation_time fix
-- [Rule flags default to all tenants](reference_rule_flag_defaults_all_tenants.md) — a new rule with no changeset ships ON everywhere; @RuleDefinition has no orgs attr; /api/feature-flags won't show RULE: flags
-- [Mayo RAS injection recipe](reference_mayo_ras_injection_recipe.md) — RAS HL7 med admin locally; parser shifts timestamp +1h; operation attaches only if dose >= case start; use qrtz trigger not selection alert
-- [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — DONE 2026-08-24; per-item gating map; doxycycline all-clients is intentional, don't "fix" it
-- [MGH data not in AWS RDS](reference_mgh_data_not_in_aws_rds.md) — no mgb-mgh schema in dev/stage/prod; MGB self-hosts on OpenShift, query only via their Metabase
-- [Mayo matview refresh manual](project_or2747_mayo_matview_refresh.md) — OR-2747 To Do; rollups refreshed by hand, no staleness indicator; verify freshness before quoting a Mayo error rate
-- [OR-2620 HL7 auth Sentry noise](project_or2620_hl7_auth_sentry_noise.md) — DONE; entry point logs WARN unconditionally; Sentry reopens a Done ticket on a new event against a resolved issue
-- [Prod RDS blocked, stage allowed](reference_prod_rds_blocked_stage_allowed.md) — auto-mode classifier denies prod psql but allows stage; stage mayo-mayo has ~20 firing facts so it only answers schema/config questions
-- [OR-2656 MGH med admin room scope](project_or2656_mgh_med_admin_room_scope.md) — DONE no-code; notifications only in `MGH OR NN` (99.7% vs 0.1%); source_type EMR=notifications, OTHER=launch snapshot
-- [Sentry events have no release](reference_sentry_events_have_no_release.md) — can't date a build from an event; match stack line numbers to git (range only), fall back to `oc get deployment/guidedor`; MGB = mgb-mgh / guidedor.partners.org
-- [OR-2774 stale state is MGB-only](project_or2774_stale_state_mgb.md) — reopen was MGB running 0.1.90, which predates the fix (first in 0.1.91); no code work, needs a deploy; AutoReleaseSemaphore is a counting throttle, its 30s auto-release is OR-2857
-- [OR-2780 wrong dose deep dive](project_or2780_wrong_dose_deep_dive.md) — all LAST-protocol rules; 71% is a flat 100 mg IV lidocaine bolus vs a 1.5 mg/kg cap; cocaine was a LOCAL_ANESTHETIC miscategorization already fixed
-- [eGFR adjustment is Type-1-only](reference_egfr_adjustment_type1_only.md) — eGFR < 45 drops the rate under the 0.5 floor, so non-Type-1 patients silently abstain; reasons live in rule_not_fired_results.explanation
-- [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — posting a GLUCOSE observation fires GLUCOSE_UPDATED synchronously; getFiredRuleEvaluations exposes details.EXPANDED_CALCULATION, no browser needed
-- [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED our #4506 resolver PR; Theo's #4534 verbatim CSV seed is the fix; drift string was dev-only; unmatched reactions still skip with no log (follow-up not yet filed)
-- [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; base /actuator/health 403s and the "Started OrciApplication in" line fires before runners
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD method; root cause is custom.scss importing Bootstrap before the brand vars; snapshots must be CI-generated; children incl. OR-2879 App Home + OR-2880 rules handbook (needs richer endpoint, xlsx exporter has 13 cols vs 5)
-- [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — 039/040 refuse on non-UTC Macs; pgjdbc sets session TZ from JVM default; boot with -Duser.timezone=UTC
-- [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — such allergies reach the pathway walk only via RxNorm association (RXNORM_ALLERGY_MAPPING, per tenant); allergen list is pen/ceph/narcotic-only; pathway drugs need the ANTIBIOTIC tag or the given-rules ignore them (BundledAntibioticPathwayTest guards)
-- [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — DONE 2026-09-10 (impl #4521 merged, validated locally pre-merge); tests PR #4551 draft open, worktree-done after it merges; PABX-019/020 + PMAP family
-- [Antibiotic guidance debug endpoint](reference_antibiotic_guidance_debug_endpoint.md) — admin antibiotic-candidates GET re-resolves and shows outcome; unmapped gate only stageable via Mayo SIU; HL7 admin send is async after ACK; local DB is `orci`; build online when main bumps Spring Boot
+- [Ryan's profile](user_ryan_profile.md) — Java/Spring dev, learning frontend/DevOps; teaching mode until "just do it"
+- [Terse responses](feedback_terse_no_summaries.md) — let Ryan run commands when learning; no recaps
+- [Concise code comments](feedback_concise_code_comments.md) — one line per constraint; nothing reviewer-directed; no ticket numbers in code
+- [Correct end-state over precedent](feedback_correct_end_state_over_precedent.md) — reorg wrong structure rather than extend it; organizational scope creep is fine
+- [No tickets/dates in code](feedback_no_tickets_dates_in_code.md) — no OR-XXXX, dates, or PR refs in code or companion md
+- [Jira conventions](feedback_jira_conventions.md) — status manual except sanctioned close-outs; workon assigns unassigned tickets to Ryan; factual epic descriptions
+- [QA suite status](project_qa_suite_consolidation.md) — OR-2348/2384 done; OR-2585 epic: tiers, per-family specs, prefixed IDs
+- [SSO smoke tests needed](project_sso_smoke_tests.md) — OR-2330, blocked on M365 test account
+- [Agent team setup](project_agent_team_setup.md) — 4 agents, approval gates, test ownership split
+- [Git push and PR creation](feedback_git_push_command.md) — run git push + gh pr create myself, don't hand over the command
+- [Git/PR workflow](feedback_git_pr_workflow.md) — Jira → branch → commits → push+PR → feedback → post-merge cleanup
+- [PR replies manual](feedback_pr_replies_manual.md) — draft in Ryan's voice (simple, conversational); Ryan posts
+- [Maven stale classpath](project_maven_stale_classpath.md) — stale ~/.m2 sibling jar hides orci-models edits and fakes green flips; use `-am`
+- [Run worktree app on 8081](reference_run_worktree_app_second_port.md) — main stays on 8080/3000; give second-instance commands, never "restart"
+- [No Co-Authored-By](feedback_no_coauthored_by.md) — no trailers or "Generated with" footers anywhere
+- [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md
+- [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml diff before staging
+- [PR test plans](feedback_pr_test_plans.md) — PR test plan only for pre-merge steps; post-deploy steps go in Jira
+- [Confirm before push/PR](feedback_confirm_before_push.md) — push/PR on passing verification or explicit instruction; four hard stops still ask
+- [Verified close-out](feedback_green_light_closeout.md) — own passing run → commit → push → draft PR → Jira comment → Done (workon skill is canonical)
+- [Security review habit](feedback_security_review.md) — /security-review before PRs touching auth/file I/O/input validation; verify guards fire at the right moment
+- [qa-suite branch SOP](feedback_qa_suite_branch_sop.md) — qa-suite lives in orci; run tests from inside the worktree
+- [Draft PRs](feedback_draft_prs.md) — always `gh pr create --draft`
+- [Validate against main](feedback_validate_against_main.md) — app under test is the main build; test code lives on the branch
+- [Validation protocol](feedback_validation_protocol.md) — positive + negative + flip-and-revert, then automate edge cases in supplemental
+- [Branch naming](feedback_branch_naming.md) — prefix matches Jira type: epic/, feature/, bugfix/, hotfix/
+- [npm-script test commands](feedback_npm_script_test_commands.md) — npm :local scripts with `--` pass-through, never raw TEST_ENV npx
+- [Keychain -w truncation](reference_keychain_w_truncation.md) — `security -w` prompt truncates ~128 chars; pass secrets from a `$VAR`
+- [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — validated in real Epic TST flow; admin-endpoint "gap" was a false negative
+- [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save; button text is per-rule rejectText; isVisible() never waits
+- [Mayo integration testing](project_mayo_integration_testing.md) — terminology, gaps Q9–Q13; OneDrive tracker is source of truth
+- [OR-2630 Mayo null-op admins](project_or2630_mayo_null_operation_admins.md) — not a live bug; size orphan bugs by bucket test
+- [Mayo FHIR ticket validation](project_mayo_fhir_ticket_validation.md) — per-ticket SOP; ~/dev/worktrees/.pending README + MFHIR ID registry are authoritative (next free 027)
+- [OR-2660 antibiotic None gaps](project_or2660_antibiotic_none_gaps.md) — closed no-code → OR-2728 + OR-2729; None = not required
+- [OR-2321 case classification](project_or2321_case_classification.md) — done; acuity fallback; keep NON_URGENT mapped
+- [OR-2640 infusion netting](project_or2640_infusion_netting.md) — RXA-2 sub-id upsert is the netting; resume arrives as NewBag
+- [Local HL7 inject auth](reference_local_hl7_inject_auth.md) — admin send + X-Tenant-Id; form-login, send the XSRF cookie not the JSON token
+- [OR-2641 Mayo intraop observations](project_or2641_mayo_intraop_observations.md) — done; glucose+TOF via MSH-3-2 flowsheet; FLOW family + fixtures/hl7-api.ts
+- [Stale local main (git)](reference_stale_local_main_git.md) — compare against origin/main before claiming merged/unmerged
+- [Stale local app build](reference_stale_local_app_build.md) — check `ps -o lstart=` vs commit date; Bash cwd persistence voids pathspecs
+- [Prettier hook version conflict](reference_prettier_hook_version_conflict.md) — pre-commit pins older prettier; only `--write` files you authored
+- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 done (in-CI gate); per-PR AWS env dead; OR-2508 upload-key open
+- [Dev deploy flakiness](project_dev_deploy_flakiness.md) — CI deploy "failures" converge on their own; blank pages = mixed-version rollout
+- [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code; `command not found: _*` means verify never ran
+- [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes the env file directly; a `>` redirect truncates it to empty
+- [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — closed 2026-07-20; dev RDS still needs VPN
+- [OR-2616 dev SMTP not rotated](project_or2616_dev_smtp_not_rotated.md) — relocation done, rotation skipped; old task defs leak the password
+- [Mayo data lives in stage](reference_mayo_data_lives_in_stage.md) — mayo-mayo + pre-collapse rormc/rosmc; old schemas break positional parsing
+- [OR-2649 facility derivation](project_or2649_facility_derivation.md) — done, no code; 4th token of operating_room_name; stays in Metabase
+- [Claude config backup](reference_claude_config_backup.md) — ~/.claude auto-pushed daily via launchd; log in ~/Library/Logs
+- [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — RAS med-admin date tests need -Duser.timezone=America/Chicago
+- [Antibiotic candidate sources](reference_antibiotic_candidate_sources.md) — superseded: resolves once into CaseAntibioticProtocol; scope rows before rules
+- [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds PR merged into main; rebase before push
+- [workon re-run stale index](reference_workon_rerun_stale_index.md) — re-running workon force-moves the branch; recover via stash + reflog
+- [Webapp has no unit runner](reference_webapp_no_unit_runner.md) — OR-2702 for vitest; validate pure TS via esbuild-in-node
+- [@DataJpaTest can't test migrations](reference_datajpatest_ddl_auto_not_liquibase.md) — schema from entities; migration correctness is manual-only
+- [HL7 validation methodology](reference_hl7_admin_send_validation_path.md) — admin send is the real path; RAS bolus needs ~18s; mayo tenants off by default
+- [No test-only dismissal](feedback_no_test_only_dismissal.md) — say "no runtime behavior changes", never "test-only"
+- [Repo test placement](feedback_repo_test_placement.md) — @DataJpaTest lives in orci-repositories; `*IntegrationTest` excluded from CI
+- [OR-2663 doxycycline rule was inert](project_or2663_doxycycline_inert_rule.md) — self-set lockout defeated SET NX; tests call evaluate() not apply()
+- [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2
+- [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages, POST /api/app-launch starts the case
+- [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl; node http + cookie jar
+- [jira-watch validation loop](project_jira_watch_autovalidate.md) — the SOP for Ready-for-Testing: `loopcmd 8 2`, `loopcmd review`; gate re-verifies
+- [Empty-default secret auth bypass](reference_empty_default_secret_auth_bypass.md) — `${VAR:}` turns a missing credential into a bypass; fail closed
+- [Analytics SQL local validation](reference_analytics_sql_local_validation.md) — throwaway local DB running the shipped views SQL
+- [rule_definitions is rebuilt on boot](reference_rule_definitions_rebuilt_on_boot.md) — never classify a past event from it; use rule_fired_results.trigger
+- [Websocket origin validation](reference_websocket_origin_handshake_validation.md) — raw handshakes via node; flip is -Dapplication.hostname
+- [STOMP subscribe validation](reference_stomp_websocket_auth_handshake.md) — CONNECT needs the /csrf body token fetched after login
+- [Local guidance fan-out validation](reference_local_guidance_fanout_validation.md) — INDUCTION_START category-event publishes to Redis; re-GET /csrf for admin
+- [Surefire -Dtest skips outer tests](reference_surefire_dtest_nested_skips_outer.md) — with @Nested, `-Dtest=Class` runs 0 outer tests yet says SUCCESS
+- [Insulin dose/ISC validation surface](reference_insulin_dose_isc_validation_surface.md) — admin daily-dose trace + isc/initialize flip loop
+- [Rollback guard tests go inert](reference_rollback_guard_tests_go_inert.md) — rollbackFor only matters for checked exceptions; verify with javap
+- [OR-2734 NMB clipping FIXED](project_or2734_nmb_clipping_unfixed.md) — PR 4477 live in prod; OR-2839 is the durable fix
+- [Rule flags default to all tenants](reference_rule_flag_defaults_all_tenants.md) — new rule with no changeset ships ON everywhere
+- [Mayo RAS injection recipe](reference_mayo_ras_injection_recipe.md) — parser shifts +1h; operation attaches only if dose >= case start
+- [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — done 2026-08-24; doxycycline all-clients is intentional
+- [MGH data not in AWS RDS](reference_mgh_data_not_in_aws_rds.md) — MGB self-hosts on OpenShift; query via their Metabase
+- [Mayo matview refresh manual](project_or2747_mayo_matview_refresh.md) — OR-2747 open; verify freshness before quoting error rates
+- [OR-2620 HL7 auth Sentry noise](project_or2620_hl7_auth_sentry_noise.md) — done; Sentry reopens Done tickets on new events
+- [Prod RDS blocked, stage allowed](reference_prod_rds_blocked_stage_allowed.md) — stage mayo-mayo answers schema/config questions only
+- [OR-2656 MGH med admin room scope](project_or2656_mgh_med_admin_room_scope.md) — done no-code; notifications only in `MGH OR NN`
+- [Sentry events have no release](reference_sentry_events_have_no_release.md) — date builds via stack lines vs git or `oc get deployment/guidedor`
+- [OR-2774 stale state is MGB-only](project_or2774_stale_state_mgb.md) — MGB on 0.1.90 predates the fix; needs a deploy; OR-2857 for auto-release
+- [OR-2780 wrong dose deep dive](project_or2780_wrong_dose_deep_dive.md) — LAST-protocol rules; flat 100 mg lidocaine bolus vs 1.5 mg/kg cap
+- [eGFR adjustment is Type-1-only](reference_egfr_adjustment_type1_only.md) — non-Type-1 patients silently abstain; see rule_not_fired_results.explanation
+- [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — GLUCOSE observation fires synchronously; details.EXPANDED_CALCULATION via API
+- [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — done 2026-09-14; #4534 CSV seed validated; tests PR #4560 open; unmatched reactions skip silently
+- [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; "Started OrciApplication" fires before runners
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD; custom.scss import order is root cause; children OR-2879/2880
+- [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
+- [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association; pathway drugs need ANTIBIOTIC tag
+- [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done 2026-09-10; tests PR #4551 open; PABX-019/020 + PMAP family
+- [Antibiotic guidance debug endpoint](reference_antibiotic_guidance_debug_endpoint.md) — admin antibiotic-candidates GET re-resolves; HL7 admin send is async after ACK
+- [OR-2791 NSAID group + crosswalk defect](project_or2791_nsaid_group_crosswalk_defect.md) — done 2026-09-14; crosswalk ingredient leak filed as OR-2925; flag off everywhere; **proposed ALG tests still unwritten, write them with OR-2925**
+- [OR-2924 MFHIR-012 hives drift](project_or2924_mfhir012_hives_drift.md) — DONE 2026-09-14 (PR #4561 merged, no pre-merge dev run); verify first post-deploy run; severity deliberately unasserted
+- [Triage: check closed PRs](feedback_triage_check_closed_prs.md) — "in flight?" means `--state all` (#4506 hid a fix); fresh worktrees lack the dev env file

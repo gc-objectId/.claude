@@ -28,7 +28,7 @@ Steps 2 and 3 run **per ticket**: pull each one's Jira context, and derive each 
 
 ## Step 2 — Pull context (parallel where possible)
 
-- **Jira:** `getJiraIssue` with comments (`fields` including `comment`, `parent`); `getJiraIssueRemoteIssueLinks` for Sentry/other links. Read the parent epic if there is one. Do **not** assign or transition at this stage — the only sanctioned transitions are the deploy-ready close-out (VALIDATE step 3) and the verified close-out below.
+- **Jira:** `getJiraIssue` with comments (`fields` including `comment`, `parent`); `getJiraIssueRemoteIssueLinks` for Sentry/other links. Read the parent epic if there is one. Confirm the assignee: `worktree-create.sh` assigns an unassigned ticket to Ryan when it builds the worktree, so if the ticket is still unassigned here (offline lookup, no keychain token) assign it to Ryan now via `editJiraIssue`; leave a ticket assigned to someone else alone. Do **not** transition at this stage — the only sanctioned transitions are the deploy-ready close-out (VALIDATE step 3) and the verified close-out below.
 - **GitHub:** `gh pr list --search "OR-NNNN" --state all --json number,title,state,url,mergedAt` and `git log --all --grep="OR-NNNN" --oneline`, once per ticket. If a PR exists, pull its diff (`gh pr diff`) — for validate mode it *is* the thing under test; for implement mode it's prior/related work to build on. A chain often resolves to one merged PR chain: get the combined diff (`git diff <first-merge>^ <last-merge>`) so the shared shape is visible in one place.
 - **Sentry-created tickets** embed the error + a Sentry link in the description — extract ip/uri/userAgent/message clues from there.
 

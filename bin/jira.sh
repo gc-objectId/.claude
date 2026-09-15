@@ -105,6 +105,10 @@ jira_issue_context() {
             )'
 }
 
+jira_myself_account_id() {
+    _jira_curl "${JIRA_BASE}/rest/api/3/myself" | jq -r '.accountId // empty'
+}
+
 jira_assign() {
     _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
         --data "$(jq -nc --arg a "$2" '{accountId: $a}')" \
@@ -142,4 +146,10 @@ jira_update_description() {
     _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
         --data "$(jq -nc --arg d "$2" '{fields: {description: $d}}')" \
         "${JIRA_BASE}/rest/api/2/issue/$1"
+}
+
+# Comment bodies, one per line with newlines flattened, for presence checks.
+jira_comment_bodies() {
+    _jira_curl "${JIRA_BASE}/rest/api/2/issue/$1?fields=comment" |
+        jq -r '.fields.comment.comments[]?.body | gsub("\\s+"; " ")'
 }

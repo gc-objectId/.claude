@@ -25,5 +25,6 @@
   },
   "effortLevel": "high",
   "teammateMode": "tmux",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "cleanupPeriodDays": 360
 }

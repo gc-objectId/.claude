@@ -88,18 +88,37 @@ Three things happen before the gate runs:
 | `admitted_with_caveats` | closed, but the session flagged a caveat as material to shipping | read it |
 | `reserved` | validated, Jira untouched | hand to its reviewer |
 | `refused` | evidence did not hold, or verdict was inconclusive | `unblock.sh` |
-
-A ticket with no runtime surface — CI workflow, deploy script, analytics SQL published to a tool the
-instance cannot reach — should come back `inconclusive` with a blocker saying what would actually be
-needed. The prompt forbids inventing an app-level red check to satisfy the format; the gate would
-refuse it anyway, and "not locally validatable" is the more useful answer.
 | `no_merged_pr` | nothing merged to validate | check whether it shipped at all |
 | `umbrella` | a parent with subtasks and no PR of its own | nothing — it is skip-listed automatically, and its children are offered separately. Reverse with `unblock.sh unskip` |
 | `stale_build` | fix not in the built commit | usually transient; retry |
 | `env_failed` / `session_timeout` | infrastructure, not the ticket | retry |
 
+A ticket with no runtime surface — CI workflow, deploy script, analytics SQL published to a tool the
+instance cannot reach — should come back `inconclusive` with a blocker saying what would actually be
+needed. The prompt forbids inventing an app-level red check to satisfy the format; the gate would
+refuse it anyway, and "not locally validatable" is the more useful answer.
+
 Anything other than `admitted` pushes to Slack (`#my-agents`) with its blockers. Successes stay
 silent on purpose.
+
+## Parents
+
+A subtask's parent is touched at two moments. Nothing is advanced *into* testing from In Progress;
+the completion close at the end is the one move that ignores the parent's column.
+
+- **At pickup**, a parent sitting in Ready for Testing is claimed and moved to Testing alongside its
+  child. Claim and move are one trigger; a parent in any other status, or owned by someone else, is
+  left alone.
+- **After a child closes**, `close-parent.sh` looks at the whole family. Every subtask Done: it
+  comments and moves the parent to Done, from whatever column it is in. That is the one exception to
+  the rule above, and it holds because a parent whose every child is validated has no incomplete work
+  left to misrepresent. Siblings still open: it posts a note naming what just validated and what
+  remains, so the board shows progress without a status change.
+
+The close is inferred purely from the children, so a parent carrying scope of its own alongside
+subtasks would close early. The log line records which status it closed from.
+
+Each note posts once. Reserved tickets write nothing here either.
 
 ## Unblocking
 

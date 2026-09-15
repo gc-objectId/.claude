@@ -1,0 +1,17 @@
+Validation of OR-2791 is complete and the session file is written. The worktree is clean, and all scratch material lives outside it.
+
+**Verdict: not-deploy-ready**, with the NSAID cross-reaction mechanism itself working as designed.
+
+**What held up**
+- Positive: a diclofenac RxNorm allergy (3355, no formulary mapping) and a SNOMED NSAID class allergy each produced an NSAID category medication allergy, and selecting ketorolac fired the general allergy alert labelled NSAID.
+- Negative: the same patient selecting propofol, a propofol-coded allergy selecting ketorolac, and an unknown RxNorm code all produced no NSAID alert.
+- Red check: deleting diclofenac from the group's RxNorm code table made the ketorolac alert vanish for a fresh patient. Restoring the row brought it back. The signature line is unique in the captured log.
+
+**Why not deploy-ready**
+An ibuprofen allergy (RxNorm 5640) in the demo tenant created medication allergies to Famotidine, Gabapentin and Omeprazole, and the ketorolac NSAID alert labelled the allergen "Famotidine". The cause is the demo and mgb RxNorm crosswalk CSVs from PR #4476, which map ibuprofen to those drugs and naproxen to esomeprazole. Mayo's list maps ibuprofen correctly. Blockers in the session file ask whether those rows are intentional and whether category-matched alerts should prefer the category name.
+
+**Caveats recorded**
+The RxNorm allergy mapping flag is off for every tenant, so the FHIR ingestion path is inert in production until enabled. Only demo-demo and single-component ketorolac were exercised, and the class-swap variant of the red check was not attempted.
+
+**Automation proposed**
+API-only supplemental ALG tests for the RxNorm, SNOMED and negative cases, plus a data-integrity test asserting NSAID group codes map only to NSAID-category medications, which would fail today on the demo and mgb crosswalks.

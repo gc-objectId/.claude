@@ -1,0 +1,6 @@
+patient 200 {"pmrn":"redflip-fake-9aca3ded-0f16-4700-a24d-3a64951372f9","uuid":"01a0a094-685f-7753-bfcc-d118094c5900"}
+allergy 200 {"id":"01a0a094-6887-7b7e-add7-33d098bad85f","allergen":"3355","reaction":"Hives","displayReaction":"Hives","severity":"TYPE_I","isMedicationAllergy":false,"rxnormIdentifier":"3355","snomedIdentifier":null,"medication":null,"reactionNotes":null,"comments":null}
+select m-ketorolac 200 keys: context,results,dosingFormState,trackingTabId,restoredTab,needsAction 
+  rules:  
+  allergy: []
+PMRN redflip-fake-9aca3ded-0f16-4700-a24d-3a64951372f9 UUID 01a0a094-685f-7753-bfcc-d118094c5900 CASE 77379

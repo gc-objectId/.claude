@@ -1,0 +1,18 @@
+{
+  "name": "session-71cddb15",
+  "createdAt": 1789399002013,
+  "leadAgentId": "team-lead@session-71cddb15",
+  "leadSessionId": "71cddb15-ff96-4f04-a820-40831e403fef",
+  "members": [
+    {
+      "agentId": "team-lead@session-71cddb15",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1789399002013,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2878-UnsupportedOperationException",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

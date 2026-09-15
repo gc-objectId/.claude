@@ -839,3 +839,22 @@ No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-2845
 Transitioned OR-2845 to Done
 2026-09-11 10:20:19  [OR-2845] close-parent: OR-2845 is already Done
+2026-09-14 11:30:35  [OR-2791] OR-2791 status is 'Ready for Testing'
+2026-09-14 11:30:36  [OR-2791] Building image from origin/main
+2026-09-14 11:31:20  [OR-2791] image=guidedclinical/orci:loop-e0c2b6877 sha=e0c2b68775be4f5ec2a4d7e884062511cfaf15cd
+2026-09-14 11:31:23  [OR-2791] OR-2791 moved to Testing
+2026-09-14 11:31:23  [OR-2791] OR-2791 assigned to the configured account
+2026-09-14 11:31:24  [OR-2791] parent OR-2783 is 'Testing' — left alone
+2026-09-14 11:31:25  [OR-2791] baseline: status='Testing' comments=0
+2026-09-14 11:31:25  [OR-2791] slug=create-allergy-group-for
+2026-09-14 11:31:27  [OR-2791] worktree=/Users/ryanducharme/dev/worktrees/OR-2791-create-allergy-group-for
+2026-09-14 11:32:45  [OR-2791] app under test at http://localhost:54100
+2026-09-14 11:32:46  [OR-2791] wrote ticket context (11 lines)
+2026-09-14 11:32:46  [OR-2791] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2791/session.log)
+2026-09-14 11:37:31  [OR-2791]   … OR-2791 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-14 11:42:31  [OR-2791]   … OR-2791 still running (600s elapsed, 666 app requests, app up)
+2026-09-14 11:43:31  [OR-2791] session finished after ~645s
+2026-09-14 11:43:32  [OR-2791] WARNING a remote branch referencing OR-2791 exists — the session was told not to push
+2026-09-14 11:43:32  [OR-2791] captured 11146 lines of application log
+REFUSED OR-2791: verdict is 'not-deploy-ready'

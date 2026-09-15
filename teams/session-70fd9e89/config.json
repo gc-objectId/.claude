@@ -1,0 +1,18 @@
+{
+  "name": "session-70fd9e89",
+  "createdAt": 1789411952205,
+  "leadAgentId": "team-lead@session-70fd9e89",
+  "leadSessionId": "70fd9e89-c960-4ed9-919e-b32e8a3eb0c0",
+  "members": [
+    {
+      "agentId": "team-lead@session-70fd9e89",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1789411952205,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2862-mayo-allergy-mappings",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

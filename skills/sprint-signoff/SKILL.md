@@ -42,11 +42,13 @@ Group every ticket by its status. Typical buckets: **Done**, **Ready for Testing
 
 - **Analytics investigation / study tasks** (titles like `Analytics: Investigation:` or `Analytics — ... study`) that are Done are *completed analysis*, not deployable code. List them as completed work but call out that they have **no deploy artifact** — don't imply they ship. Analytics tickets still in `Ready for Testing` / `Testing` are the "few that aren't done" — name them explicitly.
 - **Large epic work mid-flight** (e.g. a Mayo Integration push spread across many tasks) usually has a done provisioning/setup story but the integration itself In Progress. Summarize the bucket counts (`X In Progress, Y Ready for Testing, Z To Do`) rather than listing every sub-task.
-- **Testing-automation PRs pending on Done items** don't gate the deploy — note them as a caveat (mirrors the Sprint 83 sign-off). Offer to pull individual tickets to confirm this if it matters; don't block on it.
+- **Testing-automation PRs pending on Done items** don't gate the deploy — note them as a caveat in the Slack draft only (mirrors the Sprint 83 sign-off). Offer to pull individual tickets to confirm this if it matters; don't block on it.
 
 ### 4. Output
 
-First, a short review for Ryan: a Done table (ticket → summary), a "not done — rolls forward" list, and any judgment calls flagged. Then the **Slack sign-off draft** in this exact format (it's a draft for Ryan to post — don't send it anywhere):
+First, a short review for Ryan: a Done table (ticket → summary), a "not done — rolls forward" list, and a **Caveats** section. Then the **Slack sign-off draft** in this exact format (a draft for Ryan's approval — post only when he says to):
+
+**Caveats** in the review holds only items where Ryan's answer would change the draft — e.g. whether analytics Done items landed as repo SQL (moves them into the ship list), or a not-done ticket on a live code path that might have partial work on `main`. Don't restate what the Done table already shows (which tickets are deployable code, which look like validation-only tasks). The Slack draft has no Caveats section — the testing-automation-PR note and no-deploy-artifact line stay inline in the optional sentence.
 
 ```
 *Sprint <N> — Prod Deploy Sign-off* :rocket:
@@ -66,5 +68,5 @@ Remaining items (<one-line description of the rolled-forward buckets>) roll to t
 
 ## Notes
 
-- This is read-only Jira review plus a draft message. Do not transition tickets, comment on Jira, or post to Slack — per Ryan's conventions, he posts sign-offs himself.
+- This is read-only Jira review plus a draft message. Do not transition tickets or comment on Jira. Post the draft to #product-dev (C04T6RVDQSV) only after Ryan explicitly approves it — never on the first pass.
 - Keep the prose terse and factual — no editorializing.

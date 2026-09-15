@@ -46,7 +46,7 @@ When drafting replies to PR feedback or any response Ryan will post, write in Ry
 
 ## Jira Ticket Management
 
-- I handle Jira ticket lifecycle manually (assignment, status transitions, epic updates) — do not auto-assign or auto-transition tickets mid-work. A GitHub–Jira integration may also move status on merge.
+- I handle Jira ticket lifecycle manually (status transitions, epic updates) — do not auto-transition tickets mid-work. Jira Automation moves To Do → In Progress when a PR opens and may move status on merge. **Assignment is the one automated field:** `workon` (via `worktree-create.sh`) assigns an unassigned ticket to me when it builds the worktree, and the workon skill assigns it if the script couldn't. Never reassign a ticket that already has someone else on it.
 - **Sanctioned auto-transitions (the exceptions to the manual rule):** two points in the workon ticket flow authorize you to post the mode-appropriate Jira comment *and* move the ticket to Done without asking each time. Both are canonical in `~/.claude/skills/workon/SKILL.md` ("Verification gate" and "Close-out"):
     - **VALIDATE deploy-ready close-out** — the moment manual validation reaches a deploy-ready verdict, post the validation comment and move the ticket to Done, *without* waiting for the automation/tests PR and *without* asking. The Done transition is the team's "deploy-ready" signal; automation follows under the normal flow. If validation instead surfaces a gap that needs a code fix, the deploy-ready verdict lands when that fix merges — run this same close-out at merge confirmation (post the comment + move to Done, no ask). Not deploy-ready → post nothing, skip the transition, surface the blockers.
     - **Verified close-out** — a passing backend test run (yours or mine) with no hard stop is standing authorization to run the full commit → push → draft PR → check status → Jira comment → Done sequence without pausing between steps. See Git/PR Workflow step 4 for the hard stops.
@@ -77,7 +77,7 @@ The branch prefix must match the Jira issue type of the ticket being worked:
 
 **This flow triggers any time Ryan authorizes code changes — including a "yes" answer to a proposed feature, fix, or test addition. Do not write any files before completing step 1.**
 
-1. **Identify the ticket** — If the OR ticket number is not explicit in the request, ask before doing anything else. Do not infer or guess. Once confirmed, check Jira for the epic/story for context. Do not auto-assign or transition status — Ryan manages ticket lifecycle.
+1. **Identify the ticket** — If the OR ticket number is not explicit in the request, ask before doing anything else. Do not infer or guess. Once confirmed, check Jira for the epic/story for context. Confirm it is assigned to Ryan (workon does this; assign it if still unassigned). Do not transition status — Ryan manages ticket lifecycle.
 2. **Confirm context** — Run `git branch --show-current`. The branch is already created by `workon` before this session started — do not run `git checkout -b` or switch branches. If the branch doesn't match the ticket, or its prefix doesn't match the ticket's Jira issue type (see Branch naming), surface it before touching anything. Run `git status` — if there are uncommitted changes from a prior task, surface them before writing any new files.
 3. **Implement** — Make changes. At the end of implementation, provide the exact commands Ryan needs to validate the work: a `cd` command to the relevant directory and the specific test command for any tests created or updated (e.g. `mvn test -Dtest=MyTest` or `npm run test:local -- --grep "ARD-001" --project=clinical-rules --no-deps`). For qa-suite, always provide the npm `:local` script variants (`test:local`, `core:local`, `full:local`, `smoke:local`) with any extra Playwright flags passed after `--` — never raw `TEST_ENV=local npx playwright ...` commands. If there are no automated tests for the change, provide explicit manual validation steps instead.
 4. **Verify** — run the tests yourself and report the actual output. For backend unit/integration tests that is the gate; proceed into step 5. Stop and wait for Ryan when a test had to be changed to pass, when production code was touched to get green, when the run surfaced something about the feature, or when the tests are qa-suite e2e against a shared environment. Always print the commands you ran so Ryan can re-run them.
@@ -189,6 +189,8 @@ is the reference; `~/.claude/jira-watch/README.md` has the detail.
 ## Claude Code Behavior
 
 Save important learnings and patterns discovered during sessions to memory for future conversations.
+
+Past session transcripts persist under `~/.claude/projects/*/*.jsonl` (retention set by `cleanupPeriodDays`, 360 days), including sessions from worktrees that have since been removed. When revisiting a ticket and memory is thin, grep those files for the ticket key and extract the user and assistant text before re-deriving anything. Memory stays the first stop; transcripts are the raw fallback.
 
 ### Agent Team Orchestration
 
