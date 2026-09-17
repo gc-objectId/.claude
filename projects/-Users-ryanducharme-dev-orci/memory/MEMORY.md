@@ -85,13 +85,14 @@
 - [OR-2780 wrong dose deep dive](project_or2780_wrong_dose_deep_dive.md) — LAST-protocol rules; flat 100 mg lidocaine bolus vs 1.5 mg/kg cap
 - [eGFR adjustment is Type-1-only](reference_egfr_adjustment_type1_only.md) — non-Type-1 patients silently abstain; see rule_not_fired_results.explanation
 - [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — GLUCOSE observation fires synchronously; details.EXPANDED_CALCULATION via API
-- [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — done 2026-09-14; #4534 CSV seed validated; tests PR #4560 open; unmatched reactions skip silently
+- [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED 2026-09-17: #4534 seed validated, tests #4560 merged, worktree gone; unmatched reactions still skip with no log (follow-up not filed); @DataJpaTest read-back needs flush+clear
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; "Started OrciApplication" fires before runners
 - [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD; custom.scss import order is root cause; children OR-2879/2880
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association; pathway drugs need ANTIBIOTIC tag
-- [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done 2026-09-10; tests PR #4551 open; PABX-019/020 + PMAP family
+- [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done 2026-09-10; tests PR #4551 merged 2026-09-17, worktree removed; PABX-019/020 + PMAP family
 - [Antibiotic guidance debug endpoint](reference_antibiotic_guidance_debug_endpoint.md) — admin antibiotic-candidates GET re-resolves; HL7 admin send is async after ACK
 - [OR-2791 NSAID group + crosswalk defect](project_or2791_nsaid_group_crosswalk_defect.md) — done 2026-09-14; crosswalk ingredient leak filed as OR-2925; flag off everywhere; **proposed ALG tests still unwritten, write them with OR-2925**
 - [OR-2924 MFHIR-012 hives drift](project_or2924_mfhir012_hives_drift.md) — DONE 2026-09-14 (PR #4561 merged, no pre-merge dev run); verify first post-deploy run; severity deliberately unasserted
 - [Triage: check closed PRs](feedback_triage_check_closed_prs.md) — "in flight?" means `--state all` (#4506 hid a fix); fresh worktrees lack the dev env file
+- [Java 25 local JDK](reference_java25_local_jdk.md) — main needs JDK 25 since OR-2926; java_home only has Corretto 21; use JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home; corretto@25 cask needs sudo (Ryan runs it)

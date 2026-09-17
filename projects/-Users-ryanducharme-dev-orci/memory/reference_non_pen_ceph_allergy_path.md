@@ -25,8 +25,11 @@ by category (how SULFONAMIDE works), or by allergen.
 
 Separate trap: every "was prophylaxis given" rule (`StartProcedureMissingAntibioticRule`, redose,
 wrong-antibiotic) keys on `hasMedicationCategory(ANTIBIOTIC)`. A pathway drug without that tag is
-recommended and then never counted as given. Sulfa, linezolid, micafungin and lidocaine-ceftriaxone
-all had this gap until OR-2846; `BundledAntibioticPathwayTest` now fails the build on any recurrence.
+recommended and then never counted as given. As of 2026-09-17 sulfa, linezolid and micafungin still
+lack it on main in every tenant (lidocaine-ceftriaxone got it in mgb/mayo via Alex's #4557, not demo).
+Config edits go through Alex's spreadsheet export, not feature PRs (Theo on #4530), and the CSVs are
+moving to a top-level `data/` S3 bundle with a CI validation step (Jordan's #4550) — a "pathway drug
+must carry ANTIBIOTIC" check belongs in that validation, not in a test under orci/src/test.
 
 **How to apply:** when a non-pen/ceph allergy "didn't invalidate the pathway", check the tenant's
 flag and whether the incoming RxNorm code is in that tenant's rxnorm list before suspecting the walk.

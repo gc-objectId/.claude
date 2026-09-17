@@ -858,3 +858,6 @@ Transitioned OR-2845 to Done
 2026-09-14 11:43:32  [OR-2791] WARNING a remote branch referencing OR-2791 exists — the session was told not to push
 2026-09-14 11:43:32  [OR-2791] captured 11146 lines of application log
 REFUSED OR-2791: verdict is 'not-deploy-ready'
+2026-09-17 09:50:48  [OR-2921] OR-2921 status is 'Testing'
+2026-09-17 09:50:49  [OR-2921] Building image from origin/main
+2026-09-17 09:50:55  [OR-2921] ERROR image build failed

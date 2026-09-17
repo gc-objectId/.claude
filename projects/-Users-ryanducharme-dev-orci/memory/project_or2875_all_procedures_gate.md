@@ -13,7 +13,7 @@ mapped to nothing (`SUPPRESSED_UNMAPPED_PROCEDURE`, read from new jsonb `operati
 tenant changeset 224) or any mapped procedure has no applicable pathway (`SUPPRESSED_UNCONFIGURED_PROCEDURE`).
 `None` counts as an answer; `NOT_CONFIGURED` was renamed `NO_PROCEDURE_PROVIDED` (no analytics/TS consumers).
 
-State on 2026-09-10: PR #4521 MERGED; ticket DONE (validation comment + follow-up posted). Tests PR #4551 (draft) open; run `worktree-done` here after it merges. Validated locally
+State on 2026-09-10: PR #4521 MERGED; ticket DONE (validation comment + follow-up posted). Tests PR #4551 merged 2026-09-17; worktree torn down. Nothing open. Validated locally
 against a build of that branch on 8081 (Mayo SIU path + demo admin path, all scenarios per spec). Tests written on
 `feature/OR-2875-antibiotics-recommendations-all-procedures` (worktree), which has `origin/OR-2875` merged in
 then origin/main merged back in once #4521 landed, so the PR diff is qa-suite only.

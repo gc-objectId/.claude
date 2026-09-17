@@ -1,6 +1,6 @@
 ---
 name: project-or2862-allergy-reaction-paren-drift
-description: "OR-2862 — DONE 2026-09-14 (Theo's verbatim CSV seed #4534 validated deploy-ready); our resolver PR #4506 closed; tests PR #4560 draft open, worktree-done after it merges; unmatched reactions still skip silently"
+description: "OR-2862 — CLOSED 2026-09-17: Theo's verbatim CSV seed #4534 validated deploy-ready, tests PR #4560 merged, worktree gone; unmatched reactions still skip silently, follow-up not filed"
 metadata: 
   node_type: memory
   type: project
@@ -11,9 +11,9 @@ metadata:
 OR-2862 (Bug). Theo's PR #4534 seeded the 33 reaction strings Mayo prod actually sends
 (mostly legacy `(RESELECT REACTION)` forms) plus two severity reclassifications
 (HEPARIN-INDUCED THROMBOCYTOPENIA → TYPE_I, UNKNOWN → TYPE_I). Validated deploy-ready and
-moved to Done on 2026-09-14. Tests PR #4560 (draft, `AllergyReactionImporterTest` additions)
-is open on worktree `~/dev/worktrees/OR-2862-mayo-allergy-mappings` — run `worktree-done`
-there after it merges.
+moved to Done on 2026-09-14. Tests PR #4560 (`AllergyReactionImporterTest` additions) merged
+2026-09-15; worktree and branch removed 2026-09-17. ClaudeBot review lesson: a same-transaction
+`@DataJpaTest` read-back returns the identity-map instance — flush + `entityManager.clear()` first.
 
 Our earlier PR #4506 (`AllergyReactionResolver`, strip trailing parenthetical and retry) was
 closed unmerged 2026-09-10: the motivating string `HIVES (RAISED, ITCHY, SKIN WELTS)` exists
