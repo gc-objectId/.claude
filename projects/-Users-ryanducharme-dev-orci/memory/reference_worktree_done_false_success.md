@@ -35,3 +35,9 @@ EXIT: 0
 That 0 is the last successful command, not an assertion. Any `command not found: _*` line means you are in an old snapshot: re-run via `zsh -ic '...'`, or call the script directly (`~/.claude/bin/worktree-teardown.sh "$PWD"`), which is snapshot-proof. Same shape in the old `workon`: a missing `_jira_branch_prefix` silently fell back to `feature/`, wrong for a Bug or Epic.
 
 Related: [[project_jira_watch_autovalidate]] — the same scripts are what let the validation runner create and tear down worktrees without going through zsh.
+
+**Rebase-merge blind spot (seen 2026-09-17, OR-2846 / PR #4530):** when the PR is merged after a
+GitHub-side rebase, main carries the same commits under new SHAs plus a two-parent merge commit.
+`worktree-done` removes the worktree but reports the branch "NOT merged" and leaves it, because its
+check looks for the original SHAs or a squash. Verify with
+`git diff --stat origin/main <branch-tip> -- <changed paths>` (empty = landed) and then `git branch -D`.

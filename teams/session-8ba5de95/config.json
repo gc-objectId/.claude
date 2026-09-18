@@ -1,0 +1,18 @@
+{
+  "name": "session-8ba5de95",
+  "createdAt": 1789653928618,
+  "leadAgentId": "team-lead@session-8ba5de95",
+  "leadSessionId": "8ba5de95-7bee-4d9a-b597-03c492d34daf",
+  "members": [
+    {
+      "agentId": "team-lead@session-8ba5de95",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1789653928618,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2868-design-foundation",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

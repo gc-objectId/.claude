@@ -44,7 +44,12 @@ mkdir -p "$RESULTS" "${LOOP_HOME}/log"
 
 # Parallel sweeps interleave the log, so every line carries its ticket.
 log() { printf '%s  [%s] %s\n' "$(date '+%Y-%m-%d %H:%M:%S')" "${ticket:-?}" "$*" | tee -a "$LOG" >&2; }
-die() { log "ERROR $*"; exit 1; }
+# Records before exiting once there is a run directory: a death nobody records reads as still running.
+die() {
+    log "ERROR $*"
+    [ -n "${run_dir:-}" ] && [ -d "${run_dir:-}" ] && record aborted "$*"
+    exit 1
+}
 
 [ $# -ge 1 ] || { log "Usage: runner.sh <ticket> [--keep] [--commit]"; exit 1; }
 
@@ -266,6 +271,14 @@ prompt=$(sed \
     -e "s|__CONTEXT_FILE__|${context_file}|g" \
     "$PROMPT_TEMPLATE")
 
+# Branches for the ticket usually already exist — dev's. Only ones appearing during the session mean
+# the session pushed, so compare against a snapshot rather than testing existence.
+ticket_refs() {
+    git -C "$ORCI_ROOT_CHECK" for-each-ref --format='%(refname:short)' 'refs/remotes/origin/**' 2>/dev/null |
+        grep -E "$ticket" | sort || true
+}
+_refs_before=$(ticket_refs)
+
 log "Starting unattended session on ${LOOP_MODEL} (log: ${run_dir}/session.log)"
 # Denied at the process level so the gate, not the model, owns the write.
 ( cd "$worktree" && exec claude -p "$prompt" \
@@ -308,10 +321,11 @@ if [ "$_dirty" != '0' ]; then
     log "WARNING ${ORCI_ROOT_CHECK} has ${_dirty} uncommitted change(s) after the session — investigate"
     "${CLAUDE_BIN}/notify.sh" "$(printf '%s: the primary checkout is dirty after the session (%s file(s)). The session should never write there.' "$ticket" "$_dirty")" >/dev/null 2>&1 || true
 fi
-_pushed=$(git -C "$ORCI_ROOT_CHECK" for-each-ref --format='%(refname:short)' 'refs/remotes/origin/**' 2>/dev/null | grep -cE "${ticket}" || true)
-if [ "$_pushed" != '0' ]; then
-    log "WARNING a remote branch referencing ${ticket} exists — the session was told not to push"
-    "${CLAUDE_BIN}/notify.sh" "$(printf '%s: a remote branch for this ticket exists. Validation sessions must not push.' "$ticket")" >/dev/null 2>&1 || true
+_new_refs=$(ticket_refs | grep -vxF "$_refs_before" || true)
+if [ -n "$_new_refs" ]; then
+    log "WARNING remote branch(es) appeared during the session: $(printf '%s' "$_new_refs" | tr '\n' ' ')"
+    "${CLAUDE_BIN}/notify.sh" "$(printf '%s: the session pushed %s. Validation sessions must not push.' \
+        "$ticket" "$(printf '%s' "$_new_refs" | tr '\n' ' ')")" >/dev/null 2>&1 || true
 fi
 
 # Before teardown: container logs die with the container, and the gate needs this.

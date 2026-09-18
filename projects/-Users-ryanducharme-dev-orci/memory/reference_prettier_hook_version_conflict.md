@@ -25,3 +25,5 @@ git show <sha> -- path/file.md | grep -E "^[+-]" | grep -v "^+++\|^---" | grep -
 Empty output means only table rows moved.
 
 Related: [[or2641-mayo-intraop-observations]]
+
+Second trap, same hook: **editing a line can silently reformat a whole file.** Adding one tag to a `test.describe(...)` pushed it past 80 columns, so prettier expanded the call and re-indented all 580 lines of the callback body — a one-line semantic change arriving as a 1140-line diff, and a guaranteed merge conflict against anyone else's edit. `git diff -w` confirms it is whitespace-only, but reviewers still pay for it. The fix is to shorten the line rather than accept the reformat: extract the value to a named constant (`EPIC_SPEC_TAGS` in `qa-suite/fixtures/mayo-harness.ts` was the real case) so the call stays on one line. Check the column count before editing a line that is already near 80.

@@ -1,0 +1,18 @@
+{
+  "name": "session-f08e354e",
+  "createdAt": 1789657340783,
+  "leadAgentId": "team-lead@session-f08e354e",
+  "leadSessionId": "f08e354e-517e-4db4-8273-e166eefa7cf4",
+  "members": [
+    {
+      "agentId": "team-lead@session-f08e354e",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1789657340783,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2929-update-local-dev-postgres-16",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

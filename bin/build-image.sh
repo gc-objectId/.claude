@@ -60,6 +60,17 @@ else
     fi
 
     say "Building ${image} from ${sha}"
+    # The repo's required JDK moves; the shell's JAVA_HOME does not. Resolve it from the pom so a
+    # version bump does not fail the build with 'invalid target release'.
+    want=$(sed -n 's:.*<java.version>\([0-9][0-9]*\)</java.version>.*:\1:p' "${BUILD_TREE}/pom.xml" | head -1)
+    if [ -n "$want" ] && command -v /usr/libexec/java_home >/dev/null 2>&1; then
+        if found=$(/usr/libexec/java_home -v "$want" 2>/dev/null); then
+            JAVA_HOME="$found" export JAVA_HOME
+            say "using JDK ${want} at ${JAVA_HOME}"
+        else
+            die "the build tree needs JDK ${want} and no such JDK is installed."
+        fi
+    fi
     # jib:dockerBuild, never jib:build — the latter would push to a registry.
     # package-webapp is what CI and releases use; without it the image ships no frontend and every
     # UI deliverable is silently unreachable.

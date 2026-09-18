@@ -1,11 +1,11 @@
 ---
 name: feedback_green_light_closeout
-description: "Passing verification — yours or Ryan's — is standing authorization for the full close-out: commit → push → draft PR → check ticket status → Jira comment (mode-dependent) → move to Done"
+description: "Passing verification — yours or Ryan's — is standing authorization for commit → push → draft PR → check ticket status → Jira comment; Done only for VALIDATE deploy-ready, IMPLEMENT waits for merge + all acceptance criteria"
 metadata:
   node_type: memory
   type: feedback
   originSessionId: a4918fe8-dea8-4069-bceb-91043601c649
-  modified: 2026-08-07T20:28:36.632Z
+  modified: 2026-09-17T15:15:25.183Z
 ---
 
 A passing test run is standing authorization to run the **entire** close-out sequence without pausing between steps. As of 2026-08-07 the run is normally **yours** — you execute the tests, report the real output, and continue; Ryan replying "all green" works the same way but is no longer required. Four hard stops still send it back to him: a test had to change to pass, production code was touched to get green, the run surfaced something about the feature, or the tests are qa-suite e2e against a shared environment. The sequence:
@@ -17,7 +17,9 @@ A passing test run is standing authorization to run the **entire** close-out seq
 5. post a Jira comment in Claude's voice, mode-dependent, always linking the PR by full URL:
    - **VALIDATE** (ticket was Ready for Testing/Testing): the validation comment — only if manual validation is complete and passed
    - **IMPLEMENT** (ticket was To Do/In Progress): a comment explaining the fix — root cause, what changed, test coverage
-6. transition the ticket to **Done** — gated on step 5 being warranted; if validation failed, work remains, or blockers surfaced, skip both and explain why
+6. transition the ticket to **Done** — **VALIDATE only**, gated on a passing validation. **IMPLEMENT never moves to Done here**: the sequence ends at the comment and the ticket stays In Progress. Done comes at Ryan's merge confirmation, and only once every acceptance criterion is met — non-code ones (team announcement, config elsewhere) included. If validation failed or blockers surfaced, skip both and explain why.
+
+**Correction 2026-09-17 (OR-2929):** the model moved an IMPLEMENT ticket to Done on a draft PR with an unmet "announce to the team" acceptance criterion. Ryan: "why'd the ticket get moved to done? That doesn't make sense." A draft PR is not landed work; Done-before-merge is a VALIDATE-only signal.
 
 **VALIDATE mode has an earlier trigger — the deploy-ready close-out.** As of the 2026-07-23 skill revision, the moment the manual-validation verdict is deploy-ready, post the validation comment AND move the ticket to Done *without waiting for the automation/tests work* — the Done transition is the team's "deploy-ready" signal, and a tests PR usually follows. The comment links the merged implementation PR by full URL. If not deploy-ready: post nothing, skip the transition, surface blockers. When green light then arrives for the tests, the validation comment + Done already happened, so step 5 becomes a short follow-up linking the tests PR + coverage and step 6 is skipped. (If the deploy-ready close-out never fired, post the full validation comment at green light instead.)
 

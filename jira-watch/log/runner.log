@@ -861,3 +861,23 @@ REFUSED OR-2791: verdict is 'not-deploy-ready'
 2026-09-17 09:50:48  [OR-2921] OR-2921 status is 'Testing'
 2026-09-17 09:50:49  [OR-2921] Building image from origin/main
 2026-09-17 09:50:55  [OR-2921] ERROR image build failed
+2026-09-17 11:03:09  [OR-2921] OR-2921 status is 'Testing'
+2026-09-17 11:03:10  [OR-2921] Building image from origin/main
+2026-09-17 11:03:53  [OR-2921] image=guidedclinical/orci:loop-adad5c13d sha=adad5c13d3099c832e3e7be4b370c8183a235acc
+2026-09-17 11:03:56  [OR-2921] OR-2921 assigned to the configured account
+2026-09-17 11:03:57  [OR-2921] baseline: status='Testing' comments=5
+2026-09-17 11:03:57  [OR-2921] slug=a-preop-doxycycline-check
+2026-09-17 11:03:59  [OR-2921] worktree=/Users/ryanducharme/dev/worktrees/OR-2921-a-preop-doxycycline-check
+2026-09-17 11:05:12  [OR-2921] app under test at http://localhost:50698
+2026-09-17 11:05:13  [OR-2921] wrote ticket context (75 lines)
+2026-09-17 11:05:13  [OR-2921] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2921/session.log)
+2026-09-17 11:09:58  [OR-2921]   … OR-2921 still running (300s elapsed, 25 app requests, app up)
+2026-09-17 11:14:13  [OR-2921] session finished after ~540s
+2026-09-17 11:14:13  [OR-2921] WARNING a remote branch referencing OR-2921 exists — the session was told not to push
+2026-09-17 11:14:13  [OR-2921] captured 9649 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2921 against adad5c13d3099c832e3e7be4b370c8183a235acc (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2921
+Transitioned OR-2921 to Done
+2026-09-17 11:14:18  [OR-2921] close-parent: OR-2921 is already Done

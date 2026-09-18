@@ -1,0 +1,18 @@
+{
+  "name": "session-9af0ee67",
+  "createdAt": 1789653955021,
+  "leadAgentId": "team-lead@session-9af0ee67",
+  "leadSessionId": "9af0ee67-d1d0-4fe0-9b3a-d77c4ca07106",
+  "members": [
+    {
+      "agentId": "team-lead@session-9af0ee67",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1789653955021,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2863-design-poc",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

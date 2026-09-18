@@ -110,7 +110,9 @@ For a chain, steps 1–3 run **once** for the branch, then steps 4–6 run **onc
 5. **Post a Jira comment**, mode-dependent, in Claude's voice. Always link the PR by full URL (markdown link, e.g. `[PR #4188](https://github.com/...)`) — the comment is drafted before the PR exists, so insert the link at post time:
    - **VALIDATE mode** — the validation comment and Done transition usually already happened at the deploy-ready verdict (VALIDATE step 3); in that case post only a short follow-up linking the tests PR and the coverage it adds (test IDs/tiers), and skip step 6. If the deploy-ready close-out hasn't happened yet, post the full validation comment now — only if manual validation is complete **and passed**.
    - **IMPLEMENT mode** — a comment explaining the fix/implementation: root cause (for bugs), what changed and why, and what test coverage locks it in. Same ~10-line discipline.
-6. **Transition the ticket to Done** (skip if already Done from the deploy-ready close-out) — gated on the comment above being warranted: VALIDATE requires a passing validation; IMPLEMENT requires the work to be complete on the PR. If validation failed, work remains, or the situation is ambiguous (e.g. blockers found, scope grew), post nothing beyond findings, skip the transition, and surface why.
+6. **Transition the ticket to Done — VALIDATE mode only** (skip if already Done from the deploy-ready close-out), gated on a passing validation. If validation failed or the situation is ambiguous (e.g. blockers found, scope grew), post nothing beyond findings, skip the transition, and surface why.
+
+   **IMPLEMENT mode never moves to Done here.** A draft PR is not landed work; the sequence ends at the comment and the ticket stays In Progress (where Jira automation put it when the PR opened). Done comes at merge confirmation (see "After merge"), and only once every acceptance criterion on the ticket is met — including non-code ones such as a team announcement or a config change elsewhere. If an acceptance criterion is Ryan's to do, name it in the wrap-up so he knows what still gates the ticket.
 
 If any step fails (push rejected, transition unavailable), stop the sequence and surface it — don't skip ahead.
 
@@ -120,4 +122,9 @@ Address feedback together: draft reply text for Ryan to post — in Ryan's voice
 
 ## After merge (either mode)
 
-When Ryan confirms the merge: run `worktree-done` from inside the worktree. It removes the worktree, deletes the branch (including the squash-merge case, which it detects against `origin/main`), and verifies its own result — exit 0 means both are gone, so no re-checking is needed. A non-zero exit means the branch was genuinely unmerged and was left in place; surface that rather than forcing it. If the ticket wasn't already moved to Done at the deploy-ready close-out or verified close-out — e.g. the close-out was deferred while a validation-surfaced fix merged — the deploy-ready verdict lands now: post the validation comment and move it to Done, no ask — checking each ticket in a chain, since they can be left in different states. Only ask if a ticket's completeness is genuinely ambiguous.
+When Ryan confirms the merge: run `worktree-done` from inside the worktree. It removes the worktree, deletes the branch (including the squash-merge case, which it detects against `origin/main`), and verifies its own result — exit 0 means both are gone, so no re-checking is needed. A non-zero exit means the branch was genuinely unmerged and was left in place; surface that rather than forcing it. Then close out Jira per mode, checking each ticket in a chain since they can be left in different states:
+
+- **IMPLEMENT** — this is where Done happens. Re-read the ticket's acceptance criteria against what merged. All met (code and non-code alike) → move to Done, no ask. Any unmet — an announcement not yet posted, a follow-up step still owed — → leave the status alone and name the gap; Ryan decides.
+- **VALIDATE** — if the ticket wasn't already moved to Done at the deploy-ready close-out — e.g. it was deferred while a validation-surfaced fix merged — the deploy-ready verdict lands now: post the validation comment and move it to Done, no ask.
+
+Only ask if a ticket's completeness is genuinely ambiguous.

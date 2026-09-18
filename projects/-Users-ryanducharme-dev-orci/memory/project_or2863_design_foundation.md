@@ -1,69 +1,71 @@
 ---
 name: project-or2863-design-foundation
-description: "OR-2863 design foundation epic — spec-driven + test-driven method, sequence, and the Bootstrap import-order defect underneath it"
-metadata: 
+description: "OR-2863 design foundation epic — phase 1 (OR-2868 visual baseline → OR-2864 import order → OR-2869 tokens + lint) implemented 2026-09-17 on PR #4573; method, gotchas, and what phase 2 inherits"
+metadata:
   node_type: memory
   type: project
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-09-03T14:54:54.034Z
+  modified: 2026-09-17T15:49:34.701Z
 ---
 
 OR-2863 (Epic, app-wide incl. clinical) centralizes GuidedOR's visual language. Children:
 OR-2868 visual regression baseline (Task) → OR-2864 Bootstrap import order (Bug) → OR-2869
-design record (Story) → adoption → Storybook → Bootstrap 5.3 color modes. OR-2404 (was an
-Epic, now a Story: admin IA only) and OR-2405 reparented under it; OR-2404's visual-refresh
-phase and its Bootstrap-vs-Tailwind decision moved up to the epic to be settled once app-wide.
-Added 2026-09-03: OR-2879 App Home landing surface (depends on 2404/2405 shell+IA; QA-runs and
-analytics panels are follow-on, not in scope) and OR-2880 rules handbook (standalone, can land
-before 2404; full catalog not tenant-filtered, admin-only). OR-2405's gap analysis now asks the
-front-door question explicitly.
+design record (Story) → adoption → Storybook → Bootstrap 5.3 color modes. OR-2404 (Story: admin
+IA only) and OR-2405 reparented under it. OR-2879 App Home landing surface, OR-2880 rules handbook.
 
-**Rules handbook grounding (OR-2880):** `GET /api/admin/rule/definitions` returns only 5 fields
-(id/description/type/trigger/configBehavior). The 13-column xlsx from `RuleDefinitionExporter`
-(prompt title/description, accept/reject text, reject reasons, citations, warning text, guidance
-category) comes from `rule.createPrompt(emptyMap)` + `CitationService` and is exposed nowhere —
-so a richer read endpoint is required, not just a page. `pages/Home.tsx` at `/` is a 27-line
-stub (welcome + QuickPatientLauncher).
+**Phase 1 status (2026-09-17):** all three implemented as one chain on branch
+`feature/OR-2868-design-foundation`, draft [PR #4573](https://github.com/guidedclinical/orci/pull/4573),
+commit order 2868 suite → 2868 CI-rendered baselines → 2864 → 2869. Tickets stay In Progress until
+merge (IMPLEMENT-mode rule). Ryan's decisions: viewports 1920×1080 + 1280×800; prose doc in
+`spec/design/` (not docs/); `full` and `gate` exclude `@visual`.
 
-**The root defect:** `webapp/src/custom.scss:2` imports Bootstrap *before* the `$guided-*`
-brand vars (lines 8-15) and the `$theme-colors` merge (line 26), so the merge is dead code —
-branded utilities are never generated, which is why lines 122-149 hand-write `button-variant`
-and `.bg-guided-*`. `$primary` is unoverridable, so Bootstrap blue `#0d6efd` is retyped 6x.
-Correct order sits commented out at lines 4-42. Symptoms: 121 hex literals, 210 inline
-`style={{}}` in 73 files, only `guided-maroon`/`guided-tooltip` reachable from TSX.
-Storybook loads stock `bootstrap.min.css`, never `custom.scss`, so stories render unbranded.
+**Root defect (fixed by 2864):** `custom.scss` imported Bootstrap before the `$guided-*` vars, so the
+`$theme-colors` merge was dead. Reorder = functions → tokens/overrides → variables → merge → maps →
+mixins → utilities → root → components → utilities/api (mirror `bootstrap.scss`, keep the `bsBanner`
+so the compiled diff is additive). Proven: compiled CSS diff 4 lines removed (manual
+`.bg-guided-secondary`), 258 added. Structural gate command:
+`npx sass --no-source-map --style=expanded --load-path=node_modules src/custom.scss` on both versions
+and `diff`.
 
-**Method — spec-driven to define, test-driven to write.** The record is *executable* (token
-layer + Storybook), not prose, so unlike a backend `spec/` file it cannot drift from the code;
-what drifts is a component bypassing it, caught by a no-hex-literal lint. Prose is limited to
-token semantics, OR-lighting legibility, contrast floors, and rationale — a paragraph
-describing a button is worse than the button.
+**Token layer (2869):** `webapp/src/styles/_tokens.scss` — palette (only place hex may live),
+semantic `$guided-color-*` (primary…dark = Bootstrap defaults; surface/border/text; `action`/
+`action-secondary` = cyan/cream buttons; `accent` = maroon; `heading` = navy), type/spacing/elevation
+at Bootstrap 5.2.3 defaults, `$guided-css-tokens` map emitted as `--guided-*` on `:root`. Neutral by
+construction: diff vs 2864 compile = 0 removed, 35 added. `$primary` is still Bootstrap blue while
+`.btn-primary` is hand-overridden to cyan — the phase-2 declared-delta decision. Guard:
+`npm run check:color-literals` (webapp) + `scripts/color-literal-baseline.json` (113 literals / 24
+files; fails on growth AND on stale baseline; `--update` regenerates), runs in `typescript.yml`.
+Design record `spec/design/tokens.md` (`reviewed: false`); `spec_lint.py` gained a `design` kind +
+`docs/templates/spec-design.md` — any new `spec/` subdir is linted as a rule spec unless `kind_of`
+knows it.
 
-Two gates, different jobs: the lint is structural (does it go through tokens at all), visual
-regression is behavioral (does it render what we meant). Every ticket declares its expected
-visual delta up front — "none" or "exactly these screens"; an undeclared diff is a finding,
-never a rebaseline. TDD polarity inverts for neutral refactors: capture a *passing* baseline
-first rather than a failing test. Pairs with [[feedback-validation-protocol]] — a green
-snapshot proves nothing until flip-and-revert has driven it red.
+**Visual suite (2868) — how it actually works:** `qa-suite/visual/visual-regression.spec.ts`,
+project `visual` (deps smoke-launch, `retries: 0`, `snapshotPathTemplate` `{arg}-{platform}`),
+VIS-001–010, 22 linux PNGs committed; `*-darwin.png` gitignored. pr-gate: `changes` job has a
+`webapp` filter (`orci/src/main/webapp/**`, `qa-suite/visual/**`); step "Run visual regression"
+runs `npm run visual -- --no-deps` after `npm run gate`, uploads `pr-gate-visual-snapshots`;
+`workflow_dispatch` input `update_visual_snapshots` passes `--update-snapshots`. Rebaseline =
+dispatch → download artifact → commit. First CI run with no baselines fails but uploads the actuals
+(Playwright default `updateSnapshots: missing`, non-retriable). Gate concurrency cancels in-progress
+runs on push — space pushes out or lose the run.
 
-**OR-2864 is neutral by construction (proved 2026-09-03 on the epic POC branch):** compiled
-current vs reordered `custom.scss` (Bootstrap 5.2.3) and diffed — 0 existing rules changed,
-258 lines added (guided-{primary,secondary,grey} custom props + generated utilities). One
-collision: generated `.bg-guided-secondary` (`!important`) beats the hand-written one at
-line 131, same color → delete the manual rule. `$primary`/`$secondary` and the hand-written
-`.btn.btn-primary`/`.btn-secondary` overrides must stay in 2864 — overriding `$primary` recolors
-every `.text-primary`/focus ring/nav-pill and is a phase-2 declared delta. The compiled-CSS
-diff is the cheap structural gate that runs before snapshots. Ticket description updated.
-Epic branch `epic/OR-2863-design-poc` is parked with no commits; phase 1 (2868→2864→2869) runs
-as normal ticket branches, epic branch is for phase 2 look-and-feel play. Reordered variant
-recipe: `functions` → `$guided-*` → `variables` → merge → `maps`… → `utilities/api`.
+Determinism lessons (each cost a run): default procedure `p-gastro-uncomplicated` fires the
+no-antibiotic alert that intercepts the dosing form — use `p-gastroduodenal`; unsaved tabs restore
+into the next launch on the same case ("Restore Meds") — one case per session; multi-alert view
+renders only the active card, so wait on `.list-group-item` count not the second `[data-rule-id]`;
+after `save()` the app leaves the home tab — call `navigateToHomeTab` again; a mask box tracks the
+element, so variable-width text (footer clock, `.timeAgo`, alert "ago") leaks a 1-px column — hide it
+via `page.addStyleTag` instead; auto-layout table columns shift with random PMRN widths — mask the
+whole `table`; the feature-flags admin page has no footer. Flip check: `$guided-primary`/
+`$guided-brand-cyan` → `#ff0000` goes red on exactly VIS-003/004/006/008/009 (the screens with a
+`.btn-primary`). Local loop: worktree app on 8081 via `./mvnw -pl orci spring-boot:run` (needs
+JAVA_HOME=brew openjdk 25, `-Duser.timezone=UTC`, `-Dtenants.demo.qa.enabled=true`; `-o` breaks on
+the audio plugin), then `./mvnw -q -pl orci process-resources -P package-webapp` + devtools restart
+(~25 s) to swap the bundle.
 
-**Gotcha for OR-2868:** Playwright suffixes snapshots per platform, so darwin-generated
-baselines fail on the ubuntu runner. Generate in CI only. `VIS` prefix is free; qa-suite has
-no visual project yet and zero `toHaveScreenshot` assertions (Playwright 1.52 supports it).
-Wire into `pr-gate.yml` for `webapp/**` rather than the core tier.
+**Findings for later tickets:** `FavoritesMedsSidebar` component is unreferenced dead code (16 hex
+literals); feature-flags page labels `enableDate: 0` flags "disabled: missing publish date" though
+enabled at runtime; Storybook `preview.ts` loads stock `bootstrap.min.css` and then `App.scss` →
+Bootstrap compiled twice (drop the stock import in the Storybook ticket).
 
-Open with Theodore: does the design record's prose doc live in `spec/`? The process doc puts
-UI design out of scope, but tokens are *configuration* in exactly its §2 sense, with a spec
-above them saying what the values mean — no new concepts needed. See
-[[project-how-we-build-doc-review]].
+See [[feedback-validation-protocol]], [[project-how-we-build-doc-review]].

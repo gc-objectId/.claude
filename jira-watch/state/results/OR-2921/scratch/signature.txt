@@ -1,0 +1,1 @@
+01a0afea-7027-7465-bdf1-363b39a28d69 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-preop-doxycycline-check -> true null

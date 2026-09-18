@@ -116,5 +116,8 @@ printf '%s\n' "$candidates" | awk 'NF && !seen[$1]++' | while IFS="$(printf '\t'
 
     printf '%s\n' "$key"
     emitted=$((emitted + 1))
-    [ "$limit" -gt 0 ] && [ "$emitted" -ge "$limit" ] && break
+    # An `if` so a false test does not leave the loop — and so the pipeline it ends — non-zero.
+    if [ "$limit" -gt 0 ] && [ "$emitted" -ge "$limit" ]; then
+        break
+    fi
 done

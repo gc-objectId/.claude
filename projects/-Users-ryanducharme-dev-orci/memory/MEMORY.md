@@ -17,7 +17,7 @@
 - [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml diff before staging
 - [PR test plans](feedback_pr_test_plans.md) — PR test plan only for pre-merge steps; post-deploy steps go in Jira
 - [Confirm before push/PR](feedback_confirm_before_push.md) — push/PR on passing verification or explicit instruction; four hard stops still ask
-- [Verified close-out](feedback_green_light_closeout.md) — own passing run → commit → push → draft PR → Jira comment → Done (workon skill is canonical)
+- [Verified close-out](feedback_green_light_closeout.md) — own passing run → commit → push → draft PR → Jira comment; Done only for VALIDATE deploy-ready, IMPLEMENT waits for merge + every acceptance criterion met
 - [Security review habit](feedback_security_review.md) — /security-review before PRs touching auth/file I/O/input validation; verify guards fire at the right moment
 - [qa-suite branch SOP](feedback_qa_suite_branch_sop.md) — qa-suite lives in orci; run tests from inside the worktree
 - [Draft PRs](feedback_draft_prs.md) — always `gh pr create --draft`
@@ -39,9 +39,9 @@
 - [Stale local main (git)](reference_stale_local_main_git.md) — compare against origin/main before claiming merged/unmerged
 - [Stale local app build](reference_stale_local_app_build.md) — check `ps -o lstart=` vs commit date; Bash cwd persistence voids pathspecs
 - [Prettier hook version conflict](reference_prettier_hook_version_conflict.md) — pre-commit pins older prettier; only `--write` files you authored
-- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 done (in-CI gate); per-PR AWS env dead; OR-2508 upload-key open
+- [Pre-merge CI gate](project_premerge_ci_gate.md) — OR-2647 + OR-2789 done; gate runs the PR's own image on ephemeral compose, 112→116 tests, 20-min cap, PG16/Java25; @external still needed; exposed INS-004 flake (OR-2870)
 - [Dev deploy flakiness](project_dev_deploy_flakiness.md) — CI deploy "failures" converge on their own; blank pages = mixed-version rollout
-- [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code; `command not found: _*` means verify never ran
+- [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code; squash merges auto-detected, but a GitHub rebase-merge (new SHAs + merge commit) reads as unmerged: confirm with `git diff origin/main <tip>` then `branch -D`; `command not found: _*` means verify never ran
 - [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes the env file directly; a `>` redirect truncates it to empty
 - [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — closed 2026-07-20; dev RDS still needs VPN
 - [OR-2616 dev SMTP not rotated](project_or2616_dev_smtp_not_rotated.md) — relocation done, rotation skipped; old task defs leak the password
@@ -87,7 +87,7 @@
 - [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — GLUCOSE observation fires synchronously; details.EXPANDED_CALCULATION via API
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED 2026-09-17: #4534 seed validated, tests #4560 merged, worktree gone; unmatched reactions still skip with no log (follow-up not filed); @DataJpaTest read-back needs flush+clear
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; "Started OrciApplication" fires before runners
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — spec-driven + TDD; custom.scss import order is root cause; children OR-2879/2880
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — phase 1 (2868 visual baseline → 2864 import order → 2869 tokens+guard) on PR #4573, 2026-09-17; determinism lessons, local 8081 loop, findings for phase 2
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association; pathway drugs need ANTIBIOTIC tag
 - [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done 2026-09-10; tests PR #4551 merged 2026-09-17, worktree removed; PABX-019/020 + PMAP family
@@ -96,3 +96,4 @@
 - [OR-2924 MFHIR-012 hives drift](project_or2924_mfhir012_hives_drift.md) — DONE 2026-09-14 (PR #4561 merged, no pre-merge dev run); verify first post-deploy run; severity deliberately unasserted
 - [Triage: check closed PRs](feedback_triage_check_closed_prs.md) — "in flight?" means `--state all` (#4506 hid a fix); fresh worktrees lack the dev env file
 - [Java 25 local JDK](reference_java25_local_jdk.md) — main needs JDK 25 since OR-2926; java_home only has Corretto 21; use JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home; corretto@25 cask needs sudo (Ryan runs it)
+- [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB self-hosted 16; repo pins 16-alpine everywhere (lowest prod major); enumerate all deploy targets before changing a pin

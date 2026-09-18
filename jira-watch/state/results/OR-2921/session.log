@@ -1,0 +1,10 @@
+Validation of OR-2921 is complete and the result is written to `session.json`. The worktree is clean, so nothing was left inside the git tree.
+
+**Verdict: deploy-ready.**
+
+- **Positive.** On the Mayo tenant, SIU-staged D&C-alone and D&C plus exam-under-anesthesia cases both returned the doxycycline alert from the app-launch endpoint and wrote fired-result rows.
+- **Negative.** D&C plus hysterectomy and D&C plus an unmapped procedure returned no alert. The not-fired explanations named the offending procedure and the unmapped mapping respectively.
+- **Red check.** The pre-fix rule class was compiled in the container and swapped in. The same D&C plus hysterectomy and unmapped cases then fired. The shipped class was restored, checksum matched, and the guard abstains returned. The signature line appears exactly once in the container log.
+- **Backfill.** Changeset 227's update statement was run by hand on rows set non-compliant. It flipped exactly the two pre-fix firings and left the legitimate ones alone.
+
+Caveats recorded: the Epic-OAuth UI path could not run locally, two rows of the ticket table rest on unit tests only, and the migration was exercised manually rather than against production history. Ship risk marked none. Four supplemental qa-suite tests are proposed for the SIU-to-launch wiring, since the rule has no qa-suite coverage today.
