@@ -55,7 +55,8 @@
       "name": "rule-summary",
       "description": "Summarize an existing ORCI rule implementation from the codebase given a rule identifier, including a clinical overview, technical implementation review, and an ASCII decision tree of the rule's evaluation criteria.",
       "source": "custom",
-      "updatedAt": "2026-09-01T18:43:06.775477Z"
+      "updatedAt": "2026-09-01T18:43:06.775477Z",
+      "backingPluginId": "plugin_0124PuAunKxTL7f1P7HBQJoJ"
     },
     {
       "skillId": "skill_016F2zev8APeZp9AqHtt8rf2",
