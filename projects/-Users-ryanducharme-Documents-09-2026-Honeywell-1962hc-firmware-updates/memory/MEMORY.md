@@ -1,0 +1,1 @@
+- [MGH 1962HC scanner fleet](mgh-1962hc-scanner-fleet.md) — 19 pairs at MGH, Sept 2026 firmware update, Confluence page 478904321, working folder location
