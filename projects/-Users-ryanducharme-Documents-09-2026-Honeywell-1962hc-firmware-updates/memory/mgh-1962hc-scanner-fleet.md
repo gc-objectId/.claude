@@ -5,10 +5,10 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 166c4573-05e6-4803-a690-36178f7b7147
-  modified: 2026-09-22T14:48:35.005Z
+  modified: 2026-09-24T14:31:53.421Z
 ---
 
-Guided maintains 19 Honeywell Xenon Ultra 1962HC handheld + CCB-U00-HC base pairs at MGH for the study there, labeled OR 4..43. On 2026-09-09 Ryan spent ~12 hours on site flashing 16 of them to handheld GX000435BAA / base GY000251BAA with SMU 3.0.0.30 via `flash-pair.bat` on two Windows PCs. OR 32 and OR 39 missing, OR 7 broken (RMA). OR 35 is the golden config pair.
+Guided maintains 19 Honeywell Xenon Ultra 1962HC handheld + CCB-U00-HC base pairs at MGH for the study there, labeled OR 4..43. On 2026-09-09 Ryan spent ~12 hours on site flashing 16 of them to handheld GX000435BAA / base GY000251BAA with SMU 3.0.0.30 via `flash-pair.bat` on two Windows PCs. OR 32 and OR 39 missing, OR 7 broken (RMA). OR 35 is only a reference config, not a true golden: the fleet has several slightly different configs and Ryan intends to consolidate to one real golden image and push it to every pair (artifact home undecided, GitHub vs OneDrive; may become a Jira ticket). OR 12's odd config was fixed by Alex scanning the restore-all-settings barcode. The two Windows PCs are Guided's spare boxes for this kind of work. Firmware .smoc files need a Honeywell support-portal login for the Software Downloader.
 
 Confluence write-up: Engineering space > QA folder > "Xenon Ultra 1962HC Scanners" (page 478904321, https://guidedclinical.atlassian.net/wiki/x/AYCLH). Rewritten 2026-09-22 with inventory table, procedure, script source, open items.
 

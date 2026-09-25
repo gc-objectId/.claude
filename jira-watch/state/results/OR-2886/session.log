@@ -1,0 +1,9 @@
+Validation of OR-2886 is complete and the session file is written. Nothing else is pending.
+
+**Verdict: deploy-ready.** All three evidence pieces were performed against the running app at port 51486.
+
+- **Positive.** A demo case with a rocuronium infusion documented only by a STOP event (null start date) let the sugammadex selection rule evaluate cleanly. It abstained with "No prior medications", no failure row, no error in the log. Adding a dated intraop rocuronium dose alongside the undated one moved the explanation to "No TOF data in timeframe of interest", so the undated administration is skipped rather than suppressing the dated one.
+- **Negative.** A rocuronium dose dated before the case start was excluded, as was the undated infusion. Both left the rule at "No prior medications".
+- **Red check.** I compiled the parent commit's `ContextPatient` inside the container with lombok, shadowed the jar class under `/app/classes`, and restarted. The same selection then logged the exact Sentry NPE and wrote failure rows for both `w-sugammadex-default-dose` and `a-nmb-reversal-scan`, while the HTTP response still returned 200 with the rule silently missing. I removed the shadow classes, confirmed the jar checksum was unchanged, restarted, and the rule went green again.
+
+The red-check signature in `session.json` is `Error processing rule: w-sugammadex-default-dose`, which appears exactly once in the captured log, only during the red window. Ship risk is marked none, with caveats noting the admin debugger was the source of the undated infusion and that the case start time was set by SQL. Automation proposes two supplemental tests for `sugammadex.spec.ts` since unit coverage already shipped with the fix. All scratch scripts live outside the worktree, which is clean.

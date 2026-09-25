@@ -1,7 +1,6 @@
-note OR-2921: last run was aborted, offering again
-2026-09-17 11:03:09  [OR-2921] OR-2921 status is 'Testing'
-2026-09-17 11:03:10  [OR-2921] Building image from origin/main
-Building guidedclinical/orci:loop-adad5c13d from adad5c13d
+2026-09-24 10:22:02  [OR-2886] OR-2886 status is 'Ready for Testing'
+2026-09-24 10:22:03  [OR-2886] Building image from origin/main
+Building guidedclinical/orci:loop-5e0a6767f from 5e0a6767f
 using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Contents/Home
 [INFO] Scanning for projects...
 [WARNING] 
@@ -28,6 +27,24 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] orci-audit                                                         [jar]
 [INFO] medication-audio-generator-plugin                         [maven-plugin]
 [INFO] orci                                                               [jar]
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml (1.7 kB at 7.2 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/springframework/boot/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/cloud/tools/maven-metadata.xml
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/google/cloud/tools/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 10 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/spotbugs/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/cloud/tools/maven-metadata.xml (708 B at 11 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/maven-metadata.xml (240 B at 4.9 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (10 kB at 427 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/mojo/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (20 kB at 724 kB/s)
 [INFO] 
 [INFO] --------------------< com.guided.orci:orci-project >--------------------
 [INFO] Building orci project 0.1.101-SNAPSHOT                            [1/13]
@@ -41,17 +58,53 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] Building orci-utils 0.1.101-SNAPSHOT                              [2/13]
 [INFO]   from orci-utils/pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-compiler-plugin/3.16.0/maven-compiler-plugin-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.16.0/maven-compiler-plugin-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.16.0/maven-compiler-plugin-3.16.0.pom (9.7 kB at 333 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-compiler-plugin/3.16.0/maven-compiler-plugin-3.16.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.16.0/maven-compiler-plugin-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/3.16.0/maven-compiler-plugin-3.16.0.jar (98 kB at 2.7 MB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry/8.57.0/sentry-8.57.0.pom
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry/8.57.0/sentry-8.57.0.pom
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry/8.57.0/sentry-8.57.0.pom (1.5 kB at 14 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry/8.57.0/sentry-8.57.0.jar
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry/8.57.0/sentry-8.57.0.jar
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry/8.57.0/sentry-8.57.0.jar (1.3 MB at 18 MB/s)
 [INFO] 
 [INFO] --- resources:3.4.0:resources (default-resources) @ orci-utils ---
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci-utils ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-utils ---
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler-api/2.17.0/plexus-compiler-api-2.17.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.17.0/plexus-compiler-api-2.17.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.17.0/plexus-compiler-api-2.17.0.pom (1.6 kB at 55 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler/2.17.0/plexus-compiler-2.17.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.17.0/plexus-compiler-2.17.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler/2.17.0/plexus-compiler-2.17.0.pom (6.9 kB at 247 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler-manager/2.17.0/plexus-compiler-manager-2.17.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.17.0/plexus-compiler-manager-2.17.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.17.0/plexus-compiler-manager-2.17.0.pom (1.8 kB at 68 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler-javac/2.17.0/plexus-compiler-javac-2.17.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.17.0/plexus-compiler-javac-2.17.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.17.0/plexus-compiler-javac-2.17.0.pom (1.6 kB at 59 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compilers/2.17.0/plexus-compilers-2.17.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.17.0/plexus-compilers-2.17.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compilers/2.17.0/plexus-compilers-2.17.0.pom (1.3 kB at 43 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler-api/2.17.0/plexus-compiler-api-2.17.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler-manager/2.17.0/plexus-compiler-manager-2.17.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-compiler-javac/2.17.0/plexus-compiler-javac-2.17.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.17.0/plexus-compiler-api-2.17.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-api/2.17.0/plexus-compiler-api-2.17.0.jar (29 kB at 1.0 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.17.0/plexus-compiler-manager-2.17.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.17.0/plexus-compiler-javac-2.17.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-manager/2.17.0/plexus-compiler-manager-2.17.0.jar (5.4 kB at 193 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-compiler-javac/2.17.0/plexus-compiler-javac-2.17.0.jar (31 kB at 960 kB/s)
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.4.0:testResources (default-testResources) @ orci-utils ---
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci-utils ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-utils ---
 [INFO] No sources to compile
 [INFO] 
 [INFO] --- surefire:3.6.0:test (default-test) @ orci-utils ---
@@ -66,6 +119,9 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] Building orci-models 0.1.101-SNAPSHOT                             [3/13]
 [INFO]   from orci-models/pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/hibernate/orm/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/hibernate/orm/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/hibernate/orm/maven-metadata.xml (259 B at 6.5 kB/s)
 [WARNING] Parameter 'failOnError' is unknown for plugin 'hibernate-maven-plugin:7.4.1.Final:enhance (default)'
 [INFO] 
 [INFO] --- spring-boot:4.1.1:build-info (default) @ orci-models ---
@@ -77,7 +133,7 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/resources
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci-models ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-models ---
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- hibernate:7.4.1.Final:enhance (default) @ orci-models ---
@@ -1906,7 +1962,7 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/test/resources
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci-models ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-models ---
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- surefire:3.6.0:test (default-test) @ orci-models ---
@@ -1929,7 +1985,7 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-repositories/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci-repositories ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-repositories ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 93 source files with javac [debug target 25] to target/classes
@@ -1946,7 +2002,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] Copying 1 resource from src/test/resources to target/test-classes
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci-repositories ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-repositories ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 21 source files with javac [debug target 25] to target/test-classes
@@ -1974,7 +2030,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-multitenancy/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci-multitenancy ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-multitenancy ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 7 source files with javac [debug target 25] to target/classes
@@ -1985,7 +2041,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-multitenancy/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci-multitenancy ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-multitenancy ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 1 source file with javac [debug target 25] to target/test-classes
@@ -2008,7 +2064,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-featureflags/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci-featureflags ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-featureflags ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 6 source files with javac [debug target 25] to target/classes
@@ -2017,7 +2073,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-featureflags/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci-featureflags ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-featureflags ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 1 source file with javac [debug target 25] to target/test-classes
@@ -2040,7 +2096,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/client-integration-api/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ client-integration-api ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ client-integration-api ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 69 source files with javac [debug target 25] to target/classes
@@ -2053,7 +2109,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/client-integration-api/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ client-integration-api ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ client-integration-api ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 5 source files with javac [debug target 25] to target/test-classes
@@ -2076,7 +2132,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/epic-integration-support/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ epic-integration-support ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ epic-integration-support ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 7 source files with javac [debug target 25] to target/classes
@@ -2085,7 +2141,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/epic-integration-support/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ epic-integration-support ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ epic-integration-support ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 2 source files with javac [debug target 25] to target/test-classes
@@ -2109,7 +2165,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/mgb-client-integration/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ mgb-client-integration ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ mgb-client-integration ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 33 source files with javac [debug target 25] to target/classes
@@ -2122,7 +2178,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] Copying 5 resources from src/test/resources to target/test-classes
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ mgb-client-integration ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ mgb-client-integration ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 25 source files with javac [debug target 25] to target/test-classes
@@ -2147,7 +2203,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/mayo-client-integration/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ mayo-client-integration ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ mayo-client-integration ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 29 source files with javac [debug target 25] to target/classes
@@ -2158,7 +2214,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] Copying 23 resources from src/test/resources to target/test-classes
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ mayo-client-integration ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ mayo-client-integration ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 22 source files with javac [debug target 25] to target/test-classes
@@ -2183,7 +2239,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-audit/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci-audit ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-audit ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 2 source files with javac [debug target 25] to target/classes
@@ -2192,7 +2248,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-audit/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci-audit ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-audit ---
 [INFO] No sources to compile
 [INFO] 
 [INFO] --- surefire:3.6.0:test (default-test) @ orci-audit ---
@@ -2208,15 +2264,151 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Building medication-audio-generator-plugin 0.1.101-SNAPSHOT      [12/13]
 [INFO]   from medication-audio-generator-plugin/pom.xml
 [INFO] ----------------------------[ maven-plugin ]----------------------------
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-plugin-plugin/3.16.0/maven-plugin-plugin-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugin-plugin/3.16.0/maven-plugin-plugin-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugin-plugin/3.16.0/maven-plugin-plugin-3.16.0.pom (11 kB at 232 kB/s)
+[INFO] Artifact org.apache.maven.plugin-tools:maven-plugin-tools:pom:3.16.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [guided-clinical-maven-repo (https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/, default, releases+snapshots), central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Artifact org.apache.maven.plugin-tools:maven-plugin-tools:pom:3.16.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [guided-clinical-maven-repo (https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/, default, releases+snapshots), central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools/3.16.0/maven-plugin-tools-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.16.0/maven-plugin-tools-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools/3.16.0/maven-plugin-tools-3.16.0.pom (0 B at 0 B/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-plugin-plugin/3.16.0/maven-plugin-plugin-3.16.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugin-plugin/3.16.0/maven-plugin-plugin-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-plugin-plugin/3.16.0/maven-plugin-plugin-3.16.0.jar (44 kB at 437 kB/s)
 [INFO] 
 [INFO] --- resources:3.4.0:resources (default-resources) @ medication-audio-generator-plugin ---
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/src/main/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ medication-audio-generator-plugin ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ medication-audio-generator-plugin ---
 [INFO] Nothing to compile - all classes are up to date.
 [INFO] 
-[INFO] --- plugin:3.15.2:descriptor (default-descriptor) @ medication-audio-generator-plugin ---
+[INFO] --- plugin:3.16.0:descriptor (default-descriptor) @ medication-audio-generator-plugin ---
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.16.0/maven-plugin-tools-api-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.16.0/maven-plugin-tools-api-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.16.0/maven-plugin-tools-api-3.16.0.pom (6.3 kB at 112 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.pom (7.8 kB at 269 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-xml/3.1.0/plexus-xml-3.1.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.1.0/plexus-xml-3.1.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.1.0/plexus-xml-3.1.0.pom (3.9 kB at 127 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.16.0/maven-plugin-tools-generators-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.16.0/maven-plugin-tools-generators-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.16.0/maven-plugin-tools-generators-3.16.0.pom (3.8 kB at 60 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-velocity/2.4.0/plexus-velocity-2.4.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.4.0/plexus-velocity-2.4.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.4.0/plexus-velocity-2.4.0.pom (4.7 kB at 174 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/jsoup/jsoup/1.23.2/jsoup-1.23.2.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jsoup/jsoup/1.23.2/jsoup-1.23.2.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jsoup/jsoup/1.23.2/jsoup-1.23.2.pom (24 kB at 766 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-java/3.16.0/maven-plugin-tools-java-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-java/3.16.0/maven-plugin-tools-java-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-java/3.16.0/maven-plugin-tools-java-3.16.0.pom (3.3 kB at 80 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.1/org.eclipse.sisu.plexus-1.0.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.1/org.eclipse.sisu.plexus-1.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.1/org.eclipse.sisu.plexus-1.0.1.pom (18 kB at 606 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/eclipse/sisu/sisu-inject/1.0.1/sisu-inject-1.0.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/1.0.1/sisu-inject-1.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/sisu-inject/1.0.1/sisu-inject-1.0.1.pom (28 kB at 888 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.1/org.eclipse.sisu.inject-1.0.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.1/org.eclipse.sisu.inject-1.0.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.1/org.eclipse.sisu.inject-1.0.1.pom (18 kB at 664 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-classworlds/2.12.0/plexus-classworlds-2.12.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.12.0/plexus-classworlds-2.12.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.12.0/plexus-classworlds-2.12.0.pom (7.4 kB at 264 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-annotations/3.16.0/maven-plugin-tools-annotations-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-annotations/3.16.0/maven-plugin-tools-annotations-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-annotations/3.16.0/maven-plugin-tools-annotations-3.16.0.pom (5.4 kB at 147 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-archiver/4.14.0/plexus-archiver-4.14.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.14.0/plexus-archiver-4.14.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.14.0/plexus-archiver-4.14.0.pom (6.6 kB at 219 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-io/3.7.0/plexus-io-3.7.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.7.0/plexus-io-3.7.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.7.0/plexus-io-3.7.0.pom (4.0 kB at 68 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/luben/zstd-jni/1.5.7-15/zstd-jni-1.5.7-15.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-15/zstd-jni-1.5.7-15.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-15/zstd-jni-1.5.7-15.pom (2.2 kB at 54 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.pom (3.0 kB at 74 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.pom (2.6 kB at 91 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-ant/3.16.0/maven-plugin-tools-ant-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-ant/3.16.0/maven-plugin-tools-ant-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-ant/3.16.0/maven-plugin-tools-ant-3.16.0.pom (2.9 kB at 63 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-script/3.16.0/maven-script-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-script/3.16.0/maven-script-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-script/3.16.0/maven-script-3.16.0.pom (1.8 kB at 32 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-model/3.16.0/maven-plugin-tools-model-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-model/3.16.0/maven-plugin-tools-model-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-model/3.16.0/maven-plugin-tools-model-3.16.0.pom (3.3 kB at 76 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-beanshell/3.16.0/maven-plugin-tools-beanshell-3.16.0.pom
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-beanshell/3.16.0/maven-plugin-tools-beanshell-3.16.0.pom
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-beanshell/3.16.0/maven-plugin-tools-beanshell-3.16.0.pom (2.3 kB at 41 kB/s)
+[INFO] Artifact org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.16.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [guided-clinical-maven-repo (https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/, default, releases+snapshots), central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Artifact org.apache.maven.plugin-tools:maven-plugin-annotations:jar:3.16.0 is present in the local repository, but cached from a remote repository ID that is unavailable in current build context, verifying that is downloadable from [guided-clinical-maven-repo (https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/, default, releases+snapshots), central (https://repo.maven.apache.org/maven2, default, releases)]
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.16.0/maven-plugin-tools-api-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-xml/3.1.0/plexus-xml-3.1.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.16.0/maven-plugin-tools-generators-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/jsoup/jsoup/1.23.2/jsoup-1.23.2.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-java/3.16.0/maven-plugin-tools-java-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.1/org.eclipse.sisu.plexus-1.0.1.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.1/org.eclipse.sisu.inject-1.0.1.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-classworlds/2.12.0/plexus-classworlds-2.12.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-annotations/3.16.0/maven-plugin-tools-annotations-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-archiver/4.14.0/plexus-archiver-4.14.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-io/3.7.0/plexus-io-3.7.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/luben/zstd-jni/1.5.7-15/zstd-jni-1.5.7-15.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-annotations/3.16.0/maven-plugin-annotations-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-ant/3.16.0/maven-plugin-tools-ant-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-model/3.16.0/maven-plugin-tools-model-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugin-tools/maven-plugin-tools-beanshell/3.16.0/maven-plugin-tools-beanshell-3.16.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/plexus/plexus-velocity/2.4.0/plexus-velocity-2.4.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.16.0/maven-plugin-tools-api-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-api/3.16.0/maven-plugin-tools-api-3.16.0.jar (57 kB at 1.4 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.1.0/plexus-xml-3.1.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.16.0/maven-plugin-tools-generators-3.16.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-java/3.16.0/maven-plugin-tools-java-3.16.0.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/jsoup/jsoup/1.23.2/jsoup-1.23.2.jar
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.1/org.eclipse.sisu.plexus-1.0.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-xml/3.1.0/plexus-xml-3.1.0.jar (94 kB at 3.5 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.1/org.eclipse.sisu.inject-1.0.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/jsoup/jsoup/1.23.2/jsoup-1.23.2.jar (538 kB at 11 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.12.0/plexus-classworlds-2.12.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.inject/1.0.1/org.eclipse.sisu.inject-1.0.1.jar (304 kB at 4.9 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-annotations/3.16.0/maven-plugin-tools-annotations-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-java/3.16.0/maven-plugin-tools-java-3.16.0.jar (18 kB at 263 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.14.0/plexus-archiver-4.14.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-classworlds/2.12.0/plexus-classworlds-2.12.0.jar (54 kB at 742 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.7.0/plexus-io-3.7.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/eclipse/sisu/org.eclipse.sisu.plexus/1.0.1/org.eclipse.sisu.plexus-1.0.1.jar (216 kB at 3.0 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-15/zstd-jni-1.5.7-15.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-generators/3.16.0/maven-plugin-tools-generators-3.16.0.jar (42 kB at 448 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-io/3.7.0/plexus-io-3.7.0.jar (81 kB at 719 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-archiver/4.14.0/plexus-archiver-4.14.0.jar (228 kB at 1.9 MB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-annotations/3.16.0/maven-plugin-annotations-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-annotations/3.16.0/maven-plugin-tools-annotations-3.16.0.jar (78 kB at 628 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-ant/3.16.0/maven-plugin-tools-ant-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-util/9.10.1/asm-util-9.10.1.jar (96 kB at 765 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-model/3.16.0/maven-plugin-tools-model-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/ow2/asm/asm-analysis/9.10.1/asm-analysis-9.10.1.jar (35 kB at 251 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-beanshell/3.16.0/maven-plugin-tools-beanshell-3.16.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-annotations/3.16.0/maven-plugin-annotations-3.16.0.jar (0 B at 0 B/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-model/3.16.0/maven-plugin-tools-model-3.16.0.jar (30 kB at 171 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.4.0/plexus-velocity-2.4.0.jar
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-beanshell/3.16.0/maven-plugin-tools-beanshell-3.16.0.jar (14 kB at 73 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/luben/zstd-jni/1.5.7-15/zstd-jni-1.5.7-15.jar (6.5 MB at 34 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-utils/4.1.0/plexus-utils-4.1.0.jar (193 kB at 985 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugin-tools/maven-plugin-tools-ant/3.16.0/maven-plugin-tools-ant-3.16.0.jar (13 kB at 67 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/plexus/plexus-velocity/2.4.0/plexus-velocity-2.4.0.jar (6.4 kB at 32 kB/s)
 [WARNING] Using platform encoding (UTF-8 actually) to read mojo source files, i.e. build is platform dependent!
 [INFO] java-annotations mojo extractor found 1 mojo descriptor.
 [INFO] java-javadoc mojo extractor found 0 mojo descriptor.
@@ -2227,13 +2419,14 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/src/test/resources
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ medication-audio-generator-plugin ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ medication-audio-generator-plugin ---
 [INFO] No sources to compile
 [INFO] 
 [INFO] --- surefire:3.6.0:test (default-test) @ medication-audio-generator-plugin ---
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- jar:3.5.0:jar (default-jar) @ medication-audio-generator-plugin ---
+[INFO] Building jar: /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/target/medication-audio-generator-plugin-0.1.101-SNAPSHOT.jar
 [INFO] 
 [INFO] --- jib:3.4.6:dockerBuild (default-cli) @ medication-audio-generator-plugin ---
 [INFO] Skipping containerization because jib-maven-plugin: skip = true
@@ -2242,7 +2435,43 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Building orci 0.1.101-SNAPSHOT                                   [13/13]
 [INFO]   from orci/pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/ulisesbocchio/maven-metadata.xml
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/ulisesbocchio/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/github/git-commit-id/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 9.4 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/guided/orci/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/ulisesbocchio/maven-metadata.xml (234 B at 4.9 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/guided/orci/maven-metadata.xml
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/eirslett/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/eirslett/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/eirslett/maven-metadata.xml (240 B at 5.9 kB/s)
+[INFO] Downloaded from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/guided/orci/maven-metadata.xml (2.9 kB at 14 kB/s)
 [WARNING] Parameter 'creationTime' is unknown for plugin 'jib-maven-plugin:3.4.6:dockerBuild (default-cli)'
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-spring-boot-4/8.57.0/sentry-spring-boot-4-8.57.0.pom
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-boot-4/8.57.0/sentry-spring-boot-4-8.57.0.pom
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-boot-4/8.57.0/sentry-spring-boot-4-8.57.0.pom (2.0 kB at 35 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-spring-7/8.57.0/sentry-spring-7-8.57.0.pom
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-7/8.57.0/sentry-spring-7-8.57.0.pom
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-7/8.57.0/sentry-spring-7-8.57.0.pom (1.8 kB at 40 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-reactor/8.57.0/sentry-reactor-8.57.0.pom
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-reactor/8.57.0/sentry-reactor-8.57.0.pom
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-reactor/8.57.0/sentry-reactor-8.57.0.pom (1.7 kB at 30 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-logback/8.57.0/sentry-logback-8.57.0.pom
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-logback/8.57.0/sentry-logback-8.57.0.pom
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-logback/8.57.0/sentry-logback-8.57.0.pom (1.7 kB at 31 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-spring-boot-4/8.57.0/sentry-spring-boot-4-8.57.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-spring-7/8.57.0/sentry-spring-7-8.57.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-reactor/8.57.0/sentry-reactor-8.57.0.jar
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-logback/8.57.0/sentry-logback-8.57.0.jar
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-boot-4/8.57.0/sentry-spring-boot-4-8.57.0.jar
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-boot-4/8.57.0/sentry-spring-boot-4-8.57.0.jar (71 kB at 1.6 MB/s)
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-7/8.57.0/sentry-spring-7-8.57.0.jar
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-reactor/8.57.0/sentry-reactor-8.57.0.jar
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-logback/8.57.0/sentry-logback-8.57.0.jar
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-reactor/8.57.0/sentry-reactor-8.57.0.jar (3.9 kB at 86 kB/s)
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-logback/8.57.0/sentry-logback-8.57.0.jar (7.6 kB at 70 kB/s)
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-spring-7/8.57.0/sentry-spring-7-8.57.0.jar (119 kB at 1.0 MB/s)
 [INFO] 
 [INFO] --- build-helper:3.6.1:timestamp-property (timestamp-property) @ orci ---
 [WARNING] Using platform locale (en_US actually) to format date/time, i.e. build is platform dependent!
@@ -2276,6 +2505,11 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO]   npm audit fix --force
 [INFO] 
 [INFO] Run `npm audit` for details.
+[INFO] npm notice
+[INFO] npm notice New major version of npm available! 10.9.3 -> 12.1.0
+[INFO] npm notice Changelog: https://github.com/npm/cli/releases/tag/v12.1.0
+[INFO] npm notice To update run: npm install -g npm@12.1.0
+[INFO] npm notice
 [INFO] 
 [INFO] --- frontend:1.15.1:npm (npm build) @ orci ---
 [INFO] Running 'npm run build' in /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/webapp
@@ -2299,12 +2533,11 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] build/static/alert-notification.Dmag7hJn.mp3     14.88 kB
 [INFO] build/static/hatch-pattern.Bi3zgFK5.png          48.18 kB
 [INFO] build/static/index.CV5_1ryK.css                 440.13 kB │ gzip:  57.72 kB
-[INFO] build/static/index.DmzVJwMs.js                2,013.48 kB │ gzip: 579.23 kB │ map: 9,996.64 kB
+[INFO] build/static/index.CL0duwqm.js                2,013.48 kB │ gzip: 579.23 kB │ map: 9,996.64 kB
 [INFO] 
 [INFO] [PLUGIN_TIMINGS] Your build spent significant time in plugins. Here is a breakdown:
-[INFO]   - sentry-vite-release-injection-plugin (80%)
-[INFO]   - sentry-vite-release-injection-plugin (80%)✓ built in 7.55s
-[INFO]   - vite:css (18%)
+[INFO]   - sentry-vite-release-injection-plugin (78%)
+[INFO]   - vite:css (19%)
 [INFO] See https://rolldown.rs/options/checks#plugintimings for more details.
 [INFO] 
 [INFO] [plugin builtin:vite-reporter] 
@@ -2312,6 +2545,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] - Using dynamic import() to code-split the application
 [INFO] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
 [INFO] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+[INFO] ✓ built in 7.08s
 [INFO] 
 [INFO] --- resources:3.4.0:resources (default-resources) @ orci ---
 [WARNING] File encoding has not been set, using platform encoding UTF-8. Build is platform dependent!
@@ -2325,7 +2559,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] Using platform encoding (UTF-8 actually) to copy filtered resources, i.e. build is platform dependent!
 [INFO] Copying 627 resources from src/main/webapp/build to target/classes/static
 [INFO] 
-[INFO] --- compiler:3.15.0:compile (default-compile) @ orci ---
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 554 source files with javac [debug target 25] to target/classes
@@ -2334,8 +2568,8 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PatientTemplateMapper.java:[18,21] Unmapped target properties: "createdDate, lastModifiedDate".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PatientTemplateMapper.java:[21,21] Unmapped target properties: "createdDate, lastModifiedDate".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PractitionerMapper.java:[14,18] Unmapped target properties: "createdDate, lastModifiedDate, id, lastRefreshedAt, user".
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/CitationDefinitionMapper.java:[17,24] Unmapped target properties: "createdDate, lastModifiedDate".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/ObservationMapper.java:[16,17] Unmapped target properties: "createdDate, lastModifiedDate, deleted, patient, sourceMetadata".
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/CitationDefinitionMapper.java:[17,24] Unmapped target properties: "createdDate, lastModifiedDate".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/configuration/CacheConfiguration.java:[33,9] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/configuration/CacheConfiguration.java:[33,70] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/configuration/RedisConfiguration.java:[24,30] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
@@ -2364,7 +2598,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Copying 16 resources from src/test/resources to target/test-classes
 [INFO] Copying 1 resource from src/test/resources to target/test-classes
 [INFO] 
-[INFO] --- compiler:3.15.0:testCompile (default-testCompile) @ orci ---
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 301 source files with javac [debug target 25] to target/test-classes
@@ -2385,7 +2619,13 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- dependency:3.11.0:copy (copy-java-agents) @ orci ---
-[INFO] io.sentry:sentry-opentelemetry-agent:8.56.0:jar already exists in /Users/ryanducharme/dev/worktrees/_loop-main/orci/target/java-agent
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-opentelemetry-agent/8.57.0/sentry-opentelemetry-agent-8.57.0.pom
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.57.0/sentry-opentelemetry-agent-8.57.0.pom
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.57.0/sentry-opentelemetry-agent-8.57.0.pom (1.5 kB at 11 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-opentelemetry-agent/8.57.0/sentry-opentelemetry-agent-8.57.0.jar
+[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.57.0/sentry-opentelemetry-agent-8.57.0.jar
+[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.57.0/sentry-opentelemetry-agent-8.57.0.jar (26 MB at 72 MB/s)
+[WARNING] Overwriting /Users/ryanducharme/dev/worktrees/_loop-main/orci/target/java-agent/sentry-opentelemetry-agent.jar
 [INFO] 
 [INFO] --- jar:3.5.0:jar (default-jar) @ orci ---
 [INFO] Building jar: /Users/ryanducharme/dev/worktrees/_loop-main/orci/target/orci-0.1.101-SNAPSHOT.jar
@@ -2394,7 +2634,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Running extension: com.google.cloud.tools.jib.maven.extension.springboot.JibSpringBootExtension
 [INFO] Running Jib Spring Boot extension
 [INFO] 
-[INFO] Containerizing application to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.101-SNAPSHOT, guidedclinical/orci:loop-adad5c13d...
+[INFO] Containerizing application to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.101-SNAPSHOT, guidedclinical/orci:loop-5e0a6767f...
 [WARNING] Base image 'eclipse-temurin:25-jdk-jammy' does not use a specific image digest - build may not be reproducible
 [INFO] Getting manifest for base image eclipse-temurin:25-jdk-jammy...
 [INFO] Building dependencies layer...
@@ -2429,85 +2669,93 @@ Got output:
 
 credentials not found in native keychain
 
-[INFO] Using base image with digest: sha256:02eecc58b9c7cb20e55765c7bcdcdee0c6d210440aca1b0a1fbd81ecfe8e772e
+[INFO] Using base image with digest: sha256:0cbcd13ae550a9c8334d5ef4483a4247625f47067f16127e28638fdafaeb35ea
 [INFO] 
 [INFO] Container entrypoint set to [bash, -c, /app/entrypoint.sh]
 [INFO] Loading to Docker daemon...
 [INFO] 
-[INFO] Built image to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.101-SNAPSHOT, guidedclinical/orci:loop-adad5c13d
+[INFO] Built image to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.101-SNAPSHOT, guidedclinical/orci:loop-5e0a6767f
+[INFO] 
+[INFO] A new version of jib-maven-plugin (3.5.2) is available (currently using 3.4.6). Update your build configuration to use the latest features and fixes!
+[INFO] https://github.com/GoogleContainerTools/jib/blob/master/jib-maven-plugin/CHANGELOG.md
+[INFO] 
+[INFO] Please see https://github.com/GoogleContainerTools/jib/blob/master/docs/privacy.md for info on disabling this update check.
+[INFO] 
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary for orci project 0.1.101-SNAPSHOT:
 [INFO] 
-[INFO] orci project ....................................... SUCCESS [  0.357 s]
-[INFO] orci-utils ......................................... SUCCESS [  0.450 s]
-[INFO] orci-models ........................................ SUCCESS [  1.803 s]
-[INFO] orci-repositories .................................. SUCCESS [  1.832 s]
-[INFO] orci-multitenancy .................................. SUCCESS [  0.633 s]
-[INFO] orci-featureflags .................................. SUCCESS [  0.427 s]
-[INFO] client-integration-api ............................. SUCCESS [  1.193 s]
-[INFO] epic-integration-support ........................... SUCCESS [  0.570 s]
-[INFO] mgb-client-integration ............................. SUCCESS [  1.136 s]
-[INFO] mayo-client-integration ............................ SUCCESS [  1.891 s]
-[INFO] orci-audit ......................................... SUCCESS [  0.201 s]
-[INFO] medication-audio-generator-plugin .................. SUCCESS [  0.691 s]
-[INFO] orci ............................................... SUCCESS [ 29.157 s]
+[INFO] orci project ....................................... SUCCESS [  0.297 s]
+[INFO] orci-utils ......................................... SUCCESS [  1.740 s]
+[INFO] orci-models ........................................ SUCCESS [  1.184 s]
+[INFO] orci-repositories .................................. SUCCESS [  1.802 s]
+[INFO] orci-multitenancy .................................. SUCCESS [  0.457 s]
+[INFO] orci-featureflags .................................. SUCCESS [  0.500 s]
+[INFO] client-integration-api ............................. SUCCESS [  1.044 s]
+[INFO] epic-integration-support ........................... SUCCESS [  0.539 s]
+[INFO] mgb-client-integration ............................. SUCCESS [  1.056 s]
+[INFO] mayo-client-integration ............................ SUCCESS [  1.356 s]
+[INFO] orci-audit ......................................... SUCCESS [  0.182 s]
+[INFO] medication-audio-generator-plugin .................. SUCCESS [  4.499 s]
+[INFO] orci ............................................... SUCCESS [ 35.291 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  40.587 s
-[INFO] Finished at: 2026-09-17T11:03:53-04:00
+[INFO] Total time:  50.925 s
+[INFO] Finished at: 2026-09-24T10:22:58-04:00
 [INFO] ------------------------------------------------------------------------
-2026-09-17 11:03:53  [OR-2921] image=guidedclinical/orci:loop-adad5c13d sha=adad5c13d3099c832e3e7be4b370c8183a235acc
-2026-09-17 11:03:56  [OR-2921] OR-2921 assigned to the configured account
-2026-09-17 11:03:57  [OR-2921] baseline: status='Testing' comments=5
-2026-09-17 11:03:57  [OR-2921] slug=a-preop-doxycycline-check
-Jira issue type → branch prefix: feature/
-Preparing worktree (new branch 'feature/OR-2921-a-preop-doxycycline-check')
-branch 'feature/OR-2921-a-preop-doxycycline-check' set up to track 'origin/main'.
-HEAD is now at adad5c13d Merge pull request #4507 from guidedclinical/feature/OR-2789-PR-gate-updates
+2026-09-24 10:22:58  [OR-2886] image=guidedclinical/orci:loop-5e0a6767f sha=5e0a6767fae709fff42eb82d6baeb9f317305beb
+2026-09-24 10:23:00  [OR-2886] OR-2886 moved to Testing
+2026-09-24 10:23:01  [OR-2886] OR-2886 assigned to the configured account
+2026-09-24 10:23:02  [OR-2886] baseline: status='Testing' comments=0
+2026-09-24 10:23:02  [OR-2886] slug=nullpointerexception-cannot-invoke-object
+Jira issue type → branch prefix: bugfix/
+Preparing worktree (new branch 'bugfix/OR-2886-nullpointerexception-cannot-invoke-object')
+branch 'bugfix/OR-2886-nullpointerexception-cannot-invoke-object' set up to track 'origin/main'.
+HEAD is now at 5e0a6767f Merge pull request #4581 from guidedclinical/revert-OR-2944-main-push
 
 Worktree ready:
-  Dir:    /Users/ryanducharme/dev/worktrees/OR-2921-a-preop-doxycycline-check
-  Branch: feature/OR-2921-a-preop-doxycycline-check
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2886-nullpointerexception-cannot-invoke-object
+  Branch: bugfix/OR-2886-nullpointerexception-cannot-invoke-object
   qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
   qa-suite/.env.dev symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.dev
-  OR-2921: assigned to Ryan Ducharme (unchanged)
+  OR-2886: assigned to Ryan Ducharme (unchanged)
 
-2026-09-17 11:03:59  [OR-2921] worktree=/Users/ryanducharme/dev/worktrees/OR-2921-a-preop-doxycycline-check
-Starting orci-loop-or-2921 (image guidedclinical/orci:loop-adad5c13d, app port 50698)
- Network orci-loop-or-2921_default Creating 
- Network orci-loop-or-2921_default Created 
- Container orci-loop-or-2921-postgres-1 Creating 
- Container orci-loop-or-2921-redis-1 Creating 
- Container orci-loop-or-2921-redis-1 Created 
- Container orci-loop-or-2921-postgres-1 Created 
- Container orci-loop-or-2921-orci-1 Creating 
- Container orci-loop-or-2921-orci-1 Created 
- Container orci-loop-or-2921-redis-1 Starting 
- Container orci-loop-or-2921-postgres-1 Starting 
- Container orci-loop-or-2921-postgres-1 Started 
- Container orci-loop-or-2921-redis-1 Started 
- Container orci-loop-or-2921-postgres-1 Waiting 
- Container orci-loop-or-2921-redis-1 Waiting 
- Container orci-loop-or-2921-redis-1 Healthy 
- Container orci-loop-or-2921-postgres-1 Healthy 
- Container orci-loop-or-2921-orci-1 Starting 
- Container orci-loop-or-2921-orci-1 Started 
- Container orci-loop-or-2921-postgres-1 Waiting 
- Container orci-loop-or-2921-redis-1 Waiting 
- Container orci-loop-or-2921-orci-1 Waiting 
- Container orci-loop-or-2921-redis-1 Healthy 
- Container orci-loop-or-2921-orci-1 Healthy 
- Container orci-loop-or-2921-postgres-1 Healthy 
+2026-09-24 10:23:04  [OR-2886] worktree=/Users/ryanducharme/dev/worktrees/OR-2886-nullpointerexception-cannot-invoke-object
+Starting orci-loop-or-2886 (image guidedclinical/orci:loop-5e0a6767f, app port 51486)
+ Network orci-loop-or-2886_default Creating 
+ Network orci-loop-or-2886_default Created 
+ Container orci-loop-or-2886-postgres-1 Creating 
+ Container orci-loop-or-2886-redis-1 Creating 
+ Container orci-loop-or-2886-postgres-1 Created 
+ Container orci-loop-or-2886-redis-1 Created 
+ Container orci-loop-or-2886-orci-1 Creating 
+ Container orci-loop-or-2886-orci-1 Created 
+ Container orci-loop-or-2886-redis-1 Starting 
+ Container orci-loop-or-2886-postgres-1 Starting 
+ Container orci-loop-or-2886-redis-1 Started 
+ Container orci-loop-or-2886-postgres-1 Started 
+ Container orci-loop-or-2886-postgres-1 Waiting 
+ Container orci-loop-or-2886-redis-1 Waiting 
+ Container orci-loop-or-2886-postgres-1 Healthy 
+ Container orci-loop-or-2886-redis-1 Healthy 
+ Container orci-loop-or-2886-orci-1 Starting 
+ Container orci-loop-or-2886-orci-1 Started 
+ Container orci-loop-or-2886-postgres-1 Waiting 
+ Container orci-loop-or-2886-redis-1 Waiting 
+ Container orci-loop-or-2886-orci-1 Waiting 
+ Container orci-loop-or-2886-redis-1 Healthy 
+ Container orci-loop-or-2886-orci-1 Healthy 
+ Container orci-loop-or-2886-postgres-1 Healthy 
 Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
-App fully initialised in 68.686s at http://localhost:50698
-2026-09-17 11:05:12  [OR-2921] app under test at http://localhost:50698
-2026-09-17 11:05:13  [OR-2921] wrote ticket context (75 lines)
-2026-09-17 11:05:13  [OR-2921] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2921/session.log)
-2026-09-17 11:09:58  [OR-2921]   … OR-2921 still running (300s elapsed, 25 app requests, app up)
-2026-09-17 11:14:13  [OR-2921] session finished after ~540s
-2026-09-17 11:14:13  [OR-2921] WARNING a remote branch referencing OR-2921 exists — the session was told not to push
-2026-09-17 11:14:13  [OR-2921] captured 9649 lines of application log
-{"ticket":"OR-2921","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-09-17T15:03:09Z"}
-2026-09-17 11:14:18  [OR-2921] close-parent: OR-2921 is already Done
+App fully initialised in 62.645s at http://localhost:51486
+2026-09-24 10:24:12  [OR-2886] app under test at http://localhost:51486
+2026-09-24 10:24:13  [OR-2886] wrote ticket context (24 lines)
+2026-09-24 10:24:13  [OR-2886] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2886/session.log)
+2026-09-24 10:28:58  [OR-2886]   … OR-2886 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-24 10:33:58  [OR-2886]   … OR-2886 still running (600s elapsed, 329 app requests, app up)
+2026-09-24 10:37:13  [OR-2886] session finished after ~780s
+2026-09-24 10:37:14  [OR-2886] captured 9671 lines of application log
+{"ticket":"OR-2886","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-09-24T14:22:01Z"}
+2026-09-24 10:37:18  [OR-2886] close-parent: OR-2886 is already Done
