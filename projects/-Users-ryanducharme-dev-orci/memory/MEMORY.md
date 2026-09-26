@@ -97,3 +97,5 @@
 - [Triage: check closed PRs](feedback_triage_check_closed_prs.md) — "in flight?" means `--state all` (#4506 hid a fix); fresh worktrees lack the dev env file
 - [Java 25 local JDK](reference_java25_local_jdk.md) — main needs JDK 25 since OR-2926; java_home only has Corretto 21; use JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home; corretto@25 cask needs sudo (Ryan runs it)
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB self-hosted 16; repo pins 16-alpine everywhere (lowest prod major); enumerate all deploy targets before changing a pin
+- [Feature specs program](project_feature_specs_program.md) — Theo initiative; /feature-spec skill from guided-skills PR #12 (worktree+symlink); templates in orci #4579 unmerged; medication selection first
+- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 cefazolin rule = first implementation ticket (cefepime pattern, /rule-spec); OR-2938 vanco EBL test; antibiotic consolidation breaks PABX

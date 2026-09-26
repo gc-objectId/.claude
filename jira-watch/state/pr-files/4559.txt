@@ -1,0 +1,9 @@
+orci/src/main/java/com/guided/orci/engine/EventContext.java
+orci/src/main/java/com/guided/orci/engine/rule/applaunch/PreopDoxycyclineCheckRule.java
+orci/src/main/java/com/guided/orci/service/ProcedureAntibioticCandidateService.java
+orci/src/main/resources/db/liquibase/tenant/change-sets/227-backfill-preop-doxycycline-compliance.xml
+orci/src/main/resources/db/liquibase/tenant/db.changelog-master.xml
+orci/src/test/java/com/guided/orci/engine/rule/applaunch/PreopDoxycyclineCheckRuleTest.java
+orci/src/test/java/com/guided/orci/services/PreopDoxycyclineCheckResolutionTest.java
+orci/src/test/java/com/guided/orci/services/ProcedureAntibioticCandidateCacheTest.java
+spec/rules/a-preop-doxycycline-check.md
