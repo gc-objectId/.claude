@@ -1,0 +1,4 @@
+MD5 (/Users/ryanducharme/.claude/jira-watch/state/results/OR-2931/scratch/backup/service/rules/RuleExecutionResultService.class) = 7bde26cfa193cf972ec9b0bd034a391a
+MD5 (/Users/ryanducharme/.claude/jira-watch/state/results/OR-2931/scratch/backup/service/rules/compliance/RuleComplianceService.class) = 407ad3e3ff2b0fc24ef1285fee76b490
+MD5 (/Users/ryanducharme/.claude/jira-watch/state/results/OR-2931/scratch/backup/engine/rule/compliance/DefaultDoseComplianceEvaluator$DoseType.class) = 4a73b9716767d23102aacd9823bece5f
+MD5 (/Users/ryanducharme/.claude/jira-watch/state/results/OR-2931/scratch/backup/engine/rule/compliance/DefaultDoseComplianceEvaluator.class) = 3fa3b193e24a2d2c8fb90826d3287c45

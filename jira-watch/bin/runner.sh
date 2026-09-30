@@ -137,6 +137,11 @@ log "image=${image} sha=${sha}"
 fresh=$("${CLAUDE_BIN}/freshness.sh" "$ticket" "$sha" 2>/dev/null) && fresh_rc=0 || fresh_rc=$?
 case "$fresh_rc" in
     0) ;;
+    6) _where=$(printf '%s' "$fresh" | jq -r '.repo + " " + .url' 2>/dev/null || echo 'another repo')
+       grep -qxF "$ticket" "${LOOP_HOME}/state/skip" 2>/dev/null ||
+           printf '%s\n' "$ticket" >>"${LOOP_HOME}/state/skip"
+       record merged_elsewhere "delivered in ${_where}; nothing in this build to validate, skip-listed"
+       exit 0 ;;
     5) if [ -n "$(jira_subtask_statuses "$ticket" 2>/dev/null || true)" ]; then
            # An umbrella never gets a PR of its own. Suppress it rather than re-offering it every
            # sweep; reverse with `unblock.sh unskip`.

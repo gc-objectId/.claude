@@ -1,0 +1,14 @@
+Validation of OR-2945 is complete and recorded in `session.json` with a `deploy-ready` verdict.
+
+**What was exercised against the running build**
+
+- **Positive.** On demo-demo, an insulin selection at glucose 220 fired the rule with route defaults of 2 units subcutaneous and 4 units intravenous. Documenting 5 units subcutaneous and 6 units intravenous both produced a `default-dose` compliance row of `false`, visible in the database and through the admin fired-evaluations endpoint.
+- **Negative.** Documenting 2 units subcutaneous and 4 units intravenous, matching the defaults, both scored `true`.
+- **Red check.** The parent commit's evaluator was compiled inside the container with an explicit logger and swapped into `/app/classes`. The same 5-unit subcutaneous mismatch then scored `true`, and the marker line appeared in the log exactly once. The shipped classes were restored, checksums matched the originals, and the mismatch scored `false` again with no marker lines since that boot.
+- **Backfill.** The changeset-230 UPDATE was replayed by hand. It flipped only the stale row the red check left behind and left the four correctly scored rows untouched.
+
+**Caveats recorded** with ship risk `none`: demo-demo only, the backfill was shown by replay rather than a Liquibase run on populated data, intraosseous was not exercised, and two pre-existing behaviours were noted for Ryan (initial `compliant=true` at selection time, and same-minute doses merging into one administration).
+
+**Automation proposed**: a supplemental INS pair driving selection, dose documentation and the fired-evaluations read entirely through the API, locking in the tracking-id wiring that the existing unit test cannot see.
+
+The worktree is clean and all scratch material lives under the results directory.

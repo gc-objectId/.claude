@@ -1,0 +1,14 @@
+Validation of OR-2951 is complete and recorded as **deploy-ready** in `session.json`.
+
+**What was exercised against the running app**
+
+- **Positive.** Eight concurrent first messages (4 RAS admins, 4 ORU lab results) for a brand-new PMRN produced one patient row, 4 stored administrations, 4 stored observations, and eight "Resolved patient absent from the tenant" log lines with no processor failures. Repeated for three separate PMRNs with the same result.
+- **Negative.** Follow-up messages for the now-known patient skipped creation entirely and still persisted. The PMRN constraint error appeared zero times across every fixed-build run.
+- **Red check.** Compiled the parent commit's RAS and ORU processor classes inside the container, shadowed the jar via `/app/classes`, restarted, and repeated the burst. One skeleton was created and 7 of 8 messages were dropped with `duplicate key value violates unique constraint "patients_pmrn_key"`, all inbound rows still ACCEPTED. Restored by removing only the added subtree, confirmed the jar checksum unchanged, restarted, and re-verified the positive case with zero errors after the restore mark.
+
+**Worth Ryan's attention**
+
+- Under the same burst on the fixed build, the practitioners insert hit its own unique-key race on `epic_user_id`. No message was lost, so it is recorded as a caveat rather than a blocker, but practitioner find-or-create is not serialized the way patient creation now is.
+- The flowsheet ORU subclass and the RAS cancel path were not exercised separately; both share the fixed code path.
+
+Proposed automation is in the file: one Testcontainers concurrency test through the real dispatcher, plus unit gaps for the flowsheet subclass, the RAS cancel skeleton, and the shared skeleton builder's blank-field handling. Scratch scripts and pre-fix sources live under the results scratch directory, outside the worktree.

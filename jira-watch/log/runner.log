@@ -903,3 +903,151 @@ No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-2886
 Transitioned OR-2886 to Done
 2026-09-24 10:37:18  [OR-2886] close-parent: OR-2886 is already Done
+2026-09-29 17:00:57  [OR-2901] OR-2901 status is 'Ready for Testing'
+2026-09-29 17:00:57  [OR-2914] OR-2914 status is 'Ready for Testing'
+2026-09-29 17:00:58  [OR-2901] Building image from origin/main
+2026-09-29 17:00:58  [OR-2914] Building image from origin/main
+2026-09-29 17:01:50  [OR-2901] image=guidedclinical/orci:loop-4b0324df9 sha=4b0324df9eda299c8efa0fdc5b8cf51575b23fae
+2026-09-29 17:01:53  [OR-2901] OR-2901 has no merged PR — disposing without booting an environment
+2026-09-29 17:01:54  [OR-2926] OR-2926 status is 'Ready for Testing'
+2026-09-29 17:01:54  [OR-2926] Building image from origin/main
+2026-09-29 17:01:55  [OR-2926] image=guidedclinical/orci:loop-4b0324df9 sha=4b0324df9eda299c8efa0fdc5b8cf51575b23fae
+2026-09-29 17:01:58  [OR-2914] image=guidedclinical/orci:loop-4b0324df9 sha=4b0324df9eda299c8efa0fdc5b8cf51575b23fae
+2026-09-29 17:01:58  [OR-2926] OR-2926 moved to Testing
+2026-09-29 17:01:59  [OR-2926] OR-2926 assigned to the configured account
+2026-09-29 17:01:59  [OR-2914] OR-2914 has no merged PR — disposing without booting an environment
+2026-09-29 17:02:00  [OR-2928] OR-2928 status is 'Ready for Testing'
+2026-09-29 17:02:00  [OR-2926] baseline: status='Testing' comments=0
+2026-09-29 17:02:00  [OR-2926] slug=upgrade-build-and-runtime
+2026-09-29 17:02:01  [OR-2928] Building image from origin/main
+2026-09-29 17:02:02  [OR-2928] image=guidedclinical/orci:loop-4b0324df9 sha=4b0324df9eda299c8efa0fdc5b8cf51575b23fae
+2026-09-29 17:02:03  [OR-2926] worktree=/Users/ryanducharme/dev/worktrees/OR-2926-upgrade-build-and-runtime
+2026-09-29 17:02:04  [OR-2928] OR-2928 moved to Testing
+2026-09-29 17:02:05  [OR-2928] OR-2928 assigned to the configured account
+2026-09-29 17:02:06  [OR-2928] baseline: status='Testing' comments=0
+2026-09-29 17:02:06  [OR-2928] slug=job-cleaner-job-cleaner
+2026-09-29 17:02:08  [OR-2928] worktree=/Users/ryanducharme/dev/worktrees/OR-2928-job-cleaner-job-cleaner
+2026-09-29 17:03:38  [OR-2926] app under test at http://localhost:65253
+2026-09-29 17:03:38  [OR-2926] wrote ticket context (20 lines)
+2026-09-29 17:03:38  [OR-2926] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2926/session.log)
+2026-09-29 17:03:42  [OR-2928] app under test at http://localhost:65263
+2026-09-29 17:03:43  [OR-2928] wrote ticket context (20 lines)
+2026-09-29 17:03:43  [OR-2928] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2928/session.log)
+2026-09-29 17:08:24  [OR-2926]   … OR-2926 still running (300s elapsed, 1 app requests, app up)
+2026-09-29 17:08:28  [OR-2928]   … OR-2928 still running (300s elapsed, 1 app requests, app up)
+2026-09-29 17:10:39  [OR-2926] session finished after ~420s
+2026-09-29 17:10:39  [OR-2926] captured 7850 lines of application log
+REFUSED OR-2926: verdict is 'inconclusive'
+2026-09-29 17:10:42  [OR-2931] OR-2931 status is 'Ready for Testing'
+2026-09-29 17:10:42  [OR-2931] Building image from origin/main
+2026-09-29 17:11:30  [OR-2931] image=guidedclinical/orci:loop-ff735801d sha=ff735801d85863b57fc1ee3cf100514c4256ac2e
+2026-09-29 17:11:32  [OR-2931] OR-2931 moved to Testing
+2026-09-29 17:11:33  [OR-2931] OR-2931 assigned to the configured account
+2026-09-29 17:11:34  [OR-2931] baseline: status='Testing' comments=0
+2026-09-29 17:11:34  [OR-2931] slug=incomparableexception
+2026-09-29 17:11:36  [OR-2931] worktree=/Users/ryanducharme/dev/worktrees/OR-2931-incomparableexception
+2026-09-29 17:12:48  [OR-2931] app under test at http://localhost:65453
+2026-09-29 17:12:49  [OR-2931] wrote ticket context (48 lines)
+2026-09-29 17:12:49  [OR-2931] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2931/session.log)
+2026-09-29 17:13:29  [OR-2928]   … OR-2928 still running (600s elapsed, 1 app requests, app up)
+2026-09-29 17:16:29  [OR-2928] session finished after ~765s
+2026-09-29 17:16:29  [OR-2928] captured 8481 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2928 against 4b0324df9eda299c8efa0fdc5b8cf51575b23fae (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2928
+Transitioned OR-2928 to Done
+2026-09-29 17:16:34  [OR-2928] close-parent: OR-2928 is already Done
+2026-09-29 17:16:37  [OR-2945] OR-2945 status is 'Ready for Testing'
+2026-09-29 17:16:38  [OR-2945] Building image from origin/main
+2026-09-29 17:16:39  [OR-2945] image=guidedclinical/orci:loop-ff735801d sha=ff735801d85863b57fc1ee3cf100514c4256ac2e
+2026-09-29 17:16:40  [OR-2945] OR-2945 moved to Testing
+2026-09-29 17:16:41  [OR-2945] OR-2945 assigned to the configured account
+2026-09-29 17:16:42  [OR-2945] baseline: status='Testing' comments=0
+2026-09-29 17:16:42  [OR-2945] slug=insulin-default-dose-compliance
+2026-09-29 17:16:44  [OR-2945] worktree=/Users/ryanducharme/dev/worktrees/OR-2945-insulin-default-dose-compliance
+2026-09-29 17:17:34  [OR-2931]   … OR-2931 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-29 17:17:51  [OR-2945] app under test at http://localhost:65532
+2026-09-29 17:17:52  [OR-2945] wrote ticket context (15 lines)
+2026-09-29 17:17:52  [OR-2945] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2945/session.log)
+2026-09-29 17:22:35  [OR-2931]   … OR-2931 still running (600s elapsed, 0
+? app requests, app up)
+2026-09-29 17:22:37  [OR-2945]   … OR-2945 still running (300s elapsed, 679 app requests, app up)
+2026-09-29 17:26:22  [OR-2945] session finished after ~510s
+2026-09-29 17:26:23  [OR-2945] captured 10919 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2945 against ff735801d85863b57fc1ee3cf100514c4256ac2e (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2945
+Transitioned OR-2945 to Done
+2026-09-29 17:26:27  [OR-2945] close-parent: OR-2945 is already Done
+2026-09-29 17:26:29  [OR-2951] OR-2951 status is 'Ready for Testing'
+2026-09-29 17:26:30  [OR-2951] Building image from origin/main
+2026-09-29 17:26:31  [OR-2951] image=guidedclinical/orci:loop-ff735801d sha=ff735801d85863b57fc1ee3cf100514c4256ac2e
+2026-09-29 17:26:33  [OR-2951] OR-2951 moved to Testing
+2026-09-29 17:26:33  [OR-2951] OR-2951 assigned to the configured account
+2026-09-29 17:26:35  [OR-2951] baseline: status='Testing' comments=0
+2026-09-29 17:26:35  [OR-2951] slug=mayo-ras-and-oru
+2026-09-29 17:26:37  [OR-2951] worktree=/Users/ryanducharme/dev/worktrees/OR-2951-mayo-ras-and-oru
+2026-09-29 17:27:05  [OR-2931] session finished after ~855s
+2026-09-29 17:27:05  [OR-2931] captured 9106 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2931 against ff735801d85863b57fc1ee3cf100514c4256ac2e (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2931
+Transitioned OR-2931 to Done
+2026-09-29 17:27:09  [OR-2931] close-parent: OR-2931 is already Done
+2026-09-29 17:27:12  [OR-2959] OR-2959 status is 'Ready for Testing'
+2026-09-29 17:27:13  [OR-2959] Building image from origin/main
+2026-09-29 17:27:14  [OR-2959] image=guidedclinical/orci:loop-ff735801d sha=ff735801d85863b57fc1ee3cf100514c4256ac2e
+2026-09-29 17:27:15  [OR-2959] OR-2959 moved to Testing
+2026-09-29 17:27:16  [OR-2959] OR-2959 assigned to the configured account
+2026-09-29 17:27:17  [OR-2959] baseline: status='Testing' comments=0
+2026-09-29 17:27:17  [OR-2959] slug=remove-complianceresultrunner-and-its
+2026-09-29 17:27:19  [OR-2959] worktree=/Users/ryanducharme/dev/worktrees/OR-2959-remove-complianceresultrunner-and-its
+2026-09-29 17:27:49  [OR-2951] app under test at http://localhost:49308
+2026-09-29 17:27:50  [OR-2951] wrote ticket context (17 lines)
+2026-09-29 17:27:50  [OR-2951] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2951/session.log)
+2026-09-29 17:28:31  [OR-2959] app under test at http://localhost:49337
+2026-09-29 17:28:32  [OR-2959] wrote ticket context (13 lines)
+2026-09-29 17:28:32  [OR-2959] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2959/session.log)
+2026-09-29 17:32:35  [OR-2951]   … OR-2951 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-29 17:33:17  [OR-2959]   … OR-2959 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-29 17:36:35  [OR-2951] session finished after ~525s
+2026-09-29 17:36:36  [OR-2951] captured 9564 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2951 against ff735801d85863b57fc1ee3cf100514c4256ac2e (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2951
+Transitioned OR-2951 to Done
+2026-09-29 17:36:41  [OR-2951] close-parent: OR-2951 is already Done
+2026-09-29 17:36:47  [OR-2959] session finished after ~495s
+2026-09-29 17:36:47  [OR-2959] captured 8818 lines of application log
+REFUSED OR-2959: verdict is 'not-deploy-ready'
+2026-09-30 09:36:41  [OR-2914] OR-2914 status is 'Ready for Testing'
+2026-09-30 09:36:42  [OR-2960] OR-2960 status is 'Ready for Testing'
+2026-09-30 09:36:42  [OR-2914] Building image from origin/main
+2026-09-30 09:36:43  [OR-2960] Building image from origin/main
+2026-09-30 09:37:31  [OR-2914] image=guidedclinical/orci:loop-6e420f0fe sha=6e420f0fe22f65b105665c7454e930774e603f4f
+2026-09-30 09:37:33  [OR-2960] image=guidedclinical/orci:loop-6e420f0fe sha=6e420f0fe22f65b105665c7454e930774e603f4f
+2026-09-30 09:37:36  [OR-2960] OR-2960 moved to Testing
+2026-09-30 09:37:37  [OR-2960] OR-2960 assigned to the configured account
+2026-09-30 09:37:38  [OR-2960] baseline: status='Testing' comments=0
+2026-09-30 09:37:38  [OR-2960] slug=rule-config-cache-never
+2026-09-30 09:37:40  [OR-2960] worktree=/Users/ryanducharme/dev/worktrees/OR-2960-rule-config-cache-never
+2026-09-30 09:38:53  [OR-2960] app under test at http://localhost:51163
+2026-09-30 09:38:53  [OR-2960] wrote ticket context (13 lines)
+2026-09-30 09:38:53  [OR-2960] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2960/session.log)
+2026-09-30 09:43:39  [OR-2960]   … OR-2960 still running (300s elapsed, 0
+? app requests, app up)
+2026-09-30 09:47:54  [OR-2960] session finished after ~540s
+2026-09-30 09:47:54  [OR-2960] captured 8465 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2960 against 6e420f0fe22f65b105665c7454e930774e603f4f (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2960
+Transitioned OR-2960 to Done
+2026-09-30 09:47:59  [OR-2960] close-parent: OR-2960 is already Done

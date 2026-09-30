@@ -16,8 +16,13 @@ proves, then repeat, then use the flow for new rule-based tickets Theo hands ove
 - Skill: guided-skills PR #12 (`/feature-spec`, modes NEW / BASELINE / CHANGE). Checked out
   at `~/dev/guided-skills-feature-spec` (git worktree) and symlinked into
   `~/.claude/skills/feature-spec`. Remove the worktree + symlink once PR #12 merges.
-- Related: guided-skills PR #9 points rule-spec/rule-summary at the catalog; orci #4504 is
-  the in-repo review contract.
+- guided-skills PR #9 (`spec-output-contract`) makes rule-spec/rule-summary write catalog
+  files. Checked out at `~/dev/guided-skills-spec-output-contract`; `~/.claude/skills/rule-spec`
+  and `rule-summary` now point there (main versions are `~/dev/guided-skills/<skill>`).
+  Remove both worktrees + repoint the symlinks once PRs #9 and #12 merge.
+- orci #4504 is the in-repo review contract.
+- Medication-selection baseline ticket: drafted 2026-09-29, Jira connector refused writes
+  ("connector access could not be verified"); text saved in the session scratchpad, not yet filed.
 
 **Why:** existing behavior is undocumented, so every requirements conversation starts with
 "what does it do today". Litmus test from Theo: could someone reimplement the feature from

@@ -5,7 +5,8 @@
 #
 # Prints a JSON object on stdout describing what was resolved; diagnostics go to stderr.
 # Exit: 0 contained, 1 usage/error, 4 build is missing at least one merge commit,
-#       5 no merged PR found for the ticket (nothing to validate against).
+#       5 no merged PR found for the ticket (nothing to validate against),
+#       6 merged in a sibling repo, so nothing in this build to validate.
 set -eu
 
 ORCI_ROOT="${ORCI_ROOT:-$HOME/dev/orci}"
@@ -29,6 +30,8 @@ printf '%s' "$ticket" | grep -qE '^[A-Z][A-Z0-9]*-[0-9]+$' ||
 built_sha=$(git -C "$ORCI_ROOT" rev-parse --verify "$built^{commit}" 2>/dev/null) ||
     die "'$built' is not a resolvable commit in $ORCI_ROOT."
 
+LOOP_EXTRA_REPOS="${LOOP_EXTRA_REPOS:-guidedclinical/guided-skills}"
+
 cutoff=$(date -u -v-"${PR_MAX_AGE_DAYS}"d '+%Y-%m-%dT%H:%M:%SZ')
 
 # Title / "Fixes" references are deliberate; a bare mention anywhere in the body is not.
@@ -49,6 +52,22 @@ selected=$(printf '%s' "$prs" | jq -c --arg t "$ticket" --arg cutoff "$cutoff" '
 
 count=$(printf '%s' "$selected" | jq 'length')
 if [ "$count" -eq 0 ]; then
+    # Work sometimes ships from a sibling repo. Nothing there can be in this build or exercised by
+    # this app, so finding it does not make the ticket validatable — it makes the reason accurate.
+    for repo in $LOOP_EXTRA_REPOS; do
+        elsewhere=$(gh pr list --repo "$repo" --search "$ticket" --state merged --limit 10 \
+            --json number,title,url,mergedAt 2>/dev/null |
+            jq -c --arg t "$ticket" --arg cutoff "$cutoff" \
+                '[.[] | select(.mergedAt >= $cutoff) | select(.title | test($t))] | .[0] // empty')
+        if [ -n "$elsewhere" ]; then
+            _url=$(printf '%s' "$elsewhere" | jq -r '.url')
+            say "$ticket merged in ${repo} (${_url}) — not in this repo, nothing here to validate."
+            printf '%s\n' "$(jq -nc --arg t "$ticket" --arg b "$built_sha" --arg r "$repo" --arg u "$_url" \
+                '{ticket: $t, built_sha: $b, merge_commits: [], contained: false,
+                  reason: "merged_elsewhere", repo: $r, url: $u}')"
+            exit 6
+        fi
+    done
     say "No merged PR for $ticket within ${PR_MAX_AGE_DAYS}d — nothing to validate against."
     printf '%s\n' "$(jq -nc --arg t "$ticket" --arg b "$built_sha" \
         '{ticket: $t, built_sha: $b, merge_commits: [], contained: false, reason: "no_merged_pr"}')"

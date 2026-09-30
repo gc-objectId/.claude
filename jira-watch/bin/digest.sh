@@ -76,6 +76,7 @@ section 'NEEDS YOU — no merged PR, nothing to validate' no_merged_pr
 section 'NEEDS YOU — aborted before validating' aborted
 section 'NEEDS YOU — reserved for another reviewer' reserved
 section 'Umbrella parents, suppressed (children run separately)' umbrella
+section 'Delivered in another repo, nothing here to validate' merged_elsewhere
 section 'Build did not contain the fix' stale_build
 section 'Environment failed to come up' env_failed
 section 'Session timed out' session_timeout
@@ -85,4 +86,18 @@ section 'Closed clean' admitted
 if [ -n "$(printf '%s' "$skipped" | tr -d ' ')" ]; then
     printf 'Skip-listed, not shown above: %s\n' "$skipped"
 fi
-printf 'Detail on any one: digest.sh <TICKET>\n'
+
+# The commands are the part that gets forgotten between sweeps, so the digest states them.
+needs=$(printf '%s' "$records" | jq -r '
+    [.[] | select(.disposition | IN("refused","no_merged_pr","aborted","env_failed","session_timeout"))]
+    | length')
+printf '\nWHAT TO DO NEXT\n'
+if [ "$needs" -gt 0 ]; then
+    printf '  %s ticket(s) need a decision from you.\n' "$needs"
+    printf '  loopcmd review          walk them one at a time with a session (the usual way)\n'
+    printf '  loopcmd session OR-123  dig into one, in a worktree on its branch\n'
+    printf '  unblock.sh OR-123       answer it as a Jira comment; the next sweep reads that\n'
+    printf '  unblock.sh skip OR-123  stop offering it\n'
+fi
+printf '  loopcmd cover OR-123    turn its proposed tests into a draft PR\n'
+printf '  digest.sh OR-123        everything on one ticket: caveats, blockers, evidence\n'

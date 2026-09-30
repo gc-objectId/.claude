@@ -1,0 +1,11 @@
+Validation complete. The result is written to the session file and the worktree is clean.
+
+**Verdict: not-deploy-ready** for the ticket as written, though the code half checks out.
+
+- **Positive** The shipped build has no runner class and no runner log lines at boot. A real demo case stop through the app-launch and CLOSE_APP path still logged the live compliance evaluation.
+- **Negative** Restarting the shipped build with the enabling flag on produced no runner activity and a normal startup.
+- **Red check** Compiling the pre-fix runner, service, repository, and startup-phase classes into the container with the flag on made the backfill log for all four tenants. The shipped classes and entrypoint were restored and verified by checksum, then the positive case re-ran clean.
+
+**Why not deploy-ready** The ticket also requires deleting the missing-only JVM flag from the dev, stage, and prod task definitions. The active ECS revisions for all three still carry it, and the deploy tool does not template that value, so it will persist until edited by hand. The MGB OpenShift check for the enabled flag could not be done from this environment. Both are recorded as one-line blockers for Ryan.
+
+One stale reference remains in the Liquibase changeset 227 comment. It is harmless and noted as a caveat. No automation is proposed since the existing guard test already covers the live compliance path.

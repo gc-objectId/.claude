@@ -1,0 +1,9 @@
+Validation of OR-2931 is complete and recorded in `session.json` with verdict **deploy-ready**.
+
+**What was exercised** against the running `ff735801d` build, tenant `mayo-mayo`:
+
+- **Positive**: a RAS Intralipid bolus charted as 16 g, for a 53.3 kg adult whose default-dose adjustment is 1.5 mL/kg, was persisted and scored default-dose compliant. The 20% mapping concentration converted 80 mL to 16 g so the comparison could run.
+- **Negative**: the same bolus at 50 g was persisted and scored non-compliant. That shows the converted comparison really runs instead of every gram dose defaulting to compliant.
+- **Red check**: pre-fix variants of the three changed classes were compiled in the container and swapped into `/app/classes`. The 50 g message then failed with the exact Sentry stack trace and the administration was dropped. The shipped classes were restored, checksums matched, and both scenarios re-passed.
+
+**Caveats recorded**: the local Intralipid mapping had no concentration and was set by SQL, the per-firing try/catch was not independently provoked at runtime (covered by the PR's unit test), and only the Mayo RAS path was exercised. Two integration-level tests are proposed for the automation backlog. No Jira writes, commits, or pushes were made.

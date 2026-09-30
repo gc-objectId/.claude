@@ -1,0 +1,11 @@
+Validation of OR-2928 is complete and recorded as deploy-ready in `~/.claude/jira-watch/state/results/OR-2928/session.json`.
+
+**What was validated.** The fix scopes each tenant's hourly job cleaner to Quartz jobs whose data map carries that tenant's key, so a cleaner no longer deletes another tenant's stale jobs and then fails to find their metadata in its own schema.
+
+- **Positive:** a 40-hour-old demo-demo job with an open metadata row was deleted by the demo-demo cleaner, and the metadata row flipped to completed.
+- **Negative:** the mgb-mgh cleaner ran first against that same job and left both the job and the open metadata untouched. Its trigger's previous-fire time proved the run happened.
+- **Red check:** the parent commit's two classes were compiled in the container and swapped into place. The mgb-mgh cleaner then deleted the demo-demo job and left its metadata orphaned, which is the exact defect. The shipped classes were restored, checksums matched, and both cases held again after restart.
+
+**Caveats recorded.** Stale jobs were inserted directly into the Quartz tables, cleaners were fired by making their cron triggers due rather than waiting for the hour, and only the low-frequency scheduler was populated. None of these substitute for a load-bearing path, so ship risk is marked none.
+
+**Automation note.** The merged integration test covers all scenarios but is excluded from the default surefire run, so a small default-suite unit test of the ownership filter is proposed.

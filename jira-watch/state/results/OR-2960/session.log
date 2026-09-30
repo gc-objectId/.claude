@@ -1,0 +1,12 @@
+Validation of OR-2960 is complete and recorded in `session.json`. Verdict: deploy-ready.
+
+**What was observed against the running build**
+- **Positive:** with the rule config polled twice a second (entry never idle), a direct Postgres edit of the stored configuration appeared through the app 27.5 s later, and again 26.7 s later on the re-run after restore. Both inside the 30 s window.
+- **Negative:** the intervening reads kept serving the cached value, so the cache still caches. An edit through this instance's own admin POST applied instantly, so the local-node path is unchanged. No errors in the log.
+- **Red check:** the parent commit's RuleService (expire-after-access) was compiled in the container and swapped in. The same continuous reads never picked up the DB edit in 75 s and the cache loaded exactly once. The shipped classes were restored, checksums verified, the app restarted, and the refresh went green again.
+
+**Caveats recorded:** single instance with the other node simulated by a direct DB edit, reads driven via the admin GET rather than an HL7-triggered evaluation, and the log signature is a marker line I added to the recompiled pre-fix class because the original logs nothing.
+
+**Automation:** the merged unit test already covers the regression. One small unit addition is proposed for the local-write-resets-the-window case.
+
+The worktree is clean. All scratch material lives under the results scratch directory.

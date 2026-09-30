@@ -1,0 +1,3 @@
+5ef3655f758c509f272f8ba482aee9a1be2d05059ae3d3908d965b4beeee0160  /app/entrypoint.sh
+edaf25772faf2dedf991dafda5858b33f068170028bb8cf99942be47bb60707d  /app/classes/com/guided/orci/spring/StartupPhase.class
+40881d9a91b1d9656b5e186cac10f003670cb755b83290f3278f590b89b575dc  /app/classes/com/guided/orci/service/rules/compliance/RuleComplianceService.class

@@ -1,0 +1,21 @@
+The result file is written and the worktree is clean. Nothing else is needed from the environment.
+
+Verdict recorded as `inconclusive` in the session file, because OR-2926 is a build and toolchain ticket with no app-level red check the gate can grep for.
+
+**What was verified against the running instance**
+- The image built from main runs Temurin 25.0.4.1, the startup log says "using Java 25.0.4.1", readiness is UP, and every class in the app plus every module jar except one is Java 25 bytecode.
+- Login as the tenant user and an authenticated call to the user info endpoint both succeed on the Java 25 runtime.
+- Launching the shipped main class on a Java 21 JVM fails with the class file version 69 error, proving the artifacts genuinely target 25. That ran in a sibling container, so it is not in the app log and cannot satisfy the gate.
+
+**What was verified from GitHub**
+- CI Build and PR Gate are green on the PR head, and dev deploys on main have passed on Java 25 since 2026-09-17, including today's build of the exact SHA under test.
+- The dev deploy on the merge commit itself failed on an IAM permission for ECS tagging, not on Java.
+
+**Blockers left for Ryan**
+- Whether the GitHub run history plus the runtime observation is enough to close the ticket by hand.
+- Whether MGB has confirmed OpenShift can run the Java 25 image. That cluster is unreachable from here.
+- Whether the ECS IAM failure was fixed deliberately.
+
+**Caveats worth acting on**
+- The loop image carries a stale orci-utils jar with Java 21 bytecode. The loop checkout under `_loop-main` skipped recompiling it, so its target directory should be cleaned. A clean compile produces Java 25 bytecode, so this is a loop tooling issue rather than a code defect.
+- Java 25 prints a restricted native access warning from netty at boot. A future JDK will block that call unless native access is enabled in the JVM arguments.

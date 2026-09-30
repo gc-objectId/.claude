@@ -1,0 +1,18 @@
+{
+  "name": "session-a1ed5f17",
+  "createdAt": 1790775649384,
+  "leadAgentId": "team-lead@session-a1ed5f17",
+  "leadSessionId": "a1ed5f17-2a94-4d29-b73d-6d299dc3d115",
+  "members": [
+    {
+      "agentId": "team-lead@session-a1ed5f17",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1790775649384,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/.claude/jira-watch",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
