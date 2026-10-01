@@ -87,7 +87,7 @@
 - [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — GLUCOSE observation fires synchronously; details.EXPANDED_CALCULATION via API
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED 2026-09-17: #4534 seed validated, tests #4560 merged, worktree gone; unmatched reactions still skip with no log (follow-up not filed); @DataJpaTest read-back needs flush+clear
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; "Started OrciApplication" fires before runners
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — phase 1 (2868 visual baseline → 2864 import order → 2869 tokens+guard) on PR #4573, 2026-09-17; determinism lessons, local 8081 loop, findings for phase 2
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — 2868/2864/2869 DONE 2026-09-30 (PR #4573), framed standalone not as epic foundation; visual-suite determinism lessons; viewport-logging follow-up = OR-2977 (To Do)
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association; pathway drugs need ANTIBIOTIC tag
 - [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done 2026-09-10; tests PR #4551 merged 2026-09-17, worktree removed; PABX-019/020 + PMAP family
@@ -99,3 +99,4 @@
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB self-hosted 16; repo pins 16-alpine everywhere (lowest prod major); enumerate all deploy targets before changing a pin
 - [Feature specs program](project_feature_specs_program.md) — Theo initiative; /feature-spec skill from guided-skills PR #12 (worktree+symlink); templates in orci #4579 unmerged; medication selection first
 - [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 cefazolin rule = first implementation ticket (cefepime pattern, /rule-spec); OR-2938 vanco EBL test; antibiotic consolidation breaks PABX
+- [OR-2928 Sentry perf issues filed as bugs](project_or2928_sentry_perf_issues_as_bugs.md) — cleaner tickets were N+1 detections, not errors; PR #4606 makes cleaner metadata-driven + triage error-only; check Sentry issue type first

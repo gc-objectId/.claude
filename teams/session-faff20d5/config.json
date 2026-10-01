@@ -1,0 +1,18 @@
+{
+  "name": "session-faff20d5",
+  "createdAt": 1790777324795,
+  "leadAgentId": "team-lead@session-faff20d5",
+  "leadSessionId": "faff20d5-69c6-4a4d-9fb6-ec32896b8a1f",
+  "members": [
+    {
+      "agentId": "team-lead@session-faff20d5",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1790777324795,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2928-job-cleaner-demo-qa",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

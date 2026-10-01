@@ -13,10 +13,15 @@ OR-2868 visual regression baseline (Task) → OR-2864 Bootstrap import order (Bu
 design record (Story) → adoption → Storybook → Bootstrap 5.3 color modes. OR-2404 (Story: admin
 IA only) and OR-2405 reparented under it. OR-2879 App Home landing surface, OR-2880 rules handbook.
 
-**Phase 1 status (2026-09-17):** all three implemented as one chain on branch
-`feature/OR-2868-design-foundation`, draft [PR #4573](https://github.com/guidedclinical/orci/pull/4573),
-commit order 2868 suite → 2868 CI-rendered baselines → 2864 → 2869. Tickets stay In Progress until
-merge (IMPLEMENT-mode rule). Ryan's decisions: viewports 1920×1080 + 1280×800; prose doc in
+**DONE 2026-09-30:** [PR #4573](https://github.com/guidedclinical/orci/pull/4573) merged (6b875fdbe),
+OR-2868/2864/2869 all Done, worktree removed. Ryan reframed the work as standalone (a baseline
+"so we have it" + bug fix + tokens), NOT as the epic's foundation — he is unsure the epic's
+look-and-feel work will be wanted, so don't describe OR-2863 as underway. Review feedback: Theo/Jordan
+tripped on the word "token" (kept, defined in template + record); Theo caught masks painting the
+visually-hidden dosing form on alert screens (fixed by scoping the mask to `.dose-display:not(.visually-hidden)`).
+Follow-up filed 2026-09-30 as OR-2977 (Task under OR-2863, To Do, unassigned): log viewport size +
+user agent at app launch (server-side line + Sentry tag) so the two snapshot viewports get replaced with real data;
+Hyperspace window is user-resizable per Theo, so widths are representative checks, not a spec. Ryan's decisions: viewports 1920×1080 + 1280×800; prose doc in
 `spec/design/` (not docs/); `full` and `gate` exclude `@visual`.
 
 **Root defect (fixed by 2864):** `custom.scss` imported Bootstrap before the `$guided-*` vars, so the

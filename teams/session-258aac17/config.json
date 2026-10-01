@@ -1,14 +1,14 @@
 {
-  "name": "session-166c4573",
-  "createdAt": 1790087608903,
-  "leadAgentId": "team-lead@session-166c4573",
-  "leadSessionId": "166c4573-05e6-4803-a690-36178f7b7147",
+  "name": "session-258aac17",
+  "createdAt": 1790779828675,
+  "leadAgentId": "team-lead@session-258aac17",
+  "leadSessionId": "258aac17-0450-41d5-989d-8f4c4e20ff06",
   "members": [
     {
-      "agentId": "team-lead@session-166c4573",
+      "agentId": "team-lead@session-258aac17",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1790087608903,
+      "joinedAt": 1790779828675,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/Documents/09.2026 Honeywell 1962hc firmware updates",
       "subscriptions": [],

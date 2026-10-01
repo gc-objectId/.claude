@@ -1,0 +1,18 @@
+{
+  "name": "session-955adcac",
+  "createdAt": 1790779861578,
+  "leadAgentId": "team-lead@session-955adcac",
+  "leadSessionId": "955adcac-61d0-49f4-9b48-8bd95fbf8597",
+  "members": [
+    {
+      "agentId": "team-lead@session-955adcac",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1790779861578,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
