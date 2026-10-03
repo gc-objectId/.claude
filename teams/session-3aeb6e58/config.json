@@ -1,0 +1,18 @@
+{
+  "name": "session-3aeb6e58",
+  "createdAt": 1790954246851,
+  "leadAgentId": "team-lead@session-3aeb6e58",
+  "leadSessionId": "3aeb6e58-f9a2-4109-9948-5de97e0eb75f",
+  "members": [
+    {
+      "agentId": "team-lead@session-3aeb6e58",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1790954246851,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/guided-skills",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

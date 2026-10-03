@@ -1,0 +1,1 @@
+- [Medication mapping runtime](project_medication_mapping_runtime.md) — Python 3.10+ via 3.13 venv, dataset setup, RxNav is slow (~1.7/s), hand-made worktrees for guided-skills, real test data on OR-2914
