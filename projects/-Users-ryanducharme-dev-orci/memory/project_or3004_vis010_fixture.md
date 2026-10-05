@@ -1,6 +1,6 @@
 ---
 name: project-or3004-vis010-fixture
-description: "OR-3004 VIS-010 from a fixed feature flag fixture — draft PR #4633 into epic/OR-2863-design-foundation opened 2026-10-02, CI rebaseline dispatched; page.route via URL predicate, enableDate 0 reads as missing publish date, nested npm :local scripts swallowed -- args (fixed), OR-3005 filed for the fixed-bottom admin footer"
+description: "OR-3004 VIS-010 from a fixed feature flag fixture — DONE 2026-10-03: PR #4633 merged into epic/OR-2863-design-foundation (a377a0c3c), linux PNGs committed, worktree removed; page.route via URL predicate, enableDate 0 reads as missing publish date, nested npm :local scripts swallowed -- args (fixed), OR-3005 filed for the fixed-bottom admin footer"
 metadata:
   node_type: memory
   type: project
@@ -13,7 +13,10 @@ branch `feature/OR-3004-vis010-fixture` (correctly based on the epic branch @ 21
 `workon` from main), [draft PR #4633](https://github.com/guidedclinical/orci/pull/4633) → epic branch,
 opened 2026-10-02 23:31Z. Rebaseline dispatch run 37078005059 (`update_visual_snapshots=true`); the two
 `admin-feature-flags-*-linux.png` still need to be committed from its `pr-gate-visual-snapshots` artifact.
-Ticket stays In Progress until merge (IMPLEMENT mode).
+**DONE 2026-10-03:** rebaseline run 37078005059 changed exactly the two VIS-010 PNGs (other 22 byte-identical);
+committed as 8d024b16d; `gh pr merge --merge` was refused while the PR's own gate run was still pending/red
+("Pull Request is not mergeable", mergeStateStatus UNSTABLE, no ruleset) and succeeded once run 37079326571 was
+green → epic @ a377a0c3c. 8081 stopped, `worktree-done` clean, ticket moved to Done.
 
 **What shipped:** `qa-suite/visual/feature-flag-stub.ts` — 14 flags sorted by name (server sorts
 `featureName` asc), `stubFeatureFlagList(page)` answers `/api/admin/feature-flags/flags` with page/size/search

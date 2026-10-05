@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-02T22:36:39.805Z
+  modified: 2026-10-05T13:56:11.480Z
 ---
 
 OR-2863 (Epic, app-wide incl. clinical) centralizes GuidedOR's visual language. Children:
@@ -156,7 +156,16 @@ PNG). Documented in `qa-suite/tests-readme.md` under Visual regression. Self-tes
 changed=0 exit 0. `origin/main` has moved past the epic's base (902df19ac); the epic needs a merge from
 main before its PR. Suggested order from here: 3001 + 3004 (tiny) →
 2995/2996 (light, parallel) → 2997 (heavy) → 2991 → 2998 → 2992 → 2999 → 3002 → 3003; 2404/2405/2879/2880
-on their own track. **OR-3001 DONE 2026-10-02 — PR #4632 merged into the epic (epic @ 2123166e9), worktree removed:** `FavoritesMedsSidebar/` deleted, baseline 106→86 / 20 files. `check:cascade HEAD` = 0/0/0/0 — the dead stylesheet was never bundled (tree-shaken), so zero CSS delta, not "removals only". Lesson: `workon` built this child from main; fixed with `git reset --hard origin/epic/OR-2863-design-foundation` before any work (safe only while the branch has no own commits). Dev loop for it: backend 8081 + Vite 3002 (`VITE_PROXY_HOST_URL=http://localhost:8081`). Merging into the epic triggers no CD (`maven-cd.yml` is push-to-main only); the `gh pr merge` was blocked by the auto-mode classifier ("Merge Without Review") — Ryan merges child PRs himself. Next tiny one: OR-3004. Gate
+on their own track. **OR-3001 DONE 2026-10-02 — PR #4632 merged into the epic (epic @ 2123166e9), worktree removed:** `FavoritesMedsSidebar/` deleted, baseline 106→86 / 20 files. `check:cascade HEAD` = 0/0/0/0 — the dead stylesheet was never bundled (tree-shaken), so zero CSS delta, not "removals only". Lesson: `workon` built this child from main; fixed with `git reset --hard origin/epic/OR-2863-design-foundation` before any work (safe only while the branch has no own commits). Dev loop for it: backend 8081 + Vite 3002 (`VITE_PROXY_HOST_URL=http://localhost:8081`). Merging into the epic triggers no CD (`maven-cd.yml` is push-to-main only); the `gh pr merge` was blocked by the auto-mode classifier ("Merge Without Review") — Ryan merges child PRs himself. Next tiny one: OR-3004. **OR-3004 DONE (PR #4633 → epic @ a377a0c3c, VIS-010 stubbed via `qa-suite/visual/feature-flag-stub.ts`).
+2026-10-05: merged `origin/main` INTO the epic (merge, never rebase — shared branch, child bases, force-push);
+clean, no conflicts; main only bumped webapp deps + a PABX spec; `check:cascade a377a0c3c` = 0 changes;
+typecheck/guard/qa tsc clean; merge commit 0fe8e781a, gate run 37317856963 green (QA 115, visual 11/11).
+Epic now 0 behind main. 2026-10-05: every open child (2404/2405/2879/2880/2991/2992/2995–2999/3000/3002/
+3003/3005) got a "## Working this ticket" section (epic branch, fixed Vite port, CI-only snapshots, cascade
+gate, PR base, rebase rule); OR-2977 marked as main-bound; epic description gained "Three gates" + the child
+rules; canonical copy = [[or2863-child-session-sop]]. OR-2995/2996 worktrees already exist, verified on the
+epic tip. Plan agreed 2026-10-05: wave 1 = 2995 ∥ 2996; wave 2 = 2997; wave 3 = 2991→2998 ∥
+2992→2999; wave 4 = 3002 → 3003; own track 2404/2405/2879/2880/2977(→main)/3000; epic→main PR after wave 3.** Gate
 only runs on `pull_request` + `workflow_dispatch`, so epic-branch pushes need
 `gh workflow run pr-gate.yml --ref epic/OR-2863-design-foundation`; artifacts: `pr-gate-visual-snapshots`
 (all actuals) and `pr-gate-test-results` (actual/expected/diff per failure); download with

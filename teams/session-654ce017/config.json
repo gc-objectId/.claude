@@ -1,0 +1,18 @@
+{
+  "name": "session-654ce017",
+  "createdAt": 1791207681706,
+  "leadAgentId": "team-lead@session-654ce017",
+  "leadSessionId": "654ce017-b023-4f71-af5e-4939b0ef929e",
+  "members": [
+    {
+      "agentId": "team-lead@session-654ce017",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1791207681706,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2995-admin-patients-and-cases",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

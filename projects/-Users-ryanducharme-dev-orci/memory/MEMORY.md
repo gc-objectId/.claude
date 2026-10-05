@@ -87,6 +87,7 @@
 - [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — GLUCOSE observation fires synchronously; details.EXPANDED_CALCULATION via API
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED 2026-09-17: #4534 seed validated, tests #4560 merged, worktree gone; unmatched reactions still skip with no log (follow-up not filed); @DataJpaTest read-back needs flush+clear
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; "Started OrciApplication" fires before runners
+- [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch rules, CI-only snapshots, cascade gate, fixed Vite port per ticket (2995→3003 … 2404→3015), PR/merge rules; canonical for every child
 - [OR-2863 design foundation](project_or2863_design_foundation.md) — phase 2 on `epic/OR-2863-design-foundation` (integration branch; children branch off it, PR into it, gate via workflow_dispatch); OR-2990 DONE 2026-10-02 incl. declared clinical rebaseline; ticket map OR-2994–3003; cascade-diff lessons + scripts; OR-2994 next
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association; pathway drugs need ANTIBIOTIC tag
@@ -104,4 +105,4 @@
 - [OR-2990 entry surfaces](project_or2990_entry_surfaces.md) — PR #4630 merged into the epic branch 2026-10-02, worktree gone; ticket In Progress until VIS-006/011 baselines land on the epic branch; dup Bootstrap compiles were the cascade bug
 - [OR-2994 admin shell](project_or2994_admin_shell.md) — DONE 2026-10-02, PR #4631 merged into the epic branch, worktree gone; navy outline is the app-wide primary button except under body.clinical-shell; rebase-against-moving-epic lessons
 - [OR-3001 dead styling](project_or2863_design_foundation.md) — DONE 2026-10-02, PR #4632 into the epic; FavoritesMedsSidebar was never bundled (zero CSS delta); gh pr merge is classifier-blocked
-- [OR-3004 VIS-010 fixture](project_or3004_vis010_fixture.md) — PR #4633 into the epic; page.route predicate; enableDate 0 = "missing publish date"; nested npm :local scripts need trailing `--`; OR-3005 footer follow-up
+- [OR-3004 VIS-010 fixture](project_or3004_vis010_fixture.md) — DONE 2026-10-03, PR #4633 merged into the epic; page.route predicate; enableDate 0 = "missing publish date"; nested npm :local scripts need trailing `--`; OR-3005 footer follow-up
