@@ -1,0 +1,12 @@
+Validation of OR-2978 is complete and the session file is written. The worktree is clean and all scratch work sits under the results scratch directory.
+
+**Verdict: deploy-ready**, recorded in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2978/session.json`.
+
+What was exercised against the running mayo-mayo tenant:
+
+- **Positive.** A cystoscopy case on the SMX-TMP to cefazolin pathway, with a sulfa allergy coded SNOMED 372788003, produced a SULFONAMIDE medication allergy. The walk recommended cefazolin and selecting cefazolin no longer fired the wrong-antibiotic alert. The RxNorm 10831 variant behaved the same way.
+- **Negative.** With no sulfa allergy, SMX-TMP stayed recommended and the alert still fired on cefazolin. With the allergy, selecting SMX-TMP fired the general allergy rule instead.
+- **Red check.** Deleting the 372788003 row from the group table made a fresh allergy go unrecognized and the alert fired again. Reinserting the row and re-adding the allergy restored the abstain. The signature line appears exactly once in the container log.
+- **Backfill.** The shipped changeset SQL, run by hand against the two real firings with compliance forced false, flipped only the firing whose coded allergy predated it.
+
+Caveats recorded: real Mayo FHIR ingestion and the RXNORM_ALLERGY_MAPPING flag gate were not exercised, the Liquibase run itself was on an empty schema, and the SharePoint document update is outside this environment. Three backend tests are proposed under automation.

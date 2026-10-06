@@ -1,0 +1,18 @@
+{
+  "name": "session-bc0e474e",
+  "createdAt": 1791232086770,
+  "leadAgentId": "team-lead@session-bc0e474e",
+  "leadSessionId": "bc0e474e-5f39-4342-866c-4cad604e3abb",
+  "members": [
+    {
+      "agentId": "team-lead@session-bc0e474e",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1791232086770,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2997-admin-platform-pages",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

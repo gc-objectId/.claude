@@ -5,15 +5,16 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-05T13:52:06.451Z
+  modified: 2026-10-05T20:26:36.333Z
 ---
 
 Every open child of OR-2863 carries this as "## Working this ticket" in Jira; this is the canonical copy.
 
-**Branch.** From and into `epic/OR-2863-design-foundation`, never `main`. Create the worktree by hand:
-`git fetch origin && git worktree add ~/dev/worktrees/OR-NNNN-slug -b feature/OR-NNNN-slug origin/epic/OR-2863-design-foundation`.
-`workon` starts from `main`; if it was used, `git reset --hard origin/epic/OR-2863-design-foundation` before the
-first commit (safe only while the branch has no own commits). Fresh worktree: `npm ci` in `orci/src/main/webapp`
+**Branch.** From and into `epic/OR-2863-design-foundation`, never `main`. Ryan's normal path is
+`workon OR-NNNN slug` (assigns the ticket, names the worktree) — it cuts from `main`, so the session's first act
+is `git fetch origin && git reset --hard origin/epic/OR-2863-design-foundation` before any commit (lossless while
+the branch has no own commits; 2995/2996/3001 all did this). Equivalent by hand:
+`git worktree add ~/dev/worktrees/OR-NNNN-slug -b feature/OR-NNNN-slug origin/epic/OR-2863-design-foundation`. Fresh worktree: `npm ci` in `orci/src/main/webapp`
 and in `qa-suite`. Rebase on `origin/epic/OR-2863-design-foundation` after any sibling merges; baseline PNG
 conflicts resolve by re-downloading from your own CI run. Never rebase the epic branch itself — the epic session
 merges `main` into it. Exception: OR-2977 (viewport logging) goes straight to `main`.
@@ -49,7 +50,7 @@ an unchanged screen are byte-identical — a byte diff is a real diff.
 equal-specificity order flips; blind to pairs that only share an element in the DOM — for those, open the same
 page on 3001 and your port and compare computed styles).
 
-**PR and close-out.** `gh pr create --draft --base epic/OR-2863-design-foundation`; Ryan merges child PRs
+**PR and close-out.** Open the PR only after the rebaseline PNGs are committed and pushed — Ryan merges drafts promptly (OR-2996 merged with stale baselines). `gh pr create --draft --base epic/OR-2863-design-foundation`; Ryan merges child PRs
 himself (the auto-mode classifier blocks `gh pr merge`). Ticket stays In Progress until the merge; merging into
 the epic triggers no CD. After the merge the epic session pulls, restarts 3001, and regates the epic branch.
 

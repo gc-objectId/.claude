@@ -1,0 +1,24 @@
+login 200
+outcome RECOMMENDED
+
+=== P1 positive: hysterectomy, metronidazole IV + cefazolin GASTRIC_TUBE -> expect no fire {"pmrn":"V2993P1-fake-81db061c-b47e-4308-aad0-a61f883407c8","uuid":"01a10d1d-cbf1-76cd-b3c2-7bd5739ca351","caseId":"70671"}
+quartz jobs: [{"name":"patient-V2993P1-fake-81db061c-b47e-4308-aad0-a61f883407c8-operation-70671-medication-m-metronidazole-iv-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-06T01:27:19.281+00:00"},{"name":"patient-V2993P1-fake-81db061c-b47e-4308-aad0-a61f883407c8-operation-70671-medication-m-cefazolin-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-05T21:27:21.018+00:00"}]
+fired 0 []
+notFired ["Procedure candidates were given."]
+
+=== P2 positive: hysterectomy, cefazolin GASTRIC_TUBE only -> expect PARTIALLY_GIVEN missing metronidazole {"pmrn":"V2993P2-fake-97b8837c-197a-403a-b50e-4dc6df2f5839","uuid":"01a10d1d-df74-7508-8260-f654e1d79d3a","caseId":"41454"}
+quartz jobs: [{"name":"patient-V2993P2-fake-97b8837c-197a-403a-b50e-4dc6df2f5839-operation-41454-medication-m-cefazolin-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-05T21:27:24.031+00:00"}]
+fired 1 [{"status":"PARTIALLY_GIVEN","groups":[{"missingMeds":["MetroNIDAZOLE"],"medsAdministered":["CeFAZolin"],"caseClassification":null}]}]
+notFired []
+
+=== N1 negative: hysterectomy, metronidazole IV + cefazolin TOPICAL -> expect PARTIALLY_GIVEN missing cefazolin {"pmrn":"V2993N1-fake-1dd48362-c340-47b5-8e6d-466db5b06b33","uuid":"01a10d1d-eab1-7c7a-a69f-74e8fef8a31d","caseId":"17840"}
+quartz jobs: [{"name":"patient-V2993N1-fake-1dd48362-c340-47b5-8e6d-466db5b06b33-operation-17840-medication-m-metronidazole-iv-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-06T01:27:26.909+00:00"}]
+fired 1 [{"status":"PARTIALLY_GIVEN","groups":[{"missingMeds":["CeFAZolin"],"medsAdministered":["MetroNIDAZOLE"],"caseClassification":null}]}]
+notFired []
+
+=== N2 negative: hysterectomy, cefazolin TOPICAL only -> expect NONE_GIVEN {"pmrn":"V2993N2-fake-19386cf9-f34d-4c7b-aed1-18c0db04abc9","uuid":"01a10d1d-fc12-766e-bae3-7aeaa52a194b","caseId":"19409"}
+quartz jobs: []
+fired 1 [{"status":"NONE_GIVEN"}]
+notFired []
+
+CASES {"P1":{"pmrn":"V2993P1-fake-81db061c-b47e-4308-aad0-a61f883407c8","uuid":"01a10d1d-cbf1-76cd-b3c2-7bd5739ca351","caseId":"70671"},"P2":{"pmrn":"V2993P2-fake-97b8837c-197a-403a-b50e-4dc6df2f5839","uuid":"01a10d1d-df74-7508-8260-f654e1d79d3a","caseId":"41454"},"N1":{"pmrn":"V2993N1-fake-1dd48362-c340-47b5-8e6d-466db5b06b33","uuid":"01a10d1d-eab1-7c7a-a69f-74e8fef8a31d","caseId":"17840"},"N2":{"pmrn":"V2993N2-fake-19386cf9-f34d-4c7b-aed1-18c0db04abc9","uuid":"01a10d1d-fc12-766e-bae3-7aeaa52a194b","caseId":"19409"}}

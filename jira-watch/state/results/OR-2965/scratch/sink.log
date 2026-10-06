@@ -1,0 +1,5 @@
+[sink] listening on [::]:2525
+[sink] stored /Users/ryanducharme/.claude/jira-watch/state/results/OR-2965/scratch/mail-01.eml from=<noreply@guidedclinical.com> to=<guidedorfeedback@guidedclinical.com>
+[sink] stored /Users/ryanducharme/.claude/jira-watch/state/results/OR-2965/scratch/mail-02.eml from=<mghguidedor@mgb.org> to=<tnguyen-cao@mgh.harvard.edu>,<jephron@mgh.harvard.edu>,<rducharme@mgh.harvard.edu>
+[sink] stored /Users/ryanducharme/.claude/jira-watch/state/results/OR-2965/scratch/mail-03.eml from=<noreply@guidedclinical.com> to=<guidedor.testing@guidedclinical.com>
+[sink] stored /Users/ryanducharme/.claude/jira-watch/state/results/OR-2965/scratch/mail-04.eml from=<noreply@guidedclinical.com> to=<guidedorfeedback@guidedclinical.com>

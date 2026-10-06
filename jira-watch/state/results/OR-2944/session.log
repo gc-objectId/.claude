@@ -1,0 +1,17 @@
+Validation of OR-2944 is complete and the result file is written.
+
+**Verdict: deploy-ready**, with ship risk marked material because of one caveat Ryan should weigh before deploy.
+
+**What was exercised against the running build (demo tenant, admin API):**
+- **Positive:** nothing given on a gastroduodenal case fired the merged rule with PATHWAY_STATUS NONE_GIVEN; cefazolin alone on a colorectal case fired PARTIALLY_GIVEN naming metronidazole as missing. Persisted prompt JSON matched the pre-fix rules' output field for field, differing only in rule ID and timestamp.
+- **Negative:** cefazolin plus metronidazole abstained with "Procedure candidates were given." The shared lockout held: after a NONE_GIVEN firing, a partial dose plus a second PROCEDURE_START abstained with "Already fired for this case."
+- **Red check:** compiled the parent commit's two rule classes inside the container, swapped them into /app/classes, restarted, and watched the second PROCEDURE_START fire a-known-procedure-missing-antibiotic as a second alert on the same case. Restored the shipped classes, confirmed md5sums, restarted, and re-ran the lockout scenario, which abstained again.
+
+**Caveats recorded for Ryan:**
+- The PARTIALLY_GIVEN branch re-enables alerting that OR-2949 had switched off via the engine ignore list right before this PR merged. PR #4582 dropped that entry deliberately, but relative to the prior main the partial-dose alert returns for clinicians.
+- The pre-deploy flag check for MGB and Mayo prod and the Metabase card updates cannot be verified here and are not recorded as done on the ticket.
+- Alert text was verified from persisted prompt JSON, not rendered in the browser.
+
+**Automation proposed:** supplemental PABX tests for the PARTIALLY_GIVEN firing and the shared lockout, both stageable through the admin API like PABX-019.
+
+Output is at `~/.claude/jira-watch/state/results/OR-2944/session.json`. Scratch scripts and pre-fix sources sit in the scratch directory; the worktree is untouched.

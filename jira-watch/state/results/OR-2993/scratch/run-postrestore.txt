@@ -1,0 +1,13 @@
+login 200
+
+=== P3 post-restore: hysterectomy, cefazolin GASTRIC_TUBE only -> expect PARTIALLY_GIVEN missing metronidazole + cefazolin redose job {"pmrn":"V2993P3-fake-18e69d47-78d0-4420-9fc3-b2c5f9dbe646","uuid":"01a10d20-16e0-7ac3-9c7a-737fd263bbd7","caseId":"59223"}
+quartz jobs: [{"name":"patient-V2993P3-fake-18e69d47-78d0-4420-9fc3-b2c5f9dbe646-operation-59223-medication-m-cefazolin-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-05T21:29:49.326+00:00"}]
+fired 1 [{"status":"PARTIALLY_GIVEN","groups":[{"missingMeds":["MetroNIDAZOLE"],"medsAdministered":["CeFAZolin"],"caseClassification":null}]}]
+notFired []
+
+=== P4 post-restore: hysterectomy, metronidazole IV + cefazolin GASTRIC_TUBE -> expect no fire {"pmrn":"V2993P4-fake-d06e0884-5e6a-43e4-8379-0122b261b379","uuid":"01a10d20-2403-7d66-bb20-6a758837a14f","caseId":"16742"}
+quartz jobs: [{"name":"patient-V2993P4-fake-d06e0884-5e6a-43e4-8379-0122b261b379-operation-16742-medication-m-metronidazole-iv-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-06T01:29:52.648+00:00"},{"name":"patient-V2993P4-fake-d06e0884-5e6a-43e4-8379-0122b261b379-operation-16742-medication-m-cefazolin-dose-1","group":"antibiotic-redose-reminder","next":"2026-10-05T21:29:54.253+00:00"}]
+fired 0 []
+notFired ["Procedure candidates were given."]
+
+CASES {"P3":{"pmrn":"V2993P3-fake-18e69d47-78d0-4420-9fc3-b2c5f9dbe646","uuid":"01a10d20-16e0-7ac3-9c7a-737fd263bbd7","caseId":"59223"},"P4":{"pmrn":"V2993P4-fake-d06e0884-5e6a-43e4-8379-0122b261b379","uuid":"01a10d20-2403-7d66-bb20-6a758837a14f","caseId":"16742"}}

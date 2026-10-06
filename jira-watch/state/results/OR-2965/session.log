@@ -1,0 +1,9 @@
+Validation of OR-2965 is complete and recorded in `session.json` with verdict deploy-ready.
+
+**What was exercised against the running instance**
+
+- Positive: the shipped classpath carries only `jakarta.mail-api-2.1.5` plus `angus-mail-2.0.5`. A feedback submission sent a real email through Angus to a local SMTP sink. With the `openshift-guidedor-tst` profile layered under local/docker, an ERROR log made the logback SMTPAppender deliver "GuidedOR Error (https://guidedor-dev.partners.org)" with sender and all three recipients taken from the new `logging.smtp.*` properties.
+- Negative: a probe on the app's exact classpath showed `com.sun.mail` and `javax.mail` classes are not loadable, and ERROR logs under the plain local/docker profiles produced no appender mail.
+- Red check: putting the pre-fix `com.sun.mail:jakarta.mail:2.0.2` jar back in the pre-fix classpath order made the smtp provider resolve to `com.sun.mail.smtp.SMTPTransport` under the 2.1.5 API. The classpath file was restored with a matching checksum, the jar deleted, and the post-revert send went through Angus again. The signature line appears exactly once in the container log.
+
+**Caveats recorded**: the OpenShift relay was replaced by a local sink, the prod profile was not booted, and the entrypoint patch that injects the mail-host flags was left in place. The worktree is untouched. Proposed automation is a GreenMail test for `InternalNotificationService`, which currently has no coverage.

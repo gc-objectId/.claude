@@ -1,0 +1,11 @@
+Validation of OR-2964 is complete and the result is written to `session.json`. The worktree is untouched and all scratch material lives outside it.
+
+**Verdict: deploy-ready.**
+
+- **Positive.** On the running `c45154016` build, writes to formerly `@Audited` entities succeeded: a BSM log entry via the tenant-token endpoint, a patient and operation via the admin API, plus a read-back through `OperationRepository`, which used to extend `RevisionRepository`. Rows landed in the `demo-demo` schema and the tenant user logged in normally.
+- **Negative.** The JVM command line has no Envers jar, the Spring context has 91 repository beans and zero Envers or revision beans or properties, and the database has 421 tables with none matching `_aud`, `_audit`, or `revinfo` after the writes.
+- **Red check.** I re-injected `hibernate-envers-7.4.5.Final` and a pre-fix `@Audited` BSMLog class into the disposable container and restarted. The same write then failed with HTTP 500 as Envers tried `select nextval('revinfo_seq')`, which is the recorded log signature. I restored the classpath file and jar directory, confirmed both by sha256 against pre-injection backups, restarted, and the write passed again with no Envers log lines.
+
+**Caveats recorded** (ship risk none): CRUD was sampled across five of the 45 entities, with the rest covered by boot-time mapping; the red check targeted one entity rather than the whole pre-fix build; `findRevisions` was never invoked since no caller exists.
+
+**Automation proposal:** nothing at the app level is worth locking in. The one useful guard is a Maven enforcer `bannedDependencies` rule for `spring-data-envers` and `hibernate-envers` so the dependency cannot quietly return.

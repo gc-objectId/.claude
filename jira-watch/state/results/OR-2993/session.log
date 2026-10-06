@@ -1,0 +1,11 @@
+Validation of OR-2993 is complete and the result is written to `session.json` with verdict **deploy-ready**.
+
+**What was exercised against the throwaway build** (demo tenant, hysterectomy pathway cefazolin + metronidazole):
+
+- **Positive:** metronidazole IV plus cefazolin on `GASTRIC_TUBE` abstained with "Procedure candidates were given." Gastric-tube cefazolin alone fired `PARTIALLY_GIVEN` naming metronidazole as missing. The scheduler queued a cefazolin redose job 4 hours out.
+- **Negative:** the same doses with cefazolin on `TOPICAL` were not counted. The rule reported cefazolin missing or `NONE_GIVEN`, and no cefazolin redose job was scheduled.
+- **Red check:** compiled the parent commit's `FiltersByAntibioticRoute` in the container, swapped it in, and restarted. The gastric-tube cases then fired `PARTIALLY_GIVEN` missing cefazolin and `NONE_GIVEN` with no redose job. Restored the shipped class, confirmed the checksum matched, and fresh cases reproduced the fixed behaviour.
+
+The red-check signature is anchored on the red case's operation UUID, since the generic fired line also appears for the negative cases. It occurs exactly once in the container log.
+
+Ship risk is recorded as none. Caveats note that the Mayo Metabase report change was not executed here, and that only the pathway rule and the redose scheduler were driven directly. The other affected rules read the same single route set. Three supplemental PABX and ARD tests are proposed to pin a tube-route dose as counted end to end. The worktree is clean and all scratch files live under the results directory.

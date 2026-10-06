@@ -1,4 +1,4 @@
-# Validation loop review — 2026-09-30 09:40
+# Validation loop review — 2026-10-05 13:19
 
 ## Stranded worktrees
 
@@ -9,117 +9,22 @@ A run is in progress — refusing to reap anything.
 ## Digest
 
 ```
-Validation digest — 8 runs since 2026-09-29T13:40:41Z
+Validation digest — 4 runs since 2026-10-04T17:19:10Z
 
-NEEDS YOU — refused by the gate (2)
-  OR-2959  verdict=not-deploy-ready; verdict is 'not-deploy-ready'
-  OR-2926  verdict=inconclusive; verdict is 'inconclusive'
+Closed, with stated limits (1)
+  OR-2944  verdict=deploy-ready; posted and transitioned; caveats:
 
-NEEDS YOU — no merged PR, nothing to validate (1)
-  OR-2901  no merged PR within the search window; needs a human disposition
+Closed clean (1)
+  OR-2964  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
 
-Closed clean (4)
-  OR-2951  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2928  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2945  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2931  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-
-Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 OR-2780 OR-2783 OR-2914 
+Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 OR-2780 OR-2783 OR-2914 OR-2901 OR-2915 
 
 WHAT TO DO NEXT
-  3 ticket(s) need a decision from you.
-  loopcmd review          walk them one at a time with a session (the usual way)
-  loopcmd session OR-123  dig into one, in a worktree on its branch
-  unblock.sh OR-123       answer it as a Jira comment; the next sweep reads that
-  unblock.sh skip OR-123  stop offering it
   loopcmd cover OR-123    turn its proposed tests into a draft PR
   digest.sh OR-123        everything on one ticket: caveats, blockers, evidence
 ```
 
 ## Tickets needing a decision
-
-### OR-2901
-
-```
-=== OR-2901 ===
-
-disposition : no_merged_pr
-detail      : no merged PR within the search window; needs a human disposition
-ran at      : 2026-09-29T21:00:56Z
-verdict     : 
-built from  : 
-
-files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2901
-```
-
-### OR-2926
-
-```
-=== OR-2926 ===
-
-disposition : refused
-detail      : verdict=inconclusive; verdict is 'inconclusive'
-ran at      : 2026-09-29T21:01:53Z
-verdict     : inconclusive
-built from  : 4b0324df9eda299c8efa0fdc5b8cf51575b23fae
-
-blockers:
-  - This is a build/CI/runtime ticket with no app-level red check; the done criteria (CI, full suite, dev deploy on Java 25) were verified from GitHub run history (CI Build + PR Gate green on 11c708574, dev deploys green on main since 2026-09-17 incl. today's 4b0324df9). Is that GitHub evidence plus the Temurin-25 runtime observation sufficient to close OR-2926 by hand?
-  - Ticket bullet 'Confirm the MGB OpenShift environment can run a Java 25 image' could not be checked (api.prod-shared-aro-e2.partners.org unreachable from here). Has MGB confirmed, or is it deferred to their next image pull?
-  - The dev deploy on the merge commit failed on ecs:TagResource (IAM, run 35005722169) and later deploys passed. Was the IAM policy fixed deliberately, so nothing remains open from that failure?
-
-caveats:
-  - MGB OpenShift compatibility with the eclipse-temurin:25-jdk-jammy image was never exercised; the base-image family is unchanged so risk is low, but it is a stated ticket deliverable.
-  - Java 25 runtime prints JEP 472 warnings at boot: 'A restricted method in java.lang.System has been called' (java.lang.System::loadLibrary from io.netty.util.internal.NativeLibraryUtil, netty-common-4.2.17) and a sun.misc.Unsafe::objectFieldOffset warning from ehcache-3.10.8; harmless today but a future JDK will block the netty call unless --enable-native-access=ALL-UNNAMED is added to the JVM args.
-  - The loop image's orci-utils-0.1.101-SNAPSHOT.jar contains Java 21 bytecode (major 65, classes dated 2026-08-26, manifest Build-Jdk-Spec 21) because the loop's ~/dev/worktrees/_loop-main checkout had stale target/classes ('Nothing to compile - all classes are up to date' in sweep.log). Not a code defect (a clean compile yields major 69, and CI/CD run clean install), but _loop-main/orci-utils/target should be cleaned so loop images are fully Java 25.
-  - CI Build runs the unit suite via mvnw install; the -P integration-tests profile is not part of CI, so 'full test suite on Java 25' means the CI suite. It was not re-run locally here.
-  - Root Dockerfile was updated to temurin 25 rather than deleted; it was not built or exercised (the instance under test is the jib image).
-  - The only Java source change (ApplicationRunner) is comment-only; no behavioural code path was exercised beyond boot, health, login and /api/user/info.
-
-evidence.positive:
-  The instance built from 4b0324df9 (main, contains merge df1ae41cc of PR #4562) runs on Java 25: `docker exec ... java -version` reports Temurin-25.0.4.1+1-LTS; the container log's startup line reads 'Starting OrciApplication using Java 25.0.4.1 with PID 1' and 'Started OrciApplication in 90.823 seconds'; /actuator/health/readiness returned 200 {"status":"UP"}; every class under /app/classes has cl
-
-evidence.negative:
-  Java-21 toolchain remnants: no module pom or workflow still pins 21 (grep of java.version / java-version / maven.compiler.* across pom.xml, orci*/pom.xml, .github/workflows/*.yml finds only 25 or ${java.version}). No Java-25-caused errors in the app log: the 2495 ERROR lines are all MedicationNDCMappingImporter / MedicationDosingCSVImporter tenant data-import noise, none reference class loading, m
-
-evidence.red_check:
-  Flipped the runtime instead of the code: copied the shipped /app/classes/com/guided/orci/OrciApplication.class out of the app container and launched it on a Java 21 JVM (docker run eclipse-temurin:21-jre-jammy java -cp /c com.guided.orci.OrciApplication). It went red with 'java.lang.UnsupportedClassVersionError: com/guided/orci/OrciApplication has been compiled by a more recent version of the Java
-
-files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2926
-```
-
-### OR-2959
-
-```
-=== OR-2959 ===
-
-disposition : refused
-detail      : verdict=not-deploy-ready; verdict is 'not-deploy-ready'
-ran at      : 2026-09-29T21:27:12Z
-verdict     : not-deploy-ready
-built from  : ff735801d85863b57fc1ee3cf100514c4256ac2e
-
-blockers:
-  - The code half validates cleanly, but the ticket also says to delete -Dcompliance.results.process.missing-only=true from the dev, stage and prod task definitions, and the active revisions (guidedor-dev:747, guidedor-stage:92, guidedor-prod:59) still carry it. Should the flag be removed from the three task definitions before this ticket closes, or is that being dropped or split to a follow-up?
-  - The ticket asks to confirm the MGB OpenShift deployment does not set compliance.results.process.enabled before merging. That cannot be checked from this environment (no oc access; the deploy tool does not set it). Has someone confirmed it on the MGB cluster?
-
-caveats:
-  - The removed startup backfill was validated only by its startup log lines; the demo tenant had no rule firings, so the pre-fix runner found nothing to score during the red check.
-  - The live compliance path was exercised through the case-stop route with zero rule firings (compliance evaluation ran, but no compliance_results row was produced); the per-administration route was not exercised.
-  - Task-definition and MGB OpenShift deliverables are outside the running app; the task definitions were read via the AWS CLI and still carry the missing-only flag, and MGB could not be checked at all.
-  - Liquibase changeset 227 (backfill-preop-doxycycline-compliance) still has a comment describing the compliance result processor and its missing-only flag; harmless, but now describes code that no longer exists.
-
-evidence.positive:
-  On the shipped ff735801d build (container orci-loop-or-2959-orci-1), confirmed /app/classes/com/guided/orci/spring/ComplianceResultRunner.class is absent and the boot log contains zero 'compliance result runner' lines. Then exercised the live compliance path that the ticket says stays: created a demo-demo patient and case 03706 via the admin API, started it as loopuser through POST /api/app-launch
-
-evidence.negative:
-  Added -Dcompliance.results.process.enabled=true to /app/entrypoint.sh on the shipped classes and restarted the container. /proc/1/cmdline confirmed the flag was on the JVM. App reached readiness UP and logged 'Started OrciApplication in 11.226 seconds'; grep of the log since that restart for 'compliance result runner' returned 0 lines, so the enabling flag is now inert and no startup backfill runs
-
-evidence.red_check:
-  Compiled the parent commit's ComplianceResultRunner, StartupPhase (with COMPLIANCE_RESULT_EVAL), RuleComplianceService (with processComplianceResults) and RuleFiredResultRepository (with streamAll/streamAllWithoutComplianceResult) inside the container with javac against the jib classpath (lombok @Slf4j replaced by explicit loggers), copied them into /app/classes (shadowing the repositories jar), k
-
-files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2959
-```
 
 ## Coverage backlog
 
@@ -283,6 +188,11 @@ OR-2931  (admitted)
   OR-2931#0    mayo-client-integration or orci Spring integration test: RAS Intralipid bolus in g for a NORMAL-weig
   OR-2931#1    Same harness with an empty mapping concentration: gram dose persists and scores compliant (incompara
 
+OR-2944  (admitted_with_caveats)
+  OR-2944#0    PABX supplemental: p-colorectal with a cefazolin bolus only, PROCEDURE_START -> exactly one a-incomp
+  OR-2944#1    PABX supplemental (shared lockout): p-colorectal, PROCEDURE_START with nothing given fires NONE_GIVE
+  OR-2944#2    PABX supplemental: assert details.PATHWAY_STATUS is NONE_GIVEN on the existing PABX-019 control firi
+
 OR-2945  (admitted)
   OR-2945#0    INS-0xx @supplemental: insulin selection + subcutaneous dose differing from the rule's SC default ->
   OR-2945#1    INS-0xx @supplemental: same staging, dose equal to the SC default -> default-dose compliant=true (po
@@ -294,14 +204,20 @@ OR-2951  (admitted)
   OR-2951#2    MayoHL7RasMedAdminProcessorTest: completion-status-canceled message for an unseen patient captures t
   OR-2951#3    Supplemental: MayoHl7PatientSkeleton.from with blank PID-5, PID-7 and PID-8 yields null name/dob/gen
 
+OR-2960  (admitted)
+  OR-2960#0    RuleServiceConfigCacheRefreshTest: saveStoredConfiguration on this instance is visible to getConfig 
+
+OR-2964  (admitted)
+  OR-2964#0    Maven enforcer bannedDependencies rule (root pom) for org.springframework.data:spring-data-envers an
+
 OR-2791  (refused)
   OR-2791#a1   [BLOCKED on OR-2720] ALG supplemental: RXNORM 5640 (ibuprofen) allergy then m-ketorolac asserts a-ge
 
-98 open of 135 proposed.
+103 open of 140 proposed.
 mark: automation.sh done <ID>   |   drop: automation.sh decline <ID> "why"
 bundle into a ticket: automation.sh ticket <SOURCE-TICKET>
 ```
 
 ## Eligible for the next sweep
 
-0 ticket(s)
+1 ticket(s)

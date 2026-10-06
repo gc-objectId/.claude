@@ -1,5 +1,5 @@
 {
-  "etag": "W/\"xoUE7HdfMDxrPPyVXT0j3TTkgRac9rE4vWnpjT3gqLA\"",
+  "etag": "W/\"o2zFNs1RLWYTLpE_CzqMkMl9iuy7hkZOuooZwk_LfIo\"",
   "rows": [
     {
       "name": "Organization library",
@@ -9,6 +9,16 @@
       },
       "id": "marketplace_013W9RYD7NWpDx1Hw7Km8Uo8",
       "updated_at": "2026-09-18T03:21:54.712508Z"
+    },
+    {
+      "name": "anthropic-plugin-directory",
+      "display_name": "Anthropic Directory",
+      "scope": "default",
+      "source": {
+        "source": "claudeai"
+      },
+      "id": "marketplace_01VNB7JgJyYTuJiDfXSABKm3",
+      "updated_at": "2026-10-05T20:23:13.06989Z"
     }
   ],
   "parserVersion": 1002

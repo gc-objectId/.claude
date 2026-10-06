@@ -24,6 +24,15 @@ Sprint 93 planning, 2026-09-25 (Alex, Theo, Jordan, Ryan).
   Theo flagged this will break Ryan's existing PABX-family tests. PR #4582 open.
 - Alex wants a "test ticket for the spec process" too; Theo pointed at Ryan's baseline work.
 
+**OR-2941 state (2026-10-06):** worktree `~/dev/worktrees/OR-2941-cefazolin-default-dose`
+(`feature/OR-2941-cefazolin-default-dose`). Spec proposal + ticket text drafted in the session
+scratchpad `OR-2941/` (spec lints clean except the expected empty `covers:`). Decisions: doses
+hardcoded like cefepime, cefazolin rows leave DoseAdjustments.xlsx for all 3 sites in the same
+PR; unknown CrCl on redose → 2 g (Alex to confirm); no weight → Normal, known gap. OPEN for
+Theo/Alex: the prior-non-default-dose guard in AdjustmentService (a 3 g first dose trips it
+against the 2 g redose); reference for the 2 g redose. Nothing committed yet. Ticket text appended under Alex's description and spec posted as a
+comment on OR-2941 (2026-10-06).
+
 **Why:** Theo wants Ryan on implementation, not only testing; OR-2941 is the deliberately
 thin first ticket. **How to apply:** spec first (rule-spec), then implement; keep the
 medication-selection baseline (feature-spec) running in parallel.

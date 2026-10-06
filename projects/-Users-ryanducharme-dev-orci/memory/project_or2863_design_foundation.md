@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-05T13:56:11.480Z
+  modified: 2026-10-05T20:22:46.943Z
 ---
 
 OR-2863 (Epic, app-wide incl. clinical) centralizes GuidedOR's visual language. Children:
@@ -164,7 +164,10 @@ Epic now 0 behind main. 2026-10-05: every open child (2404/2405/2879/2880/2991/2
 3003/3005) got a "## Working this ticket" section (epic branch, fixed Vite port, CI-only snapshots, cascade
 gate, PR base, rebase rule); OR-2977 marked as main-bound; epic description gained "Three gates" + the child
 rules; canonical copy = [[or2863-child-session-sop]]. OR-2995/2996 worktrees already exist, verified on the
-epic tip. Plan agreed 2026-10-05: wave 1 = 2995 ∥ 2996; wave 2 = 2997; wave 3 = 2991→2998 ∥
+epic tip. **Wave 1 DONE 2026-10-05:** OR-2995 (#4635) and OR-2996 (#4636 + #4637 rebaseline) merged into the epic
+(@ 8567a6a07, 49 ahead of main); shared AdminPageHeader/AdminTable/FactList/SectionHeader now exist for 2997;
+VIS-012–018 added (next free VIS-019). Lesson from 2996: open the draft PR only after the rebaseline PNGs are
+committed — Ryan merges drafts fast. Epic session merged main again + regated. Plan agreed 2026-10-05: wave 1 = 2995 ∥ 2996; wave 2 = 2997; wave 3 = 2991→2998 ∥
 2992→2999; wave 4 = 3002 → 3003; own track 2404/2405/2879/2880/2977(→main)/3000; epic→main PR after wave 3.** Gate
 only runs on `pull_request` + `workflow_dispatch`, so epic-branch pushes need
 `gh workflow run pr-gate.yml --ref epic/OR-2863-design-foundation`; artifacts: `pr-gate-visual-snapshots`

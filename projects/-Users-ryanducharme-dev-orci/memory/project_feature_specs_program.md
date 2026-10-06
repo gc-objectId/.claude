@@ -21,8 +21,8 @@ proves, then repeat, then use the flow for new rule-based tickets Theo hands ove
   and `rule-summary` now point there (main versions are `~/dev/guided-skills/<skill>`).
   Remove both worktrees + repoint the symlinks once PRs #9 and #12 merge.
 - orci #4504 is the in-repo review contract.
-- Medication-selection baseline ticket: drafted 2026-09-29, Jira connector refused writes
-  ("connector access could not be verified"); text saved in the session scratchpad, not yet filed.
+- Medication-selection baseline ticket: **OR-3017** (Story, filed 2026-10-06, assigned Ryan,
+  no sprint). Next: `/feature-spec` BASELINE against it; baseline PR is spec-only.
 
 **Why:** existing behavior is undocumented, so every requirements conversation starts with
 "what does it do today". Litmus test from Theo: could someone reimplement the feature from
