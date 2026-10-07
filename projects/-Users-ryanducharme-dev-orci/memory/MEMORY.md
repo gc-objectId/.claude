@@ -109,4 +109,5 @@
 - [OR-3004 VIS-010 fixture](project_or3004_vis010_fixture.md) — DONE 2026-10-03, PR #4633 merged into the epic; page.route predicate; enableDate 0 = "missing publish date"; nested npm :local scripts need trailing `--`; OR-3005 footer follow-up
 - [OR-2995 admin patients & cases](project_or2995_admin_patients_cases.md) — DONE 2026-10-05, PR #4635 merged into the epic; shared AdminPageHeader/AdminTable/FactList/SectionHeader for 2996/2997; VIS-012; PAT-004 selectors changed
 - [OR-2996 clinical reference data pages](project_or2996_clinical_reference_data_pages.md) — DONE 2026-10-05 (#4636 + #4637 into the epic); VIS-013–018 via reference-data-stub.ts, next free VIS 019; Vite-port + 8080 local recipe
+- [OR-2997 admin platform pages](project_or2997_admin_platform_pages.md) — draft PR #4640 into the epic 2026-10-06, awaiting merge; VIS-019–027 via platform-stub.ts, next free VIS 028; AsyncButton event + refetch-key fixes; visually-hidden th widened the page
 - [PR only when mergeable](feedback_pr_only_when_mergeable.md) — no draft PR while a commit is still owed (rebaseline PNGs); Ryan merges drafts fast
