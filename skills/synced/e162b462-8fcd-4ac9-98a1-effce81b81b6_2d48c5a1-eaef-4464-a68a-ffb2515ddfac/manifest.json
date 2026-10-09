@@ -1,5 +1,5 @@
 {
-  "lastUpdated": 1791340825548,
+  "lastUpdated": 1791508229829,
   "skills": [
     {
       "skillId": "pdf",
@@ -70,38 +70,30 @@
       "description": "Read this before the first Google Drive, Docs, Sheets or Slides connector call whenever the task creates or changes a Google file. Use this skill whenever the user wants to create or change a Google Doc, Sheet or Slides file in their Google Drive. Triggers include: a request that names Google Docs, Sheets, Slides or Drive and asks to make, edit, format, copy or rename a file; a docs.google.com link with a request to change that file, even a one-line fix or suggested edits; and any follow-up change to a Google file from earlier in the chat, even \"change it\" or \"add a tab\". Includes helper scripts for document positions, cell ranges and slide layout. However, if the user asks for a doc, deck or spreadsheet without naming Google, or gives a Google file only as source material for something new, use Claude's own output type instead. Do NOT use for read-only questions about a Google file, or for Word, Excel, PowerPoint or PDF files.",
       "source": "anthropic-example",
       "updatedAt": "2026-10-06T23:31:35.618898Z"
-    },
-    {
-      "skillId": "chrome-browser",
-      "name": "chrome-browser",
-      "description": "Read this skill before the first step that uses Claude in Chrome, the browser extension whose tools are named mcp__claude-in-chrome__* (also called Chrome, the browser extension, or the external browser) and which acts in the person's real Chrome with their own sign-ins; before those tools are turned on there may be a single enable__mcp__claude-in-chrome tool instead. It covers loading the tools in one ToolSearch call, checking the person's open tabs and working in a new tab, site permissions, GIF recordings, console logs, dialogs to avoid, and when to stop and ask. It is not for the built-in browser (mcp__Claude_Browser__* or mcp__remote-devices__Claude_Browser__* tools), which has its own skill, and it does not decide which browser to use.",
-      "source": "anthropic-example",
-      "updatedAt": "2026-09-18T21:09:50.227858Z"
     }
   ],
   "pendingClaims": [
-    "1463:Wed Sep 30 14:50:28 2026/computer-use",
-    "1463:Wed Sep 30 14:50:28 2026/built-in-browser",
-    "1463:Wed Sep 30 14:50:28 2026/deep-research",
+    "7745:Fri Oct  2 15:17:26 2026/computer-use",
+    "7745:Fri Oct  2 15:17:26 2026/built-in-browser",
+    "7745:Fri Oct  2 15:17:26 2026/deep-research",
     "82074:Wed Sep 30 14:36:43 2026/computer-use",
     "82074:Wed Sep 30 14:36:43 2026/built-in-browser",
     "82074:Wed Sep 30 14:36:43 2026/deep-research",
+    "1463:Wed Sep 30 14:50:28 2026/computer-use",
+    "1463:Wed Sep 30 14:50:28 2026/built-in-browser",
+    "1463:Wed Sep 30 14:50:28 2026/deep-research",
     "98371:Wed Sep 30 14:48:20 2026/computer-use",
     "98371:Wed Sep 30 14:48:20 2026/built-in-browser",
     "98371:Wed Sep 30 14:48:20 2026/deep-research",
     "2978:Wed Sep 30 14:51:29 2026/computer-use",
     "2978:Wed Sep 30 14:51:29 2026/built-in-browser",
     "2978:Wed Sep 30 14:51:29 2026/deep-research",
-    "7745:Fri Oct  2 15:17:26 2026/computer-use",
-    "7745:Fri Oct  2 15:17:26 2026/built-in-browser",
-    "7745:Fri Oct  2 15:17:26 2026/deep-research",
     "33697:Mon Oct  5 20:28:06 2026/computer-use",
     "33697:Mon Oct  5 20:28:06 2026/built-in-browser",
     "33697:Mon Oct  5 20:28:06 2026/deep-research",
     "14322:Mon Oct  5 17:19:10 2026/computer-use",
     "14322:Mon Oct  5 17:19:10 2026/built-in-browser",
     "14322:Mon Oct  5 17:19:10 2026/deep-research",
-    "7745:Fri Oct  2 15:17:26 2026/chrome-browser",
     "82074:Wed Sep 30 14:36:43 2026/pptx"
   ]
 }
