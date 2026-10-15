@@ -1,1 +1,2 @@
 OR-2791#a1	[BLOCKED on OR-2720] ALG supplemental: RXNORM 5640 (ibuprofen) allergy then m-ketorolac asserts a-general-allergy with ALLERGY_ALLERGEN NSAID and a label that is not a non-NSAID drug name (today it reads Famotidine in demo).
+OR-2918#a1	Supplemental API-level positive/negative pair in qa-suite for the ERAS antiemetics path that raised the NoSuchElementException (recovered from the Jira comment; the run's session.json was destroyed)

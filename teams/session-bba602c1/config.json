@@ -1,0 +1,18 @@
+{
+  "name": "session-bba602c1",
+  "createdAt": 1792072332645,
+  "leadAgentId": "team-lead@session-bba602c1",
+  "leadSessionId": "bba602c1-2aaf-4ff1-8ea2-8bfb1c68bc93",
+  "members": [
+    {
+      "agentId": "team-lead@session-bba602c1",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792072332645,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2991-simulation-pages",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

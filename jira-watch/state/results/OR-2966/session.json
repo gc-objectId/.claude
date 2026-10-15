@@ -1,0 +1,27 @@
+{
+  "verdict": "inconclusive",
+  "evidence": {
+    "positive": "No app-level surface exists: the ticket delivers root pom.xml execution bindings for spotbugs:check and pmd:check, spotbugs-baseline.xml / pmd-baseline.properties / spotbugs-exclude.xml at the repo root, the renamed static-analysis job in maven-ci.yml, skip flags in maven-cd.yml, site-report.yml, pr-gate.yml and the release plugin arguments, and ./mvnw in bin/deploy. PR #4642 is merged and present in build commit d638cf09e. Build-level only: ran ./mvnw -B -ntp -DskipTests -DskipAudioGeneration=true -pl orci-utils verify in the worktree (JDK 25.0.2, wrapper Maven 3.10.0). Exit 0, BUILD SUCCESS, and both orci-utils/target/spotbugsXml.xml (total_bugs=\"0\") and orci-utils/target/pmd.xml (0 violations) were produced, so both check goals are bound to verify and ran.",
+    "negative": "With a deliberate NP_ALWAYS_NULL still injected in TimedProgressMonitor.java, re-ran the same verify with -Dspotbugs.skip=true -Dpmd.skip=true (the flags the gating pr-gate / maven-ci build jobs and maven-cd use). Exit 0, log showed 'Skipping com.github.spotbugs:spotbugs-maven-plugin:4.10.4.1:spotbugs report goal', 'Skipping PMD execution' and BUILD SUCCESS, confirming those jobs are not gated by the analyzers while the static-analysis job is.",
+    "red_check": "Not possible against the running app; the red check was done at the Maven level in the worktree and reverted. (1) Injected 'String injected = null; System.out.println(injected.length());' into orci-utils TimedProgressMonitor.start: verify exited 1 with '[ERROR] High: Null pointer dereference of injected in com.guided.orci.service.TimedProgressMonitor.start(String) ... NP_ALWAYS_NULL' and 'Failed to execute goal com.github.spotbugs:spotbugs-maven-plugin:4.10.4.1:check (default) on project orci-utils: failed with 1 bugs and 0 errors'. Reverted via git checkout. (2) Injected 'int injectedUnused = 42;' in the same method: verify exited 1 with 'PMD Failure: com.guided.orci.service.TimedProgressMonitor:25 Rule:UnusedLocalVariable' and 'Failed to execute goal org.apache.maven.plugins:maven-pmd-plugin:3.28.0:check (default) on project orci-utils: PMD 7.17.0 has found 1 violation'. Reverted via git checkout; final clean verify exited 0 with BUILD SUCCESS and git status is clean. None of these lines appear in the application log, so the gate cannot confirm them from the captured app log."
+  },
+  "red_check_signature": "spotbugs-maven-plugin:4.10.4.1:check (default) on project orci-utils: failed with 1 bugs",
+  "blockers": [
+    "This ticket only changes Maven build config and GitHub workflows, so nothing can be exercised against the running app and no app-log red check exists; the Maven-level red check above is in scratch/spotbugs-red.log and scratch/pmd-red.log, not the application log.",
+    "Can Ryan confirm the renamed static-analysis job in maven-ci.yml ran green on the merge of PR #4642 (5bdbfbda0) and on main since, so the baselines actually suppress every existing finding across all twelve modules (locally only orci-utils was run, because the orci module build is too slow for this run)?",
+    "Has bin/deploy been run end to end since it switched to ./mvnw, to confirm the wrapper download works on the machine that runs deploys?",
+    "Is it worth a throwaway PR that adds one new High SpotBugs finding to confirm the static-analysis job goes red in CI, as the local run did?"
+  ],
+  "ship_risk": "material",
+  "caveats": [
+    "Local gate exercised on orci-utils only (8 source files, no sibling-module dependencies); the baselines for the other modules were not exercised here.",
+    "The Medium-threshold SECURITY category gate and the CRLF_INJECTION_LOGS exclusion were not exercised; only a High NP_ALWAYS_NULL finding and a default-ruleset PMD UnusedLocalVariable finding were.",
+    "The CI workflow changes (static-analysis job, skip flags in the other workflows) were read, not run; a local Maven invocation with the same flags stood in for each job.",
+    "bin/deploy's switch to ./mvnw was not run."
+  ],
+  "automation": {
+    "assessment": "The enforcement is the CI static-analysis job itself; there is no application behaviour to lock in with qa-suite or JUnit tests. The only meaningful regression check is CI-level: a workflow_dispatch of maven-ci on a branch carrying a known new finding should fail, which is a one-off manual check rather than a durable test.",
+    "proposed_tests": []
+  },
+  "jira_comment": "Verdict: inconclusive.\n\nPositive: Running ./mvnw -DskipTests verify on orci-utils executed both spotbugs:check and pmd:check and passed clean with zero findings.\nNegative: With a new High finding present, the same build passed when run with the -Dspotbugs.skip and -Dpmd.skip flags that the gating and release jobs use.\nRed check: An injected null dereference failed the build on NP_ALWAYS_NULL and an injected unused local failed it on PMD UnusedLocalVariable, both reverted.\n\nAutomation: No application-level test applies; the CI static-analysis job is the enforcement and should be confirmed green on main.\n\nThis ticket has no runtime surface, so it could not be validated against the running app and needs a CI run to confirm the baselines hold across all modules."
+}

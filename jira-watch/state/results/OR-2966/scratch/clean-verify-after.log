@@ -1,0 +1,74 @@
+WARNING: A restricted method in java.lang.foreign.MemorySegment has been called
+WARNING: java.lang.foreign.MemorySegment::reinterpret has been called by org.jline.terminal.impl.ffm.FfmTerminalProvider in an unnamed module (file:/Users/ryanducharme/.m2/wrapper/dists/apache-maven-3.10.0-bin/39q0qgmngdu329psje7bjgne79/apache-maven-3.10.0/lib/jline-terminal-ffm-3.30.17.jar)
+WARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module
+WARNING: Restricted methods will be blocked in a future release unless native access is enabled
+
+[INFO] Loaded 24080 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] Scanning for projects...
+[WARNING] Using credentials of server 'guided-clinical-maven-repo' for repository https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/, although no repository or mirror with this id is declared in settings or on the command line and the server declares no <repositoryOrigins>. Declare 'https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com' in <repositoryOrigins> of that server in settings to bind these credentials explicitly, or set maven.repository.credentialScope=strict to refuse such credential use.
+[INFO] Loaded 24080 auto-discovered prefixes for remote repository repo1-maven-org (prefixes-repo1-maven-org.txt)
+[INFO] Loaded 24080 auto-discovered prefixes for remote repository central (prefixes-central.txt)
+[INFO] 
+[INFO] ---------------------< com.guided.orci:orci-utils >---------------------
+[INFO] Building orci-utils 0.1.102-SNAPSHOT
+[INFO]   from pom.xml
+[INFO] --------------------------------[ jar ]---------------------------------
+[INFO] 
+[INFO] --- resources:3.5.0:resources (default-resources) @ orci-utils ---
+[INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd/orci-utils/src/main/resources
+[INFO] 
+[INFO] --- compiler:3.16.0:compile (default-compile) @ orci-utils ---
+[INFO] Loaded 74 auto-discovered prefixes for remote repository apache.snapshots (prefixes-apache.snapshots.txt)
+[INFO] Recompiling the module because of changed source code.
+[INFO] Compiling 8 source files with javac [debug target 25] to target/classes
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by lombok.permit.Permit
+WARNING: Please consider reporting this to the maintainers of class lombok.permit.Permit
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
+[INFO] /Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd/orci-utils/src/main/java/com/guided/orci/service/TracingService.java: /Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd/orci-utils/src/main/java/com/guided/orci/service/TracingService.java uses or overrides a deprecated API.
+[INFO] /Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd/orci-utils/src/main/java/com/guided/orci/service/TracingService.java: Recompile with -Xlint:deprecation for details.
+[INFO] 
+[INFO] --- resources:3.5.0:testResources (default-testResources) @ orci-utils ---
+[INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd/orci-utils/src/test/resources
+[INFO] 
+[INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-utils ---
+[INFO] No sources to compile
+[INFO] 
+[INFO] --- surefire:3.6.0:test (default-test) @ orci-utils ---
+[INFO] Tests are skipped.
+[INFO] 
+[INFO] --- jar:3.5.1:jar (default-jar) @ orci-utils ---
+[INFO] Building jar: /Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd/orci-utils/target/orci-utils-0.1.102-SNAPSHOT.jar
+[INFO] 
+[INFO] >>> spotbugs:4.10.4.1:check (default) > :spotbugs @ orci-utils >>>
+[INFO] 
+[INFO] --- spotbugs:4.10.4.1:spotbugs (spotbugs) @ orci-utils ---
+[INFO] Done SpotBugs Analysis....
+[INFO] Skipping com.github.spotbugs:spotbugs-maven-plugin:4.10.4.1:spotbugs report goal
+[INFO] 
+[INFO] <<< spotbugs:4.10.4.1:check (default) < :spotbugs @ orci-utils <<<
+[INFO] 
+[INFO] 
+[INFO] --- spotbugs:4.10.4.1:check (default) @ orci-utils ---
+[INFO] BugInstance size is 0
+[INFO] Error size is 0
+[INFO] No errors/warnings found
+[INFO] 
+[INFO] >>> pmd:3.28.0:check (default) > :pmd @ orci-utils >>>
+[INFO] 
+[INFO] --- pmd:3.28.0:pmd (pmd) @ orci-utils ---
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[WARNING] Unable to locate Source XRef to link to -- DISABLED
+[INFO] PMD version: 7.17.0
+[INFO] Rendering content with org.apache.maven.skins:maven-fluido-skin:jar:2.0.0-M9 skin
+[INFO] 
+[INFO] <<< pmd:3.28.0:check (default) < :pmd @ orci-utils <<<
+[INFO] 
+[INFO] 
+[INFO] --- pmd:3.28.0:check (default) @ orci-utils ---
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time:  6.358 s
+[INFO] Finished at: 2026-10-14T10:34:50-04:00
+[INFO] ------------------------------------------------------------------------

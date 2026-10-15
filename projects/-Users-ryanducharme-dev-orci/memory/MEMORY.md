@@ -61,10 +61,10 @@
 - [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2
 - [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages, POST /api/app-launch starts the case
 - [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl; node http + cookie jar
-- [jira-watch validation loop](project_jira_watch_autovalidate.md) — the SOP for Ready-for-Testing: `loopcmd 8 2`, `loopcmd review`; gate re-verifies
+- [jira-watch validation loop](project_jira_watch_autovalidate.md) — the SOP for Ready-for-Testing: `loopcmd 8 2`, `loopcmd review`, `loopcmd now` to jump a sweep's fixed queue; gate re-verifies
 - [Empty-default secret auth bypass](reference_empty_default_secret_auth_bypass.md) — `${VAR:}` turns a missing credential into a bypass; fail closed
 - [Analytics SQL local validation](reference_analytics_sql_local_validation.md) — throwaway local DB running the shipped views SQL
-- [rule_definitions is rebuilt on boot](reference_rule_definitions_rebuilt_on_boot.md) — never classify a past event from it; use rule_fired_results.trigger
+- [rule_definitions is upsert-only on boot](reference_rule_definitions_rebuilt_on_boot.md) — retired rules keep their catalog row; never classify a past event from it; use rule_fired_results.trigger
 - [Websocket origin validation](reference_websocket_origin_handshake_validation.md) — raw handshakes via node; flip is -Dapplication.hostname
 - [STOMP subscribe validation](reference_stomp_websocket_auth_handshake.md) — CONNECT needs the /csrf body token fetched after login
 - [Local guidance fan-out validation](reference_local_guidance_fanout_validation.md) — INDUCTION_START category-event publishes to Redis; re-GET /csrf for admin
@@ -87,8 +87,8 @@
 - [qa-suite can assert rule details](reference_qa_suite_rule_details_api.md) — GLUCOSE observation fires synchronously; details.EXPANDED_CALCULATION via API
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED 2026-09-17: #4534 seed validated, tests #4560 merged, worktree gone; unmatched reactions still skip with no log (follow-up not filed); @DataJpaTest read-back needs flush+clear
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness; "Started OrciApplication" fires before runners
-- [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch rules, CI-only snapshots, cascade gate, fixed Vite port per ticket (2995→3003 … 2404→3015), PR/merge rules; canonical for every child
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — phase 2 on `epic/OR-2863-design-foundation` (integration branch; children branch off it, PR into it, gate via workflow_dispatch); OR-2990 DONE 2026-10-02 incl. declared clinical rebaseline; ticket map OR-2994–3003; cascade-diff lessons + scripts; OR-2994 next
+- [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch rules, CI-only snapshots, cascade gate, fixed Vite port per ticket (2995→3003 … 3046→3019), spec diff ships in the same PR as code, re-read tickets before editing; canonical for every child
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — phase 2 on `epic/OR-2863-design-foundation` (integration branch; children branch off it, PR into it, gate via workflow_dispatch); OR-2990 DONE 2026-10-02 incl. declared clinical rebaseline; epic step 6 = baseline fixes (3045 chain PR #4689 open, 3050 pending PNGs, 3046 To Do); then wave 3 (2991→2998 ∥ 2992→2999), 3003; Theo reviews tokens.md before epic→main
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association; pathway drugs need ANTIBIOTIC tag
 - [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done 2026-09-10; tests PR #4551 merged 2026-09-17, worktree removed; PABX-019/020 + PMAP family
@@ -109,5 +109,14 @@
 - [OR-3004 VIS-010 fixture](project_or3004_vis010_fixture.md) — DONE 2026-10-03, PR #4633 merged into the epic; page.route predicate; enableDate 0 = "missing publish date"; nested npm :local scripts need trailing `--`; OR-3005 footer follow-up
 - [OR-2995 admin patients & cases](project_or2995_admin_patients_cases.md) — DONE 2026-10-05, PR #4635 merged into the epic; shared AdminPageHeader/AdminTable/FactList/SectionHeader for 2996/2997; VIS-012; PAT-004 selectors changed
 - [OR-2996 clinical reference data pages](project_or2996_clinical_reference_data_pages.md) — DONE 2026-10-05 (#4636 + #4637 into the epic); VIS-013–018 via reference-data-stub.ts, next free VIS 019; Vite-port + 8080 local recipe
-- [OR-2997 admin platform pages](project_or2997_admin_platform_pages.md) — draft PR #4640 into the epic 2026-10-06, awaiting merge; VIS-019–027 via platform-stub.ts, next free VIS 028; AsyncButton event + refetch-key fixes; visually-hidden th widened the page
+- [OR-2997 admin platform pages](project_or2997_admin_platform_pages.md) — DONE 2026-10-14, PR #4640 merged into the epic, worktree gone; VIS-019–027 via platform-stub.ts, next free VIS 028; AsyncButton event + refetch-key fixes; visually-hidden th widened the page
 - [PR only when mergeable](feedback_pr_only_when_mergeable.md) — no draft PR while a commit is still owed (rebaseline PNGs); Ryan merges drafts fast
+- [Demo med-admin staging trap](reference_demo_med_admin_staging_cache_trap.md) — user endpoint 500s, simulation hard-codes MGH; SQL order+admin then evict the Redis patient cache
+- [OR-3005 admin footer in flow](project_or3005_admin_footer_in_flow.md) — DONE 2026-10-14, PR #4681 merged into the epic (2b17f4a96), worktree gone; only tall-page captures move (13 PNGs); diff the artifact, never trust the declared delta
+- [OR-3002 Storybook real theme](project_or3002_storybook_real_theme.md) — DONE 2026-10-14, PR #4682 merged into the epic, worktree gone; story-id links in the record, no story snapshots; Theo review of the record gates the epic PR
+- [OR-3043 baseline feature specs](project_or3043_baseline_feature_specs.md) — DONE 2026-10-14, PR #4683 merged into the epic, worktree gone; Suspect tickets OR-3045–3050 + OR-3051 debt; Ryan sole approver on the epic; `[spec R<n>]` test-title convention; ErrorPage is the error-boundary fallback, not dead
+- [Dead code ownership](feedback_dead_code_ownership.md) — made dead by this story → delete here; by another story → tech-debt Task, never an unticketed cleanup
+- [OR-3049/3051 admin index cleanup](project_or3049_or3051_admin_index_cleanup.md) — both DONE 2026-10-14 (#4684 + #4688 into the epic), worktree gone; index lives in components/adminIndex.ts; bundle-hash diff proves a dead-export delete
+- [OR-3050 Event Center unknown case](project_or3050_event_center_unknown_case.md) — IMPLEMENT on the epic branch; commit a593d95ca pushed 2026-10-14, DONE 2026-10-15, PR #4690 merged into the epic, worktree gone; PMD 127.0.0.1 failure is epic-wide (OR-2990); chain commit && push so a hook failure stops the sequence
+- [OR-3045/3048/3047 front-door auth chain](project_or3045_front_door_auth_chain.md) — DONE 2026-10-15, #4689 merged into the epic; VIS-029 baseline follow-up PR pending in the same worktree, then worktree-done; UserCheckFailed state, NotAllowed + SignInCheckFailed interstitials; AUTH-005–009 + VIS-028/029, next free AUTH-010 / VIS-030; front-door next R53, admin-shell next R29
+- [PR gate dispatch short-circuit](reference_pr_gate_dispatch_short_circuit.md) — a capture dispatch is cancelled when CI Build fails on the same SHA; re-dispatch after CI Build completes; epic PMD loopback literal in ServerInfoController is the cause

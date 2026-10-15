@@ -1,6 +1,6 @@
 ---
 name: project-or2997-admin-platform-pages
-description: "OR-2997 admin platform & ops pages on the design language — draft PR #4640 into the epic opened 2026-10-06 (awaiting Ryan's merge); decisions, VIS-019–027 via platform-stub.ts, overflow + AsyncButton + refetch-key lessons"
+description: "OR-2997 admin platform & ops pages on the design language — DONE 2026-10-14: PR #4640 merged into the epic (f0dbfdceb), worktree removed; decisions, VIS-019–027 via platform-stub.ts, overflow + AsyncButton + refetch-key lessons"
 metadata:
   node_type: memory
   type: project
@@ -37,9 +37,9 @@ lands past the viewport and `documentElement.scrollWidth` grows (body.scrollWidt
 **Hook gotcha:** the Bash secrets hook blocks any command text containing `.env` — including `process.env` in a heredoc.
 Write such files with the Write tool, then run them from Bash.
 
-**State 2026-10-06:** [draft PR #4640](https://github.com/guidedclinical/orci/pull/4640) → epic branch, 7 commits
+**DONE 2026-10-14:** [PR #4640](https://github.com/guidedclinical/orci/pull/4640) merged into the epic (merge commit f0dbfdceb), `worktree-done` clean, ticket moved to Done. The epic session should pull, restart 3001 and regate; wave 3 (2991→2998 ∥ 2992→2999) is next. 7 commits
 (capture b0a082f8f → restyle da5abc1f3 → HL7 7ba7b98a1 → baseline 17c256d03 → fixes 0ae593db0 → rebaseline 036a6a342).
-Jira comment posted; ticket stays In Progress until Ryan merges, then `worktree-done` + Done. Before-capture run
+Implementation comment posted 2026-10-06. Before-capture run
 37475093449 (first dispatch 37371228944 died to the GitHub "job not acquired" outage), rebaseline run 37476974964;
 unchanged screens byte-identical. Flagged copy changes: "Published"/"Publish failed", "Add note", "Download CSV"/
 "Download report", release-note text truncation 30→80.

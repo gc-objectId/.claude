@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-05T20:26:36.333Z
+  modified: 2026-10-14T15:41:54.590Z
 ---
 
 Every open child of OR-2863 carries this as "## Working this ticket" in Jira; this is the canonical copy.
@@ -35,6 +35,18 @@ works on any of them. `npx vite` from the wrong cwd downloads a different vite �
 | OR-2998 test utilities | 3007 | OR-3005 admin footer | 3012 |
 | OR-2879 App Home | 3013 | OR-2880 handbook | 3014 (+ backend 808N) |
 | OR-2404 admin IA | 3015 | OR-2405 nav proposal | docs only |
+| OR-3045 chain (3045/3048/3047) | 3016 | OR-3050 Event Center | 3017 (+ backend 8081) |
+| OR-3046 launch by ID | 3019 | | |
+
+**Record first (added 2026-10-14).** Every child's Jira description has a "## Record" section; follow it before
+writing code. Behavior change (route, redirect, what a control does, what a request carries) → `/feature-spec`:
+a baseline if none exists, else a CHANGE against the baseline (OR-3043 baselines `front-door.md`,
+`admin-shell.md`, `event-center.md` on the epic branch; conventions per OR-3017: EARS lines with permanent ids,
+evidence ledger Tested/Code only/Suspect, test names carry the ids; the approved diff goes into the ticket's acceptance criteria and ships in the SAME PR as the code per `spec/README.md`, never a spec-only PR). Visual-only
+change → diff against the design record (`spec/design/tokens.md` + Storybook stories from OR-3002); a new token
+or shared surface is documented in the record in the same PR. Never both-in-one: structure PR first, style PR after.
+
+**Jira edits race with child sessions.** Child sessions write acceptance criteria into their own tickets while the epic session plans; always re-read a ticket immediately before replacing its description (the 2026-10-14 planning edit overwrote the chain's approved spec diffs and had to be restored from the changelog).
 
 **Visual gate.** Snapshots come from CI only; `*-darwin.png` is gitignored. New VIS cases are added and
 captured *before* the restyle so the change is graded. Recipe: push → `gh workflow run pr-gate.yml --ref

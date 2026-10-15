@@ -68,6 +68,15 @@ done
 printf '%s' "$ticket" | grep -qE '^[A-Z][A-Z0-9]*-[0-9]+$' || die "'$ticket' is not a Jira key."
 [ -f "$PROMPT_TEMPLATE" ] || die "missing prompt template ${PROMPT_TEMPLATE}"
 
+# Checked before the run directory is touched: a no-op run on a finished ticket must not overwrite
+# the record of the run that finished it.
+_status=$(jira_issue_status "$ticket" 2>/dev/null || true)
+case "$_status" in
+    'Ready for Testing' | 'Testing') ;;
+    '') log "${ticket}: could not read Jira status — not starting"; exit 9 ;;
+    *) log "${ticket} is '${_status}', not a validate-mode status — not starting"; exit 9 ;;
+esac
+
 run_id="$ticket"
 run_dir="${RESULTS}/${run_id}"
 mkdir -p "$run_dir"
@@ -100,7 +109,7 @@ record() {
     esac
 }
 
-# Rechecked, not taken from the queue: an IMPLEMENT-mode ticket must never be picked up here.
+# Re-read at pickup: the status can change between the pre-flight check and here.
 status=$(jira_issue_status "$ticket" 2>/dev/null || true)
 log "${ticket} status is '${status:-unknown}'"
 case "$status" in

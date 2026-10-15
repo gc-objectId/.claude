@@ -1,0 +1,56 @@
+2026-10-14 10:21:55  [OR-2987] OR-2987 status is 'Ready for Testing'
+2026-10-14 10:21:55  [OR-2987] Building image from origin/main
+Image guidedclinical/orci:loop-d638cf09e already built for d638cf09e — reusing.
+2026-10-14 10:21:56  [OR-2987] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:21:59  [OR-2987] OR-2987 moved to Testing
+2026-10-14 10:22:00  [OR-2987] OR-2987 assigned to the configured account
+2026-10-14 10:22:02  [OR-2987] baseline: status='Testing' comments=1
+2026-10-14 10:22:02  [OR-2987] slug=2d-barcode-not-scanning
+Jira issue type → branch prefix: bugfix/
+Preparing worktree (new branch 'bugfix/OR-2987-2d-barcode-not-scanning')
+branch 'bugfix/OR-2987-2d-barcode-not-scanning' set up to track 'origin/main'.
+HEAD is now at d638cf09e Merge pull request #4675 from guidedclinical/OR-2987
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-2987-2d-barcode-not-scanning
+  Branch: bugfix/OR-2987-2d-barcode-not-scanning
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+  qa-suite/.env.dev symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.dev
+  OR-2987: assigned to Ryan Ducharme (unchanged)
+
+2026-10-14 10:22:04  [OR-2987] worktree=/Users/ryanducharme/dev/worktrees/OR-2987-2d-barcode-not-scanning
+Starting orci-loop-or-2987 (image guidedclinical/orci:loop-d638cf09e, app port 58952)
+ Network orci-loop-or-2987_default Creating 
+ Network orci-loop-or-2987_default Created 
+ Container orci-loop-or-2987-redis-1 Creating 
+ Container orci-loop-or-2987-postgres-1 Creating 
+ Container orci-loop-or-2987-redis-1 Created 
+ Container orci-loop-or-2987-postgres-1 Created 
+ Container orci-loop-or-2987-orci-1 Creating 
+ Container orci-loop-or-2987-orci-1 Created 
+ Container orci-loop-or-2987-postgres-1 Starting 
+ Container orci-loop-or-2987-redis-1 Starting 
+ Container orci-loop-or-2987-redis-1 Started 
+ Container orci-loop-or-2987-postgres-1 Started 
+ Container orci-loop-or-2987-redis-1 Waiting 
+ Container orci-loop-or-2987-postgres-1 Waiting 
+ Container orci-loop-or-2987-postgres-1 Healthy 
+ Container orci-loop-or-2987-redis-1 Healthy 
+ Container orci-loop-or-2987-orci-1 Starting 
+ Container orci-loop-or-2987-orci-1 Started 
+ Container orci-loop-or-2987-orci-1 Waiting 
+ Container orci-loop-or-2987-postgres-1 Waiting 
+ Container orci-loop-or-2987-redis-1 Waiting 
+ Container orci-loop-or-2987-postgres-1 Healthy 
+ Container orci-loop-or-2987-orci-1 Healthy 
+ Container orci-loop-or-2987-redis-1 Healthy 
+Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 76.391s at http://localhost:58952
+2026-10-14 10:23:28  [OR-2987] app under test at http://localhost:58952
+2026-10-14 10:23:28  [OR-2987] wrote ticket context (24 lines)
+2026-10-14 10:23:28  [OR-2987] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2987/session.log)
+2026-10-14 10:28:14  [OR-2987]   … OR-2987 still running (300s elapsed, 222 app requests, app up)
+2026-10-14 10:30:59  [OR-2987] session finished after ~450s
+2026-10-14 10:30:59  [OR-2987] captured 10329 lines of application log
+{"ticket":"OR-2987","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-10-14T14:21:54Z"}
+2026-10-14 10:31:05  [OR-2987] close-parent: OR-2987 is already Done

@@ -1159,3 +1159,107 @@ No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-2993
 Transitioned OR-2993 to Done
 2026-10-05 13:34:32  [OR-2993] close-parent: OR-2993 is already Done
+2026-10-14 10:12:29  [OR-2918] OR-2918 status is 'Ready for Testing'
+2026-10-14 10:12:29  [OR-2946] OR-2946 status is 'Ready for Testing'
+2026-10-14 10:12:30  [OR-2918] Building image from origin/main
+2026-10-14 10:12:30  [OR-2946] Building image from origin/main
+2026-10-14 10:14:17  [OR-2918] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:14:20  [OR-2918] OR-2918 moved to Testing
+2026-10-14 10:14:21  [OR-2918] OR-2918 assigned to the configured account
+2026-10-14 10:14:21  [OR-2946] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:14:22  [OR-2918] baseline: status='Testing' comments=0
+2026-10-14 10:14:22  [OR-2918] slug=nosuchelementexception
+2026-10-14 10:14:24  [OR-2946] OR-2946 has no merged PR — disposing without booting an environment
+2026-10-14 10:14:24  [OR-2918] worktree=/Users/ryanducharme/dev/worktrees/OR-2918-nosuchelementexception
+2026-10-14 10:14:24  [OR-2949] OR-2949 status is 'Ready for Testing'
+2026-10-14 10:14:25  [OR-2949] Building image from origin/main
+2026-10-14 10:14:26  [OR-2949] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:14:29  [OR-2949] OR-2949 moved to Testing
+2026-10-14 10:14:29  [OR-2949] OR-2949 assigned to the configured account
+2026-10-14 10:14:30  [OR-2949] baseline: status='Testing' comments=1
+2026-10-14 10:14:30  [OR-2949] slug=disable-a-known-procedure
+2026-10-14 10:14:33  [OR-2949] worktree=/Users/ryanducharme/dev/worktrees/OR-2949-disable-a-known-procedure
+2026-10-14 10:16:34  [OR-2918] app under test at http://localhost:58751
+2026-10-14 10:16:35  [OR-2918] wrote ticket context (48 lines)
+2026-10-14 10:16:35  [OR-2918] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2918/session.log)
+2026-10-14 10:16:38  [OR-2949] app under test at http://localhost:58765
+2026-10-14 10:16:38  [OR-2949] wrote ticket context (14 lines)
+2026-10-14 10:16:38  [OR-2949] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2949/session.log)
+2026-10-14 10:21:20  [OR-2918]   … OR-2918 still running (300s elapsed, 180 app requests, app up)
+2026-10-14 10:21:23  [OR-2949]   … OR-2949 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-14 10:21:55  [OR-2987] OR-2987 status is 'Ready for Testing'
+2026-10-14 10:21:55  [OR-2987] Building image from origin/main
+2026-10-14 10:21:56  [OR-2987] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:21:59  [OR-2987] OR-2987 moved to Testing
+2026-10-14 10:22:00  [OR-2987] OR-2987 assigned to the configured account
+2026-10-14 10:22:02  [OR-2987] baseline: status='Testing' comments=1
+2026-10-14 10:22:02  [OR-2987] slug=2d-barcode-not-scanning
+2026-10-14 10:22:04  [OR-2987] worktree=/Users/ryanducharme/dev/worktrees/OR-2987-2d-barcode-not-scanning
+2026-10-14 10:23:28  [OR-2987] app under test at http://localhost:58952
+2026-10-14 10:23:28  [OR-2987] wrote ticket context (24 lines)
+2026-10-14 10:23:28  [OR-2987] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2987/session.log)
+2026-10-14 10:24:05  [OR-2918] session finished after ~450s
+2026-10-14 10:24:06  [OR-2918] captured 8481 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2918 against d638cf09e89aee5c5eaf05bb5922febc390e222c (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2918
+Transitioned OR-2918 to Done
+2026-10-14 10:24:10  [OR-2918] close-parent: OR-2918 is already Done
+2026-10-14 10:24:13  [OR-2950] OR-2950 status is 'Ready for Testing'
+2026-10-14 10:24:14  [OR-2950] Building image from origin/main
+2026-10-14 10:24:15  [OR-2950] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:24:17  [OR-2950] OR-2950 moved to Testing
+2026-10-14 10:24:18  [OR-2950] OR-2950 assigned to the configured account
+2026-10-14 10:24:19  [OR-2950] baseline: status='Testing' comments=0
+2026-10-14 10:24:19  [OR-2950] slug=hl7-tenant-token-can
+2026-10-14 10:24:21  [OR-2950] worktree=/Users/ryanducharme/dev/worktrees/OR-2950-hl7-tenant-token-can
+2026-10-14 10:25:39  [OR-2950] app under test at http://localhost:59027
+2026-10-14 10:25:40  [OR-2950] wrote ticket context (19 lines)
+2026-10-14 10:25:40  [OR-2950] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2950/session.log)
+2026-10-14 10:26:24  [OR-2949]   … OR-2949 still running (600s elapsed, 942 app requests, app up)
+2026-10-14 10:27:08  [OR-2918] OR-2918 status is 'Done'
+2026-10-14 10:28:14  [OR-2987]   … OR-2987 still running (300s elapsed, 222 app requests, app up)
+2026-10-14 10:30:25  [OR-2950]   … OR-2950 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-14 10:30:59  [OR-2987] session finished after ~450s
+2026-10-14 10:30:59  [OR-2987] captured 10329 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2987 against d638cf09e89aee5c5eaf05bb5922febc390e222c (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2987
+Transitioned OR-2987 to Done
+2026-10-14 10:31:05  [OR-2987] close-parent: OR-2987 is already Done
+2026-10-14 10:31:10  [OR-2950] session finished after ~330s
+2026-10-14 10:31:10  [OR-2950] captured 8485 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2950 against d638cf09e89aee5c5eaf05bb5922febc390e222c (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2950
+Transitioned OR-2950 to Done
+2026-10-14 10:31:15  [OR-2950] close-parent: OR-2950 is already Done
+2026-10-14 10:31:18  [OR-2966] OR-2966 status is 'Ready for Testing'
+2026-10-14 10:31:19  [OR-2966] Building image from origin/main
+2026-10-14 10:31:20  [OR-2966] image=guidedclinical/orci:loop-d638cf09e sha=d638cf09e89aee5c5eaf05bb5922febc390e222c
+2026-10-14 10:31:22  [OR-2966] OR-2966 moved to Testing
+2026-10-14 10:31:23  [OR-2966] OR-2966 assigned to the configured account
+2026-10-14 10:31:24  [OR-2966] baseline: status='Testing' comments=0
+2026-10-14 10:31:24  [OR-2966] slug=make-spotbugs-and-pmd
+2026-10-14 10:31:24  [OR-2949]   … OR-2949 still running (900s elapsed, 1553 app requests, app up)
+2026-10-14 10:31:26  [OR-2966] worktree=/Users/ryanducharme/dev/worktrees/OR-2966-make-spotbugs-and-pmd
+2026-10-14 10:32:45  [OR-2966] app under test at http://localhost:59288
+2026-10-14 10:32:45  [OR-2966] wrote ticket context (15 lines)
+2026-10-14 10:32:45  [OR-2966] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2966/session.log)
+2026-10-14 10:33:24  [OR-2949] session finished after ~1005s
+2026-10-14 10:33:24  [OR-2949] captured 11675 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2949 against d638cf09e89aee5c5eaf05bb5922febc390e222c (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2949
+Transitioned OR-2949 to Done
+2026-10-14 10:33:29  [OR-2949] close-parent: OR-2949 is already Done
+2026-10-14 10:35:45  [OR-2966] session finished after ~180s
+2026-10-14 10:35:45  [OR-2966] captured 7801 lines of application log
+REFUSED OR-2966: verdict is 'inconclusive'
+2026-10-14 11:37:11  [OR-2918] OR-2918 is 'Done', not a validate-mode status — not starting

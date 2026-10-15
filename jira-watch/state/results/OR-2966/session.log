@@ -1,0 +1,13 @@
+Verdict recorded as **inconclusive** in `session.json`. The worktree is clean and no app, Jira, or git state was changed.
+
+**What the ticket delivers** is purely Maven and CI config: `spotbugs:check` and `pmd:check` bound to `verify` in the root pom, baseline files at the repo root, the renamed `static-analysis` CI job, skip flags in the other Maven workflows, and `bin/deploy` switched to `./mvnw`. PR #4642 is merged and present in the build commit. None of that has a runtime surface in the app, so no application-log red check was possible, and the verdict cannot be deploy-ready under the gate's rules.
+
+**What I could verify at the Maven level**, in the worktree on the small `orci-utils` module:
+
+- Clean `./mvnw -DskipTests verify` passed and produced both `spotbugsXml.xml` and `pmd.xml`, proving both check goals are bound and run.
+- An injected null dereference failed the build on `NP_ALWAYS_NULL` at High. Reverted.
+- An injected unused local variable failed the build on PMD `UnusedLocalVariable`. Reverted.
+- With the finding still present, the `-Dspotbugs.skip -Dpmd.skip` flags the gating and release jobs use let the build pass, confirming only the static-analysis job is gated.
+- Final clean run passed again and `git status` is clean. Logs are in the scratch directory.
+
+**Blockers for Ryan** are in the file: confirm the static-analysis job ran green on main since the merge so the baselines hold across all twelve modules, confirm `bin/deploy` has run end to end with `./mvnw`, and decide whether a throwaway PR with one new High finding is worth running to see CI go red. Ship risk is marked material because only one module and only the High and default-PMD paths were exercised locally, not the Medium SECURITY gate or the baseline suppression on the large modules.

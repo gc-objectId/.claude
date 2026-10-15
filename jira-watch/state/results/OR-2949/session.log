@@ -1,0 +1,12 @@
+Verdict recorded as deploy-ready in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2949/session.json`.
+
+**What the ticket delivers at the built SHA.** The merged diff added an ignore-list entry for `a-known-procedure-missing-antibiotic`, but OR-2944 then deleted the rule class and the entry. So the validated outcome is that the rule is unregistered, never evaluated, and never fires, rather than the ignore-list mechanism itself.
+
+**Evidence from the running app, demo tenant:**
+- Positive: a colorectal case with only cefazolin documented, started via PROCEDURE_START, fired exactly one antibiotic alert, the replacement rule with status PARTIALLY_GIVEN. No fired, not-fired, or failure row named the retired rule, and the definitions endpoint listed 113 rules without it.
+- Negative: the full event rule set still ran on that event, and the replacement fired in both none-given and partially-given scenarios, so only the one rule is gone.
+- Red check: I compiled the pre-removal rule class inside the container, installed it, and restarted. The retired rule registered and fired a second alert on the same event. Removing the class restored the directory to its backup checksums, and a fresh case again fired only the replacement.
+
+**Caveats worth knowing.** The cefazolin dose had to be staged by SQL with a Redis cache eviction, because the user documentation endpoint fails on demo and the simulation endpoints hard-code MGH. The catalog sync is upsert-only, so prod tenants will keep a stale `rule_definitions` row for the retired rule. That is an OR-2944 side effect, not a blocker.
+
+Two supplemental PABX tests are proposed in the session file. I also corrected the memory note on catalog sync and saved the demo staging trap for next time.

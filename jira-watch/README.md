@@ -101,6 +101,21 @@ refuse it anyway, and "not locally validatable" is the more useful answer.
 Anything other than `admitted` pushes to Slack (`#my-agents`) with its blockers. Successes stay
 silent on purpose.
 
+## Priority mid-sweep
+
+A sweep's ticket order is fixed the moment it starts: `backlog.sh` writes its whole list into
+`xargs` and exits, so there is no queue left to reorder. When a ticket becomes the priority after a
+sweep is already running, it runs *beside* the sweep:
+
+```sh
+loopcmd now OR-2987
+```
+
+It refuses if that ticket is already running, if a worktree for it exists, or if three runs are
+already in flight — each run holds a JVM, a tmpfs Postgres and a Valkey, and the 7.8GB Docker VM is
+the ceiling, not the CPU count. If the sweep's own list also contained the ticket, its later attempt
+refuses on the existing worktree and records `aborted`, which is harmless.
+
 ## Parents
 
 A subtask's parent is touched at two moments. Nothing is advanced *into* testing from In Progress;

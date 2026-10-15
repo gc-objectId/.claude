@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-05T20:22:46.943Z
+  modified: 2026-10-14T17:58:19.487Z
 ---
 
 OR-2863 (Epic, app-wide incl. clinical) centralizes GuidedOR's visual language. Children:
@@ -164,7 +164,41 @@ Epic now 0 behind main. 2026-10-05: every open child (2404/2405/2879/2880/2991/2
 3003/3005) got a "## Working this ticket" section (epic branch, fixed Vite port, CI-only snapshots, cascade
 gate, PR base, rebase rule); OR-2977 marked as main-bound; epic description gained "Three gates" + the child
 rules; canonical copy = [[or2863-child-session-sop]]. OR-2995/2996 worktrees already exist, verified on the
-epic tip. **Wave 1 DONE 2026-10-05:** OR-2995 (#4635) and OR-2996 (#4636 + #4637 rebaseline) merged into the epic
+epic tip. **2026-10-14 resume:** epic @ 473615ea1 (50 ahead / 80 behind main); the three 10-05 gate runs died in the
+GitHub Actions outage, never re-run. OR-2997 draft PR #4640 (head 036a6a342, 6 commits) is MERGEABLE/CLEAN with
+gate SUCCESS, awaiting Ryan's merge — merge it BEFORE merging main. A trial `git merge origin/main` conflicted
+in 7 files and was aborted: (a) OR-3004 was ALSO merged to main as #4645 (c49fd43a0) — same fixture, different
+commits → spec/md/feature-flag PNG conflicts; resolve by keeping the epic's side (superset + epic-look PNGs);
+(b) main's #4622 (patientservice migration) edited MedicationList/PatientList/ViewPatient (41/29/79 lines) that
+2995/2996 restyled → real 3-way merge: keep the epic layout, take main's service/API changes, then typecheck +
+check:cascade + regate. **Done 2026-10-14:** #4640 merged (epic @ f0dbfdceb), then main merged → 8bc1b8be9. Resolution: qa-suite
+files `--ours` (epic superset); the 3 pages = epic JSX + main's `@api` controllers/DTOs (MedicationList fetch
+via `MedicationsController.getFullDetailsMedications`, dropped main's dead category-options block;
+`PaginatedView<PatientDto>`; `patient.gender ? formatGender(..) : "—"` since the DTO makes gender optional).
+Typecheck/guard/qa tsc clean, `check:cascade f0dbfdceb` = 0/0/0; gate run 38582115891 green on 8bc1b8be9
+(QA 115, visual 27/27 — VIS-001–027 now). **OR-3005 DONE 2026-10-14** (#4681 → epic @ 2b17f4a96, merge tree == gated PR head, 0 behind main, 61 ahead).
+**Spec-driven audit 2026-10-14 (Ryan asked):** tokens ARE kept in the record — every new token (radius, display,
+weights, focus) was documented by its child and `spec/design/tokens.md` was touched by 2990/2994/2996/2997; spec
+lint runs in maven-ci. NOT in any record: the shared surfaces/components (`.guided-page/-panel`, product mark,
+`AdminPage`, `AdminPageHeader`, `AdminTable`, `FactList`, `SectionHeader`, the navy-outline button rule,
+`clinical-shell` scope) — the record is tokens-only until OR-3002 (Storybook = the executable component half).
+`reviewed: false` still (never reviewed by Theo). No `spec/features/` on the epic; 2991 and 2992 are behavior
+changes → tickets now say `/feature-spec` first (templates exist in docs/templates). Page tickets so far were
+prose briefs + declared deltas, not "diffs against the record" (nothing to diff against). Ryan agreed 2026-10-14 →
+**OR-3043** created: baseline feature specs `front-door.md`, `admin-shell.md`, `event-center.md` on the epic
+(OR-3017 conventions: EARS + permanent ids, evidence ledger Tested/Code only/Suspect, test names carry ids,
+spec-only PR, Theo/Alex approve; header notes it baselines the epic branch and becomes true of main at the
+epic PR). Every open child now has a "## Record" section: behavior tickets (2991, 2992, 2879, 2880, 2404) =
+`/feature-spec` first as a CHANGE against a 3043 baseline or a new spec; visual tickets (2998, 2999, 3003,
+3000) = diff against design record + Storybook; 3002 = the rendered record + adds the surfaces section to
+`spec/design/tokens.md` + sends the record to Theo (`reviewed: false`). Epic description: "Two records, by
+what a ticket changes"; sequence step 5 = 3043 ∥ 3002, step 6 = 2991→2998 ∥ 2992→2999, step 7 = 3003.
+Ordering: 3043 ∥ 3002 (independent files) → 2991/2992 (need 3043) → 2998/2999 (need 3002).
+Wave 3 runs as two workon *chains* (shared code path → one branch, one PR each): `workon OR-2991
+simulation-pages` + `/workon OR-2991 OR-2998` (port 3006) ∥ `workon OR-2992 in-case-overlay` +
+`/workon OR-2992 OR-2999` (port 3008). Then wave 3 (2991→2998 ∥ 2992→2999) with 3005 between.
+
+**Wave 1 DONE 2026-10-05:** OR-2995 (#4635) and OR-2996 (#4636 + #4637 rebaseline) merged into the epic
 (@ 8567a6a07, 49 ahead of main); shared AdminPageHeader/AdminTable/FactList/SectionHeader now exist for 2997;
 VIS-012–018 added (next free VIS-019). Lesson from 2996: open the draft PR only after the rebaseline PNGs are
 committed — Ryan merges drafts fast. Epic session merged main again + regated. Plan agreed 2026-10-05: wave 1 = 2995 ∥ 2996; wave 2 = 2997; wave 3 = 2991→2998 ∥
@@ -200,3 +234,35 @@ gaps surfaced: no radius scale, no display size, weights and focus color missing
 Login isn't in the visual baseline (VIS-001–010 run after `uiLogin`) → needs VIS-011 when it ships.
 
 See [[feedback-validation-protocol]], [[project-how-we-build-doc-review]].
+
+**2026-10-14 later: 3002 (#4682) + 3043 (#4683) merged; main merged again → epic @ 39115be72, clean, cascade
+0/0/0, 0 behind main.** 3043 baselined `spec/features/{front-door,admin-shell,event-center}.md` and spawned 7
+Suspect follow-ups: OR-3045 home shows Patients/Templates row links to non-admins (R21), OR-3046 launch-by-ID
+silent no-op for non demo-demo/MGB tenants (R28–30), OR-3047 endless spinner when the sign-in check fails with
+a non-401 (R48–49, admin-shell R3), OR-3048 signed-in non-admin → admin page redirect loop (pre-dates epic,
+admin-shell R2 / front-door R3), OR-3049 Event Center index blurb wrong "inspect and replay" (R25/R27),
+OR-3050 Event Center "Sent" toast for unknown/empty case (R20/R22, backend logs + drops), OR-3051 dead navbar
+menu code from 2994 (no visual delta). All are CHANGE tickets against the new baselines = first real pass of
+the spec-driven loop. Triage: 3045/3047/3048 are front-door/auth bugs reachable from the epic's own home page
+→ must land before epic→main; 3049/3051 trivial; 3050 needs backend; 3046 needs a product decision.
+
+**OR-3002 PR #4682 MERGED into the epic 2026-10-14 (13f9d8543)** (Storybook on the app stylesheets, 22 stories, Surfaces section in the record; see [[project-or3002-storybook-real-theme]]). Epic is 8 behind origin/main again (16511b8fb) — merge main into the epic before the next regate.
+
+**2026-10-14 evening: 3049 (#4684) + 3051 (#4688) merged → epic @ 3f2d9a9b3, 2 behind main; Vite 3001 restarted
+on it (PID in scratchpad `vite-epic-3001.pid`); gate dispatched = run 38632473604, GREEN (QA 115, visual 27/27).** Epic description now has step 6
+"Baseline fixes" (3045/3048/3047 chain, 3046, 3050 Pending; 3049/3051 Complete) and steps 7/8 renumbered. All five
+open fix tickets carry Record + Working-this-ticket blocks (ports 3016 chain / 3017 3050 / 3019 3046). Child
+sessions are ahead of the plan: chain PR #4689 is OPEN into the epic (spec commit + code commit, AUTH-005–009);
+3050 has a593d95ca pushed and is waiting on the VIS-024 CI PNGs before its PR. OR-3046 rewritten to Ryan's intent
+(launch every listed tenant by the one launch address, surface the server's reason); it is To Do and unassigned.
+Spec README rule: spec edit ships in the SAME PR as the code — my earlier "spec PR first" wording was wrong and is
+fixed in the tickets and the SOP. Next: merge #4689 and 3050's PR → pull, merge main, regate → wave 3
+(2991→2998 ∥ 2992→2999, each starting with /feature-spec) → 3003; Theo reviews `spec/design/tokens.md` before epic→main.
+
+**2026-10-15: #4690 (OR-3050) and #4689 (3045/3048/3047 chain) merged into the epic; all four Done by their
+sessions. main merged in (clean, 8 commits incl. release 0.1.102) → epic @ 0e410c561, 0 behind main; Vite 3001
+restarted on it; gate dispatched = run 38745784899.** OR-3045 worktree still present (child session owns
+`worktree-done`); OR-3050 worktree gone. Epic step 6 now Complete except OR-3046 (To Do, unassigned, port 3019).
+Wave 3 is next: `workon OR-2991 simulation-pages` (port 3006, then 2998) and `workon OR-2992 in-case-overlay`
+(port 3008, then 2999), OR-3046 can run beside them; both 2991 and 2992 touch InAppAdminPanel, so whichever
+merges second rebases. Each starts with /feature-spec.

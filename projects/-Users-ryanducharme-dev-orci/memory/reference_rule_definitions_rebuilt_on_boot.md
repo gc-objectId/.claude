@@ -1,28 +1,27 @@
 ---
-name: reference-rule-definitions-rebuilt-on-boot
-description: rule_definitions is not a stable catalog — RuleService.syncDefinitions() deletes and re-saves it untransacted on every boot
-metadata: 
-  node_type: memory
+name: reference_rule_definitions_rebuilt_on_boot
+description: rule_definitions is upserted on boot and never pruned; a rule retired from code keeps its catalog row forever, so never classify a past event from it
+metadata:
   type: reference
-  originSessionId: b7394630-9c24-4cd5-8573-951edc7e6bd2
-  modified: 2026-08-14T18:55:58.640Z
 ---
 
-`RuleService.syncDefinitions()` runs `ruleDefinitionRepository.deleteAll()` then `saveAll()`
-with **no** `@Transactional` on the method or the class, called per tenant from
-`ApplicationRunner`. Two consequences for anything that reads the tenant's `rule_definitions`:
+`RuleService.syncDefinitions()` runs per tenant from `ApplicationRunner` on every boot. As of
+2026-10-14 it is **upsert-only**: it syncs rows whose id matches a registered rule and inserts
+the missing ones, but never deletes. (An earlier version did `deleteAll()` + `saveAll()`; that
+is gone, so the "table empty during the rebuild window" hazard no longer applies.)
 
-- A rule retired from code loses its row permanently, so historical rows referencing it join to
-  nothing.
-- Other sessions can observe the table **empty** during the rebuild window on every app boot.
+Consequences for anything that reads a tenant's `rule_definitions`:
 
-So it cannot answer questions about a past event. Prefer the value stamped on the event row:
-`rule_fired_results.trigger` has existed since changeset 042 and is written from the rule's own
-`RuleTrigger` in `RuleFiredResult(EvaluationResult)` (via `Rule.baseBuilder`), so it is never
-null on a persisted firing — confirmed populated on every stage firing, with zero disagreement
-against the catalog. (OR-2734's analytics predicate was briefly changed to read it, but that
-whole exemption was later dropped — see [[project_or2734_nmb_clipping_unfixed]].)
+- A rule retired from code **keeps its row** (seen with `a-known-procedure-missing-antibiotic`
+  after OR-2944 removed the class). The engine and `/api/admin/rule/definitions` read the
+  registered beans, not the table, so they disagree with the table by exactly those rows.
+- Analytics that join to the catalog will still see retired rules as "defined".
+
+So it cannot answer "is this rule live" or classify a past event. Prefer the value stamped on
+the event row: `rule_fired_results.trigger` has existed since changeset 042 and is written from
+the rule's own `RuleTrigger` in `RuleFiredResult(EvaluationResult)` (via `Rule.baseBuilder`), so
+it is never null on a persisted firing.
 
 Where a query must read the catalog, give it a fallback — `mayo_shared_metric_rule_scope_v`
-degrades via `COALESCE(..., rule_identifier LIKE 'a-%')`, which is why an empty catalog does not
-silently break rule classification there.
+degrades via `COALESCE(..., rule_identifier LIKE 'a-%')`. See also
+[[project_or2734_nmb_clipping_unfixed]].

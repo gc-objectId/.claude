@@ -169,11 +169,15 @@ is the reference; `~/.claude/jira-watch/README.md` has the detail.
   proposals into a draft PR — curation is a conversation (declining is how I steer), then only the
   kept proposals get written, run, gated on test-paths-only, and pushed as a draft. A closed ticket
   whose proposals were never collected is a loss, not a win.
+- **A sweep cannot be reprioritised once started** — its ticket list goes into `xargs` at launch.
+  When something becomes urgent mid-sweep, `loopcmd now OR-XXXX` runs it beside the sweep; it
+  refuses past three concurrent runs, because the Docker VM is the ceiling.
 - **`loopcmd teardown OR-XXXX` is the last step**, after a PR merges: worktree removed, ticket
   commented and closed. It refuses unless a merged PR actually references the key.
-- **The whole SOP now maps to verbs:** validate + close → `loopcmd 8 2`; review and unblock →
-  `loopcmd review`; discuss + implement automation → `loopcmd cover`; draft PR → end of `cover`;
-  address feedback → mine, on the PR; teardown after merge → `loopcmd teardown`.
+- **The whole SOP now maps to verbs:** validate + close → `loopcmd 8 2`; jump the queue →
+  `loopcmd now`; review and unblock → `loopcmd review`; discuss + implement automation →
+  `loopcmd cover`; draft PR → end of `cover`; address feedback → mine, on the PR; teardown after
+  merge → `loopcmd teardown`.
 
 ## Testing & Development
 

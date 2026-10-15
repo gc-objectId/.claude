@@ -1,0 +1,11 @@
+Validation of OR-2987 is complete and recorded as deploy-ready in `session.json`. The worktree is clean and all scratch work sits under the results directory.
+
+**What was verified against the running build**
+
+- **Positive.** Real ~S04 syringe-label scans posted to the medication-selection endpoint resolved through match_criteria_22. The propofol label returned m-propofol with NDC 0069020901, the lowercase variant resolved too, and the BWH label parsed via match_criteria_18.
+- **Negative.** Uploading a CSV with the old JavaScript-style `/i` suffix through the admin config import returned a 500 naming the bad label. The stored patterns stayed in their fixed form.
+- **Red check.** The parent commit's importer was compiled in the container and swapped in. The same bad CSV was then accepted, and the fixed app with that stale row logged that the propofol label did not match any NDC patterns and returned 404. The shipped class was restored with a matching checksum, the data was reverted, and the scan resolved again. A simulated deploy re-import also replaced a stale broken row at boot.
+
+**Caveats recorded.** Scans went through the API rather than a physical scanner, only the demo tenant was exercised at runtime, and the Slack-thread labels were not available so the unit-test sample labels were used.
+
+**Automation proposed.** Three supplemental scanner-family API tests: the ~S04 scan, its lowercase form, and the admin upload rejection.

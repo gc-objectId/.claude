@@ -1,0 +1,11 @@
+Validation of OR-2918 is complete and the verdict file is written at `~/.claude/jira-watch/state/results/OR-2918/session.json`.
+
+**Verdict: deploy-ready.**
+
+- **Positive:** On the Mayo tenant, an ERAS case given ondansetron then aprepitant evaluated at ERAS_OPERATION_END to "Patient received valid antiemetics" with two antiemetic classes counted and no exception.
+- **Negative:** Ondansetron plus granisetron fired the same-class alert naming 5HT3-Antagonist. Ondansetron alone fired the single-antiemetic alert. No antiemetics fired the two-antiemetic prompt. All rendered cleanly.
+- **Red check:** Removing aprepitant's NK1 class in the database reproduced the exact Sentry stack, a NoSuchElementException in `ERASAntiemeticsRule.createPrompt`, and wrote a rule failure row. The new master-list guard test also went red when the same class was stripped from the Mayo CSV. Both flips were reverted and the positive case went green again. The signature appears exactly once in the container log.
+
+**Caveats recorded:** the rule still throws for an antiemetic without a known class if one is configured outside the seeded CSV lists. Staging used the admin debugger endpoints rather than an Epic or HL7 feed. Only the Mayo tenant seeds aprepitant. The boot log carries unrelated NDC importer exceptions.
+
+**Automation:** unit and guard tests shipped with the fix. Three supplemental API-level qa-suite tests are proposed for the positive and negative prompts. The worktree is clean and nothing was committed, pushed, or posted to Jira.

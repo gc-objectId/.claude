@@ -1,0 +1,9 @@
+The signature appears exactly once in the container log, from the window when the pre-fix class was active. The session file is written and nothing else remains.
+
+**Verdict: deploy-ready** for OR-2950, recorded in `session.json`.
+
+- **Positive.** An mgb-mgh tenant token sent with `X-Tenant-Id: demo-demo`, `client_id=demo-demo`, or `X-Tenant-Id: mayo-mayo` got 403, logged the TenantFilter rejection, and wrote no row to any tenant schema.
+- **Negative.** The same token with no hint, a matching header, or a matching param got a 200 AA ACK and landed in the mgb-mgh schema only. A demo-demo token behaved the same for its own tenant.
+- **Red check.** The parent commit's TenantFilter was compiled inside the container and swapped in. The identical cross-tenant request then returned 200 and persisted into the demo-demo schema. The shipped class was restored, its checksum verified, and the 403 re-confirmed.
+
+Ship risk is none. Caveats recorded: the org-token path and hostname-based resolution were not exercised, and only the inbound message row was checked for tenant placement. Automation proposal is a supplemental qa-suite spec driving the real tenant-token path, since the PR's unit tests cover the filter but nothing exercises the full security-chain ordering end to end.

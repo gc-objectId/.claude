@@ -1,0 +1,18 @@
+{
+  "name": "session-95b697e6",
+  "createdAt": 1792000926221,
+  "leadAgentId": "team-lead@session-95b697e6",
+  "leadSessionId": "95b697e6-06ef-4315-809a-37ca066b30d1",
+  "members": [
+    {
+      "agentId": "team-lead@session-95b697e6",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792000926221,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-3045-front-door-auth",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -5,6 +5,14 @@
       "repo": "anthropics/claude-plugins-official"
     },
     "installLocation": "/Users/ryanducharme/.claude/plugins/marketplaces/claude-plugins-official",
-    "lastUpdated": "2026-10-05T20:28:35.858Z"
+    "lastUpdated": "2026-10-15T13:55:50.975Z"
+  },
+  "guidedclinical": {
+    "source": {
+      "source": "github",
+      "repo": "guidedclinical/claude-plugins"
+    },
+    "installLocation": "/Users/ryanducharme/.claude/plugins/marketplaces/guidedclinical",
+    "lastUpdated": "2026-10-14T18:02:07.569Z"
   }
 }
