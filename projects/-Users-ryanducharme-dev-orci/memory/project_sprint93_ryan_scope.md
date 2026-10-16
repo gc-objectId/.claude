@@ -28,10 +28,19 @@ Sprint 93 planning, 2026-09-25 (Alex, Theo, Jordan, Ryan).
 (`feature/OR-2941-cefazolin-default-dose`). Spec proposal + ticket text drafted in the session
 scratchpad `OR-2941/` (spec lints clean except the expected empty `covers:`). Decisions: doses
 hardcoded like cefepime, cefazolin rows leave DoseAdjustments.xlsx for all 3 sites in the same
-PR; unknown CrCl on redose → 2 g (Alex to confirm); no weight → Normal, known gap. OPEN for
-Theo/Alex: the prior-non-default-dose guard in AdjustmentService (a 3 g first dose trips it
-against the 2 g redose); reference for the 2 g redose. Nothing committed yet. Ticket text appended under Alex's description and spec posted as a
-comment on OR-2941 (2026-10-06).
+PR; no weight → Normal, known gap. Ticket text appended under Alex's description and spec
+posted as a comment on OR-2941 (2026-10-06). Nothing committed yet.
+
+**OR-2941 state (2026-10-15):** Theo's comments settled: unknown CrCl → normal (2 g); citation
+for the 2 g redose = reuse the existing `r-cefazolin-default-dose` reference (update the spec's
+"Needs a clinical reference" line); config = pull the three cefazolin dose rows from
+DoseAdjustments.xlsx but KEEP the Classifications row (40/120 feeds weight class). STILL OPEN,
+BLOCKING: the prior-non-default-dose guard in AdjustmentService (from OR-1229, 2024). Theo first
+said keep it, then saw a 3 g first dose trips it against the 2 g redose and tagged Alex leaning
+"always set regardless of prior doses". Ryan's position: always-set for cefazolin only, guard
+untouched for other antibiotics (the 1 g dose still lands in the options list). Theo already
+pinged Alex; Ryan is WAITING for her reply — do not post a nudge. Cefepime precedent leaves its
+underweight xlsx row, so generic + cefepime both preselect there (pre-existing, not ours).
 
 **Why:** Theo wants Ryan on implementation, not only testing; OR-2941 is the deliberately
 thin first ticket. **How to apply:** spec first (rule-spec), then implement; keep the

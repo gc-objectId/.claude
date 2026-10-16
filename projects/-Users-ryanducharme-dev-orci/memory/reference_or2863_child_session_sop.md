@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-14T15:41:54.590Z
+  modified: 2026-10-15T18:05:00.000Z
 ---
 
 Every open child of OR-2863 carries this as "## Working this ticket" in Jira; this is the canonical copy.
@@ -17,7 +17,7 @@ the branch has no own commits; 2995/2996/3001 all did this). Equivalent by hand:
 `git worktree add ~/dev/worktrees/OR-NNNN-slug -b feature/OR-NNNN-slug origin/epic/OR-2863-design-foundation`. Fresh worktree: `npm ci` in `orci/src/main/webapp`
 and in `qa-suite`. Rebase on `origin/epic/OR-2863-design-foundation` after any sibling merges; baseline PNG
 conflicts resolve by re-downloading from your own CI run. Never rebase the epic branch itself — the epic session
-merges `main` into it. Exception: OR-2977 (viewport logging) goes straight to `main`.
+merges `main` into it. Exception: OR-2977 (viewport logging) goes straight to `main`. OR-2404/2405/2879/2880 moved to epic OR-3054 (2026-10-15) and branch from `main` after this epic lands.
 
 **Ports (fixed per ticket, no coordination needed).** 3000 + 8080 = Ryan's main app, never touched.
 3001 = epic session workbench. Children run Vite from the webapp with
@@ -36,7 +36,10 @@ works on any of them. `npx vite` from the wrong cwd downloads a different vite �
 | OR-2879 App Home | 3013 | OR-2880 handbook | 3014 (+ backend 808N) |
 | OR-2404 admin IA | 3015 | OR-2405 nav proposal | docs only |
 | OR-3045 chain (3045/3048/3047) | 3016 | OR-3050 Event Center | 3017 (+ backend 8081) |
-| OR-3046 launch by ID | 3019 | | |
+| OR-3046 launch by ID | 3019 | OR-3061 dev banner tests | 3020 (+ backend 808N) |
+| OR-3062 Single mode med list | 3021 | OR-3064 unknown patient 404 | 3022 (+ backend 808N) |
+| OR-2870 INS-004 visible card | 3023 (qa-suite only) | OR-3067 gate artifacts | none (workflow only) |
+| OR-3068 VIS-030 pane height | 3024 (qa-suite only) | | |
 
 **Record first (added 2026-10-14).** Every child's Jira description has a "## Record" section; follow it before
 writing code. Behavior change (route, redirect, what a control does, what a request carries) → `/feature-spec`:
@@ -47,6 +50,8 @@ change → diff against the design record (`spec/design/tokens.md` + Storybook s
 or shared surface is documented in the record in the same PR. Never both-in-one: structure PR first, style PR after.
 
 **Jira edits race with child sessions.** Child sessions write acceptance criteria into their own tickets while the epic session plans; always re-read a ticket immediately before replacing its description (the 2026-10-14 planning edit overwrote the chain's approved spec diffs and had to be restored from the changelog).
+
+**Comments must not name the epic.** A Jira automation links an issue to every key mentioned in a comment on it, so a close-out comment saying `epic/OR-2863-design-foundation` creates a redundant child→epic link. Write "into the epic branch" and link the PR instead; same for sibling keys. See [[jira-automation-links-mentioned-keys]].
 
 **Visual gate.** Snapshots come from CI only; `*-darwin.png` is gitignored. New VIS cases are added and
 captured *before* the restyle so the change is graded. Recipe: push → `gh workflow run pr-gate.yml --ref

@@ -1,0 +1,18 @@
+{
+  "name": "session-4b7640fb",
+  "createdAt": 1792095085233,
+  "leadAgentId": "team-lead@session-4b7640fb",
+  "leadSessionId": "4b7640fb-6595-4e3a-90fa-a7e479dc7ae1",
+  "members": [
+    {
+      "agentId": "team-lead@session-4b7640fb",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792095085233,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-3003-bootstrap-53",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

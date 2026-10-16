@@ -1,14 +1,14 @@
 {
-  "name": "session-ec33465f",
-  "createdAt": 1791988096996,
-  "leadAgentId": "team-lead@session-ec33465f",
-  "leadSessionId": "ec33465f-308f-4185-b8ef-a5cb476d2a83",
+  "name": "session-597d6ff1",
+  "createdAt": 1792094605544,
+  "leadAgentId": "team-lead@session-597d6ff1",
+  "leadSessionId": "597d6ff1-6f6d-478a-bb55-1a1cd8686d93",
   "members": [
     {
-      "agentId": "team-lead@session-ec33465f",
+      "agentId": "team-lead@session-597d6ff1",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1791988096996,
+      "joinedAt": 1792094605544,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2863-design-foundation",
       "subscriptions": [],

@@ -1,0 +1,18 @@
+{
+  "name": "session-861319e7",
+  "createdAt": 1792094982999,
+  "leadAgentId": "team-lead@session-861319e7",
+  "leadSessionId": "861319e7-e94d-4388-9912-c939d9b286ed",
+  "members": [
+    {
+      "agentId": "team-lead@session-861319e7",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792094982999,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2901-procedure-mapping-skill",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-14T17:58:19.487Z
+  modified: 2026-10-15T17:40:00.000Z
 ---
 
 OR-2863 (Epic, app-wide incl. clinical) centralizes GuidedOR's visual language. Children:
@@ -266,3 +266,108 @@ restarted on it; gate dispatched = run 38745784899.** OR-3045 worktree still pre
 Wave 3 is next: `workon OR-2991 simulation-pages` (port 3006, then 2998) and `workon OR-2992 in-case-overlay`
 (port 3008, then 2999), OR-3046 can run beside them; both 2991 and 2992 touch InAppAdminPanel, so whichever
 merges second rebases. Each starts with /feature-spec.
+
+**2026-10-15 close-out plan (Ryan approved all):** epic "Done when" added (steps 6–8 merged + gate green,
+`tokens.md` reviewed: true by Theo, epic→main merged + dev deploy); step 9 "Land". OR-3003 stays in the epic.
+**New epic OR-3054 "Admin information architecture and landing surfaces"** now parents OR-2404/2405/2879/2880;
+their Working blocks rewritten to branch from/PR into `main` (no reset, `gh pr create --draft`, cascade vs
+`origin/main`), "Depends on: OR-2863 merged to main"; OR-3054 ↔ OR-2863 linked Relates. OR-3000 (deferred) and
+OR-2977 unparented and linked Relates to OR-2863. Ryan deleted the 11 redundant child "relates to" links on OR-2863 by hand (no MCP
+delete-link tool; a REST script with the keychain token is classifier-blocked). Gate 38745784899 on the epic head 0e410c561: QA 120 pass, visual 28/29 — VIS-029
+has no baseline because #4689 merged before its PNGs; the 3045 session owns that follow-up (its baseline run
+38745241621 is green). Wave 3 started by Ryan (2991 + 2992 worktrees). Created OR-3055 (straight to main, no parent): in-case "Scanner setup" shows the
+scanner-configuration barcode full screen (Honeywell 1962H is CURRENT per SharePoint "Scanner & Labels"; the
+barcode asset itself not yet located, open question on the ticket).
+
+**2026-10-15 afternoon: wave 3 landed.** #4700 (VIS-029 baselines), #4701 (OR-2992), #4702 (OR-2991+OR-2998)
+merged into the epic → f11c4621a, 0 behind main; Vite 3001 restarted (PID in scratchpad `vite-epic-3001.pid`).
+OR-2991/2992/2998 Done by their sessions; remaining children: OR-2999 (To Do, Ryan, port 3009), OR-3046 (To Do,
+unassigned, port 3019), OR-3003 (To Do, unassigned, port 3011). Epic Sequence/Gates updated (VIS-001–033; step 7
+= 2999 Pending). OR-2999 description refreshed (2992 merged, VIS-030/031 capture the overlay, next free VIS-034);
+OR-3003 "step 8"; both got the comment rule. **Two epic-wide CI Build breakers fixed directly on the epic**
+(commits 3c3faa999 + b68a373da, pushed): `event-center.md` context listed the deleted InAppAdminPanel.tsx (spec
+lint error on every child PR) → now InCaseOverlay.tsx; PMD AvoidUsingHardCodedIP on ServerInfoController's
+`"127.0.0.1"` → `InetAddress.getLoopbackAddress().getHostAddress()`. Local `-o` PMD reports 15 UnnecessaryImport
+P4s that are offline-classpath artifacts, not real. Gate 38776567218 ran on f11c4621a; a second dispatch on
+b68a373da follows it (same-ref dispatch cancels the in-progress one). Unfiled follow-ups from the 2991 session:
+standalone `/admin/simulation` `/api/medications` call carries no tenant (R15 text shows); VIS-032 sits before
+VIS-031 in visual-regression.spec.ts. Four feature specs are `reviewed: false`; only `spec/design/tokens.md`
+gates the epic.
+Gate 38776567218 on f11c4621a GREEN (QA 132, visual 33/33); gate 38778721742 dispatched on b68a373da. Ryan asked
+about the dev banner: 3001 shows none because 8080 is a main build whose is-prod list only has localhost:3000;
+no test anywhere for R36–R39/R47 → **OR-3061** (Task under the epic, port 3020 + own backend, "later"):
+@WebMvcTest for ServerInfoController + AUTH smoke for banner show/dismiss + ledger update.
+Gate 38778721742 on b68a373da (CI Build fixes) GREEN: QA 132, visual 33/33 — epic head is clean. 2991 session had
+filed OR-3063 (same spec-path fix; closed Done by me with the commits) and OR-3062 (standalone Single mode
+medication list has no tenant; predates the epic, same call on main; recommended to Ryan: unparent to related,
+work from main after the epic lands; decision pending). Ryan started OR-3046 (PR #4704, first child cut after the
+fix → CI Build runs) and an OR-2999 worktree.
+OR-3046 PR #4704 merged → epic 1dc41910e (0 behind main), Vite 3001 restarted, gate 38781035911 dispatched.
+3046 session filed OR-3064 (Task under the epic: unknown demo patient launch answers 500 with `PatientId[value=…]`
+in the message; front-door R43/R53, LAUNCH-009). Ryan: follow-ups from 3046/2999 stay as filed; organize the
+backlog (3061, 3062, 3064, …) after OR-2999 lands, then do them in sequence.
+Gate on 1dc41910e: runs 38781035911 and 38783487900 red on INS-004 only (OR-2870 mechanism, see
+[[ins004-hidden-tab-card]]; diagnosis commented on OR-2870), third run 38786379073 GREEN (QA 134, visual 33/33).
+Epic head 1dc41910e is clean. Waiting on OR-2999; backlog pass after it lands: OR-3061, OR-3062, OR-3064, plus
+OR-2870 (costs a 20-min rerun per epic regate) and the gate-artifact gap (not ticketed).
+
+**2026-10-15 evening: OR-2999 landed** (#4705 → epic ba841f779, 0 behind main; VIS-034/035 added, next free
+VIS-036; tokens.md gained the chart series palette, still `reviewed: false`). Vite 3001 restarted; gate
+38789553978 dispatched. 2999 session filed OR-3065 (graphical Timeline, Story) and OR-3066 (scope AppLaunch.scss
+nav-link overrides, Task), both unparented, main-after-epic, already linked Relates to the epic. I pushed
+`OR-2863: Order VIS-031 before VIS-032` on the epic (needs the next regate to be "head green").
+**Organized backlog (Ryan: "do those all in sequence"):** epic Sequence now 8 = OR-3064 → OR-3061 → OR-3062,
+9 = OR-3003, 10 = epic→main. OR-3064 retyped Task→Bug and given Record + Working block (port 3022 + own backend);
+OR-3062 kept in the epic (Ryan did not take the unparent suggestion), Working block port 3021. Ports in the SOP
+table. Still unticketed: OR-2870 fix (page-object one-liner) and the gate-artifact overwrite gap.
+Ryan: "ticket the remaining items, they are part of this epic" → OR-2870 reparented under the epic with the
+confirmed mechanism + fix (`cards.locator("visible=true").first()`), port 3023; new **OR-3067** (Task, epic):
+pr-gate uploads test-results/playwright-report once at the end, the visual run wipes the QA run's output. Epic
+step 8 now: OR-2870 → OR-3067 → OR-3064 → OR-3061 → OR-3062; step 9 OR-3003; step 10 epic→main.
+Gate 38789553978 on ba841f779 (2999 head): QA 134 green, visual 34/35 — **VIS-030 1280x800 failed, 23640 px**:
+the mask over `.in-case-overlay__case .tab-content` was ~24 px taller than in the baseline (a mask hides pixels
+but follows the element's box), so the Patient Demographics pane's height varies between CI renders; same tree
+passed PR #4705's own gate minutes earlier. Demographics are live createPatient data, not stubbed (overlay-stub.ts
+stubs only allergies + tracked values). Draft ticket shown to Ryan; not yet created. Artifact dir:
+scratchpad/gate-38789553978-results (actual/expected/diff + trace.zip).
+Ryan "go" → **OR-3068** created (Task, epic, port 3024): VIS-030 Patient Demographics pane height varies; stub
+demographics or wait for the last row, rebaseline once. Epic step 8 = OR-2870, 3067, 3068 (gate reliability),
+then 3064, 3061, 3062; Ryan runs them in parallel sessions (3064 already started), rebasing as siblings merge.
+Gate 38791694089 dispatched on ae1e6b191 (VIS reorder head) by the chained watcher.
+Gate 38791694089 on ae1e6b191 (2999 + VIS reorder) GREEN: QA 134, visual 35/35 — VIS-030 passed this time,
+confirming OR-3068 is a flake not a regression. Epic head ae1e6b191 is clean. Ryan has parallel sessions for
+2870, 3067, 3068, 3064, 3061, 3062; next trigger = each merge (pull, restart 3001, regate), then 3003.
+**OR-3067 (gate artifacts) DONE 2026-10-15: PR #4709 merged into the epic (6629d6d7a), worktree gone.** Fix is per-step
+uploads in pr-gate.yml only: QA step uploads `pr-gate-test-results`/`pr-gate-playwright-report` right after
+`npm run gate`; visual step uploads `pr-gate-visual-test-results`/`pr-gate-visual-playwright-report` (guarded like
+the snapshots upload); summarize-visual-failures.mjs + tests-readme name them. Validated on dispatch 38792671899
+with a throwaway smoke-launch failure (dropped before the PR): QA artifact had test-failed-1.png + trace.zip, visual
+artifact had 35 dirs. That run also hit the OR-3068 VIS-030 flake (one-row mask height, 36432 px at 1920x1080).
+Auto-mode classifier blocks read-only Bash calls batched in the same response as a `git reset --hard`; send them separately.
+
+**2026-10-15 late: step 8 landed except 3068.** #4708 (3064), #4706 (2870), #4709 (3067), #4707 (3061), #4710
+(3062) merged → epic a995d5716, 0 behind main, spec lint clean, Vite 3001 restarted, gate 38799020434 dispatched.
+Open children: OR-3068 (In Progress, Ryan's session) and OR-3003 (To Do). Epic Sequence updated. Next: 3068 merge
+→ regate → merge main into the epic → OR-3003 (port 3011) → Theo tokens.md review → epic→main PR.
+**Ryan 2026-10-15: spec sign-off does not gate.** The epic→main PR is the only real gate: Alex, Karen, Theo and
+Jordan look at the env and agree before merge; specs/tokens.md may be reviewed in that PR, `reviewed:` flags are
+non-blocking. Epic "Done when" rewritten accordingly; "design record review — Pending" dropped from step 5.
+Gate 38799020434 on a995d5716: QA 136/136 green (INS-004 fixed by 2870), visual 34/35 — VIS-030 again (OR-3068
+flake, fix in flight in Ryan's session). No rerun; the 3068 merge regate is the next green.
+
+**2026-10-15 night: OR-3068 merged (#4711) → epic a8d76b382, 0 behind main; step 8 Complete** (all six Done).
+Vite 3001 restarted; gate 38801773974 + first-ever CI Build of the integrated epic head (38801778424) dispatched.
+OR-3003 worktree exists on its main cut (clean, reset pending), assigned to Ryan; ticket refreshed (step 9,
+VIS-001–035). Epic diff vs main: 292 files (+12k/-6k), 31 child merges, **no Liquibase changesets, no
+application*.yml changes**; package.json changes are scripts only. Backend touches Mayo + MGB GetPatient commands
+(OR-3064) — review those carefully. Launched read-only pre-PR review workflow wf_9f226e02-9e0 (4 dimensions:
+backend, frontend, clinical safety, records/hygiene → adversarial verify → completeness critic).
+**Reviewer env for the epic→main PR (Ryan's call, pending):** `maven-cd.yml` (Build And Deploy to Dev) has no
+branch guard → `gh workflow run maven-cd.yml --ref epic/...` builds the epic image and deploys it to dev, and
+qa-suite.yml's workflow_run then runs the FULL suite (incl. @external Mayo) against it. Main pushes redeploy main
+(concurrency dev-deploy, cancel-in-progress) → freeze main merges for the window or redeploy the epic tag with
+`deploy.yml` (Deploy to ECS: environment + version tag). No migrations → dev flips epic↔main DB-safe. Stage last
+deployed 2026-08-06; deploying there would also run ~10 weeks of main's migrations on stage → not recommended.
+**Epic head a8d76b382 fully green:** PR Gate 38801773974 (QA 136/136, visual 35/35 — VIS-030 and INS-004 both
+stable now) and the first CI Build of the integrated epic, 38801778424 (build incl. spec lint + Java tests, and
+static-analysis PMD + SpotBugs, both success). Pre-PR review workflow wf_9f226e02-9e0 still running.

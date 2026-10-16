@@ -1,6 +1,6 @@
 ---
 name: project-or3045-front-door-auth-chain
-description: "OR-3045 + OR-3048 + OR-3047 chain — DONE 2026-10-15: PR #4689 merged into the epic (3cf3fe494), all three tickets Done; VIS-029 baseline follow-up PR from feature/OR-3047-vis029-baseline still in the same worktree; next free VIS 030"
+description: "OR-3045 + OR-3048 + OR-3047 chain — DONE 2026-10-15: PR #4689 merged into the epic (3cf3fe494), all three tickets Done; VIS-029 baseline follow-up PR #4700 merged 2026-10-15, worktree gone; next free VIS 030"
 metadata:
   node_type: memory
   type: project
@@ -13,7 +13,7 @@ Chain under OR-2863, worktree `~/dev/worktrees/OR-3045-front-door-auth`, branch
 **PR #4689 merged into the epic 2026-10-15 (3cf3fe494); OR-3045/3048/3047 moved to Done.** Ryan merged
 before the VIS-029 recapture landed, so the two `server-not-responding` PNGs went in a follow-up draft PR from
 `feature/OR-3047-vis029-baseline`, cut from the epic in the SAME worktree (`~/dev/worktrees/OR-3045-front-door-auth`,
-the merged branch is deleted locally). `worktree-done` from there once that PR merges. Lesson: a capture dispatch
+the merged branch is deleted locally). PR #4700 merged 2026-10-15 and `worktree-done` ran clean; nothing left in flight. Lesson: a capture dispatch
 runs on the branch SHA even after the remote branch is deleted, so the artifact stays usable; compare the whole
 artifact against the epic before copying, since a sibling (OR-3050) rebaselined event-center in between.
 

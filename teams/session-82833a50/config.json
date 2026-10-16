@@ -1,14 +1,14 @@
 {
-  "name": "session-6362902a",
-  "createdAt": 1791987332282,
-  "leadAgentId": "team-lead@session-6362902a",
-  "leadSessionId": "6362902a-90d1-4748-a897-359587cd095e",
+  "name": "session-82833a50",
+  "createdAt": 1792076658797,
+  "leadAgentId": "team-lead@session-82833a50",
+  "leadSessionId": "82833a50-6d94-4c18-9b73-e23e22dd6cf9",
   "members": [
     {
-      "agentId": "team-lead@session-6362902a",
+      "agentId": "team-lead@session-82833a50",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1791987332282,
+      "joinedAt": 1792076658797,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2941-cefazolin-default-dose",
       "subscriptions": [],
