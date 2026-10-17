@@ -39,7 +39,12 @@ works on any of them. `npx vite` from the wrong cwd downloads a different vite �
 | OR-3046 launch by ID | 3019 | OR-3061 dev banner tests | 3020 (+ backend 808N) |
 | OR-3062 Single mode med list | 3021 | OR-3064 unknown patient 404 | 3022 (+ backend 808N) |
 | OR-2870 INS-004 visible card | 3023 (qa-suite only) | OR-3067 gate artifacts | none (workflow only) |
-| OR-3068 VIS-030 pane height | 3024 (qa-suite only) | | |
+| OR-3068 VIS-030 pane height | 3024 (qa-suite only) | OR-3070 case-screen states | 3025 |
+| OR-3071 simulation without MGH | 3026 (+ backend 808N) | OR-3072 stale flag lists | 3027 |
+| OR-3073 dev banner case screen | 3028 (+ backend 808N) | OR-3074 launch screens | 3032 |
+| OR-3075 EHR lookup Sentry | 3029 (+ backend 808N) | OR-3076 Event Center case start | 3030 (+ backend 808N) |
+| OR-3077 admin review fixes | 3031 | OR-3078 records cleanup | 3033 (+ Storybook 6007) |
+| OR-3079 red-check new tests | 3034 (+ backend 808N) | | |
 
 **Record first (added 2026-10-14).** Every child's Jira description has a "## Record" section; follow it before
 writing code. Behavior change (route, redirect, what a control does, what a request carries) → `/feature-spec`:
@@ -50,6 +55,11 @@ change → diff against the design record (`spec/design/tokens.md` + Storybook s
 or shared surface is documented in the record in the same PR. Never both-in-one: structure PR first, style PR after.
 
 **Jira edits race with child sessions.** Child sessions write acceptance criteria into their own tickets while the epic session plans; always re-read a ticket immediately before replacing its description (the 2026-10-14 planning edit overwrote the chain's approved spec diffs and had to be restored from the changelog).
+
+**Follow-ups go under OR-3054 (2026-10-16).** Anything a child finds that is not needed to merge OR-2863 becomes a child of
+OR-3054 (admin IA, landing surfaces and design-foundation follow-ups), whose children all land as commits on ONE branch
+`epic/OR-3054-admin-ia-and-cleanup` (cut from main after OR-2863 merges; sessions one at a time in that worktree, Vite 3013;
+no per-child PRs). Copy the Working block from any OR-3054 child (e.g. OR-3084). Never file it as a relates-to of OR-2863.
 
 **Comments must not name the epic.** A Jira automation links an issue to every key mentioned in a comment on it, so a close-out comment saying `epic/OR-2863-design-foundation` creates a redundant child→epic link. Write "into the epic branch" and link the PR instead; same for sibling keys. See [[jira-automation-links-mentioned-keys]].
 

@@ -1,0 +1,18 @@
+{
+  "name": "session-2912e250",
+  "createdAt": 1792162059936,
+  "leadAgentId": "team-lead@session-2912e250",
+  "leadSessionId": "2912e250-e5ba-470b-816d-c8ba14822e2b",
+  "members": [
+    {
+      "agentId": "team-lead@session-2912e250",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792162059936,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-3072-stale-flag-lists",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

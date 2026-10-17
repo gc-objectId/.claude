@@ -371,3 +371,62 @@ deployed 2026-08-06; deploying there would also run ~10 weeks of main's migratio
 **Epic head a8d76b382 fully green:** PR Gate 38801773974 (QA 136/136, visual 35/35 — VIS-030 and INS-004 both
 stable now) and the first CI Build of the integrated epic, 38801778424 (build incl. spec lint + Java tests, and
 static-analysis PMD + SpotBugs, both success). Pre-PR review workflow wf_9f226e02-9e0 still running.
+
+**2026-10-16: pre-PR review wf_9f226e02-9e0 done** (ran ~16h incl. two usage-limit pauses; critic timed out,
+re-running at effort high). 31 findings, all "confirmed" by single verifiers (some only partly: clinical #4 part a
+refuted). I independently re-checked the top four on code: all hold. Result JSON:
+tasks/weuwxe4a6.output (session scratch). Cascade audit: `npm run check:cascade -- 0bbb2fba5 --all-flips` →
+scratchpad/cascade-epic-vs-main.txt (21,093 flips), filtered to clinical-stylesheet winners →
+scratchpad/cascade-clinical-flips.txt. Root cause of the clinical CSS movement: OR-2990 ccfd660a3 removed the
+duplicate full Bootstrap compiles from AppLaunch/DosingForm/FeedbackWidget scss, so case-screen rules now win
+equal-specificity ties that later Bootstrap copies used to win on main. **check:cascade blind spots:** compares by
+property name (shorthand `padding` vs longhand `padding-right` invisible) and default output needs a shared class in
+the rightmost compound. Caveat added to OR-3003's Working block.
+Triage (drafts shown to Ryan, not created): BLOCKER dose field invalid focus/padding (+ route/indication hover/focus,
+close-button focus opacity, reject pressed-hover, clinical modal focus ring, skeleton shades); DECISION launch-path
+screens restyled by OR-2990 (OR-3000 inventory says clinical; blocked lost role=alert) → declare or revert; MAJOR
+SIM-010 fails on AWS dev (simulation pinned to MGH, mgb disabled on aws-*) + Notification default tenant; MAJOR
+Feature Flags/Release Notes stale after remount (useState(0) key, staleTime 5m); dev banner 29px under clinical
+fixed footer on non-prod + session id in localStorage; Mayo/MGB lookup misses now 404 → no backend Sentry (review
+said minor, I'd fix); Event Center can't start a case via START_MONITORING; admin minors; records cleanup.
+Critic (re-run at effort high) done: closed by me — integrated head gate + CI Build green, `npm run typecheck`
+exit 0, `npm run build-storybook` exit 0 (Sass deprecation + Sentry no-auth warnings only), dose-field flip
+confirmed in compiled CSS via check:cascade. Stale "Admin Panel" refs confirmed in
+qa-suite/clinical-rules/procedure-antibiotics.md:155 (Ctrl+Shift+A, retired) and event-center.md R3/lines 28,43
+(med-admin-simulation.md's "In-case Admin Panel" is a defined term, fine). Still open (proposed to Ryan): red-check
+review of ~2,900 lines of new qa-suite test logic (absence assertions need a positive anchor + proven red);
+non-clinical baseline moves vs each ticket's declared delta (72 PNGs over 25 commits, e.g. 65373c361 OR-2999 moved
+admin-job-queue/operation-host); code behavior changes with no spec requirement (e.g. is-prod loopback rule,
+AsyncButton event); SIM-010 dev schema absence unqueried (rests on config + 2026-08-26 memory). Ultracode turned
+off by Ryan 2026-10-16 (effort xhigh) → don't launch big workflows unprompted.
+**Ryan "go on all" (2026-10-16):** created OR-3070..3079 under the epic (epic step 9 "Pre-PR review fixes"):
+before reviewer deploy — OR-3070 case-screen states (Bug, 3025, must land before OR-3003), OR-3071 simulation
+without MGH (Bug, 3026+backend), OR-3072 stale flag lists (Bug, 3027), OR-3073 dev banner case screen + session id
+(Bug, 3028+backend), OR-3074 declare launch screens + alert role (Task, 3032; my recommendation "declare" taken as
+part of "go on all"); before PR — OR-3075 EHR lookup Sentry (Bug, 3029+backend), OR-3076 Event Center case start
+(Bug, 3030+backend), OR-3077 admin review fixes (Task, 3031), OR-3078 records cleanup + two audits (Task,
+3033+SB 6007), OR-3079 red-check new tests (Task, 3034+backend). OR-3003 → step 10, depends on OR-3070. Epic
+constraint now names OR-3074's launch screens as declared clinical movement. Reviewer env (dev window) still
+Ryan's call.
+**Order flipped (2026-10-16):** OR-3003's session was already deep in (5.3.8 installed, 13 uncommitted files incl.
+`_bootstrap-52-parity.scss`, DosingForm/custom.scss edits) when OR-3070's worktree appeared (clean). So OR-3003
+merges FIRST holding "no movement vs the epic head" and listing clinical flips in its PR; OR-3070 waits (prep only:
+main's computed values on 3000, the invalid-dose VIS case, pin list), then pins once against 5.3. OR-3003, OR-3070
+and the epic Sequence (9 = OR-3003, 10 = pre-PR fixes) updated in Jira.
+**Scope closed (Ryan, 2026-10-16: "I don't want this to be a never ending thing").** OR-3003's session found more
+work; filed as non-blocking main-after-epic chores, unparented + Relates to the epic, listed in a new "Chores after
+the epic lands" section at the end of the epic: OR-3080 light-mode contrast floors (3035), OR-3081 dark-mode
+prerequisites (3036, SB 6008; cream role tokens stay in OR-3078), OR-3082 clinical tooltip recalibration (3037),
+OR-3083 static Storybook shows no stories + DosingFormBanner stories crash (SB 6009/6010; index.json does list 43
+stories, so it's a runtime render failure), OR-3084 5.3 styling defects + dead CSS (3038). Epic now says: anything
+new goes to the chore list unless it breaks a constraint. createIssueLink works with type "Relates" and plain key
+strings for inwardIssue/outwardIssue.
+**OR-3054 repurposed (Ryan, 2026-10-16):** now "Admin information architecture, landing surfaces and design-foundation
+follow-ups". Children: OR-2405, 2404, 2879, 2880 (were already) + moved in OR-3065, 3066, 2977, 3055, 3080, 3081, 3082,
+3083, 3084 and OR-3085 (filed meanwhile by a child session's records audit). ONE branch
+`epic/OR-3054-admin-ia-and-cleanup` cut from main after OR-2863 merges; each child = its own commits `OR-NNNN: …`, no
+per-child PRs, sessions sequential in the one worktree, Vite 3013, gate by workflow_dispatch, one PR to main. Every
+child's Working block rewritten to that model. OR-3000 kept standalone (deferred child would hold OR-3054 open forever),
+linked Relates to OR-3054. OR-2863's tail section now just points at OR-3054; its scope rule says new findings become
+OR-3054 children. **Pending Ryan (no MCP delete-link tool):** remove the Relates links from OR-2863 to OR-3000, 2977,
+3055, 3065, 3066, 3080, 3081, 3082, 3083, 3084, 3085 — keep only OR-3054.

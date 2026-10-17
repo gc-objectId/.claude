@@ -1,0 +1,18 @@
+{
+  "name": "session-d1bb72f9",
+  "createdAt": 1792160991287,
+  "leadAgentId": "team-lead@session-d1bb72f9",
+  "leadSessionId": "d1bb72f9-01e2-4f33-b51d-cb0fc0c2eb86",
+  "members": [
+    {
+      "agentId": "team-lead@session-d1bb72f9",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792160991287,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-3070-pin-case-screen-states",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

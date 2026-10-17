@@ -1,0 +1,18 @@
+{
+  "name": "session-05b9ea45",
+  "createdAt": 1792162080988,
+  "leadAgentId": "team-lead@session-05b9ea45",
+  "leadSessionId": "05b9ea45-00f1-404a-825d-4058ba721d0b",
+  "members": [
+    {
+      "agentId": "team-lead@session-05b9ea45",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792162080988,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-3073-dev-banner-case-screen",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}
