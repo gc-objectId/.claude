@@ -25,7 +25,7 @@
 - [Validation protocol](feedback_validation_protocol.md) — positive + negative + flip-and-revert, then automate
 - [Branch naming](feedback_branch_naming.md) — prefix matches Jira type: epic/, feature/, bugfix/, hotfix/
 - [npm-script test commands](feedback_npm_script_test_commands.md) — npm :local scripts with `--` pass-through, never raw TEST_ENV npx
-- [Keychain -w truncation](reference_keychain_w_truncation.md) — `security -w` prompt truncates ~128 chars
+- [Keychain -w truncation](reference_keychain_w_truncation.md) — `security -w` truncates ~128 chars
 - [OR-2581 compliance case-stop wiring](project_or2581_compliance_casestop_wiring.md) — validated in Epic TST
 - [Dosing alert semantics](project_dosing_alert_semantics.md) — Accept ≠ save; button text is per-rule rejectText
 - [Mayo integration testing](project_mayo_integration_testing.md) — terminology, gaps Q9–Q13; OneDrive tracker is source of truth
@@ -42,21 +42,21 @@
 - [Pre-merge CI gate](project_premerge_ci_gate.md) — PR's own image on ephemeral compose, 20-min cap
 - [Dev deploy flakiness](project_dev_deploy_flakiness.md) — deploy failures converge; blank pages = mixed-version rollout
 - [worktree-done is self-verifying](reference_worktree_done_false_success.md) — trust the exit code; rebase-merge reads as unmerged
-- [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes the env file directly; a `>` redirect truncates it to empty
+- [gen-env.sh output](reference_gen_env_writes_file_directly.md) — writes its file directly; never redirect
 - [query-rds dev gap](reference_query_rds_dev_secret_gap.md) — closed 2026-07-20; dev RDS still needs VPN
 - [OR-2616 dev SMTP not rotated](project_or2616_dev_smtp_not_rotated.md) — rotation skipped; old task defs leak the password
 - [Mayo data lives in stage](reference_mayo_data_lives_in_stage.md) — mayo-mayo + pre-collapse rormc/rosmc schemas
 - [OR-2649 facility derivation](project_or2649_facility_derivation.md) — done, no code; 4th token of operating_room_name
 - [Claude config backup](reference_claude_config_backup.md) — ~/.claude auto-pushed daily via launchd; log in ~/Library/Logs
-- [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — RAS med-admin date tests need -Duser.timezone=America/Chicago
+- [Mayo HL7 test TZ coupling](reference_mayo_hl7_test_tz_coupling.md) — RAS date tests need America/Chicago TZ
 - [Antibiotic candidate sources](reference_antibiotic_candidate_sources.md) — resolves once into CaseAntibioticProtocol
-- [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds PR merged into main; rebase before push
+- [Stale worktree CI merge compile](reference_stale_worktree_ci_merge_compile.md) — CI builds the PR merged into main
 - [workon re-run stale index](reference_workon_rerun_stale_index.md) — force-moves the branch; recover via stash + reflog
 - [Webapp has no unit runner](reference_webapp_no_unit_runner.md) — OR-2702 for vitest; validate pure TS via esbuild-in-node
 - [@DataJpaTest can't test migrations](reference_datajpatest_ddl_auto_not_liquibase.md) — schema from entities; migrations are manual-only
 - [HL7 validation methodology](reference_hl7_admin_send_validation_path.md) — admin send is the real path; RAS bolus needs ~18s
 - [No test-only dismissal](feedback_no_test_only_dismissal.md) — say "no runtime behavior changes", never "test-only"
-- [Repo test placement](feedback_repo_test_placement.md) — @DataJpaTest lives in orci-repositories; `*IntegrationTest` excluded from CI
+- [Repo test placement](feedback_repo_test_placement.md) — @DataJpaTest lives in orci-repositories
 - [OR-2663 doxycycline rule was inert](project_or2663_doxycycline_inert_rule.md) — self-set lockout defeated SET NX
 - [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2
 - [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages, POST /api/app-launch starts the case
@@ -92,7 +92,7 @@
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; one branch, Vite 3013
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — OR-3084's Working block; no design-epic link or keys
-- [OR-3070 case-screen states](project_or3070_case_screen_states.md) — pins after OR-3003; CDP forcePseudoState probe
+- [OR-3070 case-screen states](project_or3070_case_screen_states.md) — DONE 2026-10-19 (#4722 into the epic), worktree gone; VIS-037 (next free 038); CDP forcePseudoState probe
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association
 - [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done; PABX-019/020 + PMAP family
@@ -123,11 +123,11 @@
 - [OR-3064 unknown patient 404](project_or3064_unknown_patient_not_found.md) — DONE; javap the shared ~/.m2 jar before trusting 8081
 - [OR-2915 ERX mapping skill](project_or2915_erx_mapping_skill.md) — DONE; guided-skills #15
 - [OR-2901 procedure mapping skill](project_or2901_procedure_mapping_skill.md) — DONE; guided-skills #17 rework awaits Ryan's push
-- [OR-3071 simulation without MGH](project_or3071_simulation_without_mgh.md) — /api/simulation/site + 404 guard; R32–R34, SIM-012–014; follow-up OR-3087; awaiting go to push
-- [Local AWS tenant shape](reference_local_aws_tenant_shape.md) — throwaway DB + redis index to drop a tenant schema
+- [OR-3071 simulation without MGH](project_or3071_simulation_without_mgh.md) — DONE 2026-10-19 (#4723 into the epic, b956aca0f); /api/simulation/site + 404 guard; R32–R34, SIM-012–014 (next free SIM-015, R37); follow-up OR-3087
+- [Local AWS tenant shape](reference_local_aws_tenant_shape.md) — drop a tenant schema locally
 - [OR-2988 ASA demo lag](project_or2988_asa_demo_lag.md) — no code; left for Alex/Theo to close; scan-lag fix #4664 merged after 0.1.102
 - [OR-3073 dev banner case screen](project_or3073_dev_banner_case_screen.md) — DONE (#4721); next free AUTH-014
-- [qa-suite concurrent token sweep](reference_qa_suite_concurrent_token_sweep.md) — parallel runs revoke each other; OR-3088
+- [qa-suite concurrent token sweep](reference_qa_suite_concurrent_token_sweep.md) — parallel runs revoke each other; fix is OR-3086
 - [Heredoc \u escapes become literal chars](reference_bash_heredoc_unicode_escapes.md) — build escapes with chr(92) in Python
 - [OR-3003 Bootstrap 5.3](project_or3003_bootstrap53.md) — DONE (#4715); parity layer + per-mode tokens
 - [Bundle-swap computed-style A/B](reference_bundle_swap_computed_style_ab.md) — swap prod CSS on a live DOM, diff computed styles
@@ -137,3 +137,4 @@
 - [OR-3075 EHR lookup Sentry](project_or3075_ehr_lookup_sentry.md) — DONE (#4718); front-door next free R60
 - [OR-3077 admin review fixes](project_or3077_admin_review_fixes.md) — DONE (#4719); in-case-overlay next free R19
 - [OR-3078 records cleanup](project_or3078_records_cleanup.md) — DONE (#4720); check sibling worktrees before taking R/VIS ids
+- [OR-3072 stale flag lists](project_or3072_stale_flag_lists.md) — DONE (#4724); admin-shell R30

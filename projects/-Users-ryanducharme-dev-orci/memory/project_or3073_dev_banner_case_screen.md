@@ -1,11 +1,11 @@
 ---
 name: project-or3073-dev-banner-case-screen
-description: "OR-3073 (Bug under the design epic): dev banner pushed the case screen under the fixed footer + stored the raw session id; draft PR #4721 into the epic 2026-10-16, In Progress until merge; R38/R39 CHANGE approved (per-browser dismissal)"
+description: "OR-3073 (Bug under the design epic): dev banner pushed the case screen under the fixed footer + stored the raw session id; DONE 2026-10-19 — PR #4721 merged into the epic, gate green on the merged head, worktree gone; R38/R39 per-browser dismissal"
 metadata:
   node_type: memory
   type: project
   originSessionId: 05b9ea45-00f1-404a-825d-4058ba721d0b
-  modified: 2026-10-16T16:57:35.460Z
+  modified: 2026-10-19T13:33:00.956Z
 ---
 
 Worktree `~/dev/worktrees/OR-3073-dev-banner-case-screen`, branch `bugfix/OR-3073-dev-banner-case-screen`, draft
@@ -24,7 +24,10 @@ flash on reload) — renumbered at rebase because OR-3077 took AUTH-011; VIS-036
 Declared delta VIS-036 + VIS-011, from capture run 38932137721 (82 other PNGs byte-identical). Next free AUTH-014.
 
 **MERGED 2026-10-16 16:54Z** (merge 7b8514faf, before its PR gate 38935399208 finished); `worktree-done` ran clean.
-Follow-up filed: OR-3088 (child of OR-3054, no links) — global-setup's stale-token sweep revokes concurrent runs' tokens,
+That gate then went green (QA 142 incl. AUTH-010/012/013, visual 36 incl. VIS-036); ticket Done 2026-10-19. The Record's
+"check it against main on 3000" eyes-on comparison was never done. Lesson: before filing a follow-up, search the target
+epic's children (OR-3088 duplicated OR-3086, which was already in OR-3054's Outcome list).
+Follow-up filed: OR-3088 (child of OR-3054; closed 2026-10-19 as a duplicate of OR-3086, which carries its details) — global-setup's stale-token sweep revokes concurrent runs' tokens,
 which caused this session's afterAll/teardown 401s.
 
 **Rebased 2026-10-16 onto d5a28568b (OR-3078 merged):** head 0caca5b30; OR-3078's R38/R39 Known gap removed, its R58/R59

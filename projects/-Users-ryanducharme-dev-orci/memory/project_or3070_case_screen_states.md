@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: d1bb72f9-01e2-4f33-b51d-cb0fc0c2eb86
-  modified: 2026-10-16T16:57:36.529Z
+  modified: 2026-10-19T13:34:31.578Z
 ---
 
 OR-3070 (Bug, epic child, port 3025, branch bugfix/OR-3070-pin-case-screen-states).
@@ -20,7 +20,17 @@ VIS-005 saves CeFAZolin on the spec's shared patient → later CeFAZolin tab ope
 isolate the writer: e379f7043 gives VIS-005 its own `savedDosePatient` (same config/conditions/allergy). Capture run 2 =
 38934802753. Local qa runs collide with other sessions' runs on the same 8080 (their globalSetup resets demo-qa and
 sweeps `qa-suite` tokens → 401s mid-run): check `ps … playwright test` first. Filed as **OR-3086** (Bug, child of OR-3054,
-no links; added to OR-3054 Outcome + Sequence step 1).
+no links; added to OR-3054 Outcome + Sequence step 1). OR-3073's session filed OR-3088 30s later for the same thing →
+2026-10-19 (Ryan): its details + proof recipe folded into OR-3086, Duplicate link, OR-3088 Done.
+**Capture run 2 (38934802753) green:** 84/84 byte-identical (VIS-005 on its own patient too), VIS-037 rendered and matched
+main by eye. Rebased onto 7b8514faf (OR-3073 VIS-036 + OR-3078 tokens merged): conflicts only in the visual spec/md
+(kept VIS-036 then VIS-037; `forPatient` + `showDevBanner` both in clinicalSession) and tokens.md (epic tables + skeleton
+row/tokens + both history entries); cascade vs epic unchanged. 2026-10-19: VIS-037 PNGs committed (0e35e12a5), probe
+removed (backup in scratchpad), Vite 3025 stopped, force-pushed, **draft PR #4722** into the epic, close-out comment
+posted (In Progress until merge). PR gate run 39260782266 re-renders VIS-037 against the committed PNGs.
+**2026-10-19 13:33: #4722 MERGED into the epic (1934c1486) before its gate finished; worktree-done exit 0 (worktree +
+branch gone).** Gate 39260782266 on the merged tree GREEN (QA 142, visual 37/37) → **OR-3070 DONE 2026-10-19.** Next free VIS-038.
+`lsof -p PID -iTCP` ORs its filters — use `lsof -a -p PID -iTCP` to check a PID's own port.
 
 **Probe (the measuring tool):** untracked `qa-suite/visual/state-probe.spec.ts` (never commit; backup in session scratchpad).
 Playwright + CDP `CSS.forcePseudoState` (hover/active/focus/focus-visible are deterministic that way; real input isn't),
