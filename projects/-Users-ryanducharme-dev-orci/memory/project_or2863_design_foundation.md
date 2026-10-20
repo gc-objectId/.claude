@@ -430,3 +430,18 @@ child's Working block rewritten to that model. OR-3000 kept standalone (deferred
 linked Relates to OR-3054. OR-2863's tail section now just points at OR-3054; its scope rule says new findings become
 OR-3054 children. **Pending Ryan (no MCP delete-link tool):** remove the Relates links from OR-2863 to OR-3000, 2977,
 3055, 3065, 3066, 3080, 3081, 3082, 3083, 3084, 3085 — keep only OR-3054.
+
+**2026-10-19 final pre-PR look on 2f7f25832:** gate 39315821355 green (QA 150/150, visual 40/40), CI Build 39315825232 green. Backend + frontend delta reviews: no blockers. Four pre-PR fixes committed locally, NOT pushed, awaiting Ryan's go: eslint error (SignInCheckFailedDisplay apostrophe; CI has no eslint step), the five spec epic-branch notes dropped, admin flag query key namespaced to ["admin","feature-flags"] (was a prefix of the case screen's ["feature-flags", username], so overlay flag saves refetched the clinical flags), VIS-011 now hides the dev banner (needs a CI capture of sign-in-*-linux.png before regate). Follow-ups proposed under OR-3054: one new Bug for four Event Center start-monitoring edge cases (blank PMRN NPE on Mayo, demo not-found logged at ERROR to Sentry, R24 test uses the demo exception, null categories 500), plus a feature-flag-note banner bullet on OR-3085. PR body draft: session scratchpad epic-pr-body.md.
+
+**2026-10-19: OR-3000 repurposed and pulled INTO the epic (Ryan).** Supersedes "OR-3000 kept standalone/deferred" above. Now
+"Merge the remaining clinical screens onto the design tokens with a light touch" (Story, parent OR-2863, step 11 before
+epic→main). Rules: swap values not structure; same value → token; imperceptible difference → token + declared snap;
+visibly different clinical role → new role-named token at today's value; medication label colors/border convention and
+status hues never change (tokens only at exact values); no admin surfaces on the case screen; OR-3070 pins + 5.2 parity
+layer stay. Inventory = the color-literal baseline (69 literals / 16 files, almost all clinical). Branch
+feature/OR-3000-clinical-light-touch off the epic, Vite 3035, draft PR into the epic. OR-3054 / OR-3080 / OR-3082
+rewritten so nothing says "OR-3000 holds the clinical-surfaces decision": clinical screens consume the tokens after
+OR-2863, so token moves are declared clinical changes. Epic steps 9 + 10 marked Complete. Pending Ryan by hand: delete the
+OR-3000 ↔ OR-3054 Relates link (no MCP delete-link tool). Epic PR body draft needs a clinical bullet once OR-3000 merges.
+**2026-10-19 late:** the four pre-PR fixes + sign-in rebaseline (capture 39323021627, only sign-in-*-linux.png moved: banner strip gone, panel re-centered) pushed; epic head 3a7b4ee8f green — PR Gate 39325532141 (QA 150/150, visual 40/40) and CI Build 39325549381. This is OR-3000's base.
+**Follow-ups filed 2026-10-19 (Ryan's yes):** OR-3094 (Bug under OR-3054) = the four Event Center case-start edges; next free event-center id is R26. OR-3085 gained the feature-flag note banner bullet (six fixes now). OR-3054 lists OR-3094 in its follow-ups and sequence step 1. Ryan removed the OR-3000 ↔ OR-3054 link by hand.

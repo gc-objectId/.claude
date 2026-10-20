@@ -11,7 +11,7 @@
 - [Git/PR workflow](feedback_git_pr_workflow.md) — Jira → branch → commits → push+PR → feedback → post-merge cleanup
 - [PR replies manual](feedback_pr_replies_manual.md) — draft in Ryan's voice (simple, conversational); Ryan posts
 - [Maven stale classpath](project_maven_stale_classpath.md) — stale ~/.m2 sibling jar hides orci-models edits; use `-am`
-- [Run worktree app on 8081](reference_run_worktree_app_second_port.md) — main stays on 8080/3000; never "restart"
+- [Run worktree app on 8081](reference_run_worktree_app_second_port.md) — main stays on 8080/3000; prefer `package -am` + classpath launch (no ~/.m2 writes, webapp served from disk)
 - [No Co-Authored-By](feedback_no_coauthored_by.md) — no trailers or "Generated with" footers anywhere
 - [No root README edits](feedback_no_readme_edits.md) — QA/build notes go in qa-suite/tests-readme.md or project CLAUDE.md
 - [Config file vigilance](feedback_config_file_vigilance.md) — audit every application*.yml diff before staging
@@ -88,7 +88,7 @@
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED; unmatched reactions skip silently
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic branch; pre-PR fixes OR-3070..3079, then epic→main PR
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic branch; pre-PR fixes done; OR-3000 clinical light-touch (step 11, Vite 3035), then epic→main PR
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; one branch, Vite 3013
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — OR-3084's Working block; no design-epic link or keys
@@ -138,3 +138,4 @@
 - [OR-3077 admin review fixes](project_or3077_admin_review_fixes.md) — DONE (#4719); in-case-overlay next free R19
 - [OR-3078 records cleanup](project_or3078_records_cleanup.md) — DONE (#4720); check sibling worktrees before taking R/VIS ids
 - [OR-3072 stale flag lists](project_or3072_stale_flag_lists.md) — DONE (#4724); admin-shell R30
+- [OR-3074 launch screens](project_or3074_launch_screens.md) — DONE 2026-10-19 (#4725 into the epic); R57, LAUNCH-012, VIS-038–040; follow-up OR-3089 under OR-3054

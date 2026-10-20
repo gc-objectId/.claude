@@ -44,7 +44,7 @@ works on any of them. `npx vite` from the wrong cwd downloads a different vite â
 | OR-3073 dev banner case screen | 3028 (+ backend 808N) | OR-3074 launch screens | 3032 |
 | OR-3075 EHR lookup Sentry | 3029 (+ backend 808N) | OR-3076 Event Center case start | 3030 (+ backend 808N) |
 | OR-3077 admin review fixes | 3031 | OR-3078 records cleanup | 3033 (+ Storybook 6007) |
-| OR-3079 red-check new tests | 3034 (+ backend 808N) | | |
+| OR-3079 red-check new tests | 3034 (+ backend 808N) | OR-3000 clinical light touch | 3035 |
 
 **Record first (added 2026-10-14).** Every child's Jira description has a "## Record" section; follow it before
 writing code. Behavior change (route, redirect, what a control does, what a request carries) â†’ `/feature-spec`:

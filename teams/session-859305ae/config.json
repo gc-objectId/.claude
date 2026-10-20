@@ -1,0 +1,18 @@
+{
+  "name": "session-859305ae",
+  "createdAt": 1792450242723,
+  "leadAgentId": "team-lead@session-859305ae",
+  "leadSessionId": "859305ae-db77-479a-84d7-d4c7103fdf6e",
+  "members": [
+    {
+      "agentId": "team-lead@session-859305ae",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1792450242723,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-3000-clinical-surfaces-refresh",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

@@ -10,7 +10,7 @@
   "permissions": {
     "defaultMode": "auto"
   },
-  "model": "opus",
+  "model": "fable",
   "hooks": {
     "PreToolUse": [
       {
@@ -30,7 +30,7 @@
       "effortLevel": "xhigh"
     }
   },
+  "skipWorkflowUsageWarning": true,
   "teammateMode": "tmux",
-  "skipAutoPermissionPrompt": true,
-  "skipWorkflowUsageWarning": true
+  "skipAutoPermissionPrompt": true
 }

@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fe6c5271-8c44-4138-a478-171873e194b2
-  modified: 2026-08-14T19:47:25.000Z
+  modified: 2026-10-19T14:19:44.876Z
 ---
 
 Ryan's standing setup: `~/dev/orci` on `main`, backend on **8080**, Vite webapp on **3000**. He does not switch that off. Any instruction to test branch code against a running app must be explicit end-to-end commands for a **second instance on another port** — "restart your local on this branch" is not actionable and he will ask for the steps.
@@ -36,6 +36,19 @@ BASE_URL=http://localhost:8081 npm run test:local -- <spec> --project=clinical-r
 # 5. Stop
 kill $(lsof -ti tcp:8081)
 ```
+
+**Preferred since 2026-10-16 (OR-3074): build without touching `~/.m2`.** Ryan's 8080 JVM loads sibling modules straight from `~/.m2/.../0.1.103-SNAPSHOT/*.jar`, so step 1's `install` swaps jars under his running app and leaves main's next boot on branch jars. Instead, one reactor `package` that also writes orci's runtime classpath (siblings resolve to their own `target/*.jar`, nothing is installed), then boot that classpath and serve the webapp from disk:
+
+```bash
+JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home mvn -o -q -pl orci -am -DskipTests \
+  package dependency:build-classpath -Dmdep.includeScope=runtime -Dmdep.outputFile=target/runtime-classpath.txt
+(cd orci/src/main/webapp && npm run build)
+nohup $(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home/bin/java -XX:TieredStopAtLevel=1 -Duser.timezone=UTC \
+  -Dtenants.demo.qa.enabled=true -Dserver.port=$PORT -Dspring.web.resources.static-locations=file:$PWD/orci/src/main/webapp/build/ \
+  -cp "orci/target/classes:$(cat orci/target/runtime-classpath.txt)" com.guided.orci.OrciApplication --spring.profiles.active=local > app.log 2>&1 &
+```
+
+Readiness ~70–180s on `/actuator/health/readiness` (poll with node, curl is blocked). Because the frontend is read from `build/` per request, a frontend red check is just edit → `npm run build` → re-run the test, with no backend rebuild or restart (`OrciReactController` forwards to `/index.html` through the static handler). orci is not on spring-boot-starter-parent, so `package` yields no runnable fat jar; that's why it's a classpath launch.
 
 **Safe to run both:** Quartz has `isClustered: true`, so the two instances coordinate on the shared job tables rather than double-firing.
 
