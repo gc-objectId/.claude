@@ -89,9 +89,9 @@
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
 - [OR-2863 design foundation](project_or2863_design_foundation.md) — epic branch; pre-PR fixes done; OR-3000 clinical light-touch (step 11, Vite 3035), then epic→main PR
-- [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; one branch, Vite 3013
+- [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; no epic branch, each child its own PR to main
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
-- [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — OR-3084's Working block; no design-epic link or keys
+- [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — own PR to main, next free Vite port; no design-epic link or keys
 - [OR-3070 case-screen states](project_or3070_case_screen_states.md) — DONE 2026-10-19 (#4722 into the epic), worktree gone; VIS-037 (next free 038); CDP forcePseudoState probe
 - [Liquibase UTC guard blocks local boot](reference_liquibase_utc_guard_blocks_local_boot.md) — boot with -Duser.timezone=UTC on Macs
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association
@@ -139,3 +139,5 @@
 - [OR-3078 records cleanup](project_or3078_records_cleanup.md) — DONE (#4720); check sibling worktrees before taking R/VIS ids
 - [OR-3072 stale flag lists](project_or3072_stale_flag_lists.md) — DONE (#4724); admin-shell R30
 - [OR-3074 launch screens](project_or3074_launch_screens.md) — DONE 2026-10-19 (#4725 into the epic); R57, LAUNCH-012, VIS-038–040; follow-up OR-3089 under OR-3054
+- [OR-3000 clinical light touch](project_or3000_clinical_light_touch.md) — DONE 2026-10-20 (#4726 into the epic, fc960bb39); ΔE≤4 snap rule; `--update-snapshots=all` for local A/B; follow-up OR-3095 under OR-3054
+- [Per-PR review environment](reference_per_pr_review_environment.md) — none exists; dev window, a review ECS service, or local stack + tunnel
