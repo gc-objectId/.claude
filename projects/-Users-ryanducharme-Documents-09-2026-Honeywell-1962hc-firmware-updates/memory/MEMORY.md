@@ -1,1 +1,2 @@
 - [MGH 1962HC scanner fleet](mgh-1962hc-scanner-fleet.md) — 19 pairs at MGH, Sept 2026 firmware update, Confluence page 478904321, working folder location
+- [1962HC golden config barcodes](1962hc-golden-config-barcodes.md) — golden config tokens, Honeywell menu-barcode format (Code 128 + trailing FNC3), golden-config/ folder

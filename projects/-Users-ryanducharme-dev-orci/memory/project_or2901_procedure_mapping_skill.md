@@ -10,12 +10,12 @@ OR-2901 (Skill for procedure mapping, epic OR-2895) is DONE as of 2026-10-15. Th
 was closed in favour of that move. The orci worktree `OR-2901-procedure-mapping-skill` never got a commit.
 
 Automation PR: guided-skills #17 (draft, branch feature/OR-2901-output-validation, worktree
-`~/dev/guided-skills-OR-2901`). Pushed commit 01d43a9 was the first validator; local commit b9e9025
-(as of 2026-10-16, not pushed, waiting on Ryan) reworks it after two multi-agent review rounds:
+`~/dev/guided-skills-OR-2901`). Commit 01d43a9 was the first validator; b9e9025 (pushed 2026-10-22,
+PR ready for review with JEphron and theo requested) reworks it after two multi-agent review rounds:
 exact per-file contract (header, exact code coverage, complete rows, Confidence 0-1, --method llm,
 --verification mode accepting "A AND B" suggestions), merge_output strips values, SKILL.md runs
 from the run dir via `$SKILL/bin/`, split script renamed `split_batches.py`, 82 tests, 39/39 mutants
-killed. The OR-2901 Jira follow-up comment still says "12 pytest cases" and needs updating after push.
+killed. Jira comment 37780 updated to match. After merge: worktree-done in both worktrees.
 
 **Why:** validating this ticket means driving guided-skills against orci's committed MGB procedure
 list, not an orci build; the jira-watch loop skip-listed it for that reason.

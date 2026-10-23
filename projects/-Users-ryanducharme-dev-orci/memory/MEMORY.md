@@ -122,7 +122,7 @@
 - [OR-3068 VIS-030 stable pane](project_or3068_vis030_stable_pane.md) — DONE; hide variable-height panes, don't mask
 - [OR-3064 unknown patient 404](project_or3064_unknown_patient_not_found.md) — DONE; javap the shared ~/.m2 jar before trusting 8081
 - [OR-2915 ERX mapping skill](project_or2915_erx_mapping_skill.md) — DONE; guided-skills #15
-- [OR-2901 procedure mapping skill](project_or2901_procedure_mapping_skill.md) — DONE; guided-skills #17 rework awaits Ryan's push
+- [OR-2901 procedure mapping skill](project_or2901_procedure_mapping_skill.md) — DONE 2026-10-15; guided-skills #17 (b9e9025) pushed 2026-10-22, in review; sklearn==1.9.0; worktree-done both worktrees after merge
 - [OR-3071 simulation without MGH](project_or3071_simulation_without_mgh.md) — DONE 2026-10-19 (#4723 into the epic, b956aca0f); /api/simulation/site + 404 guard; R32–R34, SIM-012–014 (next free SIM-015, R37); follow-up OR-3087
 - [Local AWS tenant shape](reference_local_aws_tenant_shape.md) — drop a tenant schema locally
 - [OR-2988 ASA demo lag](project_or2988_asa_demo_lag.md) — no code; left for Alex/Theo to close; scan-lag fix #4664 merged after 0.1.102
