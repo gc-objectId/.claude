@@ -31,16 +31,18 @@ hardcoded like cefepime, cefazolin rows leave DoseAdjustments.xlsx for all 3 sit
 PR; no weight → Normal, known gap. Ticket text appended under Alex's description and spec
 posted as a comment on OR-2941 (2026-10-06). Nothing committed yet.
 
-**OR-2941 state (2026-10-15):** Theo's comments settled: unknown CrCl → normal (2 g); citation
-for the 2 g redose = reuse the existing `r-cefazolin-default-dose` reference (update the spec's
-"Needs a clinical reference" line); config = pull the three cefazolin dose rows from
-DoseAdjustments.xlsx but KEEP the Classifications row (40/120 feeds weight class). STILL OPEN,
-BLOCKING: the prior-non-default-dose guard in AdjustmentService (from OR-1229, 2024). Theo first
-said keep it, then saw a 3 g first dose trips it against the 2 g redose and tagged Alex leaning
-"always set regardless of prior doses". Ryan's position: always-set for cefazolin only, guard
-untouched for other antibiotics (the 1 g dose still lands in the options list). Theo already
-pinged Alex; Ryan is WAITING for her reply — do not post a nudge. Cefepime precedent leaves its
-underweight xlsx row, so generic + cefepime both preselect there (pre-existing, not ours).
+**OR-2941 state (2026-10-23):** IMPLEMENTED, draft PR #4761 open, ticket In Progress until merge.
+Alex settled the guard ("ignoring prior doses") and the threshold (≥ 120 kg inclusive; citations
+needed the fix, not the rule). Shipped: `CefazolinDefaultDoseWarningRule` (`w-cefazolin-default-dose`,
+cefepime pattern, abstains for pediatric + underweight, counts prior cefazolin by presence since
+operation start incl. infusions, CrCl < 50 on redose keeps 3 g); cefazolin Normal + Overweight rows
+deleted from DoseAdjustments.xlsx at demo/mgb/mayo via openpyxl (customXml/sharedStrings dropped,
+values + widths + header styles verified identical); Classifications + Underweight rows kept;
+citations.csv ×3 rewired to the new rule, "≥ 120 kg", new `r-cefazolin-overweight-redose` (wording
+is Ryan's, flagged for Alex); spec/rules/w-cefazolin-default-dose.md; importer drift-guard test
+(red-checked against the original xlsx). Still to do: Ryan posts the cefotaxime/ceftriaxone ">120"
+citation flag to Alex (same inclusive-threshold mismatch, not in this PR); after merge run
+`worktree-done` in the worktree and re-check ACs before Done.
 
 **Why:** Theo wants Ryan on implementation, not only testing; OR-2941 is the deliberately
 thin first ticket. **How to apply:** spec first (rule-spec), then implement; keep the

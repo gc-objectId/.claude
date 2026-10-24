@@ -103,7 +103,7 @@
 - [Java 25 local JDK](reference_java25_local_jdk.md) — JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB 16; repo pins 16-alpine
 - [Feature specs program](project_feature_specs_program.md) — Theo initiative; med-selection baseline = OR-3017
-- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 BLOCKED on Alex; OR-2938 vanco EBL test
+- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 cefazolin rule IMPLEMENTED 2026-10-23, draft PR #4761, In Progress until merge; cefotaxime/ceftriaxone citation flag still owed to Alex; OR-2938 vanco EBL test; antibiotic consolidation breaks PABX
 - [OR-2928 Sentry perf issues filed as bugs](project_or2928_sentry_perf_issues_as_bugs.md) — rework parked on bugfix/OR-2947
 - [Actions "job not acquired" = GitHub outage](reference_actions_job_not_acquired_is_github_outage.md) — check githubstatus, re-dispatch
 - [GitHub runs API stale pages](reference_github_runs_api_stale_pages.md) — trust a page only if it contains GITHUB_RUN_ID
