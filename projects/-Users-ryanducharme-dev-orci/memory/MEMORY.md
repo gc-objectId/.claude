@@ -88,7 +88,7 @@
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED; unmatched reactions skip silently
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic branch; pre-PR fixes done; OR-3000 clinical light-touch (step 11, Vite 3035), then epic→main PR
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; review fixes + image recapture 2026-10-26; follow-ups OR-3113/3114
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; no epic branch, each child its own PR to main
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — own PR to main, next free Vite port; no design-epic link or keys

@@ -49,7 +49,7 @@ works on any of them. `npx vite` from the wrong cwd downloads a different vite â
 OR-3054 children (each its own PR to main, 2026-10-20): OR-2879 3013, OR-2880 3014 (+ backend), OR-2404 3015, OR-2405
 none (docs), OR-2977 3036, OR-3055 3037, OR-3065 3038, OR-3066 3039, OR-3080 3040, OR-3081 3041 (+ Storybook 6008), OR-3082 3042, OR-3083 3043
 (+ Storybook 6009, static 6010), OR-3084 3044, OR-3085 3045, OR-3086 none (qa-suite vs 808N), OR-3087 none (backend 808N), OR-3089 3046,
-OR-3094 3047 (+ backend), OR-3095 3048. Next free: 3049.
+OR-3094 3047 (+ backend), OR-3095 3048, OR-3113 3049 (+ backend), OR-3114 3050 (+ backend). Next free: 3051.
 
 **Record first (added 2026-10-14).** Every child's Jira description has a "## Record" section; follow it before
 writing code. Behavior change (route, redirect, what a control does, what a request carries) â†’ `/feature-spec`:

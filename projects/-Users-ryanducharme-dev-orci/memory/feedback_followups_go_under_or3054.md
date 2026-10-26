@@ -11,7 +11,7 @@ metadata:
 Any follow-up found while working (stated 2026-10-16, during an OR-2863 child) is filed as a child of **OR-3054**, with its
 "## Working this ticket" block copied from **OR-3084** and its key and Vite port swapped in. Since 2026-10-20 OR-3054 has
 no epic branch or PR (Ryan: the 335-file OR-2863 PR was too big to review): every child ships on its own `workon` branch
-from `main` with its own draft PR, on a fixed Vite port from the table in [[or2863-child-session-sop]] (next free 3049).
+from `main` with its own draft PR, on a fixed Vite port from the table in [[or2863-child-session-sop]] (next free 3051).
 Do **not** link it to the design epic, and keep the design epic's key, its branch name and its children's keys out of
 the new ticket's text and comments.
 
