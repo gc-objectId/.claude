@@ -1,0 +1,25 @@
+{"label":"B2","pmrn":"or3009-B2-fake-a2e87794-4d95-4283-9729-d9046fba7474","caseId":"25637","patientUuid":"01a178d4-f6c6-75e0-8666-14e4563adb39","operationId":"01a178d4-f6d3-7166-bf31-348d783d33e8","bolusStatus":200,"priorAdmin":[{"id":"m-acetaminophen-iv","dose":4000,"units":"mg","at":"2026-10-25T16:00:45.178+00:00"}]}
+evicted: 1
+evaluatedAt 2026-10-26T15:29:45.361Z offsetFromPriorAdmin(min) 1409.0
+SELECTION 200 [
+ {
+  "ruleId": "a-acetaminophen-max-dose-scan",
+  "needsAction": true,
+  "explanation": null,
+  "cumulative": "4,000",
+  "max": "4,000",
+  "title": "Acetaminophen 24 Hour Max Dose Reached",
+  "desc": "Patient has received 4,000 mg of acetaminophen in the past 24 hours. Max dose of acetaminophen is 4,000 mg in 24 hours. Recommend alternative medication."
+ },
+ {
+  "ruleId": "w-acetaminophen-max-dose",
+  "needsAction": true,
+  "explanation": null,
+  "cumulative": "4,000",
+  "max": "4,000 mg",
+  "title": null,
+  "desc": null
+ }
+]
+selection keys context,results,dosingFormState,trackingTabId,restoredTab,needsAction trackingTabId 01a178d4-f79a-7fb4-9fb3-d8787d372cab
+DOSE 200 []

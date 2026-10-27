@@ -1263,3 +1263,264 @@ Transitioned OR-2949 to Done
 2026-10-14 10:35:45  [OR-2966] captured 7801 lines of application log
 REFUSED OR-2966: verdict is 'inconclusive'
 2026-10-14 11:37:11  [OR-2918] OR-2918 is 'Done', not a validate-mode status — not starting
+2026-10-26 11:02:19  [OR-2842] OR-2842 status is 'Ready for Testing'
+2026-10-26 11:02:19  [OR-2982] OR-2982 status is 'Ready for Testing'
+2026-10-26 11:02:20  [OR-2842] Building image from origin/main
+2026-10-26 11:02:20  [OR-2982] Building image from origin/main
+2026-10-26 11:03:31  [OR-2842] image=guidedclinical/orci:loop-ff9e88706 sha=ff9e887067d6c03d480f121244f460a65670e469
+2026-10-26 11:03:33  [OR-2842] OR-2842 moved to Testing
+2026-10-26 11:03:34  [OR-2842] OR-2842 assigned to the configured account
+2026-10-26 11:03:36  [OR-2842] baseline: status='Testing' comments=0
+2026-10-26 11:03:36  [OR-2842] slug=hide-the-launch-by
+2026-10-26 11:03:38  [OR-2842] worktree=/Users/ryanducharme/dev/worktrees/OR-2842-hide-the-launch-by
+2026-10-26 11:03:41  [OR-2982] image=guidedclinical/orci:loop-ff9e88706 sha=ff9e887067d6c03d480f121244f460a65670e469
+2026-10-26 11:03:43  [OR-2982] OR-2982 moved to Testing
+2026-10-26 11:03:44  [OR-2982] OR-2982 assigned to the configured account
+2026-10-26 11:03:45  [OR-2982] baseline: status='Testing' comments=0
+2026-10-26 11:03:45  [OR-2982] slug=ideal-body-weight-calculation
+2026-10-26 11:03:48  [OR-2982] worktree=/Users/ryanducharme/dev/worktrees/OR-2982-ideal-body-weight-calculation
+2026-10-26 11:05:33  [OR-2842] app under test at http://localhost:63916
+2026-10-26 11:05:33  [OR-2842] wrote ticket context (30 lines)
+2026-10-26 11:05:33  [OR-2842] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2842/session.log)
+2026-10-26 11:05:41  [OR-2982] app under test at http://localhost:63939
+2026-10-26 11:05:41  [OR-2982] wrote ticket context (25 lines)
+2026-10-26 11:05:41  [OR-2982] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2982/session.log)
+2026-10-26 11:10:19  [OR-2842]   … OR-2842 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-26 11:10:26  [OR-2982]   … OR-2982 still running (300s elapsed, 148 app requests, app up)
+2026-10-26 11:10:34  [OR-2842] session finished after ~300s
+2026-10-26 11:10:34  [OR-2842] captured 8769 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2842 against ff9e887067d6c03d480f121244f460a65670e469 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2842
+Transitioned OR-2842 to Done
+2026-10-26 11:10:39  [OR-2842] close-parent: OR-2842 is already Done
+2026-10-26 11:10:43  [OR-2983] OR-2983 status is 'Ready for Testing'
+2026-10-26 11:10:43  [OR-2983] Building image from origin/main
+2026-10-26 11:11:37  [OR-2983] image=guidedclinical/orci:loop-b8bca05b8 sha=b8bca05b83cb4ef4ad7cf6926012862fdb1c7441
+2026-10-26 11:11:40  [OR-2983] OR-2983 moved to Testing
+2026-10-26 11:11:40  [OR-2983] OR-2983 assigned to the configured account
+2026-10-26 11:11:42  [OR-2983] baseline: status='Testing' comments=0
+2026-10-26 11:11:42  [OR-2983] slug=show-readable-antiemetic-class
+2026-10-26 11:11:44  [OR-2983] worktree=/Users/ryanducharme/dev/worktrees/OR-2983-show-readable-antiemetic-class
+2026-10-26 11:12:57  [OR-2983] app under test at http://localhost:64128
+2026-10-26 11:12:57  [OR-2983] wrote ticket context (20 lines)
+2026-10-26 11:12:57  [OR-2983] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2983/session.log)
+2026-10-26 11:13:42  [OR-2982] session finished after ~480s
+2026-10-26 11:13:42  [OR-2982] captured 10670 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2982 against ff9e887067d6c03d480f121244f460a65670e469 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2982
+Transitioned OR-2982 to Done
+2026-10-26 11:13:47  [OR-2982] close-parent: OR-2982 is already Done
+2026-10-26 11:13:50  [OR-2986] OR-2986 status is 'Ready for Testing'
+2026-10-26 11:13:51  [OR-2986] Building image from origin/main
+2026-10-26 11:13:52  [OR-2986] image=guidedclinical/orci:loop-b8bca05b8 sha=b8bca05b83cb4ef4ad7cf6926012862fdb1c7441
+2026-10-26 11:13:54  [OR-2986] OR-2986 moved to Testing
+2026-10-26 11:13:54  [OR-2986] OR-2986 assigned to the configured account
+2026-10-26 11:13:56  [OR-2986] baseline: status='Testing' comments=0
+2026-10-26 11:13:56  [OR-2986] slug=loading-state-for-medication
+2026-10-26 11:13:58  [OR-2986] worktree=/Users/ryanducharme/dev/worktrees/OR-2986-loading-state-for-medication
+2026-10-26 11:15:10  [OR-2986] app under test at http://localhost:64203
+2026-10-26 11:15:11  [OR-2986] wrote ticket context (11 lines)
+2026-10-26 11:15:11  [OR-2986] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/session.log)
+2026-10-26 11:17:43  [OR-2983]   … OR-2983 still running (300s elapsed, 45 app requests, app up)
+2026-10-26 11:19:56  [OR-2986]   … OR-2986 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-26 11:21:58  [OR-2983] session finished after ~540s
+2026-10-26 11:21:58  [OR-2983] captured 8878 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2983 against b8bca05b83cb4ef4ad7cf6926012862fdb1c7441 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2983
+Transitioned OR-2983 to Done
+2026-10-26 11:22:03  [OR-2983] close-parent: OR-2983 is already Done
+2026-10-26 11:22:06  [OR-3009] OR-3009 status is 'Ready for Testing'
+2026-10-26 11:22:07  [OR-3009] Building image from origin/main
+2026-10-26 11:22:59  [OR-3009] image=guidedclinical/orci:loop-00f60b29d sha=00f60b29d62ec1d1953976a0f97c815aa57c818a
+2026-10-26 11:23:01  [OR-3009] OR-3009 moved to Testing
+2026-10-26 11:23:02  [OR-3009] OR-3009 assigned to the configured account
+2026-10-26 11:23:03  [OR-3009] baseline: status='Testing' comments=0
+2026-10-26 11:23:03  [OR-3009] slug=buffer-for-tylenol-max
+2026-10-26 11:23:06  [OR-3009] worktree=/Users/ryanducharme/dev/worktrees/OR-3009-buffer-for-tylenol-max
+2026-10-26 11:24:19  [OR-3009] app under test at http://localhost:64369
+2026-10-26 11:24:19  [OR-3009] wrote ticket context (22 lines)
+2026-10-26 11:24:19  [OR-3009] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3009/session.log)
+2026-10-26 11:24:57  [OR-2986]   … OR-2986 still running (600s elapsed, 776 app requests, app up)
+2026-10-26 11:29:05  [OR-3009]   … OR-3009 still running (300s elapsed, 156 app requests, app up)
+2026-10-26 11:29:57  [OR-2986]   … OR-2986 still running (900s elapsed, 2469 app requests, app up)
+2026-10-26 11:30:12  [OR-2986] session finished after ~900s
+2026-10-26 11:30:12  [OR-2986] captured 11996 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2986 against b8bca05b83cb4ef4ad7cf6926012862fdb1c7441 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2986
+Transitioned OR-2986 to Done
+2026-10-26 11:30:18  [OR-2986] close-parent: OR-2986 is already Done
+2026-10-26 11:30:21  [OR-3020] OR-3020 status is 'Ready for Testing'
+2026-10-26 11:30:22  [OR-3020] Building image from origin/main
+2026-10-26 11:30:24  [OR-3020] image=guidedclinical/orci:loop-00f60b29d sha=00f60b29d62ec1d1953976a0f97c815aa57c818a
+2026-10-26 11:30:26  [OR-3020] OR-3020 moved to Testing
+2026-10-26 11:30:27  [OR-3020] OR-3020 assigned to the configured account
+2026-10-26 11:30:28  [OR-3020] baseline: status='Testing' comments=0
+2026-10-26 11:30:28  [OR-3020] slug=a-preop-ptt-picks
+2026-10-26 11:30:30  [OR-3020] worktree=/Users/ryanducharme/dev/worktrees/OR-3020-a-preop-ptt-picks
+2026-10-26 11:31:43  [OR-3020] app under test at http://localhost:64534
+2026-10-26 11:31:43  [OR-3020] wrote ticket context (15 lines)
+2026-10-26 11:31:43  [OR-3020] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3020/session.log)
+2026-10-26 11:32:35  [OR-3009] session finished after ~495s
+2026-10-26 11:32:35  [OR-3009] captured 10470 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3009 against 00f60b29d62ec1d1953976a0f97c815aa57c818a (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3009
+Transitioned OR-3009 to Done
+2026-10-26 11:32:39  [OR-3009] close-parent: OR-3009 is already Done
+2026-10-26 11:32:42  [OR-3021] OR-3021 status is 'Ready for Testing'
+2026-10-26 11:32:43  [OR-3021] Building image from origin/main
+2026-10-26 11:32:44  [OR-3021] image=guidedclinical/orci:loop-00f60b29d sha=00f60b29d62ec1d1953976a0f97c815aa57c818a
+2026-10-26 11:32:46  [OR-3021] OR-3021 moved to Testing
+2026-10-26 11:32:47  [OR-3021] OR-3021 assigned to the configured account
+2026-10-26 11:32:48  [OR-3021] baseline: status='Testing' comments=0
+2026-10-26 11:32:48  [OR-3021] slug=move-remaining-github-actions
+2026-10-26 11:32:50  [OR-3021] worktree=/Users/ryanducharme/dev/worktrees/OR-3021-move-remaining-github-actions
+2026-10-26 11:33:57  [OR-3021] app under test at http://localhost:64611
+2026-10-26 11:33:57  [OR-3021] wrote ticket context (26 lines)
+2026-10-26 11:33:58  [OR-3021] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3021/session.log)
+2026-10-26 11:36:29  [OR-3020]   … OR-3020 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-26 11:37:13  [OR-3021] session finished after ~195s
+2026-10-26 11:37:13  [OR-3021] captured 7807 lines of application log
+REFUSED OR-3021: verdict is 'inconclusive'
+2026-10-26 11:37:17  [OR-3023] OR-3023 status is 'Ready for Testing'
+2026-10-26 11:37:18  [OR-3023] Building image from origin/main
+2026-10-26 11:37:20  [OR-3023] image=guidedclinical/orci:loop-00f60b29d sha=00f60b29d62ec1d1953976a0f97c815aa57c818a
+2026-10-26 11:37:23  [OR-3023] OR-3023 moved to Testing
+2026-10-26 11:37:23  [OR-3023] OR-3023 assigned to the configured account
+2026-10-26 11:37:25  [OR-3023] baseline: status='Testing' comments=0
+2026-10-26 11:37:25  [OR-3023] slug=disable-mgb-event-endpoints
+2026-10-26 11:37:28  [OR-3023] worktree=/Users/ryanducharme/dev/worktrees/OR-3023-disable-mgb-event-endpoints
+2026-10-26 11:38:40  [OR-3023] app under test at http://localhost:64811
+2026-10-26 11:38:41  [OR-3023] wrote ticket context (15 lines)
+2026-10-26 11:38:41  [OR-3023] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3023/session.log)
+2026-10-26 11:41:29  [OR-3020] session finished after ~585s
+2026-10-26 11:41:29  [OR-3020] captured 8664 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3020 against 00f60b29d62ec1d1953976a0f97c815aa57c818a (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3020
+Transitioned OR-3020 to Done
+2026-10-26 11:41:35  [OR-3020] close-parent: OR-3020 is already Done
+2026-10-26 11:43:27  [OR-3023]   … OR-3023 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-26 11:47:27  [OR-3023] session finished after ~525s
+2026-10-26 11:47:27  [OR-3023] captured 11787 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3023 against 00f60b29d62ec1d1953976a0f97c815aa57c818a (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3023
+Transitioned OR-3023 to Done
+2026-10-26 11:47:33  [OR-3023] close-parent: OR-3023 is already Done
+2026-10-26 14:20:01  [OR-3027] OR-3027 status is 'Ready for Testing'
+2026-10-26 14:20:01  [OR-3031] OR-3031 status is 'Ready for Testing'
+2026-10-26 14:20:02  [OR-3027] Building image from origin/main
+2026-10-26 14:20:02  [OR-3031] Building image from origin/main
+2026-10-26 14:20:55  [OR-3027] image=guidedclinical/orci:loop-1087f571b sha=1087f571b4496f531a16e23b25b7faae2036c02f
+2026-10-26 14:20:57  [OR-3027] OR-3027 moved to Testing
+2026-10-26 14:20:58  [OR-3027] OR-3027 assigned to the configured account
+2026-10-26 14:20:59  [OR-3027] baseline: status='Testing' comments=0
+2026-10-26 14:20:59  [OR-3027] slug=compliance-lookup-with-a
+2026-10-26 14:21:02  [OR-3027] worktree=/Users/ryanducharme/dev/worktrees/OR-3027-compliance-lookup-with-a
+2026-10-26 14:21:03  [OR-3031] image=guidedclinical/orci:loop-1087f571b sha=1087f571b4496f531a16e23b25b7faae2036c02f
+2026-10-26 14:21:06  [OR-3031] OR-3031 moved to Testing
+2026-10-26 14:21:06  [OR-3031] OR-3031 assigned to the configured account
+2026-10-26 14:21:07  [OR-3031] baseline: status='Testing' comments=3
+2026-10-26 14:21:07  [OR-3031] slug=text-update-for-w
+2026-10-26 14:21:09  [OR-3031] worktree=/Users/ryanducharme/dev/worktrees/OR-3031-text-update-for-w
+2026-10-26 14:23:06  [OR-3027] app under test at http://localhost:65459
+2026-10-26 14:23:07  [OR-3027] wrote ticket context (17 lines)
+2026-10-26 14:23:07  [OR-3027] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3027/session.log)
+2026-10-26 14:23:14  [OR-3031] app under test at http://localhost:65476
+2026-10-26 14:23:14  [OR-3031] wrote ticket context (26 lines)
+2026-10-26 14:23:14  [OR-3031] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3031/session.log)
+2026-10-26 14:27:52  [OR-3027]   … OR-3027 still running (300s elapsed, 0
+? app requests, app up)
+2026-10-26 14:27:59  [OR-3031]   … OR-3031 still running (300s elapsed, 225 app requests, app up)
+2026-10-26 14:29:44  [OR-3031] session finished after ~390s
+2026-10-26 14:29:45  [OR-3031] captured 9028 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3031 against 1087f571b4496f531a16e23b25b7faae2036c02f (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3031
+Transitioned OR-3031 to Done
+2026-10-26 14:29:50  [OR-3031] close-parent: OR-3031 is already Done
+2026-10-26 14:29:53  [OR-3059] OR-3059 status is 'Ready for Testing'
+2026-10-26 14:29:54  [OR-3059] Building image from origin/main
+2026-10-26 14:29:55  [OR-3059] image=guidedclinical/orci:loop-1087f571b sha=1087f571b4496f531a16e23b25b7faae2036c02f
+2026-10-26 14:29:58  [OR-3059] OR-3059 moved to Testing
+2026-10-26 14:29:59  [OR-3059] OR-3059 assigned to the configured account
+2026-10-26 14:30:00  [OR-3059] baseline: status='Testing' comments=1
+2026-10-26 14:30:00  [OR-3059] slug=mayo-remove-or-bedside
+2026-10-26 14:30:02  [OR-3059] worktree=/Users/ryanducharme/dev/worktrees/OR-3059-mayo-remove-or-bedside
+2026-10-26 14:31:15  [OR-3059] app under test at http://localhost:49287
+2026-10-26 14:31:15  [OR-3059] wrote ticket context (14 lines)
+2026-10-26 14:31:15  [OR-3059] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3059/session.log)
+2026-10-26 14:32:07  [OR-3027] session finished after ~540s
+2026-10-26 14:32:08  [OR-3027] captured 9312 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3027 against 1087f571b4496f531a16e23b25b7faae2036c02f (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3027
+Transitioned OR-3027 to Done
+2026-10-26 14:32:12  [OR-3027] close-parent: OR-3027 is already Done
+2026-10-26 14:32:15  [OR-3105] OR-3105 status is 'Ready for Testing'
+2026-10-26 14:32:15  [OR-3105] Building image from origin/main
+2026-10-26 14:32:16  [OR-3105] image=guidedclinical/orci:loop-1087f571b sha=1087f571b4496f531a16e23b25b7faae2036c02f
+2026-10-26 14:32:18  [OR-3105] OR-3105 moved to Testing
+2026-10-26 14:32:19  [OR-3105] OR-3105 assigned to the configured account
+2026-10-26 14:32:20  [OR-3105] baseline: status='Testing' comments=0
+2026-10-26 14:32:20  [OR-3105] slug=cache-medication-audio-for
+2026-10-26 14:32:22  [OR-3105] worktree=/Users/ryanducharme/dev/worktrees/OR-3105-cache-medication-audio-for
+2026-10-26 14:33:40  [OR-3105] app under test at http://localhost:49363
+2026-10-26 14:33:41  [OR-3105] wrote ticket context (24 lines)
+2026-10-26 14:33:41  [OR-3105] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3105/session.log)
+2026-10-26 14:35:41  [OR-3105] session finished after ~120s
+2026-10-26 14:35:41  [OR-3105] captured 7814 lines of application log
+REFUSED OR-3105: session wrote no result file
+2026-10-26 14:35:45  [OR-3106] OR-3106 status is 'Ready for Testing'
+2026-10-26 14:35:45  [OR-3059] session finished after ~270s
+2026-10-26 14:35:46  [OR-3059] captured 8775 lines of application log
+REFUSED OR-3059: session wrote no result file
+2026-10-26 14:35:46  [OR-3106] Building image from origin/main
+2026-10-26 14:35:47  [OR-3106] image=guidedclinical/orci:loop-1087f571b sha=1087f571b4496f531a16e23b25b7faae2036c02f
+2026-10-26 14:35:49  [OR-3106] OR-3106 moved to Testing
+2026-10-26 14:35:49  [OR-3110] OR-3110 status is 'Ready for Testing'
+2026-10-26 14:35:50  [OR-3106] OR-3106 assigned to the configured account
+2026-10-26 14:35:50  [OR-3110] Building image from origin/main
+2026-10-26 14:35:51  [OR-3110] image=guidedclinical/orci:loop-1087f571b sha=1087f571b4496f531a16e23b25b7faae2036c02f
+2026-10-26 14:35:51  [OR-3106] baseline: status='Testing' comments=0
+2026-10-26 14:35:51  [OR-3106] slug=compress-the-spa-bundle
+2026-10-26 14:35:53  [OR-3110] OR-3110 moved to Testing
+2026-10-26 14:35:53  [OR-3106] worktree=/Users/ryanducharme/dev/worktrees/OR-3106-compress-the-spa-bundle
+2026-10-26 14:35:53  [OR-3110] OR-3110 assigned to the configured account
+2026-10-26 14:35:54  [OR-3110] baseline: status='Testing' comments=0
+2026-10-26 14:35:54  [OR-3110] slug=limit-review-suggestion-blocks
+2026-10-26 14:35:56  [OR-3110] worktree=/Users/ryanducharme/dev/worktrees/OR-3110-limit-review-suggestion-blocks
+2026-10-26 14:37:29  [OR-3106] app under test at http://localhost:49449
+2026-10-26 14:37:29  [OR-3106] wrote ticket context (27 lines)
+2026-10-26 14:37:29  [OR-3106] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3106/session.log)
+2026-10-26 14:37:32  [OR-3110] app under test at http://localhost:49458
+2026-10-26 14:37:32  [OR-3110] wrote ticket context (13 lines)
+2026-10-26 14:37:32  [OR-3110] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3110/session.log)
+2026-10-26 14:37:44  [OR-3106] session finished after ~15s
+2026-10-26 14:37:44  [OR-3106] captured 7840 lines of application log
+REFUSED OR-3106: session wrote no result file
+2026-10-26 14:37:47  [OR-3110] session finished after ~15s
+2026-10-26 14:37:47  [OR-3110] captured 7826 lines of application log
+REFUSED OR-3110: session wrote no result file
+2026-10-27 09:59:20  [OR-3106] OR-3106: sweep halted (usage limit, resets 2:40pm) — not starting
+2026-10-27 09:59:21  [OR-3106] OR-3106 status is 'Testing'
+2026-10-27 09:59:22  [OR-3106] Building image from origin/main
+2026-10-27 09:59:24  [OR-3106] ERROR image build failed

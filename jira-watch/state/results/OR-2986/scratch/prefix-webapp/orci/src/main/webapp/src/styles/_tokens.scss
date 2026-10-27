@@ -1,0 +1,110 @@
+// Palette: the only place a color literal may appear in the webapp.
+$guided-brand-navy: #002238;
+$guided-brand-maroon: #8d1b3f;
+$guided-brand-cyan: #65ccee;
+$guided-brand-cream: #f6f1e4;
+$guided-brand-cyan-deep: #51a8c5;
+$guided-brand-cream-deep: #c1bbb0;
+
+$guided-white: #fff;
+$guided-grey-50: #f8f9fa;
+$guided-grey-100: #f7f7f7;
+$guided-grey-300: #d9d9d9;
+$guided-grey-600: #6c757d;
+$guided-grey-900: #212529;
+$guided-black: #000;
+
+$guided-blue: #0d6efd;
+$guided-teal: #0dcaf0;
+$guided-green: #198754;
+$guided-yellow: #ffc107;
+$guided-red: #dc3545;
+
+$guided-color-primary: $guided-blue;
+$guided-color-secondary: $guided-grey-600;
+$guided-color-success: $guided-green;
+$guided-color-info: $guided-teal;
+$guided-color-warning: $guided-yellow;
+$guided-color-danger: $guided-red;
+$guided-color-light: $guided-grey-50;
+$guided-color-dark: $guided-grey-900;
+
+$guided-color-surface: $guided-white;
+$guided-color-surface-muted: $guided-grey-100;
+$guided-color-border-muted: $guided-grey-300;
+$guided-color-text: $guided-grey-900;
+$guided-color-text-emphasis: $guided-black;
+
+$guided-color-action: $guided-brand-cyan;
+$guided-color-action-border: $guided-brand-cyan-deep;
+$guided-color-action-secondary: $guided-brand-cream;
+$guided-color-action-secondary-border: $guided-brand-cream-deep;
+$guided-color-accent: $guided-brand-maroon;
+$guided-color-heading: $guided-brand-navy;
+
+$guided-font-family-sans: system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$guided-font-size-base: 1rem;
+$guided-font-size-sm: $guided-font-size-base * 0.875;
+$guided-font-size-lg: $guided-font-size-base * 1.25;
+$guided-font-size-h1: $guided-font-size-base * 2.5;
+$guided-font-size-h2: $guided-font-size-base * 2;
+$guided-font-size-h3: $guided-font-size-base * 1.75;
+$guided-font-size-h4: $guided-font-size-base * 1.5;
+$guided-font-size-h5: $guided-font-size-base * 1.25;
+$guided-font-size-h6: $guided-font-size-base;
+$guided-font-weight-normal: 400;
+$guided-font-weight-medium: 500;
+$guided-font-weight-bold: 700;
+$guided-line-height-base: 1.5;
+$guided-line-height-heading: 1.2;
+
+$guided-space-unit: 1rem;
+$guided-space-0: 0;
+$guided-space-1: $guided-space-unit * 0.25;
+$guided-space-2: $guided-space-unit * 0.5;
+$guided-space-3: $guided-space-unit;
+$guided-space-4: $guided-space-unit * 1.5;
+$guided-space-5: $guided-space-unit * 3;
+
+$guided-elevation-1: 0 0.125rem 0.25rem rgba($guided-black, 0.075);
+$guided-elevation-2: 0 0.5rem 1rem rgba($guided-black, 0.15);
+$guided-elevation-3: 0 1rem 3rem rgba($guided-black, 0.175);
+$guided-elevation-inset: inset 0 1px 2px rgba($guided-black, 0.075);
+
+// Published to :root as --guided-* for components that cannot reach Sass variables.
+$guided-css-tokens: (
+  "brand-navy": $guided-brand-navy,
+  "brand-maroon": $guided-brand-maroon,
+  "brand-cyan": $guided-brand-cyan,
+  "brand-cream": $guided-brand-cream,
+  "color-primary": $guided-color-primary,
+  "color-secondary": $guided-color-secondary,
+  "color-success": $guided-color-success,
+  "color-info": $guided-color-info,
+  "color-warning": $guided-color-warning,
+  "color-danger": $guided-color-danger,
+  "color-surface": $guided-color-surface,
+  "color-surface-muted": $guided-color-surface-muted,
+  "color-border-muted": $guided-color-border-muted,
+  "color-text": $guided-color-text,
+  "color-text-emphasis": $guided-color-text-emphasis,
+  "color-action": $guided-color-action,
+  "color-action-border": $guided-color-action-border,
+  "color-action-secondary": $guided-color-action-secondary,
+  "color-action-secondary-border": $guided-color-action-secondary-border,
+  "color-accent": $guided-color-accent,
+  "color-heading": $guided-color-heading,
+  "font-size-sm": $guided-font-size-sm,
+  "font-size-base": $guided-font-size-base,
+  "font-size-lg": $guided-font-size-lg,
+  "space-1": $guided-space-1,
+  "space-2": $guided-space-2,
+  "space-3": $guided-space-3,
+  "space-4": $guided-space-4,
+  "space-5": $guided-space-5,
+  "elevation-1": $guided-elevation-1,
+  "elevation-2": $guided-elevation-2,
+  "elevation-3": $guided-elevation-3,
+);

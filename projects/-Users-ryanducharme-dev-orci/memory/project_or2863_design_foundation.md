@@ -473,3 +473,9 @@ PR 4640's fixture expects the clinical reason (d5607886b, committed `--no-verify
 unformatted JSON). Main also moved PR-gate Playwright into the Playwright image (no apt flake); every baseline recaptured
 after merge 33ebeac79. Follow-ups OR-3113 (Job Queue no tenant → 500, Vite 3049) and OR-3114 (Event Center MGB map for
 every tenant, 3050) under OR-3054.
+**2026-10-26 green again:** VIS-012 flaked in the new image (generated `vis-fake-<uuid>` PMRN wraps a varying number of
+lines; the mask box tracks it). Fixed by hiding the operation host's `.tab-content` at a fixed 8rem, and VIS-008 clips
+the PMRN/MRN/DOB facts to `max-height: 1lh` before masking (f1b475073, baselines cae5d2576). Main merged again
+(0f62ea2e6, no webapp/visual changes). #4727 on cae5d2576: PR gate QA 152/152 + visual 40/40, CI Build pass, MERGEABLE;
+review-gate pending a human approval. Background watcher scripts must avoid `mapfile` (macOS bash 3.2) and unquoted zsh
+word splitting.

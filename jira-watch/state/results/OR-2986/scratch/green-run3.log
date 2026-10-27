@@ -1,0 +1,27 @@
+[+0.17s] enable flag MEDICATION_FAVORITES 200
+[+0.18s] enable flag MEDICATION_MACROS 200
+[+2.21s] macros: Induction,Antiemetics
+[+2.23s] favorites: Phenylephrine,EPHEDrine IV,Sugammadex
+[+2.28s] case or2986-dd-fake-8c797258-6842-4e0b-ae82-071e6247b4ec 98383
+[+2.49s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+2.74s] served bundle: static/index.DfTgIkGv.js
+[+3.24s] PASS dropdown: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+7.34s] PASS dropdown: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+7.81s] PASS favorite: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+11.91s] PASS favorite: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+12.35s] FAIL macro: all four placeholder tabs shown while lookups pending :: tabs=true,true,true,true skeletons=0 resolved=0
+[+19.36s] FAIL macro: placeholders all resolve to dosing forms :: skeletons=0 spinners=0 resolved=0
+[+19.42s] case or2986-scan-fake-0de4d4d3-78d6-4fff-9099-abfda3d33a01 78571
+[+19.70s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+20.41s] served bundle: static/index.DfTgIkGv.js
+[+20.90s] PASS scan: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+25.52s] PASS scan: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+25.52s] PASS scan: placeholder title replaced by medication name :: loadingTabs=0
+[+26.02s] FAIL negative-404 (pre-response): placeholder tab shown while lookup pending :: tab=false skeletons=0 spinner=0 lookupResolved=false
+[+41.02s] ERROR locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for getByText('Barcode not found. Select medication from dropdown.') to be visible[22m
+
+    at /Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/scratch/drive.js:183:81 {
+  name: 'TimeoutError'
+}

@@ -77,6 +77,7 @@ section 'NEEDS YOU — aborted before validating' aborted
 section 'NEEDS YOU — reserved for another reviewer' reserved
 section 'Umbrella parents, suppressed (children run separately)' umbrella
 section 'Delivered in another repo, nothing here to validate' merged_elsewhere
+section 'Stopped: Claude usage limit (retry after the reset)' usage_limit
 section 'Build did not contain the fix' stale_build
 section 'Environment failed to come up' env_failed
 section 'Session timed out' session_timeout

@@ -1,0 +1,26 @@
+{
+  "verdict": "inconclusive",
+  "evidence": {
+    "positive": "No app surface exists for this ticket; the fix (PR #4643, merged 2026-10-08 as a854d861e) only changes .github/workflows pins. Static check against the build commit 00f60b29d: grep of every uses: pin across .github/workflows found none of the old pins (checkout@v4, setup-node@v4, upload-artifact@v4, cache@v4, cache/restore@v4, download-artifact@v6, create-github-app-token@v2, configure-aws-credentials@v4, paths-filter@v3, fetch-metadata@v2, whelk-io/maven-settings-xml-action). Resolved runs.using from each pinned action's action.yml at its tag via the GitHub API: all 16 JavaScript actions report node24; the two composites (anthropics/claude-code-action@v1, getsentry/action-release@v3) nest only node24 actions. GitHub-side runtime check: the latest completed run on main of every active workflow (maven-ci 40348698856, pr-gate 40350294103, maven-cd 40347912573, qa-suite 40348167789, review-gate, sentry-triage, typescript, dependabot-updates, etc.) has zero 'Node.js 20 is deprecated' check-run annotations.",
+    "negative": "Not applicable as an app behaviour. The inverse check that is possible: pre-fix runs of the two workflows the ticket names, from 2026-10-07 (maven-ci 37691417744 and 37687127263, pr-gate 37691417444 and 37689785190), each carry 'Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: ...' annotations naming actions/upload-artifact@v4, actions/checkout@v4, actions/cache@v4, dorny/paths-filter@v3 and aws-actions/configure-aws-credentials@v4, i.e. exactly the pins the ticket replaced. Post-fix runs of the same workflows carry none.",
+    "red_check": "No app-level red check was performed and none is possible: the change has no runtime in the local app, so there is no application-log signature to provoke. The annotation scan was shown to be capable of going red by pointing it at pre-fix CI runs (which it flagged, see negative), but that is GitHub check-run data, not the captured application log, and the swap/data-flip techniques do not apply."
+  },
+  "red_check_signature": "",
+  "blockers": [
+    "This ticket changes only .github/workflows action pins; it has no behaviour in the local app, so the loop's app-log red check cannot be satisfied. Close by hand if the CI evidence below is accepted.",
+    "Is the GitHub evidence sufficient to close OR-3021: every action pinned on main resolves to runs.using node24 (or composite of node24), and the latest main run of each active workflow has zero 'Node.js 20 is deprecated' annotations while 2026-10-07 pre-fix runs of maven-ci.yml and pr-gate.yml had them?"
+  ],
+  "ship_risk": "none",
+  "caveats": [
+    "Already merged and live on main since 2026-10-08 (PR #4643); several pins have since been bumped further by Dependabot (checkout@v7, upload-artifact@v7, download-artifact@v8), which the done-criterion still satisfies.",
+    "deploy.yml is only reached via workflow_call from maven-cd.yml; the post-fix maven-cd run on 2026-10-26 succeeded with no Node 20 annotations, but deploy.yml has no standalone main run since the fix.",
+    "The nested-action check for composites inspected one level of action.yml only; docker:// steps (getsentry/action-release image) are not Node-runtime dependent."
+  ],
+  "automation": {
+    "assessment": "No app-level test applies. .github/scripts/test_dependabot_facts.py already exercises the pin-reporting helper. The done-criterion (no action on main with runs.using node20 or older) is the kind of thing a lightweight CI lint could enforce, but Dependabot's github-actions updates plus GitHub's own deprecation annotations already surface regressions, so adding a lint is optional.",
+    "proposed_tests": [
+      "Optional: a workflow-lint step that resolves runs.using for every pinned action and fails on node20 or older, so a future pin regression fails the PR gate rather than only annotating it."
+    ]
+  },
+  "jira_comment": "Verdict: inconclusive.\n\nPositive: Every action pinned on main resolves to a node24 runtime, and the latest run of each active workflow on main carries no Node 20 deprecation annotation.\nNegative: Pre-fix maven-ci and pr-gate runs from 2026-10-07 still carried the Node 20 deprecation annotation naming the exact pins this ticket replaced.\nRed check: Not possible against the local app, because the change has no runtime surface outside GitHub Actions.\n\nAutomation: No app-level coverage applies; an optional workflow lint on runs.using could enforce the done criterion going forward."
+}

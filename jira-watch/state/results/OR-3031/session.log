@@ -1,0 +1,11 @@
+Validation of OR-3031 is complete and `session.json` is written with a `deploy-ready` verdict.
+
+**What was exercised** against the running build at port 65476, demo-demo tenant:
+
+- **Positive.** Staged a 30 kg patient and case, recorded a prior 12 mg Bupivacaine nerve-block bolus, then re-selected Bupivacaine. The selection API returned the banner `<b>Max dose is 62 mg.</b> Adjust for:` plus the administration table, and the real dosing form rendered "Max dose is 62 mg. Adjust for:" (screenshot saved in scratch).
+- **Negative.** The old ", adjusted for:" phrase is absent from the response. With no prior dose the banner is "Max dose is 74 mg" with neither phrase.
+- **Red check.** Compiled the parent commit's rule class, swapped it into the container, and restarted. The same selection came back as "Max dose is 62 mg, adjusted for:" and the instrumented class wrote the signature line to the app log. Restored the shipped class, verified the checksum matches the original image, restarted, and confirmed the new wording returned.
+
+**Caveats recorded** with `ship_risk: none`: the prior dose came from the admin bolus endpoint rather than a rejected save alert, only the non-combination-product branch was rendered, and the red-check log line comes from the instrumented pre-fix class since stock code never logs this text.
+
+**Automation proposed:** two supplemental qa-suite API tests in the LAMD family asserting the banner wording with and without a prior block. The worktree is clean and nothing was committed.

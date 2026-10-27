@@ -1,0 +1,2 @@
+#!/bin/sh
+exec docker exec -i orci-loop-or-3059-postgres-1 psql -U orci -d orci -v ON_ERROR_STOP=1 "$@"

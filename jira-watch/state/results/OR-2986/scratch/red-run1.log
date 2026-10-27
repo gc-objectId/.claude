@@ -1,0 +1,17 @@
+[+0.21s] enable flag MEDICATION_FAVORITES 200
+[+0.22s] enable flag MEDICATION_MACROS 200
+[+2.39s] macros: Induction,Antiemetics
+[+2.40s] favorites: Phenylephrine,EPHEDrine IV,Sugammadex
+[+2.44s] case or2986-red-fake-68558382-1c71-4d1e-877b-79b5a5cba0dc 83176
+[+2.65s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+2.89s] served bundle: static/index.BmpdCDkV.js
+[+2.98s] REQ POST /api/cds/medication-selection/or2986-red-fake-68558382-1c71-4d1e-877b-79b5a5cba0dc/83176 {"medicationIdentifier":"m-cefazolin","timeZone":"America/New_York"}
+[+3.39s] FAIL RED dropdown: placeholder tab shown while lookup pending :: tab=false skeletons=0 spinner=0 lookupResolved=false
+[+7.06s] RES 200 /api/cds/medication-selection/or2986-red-fake-68558382-1c71-4d1e-877b-79b5a5cba0dc/83176
+[+7.51s] PASS RED dropdown (eventual form): real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+7.83s] REQ POST /api/cds/medication-selection/or2986-red-fake-68558382-1c71-4d1e-877b-79b5a5cba0dc/83176 {"barcode":"REDCHECK-OR2986-PREFIX-BUNDLE","timeZone":"America/New_York"}
+[+8.15s] FAIL RED scan (distinctive barcode): placeholder tab shown while lookup pending :: tab=false skeletons=0 spinner=0 lookupResolved=false
+[+11.89s] RES 204 /api/cds/medication-selection/or2986-red-fake-68558382-1c71-4d1e-877b-79b5a5cba0dc/83176
+[+11.89s] RED scan response status 204
+[+11.95s] DUMP red-scan-after: tabs=[+|Vital Signs Opt-In|CeFAZolin] alerts=[] activeElement=BODY.d-flex
+[+11.98s] SUMMARY 1/3 passed

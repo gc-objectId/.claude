@@ -1,0 +1,20 @@
+[+2.78s] served bundle: static/index.DfTgIkGv.js
+[+3.29s] PASS dropdown: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+7.42s] PASS dropdown: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+7.90s] PASS favorite: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+12.03s] PASS favorite: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+12.55s] PASS macro: all four placeholder tabs shown while lookups pending :: tabs=true,true,true,true skeletons=4 spinners=4 inFlight=4 resolved=0
+[+19.62s] PASS macro: placeholders all resolve to dosing forms :: skeletons=0 spinners=0 resolved=4
+[+20.09s] served bundle: static/index.DfTgIkGv.js
+[+20.58s] PASS scan: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+24.72s] PASS scan: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+24.72s] PASS scan: placeholder title replaced by medication name :: loadingTabs=0
+[+25.28s] PASS negative-204 (not an NDC) pre-response: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+29.56s] PASS negative-204 (not an NDC): placeholder removed, Home reselected, no banner :: status=204 loadingTabs=0 skeletons=0 spinners=0 homeSelected=true bannerOk=true
+[+30.08s] PASS negative-404 (unmapped NDC) pre-response: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+34.40s] PASS negative-404 (unmapped NDC): placeholder removed, Home reselected, banner shown :: status=404 loadingTabs=0 skeletons=0 spinners=0 homeSelected=true bannerOk=true
+[+34.93s] PASS negative-406 (error-mapped NDC) pre-response: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+39.23s] PASS negative-406 (error-mapped NDC): placeholder removed, Home reselected, banner shown :: status=406 loadingTabs=0 skeletons=0 spinners=0 homeSelected=true bannerOk=true
+[+39.69s] PASS negative-500 (pre-response): placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+40.79s] PASS negative-500: error shown in tab, spinner and skeleton gone :: skeletons=0 spinner=0
+[+40.83s] SUMMARY 17/17 passed

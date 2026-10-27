@@ -1,0 +1,27 @@
+const { chromium } = require("/Users/ryanducharme/dev/orci/qa-suite/node_modules/playwright");
+const fs = require("fs");
+const BASE = "http://127.0.0.1:65476";
+const c = JSON.parse(fs.readFileSync(__dirname + "/case.json"));
+(async () => {
+  const browser = await chromium.launch();
+  const ctx = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const page = await ctx.newPage();
+  await page.goto(`${BASE}/login`);
+  await page.locator("#username").fill("loopuser");
+  await page.locator("#password").evaluate((el, pwd) => { const s = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set; s.call(el, pwd); el.dispatchEvent(new Event("input", { bubbles: true })); el.dispatchEvent(new Event("change", { bubbles: true })); }, "LoopValidate1!");
+  await page.locator('button[type="submit"]').click();
+  await page.waitForURL("**/", { timeout: 15000 });
+  await page.goto(`${BASE}/app-launch?patient_id=${c.pmrn}&case_id=${c.caseId}&client_id=demo-demo&forceLaunch=true`);
+  const home = page.locator("#tab-navigation-tab-HOME_TAB");
+  await home.waitFor({ state: "visible", timeout: 20000 });
+  await home.click();
+  await page.getByRole("tab", { name: "+" }).click();
+  await page.getByLabel("Medication:").fill("bupivacaine");
+  await page.getByText("Bupivacaine", { exact: true }).click();
+  const banner = page.locator("[data-rule-id='w-last-local-anesthetic-max-dose']");
+  await banner.first().waitFor({ state: "visible", timeout: 15000 });
+  const text = await banner.first().innerText();
+  console.log("BANNER TEXT:", JSON.stringify(text));
+  await page.screenshot({ path: __dirname + "/ui-banner.png", fullPage: true });
+  await browser.close();
+})().catch(async (e) => { console.error("UI ERR", e.message); process.exit(1); });

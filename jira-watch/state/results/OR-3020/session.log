@@ -1,0 +1,11 @@
+Validation of OR-3020 is complete and recorded at `~/.claude/jira-watch/state/results/OR-3020/session.json` with verdict **deploy-ready**.
+
+**What was done against the running app**
+
+- **Positive.** Two IV heparin infusions on a demo-demo case, the older record holding a stop 5 hours before the case and the newer one a stop 10 hours before. App-launch returned the "Check PTT" alert naming the 06:37 stop, and the persisted fired row carried HEPARIN_STOPPED_RECENTLY. The rule now picks the latest stop, not the newest record.
+- **Negative.** Older record stopped 8 hours before, newer record stopped 22 hours before. No alert, and the not-fired row read "patient no longer on heparin".
+- **Red check.** Compiled the parent commit's version of the interface, shadowed the shipped class in the container, and restarted. Both outcomes flipped: the positive case abstained and the negative case alerted. Removed the classes, confirmed the jar checksum was untouched, restarted, and a fresh positive case alerted again. The signature in the session file matches exactly one line in the container log.
+
+**Caveats recorded.** The rule was driven through the app-launch rule endpoint rather than the browser, and infusions were staged with the admin debugger endpoint rather than an integration feed. Ship risk is marked none.
+
+**Automation proposed.** A unit test for the inverse case the PR did not add, plus a new browser-free qa-suite spec for a-preop-ptt with a positive/negative pair and a PTT-observation branch. The worktree is clean and all scratch work lives outside it.

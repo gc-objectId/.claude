@@ -1,0 +1,12 @@
+Validation of OR-3021 is complete and recorded in `session.json` with verdict `inconclusive`.
+
+**What the ticket is.** It changes only GitHub Actions pins in `.github/workflows`, merged on 2026-10-08 as PR #4643. There is no behaviour in the local app, so the loop's app-log red check cannot apply.
+
+**What was verified instead, on the GitHub side:**
+- Static: no old pins remain on the build commit, and every pinned action resolves to `runs.using: node24` at its tag. The two composites nest only node24 actions.
+- Post-fix: the latest completed main run of every active workflow carries zero "Node.js 20 is deprecated" annotations.
+- Pre-fix contrast: 2026-10-07 runs of maven-ci and pr-gate carried that annotation naming exactly the replaced pins. So the check demonstrably goes red on the old state.
+
+**Blockers for Ryan.** Two one-liners: this ticket needs a hand close since it has no app surface, and whether the CI-side evidence above is enough to close it. Ship risk is none. The only automation proposal is an optional workflow lint on `runs.using`, since Dependabot and GitHub's annotations already surface regressions.
+
+Scratch scripts live in the results scratch directory, nothing touched the worktree, and no Jira or git writes were made.

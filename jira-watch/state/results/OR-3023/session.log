@@ -1,0 +1,11 @@
+Validation of OR-3023 is complete and the result is written to `session.json`.
+
+**Verdict: deploy-ready, ship risk material.**
+
+- **Positive.** With `tenants.mgb.enabled=false` passed to the running instance, matching the AWS profiles, the mgb/event, mgh/event and ReceiveOptimeNotification paths all returned 404. Nothing reached the controller log. Adding the old `mgb.notifications.enabled=true` property alongside the switch changed nothing.
+- **Negative.** With the switch unset, the on-prem shape, the same paths returned 200 and the controller logged and processed the request.
+- **Red check.** The pre-fix controller class, compiled from the parent of the merge, was swapped into the container with the MGB tenant disabled. All three paths answered 200 and the log carried the signature line. The shipped class was restored, checksums matched, and the 404 came back.
+
+**Side effect worth a human look.** The admin "Med Admin Notifications" send simulation for demo tenants now returns 500 under the AWS setting. The simulation service self-posts to the removed endpoint. The preview still works, qa-suite does not use the send path, and dev's post-merge QA Suite runs are green. It is recorded as a material caveat with a suggested follow-up rather than a blocker, since the ticket's own deliverable holds.
+
+The container is back in its original state and all scratch files sit outside the worktree.

@@ -1,0 +1,9 @@
+Validation of OR-2983 is complete and the result file is written. The worktree is clean.
+
+**Verdict: deploy-ready.** Written to `~/.claude/jira-watch/state/results/OR-2983/session.json`.
+
+- **Positive.** Two same-class ondansetron doses on an ERAS case produced "all administered antiemetics are of class 5HT3-Antagonist" in the persisted rule result and through the user-facing alert endpoint as loopuser. Dexamethasone plus methylprednisolone produced "of class Steroid".
+- **Negative.** Ondansetron plus dexamethasone did not fire the rule, with "Patient received valid antiemetics" in the not-fired results. No fired prompt on the shipped build contained the raw constant.
+- **Red check.** The parent commit's rule class, compiled in the container and swapped in, produced "of class ANTIEMETIC_5HT3_ANTAGONIST" in the stored prompt and the app log. Shipped classes restored with matching checksums, container restarted, and the readable label came back on a fresh case.
+
+Caveats recorded: only the 5HT3 and Steroid labels were exercised at runtime (demo has no NK1 medication), administrations were staged by SQL with the admin category-event endpoint firing the rule, and the pre-fix class carried one added log line so the gate has a signature to grep. Proposed automation is an API-level qa-suite pair for the prompt text and a unit case pinning the NK1-Antagonist label.

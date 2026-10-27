@@ -1,0 +1,9 @@
+Validation of OR-2986 is complete and the verdict is recorded as deploy-ready in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/session.json`.
+
+**What was exercised** against the running build on port 64203, with the medication lookup delayed by a Playwright route so the pending window was observable:
+
+- **Positive.** Dropdown, favorite, Induction macro and keypress barcode scan each showed the placeholder tab with skeleton and spinner before the lookup resolved, then the real dosing form replaced it. The macro showed four placeholders at once.
+- **Negative.** Lookups ending in 204, 404, 406 and a stubbed 500 all cleared the placeholder, reselected Home, and showed the expected banner or in-tab error with no spinner left behind.
+- **Red check.** The parent commit's webapp was built, overlaid into the container's static directory, and the same checks went red with no tab at all until the response arrived. The shipped bundle was restored and verified by checksum, then the full green pass was repeated. The signature `barcode=REDCHECK-OR2986-PREFIX-BUNDLE` appears exactly once in the app log.
+
+**Caveats recorded** include that the favorites and macros feature flags had to be enabled in this instance, that lookup latency was simulated, and that the author's three unmerged follow-up commits target edge cases not exercised here. Ship risk is marked none. Four supplemental tests are proposed for the automation step, and the worktree has no changes.

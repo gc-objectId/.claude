@@ -1,0 +1,15 @@
+Validation of OR-2842 is complete and recorded at `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2842/session.json` with verdict **deploy-ready**.
+
+**What was observed against the running build**
+
+- **Positive.** The live spec at `/v3/api-docs` has no launch-by-operation path and none of the 15 Spring container schemas the ticket lists. The shipped class carries `@Hidden` on the method per javap.
+- **Negative.** The endpoint still works. A real demo operation answers 302 to `/app-launch` with an empty body, an unknown id answers 404, and the un-hidden sibling path `/api/app-launch` is still in the spec.
+- **Red check.** Compiled the parent commit's controller without `@Hidden`, swapped it into the container, and restarted. The path came back as a 200 returning RedirectView with exactly the 15 leaked schemas. Restored the shipped class, confirmed the checksum, and the spec and redirect both returned to the fixed state.
+
+**Caveats recorded**
+
+- The log signature is a WARN marker I added to the pre-fix class, since springdoc logs nothing on its own during introspection.
+- api-docs is disabled in the aws-dev and aws-prod profiles, so the spec surface only exists locally. The deployed effect is confined to the generated client.
+- Typecheck and client regeneration were not re-run. The merged diff shows a pure 592-line removal.
+
+**Automation proposed** is a backend MockMvc test over the spec, not a qa-suite test, because dev never serves api-docs. The worktree is clean and all scratch material lives outside it.

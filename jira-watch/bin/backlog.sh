@@ -99,7 +99,7 @@ printf '%s\n' "$candidates" | awk 'NF && !seen[$1]++' | while IFS="$(printf '\t'
             admitted | admitted_with_caveats) printf 'skip %s: already admitted\n' "$key" >&2; continue ;;
             # Infrastructure failures say nothing about the ticket, so retry without waiting for it
             # to change. Only a real verdict (refused, no_merged_pr) waits for new information.
-            aborted | env_failed | session_timeout | stale_build)
+            aborted | env_failed | session_timeout | stale_build | usage_limit)
                 printf 'note %s: last run was %s, offering again\n' "$key" "$prev" >&2
                 ;;
             *)

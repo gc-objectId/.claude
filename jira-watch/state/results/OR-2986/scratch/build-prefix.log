@@ -1,0 +1,16 @@
+build/static/hatch-pattern.Bi3zgFK5.png          48.18 kB
+build/static/index.BwCUlXI6.css                 449.27 kB │ gzip:  59.39 kB
+build/static/index.BmpdCDkV.js                2,022.32 kB │ gzip: 582.26 kB │ map: 10,063.50 kB
+
+[33m[PLUGIN_TIMINGS] [0mYour build spent significant time in plugins. Here is a breakdown:
+  - sentry-vite-release-injection-plugin (82%)
+  - vite:css (16%)
+See https://rolldown.rs/options/checks#plugintimings for more details.
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 7.94s
+exit 0

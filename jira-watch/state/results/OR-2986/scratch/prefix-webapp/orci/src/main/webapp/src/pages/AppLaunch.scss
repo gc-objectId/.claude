@@ -1,0 +1,77 @@
+@import "bootstrap/scss/bootstrap";
+
+$base-font-size: 1.1rem;
+
+$footer-height: 75px;
+
+.AppFooter {
+  height: $footer-height;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - $footer-height);
+  overflow: hidden;
+}
+
+.app-body__main {
+  flex: 1;
+  overflow: auto;
+  min-width: 0;
+}
+
+.AppLaunch {
+  .btn-close {
+    height: 0.5em;
+    width: 0.5em;
+    opacity: 0.75;
+  }
+  .btn:focus {
+    outline: none;
+    box-shadow: none;
+  }
+  .btn-close:hover {
+    opacity: 1;
+  }
+  .nav-link {
+    border-color: var(--bs-nav-tabs-link-active-border-color);
+  }
+  .nav-tabs .nav-link {
+    color: $black;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+  .tab.selected {
+    @extend .fw-bold;
+  }
+  .btn {
+    font-size: $base-font-size;
+    padding: 0.2rem 0.75rem;
+  }
+
+  .btn-sm {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.75rem;
+  }
+
+  .form-control {
+    font-size: $base-font-size;
+    padding: 0.2rem 0.75rem;
+  }
+  .form-label {
+    font-size: $base-font-size;
+  }
+  .form-control:focus {
+    border-color: #1a1a1a;
+    box-shadow: 0 0 0 0.25rem rgba(26, 26, 26, 0.5);
+  }
+}
+
+.nav-link:not(.active) {
+  background-color: #f7f7f7 !important;
+}
+
+.nav-link {
+  border-color: #d9d9d9 !important;
+}

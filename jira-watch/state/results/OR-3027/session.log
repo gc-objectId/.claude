@@ -1,0 +1,11 @@
+Validation of OR-3027 is complete. Verdict: deploy-ready, written to `session.json` in the results directory. The worktree is clean and nothing was committed or pushed.
+
+**What was observed against the running build**
+
+- **Positive.** An untracked RAS administration (no operation window) persisted with a null tracking id, the after-commit hook ran, and zero statements touched `rule_fired_results` in either the app SQL log or the Postgres statement log. Repeated after the restore with a fresh patient, same result.
+- **Negative.** Resending the same order and sequence took the edit path, which mints a tracking id. The compliance lookup then ran as an inner join on the execution-context table with the id bound, and no left join or `IS NULL` appeared.
+- **Red check.** The parent commit's versions of the service and the entity mapping were compiled inside the container and swapped into the class directory. After a restart the same untracked administration issued the `left join ... where rec1_0.tracking_id is null` scan the ticket describes. The shipped classes were restored, checksums re-verified, and the signature occurs in the container log only inside the red window.
+
+**Caveats recorded, ship risk none.** The tracked case came from the edit path rather than an in-window operation with real firings, only the SQL shape was verified rather than index usage, and the pre-fix entity class had its lombok accessors written out by hand.
+
+**Automation proposed.** The PR already carries unit and repository tests for both halves. One end-to-end assertion on the HL7 save path is proposed: an untracked administration runs no statement against the rule-firings table, which goes red if the null guard is removed.

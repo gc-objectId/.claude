@@ -1,0 +1,15 @@
+[+5.18s] macros: Induction,Antiemetics
+[+5.21s] favorites: Phenylephrine,EPHEDrine IV,Sugammadex
+[+5.33s] case or2986-dd-fake-05b5753e-08c3-4cb8-92b5-e0a300f8da41 83295
+[+5.58s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+6.30s] served bundle: static/index.DfTgIkGv.js
+[+6.80s] PASS dropdown: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+10.92s] PASS dropdown: real dosing form replaces placeholder :: tab=true skeletons=0 spinner=0
+[+40.92s] ERROR locator.click: Timeout 30000ms exceeded.
+Call log:
+[2m  - waiting for locator('.favorites-sidebar__toggle')[22m
+
+    at openSidebar (/Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/scratch/drive.js:117:52)
+    at /Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/scratch/drive.js:140:11 {
+  name: 'TimeoutError'
+}

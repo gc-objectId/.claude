@@ -1,0 +1,10 @@
+ERR TypeError [ERR_UNESCAPED_CHARACTERS]: Request path contains unescaped characters
+    at new ClientRequest (node:_http_client:241:13)
+    at Object.request (node:http:108:10)
+    at /Users/ryanducharme/.claude/jira-watch/state/results/OR-3009/scratch/client.js:15:20
+    at new Promise (<anonymous>)
+    at req (/Users/ryanducharme/.claude/jira-watch/state/results/OR-3009/scratch/client.js:6:10)
+    at main (/Users/ryanducharme/.claude/jira-watch/state/results/OR-3009/scratch/run.js:12:17)
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5) {
+  code: 'ERR_UNESCAPED_CHARACTERS'
+}

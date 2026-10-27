@@ -1,0 +1,1 @@
+01a178dc-ffdb-76e4-9127-443457cec079 01a178dd-0023-7e11-8da3-4a622c85dd10 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-preop-ptt -> false patient no longer on heparin

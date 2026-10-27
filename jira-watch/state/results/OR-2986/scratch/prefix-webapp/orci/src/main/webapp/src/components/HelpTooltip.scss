@@ -1,0 +1,21 @@
+.help-tooltip-dropdown-container {
+  hr {
+    margin: 4px 0;
+  }
+  .dropdown-item {
+    color: rgba(var(--bs-black));
+    padding-bottom: 0;
+    padding-top: 0;
+
+    &.disabled {
+      opacity: 1;
+      color: rgba(var(--bs-black));
+    }
+
+    &:hover {
+      background: white;
+      text-decoration: underline;
+      color: var(--bs-link-hover-color);
+    }
+  }
+}

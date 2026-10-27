@@ -1,0 +1,14 @@
+{"label":"E2","pmrn":"or3009-E2-fake-87f09fa2-35dc-456b-b47c-e4a978fb2ab9","caseId":"26091","patientUuid":"01a178d6-9d7d-7bde-9253-238fc8df122e","operationId":"01a178d6-9d95-7f49-9694-bab8a8dd4228","bolusStatus":200,"priorAdmin":[{"id":"m-acetaminophen-iv","dose":1000,"units":"mg","at":"2026-10-26T09:51:33.409+00:00"}]}
+evicted: 1
+evaluatedAt 2026-10-26T15:31:33.656Z offsetFromPriorAdmin(min) 340.0
+SELECTION 200 [
+ {
+  "ruleId": "a-acetaminophen-early-redose",
+  "needsAction": true,
+  "explanation": null,
+  "title": "Acetaminophen Dosing is Q6H",
+  "desc": "Acetaminophen 1,000 mg was given at 09:51. Acetaminophen can be redosed after 15:51."
+ }
+]
+selection keys context,results,dosingFormState,trackingTabId,restoredTab,needsAction trackingTabId 01a178d6-9eab-7c3b-9fbb-6e89eb853707
+DOSE 200 []

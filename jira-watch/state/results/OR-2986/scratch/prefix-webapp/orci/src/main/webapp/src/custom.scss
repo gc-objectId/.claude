@@ -1,0 +1,499 @@
+@use "sass:map";
+
+@import "bootstrap/scss/mixins/banner";
+@include bsBanner("");
+
+@import "bootstrap/scss/functions";
+@import "styles/tokens";
+
+$primary: $guided-color-primary;
+$secondary: $guided-color-secondary;
+$success: $guided-color-success;
+$info: $guided-color-info;
+$warning: $guided-color-warning;
+$danger: $guided-color-danger;
+$light: $guided-color-light;
+$dark: $guided-color-dark;
+$body-bg: $guided-color-surface;
+$body-color: $guided-color-text;
+
+$font-family-sans-serif: $guided-font-family-sans;
+$font-size-base: $guided-font-size-base;
+$font-size-sm: $guided-font-size-sm;
+$font-size-lg: $guided-font-size-lg;
+$h1-font-size: $guided-font-size-h1;
+$h2-font-size: $guided-font-size-h2;
+$h3-font-size: $guided-font-size-h3;
+$h4-font-size: $guided-font-size-h4;
+$h5-font-size: $guided-font-size-h5;
+$h6-font-size: $guided-font-size-h6;
+$font-weight-normal: $guided-font-weight-normal;
+$font-weight-bold: $guided-font-weight-bold;
+$headings-font-weight: $guided-font-weight-medium;
+$line-height-base: $guided-line-height-base;
+$headings-line-height: $guided-line-height-heading;
+
+$spacer: $guided-space-unit;
+$spacers: (
+  0: $guided-space-0,
+  1: $guided-space-1,
+  2: $guided-space-2,
+  3: $guided-space-3,
+  4: $guided-space-4,
+  5: $guided-space-5,
+);
+
+$box-shadow-sm: $guided-elevation-1;
+$box-shadow: $guided-elevation-2;
+$box-shadow-lg: $guided-elevation-3;
+$box-shadow-inset: $guided-elevation-inset;
+
+@import "bootstrap/scss/variables";
+
+$theme-colors: map.merge(
+  $theme-colors,
+  (
+    "guided-primary": $guided-color-action,
+    "guided-secondary": $guided-color-action-secondary,
+    "guided-grey": $guided-color-surface-muted,
+  )
+);
+
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+@import "bootstrap/scss/utilities";
+@import "bootstrap/scss/root";
+
+:root {
+  @each $name, $value in $guided-css-tokens {
+    --guided-#{$name}: #{$value};
+  }
+}
+@import "bootstrap/scss/reboot";
+@import "bootstrap/scss/type";
+@import "bootstrap/scss/images";
+@import "bootstrap/scss/containers";
+@import "bootstrap/scss/grid";
+@import "bootstrap/scss/tables";
+@import "bootstrap/scss/forms";
+@import "bootstrap/scss/buttons";
+@import "bootstrap/scss/transitions";
+@import "bootstrap/scss/dropdown";
+@import "bootstrap/scss/button-group";
+@import "bootstrap/scss/nav";
+@import "bootstrap/scss/navbar";
+@import "bootstrap/scss/card";
+@import "bootstrap/scss/accordion";
+@import "bootstrap/scss/breadcrumb";
+@import "bootstrap/scss/pagination";
+@import "bootstrap/scss/badge";
+@import "bootstrap/scss/alert";
+@import "bootstrap/scss/progress";
+@import "bootstrap/scss/list-group";
+@import "bootstrap/scss/close";
+@import "bootstrap/scss/toasts";
+@import "bootstrap/scss/modal";
+@import "bootstrap/scss/tooltip";
+@import "bootstrap/scss/popover";
+@import "bootstrap/scss/carousel";
+@import "bootstrap/scss/spinners";
+@import "bootstrap/scss/offcanvas";
+@import "bootstrap/scss/placeholders";
+@import "bootstrap/scss/helpers";
+@import "bootstrap/scss/utilities/api";
+
+.alert-button-container {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin-left: auto;
+  gap: 1rem;
+  margin-right: auto;
+  width: fit-content;
+}
+
+// Alert button container gap breakpoints
+$alert-button-gaps: (
+  sm: 1rem,
+  md: 2rem,
+  lg: 5rem,
+);
+
+@each $breakpoint, $gap in $alert-button-gaps {
+  @include media-breakpoint-up($breakpoint) {
+    .alert-button-container {
+      gap: $gap;
+    }
+  }
+}
+
+.accept-button-container > button,
+.reject-button-container > button {
+  white-space: normal !important;
+}
+
+.reject-reasons {
+  width: 100%;
+}
+
+.alert-response-btn {
+  min-width: 100px;
+  width: 100%;
+  position: relative;
+}
+
+.reject-reasons {
+  .alert-response-btn::after {
+    position: absolute;
+
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .dropdown-item:hover,
+  .dropdown-item:focus {
+    background-color: #fbf9f4;
+    color: $black;
+  }
+
+  .dropdown-item-text {
+    padding: 0.15rem var(--bs-dropdown-item-padding-x);
+  }
+
+  .dropdown-item.active,
+  .dropdown-item:active {
+    background-color: $guided-color-action-secondary;
+    color: $black;
+  }
+
+  .btn:hover {
+    color: var(--bs-btn-hover-color);
+    background-color: var(--bs-btn-hover-bg);
+    border-color: var(--bs-btn-hover-border-color);
+  }
+
+  .dropdown-item .small,
+  .small {
+    font-size: 0.9rem;
+  }
+}
+
+.btn.btn-primary {
+  @include button-variant($guided-color-action, $guided-color-action-border);
+  color: $black;
+}
+
+.btn.btn-secondary {
+  @include button-variant(
+    $guided-color-action-secondary,
+    $guided-color-action-secondary-border
+  );
+  color: $black;
+}
+
+.bg-guided-maroon {
+  background-color: $guided-color-accent;
+}
+
+.guided-maroon {
+  color: $guided-color-accent;
+}
+
+.form-section {
+  border: 1px solid $white;
+  padding-left: 3px;
+}
+
+.form-section.invalid {
+  border: 1px solid $guided-color-accent;
+  border-radius: $border-radius;
+}
+
+.guided-primary-blue,
+.nav-guided-primary {
+  color: $guided-color-heading;
+}
+
+small,
+.small {
+  font-size: 0.6em;
+}
+
+.not-selectable {
+  user-select: none;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.alert-body-container ul {
+  margin-bottom: 0;
+}
+
+#main-tab-container > .nav-tabs button.nav-link.active {
+  border-bottom: 1px solid white !important;
+}
+
+.guidance-alert-multi-container {
+  .list-group {
+    margin-top: 100px;
+
+    .list-group-item {
+      border-radius: 0;
+      border-bottom: 1px solid $guided-color-border-muted;
+      border-right: 1px solid $guided-color-border-muted;
+      border-color: $guided-color-border-muted;
+
+      &.active {
+        background-color: $guided-color-surface-muted !important;
+        border-right: 1px solid transparent;
+        border-left: 4px solid $guided-color-border-muted;
+        margin-left: -1px;
+        padding-left: 14px;
+        color: black !important;
+      }
+
+      //&:not(.active) {
+      //  border-right: 1px solid $guided-color-border-muted;
+      //}
+
+      &:first-child {
+        border-radius: $border-radius 0 0 0;
+      }
+
+      &:last-child {
+        border-radius: 0 0 0 $border-radius;
+      }
+    }
+  }
+
+  .guidance-alert {
+    border: 20px solid $guided-color-surface-muted;
+    background: $guided-color-surface-muted;
+    border-radius: 12px;
+
+    .card-header {
+      background: $guided-color-surface-muted;
+      padding: 12px;
+    }
+
+    .card-body {
+      background: white;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid $guided-color-border-muted;
+    }
+  }
+}
+
+.last-local-anesthetic-data,
+.latest-med-info-data {
+  display: block;
+
+  ul {
+    list-style: none;
+    margin-left: 0;
+    padding-left: 0;
+    grid-template-areas: "a b c";
+    grid-auto-columns: 1fr 1fr 1fr;
+    display: grid;
+    margin-bottom: 0;
+
+    li {
+      color: #1c2864;
+      display: contents;
+
+      .dose-route {
+        margin-right: 12px;
+        margin-left: 12px;
+      }
+    }
+  }
+}
+
+.tooltip.guided-tooltip {
+  margin-left: 7px;
+  --bs-tooltip-bg: $white;
+  color: $black;
+  --bs-tooltip-color: $black;
+}
+
+.tooltip.guided-tooltip.show {
+  opacity: 1;
+}
+
+/* Override tooltip border */
+.tooltip.guided-tooltip > .tooltip-inner {
+  border: 1px solid $black;
+  background: white;
+  text-align: left;
+  max-width: 330px;
+}
+
+.tooltip.guided-tooltip > .tooltip-arrow::before {
+  $triangle_svg: '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 28 28"><path d="M28 0 L2 14 L28 28" stroke="black" stroke-width="2" fill="white"/></svg>';
+  background-image: url("data:image/svg+xml;utf8,#{$triangle_svg}");
+  border: none !important;
+  width: 14px;
+  height: 14px;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.tooltip.guided-tooltip[data-popper-placement^="bottom"]
+  > .tooltip-arrow::before {
+  transform: rotate(90deg);
+}
+
+.tooltip.guided-tooltip[data-popper-placement^="left"]
+  > .tooltip-arrow::before {
+  transform: rotate(180deg);
+}
+
+.tooltip.guided-tooltip[data-popper-placement^="top"] > .tooltip-arrow::before {
+  transform: rotate(270deg);
+}
+
+.alert.alert-info {
+  --bs-alert-margin-bottom: 0.75rem;
+  border-radius: 1px;
+  padding: 12px;
+  background: #edf5fc;
+  border: 1px solid rgba(#005493, 0.4);
+  color: black;
+}
+
+.alert.alert-warning {
+  --bs-alert-margin-bottom: 0.75rem;
+  border-radius: 1px;
+  padding: 12px;
+  background: #fefaec;
+  border: 1px solid rgba(#d8c911, 0.4);
+  color: black;
+}
+
+.dropup.show {
+  .dropdown-toggle {
+    @include caret(down);
+  }
+}
+
+.shake-on-hover:hover {
+  -webkit-animation: animate-shake 2s infinite linear;
+  -moz-animation: animate-shake 2s infinite linear;
+  -o-animation: animate-shake 2s infinite linear;
+  animation: animate-shake 2s infinite linear;
+}
+
+.tab-close-button {
+  color: grey;
+  margin-top: 3px;
+  &:hover {
+    transform: scale(1.1);
+    color: #222;
+    font-weight: bold;
+  }
+}
+
+@-webkit-keyframes animate-shake {
+  0% {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  4% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  8%,
+  24% {
+    -webkit-transform: rotate(-18deg);
+    transform: rotate(-18deg);
+  }
+  12%,
+  28% {
+    -webkit-transform: rotate(18deg);
+    transform: rotate(18deg);
+  }
+  16% {
+    -webkit-transform: rotate(-22deg);
+    transform: rotate(-22deg);
+  }
+  20% {
+    -webkit-transform: rotate(22deg);
+    transform: rotate(22deg);
+  }
+  32% {
+    -webkit-transform: rotate(-12deg);
+    transform: rotate(-12deg);
+  }
+  36% {
+    -webkit-transform: rotate(12deg);
+    transform: rotate(12deg);
+  }
+  40%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+@keyframes animate-shake {
+  0% {
+    -webkit-transform: rotate(-15deg);
+    transform: rotate(-15deg);
+  }
+  4% {
+    -webkit-transform: rotate(15deg);
+    transform: rotate(15deg);
+  }
+  8%,
+  24% {
+    -webkit-transform: rotate(-18deg);
+    transform: rotate(-18deg);
+  }
+  12%,
+  28% {
+    -webkit-transform: rotate(18deg);
+    transform: rotate(18deg);
+  }
+  16% {
+    -webkit-transform: rotate(-22deg);
+    transform: rotate(-22deg);
+  }
+  20% {
+    -webkit-transform: rotate(22deg);
+    transform: rotate(22deg);
+  }
+  32% {
+    -webkit-transform: rotate(-12deg);
+    transform: rotate(-12deg);
+  }
+  36% {
+    -webkit-transform: rotate(12deg);
+    transform: rotate(12deg);
+  }
+  40%,
+  100% {
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+  }
+}
+
+.markdown-content-container {
+  table {
+    border-collapse: collapse;
+  }
+  th,
+  td {
+    border: 1px solid #000;
+    padding: 5px;
+  }
+}
+
+// Admin pages use a fixed-bottom Footer (75px tall). Pages with scrolling
+// content should apply this class to their <main> so the last row isn't
+// hidden behind the footer.
+.admin-main {
+  padding-bottom: 100px;
+}

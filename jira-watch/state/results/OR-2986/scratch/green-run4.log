@@ -1,0 +1,47 @@
+[+0.22s] enable flag MEDICATION_FAVORITES 200
+[+0.23s] enable flag MEDICATION_MACROS 200
+[+2.47s] macros: Induction,Antiemetics
+[+2.48s] favorites: Phenylephrine,EPHEDrine IV,Sugammadex
+[+2.52s] case or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442 51874
+[+2.72s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+2.87s] served bundle: static/index.DfTgIkGv.js
+[+2.96s] REQ POST /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874 {"medicationIdentifier":"m-cefazolin","timeZone":"America/New_York"}
+[+3.36s] PASS dropdown: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+7.09s] RES 200 /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874
+[+7.48s] PASS dropdown: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+7.54s] REQ POST /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874 {"medicationIdentifier":"m-phenylephrine","timeZone":"America/New_York"}
+[+7.95s] PASS favorite: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+11.68s] RES 200 /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874
+[+12.07s] PASS favorite: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+12.11s] REQ POST /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874 {"medicationIdentifier":"m-lidocaine-pf-2","timeZone":"America/New_York"}
+[+12.11s] REQ POST /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874 {"medicationIdentifier":"m-fentanyl","timeZone":"America/New_York"}
+[+12.11s] REQ POST /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874 {"medicationIdentifier":"m-propofol","timeZone":"America/New_York"}
+[+12.12s] REQ POST /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874 {"medicationIdentifier":"m-rocuronium","timeZone":"America/New_York"}
+[+12.21s] RES 200 /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874
+[+12.21s] RES 200 /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874
+[+12.21s] RES 200 /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874
+[+12.24s] RES 200 /api/cds/medication-selection/or2986-dd-fake-3bbcfc23-dae6-4592-8113-d7d9940da442/51874
+[+12.61s] DUMP macro-pending: tabs=[+|Vital Signs Opt-In|CeFAZolin|Phenylephrine|Lidocaine|FentaNYL|Propofol|Rocuronium] alerts=[] activeElement=BUTTON.favorites-sidebar__macro-select-btn
+[+12.61s] FAIL macro: all four placeholder tabs shown while lookups pending :: tabs=true,true,true,true skeletons=0 spinners=0 inFlight=0 resolved=0
+[+19.66s] DUMP macro-resolved: tabs=[+|Vital Signs Opt-In|CeFAZolin|Phenylephrine|Lidocaine|FentaNYL|Propofol|Rocuronium] alerts=[] activeElement=BUTTON.favorites-sidebar__macro-select-btn
+[+19.66s] FAIL macro: placeholders all resolve to dosing forms :: skeletons=0 spinners=0 resolved=0
+[+19.71s] case or2986-scan-fake-45de76dd-7603-4d2c-8b55-167ddbe157be 31475
+[+19.91s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+20.09s] served bundle: static/index.DfTgIkGv.js
+[+20.27s] REQ POST /api/cds/medication-selection/or2986-scan-fake-45de76dd-7603-4d2c-8b55-167ddbe157be/31475 {"barcode":"0143926201","timeZone":"America/New_York"}
+[+20.58s] PASS scan: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+24.38s] RES 200 /api/cds/medication-selection/or2986-scan-fake-45de76dd-7603-4d2c-8b55-167ddbe157be/31475
+[+24.72s] PASS scan: real dosing form replaces placeholder :: tab=true selectedOnResolve=true skeletons=0 spinner=0
+[+24.72s] PASS scan: placeholder title replaced by medication name :: loadingTabs=0
+[+24.83s] DUMP before-negative-404: tabs=[+|Vital Signs Opt-In|CeFAZolin] alerts=[] activeElement=BODY.d-flex
+[+25.03s] REQ POST /api/cds/medication-selection/or2986-scan-fake-45de76dd-7603-4d2c-8b55-167ddbe157be/31475 {"barcode":"OR2986NOSUCHNDC","timeZone":"America/New_York"}
+[+25.34s] PASS negative-404 (pre-response): placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+29.08s] RES 204 /api/cds/medication-selection/or2986-scan-fake-45de76dd-7603-4d2c-8b55-167ddbe157be/31475
+[+40.38s] DUMP negative-404-timeout: tabs=[+|Vital Signs Opt-In|CeFAZolin] alerts=[] activeElement=BODY.d-flex
+[+40.38s] ERROR locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for getByText('Barcode not found. Select medication from dropdown.') to be visible[22m
+
+    at /Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/scratch/drive.js:198:81 {
+  name: 'TimeoutError'
+}

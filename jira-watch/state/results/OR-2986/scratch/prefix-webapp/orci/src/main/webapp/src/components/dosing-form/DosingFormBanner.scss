@@ -1,0 +1,48 @@
+// Styling for antibiotic/medication administration tables in banners
+// Based on OR-1847: condense spacing, dynamic layout, equal padding
+
+.administration-table {
+  display: grid;
+  grid-template-columns: auto auto auto;
+  gap: 0.125rem 2rem; // Minimal row gap, 2rem column gap
+  margin: 0;
+  font-size: inherit;
+  line-height: 1.4;
+
+  tbody {
+    display: contents; // Allow tbody to be transparent to grid
+
+    tr {
+      display: contents; // Allow tr to be transparent to grid
+
+      td {
+        // Grid items - no padding needed, spacing is handled by gap
+        vertical-align: baseline;
+
+        &.name {
+          // First column - medication name
+          grid-column: 1;
+        }
+
+        &.dose-route {
+          // Second column - dose and route
+          grid-column: 2;
+        }
+
+        &.time {
+          // Third column - time
+          grid-column: 3;
+        }
+      }
+    }
+  }
+}
+
+// Container for the warning/info data (matching actual HTML output, no w-/i- prefix)
+.last-local-anesthetic-data,
+.latest-med-info-data {
+  display: block;
+
+  // Ensure consistent padding on left/right
+  border-radius: 0.25rem;
+}

@@ -1,0 +1,13 @@
+Validation of OR-3009 is complete and recorded in session.json with verdict deploy-ready. The git working tree is clean and all scratch work lives outside it.
+
+**What was observed on the running build**
+
+- **Positive.** A 4,000 mg acetaminophen bolus staged 23h45m before the check was excluded from the running total. The scan alert, the warning, and the save alert all abstained, with the log reporting a cumulative dose of 0 mg.
+- **Negative.** The same bolus at 23h15m was counted. The scan alert and warning fired at 4,000 mg, and a 3,500 mg prior dose plus a 1,000 mg dose check fired the save alert.
+- **Boundary.** A dose at 23h29m counted and a dose at 23h31m did not.
+- **Red check.** The parent commit's calculator class, with the plain 24-hour window, was compiled in the container and swapped into the app. The 23h45m scenario then fired the scan alert. The shipped class was restored, the checksum matched, and the same scenario abstained again.
+- **Early redose.** The 15-minute buffer in the ticket table already existed before this PR. It was confirmed at runtime but shipped no change under this ticket.
+
+**Caveats recorded.** Only the adult tier was exercised, through the API endpoints the UI calls rather than the browser. Ketorolac shares the changed base class and was not run. Ship risk is marked none.
+
+**Automation.** Unit tests in the PR cover the boundary. Four browser-free qa-suite tests through the selection and dose endpoints are proposed in the session file.

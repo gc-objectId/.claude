@@ -77,6 +77,12 @@ case "$_status" in
     *) log "${ticket} is '${_status}', not a validate-mode status — not starting"; exit 9 ;;
 esac
 
+# A sweep's queue is already inside xargs, so halting one means each later runner declining to start.
+if [ -f "${LOOP_HOME}/state/halt" ]; then
+    log "${ticket}: sweep halted ($(cat "${LOOP_HOME}/state/halt" 2>/dev/null)) — not starting"
+    exit 0
+fi
+
 run_id="$ticket"
 run_dir="${RESULTS}/${run_id}"
 mkdir -p "$run_dir"
@@ -328,6 +334,34 @@ while kill -0 "$session_pid" 2>/dev/null; do
     sleep 15
 done
 log "session finished after ~${waited}s"
+
+# Only ever called when the session produced nothing: putting a ticket back is safe exactly when
+# this run is provably the only thing that touched it.
+unclaim() {
+    _now_status=$(jira_issue_status "$ticket" 2>/dev/null || true)
+    _now_comments=$(jira_comment_count "$ticket" 2>/dev/null || echo -1)
+    if [ "$_now_status" != "$expected_status" ] || [ "$_now_comments" != "$baseline_comments" ]; then
+        log "${ticket} changed since pickup (status '${_now_status}', comments ${_now_comments}) — leaving it alone"
+        return 0
+    fi
+    [ -n "$commit" ] || { log "${ticket}: dry run, not releasing"; return 0; }
+    jira_transition_to "$ticket" 'Ready for Testing' &&
+        log "${ticket} released back to Ready for Testing" ||
+        log "${ticket}: could not transition back"
+    jira_assign "$ticket" null >/dev/null 2>&1 && log "${ticket} unassigned" || true
+}
+
+# The limit kills every later session too, so one ticket's failure must stop the sweep.
+if [ ! -f "$session_json" ] &&
+   grep -qiE "hit your (session|usage) limit|usage limit reached|rate limit" "${run_dir}/session.log" 2>/dev/null; then
+    _reset=$(grep -oiE 'resets [^·]*' "${run_dir}/session.log" 2>/dev/null | head -1 | sed 's/[[:space:]]*$//')
+    log "usage limit reached (${_reset:-no reset time reported}) — halting the sweep"
+    unclaim
+    printf 'usage limit, %s\n' "${_reset:-reset time unknown}" >"${LOOP_HOME}/state/halt"
+    record usage_limit "Claude usage limit; ${_reset:-reset time unknown}; ticket released, nothing validated"
+    "${CLAUDE_BIN}/env-down.sh" "$run_id" --keep-log >/dev/null 2>&1 || true
+    exit 0
+fi
 
 # The session should have touched neither the primary checkout nor the remote.
 _dirty=$(git -C "$ORCI_ROOT_CHECK" status --porcelain 2>/dev/null | wc -l | tr -d ' ')

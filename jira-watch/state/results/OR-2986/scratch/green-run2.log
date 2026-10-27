@@ -1,0 +1,19 @@
+[+0.27s] enable flag MEDICATION_FAVORITES 200
+[+0.29s] enable flag MEDICATION_MACROS 200
+[+2.90s] macros: Induction,Antiemetics
+[+2.94s] favorites: Phenylephrine,EPHEDrine IV,Sugammadex
+[+3.00s] case or2986-dd-fake-0ee353c9-f6c3-4b2e-9b3b-ba4a54a0df23 92427
+[+3.24s] browser console error: Failed to load resource: the server responded with a status of 403 ()
+[+3.49s] served bundle: static/index.DfTgIkGv.js
+[+3.98s] PASS dropdown: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+8.58s] PASS dropdown: real dosing form replaces placeholder :: tab=true skeletons=0 spinner=0
+[+9.04s] PASS favorite: placeholder tab shown while lookup pending :: tab=true skeletons=1 spinner=1 lookupResolved=false
+[+24.04s] ERROR locator.waitFor: Timeout 15000ms exceeded.
+Call log:
+[2m  - waiting for getByTestId('dose-button-container').first() to be visible[22m
+[2m    35 × locator resolved to hidden <div data-testid="dose-button-container" class="ms-3 dose-button-container ">…</div>[22m
+
+    at observeResolved (/Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/scratch/drive.js:106:32)
+    at /Users/ryanducharme/.claude/jira-watch/state/results/OR-2986/scratch/drive.js:148:11 {
+  name: 'TimeoutError'
+}

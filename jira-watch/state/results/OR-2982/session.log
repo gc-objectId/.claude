@@ -1,0 +1,11 @@
+Validation of OR-2982 is complete and the session file is written.
+
+**Verdict: deploy-ready.** The IBW fix was exercised end to end against the running app on the demo tenant, through the medication-selection API and the rule engine logs.
+
+- **Positive:** a 56-inch woman now yields an IBW of 36.3 kg. The lidocaine max dose and the ketorolac CrCl warning both follow that value. A 56-inch man yields 40.8 kg.
+- **Negative:** a 64-inch woman still yields 54.7 kg, so heights at or above 60 inches are unchanged. A 38-inch woman gets no IBW, and the CrCl rules abstain with "unknown ideal weight" rather than producing a negative value.
+- **Red check:** the parent commit's calculator class was compiled inside the container and shadowed the shipped jar. The 56-inch woman then read 54.7 kg, the 38-inch woman read 96.1 kg, and the ketorolac CrCl warning stopped firing. The shadow class was removed, the jar checksum verified unchanged, and the correct values returned after restart.
+
+The signature line `idealWeight=96.1 kg, actualWeight=30 kg` appears in the app log only during the red check. No blockers. Ship risk is none. The worktree is clean and all scratch work lives under the results directory.
+
+Three supplemental qa-suite tests are proposed in the session file for a short-adult scenario, since existing e2e coverage only stages pediatric or normal-height patients.

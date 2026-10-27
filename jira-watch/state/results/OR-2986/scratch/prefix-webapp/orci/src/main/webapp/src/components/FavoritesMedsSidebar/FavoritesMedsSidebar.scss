@@ -1,0 +1,143 @@
+.favorites-sidebar {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  height: 100%;
+  flex-shrink: 0;
+
+  &__toggle {
+    background: white;
+    border: 1px solid #dee2e6;
+    border-right: none;
+    border-radius: 4px 0 0 4px;
+    padding: 10px 6px;
+    margin-top: 12px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.12);
+    color: #6c757d;
+
+    &:hover {
+      color: #0d6efd;
+      background: #f8f9fa;
+    }
+
+    .favorites-sidebar__toggle-label {
+      writing-mode: vertical-rl;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: inherit;
+    }
+  }
+
+  &__panel {
+    background: white;
+    border-left: 1px solid #dee2e6;
+    width: 240px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+  }
+
+  &__header {
+    padding: 10px 12px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: 1px solid #dee2e6;
+    color: #495057;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__edit-btn {
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    color: #adb5bd;
+    display: flex;
+    align-items: center;
+
+    &:hover {
+      color: #0d6efd;
+    }
+  }
+
+  &__list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    overflow-y: auto;
+    flex: 1;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    border-bottom: 1px solid #f0f0f0;
+
+    &:hover {
+      background-color: #f8f9fa;
+    }
+  }
+
+  &__select-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex: 1;
+    background: none;
+    border: none;
+    padding: 8px 0;
+    cursor: pointer;
+    text-align: left;
+    min-width: 0;
+  }
+
+  &__med-icon {
+    width: 15px;
+    height: 20px;
+    flex-shrink: 0;
+    border: 1px solid #c4c4c4;
+    background-size: 145px;
+    background-position: left center;
+  }
+
+  &__med-name {
+    flex: 1;
+    font-size: 0.85rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #212529;
+  }
+
+  &__remove-btn {
+    background: none;
+    border: none;
+    padding: 2px 4px;
+    cursor: pointer;
+    color: #adb5bd;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+
+    &:hover {
+      color: #dc3545;
+    }
+  }
+
+  &__empty {
+    padding: 16px 12px;
+    font-size: 0.8rem;
+    color: #6c757d;
+    text-align: center;
+  }
+}

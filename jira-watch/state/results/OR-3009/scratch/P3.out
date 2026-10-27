@@ -1,0 +1,6 @@
+{"label":"P3","pmrn":"or3009-P3-fake-406a1657-9b8e-4665-850e-7496dfdfffe1","caseId":"98378","patientUuid":"01a178d4-9224-7edb-86fc-7f96128842a4","operationId":"01a178d4-9233-78b6-a32b-61245089fd4b","bolusStatus":200,"priorAdmin":[{"id":"m-acetaminophen-iv","dose":4000,"units":"mg","at":"2026-10-25T15:38:19.418+00:00"}]}
+evicted: 1
+evaluatedAt 2026-10-26T15:29:19.630Z offsetFromPriorAdmin(min) 1431.0
+SELECTION 200 []
+selection keys context,results,dosingFormState,trackingTabId,restoredTab,needsAction trackingTabId 01a178d4-9318-779d-8c30-61f3ed5d9910
+DOSE 200 []
