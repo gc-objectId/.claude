@@ -348,7 +348,7 @@ unclaim() {
     jira_transition_to "$ticket" 'Ready for Testing' &&
         log "${ticket} released back to Ready for Testing" ||
         log "${ticket}: could not transition back"
-    jira_assign "$ticket" null >/dev/null 2>&1 && log "${ticket} unassigned" || true
+    jira_unassign "$ticket" >/dev/null 2>&1 && log "${ticket} unassigned" || log "${ticket}: could not unassign"
 }
 
 # The limit kills every later session too, so one ticket's failure must stop the sweep.

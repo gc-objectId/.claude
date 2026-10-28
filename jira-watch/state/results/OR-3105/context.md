@@ -22,3 +22,10 @@ h3. Acceptance criteria
 ## Comments (0)
 
 (none)
+
+## Previous automated runs of this ticket
+
+- 2026-10-27T14:00:33Z  usage_limit: Claude usage limit; ticket released, nothing validated
+
+Treat these as work already done. Do not repeat a settled conclusion; if a
+previous run was blocked, start from that blocker rather than from scratch.

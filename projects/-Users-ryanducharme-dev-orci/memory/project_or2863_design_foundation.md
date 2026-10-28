@@ -479,3 +479,14 @@ the PMRN/MRN/DOB facts to `max-height: 1lh` before masking (f1b475073, baselines
 (0f62ea2e6, no webapp/visual changes). #4727 on cae5d2576: PR gate QA 152/152 + visual 40/40, CI Build pass, MERGEABLE;
 review-gate pending a human approval. Background watcher scripts must avoid `mapfile` (macOS bash 3.2) and unquoted zsh
 word splitting.
+**2026-10-27: second claude[bot] round (5 findings on f1b475073/cae5d2576), all approved by Ryan.** 9ed5e1beb empty-table
+rows name the filter only when one is set (medications, allergy reactions, patients, feature flags; allergy table hidden
+under its load error). 3938fed56 SimulationController + MedicationsController → `@RequiredArgsConstructor`; SimulationController's
+`tenantService` deliberately left non-final (never injected → OR-3087's create-alert NPE stays OR-3087's decision; ticket
+text updated). 837124b64 R24: demo case renamed, EHR case asserts `EhrRecordNotResolvedException` propagates with the
+case message (an EHR miss is a 500 by design, front-door R55); OR-3094's matching bullet removed. aa86065bf cascade-diff:
+paren/bracket-aware rightmost compound, class-less compounds may share unless tag or pseudo-element differs, !important-vs-
+normal conflicts aren't flips; report vs main 337 → 402 (extra mostly `.carousel-indicators [data-bs-target]`). Mayo
+unknown case (opens with empty details; MGB faults) is a gap, not a variant → OR-3120 under OR-3054 (decide whether a
+launch can precede its SIU). f7a9e3931: VIS-035 flaked on the overlay `.modal-title` mask width (name + generated case id);
+`openInCaseOverlay` now pins the title to 24rem nowrap for VIS-030/031/034/035. Main merged (782c9e050).

@@ -1,0 +1,25 @@
+{
+  "verdict": "inconclusive",
+  "evidence": {
+    "positive": "Not performed against the running app. The merged change (PR #4763, commit 7a599e089) adds six lines to REVIEW.md, the contract read by the Claude Code Review workflow (.github/workflows/claude-code-review.yml, prompt '/guided:review <pr-url> --comment'). The app instance at localhost:53884 has no code path that reads REVIEW.md, so no request, UI state, or log line can show the rule in effect.",
+    "negative": "Not performed. The inverse case (a finding whose fix spans files or leaves a choice to the author still being posted as a suggestion block) can only be observed on a real GitHub PR review run, which this environment cannot trigger.",
+    "red_check": "Not performed. No app-level condition exists to flip; inventing one would not reflect the ticket. Confirmed only that REVIEW.md on main contains the rule text verbatim (lines 7-11) and that PR #4778 (merged 2026-10-26) switched the workflow to review with the plugin from main, so the rule is live for any PR reviewed since then."
+  },
+  "red_check_signature": "",
+  "blockers": [
+    "This ticket changes REVIEW.md, the prompt contract for the GitHub Claude Code Review workflow; validating it needs a real review run on a PR, not the local app.",
+    "Positive check to do by hand: on a PR reviewed after 2026-10-26, find a Claude finding whose fix is a single contiguous in-hunk replacement and confirm it uses a suggestion block.",
+    "Negative check to do by hand: on a PR reviewed after 2026-10-26, find a Claude finding whose fix spans files or lines outside the hunk, or offers the author a choice, and confirm it is prose or a fenced code block rather than a suggestion block.",
+    "Red check to do by hand: open a throwaway PR with a deliberate cross-file defect (for example, a renamed method whose callers in another file are not updated), let the review run, and confirm the finding does not arrive as a suggestion block."
+  ],
+  "ship_risk": "material",
+  "caveats": [
+    "The entire deliverable (a review-prompt rule) was unreachable in this environment; nothing was exercised at runtime.",
+    "Whether the review model actually honours the rule is only observable across real PR reviews over time, not a single run."
+  ],
+  "automation": {
+    "assessment": "No automated coverage exists or is practical for a natural-language review-prompt rule; the review transcript artifact (claude-review-transcript) uploaded by the workflow is the only place its effect can be audited. Not worth a qa-suite or JUnit test.",
+    "proposed_tests": []
+  },
+  "jira_comment": "Verdict: inconclusive.\n\nPositive: Not run; the change is a rule in REVIEW.md that only the GitHub Claude Code Review workflow reads, and the local app has no surface for it.\nNegative: Not run, for the same reason.\nRed check: Not possible locally; confirming the rule needs a real PR review run with a cross-file finding.\n\nAutomation: Nothing to lock in; the review transcript artifact on each PR run is the audit trail."
+}

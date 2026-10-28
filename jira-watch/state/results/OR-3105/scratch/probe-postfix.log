@@ -1,0 +1,13 @@
+admin login 200
+
+== first launch (login -> home mounts AppLaunch, preload fires): server /audio/** request count 4 -> 4 (delta 0); browser saw 0 medication audio responses
+
+== second launch (page.goto home again, same release URL): server /audio/** request count 4 -> 4 (delta 0); browser saw 0 medication audio responses
+
+== reload (page.reload): server /audio/** request count 4 -> 4 (delta 0); browser saw 0 medication audio responses
+
+== new release URL (?v=deadbeef0 via fetch from the app page): server /audio/** request count 4 -> 5 (delta 1); browser saw 1 medication audio responses
+   {"url":"/audio/medications/m-lidocaine.mp3?v=deadbeef0","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+
+== same new release URL fetched again: server /audio/** request count 5 -> 5 (delta 0); browser saw 1 medication audio responses
+   {"url":"/audio/medications/m-lidocaine.mp3?v=deadbeef0","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}

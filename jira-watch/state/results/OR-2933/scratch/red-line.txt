@@ -1,0 +1,1 @@
+2026-10-27T20:36:56.707Z DEBUG 1 --- [mcat-handler-10] -/- demo-demo -admin- 01a17f14-8ddf-7ecc-b613-c4881554c518 01a17f14-8e2e-77c1-b611-bb48da4a837a com.guided.orci.engine.RuleEngine        : Rule evaluated: a-known-procedure-wrong-antibiotic -> true null

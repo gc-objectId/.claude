@@ -169,6 +169,10 @@ is the reference; `~/.claude/jira-watch/README.md` has the detail.
   proposals into a draft PR — curation is a conversation (declining is how I steer), then only the
   kept proposals get written, run, gated on test-paths-only, and pushed as a draft. A closed ticket
   whose proposals were never collected is a loss, not a win.
+- **A Claude usage limit halts the sweep rather than burning it.** The runner spots the limit in the
+  session log, releases the ticket it had claimed (only if nothing changed since pickup), records
+  `usage_limit`, and writes `state/halt` so later runners decline to start. Those tickets re-offer
+  themselves after the reset; a new sweep clears the halt.
 - **A sweep cannot be reprioritised once started** — its ticket list goes into `xargs` at launch.
   When something becomes urgent mid-sweep, `loopcmd now OR-XXXX` runs it beside the sweep; it
   refuses past three concurrent runs, because the Docker VM is the ceiling.

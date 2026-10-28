@@ -153,3 +153,10 @@ jira_comment_bodies() {
     _jira_curl "${JIRA_BASE}/rest/api/2/issue/$1?fields=comment" |
         jq -r '.fields.comment.comments[]?.body | gsub("\\s+"; " ")'
 }
+
+# accountId must be JSON null, not the string "null", or Jira rejects the request.
+jira_unassign() {
+    _jira_curl -o /dev/null -X PUT -H 'Content-Type: application/json' \
+        --data '{"accountId": null}' \
+        "${JIRA_BASE}/rest/api/3/issue/$1/assignee"
+}

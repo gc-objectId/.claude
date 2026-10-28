@@ -1,1 +1,9 @@
-You've hit your session limit · resets 2:40pm (America/New_York)
+Validation of OR-3059 is complete and recorded in `session.json` with verdict `deploy-ready`. The worktree is clean; all scratch work stayed under the results directory.
+
+**What was validated.** The ticket's PR removes the Mayo room `RM OR BEDSIDE ROMB 01` from every Mayo analytics report by adding an `excluded_rooms` list to the room view and filtering it in `mayo_operations`.
+
+- **Positive.** A bedside ROMB 01 case ingested through the app's HL7 path was flagged `excluded=t` and dropped from `mayo_operations`, the metric cohort, and the lifetime counts after running the shipped views SQL on the app's database.
+- **Negative.** A normal Saint Marys OR case and a ROEI bedside case stayed in every view and were the two operations counted. The cardiac room stayed excluded as before.
+- **Red check.** Swapping in the parent commit's views SQL while ingesting a second bedside case made both bedside cases appear and raised the count from 2 to 4. Re-running the shipped SQL removed them again. The log signature is the red-check ingest's control id, present only from that step.
+
+**Caveats recorded.** The container runs Postgres 14.5, so the file's two `NULLS NOT DISTINCT` unique indexes failed there. That syntax predates this ticket and all views above it were created. Metabase was not reached; the SQL ran via psql with the date variables substituted. There is no automated coverage for the analytics SQL, so a Testcontainers fixture asserting room flags and cohort membership for the four room shapes is proposed in `automation`.

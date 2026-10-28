@@ -1,1 +1,3 @@
-You've hit your session limit · resets 2:40pm (America/New_York)
+Verdict recorded as `inconclusive` in `session.json`.
+
+OR-3110 adds a six-line rule to `REVIEW.md` (merged as PR #4763) that governs when the GitHub Claude Code Review workflow may post a suggestion block. Nothing in the running app reads that file, so there was no positive, negative, or red check to perform at runtime, and I did not invent one. The blockers tell Ryan exactly how to confirm it by hand: on PRs reviewed after 2026-10-26, when PR #4778 pointed the workflow at the plugin from main, check that an in-hunk fix arrives as a suggestion block and a cross-file or choice-laden fix arrives as prose or a fenced code block. Ship risk is marked material because the whole deliverable was unreachable here, and no automation is proposed since the review transcript artifact is the only audit trail.

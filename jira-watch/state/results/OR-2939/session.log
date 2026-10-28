@@ -1,0 +1,9 @@
+Validation of OR-2939 is complete and `session.json` is written with verdict `deploy-ready`.
+
+**What was established against the running build**
+
+- **Positive.** The rule registry lists 113 rules with no `w-mrsa-infection-status`. A cefazolin selection for an MRSA-positive demo patient on the cefazolin pathway returned only the default-dose warning, and the case's fired and not-fired evaluation rows contain no trace of the retired rule.
+- **Negative.** The same case still gets an MRSA-adjusted first step of cefazolin plus vancomycin from the OR-2933 pathway. A patient with a later negative result gets plain cefazolin. Selecting ertapenem fires the wrong-antibiotic alert carrying the reassigned MRSA citation.
+- **Red check.** The deleted rule class was compiled from the parent commit inside the container, dropped into `/app/classes`, and the container restarted. The identical selection then fired the retired warning with its "MRSA positive on 10/26/2026" text. The class was removed, the container restarted, and the absence re-confirmed. The signature line appears exactly once in the container log, during the red window.
+
+**Caveats recorded.** API-level only, demo tenant only, and the red check left a catalog row and feature-flag row in this disposable database. Ship risk is marked `none`. Three supplemental qa-suite API tests are proposed in the `automation` field. Nothing was written inside the worktree and git status is clean.

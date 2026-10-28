@@ -1,0 +1,42 @@
+admin login 200
+
+== [postfix] login
+   server-side /audio/** request count 5 -> 5 (delta 0)
+   browser: {"total":0,"network":0,"diskCache":0,"memCache":0,"statuses":[],"cacheControl":[]}
+   page url: /
+
+== [postfix] first app-launch (AppLaunch mounts, preloadCommonMedicationAudioAnnouncements fires)
+   server-side /audio/** request count 5 -> 15 (delta 10)
+   browser: {"total":10,"network":10,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["max-age=2592000, immutable"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+    {"url":"/audio/medications/m-propofol.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+    {"url":"/audio/medications/m-rocuronium.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+
+== [postfix] second app-launch (page.goto same URL, same release)
+   server-side /audio/** request count 15 -> 15 (delta 0)
+   browser: {"total":10,"network":0,"diskCache":10,"memCache":0,"statuses":[200],"cacheControl":["max-age=2592000, immutable"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=10f82fe08","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+    {"url":"/audio/medications/m-fentanyl.mp3?v=10f82fe08","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+    {"url":"/audio/medications/m-propofol.mp3?v=10f82fe08","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+
+== [postfix] reload of app-launch (page.reload)
+   server-side /audio/** request count 15 -> 15 (delta 0)
+   browser: {"total":10,"network":0,"diskCache":10,"memCache":0,"statuses":[200],"cacheControl":["max-age=2592000, immutable"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=10f82fe08","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+    {"url":"/audio/medications/m-fentanyl.mp3?v=10f82fe08","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+    {"url":"/audio/medications/m-propofol.mp3?v=10f82fe08","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+
+== [postfix] new release URL (?v=deadbeef0) fetched from the app page
+   server-side /audio/** request count 15 -> 16 (delta 1)
+   browser: {"total":1,"network":1,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["max-age=2592000, immutable"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=deadbeef0","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}
+
+== [postfix] same new release URL fetched again
+   server-side /audio/** request count 16 -> 16 (delta 0)
+   browser: {"total":1,"network":0,"diskCache":1,"memCache":0,"statuses":[200],"cacheControl":["max-age=2592000, immutable"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=deadbeef0","status":200,"fromDiskCache":true,"fromMemoryCache":false,"cc":"max-age=2592000, immutable"}

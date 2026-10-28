@@ -1,0 +1,365 @@
+spring:
+  http:
+    converters:
+      preferred-json-mapper: jackson2
+  autoconfigure:
+    exclude: org.springframework.boot.quartz.autoconfigure.QuartzEndpointAutoConfiguration
+  web:
+    error:
+      include-message: always
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            clientId: "1ldhcd2n5ki3qsda6ovtjgrtit"
+            clientSecret: ENC(7tSg8CkJydbQ9u8vt5O1jmVPkcRUUmsQstq3Xx455OBmgAmYLXZFMQ8WPgZuPaPVT2PBT/GEb1LchkDELCiLAy/BpcF/hmL0MmVJqZ8dE1cs2Z7xIOrsEf++DRZ4hELP)
+            scope: openid
+            redirect-uri: http://localhost:8080/login/oauth2/code/cognito
+            clientName: orci-backend
+        provider:
+          cognito:
+            issuerUri: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_zbO8xrlzJ
+            user-name-attribute: username
+  session:
+    redis:
+      repository-type: indexed
+
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari-primary:
+      minimum-idle: 2
+      maximum-pool-size: 10
+      connection-timeout: 20000
+      idle-timeout: 120000
+      keepalive-time: 30000
+      max-lifetime: 1740000
+      auto-commit: false
+      poolName: Hikari Primary
+      register-mbeans: true
+      leak-detection-threshold: 15000
+      connection-init-sql: "SET application_name = 'orci-primary'; SET idle_in_transaction_session_timeout = '60s'"
+    hikari-quartz:
+      minimum-idle: 1
+      maximum-pool-size: 5
+      connection-timeout: 20000
+      idle-timeout: 120000
+      keepalive-time: 30000
+      max-lifetime: 1740000
+      auto-commit: true
+      poolName: Hikari Quartz
+      register-mbeans: true
+      leak-detection-threshold: 15000
+      connection-init-sql: "SET application_name = 'orci-quartz'; SET idle_in_transaction_session_timeout = '120s'"
+    username: orci
+    url: jdbc:postgresql://localhost:5432/orci
+    #driverClassName: org.postgresql.Driver
+    password: ENC(KNwVotROcv/0dsoVEcyHLc0vrPUujsDpz8H9NkGJQf93xGMTYj9RJvS5Pu3fReHI)
+    #platform: postgres
+  jpa:
+    open-in-view: false
+    generate-ddl: false
+    hibernate:
+      ddl-auto: none
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    show-sql: false
+    properties:
+      org.hibernate.format_sql: true
+      hibernate.connection.provider_disables_autocommit: true
+      hibernate.cache.region.factory_class: jcache
+      hibernate.javax.cache.provider: org.ehcache.jsr107.EhcacheCachingProvider
+      hibernate.cache.use_second_level_cache: true
+      hibernate.cache.use_query_cache: true
+      #      hibernate.cache.region.factory_class: org.hibernate.cache.ehcache.EhCacheRegionFactory
+      hibernate.generate_statistics: false
+      hibernate.jdbc.batch_size: 50
+      # Ordering is what lets batching actually group statements per table.
+      hibernate.order_inserts: true
+      hibernate.order_updates: true
+      #      hibernate.enable_lazy_load_no_trans: true
+      # Do not set hibernate.default_schema if we want to use schema per tenant
+      # hibernate.default_schema: public
+      # Dead key (the real one is hibernate.jdbc.time_zone); fixing it changes every timestamp bind.
+      jdbc.time_zone: UTC
+  #      javax.persistence.schema-generation.scripts.action: create
+  #      javax.persistence.schema-generation.scripts.create-target: target/sql.sql
+
+  data:
+    redis:
+      host: localhost
+      password: ENC(QXDW4PPjDr5WT1Sel8sNh3CCpOkrRhlMuXTbkvIVxJl23hGHJdQ5upnItdQN+SxM)
+      ssl:
+        enabled: false
+      port: 6379
+      client-type: lettuce
+  liquibase:
+    #    change-log: classpath:db/changelog/db.changelog-master.xml
+    enabled: false
+    dropFirst: false
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      # TODO make this never after we release - may want an application-local.yml
+      initialize-schema: never
+
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceId: AUTO
+            wrapJobExecutionInUserTransaction: false
+            batchTriggerAcquisitionFireAheadTimeWindow: 1000
+            batchTriggerAcquisitionMaxCount: 10
+          threadPool:
+          jobStore:
+            isClustered: true
+            useProperties: false
+            tablePrefix: public.qrtz_
+            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+            misfireThreshold: 10000
+            dontSetAutoCommitFalse: false
+            # this must be true if batchTriggerAcquisitionMaxCount > 1
+            acquireTriggersWithinLock: true
+  threads:
+    virtual:
+      enabled: true
+  output:
+    ansi:
+      enabled: detect
+  servlet:
+    multipart:
+      max-request-size: 10MB
+      max-file-size: 10MB
+  mail:
+    #    host: email-smtp.us-east-2.amazonaws.com
+    #    username: AKIA5PMW7TQY62BYVMWQ
+    #    password:
+    port:
+    properties:
+      "[mail.smtp.connectiontimeout]": 5000
+      "[mail.smtp.timeout]": 3000
+      "[mail.smtp.writetimeout]": 5000
+server:
+  compression:
+    enabled: true
+    mime-types: text/html,text/css,text/javascript,application/javascript
+  servlet:
+    session:
+      timeout: 6h
+
+internal-notifications:
+  notification-addresses:
+    - guidedorfeedback@guidedclinical.com
+
+multitenancy.enabled: true
+
+liquibase:
+  analytics:
+    enabled: false
+
+cache.enabled: false
+
+rules.medication-selection.save-mode: ALL
+rules.medication-dosing.save-mode: ALL
+rules.app-launch.save-mode: ALL
+rules.scheduled.save-mode: ALL
+rules.timer.save-mode: ALL
+rules.event.save-mode: ALL
+
+cors:
+  allowed-origins: http://localhost:8080
+
+api:
+  url: http://localhost:8080
+
+jasypt:
+  encryptor:
+    password: ${JASYPT_ENCRYPTOR_PASSWORD:dGZ*4r^8yq5D}
+
+secret:
+  mgh-epic-pre-shared-key: ENC(qpsZmpeIl2LvoPm9dRiVZvH1kzfWfkbD4WpdJa26+GgbkFW2fl+2kKeZRGrxcCIw)
+
+fdb:
+  clientId: 2232
+  secret: ENC(UHHHsW1yNa40x/Nd8u8yp2cdwAkinf5Ic3huWBfzZK+7q2r8kua33gqIvY506h3oH4WCyi2mgh5O8arXzdpS5vBIBupGqTGrwmevsfX1g3I=)
+
+mgb.launch.enabled: true
+
+integration:
+  mgb:
+    patient-info:
+      max-inflight: 40
+
+tenants:
+  initialize: true
+  mayo:
+    enabled: false
+    fhir-r4-server-base-url: https://test-tls.mcc.apix.mayo.edu/epic-api/api/FHIR/R4
+    oauth-token-endpoint: https://test-tls.mcc.apix.mayo.edu/epic-api/oauth2/token
+    oauth-client-id: ""
+  demo:
+    timer-job-enabled: false
+    vital-signs: opt_in
+    pediatric-age-threshold: 22
+  mgb:
+    timer-job-enabled: true
+    vital-signs: always_disabled
+    service-account:
+      username: ENC(u/VrBwywqtBSnvdReYRVgWx1ilZjoE4etfCmZX9R4iEnP0vg8+i9mIqXd1kCF5qd)
+      password: ENC(NPNvmKlA/eYpu8bLax5wWZKVthdJwsPSRWfUOG9MI0IUt+afax6R1RtwXJ2kyQO0)
+      client-id: ENC(jb4cvrZirLcbf481Du/e6cNjjr6dy+AjKXUNrKE/iRBir4eQo49js9J+hzwycIEq+/vH6caf/+DNlud6atyvt60GS1/G/SG9tv9+PLmWZco=)
+    background:
+      user-id: ENC(QS7Rx4kuXkqH8l3DnyaIw8aN0xsc3Bc1+nJOg9brhKACN8sN/w3xERa0AXFZn9b2)
+      user-type: External
+    fhir:
+      condition: R4
+      creatinine: R4
+      laboratory: R4
+      height: R4
+      weight: R4
+      blood-pressure: R4
+      patient: R4
+      # no R4 for medication statement
+      medication-statement: DSTU2
+      allergy: R4
+
+hl7:
+  outbound:
+    medication-administration:
+      host: localhost
+      port: 12345
+      useTLS: false
+      dryRun: true
+
+admin.password: admin
+#client:
+#  integration:
+#    fhir:
+#      patient:
+#        version: R4
+#      medication-order:
+#        version: R4
+
+logging:
+  #  config: classpath:logback-spring.xml
+  pattern:
+    # trace_id/span_id are the MDC keys written by the OpenTelemetry java agent's logback
+    # instrumentation. They are the same W3C ids Sentry and X-Ray record, so a log line can be
+    # joined to a trace in either system.
+    console: "%clr(%d{yyyy-MM-dd'T'HH:mm:ss.SSSXXX}){faint} %clr(%5p) %clr(${PID:--}){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%X{trace_id:--}){blue}/%clr(%X{span_id:--}){cyan} %clr(%X{TENANT_ID:--}){blue} %clr(%X{USER_ID:--}){blue} %clr(%X{PATIENT_ID:--}){yellow} %clr(%X{OPERATION_ID:--}){green} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n%wEx"
+  level:
+    ROOT: WARN
+    com.guided.orci: DEBUG
+    org.springframework: WARN
+    #    org.springframework.security: DEBUG
+    com.vladmihalcea.flexypool: INFO
+    com.zaxxer: WARN
+    ca.uhn.fhir.parser.LenientErrorHandler: ERROR
+    # HAPI re-reports every interceptor exception at ERROR with a full framework stack. Our only FHIR
+    # interceptor is EpicOAuthInterceptor, and its failures are already logged with the client and
+    # endpoint at the token service plus business context at the calling service, so this logger only
+    # ever duplicates. OFF rather than a higher level because logback has nothing above ERROR.
+    ca.uhn.fhir.interceptor.executor.BaseInterceptorService: OFF
+    com.sun.xml.ws: ERROR
+    #    org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: INFO
+    #    org.hibernate.stat: DEBUG
+    org.hibernate.SQL: INFO
+
+    org.hibernate.engine.internal.StatisticalLoggingSessionEventListener: INFO
+    #    org.hibernate.stat: DEBUG
+    # Reflections swallows per-url/per-class scan exceptions at WARN/TRACE instead of
+    # failing the scan; this logger is otherwise silent, so bumping it is the only way
+    # to see a rule class silently dropped from the @RuleDefinition classpath scan.
+    org.reflections.Reflections: TRACE
+    #    org.springframework.jdbc.core.JdbcTemplate: TRACE
+    #    org.springframework.jdbc.core.StatementCreatorUtils: TRACE
+    # change to debug to see SQL
+    net.ttddyy.dsproxy.listener.SLF4JQueryLoggingListener: WARN
+    net.ttddyy.dsproxy: WARN
+
+#    org.hibernate.event.internal.DefaultFlushEntityEventListener: TRACE
+
+#    org.quartz: DEBUG
+#    org.hibernate.SQL: DEBUG
+#    org.hibernate.orm.jdbc.bind: TRACE
+
+#    org.hibernate.type.descriptor.sql.BasicBinder: ERROR
+decorator:
+  datasource:
+    flexy-pool:
+      # FlexyPool observes connection-acquisition latency; it does not resize the pool.
+      # When acquisition is slow the constraint is usually database throughput rather than pool
+      # capacity, and adding connections in that state increases contention instead of
+      # throughput. Pool capacity is therefore sized explicitly per profile rather than grown
+      # on demand. A max-overgrow-pool-size of 0 leaves the increment strategy unregistered.
+      acquisition-strategy:
+        increment-pool:
+          max-overgrow-pool-size: 0
+      threshold:
+        connection:
+          # Log an acquisition only once it is slow enough to matter to a request.
+          acquisition: 1000
+    datasource-proxy:
+      multiline: false
+      slow-query:
+        enable-logging: true
+        log-level: WARN
+        threshold: 1s
+      query:
+        enable-logging: true
+        log-level: DEBUG
+
+management:
+  metrics:
+    distribution:
+      percentiles-histogram:
+        http.server.requests: true
+        hikaricp.connections.acquire: true
+        hikaricp.connections.creation: true
+        hikaricp.connections.usage: true
+      percentiles:
+        hikaricp.connections.acquire: 0.5, 0.95, 0.99
+        hikaricp.connections.creation: 0.5, 0.95, 0.99
+        hikaricp.connections.usage: 0.5, 0.95, 0.99
+  tracing:
+    sampling:
+      probability: 0.1
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+    access:
+      default: unrestricted
+  # Enable health endpoints for Kubernetes probes
+  endpoint:
+    health:
+      probes:
+        enabled: true
+      show-components: always
+
+  health:
+    defaults:
+      enabled: false
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+    redis:
+      enabled: true
+    db:
+      enabled: true
+
+sentry:
+  dsn: ${SENTRY_DSN:https://ab679896bf6c86ba63f713dacda8c7e6@o4508852193525760.ingest.us.sentry.io/4509033219096576}
+  traces-sample-rate: 0.1
+  environment: localhost
+  enabled: false # disable sentry for localhost
+  ignored-exceptions-for-type: org.springframework.security.web.firewall.RequestRejectedException
+  logging:
+    enabled: false
+
+springdoc:
+  api-docs:
+    enabled: true
+  swagger-ui:
+    enabled: false

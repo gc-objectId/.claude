@@ -1,0 +1,42 @@
+admin login 200
+
+== [prefix] login
+   server-side /audio/** request count metrics http 404 -> metrics http 404 (delta NaN)
+   browser: {"total":0,"network":0,"diskCache":0,"memCache":0,"statuses":[],"cacheControl":[]}
+   page url: /
+
+== [prefix] first app-launch (AppLaunch mounts, preloadCommonMedicationAudioAnnouncements fires)
+   server-side /audio/** request count metrics http 404 -> metrics http 404 (delta NaN)
+   browser: {"total":10,"network":10,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["no-cache, no-store, max-age=0, must-revalidate"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+    {"url":"/audio/medications/m-propofol.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+    {"url":"/audio/medications/m-rocuronium.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+
+== [prefix] second app-launch (page.goto same URL, same release)
+   server-side /audio/** request count metrics http 404 -> metrics http 404 (delta NaN)
+   browser: {"total":10,"network":10,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["no-cache, no-store, max-age=0, must-revalidate"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-propofol.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+    {"url":"/audio/medications/m-fentanyl.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+    {"url":"/audio/medications/m-lidocaine.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+
+== [prefix] reload of app-launch (page.reload)
+   server-side /audio/** request count metrics http 404 -> metrics http 404 (delta NaN)
+   browser: {"total":10,"network":10,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["no-cache, no-store, max-age=0, must-revalidate"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-rocuronium.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+    {"url":"/audio/medications/m-propofol.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+    {"url":"/audio/medications/m-lidocaine.mp3?v=10f82fe08","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+
+== [prefix] new release URL (?v=deadbeef0) fetched from the app page
+   server-side /audio/** request count metrics http 404 -> metrics http 404 (delta NaN)
+   browser: {"total":1,"network":1,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["no-cache, no-store, max-age=0, must-revalidate"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=deadbeef0","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}
+
+== [prefix] same new release URL fetched again
+   server-side /audio/** request count metrics http 404 -> metrics http 404 (delta NaN)
+   browser: {"total":1,"network":1,"diskCache":0,"memCache":0,"statuses":[200],"cacheControl":["no-cache, no-store, max-age=0, must-revalidate"]}
+   page url: /app-launch?patient_id=patient-1&case_id=case-3105&client_id=demo-demo&forceLaunch=true
+    {"url":"/audio/medications/m-lidocaine.mp3?v=deadbeef0","status":200,"fromDiskCache":false,"fromMemoryCache":false,"cc":"no-cache, no-store, max-age=0, must-revalidate"}

@@ -1,1 +1,11 @@
-You've hit your session limit · resets 2:40pm (America/New_York)
+Validation of OR-3106 is complete and the result file is written with a deploy-ready verdict.
+
+**What was observed on the running instance**
+
+- **Positive.** The hashed script and stylesheet are served gzipped with the immutable 30-day Cache-Control. In headless Chromium, a second launch loaded all three assets from disk cache with zero bytes transferred. Re-pointing the shell at a new bundle hash between launches caused the next launch to fetch the new file from the network.
+- **Negative.** The shell at index.html and app-launch, favicons, API responses, and a missing asset path all keep Spring Security's no-store headers.
+- **Red check.** A pre-fix-shaped configuration class compiled against the container's Spring jars was swapped in alongside compression disabled in the yml. After restart the bundle came back uncompressed at 2.0 MB with no-store, and the swapped class logged the signature line. Both files were restored, checksums confirmed, and the positive probes passed again.
+
+**Caveats recorded.** The signature is a line emitted by the swapped class since header behaviour has no organic log. The dev ALB or CDN layer was not in the path. Sub-2 KB chunks are served identity-encoded by Spring's default threshold. Ship risk is marked none.
+
+**Automation proposed.** ENV-006 for the stylesheet, ENV-007 for the uncached shell at the smoke level, and a supplemental browser-cache second-launch check. The result file is at `/Users/ryanducharme/.claude/jira-watch/state/results/OR-3106/session.json` and scratch work stayed outside the worktree.

@@ -1,31 +1,31 @@
-# Validation loop review — 2026-10-26 14:25
+# Validation loop review — 2026-10-27 16:17
 
 ## Stranded worktrees
 
 ```
-A run is in progress — refusing to reap anything.
+keep   OR-2863      in use — pid 5774 has its cwd in there
+keep   OR-2901      in use — pid 32440 has its cwd in there
+stranded OR-2914    /Users/ryanducharme/dev/worktrees/OR-2914-ndc-mapping
+keep   OR-2928      2 commits ahead, 0 dirty files — has work in it
+keep   OR-2941      in use — pid 21185 has its cwd in there
+
+1 stranded. Re-run with --apply to clear them.
 ```
 
 ## Digest
 
 ```
-Validation digest — 10 runs since 2026-10-25T18:25:59Z
+Validation digest — 4 runs since 2026-10-26T20:17:29Z
 
 NEEDS YOU — refused by the gate (1)
-  OR-3021  verdict=inconclusive; verdict is 'inconclusive'
+  OR-3110  verdict=inconclusive; verdict is 'inconclusive'
 
-Closed, with stated limits (1)
-  OR-3023  verdict=deploy-ready; posted and transitioned; caveats:
+Closed clean (3)
+  OR-3106  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-3059  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
+  OR-3105  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
 
-Closed clean (6)
-  OR-3020  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2986  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2842  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2982  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-3009  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-  OR-2983  verdict=deploy-ready; posted and transitioned; caveats recorded, none material
-
-Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 OR-2780 OR-2783 OR-2914 OR-2901 OR-2915 
+Skip-listed, not shown above: OR-2603 OR-2691 OR-2775 OR-2777 OR-2799 OR-2780 OR-2783 OR-2914 OR-2901 OR-2915 OR-3021 
 
 WHAT TO DO NEXT
   1 ticket(s) need a decision from you.
@@ -39,36 +39,37 @@ WHAT TO DO NEXT
 
 ## Tickets needing a decision
 
-### OR-3021
+### OR-3110
 
 ```
-=== OR-3021 ===
+=== OR-3110 ===
 
 disposition : refused
 detail      : verdict=inconclusive; verdict is 'inconclusive'
-ran at      : 2026-10-26T15:32:41Z
+ran at      : 2026-10-27T14:17:21Z
 verdict     : inconclusive
-built from  : 00f60b29d62ec1d1953976a0f97c815aa57c818a
+built from  : 10f82fe08b0090d52349e70e3a7c502939232595
 
 blockers:
-  - This ticket changes only .github/workflows action pins; it has no behaviour in the local app, so the loop's app-log red check cannot be satisfied. Close by hand if the CI evidence below is accepted.
-  - Is the GitHub evidence sufficient to close OR-3021: every action pinned on main resolves to runs.using node24 (or composite of node24), and the latest main run of each active workflow has zero 'Node.js 20 is deprecated' annotations while 2026-10-07 pre-fix runs of maven-ci.yml and pr-gate.yml had them?
+  - This ticket changes REVIEW.md, the prompt contract for the GitHub Claude Code Review workflow; validating it needs a real review run on a PR, not the local app.
+  - Positive check to do by hand: on a PR reviewed after 2026-10-26, find a Claude finding whose fix is a single contiguous in-hunk replacement and confirm it uses a suggestion block.
+  - Negative check to do by hand: on a PR reviewed after 2026-10-26, find a Claude finding whose fix spans files or lines outside the hunk, or offers the author a choice, and confirm it is prose or a fenced code block rather than a suggestion block.
+  - Red check to do by hand: open a throwaway PR with a deliberate cross-file defect (for example, a renamed method whose callers in another file are not updated), let the review run, and confirm the finding does not arrive as a suggestion block.
 
 caveats:
-  - Already merged and live on main since 2026-10-08 (PR #4643); several pins have since been bumped further by Dependabot (checkout@v7, upload-artifact@v7, download-artifact@v8), which the done-criterion still satisfies.
-  - deploy.yml is only reached via workflow_call from maven-cd.yml; the post-fix maven-cd run on 2026-10-26 succeeded with no Node 20 annotations, but deploy.yml has no standalone main run since the fix.
-  - The nested-action check for composites inspected one level of action.yml only; docker:// steps (getsentry/action-release image) are not Node-runtime dependent.
+  - The entire deliverable (a review-prompt rule) was unreachable in this environment; nothing was exercised at runtime.
+  - Whether the review model actually honours the rule is only observable across real PR reviews over time, not a single run.
 
 evidence.positive:
-  No app surface exists for this ticket; the fix (PR #4643, merged 2026-10-08 as a854d861e) only changes .github/workflows pins. Static check against the build commit 00f60b29d: grep of every uses: pin across .github/workflows found none of the old pins (checkout@v4, setup-node@v4, upload-artifact@v4, cache@v4, cache/restore@v4, download-artifact@v6, create-github-app-token@v2, configure-aws-credent
+  Not performed against the running app. The merged change (PR #4763, commit 7a599e089) adds six lines to REVIEW.md, the contract read by the Claude Code Review workflow (.github/workflows/claude-code-review.yml, prompt '/guided:review <pr-url> --comment'). The app instance at localhost:53884 has no code path that reads REVIEW.md, so no request, UI state, or log line can show the rule in effect.
 
 evidence.negative:
-  Not applicable as an app behaviour. The inverse check that is possible: pre-fix runs of the two workflows the ticket names, from 2026-10-07 (maven-ci 37691417744 and 37687127263, pr-gate 37691417444 and 37689785190), each carry 'Node.js 20 is deprecated. The following actions target Node.js 20 but are being forced to run on Node.js 24: ...' annotations naming actions/upload-artifact@v4, actions/ch
+  Not performed. The inverse case (a finding whose fix spans files or leaves a choice to the author still being posted as a suggestion block) can only be observed on a real GitHub PR review run, which this environment cannot trigger.
 
 evidence.red_check:
-  No app-level red check was performed and none is possible: the change has no runtime in the local app, so there is no application-log signature to provoke. The annotation scan was shown to be capable of going red by pointing it at pre-fix CI runs (which it flagged, see negative), but that is GitHub check-run data, not the captured application log, and the swap/data-flip techniques do not apply.
+  Not performed. No app-level condition exists to flip; inventing one would not reflect the ticket. Confirmed only that REVIEW.md on main contains the rule text verbatim (lines 7-11) and that PR #4778 (merged 2026-10-26) switched the workflow to review with the plugin from main, so the rule is live for any PR reviewed since then.
 
-files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3021
+files: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3110
 ```
 
 ## Coverage backlog
@@ -325,17 +326,40 @@ OR-3023  (admitted_with_caveats)
   OR-3023#1    Backend test for NotificationSimulationService/SimulationController send-notification under tenants.
   OR-3023#2    qa-suite @supplemental smoke test (e.g. SEC-NNN) that POST /api/integration/mgb/event, /api/integrat
 
+OR-3027  (admitted)
+  OR-3027#0    DefaultHL7ProcessingContextSaveMedAdminIntegrationTest: saveMedAdmin with operation=null commits, th
+  OR-3027#1    Same test class: resend the same order/sequence (edit path) and assert the single rule_fired_results
+
+OR-3031  (admitted)
+  OR-3031#0    LAMD-002 @supplemental: admin-create a 30 kg patient + case, record a 12 mg Bupivacaine nerve-block 
+  OR-3031#1    LAMD-003 @supplemental (negative control in the same spec): same staging with no prior bolus, assert
+
+OR-3059  (admitted)
+  OR-3059#0    Testcontainers (postgres:17) test that creates the mayo-mayo base tables, inserts operations for 'RM
+  OR-3059#1    Same fixture: assert mayo_operations and mayo_shared_metric_operations_v contain the 107 and ROEI-be
+  OR-3059#2    Same fixture: assert lifetime_counts.sql (variables substituted) counts exactly the two included ope
+  OR-3059#3    Same fixture, can-it-fail guard: temporarily CREATE OR REPLACE mayo_operations without the excluded 
+
+OR-3105  (admitted)
+  OR-3105#0    qa-suite supplemental LAUNCH test: open app-launch, capture the 10 preload /audio/medications/*.mp3 
+  OR-3105#1    qa-suite supplemental LAUNCH test: navigate to app-launch a second time in the same context and asse
+
+OR-3106  (admitted)
+  OR-3106#0    ENV-006 (@core, environment-health.spec.ts): the stylesheet referenced by the shell is served with c
+  OR-3106#1    ENV-007 (@core, environment-health.spec.ts): GET /app-launch and GET /index.html carry cache-control
+  OR-3106#2    ENV-008 (@supplemental, environment-health.spec.ts): in one browser context load /app-launch twice a
+
 OR-2791  (refused)
   OR-2791#a1   [BLOCKED on OR-2720] ALG supplemental: RXNORM 5640 (ibuprofen) allergy then m-ketorolac asserts a-ge
 
 OR-2918  (admitted)
   OR-2918#a1   Supplemental API-level positive/negative pair in qa-suite for the ERAS antiemetics path that raised 
 
-146 open of 183 proposed.
+159 open of 196 proposed.
 mark: automation.sh done <ID>   |   drop: automation.sh decline <ID> "why"
 bundle into a ticket: automation.sh ticket <SOURCE-TICKET>
 ```
 
 ## Eligible for the next sweep
 
-4 ticket(s)
+2 ticket(s)

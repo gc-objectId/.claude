@@ -101,6 +101,18 @@ refuse it anyway, and "not locally validatable" is the more useful answer.
 Anything other than `admitted` pushes to Slack (`#my-agents`) with its blockers. Successes stay
 silent on purpose.
 
+## When the usage limit hits mid-sweep
+
+A session that dies on the Claude usage limit writes nothing and exits in seconds, and every later
+session in the sweep would do the same. The runner detects it from the session log, releases the
+ticket it had already claimed — back to Ready for Testing, unassigned, only when the ticket is
+provably unchanged since pickup — records `usage_limit`, and writes `state/halt`.
+
+The queue is already inside `xargs` by then, so halting means each later runner declining to start:
+they check `state/halt` before touching anything. Starting a new sweep clears it. `usage_limit`
+tickets are re-offered automatically, like any other infrastructure failure — they need a retry, not
+a decision.
+
 ## Priority mid-sweep
 
 A sweep's ticket order is fixed the moment it starts: `backlog.sh` writes its whole list into

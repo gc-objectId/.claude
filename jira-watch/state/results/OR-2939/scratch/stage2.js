@@ -1,0 +1,14 @@
+const {req,login}=require("./api.js");const T={"X-Tenant-Id":"demo-demo"};
+(async()=>{await login();
+  const p=await req("POST","/api/admin/patients/",{prmnPrefix:"or2939neg",firstName:"Mrsa",lastName:"Cleared",dob:"1980-01-01",height:"180 cm",weight:"80 kg",gender:"MALE",genderIdentity:"MALE"},T);
+  const {pmrn,uuid}=p.body;
+  const op=await req("POST",`/api/admin/patients/${uuid}/operations/create`,{startTime:new Date().toISOString(),procedureTypes:[{id:"p-gastroduodenal",qualifier:null}]},T);
+  const caseId=op.body.caseId;
+  const o1=await req("POST",`/api/admin/observations/patient/${pmrn}/case/${caseId}`,{type:"MRSA_INFECTION",value:"MRSA POSITIVE",units:null,date:new Date(Date.now()-48*3600e3).toISOString()},T);
+  const o2=await req("POST",`/api/admin/observations/patient/${pmrn}/case/${caseId}`,{type:"MRSA_INFECTION",value:"MRSA NOT DETECTED",units:null,date:new Date(Date.now()-24*3600e3).toISOString()},T);
+  console.log("neg patient",pmrn,caseId,o1.status,o2.status);
+  const c=await req("GET",`/api/admin/patients/${pmrn}/operations/${caseId}/antibiotic-candidates`,null,T);
+  console.log("neg candidates outcome",c.body.outcome,"step1:",JSON.stringify(c.body.recommended.map(r=>({step:r.stepNumber,mrsaAdjusted:r.mrsaAdjusted,cats:r.medicationCandidates.map(m=>m.medicationCategory)}))));
+  const s=await req("POST",`/api/cds/medication-selection/${pmrn}/${caseId}`,{medicationIdentifier:"m-cefazolin",timeZone:"America/New_York"},T);
+  console.log("neg selection",s.status,"ruleIds:",(s.body.results||[]).map(r=>r.ruleId));
+})().catch(e=>console.log("ERR",e));

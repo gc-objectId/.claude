@@ -1,0 +1,13 @@
+Validation of OR-2933 is complete. Verdict recorded as deploy-ready in `~/.claude/jira-watch/state/results/OR-2933/session.json`.
+
+**What was verified against the running build**
+
+- **Positive.** An MRSA-positive demo patient on a "CEFAZOLIN -> VANCOMYCIN -> CLINDAMYCIN" pathway resolved to cefazolin plus vancomycin, flagged MRSA-adjusted. Selecting vancomycin raised no wrong-antibiotic alert. Procedure start asked for both drugs, and for the missing vancomycin when only cefazolin had been given. The cefazolin+metronidazole shape and the daptomycin/linezolid fallbacks under vancomycin allergy matched the ticket's table, and all three allergic gave ALL_CONTRAINDICATED.
+- **Negative.** No result, a later negative, a result older than 7 days, and an unreadable value all left the pathway as configured and vancomycin was flagged. "CEFAZOLIN OR CEFUROXIME" and "(CEFAZOLIN AND GENTAMICIN) OR CEFAZOLIN" step 1s were untouched.
+- **Red check, twice.** The parent commit's resolution service was compiled in the container and swapped in: the same MRSA-positive setup then got cefazolin alone and vancomycin flagged wrong. Shipped classes were restored with matching checksums and the fix came back. A data flip (later negative result) produced the same red and reverted clean.
+
+**Caveats recorded.** Alert rendering and the added MRSA citation were not viewed in the browser. The admin antibiotic-candidates debug endpoint shows a one-call lag after data changes because its cache drop runs after commit, which is pre-existing. The linezolid ANTIBIOTIC-category constraint was confirmed statically for demo, MGB and Mayo at the built SHA.
+
+**Automation.** Backend tests from the PR cover the spec table. Five supplemental PABX end-to-end tests are proposed (next free id PABX-021) to lock in observation-to-alert wiring, including the can-it-fail pair.
+
+The worktree is clean and the app is back on the shipped classes. All scratch work lives under the results directory.

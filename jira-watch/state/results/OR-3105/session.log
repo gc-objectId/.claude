@@ -1,1 +1,9 @@
-You've hit your session limit · resets 2:40pm (America/New_York)
+Validation of OR-3105 is complete and recorded in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-3105/session.json` with verdict deploy-ready. The worktree is clean.
+
+What was observed against the running build:
+
+- **Positive.** A demo-case launch in headless Chromium made the app's own preload fetch ten `/audio/medications/*.mp3?v=10f82fe08` files with `Cache-Control: max-age=2592000, immutable`. A second launch and a reload served all ten from disk cache, and the server-side request counter did not move.
+- **Negative.** The same file under a different `?v` value was downloaded from the server again. The index page and audio 404s stayed `no-cache, no-store`.
+- **Red check.** The parent commit's `StaticAssetCacheConfiguration` was compiled in the container and swapped in. Audio responses became `no-cache, no-store` and every relaunch re-downloaded all ten files. The shipped class was restored, checksum-verified, and the cached behaviour returned.
+
+Caveats recorded: the deploy criterion was simulated with a different `?v` value rather than a second release, Chromium only, the log signature is a marker line planted in the pre-fix class, and the loop image carries stale JS bundles from earlier builds. None of these affect ship risk. Two supplemental qa-suite launch tests are proposed for the versioned preload URLs and the from-cache second launch.

@@ -88,7 +88,7 @@
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED; unmatched reactions skip silently
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; review fixes + image recapture 2026-10-26; follow-ups OR-3113/3114
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; bot round 2 fixed 2026-10-27; follow-ups OR-3113/3114/3120
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; no epic branch, each child its own PR to main
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — own PR to main, next free Vite port; no design-epic link or keys
@@ -103,7 +103,7 @@
 - [Java 25 local JDK](reference_java25_local_jdk.md) — JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB 16; repo pins 16-alpine
 - [Feature specs program](project_feature_specs_program.md) — Theo initiative; med-selection baseline = OR-3017
-- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 cefazolin rule IMPLEMENTED 2026-10-23, draft PR #4761, In Progress until merge; cefotaxime/ceftriaxone citation flag still owed to Alex; OR-2938 vanco EBL test; antibiotic consolidation breaks PABX
+- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941: Theo's #4660 shipped the rule; dupe #4761 closed; citation PR #4779 open; ticket Ready for Testing unassigned, validation still owed (loop skips it while worktree exists); cefotaxime/ceftriaxone flag owed to Alex
 - [OR-2928 Sentry perf issues filed as bugs](project_or2928_sentry_perf_issues_as_bugs.md) — rework parked on bugfix/OR-2947
 - [Actions "job not acquired" = GitHub outage](reference_actions_job_not_acquired_is_github_outage.md) — check githubstatus, re-dispatch
 - [GitHub runs API stale pages](reference_github_runs_api_stale_pages.md) — trust a page only if it contains GITHUB_RUN_ID
