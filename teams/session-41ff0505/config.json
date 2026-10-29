@@ -1,0 +1,23 @@
+{
+  "name": "session-41ff0505",
+  "createdAt": 1793280902813,
+  "leadAgentId": "team-lead@session-41ff0505",
+  "leadSessionId": "41ff0505-3d51-425c-afa4-386f32c1462c",
+  "leadProcess": {
+    "pid": 3744,
+    "pidSpace": "Mac.lan",
+    "claimedAt": 1793280902813
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-41ff0505",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793280902813,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2863-design-foundation",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

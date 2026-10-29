@@ -37,7 +37,7 @@ Modal is `fullscreen scrollable`; body is `display:flex` so the sidebar and cont
 (Bootstrap's `flex: 1 1 auto` body gives children no definite height otherwise). Old `InAppAdminPanel` +
 `InAppDebugger` deleted. Gates: typecheck, color literals 86/20 unchanged, cascade 0/0/+4 (own selectors).
 
-**Tests:** LAUNCH-005 @core, LAUNCH-006/007 @supplemental (`smoke/app-launch.spec.ts`, titles carry
+**Tests:** LAUNCH-013 @core (was LAUNCH-005 until 2026-10-29), LAUNCH-006/007 @supplemental (`smoke/app-launch.spec.ts`, titles carry
 `[in-case-overlay R…]`); LAUNCH-006 diffs the overlay sidebar against Home's `.index-panel`s live.
 VIS-030 (case tabs, `.in-case-overlay__case .tab-content` + `.modal-title` masked) and VIS-031 (Feature
 Flags via `stubFeatureFlagList`) need the CI capture; next free VIS-032. `debugger.page.ts` now targets

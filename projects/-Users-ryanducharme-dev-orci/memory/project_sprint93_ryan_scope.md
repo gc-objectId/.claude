@@ -48,7 +48,12 @@ OR-2941 has been **Ready for Testing, unassigned** since #4660 merged (2026-10-2
 merge automation unassigned it). No separate validation ticket exists; OR-2941 itself is the
 validation target. #4779 is not validation (only Theo's unit tests ran; no positive/negative/
 flip-and-revert against a running main build). The jira-watch loop skips it while this worktree
-exists, so validate it in this session after #4779 merges, then Done at deploy-ready.
+exists. **Validated 2026-10-28** (comment 37859) on a local build of main + #4779 (rebased to
+d02983ee8, 39 tests green): 11 API scenarios incl. 119.9 vs 120.0 kg, redose with CrCl unknown/131/29,
+prior dose before case start, pediatric abstain, ceftriaxone positive control for the legacy rule.
+Verdict deploy-ready once #4779 merges; status left Ready for Testing. Force-push of the rebase was
+classifier-denied, Ryan pushes `git push --force-with-lease origin feature/OR-2941-cefazolin-citations`.
+Then Done at merge confirmation + `worktree-done`. Scenario scripts: scratchpad `orci.js`/`validate.js`.
 
 **Lesson:** before building a ticket someone else commented on, check the ticket's development
 panel / `gh pr list --search OR-XXXX --state all` for an existing PR, not just the comments.

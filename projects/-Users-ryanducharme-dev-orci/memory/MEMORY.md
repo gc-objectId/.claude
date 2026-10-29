@@ -88,7 +88,7 @@
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED; unmatched reactions skip silently
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; bot round 2 fixed 2026-10-27; follow-ups OR-3113/3114/3120
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; bot rounds 1–5 fixed + threads resolved (latest 2026-10-29); follow-ups OR-3113/3114/3120
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; no epic branch, each child its own PR to main
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — own PR to main, next free Vite port; no design-epic link or keys
@@ -103,7 +103,7 @@
 - [Java 25 local JDK](reference_java25_local_jdk.md) — JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB 16; repo pins 16-alpine
 - [Feature specs program](project_feature_specs_program.md) — Theo initiative; med-selection baseline = OR-3017
-- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941: Theo's #4660 shipped the rule; dupe #4761 closed; citation PR #4779 open; ticket Ready for Testing unassigned, validation still owed (loop skips it while worktree exists); cefotaxime/ceftriaxone flag owed to Alex
+- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 validated 2026-10-28 on main+#4779; Ryan force-pushes the rebase, Done at merge + worktree-done; cefotaxime/ceftriaxone fix is CSV-only, flag owed to Alex
 - [OR-2928 Sentry perf issues filed as bugs](project_or2928_sentry_perf_issues_as_bugs.md) — rework parked on bugfix/OR-2947
 - [Actions "job not acquired" = GitHub outage](reference_actions_job_not_acquired_is_github_outage.md) — check githubstatus, re-dispatch
 - [GitHub runs API stale pages](reference_github_runs_api_stale_pages.md) — trust a page only if it contains GITHUB_RUN_ID
@@ -135,9 +135,11 @@
 - [App-level flip by bundle swap](reference_app_level_flip_by_bundle_swap.md) — npm run build + cp into target/classes/static
 - [OR-3076 Event Center case start](project_or3076_event_center_case_start.md) — DONE (#4717); event-center next free R25
 - [OR-3075 EHR lookup Sentry](project_or3075_ehr_lookup_sentry.md) — DONE (#4718); front-door next free R60
-- [OR-3077 admin review fixes](project_or3077_admin_review_fixes.md) — DONE (#4719); in-case-overlay next free R19
+- [OR-3077 admin review fixes](project_or3077_admin_review_fixes.md) — DONE (#4719); in-case-overlay next free R20 (R19 taken 2026-10-28)
 - [OR-3078 records cleanup](project_or3078_records_cleanup.md) — DONE (#4720); check sibling worktrees before taking R/VIS ids
 - [OR-3072 stale flag lists](project_or3072_stale_flag_lists.md) — DONE (#4724); admin-shell R30
 - [OR-3074 launch screens](project_or3074_launch_screens.md) — DONE 2026-10-19 (#4725 into the epic); R57, LAUNCH-012, VIS-038–040; follow-up OR-3089 under OR-3054
 - [OR-3000 clinical light touch](project_or3000_clinical_light_touch.md) — DONE 2026-10-20 (#4726 into the epic, fc960bb39); ΔE≤4 snap rule; `--update-snapshots=all` for local A/B; follow-up OR-3095 under OR-3054
 - [Per-PR review environment](reference_per_pr_review_environment.md) — none exists; dev window, a review ECS service, or local stack + tunnel
+- [OR-3124 QA report stale task](project_or3124_qa_report_stale_task.md) — DONE 2026-10-28 (#4784); dev is 2 ECS tasks, per-JVM report state goes stale; ETag refresh on read
+- [Branch behind main fails boot on shared DB](reference_branch_behind_main_rule_definitions_boot.md) — rule_definitions carries newer enum values; rebase before launching on 8081

@@ -1,36 +1,134 @@
 {
-  "cleanupPeriodDays": 360,
-  "env": {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
+  "attribution" : {
+    "commit" : "",
+    "pr" : ""
   },
-  "attribution": {
-    "commit": "",
-    "pr": ""
+  "cleanupPeriodDays" : 360,
+  "effortLevel" : "high",
+  "env" : {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" : "1"
   },
-  "permissions": {
-    "defaultMode": "auto"
-  },
-  "model": "claude-fable-5-1",
-  "hooks": {
-    "PreToolUse": [
+  "hooks" : {
+    "Notification" : [
       {
-        "matcher": "Bash|Read|Edit|Grep",
-        "hooks": [
+        "hooks" : [
           {
-            "type": "command",
-            "command": "$HOME/.claude/hooks/block-env-read.sh"
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "PermissionRequest" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "PostToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "PreToolUse" : [
+      {
+        "hooks" : [
+          {
+            "command" : "$HOME\/.claude\/hooks\/block-env-read.sh",
+            "type" : "command"
+          }
+        ],
+        "matcher" : "Bash|Read|Edit|Grep"
+      },
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SessionEnd" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SessionStart" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "Stop" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "StopFailure" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "SubagentStop" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
+          }
+        ]
+      }
+    ],
+    "UserPromptSubmit" : [
+      {
+        "hooks" : [
+          {
+            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
+            "type" : "command"
           }
         ]
       }
     ]
   },
-  "effortLevel": "high",
-  "modelSettings": {
-    "claude-opus-5-5": {
-      "effortLevel": "xhigh"
+  "model" : "claude-fable-5-1",
+  "modelSettings" : {
+    "claude-opus-5-5" : {
+      "effortLevel" : "xhigh"
     }
   },
-  "skipWorkflowUsageWarning": true,
-  "teammateMode": "tmux",
-  "skipAutoPermissionPrompt": true
+  "permissions" : {
+    "defaultMode" : "auto"
+  },
+  "skipAutoPermissionPrompt" : true,
+  "skipWorkflowUsageWarning" : true,
+  "teammateMode" : "tmux"
 }

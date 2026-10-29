@@ -1,0 +1,23 @@
+{
+  "name": "session-166c4573",
+  "createdAt": 1793280759747,
+  "leadAgentId": "team-lead@session-166c4573",
+  "leadSessionId": "166c4573-05e6-4803-a690-36178f7b7147",
+  "leadProcess": {
+    "pid": 3420,
+    "pidSpace": "Mac.lan",
+    "claimedAt": 1793280759747
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-166c4573",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793280759747,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/Documents/09.2026 Honeywell 1962hc firmware updates",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

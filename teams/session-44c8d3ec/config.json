@@ -1,0 +1,23 @@
+{
+  "name": "session-44c8d3ec",
+  "createdAt": 1793281694156,
+  "leadAgentId": "team-lead@session-44c8d3ec",
+  "leadSessionId": "44c8d3ec-4ba2-4726-bc18-7a9d8c3ce039",
+  "leadProcess": {
+    "pid": 8253,
+    "pidSpace": "Mac.lan",
+    "claimedAt": 1793281694156
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-44c8d3ec",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793281694156,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2747-automate-daily-refresh-mayo-analytics",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

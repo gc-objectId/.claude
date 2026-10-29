@@ -490,3 +490,25 @@ normal conflicts aren't flips; report vs main 337 → 402 (extra mostly `.carous
 unknown case (opens with empty details; MGB faults) is a gap, not a variant → OR-3120 under OR-3054 (decide whether a
 launch can precede its SIU). f7a9e3931: VIS-035 flaked on the overlay `.modal-title` mask width (name + generated case id);
 `openInCaseOverlay` now pins the title to 24rem nowrap for VIS-030/031/034/035. Main merged (782c9e050).
+**2026-10-28: third claude[bot] round (5 nits on 065a3cac4), approved by Ryan, pushed as 2356ab7ca.** 6e6005b8e: overlay
+`onEscapeKeyDown` preventDefaults when `isFormField(target)` (utils/keyboard.ts) → Escape in any input/textarea/select never
+closes the overlay; new in-case-overlay R19 + "Form field" term, R8 narrowed; LAUNCH-010 extended (second Escape in an
+unchanged date no longer closes — this reverses OR-3077's "unchanged date lets Escape close"; Ryan approved). e709f9ac5:
+R10 lists the admin-only hover identifiers (alert rule id, dosing NDC, recent-med ID/barcode); R8 decision says a dialog on
+top owns Escape (5 dialogs ignore it, kept). db9a2604a readme tags + chart. 2356ab7ca HL7 TimestampPicker `-date`/`-time`
+ids. Ryan authorized posting this round: all 13 bot threads (rounds 1–3) replied in his voice and resolved. In-case-overlay
+next free R20. Escape red-check recipe: replace the guard body with `void event;` on 3001 and run LAUNCH-010.
+**2026-10-28: fourth claude[bot] round (4 threads on 2356ab7ca), approved by Ryan, pushed as 39d5ddd19, all replied + resolved.**
+01cf61a16 Notification tenant choice limited to `NOTIFICATION_TENANTS` (mgb-mgh, mgb-icsnh, demo-demo, demo-qa, mirroring
+SimulationController's switch) via `useTenantOptions(only)` / `TenantPickerFormikField only=`; start tenant (launched case's,
+else example) blank if not offered; R35/R32 narrowed, SIM-015 (next free SIM-016). 2cba793b1 SimulationController → covers.
+4c42c64bc front-door R40 decision reworded (clinical flag stays false per Ryan's OR-3074 call). 39d5ddd19 tokens.md 10-23 entry
+gains a declared delta, measured by local A/B: `visual:local -- --update-snapshots=all --no-deps` on 3001 at HEAD, then
+`git show fa121e76c -- '*.scss' | git apply -R` and rerun; VIS-012 errors locally against main-build 8080 (both runs); launch
+interstitial shadow change is below the per-pixel threshold. visual:local without `--no-deps` fails on ENV-005 under Vite.
+
+Round 5 (2026-10-29, 619ca955a + 477c2644a): `isFormField` (utils/keyboard.ts) now excludes non-text inputs
+(checkbox/radio/switch/button/range/color/file/image) so Escape still closes the overlay from them; LAUNCH-010 gained a
+Show JSON switch step. Main's request-count test is LAUNCH-005 again; the overlay Ctrl+D test is LAUNCH-013 (006–012
+unchanged). The local stack was down that day (no Postgres/Docker after an OS update), so LAUNCH-010 was left to the PR
+gate; the logic was checked old-vs-new in Chromium via esbuild. Scratchpad (watch-pr.sh) does not survive a restart.

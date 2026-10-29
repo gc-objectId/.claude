@@ -1,0 +1,23 @@
+{
+  "name": "session-c8a9276d",
+  "createdAt": 1793280856516,
+  "leadAgentId": "team-lead@session-c8a9276d",
+  "leadSessionId": "c8a9276d-980d-42c1-a00a-6f98773c73b0",
+  "leadProcess": {
+    "pid": 3567,
+    "pidSpace": "Mac.lan",
+    "claimedAt": 1793280856516
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-c8a9276d",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793280856516,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2941-cefazolin-default-dose",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

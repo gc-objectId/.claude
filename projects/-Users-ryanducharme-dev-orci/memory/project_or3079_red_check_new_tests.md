@@ -12,7 +12,7 @@ OR-3079 (Task under the design epic, To Do → IMPLEMENT), worktree `~/dev/workt
 branch reset onto the epic tip a8d76b382. Draft [PR #4716](https://github.com/guidedclinical/orci/pull/4716) opened 2026-10-16 (head 1fd1c7639), Jira
 implementation comment posted, ticket In Progress. Backend 8081 from the worktree (java PID 12831, mvn PID 12754).
 
-Findings: LAUNCH-005 Ctrl+Shift+A and LAUNCH-007 Ctrl+D checks went red 3/3 even unanchored (React commits the
+Findings: LAUNCH-005 (now LAUNCH-013) Ctrl+Shift+A and LAUNCH-007 Ctrl+D checks went red 3/3 even unanchored (React commits the
 hotkey update before `press` returns) — anchored on opening Settings anyway; AUTH-010 reload check anchored on the
 `/api/is-prod` response; SIM-006 error path was genuinely weak (Generate blanks the `<pre>` in flight, so
 `not.toContainText` passed 2/3 with the 500 removed) → `toHaveText("simulation failed")`; `not.toHaveCount(1)`
