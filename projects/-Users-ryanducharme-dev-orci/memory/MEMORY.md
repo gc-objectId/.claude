@@ -76,7 +76,7 @@
 - [Mayo RAS injection recipe](reference_mayo_ras_injection_recipe.md) — parser shifts +1h; operation attaches only if dose >= case start
 - [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — doxycycline all-clients is intentional
 - [MGH data not in AWS RDS](reference_mgh_data_not_in_aws_rds.md) — MGB self-hosts on OpenShift; query via their Metabase
-- [Mayo matview refresh manual](project_or2747_mayo_matview_refresh.md) — OR-2747 open; verify freshness before quoting error rates
+- [OR-2747 Mayo matview nightly refresh](project_or2747_mayo_matview_refresh.md) — prod-only Lambda 04:00 Central; mechanism validated locally, prod run evidence needs Ryan; MAINTAIN needs PG17
 - [OR-2620 HL7 auth Sentry noise](project_or2620_hl7_auth_sentry_noise.md) — done; Sentry reopens Done tickets on new events
 - [Prod RDS blocked, stage allowed](reference_prod_rds_blocked_stage_allowed.md) — stage mayo-mayo answers schema/config questions only
 - [OR-2656 MGH med admin room scope](project_or2656_mgh_med_admin_room_scope.md) — done no-code; notifications only in `MGH OR NN`
