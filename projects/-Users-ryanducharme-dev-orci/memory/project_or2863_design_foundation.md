@@ -512,3 +512,5 @@ Round 5 (2026-10-29, 619ca955a + 477c2644a): `isFormField` (utils/keyboard.ts) n
 Show JSON switch step. Main's request-count test is LAUNCH-005 again; the overlay Ctrl+D test is LAUNCH-013 (006–012
 unchanged). The local stack was down that day (no Postgres/Docker after an OS update), so LAUNCH-010 was left to the PR
 gate; the logic was checked old-vs-new in Chromium via esbuild. Scratchpad (watch-pr.sh) does not survive a restart.
+
+Round 6 (2026-10-30, 160eed9e5): R10 correction added to the in-case-overlay 10-28 History line. Before it, 51bf39bce merged main again: #4781 removed the review gate's clinical-spec path reason (risk rating replaces path lists), so `clinical: true` no longer feeds the gate; fixture conflict resolved to main's side.

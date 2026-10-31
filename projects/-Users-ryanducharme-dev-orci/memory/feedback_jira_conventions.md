@@ -9,7 +9,8 @@ Ryan manages Jira status **manually** — do NOT auto-transition (changed 2026-0
 
 **Assignment (2026-09-14):** `worktree-create.sh` assigns an unassigned ticket to Ryan when `workon` builds the worktree (`jira_myself_account_id` + `jira_assign` in `~/.claude/bin/jira.sh`); the workon skill's Step 2 assigns via MCP if the script couldn't. A ticket already assigned to someone else is left alone.
 
-**Sanctioned exceptions (2026-07-23):**
+**Sanctioned exceptions (2026-07-23, validation-start added 2026-10-30):**
+- Validation start: when a workon/validate flow picks up a ticket in Ready for Testing, move it to Testing immediately, no ask. Ryan called leaving OR-2747 in Ready for Testing through a whole validation a miss — Testing is the "someone is on it" signal for the team, and the SOP text that said "do not transition at this stage" was the cause, so it was rewritten.
 - The verified close-out — see [[feedback_green_light_closeout]]. When tests pass in a workon ticket flow — your own run, or Ryan reporting all green — posting the mode-appropriate Jira comment and transitioning to Done is part of the authorized sequence.
 - The VALIDATE-mode deploy-ready close-out: as soon as manual validation reaches a deploy-ready verdict, post the validation comment and move the ticket to Done immediately — no ask — don't wait for the automation/tests PR. The Done transition signals the team the change is deploy-ready; automation work continues afterward under the normal flow. If validation surfaced a gap needing a code fix, the deploy-ready verdict lands when that fix merges — run the same close-out then (post comment + Done, no ask); do NOT fall into the "ask whether to move it" cleanup fallback, which is only for genuinely ambiguous completeness. Canonical in the workon skill.
 

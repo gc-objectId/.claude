@@ -1,0 +1,23 @@
+{
+  "name": "session-b0822a53",
+  "createdAt": 1793369561512,
+  "leadAgentId": "team-lead@session-b0822a53",
+  "leadSessionId": "b0822a53-7340-40ee-8642-10d0a2405f89",
+  "leadProcess": {
+    "pid": 92510,
+    "pidSpace": "Ryans-MacBook-Pro.local",
+    "claimedAt": 1793369561512
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-b0822a53",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793369561512,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2809-timestamptz-schema-update",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

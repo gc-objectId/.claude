@@ -28,7 +28,7 @@ Steps 2 and 3 run **per ticket**: pull each one's Jira context, and derive each 
 
 ## Step 2 — Pull context (parallel where possible)
 
-- **Jira:** `getJiraIssue` with comments (`fields` including `comment`, `parent`); `getJiraIssueRemoteIssueLinks` for Sentry/other links. Read the parent epic if there is one. Confirm the assignee: `worktree-create.sh` assigns an unassigned ticket to Ryan when it builds the worktree, so if the ticket is still unassigned here (offline lookup, no keychain token) assign it to Ryan now via `editJiraIssue`; leave a ticket assigned to someone else alone. Do **not** transition at this stage — the only sanctioned transitions are the deploy-ready close-out (VALIDATE step 3) and the verified close-out below.
+- **Jira:** `getJiraIssue` with comments (`fields` including `comment`, `parent`); `getJiraIssueRemoteIssueLinks` for Sentry/other links. Read the parent epic if there is one. Confirm the assignee: `worktree-create.sh` assigns an unassigned ticket to Ryan when it builds the worktree, so if the ticket is still unassigned here (offline lookup, no keychain token) assign it to Ryan now via `editJiraIssue`; leave a ticket assigned to someone else alone. **If the ticket is Ready for Testing, move it to Testing now** (`transitionJiraIssue`, no ask) — Testing tells the team someone is actively validating it, and leaving it in Ready for Testing while you work is a miss. No other transition at this stage: the remaining sanctioned ones are the deploy-ready close-out (VALIDATE step 3) and the verified close-out below.
 - **GitHub:** `gh pr list --search "OR-NNNN" --state all --json number,title,state,url,mergedAt` and `git log --all --grep="OR-NNNN" --oneline`, once per ticket. If a PR exists, pull its diff (`gh pr diff`) — for validate mode it *is* the thing under test; for implement mode it's prior/related work to build on. A chain often resolves to one merged PR chain: get the combined diff (`git diff <first-merge>^ <last-merge>`) so the shared shape is visible in one place.
 - **Sentry-created tickets** embed the error + a Sentry link in the description — extract ip/uri/userAgent/message clues from there.
 
@@ -61,7 +61,7 @@ Goal: a manual-validation verdict that closes the ticket (= deploy-ready), plus 
 
 Every ticket in a chain needs its own verdict. The shared code path gets stood up once, but each ticket's positive, negative, and flip-and-revert red check are its own — a chain is not validated by exercising the lead ticket and inferring the rest.
 
-1. **Manual validation first**, per the Validation Protocol in global CLAUDE.md:
+1. **Manual validation first**, per the Validation Protocol in global CLAUDE.md. Step 2 already moved a Ready-for-Testing ticket to Testing; if it is somehow still Ready for Testing here, move it before touching anything else.
    - Run the positive scenario AND the negative/inverse. The negative is usually where the ticket's value lives.
    - **Flip-and-revert every "should not happen" check** — make the condition fire, watch the check go red, revert. A green absence assertion is meaningless until seen red.
    - Prefer the real app UI (local build of main is fastest — logs in console) over the test harness when the scenario is reachable through it.

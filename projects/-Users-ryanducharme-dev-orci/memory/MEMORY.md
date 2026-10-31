@@ -76,7 +76,7 @@
 - [Mayo RAS injection recipe](reference_mayo_ras_injection_recipe.md) — parser shifts +1h; operation attaches only if dose >= case start
 - [OR-2711 Mayo vs all clients](project_or2711_mayo_vs_all_clients_scoping.md) — doxycycline all-clients is intentional
 - [MGH data not in AWS RDS](reference_mgh_data_not_in_aws_rds.md) — MGB self-hosts on OpenShift; query via their Metabase
-- [OR-2747 Mayo matview nightly refresh](project_or2747_mayo_matview_refresh.md) — prod-only Lambda 04:00 Central; mechanism validated locally, prod run evidence needs Ryan; MAINTAIN needs PG17
+- [OR-2747 Mayo matview nightly refresh](project_or2747_mayo_matview_refresh.md) — DONE 2026-10-30; prod-only Lambda 04:00 Central; freshness probe = rollup last_autoanalyze; MAINTAIN needs PG17
 - [OR-2620 HL7 auth Sentry noise](project_or2620_hl7_auth_sentry_noise.md) — done; Sentry reopens Done tickets on new events
 - [Prod RDS blocked, stage allowed](reference_prod_rds_blocked_stage_allowed.md) — stage mayo-mayo answers schema/config questions only
 - [OR-2656 MGH med admin room scope](project_or2656_mgh_med_admin_room_scope.md) — done no-code; notifications only in `MGH OR NN`
@@ -88,7 +88,7 @@
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED; unmatched reactions skip silently
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; bot rounds 1–5 fixed + threads resolved (latest 2026-10-29); follow-ups OR-3113/3114/3120
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; bot rounds 1–6 fixed + threads resolved (latest 2026-10-30); follow-ups OR-3113/3114/3120
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; no epic branch, each child its own PR to main
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — own PR to main, next free Vite port; no design-epic link or keys
@@ -143,3 +143,6 @@
 - [Per-PR review environment](reference_per_pr_review_environment.md) — none exists; dev window, a review ECS service, or local stack + tunnel
 - [OR-3124 QA report stale task](project_or3124_qa_report_stale_task.md) — DONE 2026-10-28 (#4784); dev is 2 ECS tasks, per-JVM report state goes stale; ETag refresh on read
 - [Branch behind main fails boot on shared DB](reference_branch_behind_main_rule_definitions_boot.md) — rule_definitions carries newer enum values; rebase before launching on 8081
+- [Timestamp bind zone sensitivity](reference_timestamp_bind_zone_sensitivity.md) — Instant fields never drift; Date fields into zone-less columns do; flip recipe
+- [DevTools restart on mvn test](reference_devtools_restart_on_mvn_test.md) — worktree app restarts when a concurrent build recompiles target/classes
+- [OR-2809 timestamptz validation](project_or2809_timestamptz_validation.md) — DONE 2026-10-30; tests PR #4802 draft; worktree-done owed after merge

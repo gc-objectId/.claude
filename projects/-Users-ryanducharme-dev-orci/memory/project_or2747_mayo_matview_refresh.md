@@ -26,6 +26,8 @@ the unique index / revoking MAINTAIN both go red and the re-run of create_analyt
 restores the grant. Harness pattern: wrap `pg8000.native.Connection` to force the port (the
 handler passes `port=5432` explicitly, so a partial won't do) and set `_ssl_context = lambda: None`.
 
+**Closed 2026-10-30.** Ryan ran the prod catalog query over VPN: role, both unique indexes, MAINTAIN on both rollups present; rollup `last_autoanalyze` = 2026-10-29 09:00 UTC = 04:00 Central, i.e. the refresh wrote rows at the schedule slot. That autoanalyze timestamp is the cheapest freshness probe for the matviews. Automation (PG17 Testcontainers test) still pending Ryan's decision.
+
 **Blind spots:** Ryan's IAM user cannot list Lambdas/schedules/logs, prod catalog reads are denied
 by the auto-mode classifier, and stage does not run the job. Prod bootstrap (secret populated,
 role created) and nightly success can only be confirmed by Ryan: CloudWatch
