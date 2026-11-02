@@ -1,35 +1,61 @@
 ---
 name: or2928-sentry-perf-issues-filed-as-bugs
-description: "OR-2928/2934/2883/2916/2923 job-cleaner \"bugs\" are Sentry N+1 detections; our PR #4606 closed 2026-10-05, superseded by Theo's #4627; cleaner rework parked on bugfix/OR-2947-metadata-driven-cleaner; worktree kept on purpose"
+description: HANDOFF for OR-2947 session — five job-cleaner tickets (OR-2928/2934/2883/2916/2923) are Sentry N+1 detections; the metadata-driven cleaner fix is parked at commit 704c7a8a4, applies cleanly to main; exact steps inside
 metadata:
-  node_type: memory
   type: project
-  originSessionId: faff20d5-69c6-4a4d-9fb6-ec32896b8a1f
-  modified: 2026-10-05T17:15:42.357Z
 ---
 
-OR-2928, OR-2934, OR-2883, OR-2916 and OR-2923 (job-cleaner.job-cleaner-<tenant>) are Sentry **N+1 Query
-performance issues** (level info, `interface_type=spans`) on the hourly cleaner, which loads every Quartz
-trigger one at a time (`QuartzJobService.getStaleJobKeys`). No exception, so the triage script titled them
-after the transaction (`in_app_frames=0` in the triage run log is the tell). PR #4592 (cross-tenant fix,
-2026-09-29) was a guess; the loop validated the guess and Sentry reopened the ticket the next hour.
+# Handoff: close the five job-cleaner tickets from the OR-2947 session (written 2026-11-02)
 
-**State as of 2026-10-05**
-- Our PR #4606 (triage error-only) is CLOSED, superseded by Theo's PR #4627
-  (https://github.com/guidedclinical/orci/pull/4627): performance issues keep getting tickets but titled
-  with the detection and the parameterized SQL evidence. So these five tickets stay legitimate work items
-  for the N+1 itself, not noise to filter.
-- The metadata-driven cleaner (one query on the tenant's incomplete `job_metadata` older than 36h, delete
-  those keys from both schedulers, close orphans; drops the #4592 ownership check; unit + integration
-  tests) is parked at commit 704c7a8a4 on `bugfix/OR-2947-metadata-driven-cleaner`, pushed, no PR. Proposed
-  on OR-2947 in a comment. It is the natural fix for the five tickets once #4627 lands.
-- Worktree `~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (branch `bugfix/OR-2928-job-cleaner-demo-qa`,
-  triage-only commits) was **kept deliberately** for reference. Prune with `worktree-done` after #4627
-  merges or whenever; it will refuse as unmerged, confirm with `git diff origin/main <tip>` then `branch -D`.
-- The five tickets' Jira comments still say "fix in PR #4606, N+1 parked under OR-2947"; update them when
-  the cleaner rework gets its real PR. Archive the Sentry issues only once the N+1 is actually gone.
+**What the five tickets are.** OR-2928, OR-2934, OR-2883, OR-2916, OR-2923 (`job-cleaner.job-cleaner-<tenant>`)
+are Sentry **N+1 Query performance issues** (level info), not errors. The hourly cleaner
+(`QuartzJobService.getStaleJobKeys`) loads every Quartz trigger for every tenant one at a time, two queries
+per trigger. Theo's PR #4627 (merged 2026-10-07) now files such detections with their SQL evidence, so these
+stay real tickets for the N+1 itself. All five: To Do, assigned to Ryan, "relates to" OR-2947. Jira autofix is
+gone from main, so nothing else will touch them.
 
-**How to apply:** open Sentry links in Chrome (Ryan must be signed in; the tab title shows the issue type).
-Local Sentry credentials, CloudWatch/ECS reads and dev RDS without VPN are all blocked.
-`findIncompleteJobMetadata` in JobMetadataRepository is dead code.
+**The fix already exists.** Commit `704c7a8a4` on `origin/bugfix/OR-2947-metadata-driven-cleaner`:
+- `QuartzJobService.cleanStaleJobs(hours)`: one query on the tenant's own incomplete `job_metadata` with
+  `created_date` older than 36h, `deleteJob(key)` on both schedulers, close metadata whose job is already gone.
+  Tenant-scoped by the schema, so the `isOwnedBy` check from PR #4592 and the second 36h metadata sweep go away.
+- `JobMetadataRepository.findByCompletedFalseAndCreatedDateBefore` replaces `markStaleJobMetadataAsComplete`.
+- `JobCleanerJob.clean()` just delegates. Cleaner jobs have no metadata so they are never deleted.
+- Tests: new `QuartzJobServiceTest` (unit, 4) and rewritten `JobCleanerJobIntegrationTest` (6, schedules through
+  the production path and backdates `created_date` by JDBC). Both passed 2026-09-30.
+- Verified 2026-11-02: `git merge-tree` against origin/main shows no conflicts; main only added
+  `wasScheduled`/`existsByJobNameAndJobGroup` nearby.
+
+**Do NOT take the triage-script part of that commit.** `.github/scripts/sentry_triage.py` and
+`test_sentry_triage.py` in 704c7a8a4 are superseded by #4627. Take the Java files only:
+
+```bash
+git checkout 704c7a8a4 -- \
+  orci-repositories/src/main/java/com/guided/orci/repository/JobMetadataRepository.java \
+  orci/src/main/java/com/guided/orci/quartz/JobCleanerJob.java \
+  orci/src/main/java/com/guided/orci/service/quartz/QuartzJobService.java \
+  orci/src/test/java/com/guided/orci/quartz/JobCleanerJobIntegrationTest.java \
+  orci/src/test/java/com/guided/orci/service/quartz/QuartzJobServiceTest.java
+export JAVA_HOME=/opt/homebrew/opt/openjdk/libexec/openjdk.jdk/Contents/Home
+mvn -pl orci -am test -Dtest='QuartzJobServiceTest,JobCleanerJobIntegrationTest' -Dsurefire.failIfNoSpecifiedTests=false
+```
+(`-q` hides surefire counts; read `orci/target/surefire-reports/*.txt`. Integration test needs Docker.)
+
+**How it fits OR-2947.** OR-2947 asks for tenant-qualified Quartz keys (`<tenant>:<group>` factory, reject
+cross-tenant delete/exists, tenant-scoped admin listing, legacy key migration). The metadata-driven cleaner
+satisfies its "cleaner" bullet without key prefixes and is independent of the rest; land it first or as its own
+commit. Whether OR-2947's wider key work ships in the same PR is Ryan's call.
+
+**Close-out checklist for the PR that carries the cleaner change**
+1. PR body: `Fixes OR-2947` plus `Fixes OR-2928`, `OR-2934`, `OR-2883`, `OR-2916`, `OR-2923`.
+2. The five tickets each carry a comment pointing at closed PR #4606 saying "parked under OR-2947"; edit or
+   add a one-liner with the real PR link (comment ids 37612, 37613, 37614, 37615, 37616 on 2928/2934/2883/2916/2923).
+3. After merge and a dev deploy, the N+1 disappears; then **archive** the five Sentry issues (resolve alone
+   lets Sentry reopen the tickets on regression). Links are in each ticket description.
+4. Leftovers: `~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (branch `bugfix/OR-2928-job-cleaner-demo-qa`,
+   PR #4606 closed) and `origin/bugfix/OR-2947-metadata-driven-cleaner` can both be deleted once the cleaner
+   change merges. `worktree-done` will refuse the 2928 worktree as unmerged; confirm then `git branch -D`.
+
+**Gotchas learned.** Sentry links only open in Chrome when Ryan is signed in; the tab title shows the issue
+type at once. Local Sentry credentials, CloudWatch/ECS reads and dev RDS without VPN are blocked.
+`findIncompleteJobMetadata` in JobMetadataRepository is dead code (delete it in the same PR if touching the file).
 See [[sentry-events-have-no-release]], [[jira-watch-validation-loop]].
