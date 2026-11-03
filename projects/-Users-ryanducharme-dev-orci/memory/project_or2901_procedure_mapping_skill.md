@@ -1,21 +1,23 @@
 ---
 name: or2901-procedure-mapping-skill
-description: "OR-2901 procedure-type-automap skill validated deploy-ready and closed 2026-10-15; lives in guided-skills; PR #17 reworked after two review rounds, push pending Ryan; how to run and validate it locally"
+description: "OR-2901 procedure-type-automap skill: DONE 2026-10-15, validator PR guided-skills #17 merged 2026-11-02, both worktrees gone; how to run and validate the skill locally"
 metadata:
+  node_type: memory
   type: project
+  originSessionId: 861319e7-e94d-4388-9912-c939d9b286ed
+  modified: 2026-11-02T15:54:45.811Z
 ---
 
 OR-2901 (Skill for procedure mapping, epic OR-2895) is DONE as of 2026-10-15. The skill is
 `procedure-type-automap` in guidedclinical/guided-skills (PR #16, merged 2026-09-29); orci PR #4600
-was closed in favour of that move. The orci worktree `OR-2901-procedure-mapping-skill` never got a commit.
+was closed in favour of that move.
 
-Automation PR: guided-skills #17 (draft, branch feature/OR-2901-output-validation, worktree
-`~/dev/guided-skills-OR-2901`). Commit 01d43a9 was the first validator; b9e9025 (pushed 2026-10-22,
-PR ready for review with JEphron and theo requested) reworks it after two multi-agent review rounds:
-exact per-file contract (header, exact code coverage, complete rows, Confidence 0-1, --method llm,
---verification mode accepting "A AND B" suggestions), merge_output strips values, SKILL.md runs
-from the run dir via `$SKILL/bin/`, split script renamed `split_batches.py`, 82 tests, 39/39 mutants
-killed. Jira comment 37780 updated to match. After merge: worktree-done in both worktrees.
+Automation PR guided-skills #17 merged 2026-11-02 (merge commit 1d3156d, Theo approved). It added
+`bin/validate_output.py` (exact per-file contract: header, exact code coverage, complete rows,
+Confidence 0-1, `--method llm`, `--verification` accepting "A AND B" suggestions), value stripping
+in merge_output, the `split_batches.py` rename, a `$SKILL/bin/` run-from-the-run-directory SKILL.md,
+and 82 pytest cases. Theo's one comment trimmed Step 1 to a named run directory, defaulting to
+`procedure-type-automap-runs/<hospital-slug>/`. Both worktrees are removed; nothing is owed.
 
 **Why:** validating this ticket means driving guided-skills against orci's committed MGB procedure
 list, not an orci build; the jira-watch loop skip-listed it for that reason.
@@ -30,4 +32,5 @@ list, not an orci build; the jira-watch loop skip-listed it for that reason.
   reshaped into mapping and verify-results formats (both pass).
 - categories.csv drifts from the Mayo master-procedure-types.csv; run `bin/sync_categories.py` first.
 - Out of scope, not filed: CSV formula injection via verifier Rationale into output-verified.csv.
-- Related: [[or2915-erx-mapping-skill]], [[jira-watch-autovalidate]], [[bash-heredoc-unicode-escapes]].
+- Related: [[or2915-erx-mapping-skill]], [[jira-watch-autovalidate]], [[bash-heredoc-unicode-escapes]],
+  [[guided-skills-worktree-teardown]].

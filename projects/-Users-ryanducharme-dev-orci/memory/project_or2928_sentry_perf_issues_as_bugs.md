@@ -14,7 +14,9 @@ per trigger. Theo's PR #4627 (merged 2026-10-07) now files such detections with 
 stay real tickets for the N+1 itself. All five: To Do, assigned to Ryan, "relates to" OR-2947. Jira autofix is
 gone from main, so nothing else will touch them.
 
-**The fix already exists.** Commit `704c7a8a4` on `origin/bugfix/OR-2947-metadata-driven-cleaner`:
+**The fix already exists.** Commit `704c7a8a4`, reachable only via `origin/bugfix/OR-2947-metadata-driven-cleaner`
+(and `origin/bugfix/OR-2928-job-cleaner-demo-qa`); run `git fetch origin` before the checkout below. No local
+branch or worktree for it remains (torn down 2026-11-02 so `workon OR-2947 <slug>` starts fresh from main):
 - `QuartzJobService.cleanStaleJobs(hours)`: one query on the tenant's own incomplete `job_metadata` with
   `created_date` older than 36h, `deleteJob(key)` on both schedulers, close metadata whose job is already gone.
   Tenant-scoped by the schema, so the `isOwnedBy` check from PR #4592 and the second 36h metadata sweep go away.
@@ -51,9 +53,9 @@ commit. Whether OR-2947's wider key work ships in the same PR is Ryan's call.
    add a one-liner with the real PR link (comment ids 37612, 37613, 37614, 37615, 37616 on 2928/2934/2883/2916/2923).
 3. After merge and a dev deploy, the N+1 disappears; then **archive** the five Sentry issues (resolve alone
    lets Sentry reopen the tickets on regression). Links are in each ticket description.
-4. Leftovers: `~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (branch `bugfix/OR-2928-job-cleaner-demo-qa`,
-   PR #4606 closed) and `origin/bugfix/OR-2947-metadata-driven-cleaner` can both be deleted once the cleaner
-   change merges. `worktree-done` will refuse the 2928 worktree as unmerged; confirm then `git branch -D`.
+4. Leftovers: remote branches `origin/bugfix/OR-2928-job-cleaner-demo-qa` (PR #4606 closed) and
+   `origin/bugfix/OR-2947-metadata-driven-cleaner` hold the parked commit; delete both with `git push origin
+   --delete <branch>` once the cleaner change merges. The 2928 worktree and local branches are already gone.
 
 **Gotchas learned.** Sentry links only open in Chrome when Ryan is signed in; the tab title shows the issue
 type at once. Local Sentry credentials, CloudWatch/ECS reads and dev RDS without VPN are blocked.

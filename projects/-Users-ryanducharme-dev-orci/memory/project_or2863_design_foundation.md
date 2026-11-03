@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: project
   originSessionId: 8b2e40f6-1d9d-4a6d-8f0c-3db0d5fa37d0
-  modified: 2026-10-15T17:40:00.000Z
+  modified: 2026-11-02T18:13:29.816Z
 ---
 
 OR-2863 (Epic, app-wide incl. clinical) centralizes GuidedOR's visual language. Children:
@@ -514,3 +514,17 @@ unchanged). The local stack was down that day (no Postgres/Docker after an OS up
 gate; the logic was checked old-vs-new in Chromium via esbuild. Scratchpad (watch-pr.sh) does not survive a restart.
 
 Round 6 (2026-10-30, 160eed9e5): R10 correction added to the in-case-overlay 10-28 History line. Before it, 51bf39bce merged main again: #4781 removed the review gate's clinical-spec path reason (risk rating replaces path lists), so `clinical: true` no longer feeds the gate; fixture conflict resolved to main's side.
+
+Round 7 (2026-11-02, pushed as c5351e424, 3 threads replied + resolved): 98536304d EventController rejects a non-start
+event whose PMRN isn't the case's patient (404 "Case X belongs to a different patient", PMRN kept out of the message);
+event-center R20/R22 + History. 5e18506d5 cascade-diff `couldShareElement` treats a class and its `-modifier` as able to
+share an element (report vs main 402 → 416; the bot's "any two classes" rule gave ~12k). c5351e424 MGB GetPatient R4
+command + test added to event-center/front-door covers.
+Round 8 (e42fad714): the PMRN check now runs on start events too whenever the case exists; only an unknown case skips it
+(R20 reworded, new start-event test, red on the old controller). in-case-overlay R16 excepts a tenant the page does not
+offer. Round 9 (147583cbf): med-admin-simulation R9 points at R32 (reviewed: true spec; owners check in the PR);
+FeatureFlags `toPagedResult` comment restored (repo rule: leave comments unless their code changes).
+Ryan 2026-11-02: "keep going until we are done" = fix, push, reply, resolve each round without asking. The bot re-reviews
+the whole PR on every push (`synchronize`), so nits never run out; `review:important` is already on (the label script
+only adds it), so a human approval is needed regardless. `gh run list --commit` needs the FULL sha (short sha → no runs).
+**2026-11-02 bot loop DONE:** review on 147583cbf = "No issues found" (Risk: high), 0 unresolved threads; PR gate QA 153 + visual 40, CI Build green, MERGEABLE. Only the review gate's human approval (high tier) is left. Watcher: scratchpad watch-round.sh waits for CI Build + PR Gate + Claude Code Review on one sha, then lists open threads.

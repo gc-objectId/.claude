@@ -1,0 +1,23 @@
+{
+  "name": "session-8673b42e",
+  "createdAt": 1793718001334,
+  "leadAgentId": "team-lead@session-8673b42e",
+  "leadSessionId": "8673b42e-99db-4c5d-b033-570575cd6457",
+  "leadProcess": {
+    "pid": 7089,
+    "pidSpace": "Mac.lan",
+    "claimedAt": 1793718001334
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-8673b42e",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793718001334,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/worktrees/OR-2813-between-on-postgres-query-timestamps",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

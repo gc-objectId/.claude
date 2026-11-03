@@ -1,6 +1,6 @@
 ---
 name: project_or2809_timestamptz_validation
-description: "OR-2809 timestamptz schema conversion — validated deploy-ready and moved to Done 2026-10-30; tests PR #4802 (TemporalColumnTypeTest) open as draft; worktree-done still owed after merge"
+description: "OR-2809 timestamptz schema conversion — validated deploy-ready and moved to Done 2026-10-30; tests PR #4802 (ChangelogTemporalTypeTest, a changelog lint) ready for review; worktree-done still owed after merge"
 metadata:
   node_type: memory
   type: project
@@ -14,6 +14,6 @@ State of the world: stage has zero zone-less columns in all four schemas; a fres
 
 Open items noted, not blockers: MGB OpenShift manifest sets no explicit `TZ` (base-image default, JVM flags in a secret); Metabase report timezone not in repo; AWS `TZ=UTC` lives in Terraform outside the repo.
 
-Automation: `TemporalColumnTypeTest` on `AbstractIntegrationTest`, draft PR #4802 from worktree `OR-2809-timestamptz-schema-update`. After merge: `worktree-done` from that worktree.
+Automation: `ChangelogTemporalTypeTest`, a plain JUnit lint over both master changelogs (every include after `converge-timestamptz-indexed`), PR #4802 from worktree `OR-2809-timestamptz-schema-update`. It replaced a Testcontainers catalog check on Theo's review (2026-11-02), see [[feedback_schema_conventions_lint_changelogs]]. After merge: `worktree-done` from that worktree.
 
 Validation mechanics worth reusing: [[reference_timestamp_bind_zone_sensitivity]], [[reference_liquibase_utc_guard_blocks_local_boot]], [[reference_devtools_restart_on_mvn_test]].
