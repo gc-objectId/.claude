@@ -151,3 +151,4 @@
 - [OR-2947 Quartz tenant keys](project_or2947_quartz_tenant_keys.md) — implemented 2026-11-02; `<tenant>:<group>` via TenantJobKeys; exclude the audio plugin module from `-am`; trigger-reading tests need the PostgreSQLDelegate override
 - [Sentry frontend observability locally](reference_sentry_frontend_observability_local.md) — runtime init via Vite dep URL; [::1] host bypasses isLocal for Playwright
 - [OR-3125 logged-out user-info 403](project_or3125_logged_out_user_info_403.md) — DONE 2026-11-03; no automation (Sentry→Jira already detects it); next free AUTH-005
+- [OR-2813 BETWEEN launch report](project_or2813_between_launch_report.md) — DONE 2026-11-03; only the launch report fixed (#4773), listed sites are window checks; no automation, #4810 withdrawn; worktree gone
