@@ -1,0 +1,23 @@
+{
+  "name": "session-0d89b431",
+  "createdAt": 1793887987365,
+  "leadAgentId": "team-lead@session-0d89b431",
+  "leadSessionId": "0d89b431-8ef8-4d35-aac6-69b933e10696",
+  "leadProcess": {
+    "pid": 36338,
+    "pidSpace": "Mac.lan",
+    "claimedAt": 1793887987365
+  },
+  "members": [
+    {
+      "agentId": "team-lead@session-0d89b431",
+      "name": "team-lead",
+      "agentType": "team-lead",
+      "joinedAt": 1793887987365,
+      "tmuxPaneId": "leader",
+      "cwd": "/Users/ryanducharme/dev/orci",
+      "subscriptions": [],
+      "backendType": "in-process"
+    }
+  ]
+}

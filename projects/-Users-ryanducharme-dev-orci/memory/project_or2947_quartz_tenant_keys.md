@@ -41,6 +41,14 @@ JobCleanerSetupRunnerTest (rewritten for qualified keys + legacy-cleaner removal
 (parked rewrite, qualified), DefaultHL7ProcessingContextMedAdminDispatchIntegrationTest (its Quartz probe reads the
 qualified group).
 
+**Theo's review (2026-11-03):** QuartzJobService must not *require* a tenant — platform-wide jobs may exist one day.
+Round two (pushed 2026-11-05 as bd4ae303f, PR #4809 marked ready for review): `TenantJobKeys.belongsTo(key, tenant)` is the rule — a key
+naming a tenant must match the context, a key with no prefix is platform-wide and passes anywhere; metadata lookups
+skip platform keys; `TriggerLifecycleListener.triggerFired` clears the context when `TENANT_ID` is absent instead of
+throwing; admin summary/current-jobs include platform jobs. Tech-debt ticket still to draft: `TimerBasedRuleEngine`
+stores a trigger name that differs from the real trigger (metadata never marked complete; cleaner closes it as an
+orphan) and builds the job name from `PatientId.toString()`.
+
 **Done 2026-11-03:** PR body carries `Fixes` for OR-2947 and the five cleaner tickets; each of the six has a Jira
 comment linking #4809. Theo wrote OR-2947 himself, so the key work is his spec; the cleaner rework replaces his
 `isOwnedBy` from #4592 and the PR body says why (prefix filtering alone keeps the per-trigger N+1).

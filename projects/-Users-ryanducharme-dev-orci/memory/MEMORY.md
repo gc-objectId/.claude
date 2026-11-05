@@ -152,3 +152,4 @@
 - [Sentry frontend observability locally](reference_sentry_frontend_observability_local.md) — runtime init via Vite dep URL; [::1] host bypasses isLocal for Playwright
 - [OR-3125 logged-out user-info 403](project_or3125_logged_out_user_info_403.md) — DONE 2026-11-03; no automation (Sentry→Jira already detects it); next free AUTH-005
 - [OR-2813 BETWEEN launch report](project_or2813_between_launch_report.md) — DONE 2026-11-03; only the launch report fixed (#4773), listed sites are window checks; no automation, #4810 withdrawn; worktree gone
+- [Default-dose compliance API validation](reference_default_dose_compliance_api_validation.md) — admin session → cds selection → tracked admin → evaluations/fired; compliance re-reads the firing from DB

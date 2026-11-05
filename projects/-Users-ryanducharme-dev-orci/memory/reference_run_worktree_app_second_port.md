@@ -5,7 +5,7 @@ metadata:
   node_type: memory
   type: reference
   originSessionId: fe6c5271-8c44-4138-a478-171873e194b2
-  modified: 2026-10-19T14:19:44.876Z
+  modified: 2026-11-04T19:54:24.158Z
 ---
 
 Ryan's standing setup: `~/dev/orci` on `main`, backend on **8080**, Vite webapp on **3000**. He does not switch that off. Any instruction to test branch code against a running app must be explicit end-to-end commands for a **second instance on another port** — "restart your local on this branch" is not actionable and he will ask for the steps.
@@ -47,6 +47,8 @@ nohup $(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home/bin/java -XX:Ti
   -Dtenants.demo.qa.enabled=true -Dserver.port=$PORT -Dspring.web.resources.static-locations=file:$PWD/orci/src/main/webapp/build/ \
   -cp "orci/target/classes:$(cat orci/target/runtime-classpath.txt)" com.guided.orci.OrciApplication --spring.profiles.active=local > app.log 2>&1 &
 ```
+
+**Broken on current main (seen 2026-11-04): serving the frontend from disk renders a blank white page.** `StaticAssetCacheConfiguration` maps `/static/**` to `classpath:/static/static/`, so `static-locations=file:…/build/` no longer covers the hashed JS/CSS (404, index.html still loads). For a UI, front 8081 with Vite instead — and that is what Ryan expects anyway when he says "spin up an epic/branch backend on 8081": backend on 8081 + restart the branch's Vite port with `VITE_PROXY_HOST_URL=http://localhost:8081`. Don't hand him 8081's own URL. Tell-tale that 3001 really hits the branch backend: the dev banner shows (branch is-prod rule) where 8080's main build shows none.
 
 Readiness ~70–180s on `/actuator/health/readiness` (poll with node, curl is blocked). Because the frontend is read from `build/` per request, a frontend red check is just edit → `npm run build` → re-run the test, with no backend rebuild or restart (`OrciReactController` forwards to `/index.html` through the static handler). orci is not on spring-boot-starter-parent, so `package` yields no runnable fat jar; that's why it's a classpath launch.
 
