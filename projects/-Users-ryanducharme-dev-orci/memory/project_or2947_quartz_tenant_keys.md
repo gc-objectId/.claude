@@ -42,7 +42,7 @@ JobCleanerSetupRunnerTest (rewritten for qualified keys + legacy-cleaner removal
 qualified group).
 
 **Theo's review (2026-11-03):** QuartzJobService must not *require* a tenant — platform-wide jobs may exist one day.
-Round two (pushed 2026-11-05 as bd4ae303f, PR #4809 marked ready for review): `TenantJobKeys.belongsTo(key, tenant)` is the rule — a key
+Round two (pushed 2026-11-05 as bd4ae303f; round three force-pushed 2026-11-06 as c5e90cd7e (history rewrite dropped a committed .swp file; *.swp now in root .gitignore): migration moves any job naming a tenant, admin filters on JobDataMap TENANT_ID; PR #4809 ready for review): `TenantJobKeys.belongsTo(key, tenant)` is the rule — a key
 naming a tenant must match the context, a key with no prefix is platform-wide and passes anywhere; metadata lookups
 skip platform keys; `TriggerLifecycleListener.triggerFired` clears the context when `TENANT_ID` is absent instead of
 throwing; admin summary/current-jobs include platform jobs. Tech-debt ticket still to draft: `TimerBasedRuleEngine`

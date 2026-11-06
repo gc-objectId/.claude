@@ -153,3 +153,7 @@
 - [OR-3125 logged-out user-info 403](project_or3125_logged_out_user_info_403.md) — DONE 2026-11-03; no automation (Sentry→Jira already detects it); next free AUTH-005
 - [OR-2813 BETWEEN launch report](project_or2813_between_launch_report.md) — DONE 2026-11-03; only the launch report fixed (#4773), listed sites are window checks; no automation, #4810 withdrawn; worktree gone
 - [Default-dose compliance API validation](reference_default_dose_compliance_api_validation.md) — admin session → cds selection → tracked admin → evaluations/fired; compliance re-reads the firing from DB
+- [OR-3132 pre-merge review + validation](project_or3132_premerge_review_validation.md) — Theo PR #4813 validated deploy-ready pre-merge; tests PR #4823 stacked on his branch; worktree-done owed after merge
+- [MGB Metabase access](reference_mgb_metabase_access.md) — MGB VPN, fetch /api/dataset from the tab, loose index scan; MGH OR event vocabulary has no clamp
+- [OR-3104 clamp events](project_or3104_clamp_events_investigation.md) — DONE 2026-11-05; neither site sends clamp on/off
+- [Read why before refusing a path](feedback_read_why_before_refusing_a_path.md) — read the commit that opened a path + trace every consumer before closing it
