@@ -528,3 +528,14 @@ Ryan 2026-11-02: "keep going until we are done" = fix, push, reply, resolve each
 the whole PR on every push (`synchronize`), so nits never run out; `review:important` is already on (the label script
 only adds it), so a human approval is needed regardless. `gh run list --commit` needs the FULL sha (short sha → no runs).
 **2026-11-02 bot loop DONE:** review on 147583cbf = "No issues found" (Risk: high), 0 unresolved threads; PR gate QA 153 + visual 40, CI Build green, MERGEABLE. Only the review gate's human approval (high tier) is left. Watcher: scratchpad watch-round.sh waits for CI Build + PR Gate + Claude Code Review on one sha, then lists open threads.
+
+**2026-11-06 Theo review + bot rounds 10–14 DONE (head 695583493, all green, 0 unresolved, "no Important finding").**
+Theo's feedback: AsyncButton try/finally; EventController blank PMRN → now fills the stored case's patient
+(unstored start keeps null on purpose — MGB resolves by case id, see [[read-why-before-refusing-a-path]]);
+dosing form 9px left → `.form-section padding-left: 3px` deleted (Bootstrap's row gutter always overrode it
+on main), VIS-003/VIS-037 rebaselined via dispatch run 42224419881, tokens.md History line undoes OR-2990's
+shift; black selected tab kept (Theo likes it). Bot follow-ons: event-center R26 = missing-PMRN start at an EHR
+that can't find the patient without one → `RecordNotFoundException.forMissingPmrn()` (demo + Mayo share it);
+spec stays tenant-neutral (no `spec/tenants/` created). APIToken section comments restored. PR body's declared
+case-screen shifts now: selected tab black, favorites header 3px shorter, + launch screens restyled.
+Still needs a human approval (review:important label is sticky).
