@@ -1,19 +1,19 @@
 {
   "name": "session-9f34eb48",
-  "createdAt": 1793635193095,
+  "createdAt": 1794235225858,
   "leadAgentId": "team-lead@session-9f34eb48",
   "leadSessionId": "9f34eb48-9b60-4bbd-8a65-5ecd77ea97e8",
   "leadProcess": {
-    "pid": 21707,
+    "pid": 4881,
     "pidSpace": "Mac.lan",
-    "claimedAt": 1793635193095
+    "claimedAt": 1794235225858
   },
   "members": [
     {
       "agentId": "team-lead@session-9f34eb48",
       "name": "team-lead",
       "agentType": "team-lead",
-      "joinedAt": 1793635193095,
+      "joinedAt": 1794235225858,
       "tmuxPaneId": "leader",
       "cwd": "/Users/ryanducharme/dev/worktrees/OR-2947-quartz-jobs-keys",
       "subscriptions": [],
