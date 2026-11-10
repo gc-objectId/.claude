@@ -539,3 +539,10 @@ that can't find the patient without one → `RecordNotFoundException.forMissingP
 spec stays tenant-neutral (no `spec/tenants/` created). APIToken section comments restored. PR body's declared
 case-screen shifts now: selected tab black, favorites header 3px shorter, + launch screens restyled.
 Still needs a human approval (review:important label is sticky).
+
+2026-11-09 Theo's 11-06 comment addressed (e1a974d3e, c50a52b2a, 96b5a8c75): the sign-in check failure now renders
+`ErrorPage` ("Something went wrong", front-door R50); `SignInCheckFailedDisplay` + its "Try again" (R52) are gone,
+the `UserCheckFailed` state stays (it's what stops the endless spinner). The ™ was dropped from the product mark
+everywhere (main never had it). VIS-029 snapshot renamed `sign-in-check-failed`; VIS-006–029/032/033/038–040
+rebaselined. Theo: "good with this but want @JEphron to review" — approval now waits on JEphron.
+Bot round on 96b5a8c75 → event-center covers gained the R26 demo files (94c22dbd8); 94c22dbd8 clean, 0 unresolved threads.
