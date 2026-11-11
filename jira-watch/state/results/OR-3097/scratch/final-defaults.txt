@@ -1,0 +1,12 @@
+mayo-mayo|m-heparin-pf|INTRAVENOUS|Procedural
+mayo-mayo|m-heparin-pf|SUBCUTANEOUS|Prophylaxis
+mayo-mayo|m-heparin|INTRAVENOUS|Procedural
+mayo-mayo|m-heparin|SUBCUTANEOUS|Prophylaxis
+mgb-icsnh|m-heparin-pf|INTRAVENOUS|Procedural
+mgb-icsnh|m-heparin-pf|SUBCUTANEOUS|Prophylaxis
+mgb-icsnh|m-heparin|INTRAVENOUS|Procedural
+mgb-icsnh|m-heparin|SUBCUTANEOUS|Prophylaxis
+mgb-mgh|m-heparin-pf|INTRAVENOUS|Procedural
+mgb-mgh|m-heparin-pf|SUBCUTANEOUS|Prophylaxis
+mgb-mgh|m-heparin|INTRAVENOUS|Procedural
+mgb-mgh|m-heparin|SUBCUTANEOUS|Prophylaxis

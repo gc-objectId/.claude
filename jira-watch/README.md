@@ -60,7 +60,8 @@ The session recommends; the gate decides. It refuses unless *all* of:
   mechanically checkable, so the central one is not taken on trust
 - freshness re-verified here, not read from the session's own file
 - ticket still in Ready for Testing or Testing
-- status and comment count unchanged since pickup
+- status and *human* comment count unchanged since pickup (Jira's own automation comments are
+  excluded, or a sweep closing one ticket trips the tamper check of a linked one it is still running)
 
 That last one is the real boundary. The session runs with full user authority and could write to Jira
 outside the pipeline; what it cannot do is hide having done so.

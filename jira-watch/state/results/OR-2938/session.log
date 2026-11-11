@@ -1,0 +1,15 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 6 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-2938 is complete and recorded as deploy-ready in `~/.claude/jira-watch/state/results/OR-2938/session.json`.
+
+**What was exercised against the running b7e6af518 build**
+
+- **Positive.** A case covered only by a vancomycin IV infusion bag started after operation start fired the EBL redose reminder at 1600 mL, with cumulative EBL 1600 and threshold 1500 in the persisted details. A bag started 30 minutes before operation start but inside the lookback window also counted, matching Alex's "as far back as lookback period" requirement.
+- **Negative.** Identically staged cases did not fire when the infusion was cefazolin, when the vancomycin bag started outside the lookback window while still running, or when the infusion had only a STOP event. All three infusion rows were confirmed persisted, so the abstain was for the rule's reason.
+- **Renal branch.** With creatinine 3.0 mg/dL the in-window infusion fired with the renal warning on. With the only vancomycin bag outside its window and a cefazolin bolus driving the firing, the warning stayed off.
+- **Red check.** The parent commit's rule class was compiled in the container and swapped into `/app/classes`. On a fresh identically staged case it abstained with "No prior antibiotic administered". The shipped class was restored, checksum verified, and the same case fired. The signature line appears exactly once in the container log and only inside the swap window.
+
+**Caveats recorded** (ship risk none): the EBL_UPDATED trigger and infusion were driven through admin endpoints rather than HL7, multi-bag netting and the second threshold crossing were not exercised at runtime, and the demo lookback is 1h versus 2h at MGB and Mayo.
+
+**Automation proposed.** The rule has no qa-suite coverage at all, and every needed fixture already exists in `qa-suite/fixtures/patient-api.ts`. Four supplemental browser-free tests are listed in the session file for the cover step.
+
+The worktree is clean and all scratch material lives under the results scratch directory.

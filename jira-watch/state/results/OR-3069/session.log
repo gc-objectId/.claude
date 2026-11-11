@@ -1,0 +1,10 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 6 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3069 is complete and the result file is written.
+
+**Verdict: deploy-ready**, recorded at `~/.claude/jira-watch/state/results/OR-3069/session.json`.
+
+- **Positive:** A real Mayo overweight 2 g cefazolin redose firing, reshaped to the pre-fix 3 g default and scored non-compliant by the app's own evaluator, was rewritten to the 2 g shape and rescored compliant when Liquibase re-ran changeset 240 on restart. Re-posting the same administration through the medication-administration endpoint kept the verdict compliant, so stored default and verdict agree.
+- **Negative:** Seven out-of-scope variants stayed untouched. These covered first dose, normal weight, CrCl 40 and 49.9, mL units, null dose, and an already-2 g default. The same pre-fix row in demo-demo stayed at 3 g and the changeset shows as marked ran there.
+- **Red check:** Flipping the stored default back to 3 g and recomputing through the app reverted the verdict to non-compliant. The signature `selectedIndication=OR3069-RED-CHECK-3G-DEFAULT` appears once in the app log. Re-applying the shipped SQL restored 2 g and compliant.
+
+Caveats are recorded in the file, chiefly that the pre-fix rows were app-generated firings reshaped by SQL because the current build no longer writes that shape. No automation exists for tenant data changesets, and a Testcontainers fixture test is proposed as low-value for a one-shot migration. Scratch scripts and SQL live under the ticket's scratch directory, outside the worktree.

@@ -1,0 +1,74 @@
+{
+ "trackingTabId": "01a1caea-da72-7244-af44-8f8f38774120",
+ "routes": {
+  "INTRAVENOUS": {
+   "defaultIndication": null,
+   "indications": {
+    "Hypotension": [
+     "5 mcg",
+     "10 mcg"
+    ],
+    "Anaphylaxis": [
+     "50 mcg",
+     "100 mcg"
+    ],
+    "Code": [
+     "1,000 mcg*"
+    ]
+   },
+   "routeDoseOptions": [
+    "5 mcg",
+    "10 mcg",
+    "50 mcg",
+    "100 mcg",
+    "1,000 mcg"
+   ]
+  },
+  "INTRAOSSEOUS": {
+   "defaultIndication": null,
+   "indications": {
+    "Hypotension": [
+     "5 mcg",
+     "10 mcg"
+    ],
+    "Anaphylaxis": [
+     "50 mcg",
+     "100 mcg"
+    ],
+    "Code": [
+     "1,000 mcg*"
+    ]
+   },
+   "routeDoseOptions": [
+    "5 mcg",
+    "10 mcg",
+    "50 mcg",
+    "100 mcg",
+    "1,000 mcg"
+   ]
+  },
+  "INTRATHECAL": {
+   "defaultIndication": null,
+   "indications": {
+    "Hypotension": [
+     "5 mcg",
+     "10 mcg"
+    ],
+    "Anaphylaxis": [
+     "50 mcg",
+     "100 mcg"
+    ],
+    "Code": [
+     "1,000 mcg*"
+    ]
+   },
+   "routeDoseOptions": [
+    "5 mcg",
+    "10 mcg",
+    "50 mcg",
+    "100 mcg",
+    "1,000 mcg"
+   ]
+  }
+ }
+}

@@ -1,0 +1,14 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 6 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-2786 is complete and the session file is written.
+
+**Verdict: deploy-ready.** The ticket's substance is a backend mechanism, and it was exercised on both feeds against the running instance.
+
+- **Positive.** On a Mayo case, an Anes Start SIU moved the case start and the new anesthesia_start_time column to the anesthesia time, and an Epic-style correction moved both again, earlier and later. The MGB notification feed, driven through the demo tenant, did the same for Anesthesia Start and its correction. Both changesets show as executed in every tenant schema.
+- **Negative.** Proc Start and a resent In Room on the same cases wrote their own columns but left the case start untouched, so the messages were provably processed and only the anesthesia path writes it.
+- **Red check.** I compiled the parent-commit event-map classes for both feeds, swapped them into the container, and restarted. The same Anes Start then dispatched only the monitoring category, no start-time log line appeared, and the case start stayed at the In Room value. The shipped classes were restored and confirmed by checksum, and the positive re-ran green afterwards. The signature is present once in the container log.
+
+**Caveats recorded, none load-bearing.** The case start that In Room normally records could not come from the real case-start path locally, because Mayo needs Epic FHIR and MGB needs the SOAP surgical record. I pre-set it through the admin operations dates endpoint, so the overwrite hit the real column and update statement but not the real first writer. The backfill ran on an empty database, and the downstream med-admin attachment window was not exercised.
+
+**Automation.** The PR's unit tests already cover the dispatch, the MGB map, and the repository write. Proposed additions are a Mayo SIU processor test asserting the anesthesia category is dispatched, an earlier-correction repository test, and a supplemental qa-suite scenario through the admin HL7 send endpoint.
+
+The worktree is clean. All scratch work, including the pre-fix sources and the swap script, sits under the ticket's scratch directory outside the repo.

@@ -1,6 +1,6 @@
 ---
 name: or2947-quartz-tenant-keys
-description: OR-2947 tenant-qualified Quartz keys — draft PR #4809 opened 2026-11-03 (two commits: cleaner, then keys) with the five OR-2928 cleaner tickets linked; design decisions, test commands, and the after-merge close-out
+description: OR-2947 tenant-qualified Quartz keys — PR #4809 in review; 2026-11-10 the OR-2928 cleaner rewrite was pulled back out at Theo's request (old trigger-scan cleaner kept, scoped by prefix); design decisions, test commands, and the after-merge close-out
 metadata:
   type: project
 ---
@@ -53,7 +53,20 @@ orphan) and builds the job name from `PatientId.toString()`.
 comment linking #4809. Theo wrote OR-2947 himself, so the key work is his spec; the cleaner rework replaces his
 `isOwnedBy` from #4592 and the PR body says why (prefix filtering alone keeps the per-trigger N+1).
 
-**After merge:** `worktree-done` here; move OR-2947 to Done (IMPLEMENT) once acceptance criteria are re-read; after
-a dev deploy archive (not resolve) the five Sentry issues; delete `~/dev/worktrees/OR-2928-job-cleaner-demo-qa`
-(`git branch -D`, worktree-done will refuse it) and `origin/bugfix/OR-2947-metadata-driven-cleaner`. A vim swap
+**Cleaner pulled back out (2026-11-10, commit 3beab8dd6, forward commit — dropping 67ca0e3e3 would have conflicted
+with all three later commits).** Theo asked twice to keep the original cleaner and keep the PR to tenant keys. The
+branch now carries main's trigger-scan cleaner, `getStaleJobKeys` scoped with
+`GroupMatcher.triggerGroupStartsWith(TenantJobKeys.groupPrefix(tenant))` and `isOwnedBy` gone; `CREATED_TIMESTAMP`
+and `markStaleJobMetadataAsComplete` (72h sweep) are back; `JobCleanerJob` skips its own group via `bareGroup`.
+The metadata-driven cleaner lives in commit 67ca0e3e3 on this branch's history (and 704c7a8a4): resurrect it as its
+own PR under OR-2928 **after** #4809 merges, with Theo's point folded in (a failed delete must still close the
+metadata eventually; the old 72h sweep did). When reposting it, say "fewer per-row Quartz calls", never "N+1 gone":
+`deleteJob` per stale row is still a round trip each. Pushed 2026-11-10; PR body now links only OR-2947, and the 2026-11-03
+"fix is in #4809" comments on the five cleaner tickets (ids 37906–37910) were edited in place to say the cleaner
+comes as its own PR under OR-2928.
+
+**After merge:** `worktree-done` here; move OR-2947 to Done (IMPLEMENT) once acceptance criteria are re-read. The
+OR-2928 close-out (archive the five Sentry issues after a dev deploy) moves to the cleaner PR; delete
+`~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (`git branch -D`, worktree-done will refuse it) and
+`origin/bugfix/OR-2947-metadata-driven-cleaner` only once that PR is up. A vim swap
 file `.JobMetadata.java.swp` was sitting in orci-models/.../job during this session — Ryan had the file open.

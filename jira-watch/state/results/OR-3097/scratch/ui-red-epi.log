@@ -1,0 +1,1 @@
+{"step":"open","route":[{"text":"intravenous","selected":true},{"text":"intraosseous","selected":false},{"text":"intrathecal","selected":false}],"indication":[{"text":"Hypotension","selected":true},{"text":"Anaphylaxis","selected":false},{"text":"Code","selected":false}],"doses":[{"text":"5 mcg","selected":false},{"text":"10 mcg","selected":false}],"doseInput":""}

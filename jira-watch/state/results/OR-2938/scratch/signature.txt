@@ -1,0 +1,1 @@
+01a1c654-f5ba-73c9-9deb-d6e4eb7b20c7 com.guided.orci.engine.RuleEngine        : Rule evaluated: a-ebl-antibiotic-redose-reminder -> false No prior antibiotic administered since operation start

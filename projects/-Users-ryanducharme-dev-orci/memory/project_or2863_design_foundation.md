@@ -546,3 +546,16 @@ the `UserCheckFailed` state stays (it's what stops the endless spinner). The ™
 everywhere (main never had it). VIS-029 snapshot renamed `sign-in-check-failed`; VIS-006–029/032/033/038–040
 rebaselined. Theo: "good with this but want @JEphron to review" — approval now waits on JEphron.
 Bot round on 96b5a8c75 → event-center covers gained the R26 demo files (94c22dbd8); 94c22dbd8 clean, 0 unresolved threads.
+
+2026-11-10 MERGED: #4727 → main as merge commit 6810750a1 (Theo + JEphron approved; Ryan merged main in first as
+7849d9a84). worktree-done ran clean. The bot reviewed 7849d9a84 and posted 3 findings 5 min before the merge (MGB
+unstored Event Center start trusts a mistyped PMRN; med-admin-simulation R35/in-case-overlay R16 name Mayo;
+qa-suite `--grep "front-door R6"` recipe misses multi-id brackets) → two OR-3054 follow-ups drafted. OR-3094's first
+fix (missing-PMRN NPE) already shipped in the epic and its "new R26" is taken (next free event-center R27).
+Epic left In Progress: "Done when" names Alex + Karen sign-off, not visible on GitHub. Post-deploy QA on dev fails
+ARD-001/INS-004/MISC-001/PABX-013, same four on main before the merge (not epic-caused).
+2026-11-10 CLOSED: OR-2863 → Done (step 12 Complete, close-out comment with no child/epic keys). Follow-ups filed under
+OR-3054: OR-3177 (Bug, clinical: MGB unstored Event Center start trusts a mistyped PMRN; decide reject-in-lookup vs
+Event-Center-only) and OR-3178 (Task: tenant-neutral R35/R16 wording + requirement grep recipe). OR-3094 trimmed to
+its two open fixes (demo not-found logged at error; no 400 for a missing category list → R27). OR-3054 Outcome +
+Sequence step 1 now list OR-3120, OR-3177, OR-3178. All 44 PR threads resolved, every bot comment collapsed.

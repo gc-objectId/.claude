@@ -1,0 +1,12 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 5 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3097 is complete and the result is written to `/Users/ryanducharme/.claude/jira-watch/state/results/OR-3097/session.json` with verdict **deploy-ready**.
+
+**What was exercised against the running app**
+
+- **Positive.** On the shipped mgb-mgh config, medication selection for IV heparin on an 83 kg adult returned Procedural as the default with the 2,100 / 4,200 / 5,000 / 6,600 unit list, and Prophylaxis for subcutaneous. In the real dosing form (demo tenant with the mgb heparin rows copied in), Procedural opened preselected with only its amounts and no dose chosen, switching routes re-applied each route's default, clicking Procedural cleared it to the full list, and a save stored the preselected indication on the administration row.
+- **Negative.** Epinephrine, which has indications but no marker, opened with nothing selected on every route. Heparin rows with the marker set to false behaved the same way in both API and UI, and with no rows at all the rule abstained as before.
+- **Red check.** Flipping epinephrine Hypotension to default made it open preselected in the API and UI, and the app log printed the signature `defaultIndication=Hypotension]`. Swapping the pre-fix rule class into the container dropped the heparin default to null despite the marked rows. Both were reverted, checksums confirmed against the image, and the positive re-ran green.
+
+**Caveats recorded.** The UI run used the demo tenant with copied rows because MGB and Mayo app-launch need Epic locally, so the configured sites were verified at the API and DB level. Ship risk is marked none.
+
+**Automation.** No qa-suite coverage exists for the indication section. Five supplemental dosing-form tests are proposed, with one decision for Ryan: demo's shipped indication CSV deliberately marks no default, so a UI test needs either a demo marker or an API-level test against a configured tenant.

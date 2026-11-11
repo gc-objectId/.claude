@@ -1,0 +1,11 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 5 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3010 is complete and the result file is written. Nothing further is needed from this session.
+
+**Verdict: deploy-ready**, recorded in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-3010/session.json`.
+
+- **Positive:** a 110 kg, 175 cm adult male in the Mayo tenant preselected the 15 mg/kg option at 1.75 g from recorded weight, and the stored firing carried weight type ACTUAL.
+- **Negative:** that patient never saw the 1 g ideal-weight dose, and a 110 kg MGB patient still received the fixed 2 g group default.
+- **Red check:** uploading the parent commit's Mayo spreadsheet through the admin config-import endpoint flipped the default to 1 g from 70.5 kg ideal weight and produced the IDEAL fallback log line. Uploading the shipped spreadsheet restored 1.75 g, and the container's bundled file was never modified.
+- **Backfill:** changeset 243's SQL, run by hand in the Mayo schema, rescored the ideal-weight firing with a 1.75 g dose to compliant, rewrote its stored default, left actual-weight firings alone, and was idempotent on a second run.
+
+Caveats recorded for Ryan: the changeset ran by hand rather than through Liquibase (prod-only context), the backfill needs a BODY_WEIGHT observation at or before each firing, the 150 kg case now preselects 2.25 g with no cap (open question with Mayo), and the "nearest 0.2 g" wording is a pre-existing display glitch. Three qa-suite supplemental tests are proposed. The worktree is clean and all scratch files live under the results scratch directory.

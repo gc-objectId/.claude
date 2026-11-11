@@ -1,134 +1,134 @@
 {
-  "attribution" : {
-    "commit" : "",
-    "pr" : ""
+  "cleanupPeriodDays": 360,
+  "env": {
+    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS": "1"
   },
-  "cleanupPeriodDays" : 360,
-  "effortLevel" : "high",
-  "env" : {
-    "CLAUDE_CODE_EXPERIMENTAL_AGENT_TEAMS" : "1"
+  "attribution": {
+    "commit": "",
+    "pr": ""
   },
-  "hooks" : {
-    "Notification" : [
+  "permissions": {
+    "defaultMode": "auto"
+  },
+  "model": "fable",
+  "hooks": {
+    "Notification": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "PermissionRequest" : [
+    "PermissionRequest": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "PostToolUse" : [
+    "PostToolUse": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "PreToolUse" : [
+    "PreToolUse": [
       {
-        "hooks" : [
+        "matcher": "Bash|Read|Edit|Grep",
+        "hooks": [
           {
-            "command" : "$HOME\/.claude\/hooks\/block-env-read.sh",
-            "type" : "command"
+            "type": "command",
+            "command": "$HOME/.claude/hooks/block-env-read.sh"
           }
-        ],
-        "matcher" : "Bash|Read|Edit|Grep"
+        ]
       },
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "SessionEnd" : [
+    "SessionEnd": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "SessionStart" : [
+    "SessionStart": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "Stop" : [
+    "Stop": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "StopFailure" : [
+    "StopFailure": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "SubagentStop" : [
+    "SubagentStop": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ],
-    "UserPromptSubmit" : [
+    "UserPromptSubmit": [
       {
-        "hooks" : [
+        "hooks": [
           {
-            "command" : "\/Users\/ryanducharme\/.config\/iterm2\/cc-status",
-            "type" : "command"
+            "type": "command",
+            "command": "/Users/ryanducharme/.config/iterm2/cc-status"
           }
         ]
       }
     ]
   },
-  "model" : "claude-fable-5-1",
-  "modelSettings" : {
-    "claude-opus-5-5" : {
-      "effortLevel" : "xhigh"
+  "effortLevel": "high",
+  "modelSettings": {
+    "claude-opus-5-5": {
+      "effortLevel": "xhigh"
     }
   },
-  "permissions" : {
-    "defaultMode" : "auto"
-  },
-  "skipAutoPermissionPrompt" : true,
-  "skipWorkflowUsageWarning" : true,
-  "teammateMode" : "tmux"
+  "skipWorkflowUsageWarning": true,
+  "teammateMode": "tmux",
+  "skipAutoPermissionPrompt": true
 }

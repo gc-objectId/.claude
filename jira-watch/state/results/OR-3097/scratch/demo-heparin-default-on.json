@@ -1,0 +1,48 @@
+{
+ "trackingTabId": "01a1caeb-bf30-7484-97bd-acd39639ae2a",
+ "routes": {
+  "INTRAVENOUS": {
+   "defaultIndication": "Procedural",
+   "indications": {
+    "Procedural": [
+     "4,200 units",
+     "5,000 units",
+     "6,600 units"
+    ],
+    "CPB": [],
+    "ECMO": [
+     "4,200 units",
+     "5,000 units",
+     "6,600 units"
+    ]
+   },
+   "routeDoseOptions": [
+    "500 units",
+    "1,000 units",
+    "2,000 units",
+    "4,200 units",
+    "5,000 units",
+    "6,600 units",
+    "8,300 units"
+   ]
+  },
+  "SUBCUTANEOUS": {
+   "defaultIndication": "Prophylaxis",
+   "indications": {
+    "Prophylaxis": [
+     "5,000 units",
+     "6,600 units"
+    ]
+   },
+   "routeDoseOptions": [
+    "500 units",
+    "1,000 units",
+    "2,000 units",
+    "4,200 units",
+    "5,000 units",
+    "6,600 units",
+    "8,300 units"
+   ]
+  }
+ }
+}

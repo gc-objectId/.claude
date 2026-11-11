@@ -29,8 +29,10 @@ jira_issue_summary() {
     jira_issue_field "$1" summary 'summary'
 }
 
+# Human comments only: automation comments on linked tickets let a sweep trip its own tamper check.
 jira_comment_count() {
-    _jira_curl "${JIRA_BASE}/rest/api/3/issue/$1?fields=comment" | jq -r '.fields.comment.total // 0'
+    _jira_curl "${JIRA_BASE}/rest/api/3/issue/$1/comment?maxResults=100" |
+        jq -r '[.comments[]? | select(.author.accountType != "app")] | length'
 }
 
 # Which transition ids exist depends on the issue's current status.

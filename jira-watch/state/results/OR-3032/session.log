@@ -1,0 +1,20 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 6 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3032 is complete and the verdict file is written.
+
+**Verdict: deploy-ready**, with the pediatric gap flagged as material ship risk.
+
+**What was exercised against the running build**
+- A 50 kg and a 120 kg adult, at demo and at Mayo, pass 266 mg of liposomal bupivacaine and alert at 300 mg with a flat "266 mg" basis. No per-kg multiplier, no weight scaling.
+- Mayo's 5-day lookback works: a 133 mg prior dose at 48 hours is counted, one at 6 days is ignored.
+- All four tenant schemas carry BUPIVACAINE_LIPOSOME on every liposomal record. No EXPAREL category, row, or link survives anywhere.
+
+**Red checks, both reverted and re-verified**
+- Data flip: Mayo's product set back to the BUPIVACAINE category reproduced the ticket's "Now" example exactly (125 mg max at 2.5 mg/kg, 48-hour prior lost). Signature `remaining dose (125 mg) + buffer (5 mg)` appears once in the container log.
+- Class swap: the 4 mg/kg adult clause restored in `LASTProtocolService` made the same patient alert against 200 mg. Shipped class restored with matching checksum.
+
+**Caveats recorded for Ryan**
+- Pediatric could not be exercised at all. The product has only an adult dosing config at every site, and the ticket still lists the pediatric answer as TBD. That is the one acceptance criterion left open.
+- MGB verified at the data level only, since its liposomal records are generic entries with no routes.
+- A pre-existing WARN about `mg/mL` concentration units fires on every liposomal evaluation; the calculation still falls back correctly.
+
+Four supplemental API-level LAMD tests are proposed in the automation section. Nothing was committed, pushed, or written inside the worktree. Scratch artifacts live under the results directory.

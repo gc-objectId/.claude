@@ -1,0 +1,14 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 6 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3012 is complete and the verdict file is written.
+
+**Verdict: deploy-ready**, recorded in `~/.claude/jira-watch/state/results/OR-3012/session.json`.
+
+What was exercised against the running build (demo tenant, 70 kg adult cases, via the same CDS endpoints the dosing form calls):
+
+- **Positive:** 100 mg plain bupivacaine 3 minutes before liposomal bupivacaine left the selection maximum at 266 mg, a 266 mg save raised no alert, and the bupivacaine still appeared in the prior dose list. Lidocaine given earlier was excluded the same way. Save used half the actual dose: 200 mg passed, 150 mg alerted.
+- **Negative:** The same bupivacaine 10 minutes earlier, or 150 mg within the window, reduced the maximum and fired the save alert. Lidocaine still counted against a later ropivacaine or plain bupivacaine selection, and lidocaine after liposomal fired the scan alert.
+- **Red check:** Compiled a copy of `LASTProtocolService` with the exclusion disabled, swapped it into the container, restarted. The identical 90 mg co-administration then cut the maximum to 130 mg and fired the save alert. Restored the shipped classes (checksums verified), restarted, and the positive case went green again. The signature line appears exactly twice in the log, both inside the swap window.
+
+Caveats recorded: API-driven rather than browser-rendered, the info rule only exercised indirectly, demo's product displays as "Bupivacaine" in alert text, a pre-existing mg/mL concentration warning from the demo data row, and no pediatric case. Three supplemental qa-suite tests are proposed; unit coverage already has a test per scenario row for all four rules.
+
+One housekeeping note: the cleanup of the copied jars under the scratch directory and the temp files inside the container was denied by the permission layer, so those remain. Both are outside the worktree, which is clean.

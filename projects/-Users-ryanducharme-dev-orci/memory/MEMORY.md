@@ -61,7 +61,7 @@
 - [Local Mayo app-launch validation](reference_local_mayo_applaunch_validation.md) — POST /api/cds/app-launch/{pmrn}/{caseId}; SIU needs AIL-3-2
 - [Demo-tenant app-launch validation](reference_demo_tenant_applaunch_validation.md) — admin API stages, POST /api/app-launch starts the case
 - [curl blocked, use node http](reference_curl_blocked_use_node_http.md) — Bash denies curl; node http + cookie jar
-- [jira-watch validation loop](project_jira_watch_autovalidate.md) — Ready-for-Testing SOP: loopcmd 8 2 / review / now
+- [jira-watch validation loop](project_jira_watch_autovalidate.md) — Ready-for-Testing SOP: loopcmd 8 2 / review / now; gate counts human comments only
 - [Empty-default secret auth bypass](reference_empty_default_secret_auth_bypass.md) — empty-default credentials become a bypass
 - [Analytics SQL local validation](reference_analytics_sql_local_validation.md) — throwaway local DB running the shipped views SQL
 - [rule_definitions is upsert-only on boot](reference_rule_definitions_rebuilt_on_boot.md) — retired rules keep their row
@@ -88,7 +88,7 @@
 - [OR-2862 allergy reaction paren drift](project_or2862_allergy_reaction_paren_drift.md) — CLOSED; unmatched reactions skip silently
 - [orci readiness signal](reference_orci_readiness_signal.md) — poll /actuator/health/readiness, not the Started log line
 - [OR-2863 child session SOP](reference_or2863_child_session_sop.md) — epic branch, CI-only snapshots, cascade gate
-- [OR-2863 design foundation](project_or2863_design_foundation.md) — epic PR #4727 in review; Theo's 11-06 error-page + ™ comment done 2026-11-09 (head 94c22dbd8, bot clean); approval waits on JEphron; follow-ups OR-3113/3114/3120
+- [OR-2863 design foundation](project_or2863_design_foundation.md) — DONE 2026-11-10 (#4727 merged, 6810750a1), worktree gone; follow-ups OR-3177/3178 + trimmed OR-3094 under OR-3054
 - [OR-3054 follow-on epic](project_or2863_design_foundation.md) — admin IA + design follow-ups; no epic branch, each child its own PR to main
 - [OR-2863 finished children](project_or2863_design_foundation.md) — per-ticket detail lives in project_or<key>_*.md
 - [Follow-ups go under OR-3054](feedback_followups_go_under_or3054.md) — own PR to main, next free Vite port; no design-epic link or keys
@@ -146,7 +146,7 @@
 - [Branch behind main fails boot on shared DB](reference_branch_behind_main_rule_definitions_boot.md) — rule_definitions carries newer enum values; rebase before launching on 8081
 - [Timestamp bind zone sensitivity](reference_timestamp_bind_zone_sensitivity.md) — Instant fields never drift; Date fields into zone-less columns do; flip recipe
 - [DevTools restart on mvn test](reference_devtools_restart_on_mvn_test.md) — worktree app restarts when a concurrent build recompiles target/classes
-- [OR-2809 timestamptz validation](project_or2809_timestamptz_validation.md) — DONE 2026-10-30; tests PR #4802 draft; worktree-done owed after merge
+- [OR-2809 timestamptz validation](project_or2809_timestamptz_validation.md) — DONE 2026-10-30; tests PR #4802 merged 2026-11-10; worktree gone
 - [Lint changelogs, not the catalog](feedback_schema_conventions_lint_changelogs.md) — Theo: schema conventions are guarded by a changelog lint test, not a Testcontainers catalog query
 - [OR-2947 Quartz tenant keys](project_or2947_quartz_tenant_keys.md) — implemented 2026-11-02; `<tenant>:<group>` via TenantJobKeys; exclude the audio plugin module from `-am`; trigger-reading tests need the PostgreSQLDelegate override
 - [Sentry frontend observability locally](reference_sentry_frontend_observability_local.md) — runtime init via Vite dep URL; [::1] host bypasses isLocal for Playwright
@@ -157,3 +157,5 @@
 - [MGB Metabase access](reference_mgb_metabase_access.md) — MGB VPN, fetch /api/dataset from the tab, loose index scan; MGH OR event vocabulary has no clamp
 - [OR-3104 clamp events](project_or3104_clamp_events_investigation.md) — DONE 2026-11-05; neither site sends clamp on/off
 - [Read why before refusing a path](feedback_read_why_before_refusing_a_path.md) — read the commit that opened a path + trace every consumer before closing it
+- [Pushed-alert tests fail together](reference_pushed_alert_tests_fail_together.md) — dead STOMP socket; admin-only subscribe + RECENTLY_ADMINISTERED_MEDS kills guidance for non-admins
+- [OR-3054 orchestrator model](project_or3054_orchestrator_model.md) — one orchestrator, one agent per ticket, small PRs to main; lanes + terseness caps
