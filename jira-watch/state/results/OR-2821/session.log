@@ -1,0 +1,14 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 5 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+The validation is complete and the result file is written. Nothing further is needed.
+
+**Verdict: deploy-ready**, recorded in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2821/session.json`. The red-check signature appears exactly once in the captured app log, and the worktree is clean with all scratch work outside it.
+
+**What was validated** against the running main build in the mayo-mayo tenant:
+
+- **Positive.** The admin PATCH acuity endpoint and a Mayo SIU message both wrote `operations.acuity`, and the antibiotic resolution followed the value. A cesarean case got azithromycin only under URGENT and EMERGENT. Changeset 216 ran in all four tenant schemas, and the served bundle carries the renamed client and the Acuity label with no leftover "classification".
+- **Negative.** An invalid acuity returned 400 and left the row untouched, the old classification route returned 404, clearing stored NULL, and a blank or unmapped PV1-4 left the stored value alone with a warning logged.
+- **Red check.** Flipping the stored acuity to NON_URGENT by SQL, bypassing the endpoint, made the resolution go unconfigured and the log echo the value read from the new column. Reverting restored the recommendation. The pre-fix class swap was not attempted because the parent commit's code calls methods that no longer exist on Operation.
+
+**Main caveat for Ryan.** This build already contains R2 and changeset 242, which dropped `operations.classification`. The R1 transitional fallback therefore no longer exists at runtime and could not be exercised. Only its end state was validated. The Valkey scope is now v6 rather than the v3 the ticket names, and the analytics views now select `o.acuity` directly. Ship risk is recorded as none, since none of that affects a deploy of this main.
+
+**Automation proposed** at the supplemental tier: the acuity endpoint contract, the acuity-driven cesarean resolution flip, and the SIU PV1-4 write. The qa-suite currently has no acuity coverage.

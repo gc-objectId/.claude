@@ -1,0 +1,28 @@
+pmrn or2821red-fake-f7c6083e-7bf3-46ea-932c-971a7d9b80af caseId 778379
+
+SIU PV1-4='Urg' -> 200 {"acknowledgement":"MSH|^~\\&|RST|OR_CASE_FILE|EPIC|RORMC|20261111152348.59+0000||ACK^S14^ACK|aa49b24b-fe5b-4d56-ae14-5bf90f9fdd0b|P|2.5.1\rMSA|AA|260676\r"}
+ db: 778379 acuity=URGENT room=RM OR 49 ROEI 01 303
+
+SIU PV1-4='Elec' -> 200 {"acknowledgement":"MSH|^~\\&|RST|OR_CASE_FILE|EPIC|RORMC|20261111152349.719+0000||ACK^S14^ACK|beab6097-3aa9-4a2f-994f-e38f5f8488f2|P|2.5.1\rMSA|AA|260676\r"}
+ db: 778379 acuity=ELECTIVE room=RM OR 49 ROEI 01 303
+
+SIU PV1-4='' -> 200 {"acknowledgement":"MSH|^~\\&|RST|OR_CASE_FILE|EPIC|RORMC|20261111152350.818+0000||ACK^S14^ACK|1aa0597f-59b9-425d-8777-5c8d27a851f2|P|2.5.1\rMSA|AA|260676\r"}
+ db: 778379 acuity=ELECTIVE room=RM OR 49 ROEI 01 303
+
+SIU PV1-4='Bogus-Acuity' -> 200 {"acknowledgement":"MSH|^~\\&|RST|OR_CASE_FILE|EPIC|RORMC|20261111152351.922+0000||ACK^S14^ACK|0084f1b9-44d0-4afd-ac74-d94f53305526|P|2.5.1\rMSA|AA|260676\r"}
+ db: 778379 acuity=ELECTIVE room=RM OR 49 ROEI 01 303
+
+--- log lines for case 778379
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91046: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91047: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91048: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91049: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91050: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91051: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91052: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91053: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91054: Unknown medication: m-promethazine-iv - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91099: Unknown medication: m-ropivacaine - skipping
+2026-11-11T15:17:05.349Z  WARN 1 --- [    virtual-146] -/- mgb-mgh - - - .g.o.d.i.ClientMedicationMappingImporter : Line 91100: Unknown medication: m-ropivacaine - skipping
+2026-11-11T15:23:51.932Z  WARN 1 --- [   async-task-4] -/- mayo-mayo - - - .i.m.h.MayoHL7SiuCaseSchedulingProcessor : Unmapped SIU case acuity PV1-4='Bogus-Acuity' — hl7MessageId=01a1cb35-52f2-7ecf-ada1-4d59aa3e1f92
+

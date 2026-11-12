@@ -1,0 +1,8 @@
+models dir now:
+rules
+/app/classes/com/guided/orci/dto/OperationSettings.class
+/app/classes/com/guided/orci/exceptions/OperationNotFoundException.class
+/app/classes/com/guided/orci/service/OperationRuleSettingsService.class
+/app/classes/com/guided/orci/service/OperationSessionService.class
+/app/classes/com/guided/orci/service/OperationService.class
+f22335a0329bc34b059681a482694c3ec9f59d271298a7d1f41340375d2e58fe  /app/libs/orci-models-0.1.105-SNAPSHOT.jar

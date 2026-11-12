@@ -1,0 +1,2 @@
+rules
+f22335a0329bc34b059681a482694c3ec9f59d271298a7d1f41340375d2e58fe  /app/libs/orci-models-0.1.105-SNAPSHOT.jar

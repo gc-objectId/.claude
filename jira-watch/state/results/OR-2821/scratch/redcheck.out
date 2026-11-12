@@ -1,0 +1,23 @@
+case 50820 operation 01a1cb34-4331-7186-86fc-591d41301d2c
+
+[baseline] PATCH acuity EMERGENT
+ PATCH 200 dto.acuity= EMERGENT | db.acuity= EMERGENT
+ resolve: RECOMMENDED CEFAZOLIN+AZITHROMYCIN | sig count: 0
+
+[FLIP] SQL UPDATE operations.acuity='NON_URGENT' (bypasses the endpoint)
+  UPDATE 1 | db.acuity= NON_URGENT
+ resolve: SUPPRESSED_UNCONFIGURED_PROCEDURE recommended= [] | sig count: 1
+ GET operations dto.acuity= [ 'NON_URGENT' ]
+
+[REVERT] SQL UPDATE operations.acuity='EMERGENT'
+  UPDATE 1 | db.acuity= EMERGENT
+ resolve: RECOMMENDED CEFAZOLIN+AZITHROMYCIN | sig count (unchanged expected): 1
+
+[clear] PATCH acuity null
+ PATCH 200 dto.acuity= null | db.acuity= "" | is null: t
+ resolve: SUPPRESSED_UNCONFIGURED_PROCEDURE
+
+[invalid] PATCH acuity SEMI_URGENT_OR2821 after setting URGENT
+ PATCH 400 Invalid acuity: SEMI_URGENT_OR2821 | db.acuity= URGENT
+
+SIG= Operation 01a1cb34-4331-7186-86fc-591d41301d2c matched no antibiotic pathway for p-cesarean-delivery: 2 configured, procedure risk LOW case acuity NON_URGENT

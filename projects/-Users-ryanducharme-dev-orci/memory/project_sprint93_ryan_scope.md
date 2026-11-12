@@ -61,3 +61,5 @@ panel / `gh pr list --search OR-XXXX --state all` for an existing PR, not just t
 **Why:** Theo wants Ryan on implementation, not only testing; OR-2941 is the deliberately
 thin first ticket. **How to apply:** spec first (rule-spec), then implement; keep the
 medication-selection baseline (feature-spec) running in parallel.
+
+**OR-2941 DONE (2026-11-12):** #4779 merged 2026-11-12 (0b1fed6c1) after Alex (wording) and Jordan (engineering) approved. Jira automation moved the ticket to Done on merge; close-out comment 37972 posted. Worktree removed via worktree-done. Leftover: old branch `feature/OR-2941-cefazolin-default-dose` (closed #4761) still on origin and local, Ryan to delete. Still owed: cefotaxime/ceftriaxone ">120 kg" flag to Alex.

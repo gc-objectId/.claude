@@ -1,0 +1,10 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 5 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-2823 is complete and the result file is written.
+
+**Verdict: deploy-ready.** The result is in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2823/session.json`.
+
+- **Positive.** On a fresh boot of the built image, change-set 242 is EXECUTED in all four tenant schemas and `operations` has `acuity` with no `classification`. Case start and admin operation reads succeed against the dropped schema. Re-adding the column with consistent data and re-running the change-set dropped it again and the app booted.
+- **Negative.** Re-running on an already-dropped schema executes as a no-op with no guard message. A halted guard leaves the column and a dependent view intact, so there is no CASCADE path.
+- **Red check.** Two flips on the demo tenant each halted the boot with the refusing-to-drop message and exit code 1: a row where classification disagreed with acuity, and a view reading the column. Both were reverted and the app came back UP.
+
+The red-check signature appears in the container log only during the flips and zero times after the revert. The worktree is clean. Caveats recorded: flips ran on one tenant schema, the live-pod prerequisite is operational and not checkable here, and lock_timeout was not exercised under load. Proposed automation is a changelog lint keeping the retired column out of later change-sets and analytics SQL.

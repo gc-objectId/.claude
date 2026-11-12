@@ -103,7 +103,7 @@
 - [Java 25 local JDK](reference_java25_local_jdk.md) — JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB 16; repo pins 16-alpine
 - [Feature specs program](project_feature_specs_program.md) — Theo initiative; med-selection baseline = OR-3017
-- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 validated 2026-10-28 on main+#4779; Ryan force-pushes the rebase, Done at merge + worktree-done; cefotaxime/ceftriaxone fix is CSV-only, flag owed to Alex
+- [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 DONE 2026-11-12 (#4779 merged), worktree gone; old #4761 branch still on origin; cefotaxime/ceftriaxone flag owed to Alex
 - [OR-2928 → OR-2947 handoff](project_or2928_sentry_perf_issues_as_bugs.md) — **READ FIRST in the OR-2947 session**: five job-cleaner tickets are N+1 detections; fix parked at 704c7a8a4 (Java files only, triage part superseded by #4627); exact checkout + test commands and close-out checklist inside
 - [Actions "job not acquired" = GitHub outage](reference_actions_job_not_acquired_is_github_outage.md) — check githubstatus, re-dispatch
 - [GitHub runs API stale pages](reference_github_runs_api_stale_pages.md) — trust a page only if it contains GITHUB_RUN_ID
@@ -159,3 +159,4 @@
 - [Read why before refusing a path](feedback_read_why_before_refusing_a_path.md) — read the commit that opened a path + trace every consumer before closing it
 - [Pushed-alert tests fail together](reference_pushed_alert_tests_fail_together.md) — dead STOMP socket; admin-only subscribe + RECENTLY_ADMINISTERED_MEDS kills guidance for non-admins
 - [OR-3054 orchestrator model](project_or3054_orchestrator_model.md) — one orchestrator, one agent per ticket, small PRs to main; lanes + terseness caps
+- [Engineering approval before merge](feedback_engineering_approval_before_merge.md) — Alex (product) approval passes GitHub but Ryan waits for Theo or Jordan

@@ -1,0 +1,14 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 5 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-2822 is complete and recorded at `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2822/session.json` with verdict **deploy-ready**.
+
+**What was exercised against the running build**
+
+- **Positive.** A PATCHed acuity round-trips through the admin API and the DB. Change-set 228 was re-run at runtime by re-adding the `classification` column, planting a straggler row, deleting the changelog row and restarting. The straggler read as null before and as EMERGENT after. The shipped mgb-mgh view file applies cleanly to the dropped-column schema and the base views in both tenants expose `acuity`.
+- **Negative.** A row with disagreeing values kept its own acuity through the migration and the app. Clearing acuity no longer clears anything else. The shipped SELECT has no `classification` column, and the shipped jar has no field or builder step. Both parent-commit view files fail on `o.classification` against this schema.
+- **Red check.** The parent commit's `Operation` class was compiled in the container and dropped into `/app/classes` ahead of the jar. The null-acuity row then read back URGENT through the fallback, and the Hibernate SELECT in the log carried the signature `o1_0.case_id,o1_0.classification,o1_0.created_date`. The class was removed, the jar checksum matched before and after, and the row read null again. The signature appears exactly once in the container log.
+
+**Caveats recorded.** This sha already includes R3's drop, so the column was re-added by hand for the exercise. The Mayo view file cannot run end to end on this instance's PostgreSQL 14.5 because a later index uses `NULLS NOT DISTINCT`, though the changed `mayo_operations` view was created and verified. The ticket's manual reconciliation step has no code surface. Ship risk is marked none.
+
+**Automation proposed.** A supplemental qa-suite API test for the acuity PATCH round-trip, a lint that the analytics files no longer reference `classification`, and an integration test applying the mgb-mgh view file to the Testcontainers schema.
+
+The worktree is untouched and all scratch lives under the results directory.

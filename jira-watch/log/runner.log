@@ -1791,3 +1791,75 @@ No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-3097
 Transitioned OR-3097 to Done
 2026-11-11 09:10:58  [OR-3097] close-parent: OR-3097 is already Done
+2026-11-11 10:15:36  [OR-2822] OR-2822 status is 'Ready for Testing'
+2026-11-11 10:15:36  [OR-2821] OR-2821 status is 'Ready for Testing'
+2026-11-11 10:15:37  [OR-2822] Building image from origin/main
+2026-11-11 10:15:37  [OR-2821] Building image from origin/main
+2026-11-11 10:15:37  [OR-2822] image=guidedclinical/orci:loop-6810750a1 sha=6810750a1457f1732a236d9baa7430a4693bd9aa
+2026-11-11 10:15:40  [OR-2822] OR-2822 moved to Testing
+2026-11-11 10:15:40  [OR-2822] OR-2822 assigned to the configured account
+2026-11-11 10:15:43  [OR-2822] parent OR-2817 claimed and moved to Testing
+2026-11-11 10:15:44  [OR-2822] baseline: status='Testing' comments=0
+2026-11-11 10:15:44  [OR-2822] slug=r2-move-reads-onto
+2026-11-11 10:15:46  [OR-2822] worktree=/Users/ryanducharme/dev/worktrees/OR-2822-r2-move-reads-onto
+2026-11-11 10:15:47  [OR-2821] image=guidedclinical/orci:loop-6810750a1 sha=6810750a1457f1732a236d9baa7430a4693bd9aa
+2026-11-11 10:15:49  [OR-2821] OR-2821 moved to Testing
+2026-11-11 10:15:50  [OR-2821] OR-2821 assigned to the configured account
+2026-11-11 10:15:51  [OR-2821] parent OR-2817 is 'Testing' — left alone
+2026-11-11 10:15:52  [OR-2821] baseline: status='Testing' comments=0
+2026-11-11 10:15:52  [OR-2821] slug=r1-add-the-acuity
+2026-11-11 10:15:54  [OR-2821] worktree=/Users/ryanducharme/dev/worktrees/OR-2821-r1-add-the-acuity
+2026-11-11 10:17:46  [OR-2822] app under test at http://localhost:62468
+2026-11-11 10:17:46  [OR-2822] wrote ticket context (22 lines)
+2026-11-11 10:17:46  [OR-2822] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2822/session.log)
+2026-11-11 10:17:53  [OR-2821] app under test at http://localhost:62485
+2026-11-11 10:17:54  [OR-2821] wrote ticket context (43 lines)
+2026-11-11 10:17:54  [OR-2821] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2821/session.log)
+2026-11-11 10:22:32  [OR-2822]   … OR-2822 still running (300s elapsed, 2 app requests, app up)
+2026-11-11 10:22:39  [OR-2821]   … OR-2821 still running (300s elapsed, 121 app requests, app up)
+2026-11-11 10:26:39  [OR-2821] session finished after ~525s
+2026-11-11 10:26:39  [OR-2821] captured 8229 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2821 against 6810750a1457f1732a236d9baa7430a4693bd9aa (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2821
+Transitioned OR-2821 to Done
+2026-11-11 10:26:44  [OR-2821] close-parent: OR-2817 still has open subtasks:
+2026-11-11 10:26:44  [OR-2821] close-parent:   OR-2822 is Testing
+2026-11-11 10:26:44  [OR-2821] close-parent:   OR-2823 is Ready for Testing
+2026-11-11 10:26:45  [OR-2821] close-parent: OR-2817 commented
+2026-11-11 10:26:48  [OR-2823] OR-2823 status is 'Ready for Testing'
+2026-11-11 10:26:49  [OR-2823] Building image from origin/main
+2026-11-11 10:26:49  [OR-2823] image=guidedclinical/orci:loop-6810750a1 sha=6810750a1457f1732a236d9baa7430a4693bd9aa
+2026-11-11 10:26:51  [OR-2823] OR-2823 moved to Testing
+2026-11-11 10:26:52  [OR-2823] OR-2823 assigned to the configured account
+2026-11-11 10:26:53  [OR-2823] parent OR-2817 is 'Testing' — left alone
+2026-11-11 10:26:54  [OR-2823] baseline: status='Testing' comments=0
+2026-11-11 10:26:54  [OR-2823] slug=r3-drop-the-operations
+2026-11-11 10:26:56  [OR-2823] worktree=/Users/ryanducharme/dev/worktrees/OR-2823-r3-drop-the-operations
+2026-11-11 10:27:32  [OR-2822]   … OR-2822 still running (600s elapsed, 2 app requests, app up)
+2026-11-11 10:28:20  [OR-2823] app under test at http://localhost:62694
+2026-11-11 10:28:20  [OR-2823] wrote ticket context (22 lines)
+2026-11-11 10:28:20  [OR-2823] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-2823/session.log)
+2026-11-11 10:32:32  [OR-2822]   … OR-2822 still running (900s elapsed, 2 app requests, app up)
+2026-11-11 10:32:47  [OR-2822] session finished after ~900s
+2026-11-11 10:32:47  [OR-2822] captured 9387 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2822 against 6810750a1457f1732a236d9baa7430a4693bd9aa (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2822
+Transitioned OR-2822 to Done
+2026-11-11 10:32:53  [OR-2822] close-parent: OR-2817 still has open subtasks:
+2026-11-11 10:32:53  [OR-2822] close-parent:   OR-2823 is Testing
+2026-11-11 10:32:54  [OR-2822] close-parent: OR-2817 commented
+2026-11-11 10:33:06  [OR-2823]   … OR-2823 still running (300s elapsed, 0
+? app requests, app up)
+2026-11-11 10:33:21  [OR-2823] session finished after ~300s
+2026-11-11 10:33:21  [OR-2823] captured 9368 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-2823 against 6810750a1457f1732a236d9baa7430a4693bd9aa (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-2823
+Transitioned OR-2823 to Done
+2026-11-11 10:33:25  [OR-2823] close-parent: OR-2817: all 3 subtasks are Done (parent is 'Testing')
+2026-11-11 10:33:27  [OR-2823] close-parent: OR-2817 commented and moved to Done

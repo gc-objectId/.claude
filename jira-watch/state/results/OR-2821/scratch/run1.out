@@ -1,0 +1,18 @@
+create patient 200 {"pmrn":"or2821-fake-512cd2ce-4edf-4466-b8ef-c22235ea1119","uuid":"01a1cb32-d405-731b-ae04-1c8d0d8f9a39"}
+create op 200 {"operationId":"01a1cb32-d441-7a09-890c-6264b8c3cc80","caseId":"41873","startTime":"2026-11-11T15:21:08.398+00:00","endTime":null,"procedureStartTime":null,"procedureEndTime":null,"inductionStartTime":null,"extubationTime":null,"admissionDate":null,"initialApplicationLaunchTime":null,"baselineMAP":null,"serviceName":null,"pediatricStatus":"ADULT","acuity":null,"asaStatus":null,"primaryPractitionerName":null,"procedureTypes":[{"procedureId":"p-cesarean-delivery","procedureName":"Cesarean delivery","categories":["OBGYN","EXCLUDE_FROM_PREGNANCY_RULES"],"qualifier":null,"availableQualifiers":[]}],
+IDS or2821-fake-512cd2ce-4edf-4466-b8ef-c22235ea1119 01a1cb32-d405-731b-ae04-1c8d0d8f9a39 41873
+candidates(null acuity) 200 outcome= SUPPRESSED_UNCONFIGURED_PROCEDURE recommended= 
+PATCH EMERGENT 200 dto.acuity= EMERGENT dto.classification= undefined
+  candidates 200 outcome= RECOMMENDED recommended= {"medicationCandidates":[{"medicationCategory":"CEFAZOLIN","displayLabel":"CeFAZolin","associatedMedicationCategories":["AMINOGLYCOSIDE","CEF GEN 1","EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL","ANTIBIOTIC","NOT_ON_MED_LIST","CEFAZOLIN","GENTAMICIN","CEPHALOSPORIN","INTRAVENOUS"]},{"medicationCategory":"AZITHROMYCIN","displayLabel":"Azithromycin","associatedMedicationCategories":["QTC_PROLONGING","ANTIBIOTIC","NOT_ON_MED_LIST","AZITHROMYCIN","INTRAVENOUS"]}],"stepNumber":1,"qualifier":null,"acuity":null,"mrsaAdjusted":false}
+PATCH ELECTIVE 200 dto.acuity= ELECTIVE dto.classification= undefined
+  candidates 200 outcome= RECOMMENDED recommended= {"medicationCandidates":[{"medicationCategory":"CEFAZOLIN","displayLabel":"CeFAZolin","associatedMedicationCategories":["AMINOGLYCOSIDE","CEF GEN 1","EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL","ANTIBIOTIC","NOT_ON_MED_LIST","CEFAZOLIN","GENTAMICIN","CEPHALOSPORIN","INTRAVENOUS"]}],"stepNumber":1,"qualifier":null,"acuity":null,"mrsaAdjusted":false}
+PATCH URGENT 200 dto.acuity= URGENT dto.classification= undefined
+  candidates 200 outcome= RECOMMENDED recommended= {"medicationCandidates":[{"medicationCategory":"CEFAZOLIN","displayLabel":"CeFAZolin","associatedMedicationCategories":["AMINOGLYCOSIDE","CEF GEN 1","EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL","ANTIBIOTIC","NOT_ON_MED_LIST","CEFAZOLIN","GENTAMICIN","CEPHALOSPORIN","INTRAVENOUS"]},{"medicationCategory":"AZITHROMYCIN","displayLabel":"Azithromycin","associatedMedicationCategories":["QTC_PROLONGING","ANTIBIOTIC","NOT_ON_MED_LIST","AZITHROMYCIN","INTRAVENOUS"]}],"stepNumber":1,"qualifier":null,"acuity":null,"mrsaAdjusted":false}
+PATCH NON_URGENT 200 dto.acuity= NON_URGENT dto.classification= undefined
+  candidates 200 outcome= SUPPRESSED_UNCONFIGURED_PROCEDURE recommended= 
+--- negatives
+PATCH invalid 400 {"timestamp":"2026-11-11T15:21:08.989+00:00","status":400,"error":"Bad Request","message":"Invalid acuity: SEMI_URGENT_OR2821","path":"/api/admin/patients/or2821-fake-512cd2ce-4edf-4466-b8ef-c22235ea1119/operations/41873/acuity"}
+PATCH old /classification route 404 {"timestamp":"2026-11-11T15:21:09.007+00:00","status":404,"error":"Not Found","message":"No static resource api/admin/patients/or2821-fake-512cd2ce-4edf-4466-b8ef-c22235ea1119/operations/41873/classif
+ERR TypeError: after.body.map is not a function
+    at /Users/ryanducharme/.claude/jira-watch/state/results/OR-2821/scratch/run1.js:27:61
+    at process.processTicksAndRejections (node:internal/process/task_queues:104:5)
