@@ -1,0 +1,293 @@
+{
+ "pmrn": "V-fake-c4738129-1f80-415e-90be-e667dd41bdbb",
+ "caseId": "71102",
+ "trackingTabId": "01a1d179-5c5b-74fb-b178-74828a41803a",
+ "sel": {
+  "context": {
+   "id": "01a1d172-8456-70d1-93d1-9780cfe52b80",
+   "medicationName": "Vancomycin",
+   "medicationFullName": "Vancomycin IV",
+   "medicationIdentifier": "m-vancomycin-iv",
+   "defaultNDC": "7257280101",
+   "ndc": null,
+   "concentrationOptions": [],
+   "perComponentConcentrations": [],
+   "availableRoutes": [
+    "INTRAVENOUS"
+   ],
+   "colorLabelSetting": {
+    "topColor": "#FFFFFF",
+    "bottomColor": "#FFFFFF",
+    "thickness": null,
+    "hatched": false
+   },
+   "isScanned": false
+  },
+  "results": [
+   {
+    "resultId": "01a1d179-5cb0-713b-a0f2-399b0198bb40",
+    "ruleId": "a-known-procedure-wrong-antibiotic",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "PROCEDURE_IDS": [
+      "p-cholecystectomy"
+     ],
+     "ALTERNATIVE_ANTIBIOTIC_CANDIDATES": [
+      {
+       "medicationCandidates": [
+        {
+         "medicationCategory": "CEFAZOLIN",
+         "displayLabel": "CeFAZolin",
+         "associatedMedicationCategories": [
+          "AMINOGLYCOSIDE",
+          "CEF GEN 1",
+          "EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL",
+          "ANTIBIOTIC",
+          "NOT_ON_MED_LIST",
+          "CEFAZOLIN",
+          "GENTAMICIN",
+          "CEPHALOSPORIN",
+          "INTRAVENOUS"
+         ]
+        }
+       ],
+       "stepNumber": 1,
+       "qualifier": null,
+       "acuity": null,
+       "mrsaAdjusted": false
+      }
+     ],
+     "MRSA_ADJUSTED_OPTION_RECOMMENDED": false,
+     "CONSIDER_ALTERNATIVE_ANTIBIOTICS_HTML_KEY": "For ${PROCEDURE_NAME}, recommend: ${ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML}",
+     "EVALUATION_DATE": "2026-11-12T20:35:54.080+00:00",
+     "ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML": "CeFAZolin",
+     "MEDICATION_NAME": "Vancomycin",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "PROCEDURE_NAME": "Cholecystectomy",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "a-known-procedure-wrong-antibiotic",
+     "trigger": null,
+     "type": "ALERT",
+     "title": "CeFAZolin is recommended",
+     "tabName": null,
+     "description": "For Cholecystectomy, recommend: CeFAZolin",
+     "acceptText": "Will Choose CeFAZolin",
+     "rejectText": "Reject",
+     "rejectReasons": [
+      {
+       "rejectionReason": "BENEFIT_OUTWEIGHTS_RISK",
+       "reason": "Benefit outweighs risk",
+       "customInput": false,
+       "customInputLabel": null
+      },
+      {
+       "rejectionReason": "SURGEON_REQUEST",
+       "reason": "Surgeon request",
+       "customInput": false,
+       "customInputLabel": null
+      }
+     ],
+     "citations": [
+      {
+       "id": "r-procedure-wrong-antibiotic",
+       "label": "Hospital Guidelines",
+       "citation": "See Appendix Table 1: Antimicrobial Prophylaxis Recommendations, by Procedure. Procedure is Cholecystectomy.",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+      }
+     ],
+     "citationsLocation": "END_OF_BANNER",
+     "promptText": null,
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:35:54.160073722Z",
+     "lastModifiedDate": null,
+     "prompty": true
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {},
+    "routeWeightBasedDoseOptionOverride": {},
+    "routeDefaultDoseOverride": {},
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   }
+  ],
+  "dosingFormState": {
+   "trackingTabId": "01a1d179-5c5b-74fb-b178-74828a41803a",
+   "guidance": [
+    {
+     "executionId": "01a1d179-5cb5-75ac-b81d-4ca633ae1ebd",
+     "resultId": "01a1d179-5cb0-713b-a0f2-399b0198bb40",
+     "ruleId": "a-known-procedure-wrong-antibiotic",
+     "actions": [
+      {
+       "alertDefinition": {
+        "resultId": "01a1d179-5cb0-713b-a0f2-399b0198bb40",
+        "ruleIdentifier": "a-known-procedure-wrong-antibiotic",
+        "ruleTrigger": "SELECTION",
+        "title": "CeFAZolin is recommended",
+        "tabName": null,
+        "description": "For Cholecystectomy, recommend: CeFAZolin",
+        "acceptText": "Will Choose CeFAZolin",
+        "rejectText": "Reject",
+        "rejectReasons": [
+         {
+          "rejectionReason": "BENEFIT_OUTWEIGHTS_RISK",
+          "reason": "Benefit outweighs risk",
+          "customInput": false,
+          "customInputLabel": null
+         },
+         {
+          "rejectionReason": "SURGEON_REQUEST",
+          "reason": "Surgeon request",
+          "customInput": false,
+          "customInputLabel": null
+         }
+        ],
+        "citations": [
+         {
+          "id": "r-procedure-wrong-antibiotic",
+          "label": "Hospital Guidelines",
+          "citation": "See Appendix Table 1: Antimicrobial Prophylaxis Recommendations, by Procedure. Procedure is Cholecystectomy.",
+          "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+          "ruleId": "a-known-procedure-wrong-antibiotic"
+         }
+        ],
+        "promptText": null,
+        "allowSuppression": false,
+        "allowAllergySuppression": false,
+        "allowMarkTolerated": false,
+        "relevantAllergies": []
+       },
+       "type": "SHOW_ALERT",
+       "priority": 0
+      }
+     ],
+     "details": {
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "PROCEDURE_IDS": "[p-cholecystectomy]",
+      "ALTERNATIVE_ANTIBIOTIC_CANDIDATES": "[ProcedureAntibioticOptionDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CEFAZOLIN, displayLabel=CeFAZolin, associatedMedicationCategories=[AMINOGLYCOSIDE, CEF GEN 1, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, CEFAZOLIN, GENTAMICIN, CEPHALOSPORIN, INTRAVENOUS]]], stepNumber=1, qualifier=null, acuity=null, mrsaAdjusted=false)]",
+      "MRSA_ADJUSTED_OPTION_RECOMMENDED": "false",
+      "CONSIDER_ALTERNATIVE_ANTIBIOTICS_HTML_KEY": "For ${PROCEDURE_NAME}, recommend: ${ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML}",
+      "EVALUATION_DATE": "Thu Nov 12 20:35:54 UTC 2026",
+      "ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML": "CeFAZolin",
+      "MEDICATION_NAME": "Vancomycin",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "PROCEDURE_NAME": "Cholecystectomy",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    }
+   ],
+   "alerts": [
+    {
+     "resultId": "01a1d179-5cb0-713b-a0f2-399b0198bb40",
+     "ruleIdentifier": "a-known-procedure-wrong-antibiotic",
+     "ruleTrigger": "SELECTION",
+     "title": "CeFAZolin is recommended",
+     "tabName": null,
+     "description": "For Cholecystectomy, recommend: CeFAZolin",
+     "acceptText": "Will Choose CeFAZolin",
+     "rejectText": "Reject",
+     "rejectReasons": [
+      {
+       "rejectionReason": "BENEFIT_OUTWEIGHTS_RISK",
+       "reason": "Benefit outweighs risk",
+       "customInput": false,
+       "customInputLabel": null
+      },
+      {
+       "rejectionReason": "SURGEON_REQUEST",
+       "reason": "Surgeon request",
+       "customInput": false,
+       "customInputLabel": null
+      }
+     ],
+     "citations": [
+      {
+       "id": "r-procedure-wrong-antibiotic",
+       "label": "Hospital Guidelines",
+       "citation": "See Appendix Table 1: Antimicrobial Prophylaxis Recommendations, by Procedure. Procedure is Cholecystectomy.",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+       "ruleId": "a-known-procedure-wrong-antibiotic"
+      }
+     ],
+     "promptText": null,
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": []
+    }
+   ],
+   "perRouteState": {
+    "INTRAVENOUS": {
+     "warnings": [],
+     "infos": [],
+     "doseOptions": [
+      {
+       "doseAmount": 1,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1 g",
+       "rawLabel": "1 g"
+      },
+      {
+       "doseAmount": 1.5,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "1.5 g"
+      },
+      {
+       "doseAmount": 2,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "2 g",
+       "rawLabel": "2 g"
+      }
+     ],
+     "indicationDoseOptions": {},
+     "defaultIndication": null,
+     "doseUnits": {
+      "units": "g",
+      "label": "g"
+     },
+     "maxDoses": [],
+     "citations": [],
+     "pendingDefaultDose": null
+    }
+   }
+  },
+  "trackingTabId": "01a1d179-5c5b-74fb-b178-74828a41803a",
+  "restoredTab": false,
+  "needsAction": true
+ }
+}

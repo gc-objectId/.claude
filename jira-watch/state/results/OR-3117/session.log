@@ -1,0 +1,10 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 4 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3117 is complete and the session file is written. The worktree is clean, nothing was committed or pushed, and all scratch work sits under the results directory.
+
+**Verdict: deploy-ready.**
+
+- **Positive.** A Mayo adult with CrCl 37.8 was offered only 15 and 20 mg/kg of actual weight with no preselection and the reduced-clearance citation. With CrCl 94 the form preselected 15 mg/kg of actual weight, and the 100 kg patient proved it was actual rather than ideal weight. An in-band 1.75 g dose scored compliant on both min and max verdicts with no default-dose verdict. The historical rescore SQL flipped exactly the one in-band CrCl-below-50 firing out of five staged shapes and was a no-op on re-run.
+- **Negative.** The rule never fired on demo or MGH, where the overweight default still preselected 2 g. It abstained for a pediatric patient and for a patient with no weight. The generic default-dose and dose-option rules no longer fire for Mayo vancomycin IV, including underweight and overweight patients.
+- **Red check.** A 2.75 g dose turned the max verdict non-compliant and a 1 g dose turned the min verdict non-compliant. With the parent commit's min-dose evaluator compiled and swapped into the container, the 1 g under-dose got no min verdict at all. The shipped class was restored, checksum-verified, and the fix re-proved.
+
+Caveats recorded in the file, none rated material: Mayo app-launch is unreachable locally so dosing was read from the selection API rather than a browser, the rescore was run by hand on synthetic rows rather than by Liquibase on real history, nothing in the change reports the count of changed firings the acceptance criteria ask for, and the pediatric abstain reason reads "not vancomycin IV" because Mayo has no pediatric dosing row.

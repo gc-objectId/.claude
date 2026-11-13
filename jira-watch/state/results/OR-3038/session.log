@@ -1,0 +1,18 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 4 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3038 is complete and recorded in `/Users/ryanducharme/.claude/jira-watch/state/results/OR-3038/session.json` with verdict **deploy-ready**.
+
+**What was exercised against the running build**
+
+- **Positive:** On Mayo, a subcutaneous insulin bolus scheduled the glucose reminder every 120 minutes (trigger repeat 7,200,000 ms, job context interval 120) and fired with the exact 2-hour wording and no citation. An IV bolus kept the 60-minute schedule, hourly wording, and hourly citation. Subcutaneous then IV on one case shortened the interval to 60 minutes with the anchor unchanged. App launch 135 minutes after subcutaneous insulin alerted with the 2-hour wording. The changeset 245 backfill SQL, run by hand against seeded firings, flipped a subcutaneous firing to compliant and left the IV firing non-compliant.
+- **Negative:** Glucose 65 minutes after subcutaneous insulin kept the scheduled rule silent. App launch at 90 minutes was silent. Demo tenant still scheduled at 60 minutes with hourly wording, so default sites are unchanged.
+- **Red check:** Compiled the parent commit's four classes in the container, swapped them into the app, and restarted. The same Mayo subcutaneous bolus then logged a 1-hour reminder and the app-launch rule alerted at 90 minutes with the old wording. Restored the shipped classes (all eight checksums verified), restarted, and re-confirmed the 2-hour behaviour. The signature line appears exactly once in the container log, inside the swap window.
+
+**Caveats worth Ryan's eye**
+
+- The app-launch rule's platform feature flag ships disabled. It was enabled on this throwaway instance to run scenarios 7 and 8, so Mayo only sees the app-launch variant if the flag is on in production.
+- Insulin was staged through the admin bolus debugger, not Mayo HL7, and only boluses were exercised, not infusions.
+- Changeset 245 was a no-op on the empty Mayo schema here. Its predicate was proven by hand, not its behaviour on production data volume.
+
+**Automation:** unit tests for all eight scenarios merged with the change. Five supplemental qa-suite tests are proposed for the Mayo schedule, wording, default-site path, and app-launch timing, continuing from INS-010 in `clinical-rules/insulin-glucose.spec.ts`.
+
+No commits, pushes, or Jira writes were made. The worktree is clean and all scratch work lives under the results scratch directory.

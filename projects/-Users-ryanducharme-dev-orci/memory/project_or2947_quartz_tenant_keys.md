@@ -70,3 +70,19 @@ OR-2928 close-out (archive the five Sentry issues after a dev deploy) moves to t
 `~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (`git branch -D`, worktree-done will refuse it) and
 `origin/bugfix/OR-2947-metadata-driven-cleaner` only once that PR is up. A vim swap
 file `.JobMetadata.java.swp` was sitting in orci-models/.../job during this session — Ryan had the file open.
+
+## Migration dropped (2026-11-12, commit e48575451, pushed 2026-11-12)
+Theo asked whether `LegacyJobKeyMigrationRunner` was needed since old jobs complete on their own. Traced: reminders are
+one-shot, timer jobs carry a 36h end date, glucose-check jobs repeat forever but main's cleaner (any-group scan +
+`isOwnedBy` TENANT_ID check) kills them at 36h regardless of key shape. So the runner, its two tests, the
+`MIGRATE_JOB_KEYS` phase, and the prefix-scoped scan were all removed; `getStaleJobKeys` is byte-identical to main
+again. Never drop the runner while keeping a prefix-scoped scan: that combination leaks old-keyed glucose checks forever.
+Admin listing still reads TENANT_ID for unprefixed jobs (they exist until they complete). PR body applied (no migration or cleaner bullet). Jira comment 37906 on OR-2928 now says #4809 leaves the cleaner scan as on main.
+
+## Legacy-key fallback (2026-11-12, commit 1c7d8c6e6, pushed)
+The bot flagged that without the migration, case stop could not cancel a reminder armed before the deploy (the
+scheduled-rule job only checks the case exists, not that it ended), so a redose reminder would fire after case stop.
+Fix: `deleteJob` and `jobExists` try the tenant key, then the bare key, taken only when that job's TENANT_ID is the
+current tenant (reuses `isOwnedBy`). Reschedule paths now lazily migrate old jobs. Bot re-review on 1c7d8c6e6: no new
+issues; its thread resolved. Theo's two threads left for him. **Follow-up owed:** tech-debt Task to remove the
+fallback once every environment has had one deploy plus 36h.

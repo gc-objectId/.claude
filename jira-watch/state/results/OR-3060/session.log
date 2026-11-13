@@ -1,0 +1,11 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 4 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+Validation of OR-3060 is complete and the result file is written. The worktree is clean.
+
+**Verdict: deploy-ready.** All three evidence pieces were performed against the running container.
+
+- **Positive.** A Mayo type 2 patient aged 75 with no eGFR and no home insulin got the moderate subcutaneous default of 4 units at glucose 200, with the moderate flag true in the fired evaluation.
+- **Negative.** Mayo patients with no diabetes or with type 1 stayed on the low scale at 2 units. The identical type 2 shape at demo-demo stayed low at 1 unit, and a demo patient meeting all four default criteria still got moderate. Removing and re-adding the type 2 condition at Mayo flipped the scale down and back up.
+- **Red check.** Compiled the parent commit's rule class in the container, swapped it over the shipped class, and restarted. The Mayo type 2 patient dropped to 2 units with the moderate flag false and the pre-fix path logged its criteria. Restored the shipped class, confirmed the checksum, and saw 4 units again. The signature line appears only inside that window.
+- **Backfill.** The red run left a real low-scale Mayo type 2 firing. Administering 2 units against it scored compliant. Re-running changeset 248's SQL by hand rescored it to 4 units and flipped compliance to false, leaving non-type-2 firings untouched.
+
+Caveats recorded for Ryan: the merged scope is type 2 alone at Mayo rather than the ticket's full condition list, the React dosing form was not rendered, and the red-check class carries one added log line with unchanged decision logic. Proposed automation covers a Mayo-tenant end-to-end check, a default-site guard, and a migration test for changeset 248.

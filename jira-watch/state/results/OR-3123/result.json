@@ -1,0 +1,1 @@
+{"ticket":"OR-3123","disposition":"admitted","detail":"verdict=deploy-ready; validated out of band against public DNS and the live redirects, not by the loop (DNS change, no runtime surface); comment posted and transitioned by hand; 3 of 5 acceptance criteria need the GoDaddy console and the shared mailbox and are recorded as unverified","at":"2026-11-12T20:45:00Z"}

@@ -1,0 +1,12 @@
+Warning: this sign-in ends between 2026-11-16 and 2026-11-19 (in 4 days at the earliest). Renewing it does not move those dates. Run claude auth login before then, or use claude setup-token for unattended jobs.
+The validation is complete and `session.json` is written. Nothing further is needed.
+
+**Verdict: deploy-ready**, recorded at `/Users/ryanducharme/.claude/jira-watch/state/results/OR-2948/session.json`.
+
+What was exercised against the running build (demo tenant, admin API staging, SQL-inserted doses, PROCEDURE_START via category event, prompts read from `rule_fired_results.prompt`):
+
+- **Positive**: hysterectomy with stale cefazolin fired `Administer MetroNIDAZOLE; Redose CeFAZolin` with the exact per-drug lines from the ticket. Knee arthroscopy stale-only and nothing-given cases matched examples 2 and 3. Doxycycline (NO_REDOSE) rendered the toxicity/pharmacy line. A two-option biliary case rendered the generic title with both descriptions joined by OR, and the new "Patient received X" line instead of "no perioperative antibiotics". Case-stop compliance flipped to true once an on-time dose was added.
+- **Negative**: a dose inside its lookback abstained with "Procedure candidates were given."; a stale unrecommended antibiotic alone abstained with "No suitable antibiotics given."; the stale-only hysterectomy scored non-compliant at case stop.
+- **Red check**: compiled the parent commit's rule class in the container, swapped it in, restarted. The same stale-cefazolin case rendered the old `Administer CeFAZolin / Patient received no antibiotics.` wording (logged, that line is the signature). Restored the shipped classes, verified all seven md5sums match, restarted, and the `Redose CeFAZolin` wording came back.
+
+Caveats recorded for Ryan, none ship-blocking: multi-word procedure names render as "knee Arthroscopy" mid-sentence (ticket example says "knee arthroscopy"); tall-man labels render as "ceFAZolin"; the EARLY_DISCRETION wording and the acuity/qualifier legacy path were not reachable on demo data. The worktree is clean; all scratch lives outside it.

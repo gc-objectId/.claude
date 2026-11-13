@@ -1,0 +1,472 @@
+{
+ "pmrn": "V-fake-0d754210-0ea5-4709-bded-183820fdee86",
+ "caseId": "19599",
+ "trackingTabId": "01a1d177-ebd9-7f28-8b0d-13917acfa022",
+ "sel": {
+  "context": {
+   "id": "01a1d172-8456-70d1-93d1-9780cfe52b80",
+   "medicationName": "Vancomycin",
+   "medicationFullName": "Vancomycin IV",
+   "medicationIdentifier": "m-vancomycin-iv",
+   "defaultNDC": "7257280101",
+   "ndc": null,
+   "concentrationOptions": [],
+   "perComponentConcentrations": [],
+   "availableRoutes": [
+    "INTRAVENOUS"
+   ],
+   "colorLabelSetting": {
+    "topColor": "#FFFFFF",
+    "bottomColor": "#FFFFFF",
+    "thickness": null,
+    "hatched": false
+   },
+   "isScanned": false
+  },
+  "results": [
+   {
+    "resultId": "01a1d177-ebfe-733f-b41a-f44acb2d1992",
+    "ruleId": "a-known-procedure-wrong-antibiotic",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "PROCEDURE_IDS": [
+      "p-cholecystectomy"
+     ],
+     "ALTERNATIVE_ANTIBIOTIC_CANDIDATES": [
+      {
+       "medicationCandidates": [
+        {
+         "medicationCategory": "CEFAZOLIN",
+         "displayLabel": "CeFAZolin",
+         "associatedMedicationCategories": [
+          "AMINOGLYCOSIDE",
+          "CEF GEN 1",
+          "EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL",
+          "ANTIBIOTIC",
+          "NOT_ON_MED_LIST",
+          "CEFAZOLIN",
+          "GENTAMICIN",
+          "CEPHALOSPORIN",
+          "INTRAVENOUS"
+         ]
+        }
+       ],
+       "stepNumber": 1,
+       "qualifier": null,
+       "acuity": null,
+       "mrsaAdjusted": false
+      }
+     ],
+     "MRSA_ADJUSTED_OPTION_RECOMMENDED": false,
+     "CONSIDER_ALTERNATIVE_ANTIBIOTICS_HTML_KEY": "For ${PROCEDURE_NAME}, recommend: ${ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML}",
+     "EVALUATION_DATE": "2026-11-12T20:34:19.742+00:00",
+     "ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML": "CeFAZolin",
+     "MEDICATION_NAME": "Vancomycin",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "PROCEDURE_NAME": "Cholecystectomy",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "a-known-procedure-wrong-antibiotic",
+     "trigger": null,
+     "type": "ALERT",
+     "title": "CeFAZolin is recommended",
+     "tabName": null,
+     "description": "For Cholecystectomy, recommend: CeFAZolin",
+     "acceptText": "Will Choose CeFAZolin",
+     "rejectText": "Reject",
+     "rejectReasons": [
+      {
+       "rejectionReason": "BENEFIT_OUTWEIGHTS_RISK",
+       "reason": "Benefit outweighs risk",
+       "customInput": false,
+       "customInputLabel": null
+      },
+      {
+       "rejectionReason": "SURGEON_REQUEST",
+       "reason": "Surgeon request",
+       "customInput": false,
+       "customInputLabel": null
+      }
+     ],
+     "citations": [
+      {
+       "id": "r-procedure-wrong-antibiotic",
+       "label": "Hospital Guidelines",
+       "citation": "See Appendix Table 1: Antimicrobial Prophylaxis Recommendations, by Procedure. Procedure is Cholecystectomy.",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+      }
+     ],
+     "citationsLocation": "END_OF_BANNER",
+     "promptText": null,
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:34:19.774199261Z",
+     "lastModifiedDate": null,
+     "prompty": true
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {},
+    "routeWeightBasedDoseOptionOverride": {},
+    "routeDefaultDoseOverride": {},
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   },
+   {
+    "resultId": "01a1d177-ec00-7678-b106-3018efcc1955",
+    "ruleId": "w-vancomycin-dose",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "EVALUATION_DATE": "2026-11-12T20:34:19.742+00:00",
+     "MEDICATION_NAME": "Vancomycin",
+     "CRCL": 94.43919542100694,
+     "CLEARANCE_BAND": "NORMAL",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "w-vancomycin-dose",
+     "trigger": null,
+     "type": "WARNING",
+     "title": null,
+     "tabName": null,
+     "description": null,
+     "acceptText": null,
+     "rejectText": null,
+     "rejectReasons": [],
+     "citations": [
+      {
+       "id": "r-vancomycin-iv-default-dose",
+       "label": "Hospital Antibiotic Dosing Guidelines",
+       "citation": "See Appendix Table 2.<br/>Dose: 1.5 g for patient wt 75-100 kg",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+      }
+     ],
+     "citationsLocation": "NEXT_TO_DOSE_OPTIONS",
+     "promptText": null,
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:34:19.776362636Z",
+     "lastModifiedDate": null,
+     "prompty": false
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {},
+    "routeWeightBasedDoseOptionOverride": {
+     "INTRAVENOUS": [
+      {
+       "doseAmount": 15,
+       "doseUnits": "mg/kg",
+       "defaultOption": true,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+       "weightBased": true,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "15 mg/kg"
+      }
+     ]
+    },
+    "routeDefaultDoseOverride": {
+     "INTRAVENOUS": {
+      "doseAmount": 15,
+      "doseUnits": "mg/kg",
+      "defaultOption": true,
+      "calculatedDoseAmount": "1.5",
+      "calculatedDoseUnits": "g",
+      "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+      "weightBased": true,
+      "calculatedLabel": "1.5 g",
+      "rawLabel": "15 mg/kg"
+     }
+    },
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   }
+  ],
+  "dosingFormState": {
+   "trackingTabId": "01a1d177-ebd9-7f28-8b0d-13917acfa022",
+   "guidance": [
+    {
+     "executionId": "01a1d177-ec02-78bd-9aeb-7c91dc73cad2",
+     "resultId": "01a1d177-ebfe-733f-b41a-f44acb2d1992",
+     "ruleId": "a-known-procedure-wrong-antibiotic",
+     "actions": [
+      {
+       "alertDefinition": {
+        "resultId": "01a1d177-ebfe-733f-b41a-f44acb2d1992",
+        "ruleIdentifier": "a-known-procedure-wrong-antibiotic",
+        "ruleTrigger": "SELECTION",
+        "title": "CeFAZolin is recommended",
+        "tabName": null,
+        "description": "For Cholecystectomy, recommend: CeFAZolin",
+        "acceptText": "Will Choose CeFAZolin",
+        "rejectText": "Reject",
+        "rejectReasons": [
+         {
+          "rejectionReason": "BENEFIT_OUTWEIGHTS_RISK",
+          "reason": "Benefit outweighs risk",
+          "customInput": false,
+          "customInputLabel": null
+         },
+         {
+          "rejectionReason": "SURGEON_REQUEST",
+          "reason": "Surgeon request",
+          "customInput": false,
+          "customInputLabel": null
+         }
+        ],
+        "citations": [
+         {
+          "id": "r-procedure-wrong-antibiotic",
+          "label": "Hospital Guidelines",
+          "citation": "See Appendix Table 1: Antimicrobial Prophylaxis Recommendations, by Procedure. Procedure is Cholecystectomy.",
+          "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+          "ruleId": "a-known-procedure-wrong-antibiotic"
+         }
+        ],
+        "promptText": null,
+        "allowSuppression": false,
+        "allowAllergySuppression": false,
+        "allowMarkTolerated": false,
+        "relevantAllergies": []
+       },
+       "type": "SHOW_ALERT",
+       "priority": 0
+      }
+     ],
+     "details": {
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "PROCEDURE_IDS": "[p-cholecystectomy]",
+      "ALTERNATIVE_ANTIBIOTIC_CANDIDATES": "[ProcedureAntibioticOptionDTO(medicationCandidates=[MedicationCandidate[medicationCategory=CEFAZOLIN, displayLabel=CeFAZolin, associatedMedicationCategories=[AMINOGLYCOSIDE, CEF GEN 1, EXCLUDE_FROM_ANTIBIOTIC_CANDIDATE_EVAL, ANTIBIOTIC, NOT_ON_MED_LIST, CEFAZOLIN, GENTAMICIN, CEPHALOSPORIN, INTRAVENOUS]]], stepNumber=1, qualifier=null, acuity=null, mrsaAdjusted=false)]",
+      "MRSA_ADJUSTED_OPTION_RECOMMENDED": "false",
+      "CONSIDER_ALTERNATIVE_ANTIBIOTICS_HTML_KEY": "For ${PROCEDURE_NAME}, recommend: ${ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML}",
+      "EVALUATION_DATE": "Thu Nov 12 20:34:19 UTC 2026",
+      "ALTERNATIVE_ANTIBIOTIC_CANDIDATE_HTML": "CeFAZolin",
+      "MEDICATION_NAME": "Vancomycin",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "PROCEDURE_NAME": "Cholecystectomy",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    },
+    {
+     "executionId": "01a1d177-ec02-78bd-9aeb-7c91dc73cad2",
+     "resultId": "01a1d177-ec00-7678-b106-3018efcc1955",
+     "ruleId": "w-vancomycin-dose",
+     "actions": [
+      {
+       "action": {
+        "defaultDose": {
+         "doseAmount": 15,
+         "doseUnits": "mg/kg",
+         "defaultOption": true,
+         "calculatedDoseAmount": "1.5",
+         "calculatedDoseUnits": "g",
+         "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+         "weightBased": true,
+         "calculatedLabel": "1.5 g",
+         "rawLabel": "15 mg/kg"
+        },
+        "type": "SET_DEFAULT_DOSE",
+        "priority": 0
+       },
+       "criteria": {
+        "applicableRoutes": [
+         "INTRAVENOUS"
+        ]
+       },
+       "priority": 1,
+       "type": "PREDICATE"
+      },
+      {
+       "action": {
+        "doseOptions": [
+         {
+          "doseAmount": 15,
+          "doseUnits": "mg/kg",
+          "defaultOption": true,
+          "calculatedDoseAmount": "1.5",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+          "weightBased": true,
+          "calculatedLabel": "1.5 g",
+          "rawLabel": "15 mg/kg"
+         }
+        ],
+        "target": "WEIGHT_BASED",
+        "type": "SET_DOSE_OPTIONS",
+        "priority": 0
+       },
+       "criteria": {
+        "applicableRoutes": [
+         "INTRAVENOUS"
+        ]
+       },
+       "priority": 1,
+       "type": "PREDICATE"
+      },
+      {
+       "citation": {
+        "id": "r-vancomycin-iv-default-dose",
+        "label": "Hospital Antibiotic Dosing Guidelines",
+        "citation": "See Appendix Table 2.<br/>Dose: 1.5 g for patient wt 75-100 kg",
+        "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+       },
+       "evaluationResultId": "01a1d177-ec00-7678-b106-3018efcc1955",
+       "ruleId": "w-vancomycin-dose",
+       "location": "NEXT_TO_DOSE_OPTIONS",
+       "type": "ADD_CITATION",
+       "priority": 0
+      }
+     ],
+     "details": {
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "EVALUATION_DATE": "Thu Nov 12 20:34:19 UTC 2026",
+      "MEDICATION_NAME": "Vancomycin",
+      "CRCL": "94.43919542100694",
+      "CLEARANCE_BAND": "NORMAL",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    }
+   ],
+   "alerts": [
+    {
+     "resultId": "01a1d177-ebfe-733f-b41a-f44acb2d1992",
+     "ruleIdentifier": "a-known-procedure-wrong-antibiotic",
+     "ruleTrigger": "SELECTION",
+     "title": "CeFAZolin is recommended",
+     "tabName": null,
+     "description": "For Cholecystectomy, recommend: CeFAZolin",
+     "acceptText": "Will Choose CeFAZolin",
+     "rejectText": "Reject",
+     "rejectReasons": [
+      {
+       "rejectionReason": "BENEFIT_OUTWEIGHTS_RISK",
+       "reason": "Benefit outweighs risk",
+       "customInput": false,
+       "customInputLabel": null
+      },
+      {
+       "rejectionReason": "SURGEON_REQUEST",
+       "reason": "Surgeon request",
+       "customInput": false,
+       "customInputLabel": null
+      }
+     ],
+     "citations": [
+      {
+       "id": "r-procedure-wrong-antibiotic",
+       "label": "Hospital Guidelines",
+       "citation": "See Appendix Table 1: Antimicrobial Prophylaxis Recommendations, by Procedure. Procedure is Cholecystectomy.",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+       "ruleId": "a-known-procedure-wrong-antibiotic"
+      }
+     ],
+     "promptText": null,
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": []
+    }
+   ],
+   "perRouteState": {
+    "INTRAVENOUS": {
+     "warnings": [],
+     "infos": [],
+     "doseOptions": [
+      {
+       "doseAmount": 1,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1 g",
+       "rawLabel": "1 g"
+      },
+      {
+       "doseAmount": 15,
+       "doseUnits": "mg/kg",
+       "defaultOption": true,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+       "weightBased": true,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "15 mg/kg"
+      },
+      {
+       "doseAmount": 2,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "2 g",
+       "rawLabel": "2 g"
+      }
+     ],
+     "indicationDoseOptions": {},
+     "defaultIndication": null,
+     "doseUnits": {
+      "units": "g",
+      "label": "g"
+     },
+     "maxDoses": [],
+     "citations": [
+      {
+       "evaluationResultId": "01a1d177-ec00-7678-b106-3018efcc1955",
+       "citation": {
+        "id": "r-vancomycin-iv-default-dose",
+        "label": "Hospital Antibiotic Dosing Guidelines",
+        "citation": "See Appendix Table 2.<br/>Dose: 1.5 g for patient wt 75-100 kg",
+        "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+        "ruleId": "w-vancomycin-dose"
+       },
+       "location": "NEXT_TO_DOSE_OPTIONS"
+      }
+     ],
+     "pendingDefaultDose": null
+    }
+   }
+  },
+  "trackingTabId": "01a1d177-ebd9-7f28-8b0d-13917acfa022",
+  "restoredTab": false,
+  "needsAction": true
+ }
+}

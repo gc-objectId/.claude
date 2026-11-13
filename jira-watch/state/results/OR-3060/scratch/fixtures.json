@@ -1,0 +1,37 @@
+{
+  "mayoT2": {
+    "tenant": "mayo-mayo",
+    "label": "mayoT2",
+    "pmrn": "mayoT2-fake-98043b84-1056-416b-9de5-511dcf3bb627",
+    "uuid": "01a1d176-6600-717e-8912-336fb86504f5",
+    "caseId": "44136"
+  },
+  "mayoNone": {
+    "tenant": "mayo-mayo",
+    "label": "mayoNone",
+    "pmrn": "mayoNone-fake-eca289bd-28b9-4a05-b333-ae760c36c4b0",
+    "uuid": "01a1d176-676e-79a5-97a4-b7ecfe71a52c",
+    "caseId": "59864"
+  },
+  "mayoT1": {
+    "tenant": "mayo-mayo",
+    "label": "mayoT1",
+    "pmrn": "mayoT1-fake-1971727e-4279-41fe-bc2d-95393b5476ef",
+    "uuid": "01a1d176-6835-760e-920c-a13c15612c9e",
+    "caseId": "83237"
+  },
+  "demoT2": {
+    "tenant": "demo-demo",
+    "label": "demoT2",
+    "pmrn": "demoT2-fake-f7dc1f3f-57c0-4dc4-8632-8a8b9380d1b9",
+    "uuid": "01a1d176-6937-7805-b6ef-10e596056d41",
+    "caseId": "73645"
+  },
+  "demoT2mod": {
+    "tenant": "demo-demo",
+    "label": "demoT2mod",
+    "pmrn": "demoT2mod-fake-20512818-bdf6-4002-9ca5-717a412c7386",
+    "uuid": "01a1d178-40d4-7d63-adbc-58143ecc3202",
+    "caseId": "15197"
+  }
+}

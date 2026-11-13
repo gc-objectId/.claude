@@ -1,0 +1,743 @@
+{
+ "pmrn": "V-fake-67116a8e-ba09-485d-a483-7e1ead3ac0a1",
+ "caseId": "23567",
+ "trackingTabId": "01a1d17f-1a0d-7718-98a2-3682a277cc68",
+ "sel": {
+  "context": {
+   "id": "01a1d172-8456-70d1-93d1-9780cfe52b80",
+   "medicationName": "Vancomycin",
+   "medicationFullName": "Vancomycin IV",
+   "medicationIdentifier": "m-vancomycin-iv",
+   "defaultNDC": "7257280101",
+   "ndc": null,
+   "concentrationOptions": [],
+   "perComponentConcentrations": [],
+   "availableRoutes": [
+    "INTRAVENOUS"
+   ],
+   "colorLabelSetting": {
+    "topColor": "#FFFFFF",
+    "bottomColor": "#FFFFFF",
+    "thickness": null,
+    "hatched": false
+   },
+   "isScanned": false
+  },
+  "results": [
+   {
+    "resultId": "01a1d17f-1d26-77f0-911e-97447f3122ba",
+    "ruleId": "w-antibiotic-previous-doses",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "EVALUATION_DATE": "2026-11-12T20:42:10.552+00:00",
+     "MEDICATION_NAME": "Vancomycin",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "w-antibiotic-previous-doses",
+     "trigger": null,
+     "type": "WARNING",
+     "title": null,
+     "tabName": null,
+     "description": null,
+     "acceptText": null,
+     "rejectText": null,
+     "rejectReasons": [],
+     "citations": [],
+     "citationsLocation": "END_OF_BANNER",
+     "promptText": null,
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:42:11.110481840Z",
+     "lastModifiedDate": null,
+     "prompty": false
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {
+     "INTRAVENOUS": [
+      {
+       "doseAmount": 1,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1 g",
+       "rawLabel": "1 g"
+      },
+      {
+       "doseAmount": 1.5,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "1.5 g"
+      },
+      {
+       "doseAmount": 2,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "2 g",
+       "rawLabel": "2 g"
+      },
+      {
+       "doseAmount": 1.75,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1.75",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1.75 g",
+       "rawLabel": "1.75 g"
+      },
+      {
+       "doseAmount": 2.75,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2.75",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "2.75 g",
+       "rawLabel": "2.75 g"
+      }
+     ]
+    },
+    "routeWeightBasedDoseOptionOverride": {},
+    "routeDefaultDoseOverride": {},
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   },
+   {
+    "resultId": "01a1d17f-1d8c-7890-8c0f-d0d32cbd7c6b",
+    "ruleId": "i-latest-medication",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "LATEST_ADMINISTRATION_DATE": "2026-11-12T20:35:00.000+00:00",
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "EVALUATION_DATE": "2026-11-12T20:42:10.552+00:00",
+     "MEDICATION_NAME": "Vancomycin",
+     "LATEST_ADMINISTRATION_DATE_FORMATTED": "14:35 on 11/12/2026",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "LATEST_DOSE_AMOUNT": "1.75",
+     "LATEST_DOSE_UNITS": "g",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "i-latest-medication",
+     "trigger": null,
+     "type": "INFO",
+     "title": null,
+     "tabName": null,
+     "description": null,
+     "acceptText": null,
+     "rejectText": null,
+     "rejectReasons": [],
+     "citations": [],
+     "citationsLocation": "END_OF_BANNER",
+     "promptText": {
+      "promptType": "INFO",
+      "displayText": "Last dose: 1.75 g at 14:35 on 11/12/2026"
+     },
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:42:11.212515215Z",
+     "lastModifiedDate": null,
+     "prompty": true
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {},
+    "routeWeightBasedDoseOptionOverride": {},
+    "routeDefaultDoseOverride": {},
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   },
+   {
+    "resultId": "01a1d17f-1db5-7fae-ac78-fff0bd433083",
+    "ruleId": "w-vancomycin-dose",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "MIN_DOSE_VALUE": "1.5",
+     "EVALUATION_DATE": "2026-11-12T20:42:10.552+00:00",
+     "MEDICATION_NAME": "Vancomycin",
+     "CRCL": 37.77567816840278,
+     "CLEARANCE_BAND": "REDUCED",
+     "MIN_DOSE_UNIT": "g",
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "MAX_DOSE_UNIT": "g",
+     "MAX_DOSE_VALUE": "2",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "w-vancomycin-dose",
+     "trigger": null,
+     "type": "WARNING",
+     "title": null,
+     "tabName": null,
+     "description": null,
+     "acceptText": null,
+     "rejectText": null,
+     "rejectReasons": [],
+     "citations": [
+      {
+       "id": "r-vancomycin-iv-reduced-clearance-dose",
+       "label": "Hospital Antibiotic Dosing Guidelines",
+       "citation": "See Appendix Table 2.<br/>Dose: 15-20 mg/kg for CrCl < 50 mL/min",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+      }
+     ],
+     "citationsLocation": "NEXT_TO_DOSE_OPTIONS",
+     "promptText": null,
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:42:11.253025132Z",
+     "lastModifiedDate": null,
+     "prompty": false
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {
+     "INTRAVENOUS": [
+      {
+       "doseAmount": 1.5,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "1.5 g"
+      },
+      {
+       "doseAmount": 2,
+       "doseUnits": "g",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": null,
+       "weightBased": false,
+       "calculatedLabel": "2 g",
+       "rawLabel": "2 g"
+      }
+     ]
+    },
+    "routeWeightBasedDoseOptionOverride": {
+     "INTRAVENOUS": [
+      {
+       "doseAmount": 15,
+       "doseUnits": "mg/kg",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+       "weightBased": true,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "15 mg/kg"
+      },
+      {
+       "doseAmount": 20,
+       "doseUnits": "mg/kg",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": "20 mg/kg × 100 kg (recorded weight)<br/>=2,000 mg, rounded to the nearest 0.2 g<br/>≈2 g",
+       "weightBased": true,
+       "calculatedLabel": "2 g",
+       "rawLabel": "20 mg/kg"
+      }
+     ]
+    },
+    "routeDefaultDoseOverride": {},
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   },
+   {
+    "resultId": "01a1d17f-1db9-7465-85f6-1c960acf09e2",
+    "ruleId": "w-vancomycin-renal-disease",
+    "ruleTrigger": "SELECTION",
+    "explanation": null,
+    "error": null,
+    "details": {
+     "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+     "CRCL_DISPLAY": "37.8 mL/min",
+     "EVALUATION_DATE": "2026-11-12T20:42:10.552+00:00",
+     "MEDICATION_NAME": "Vancomycin",
+     "CRCL": 37.77567816840278,
+     "WEIGHT_CLASSIFICATION": "NORMAL",
+     "SUPPRESSED_ALLERGIES": [],
+     "PATIENT_ALLERGIES_FULL": []
+    },
+    "needsAction": true,
+    "prompt": {
+     "ruleIdentifier": "w-vancomycin-renal-disease",
+     "trigger": "CRCL",
+     "type": "WARNING",
+     "title": null,
+     "tabName": null,
+     "description": null,
+     "acceptText": null,
+     "rejectText": null,
+     "rejectReasons": [],
+     "citations": [
+      {
+       "id": "r-vancomycin-renal-disease",
+       "label": "Hospital Guidelines",
+       "citation": "See Antimicrobial selection, page 3.",
+       "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+      }
+     ],
+     "citationsLocation": "END_OF_BANNER",
+     "promptText": {
+      "promptType": "WARNING",
+      "displayText": "CrCl = 37.8 mL/min. For patients with renal disease, consult pharmacy before administering additional vancomycin dose."
+     },
+     "routeBasedPromptText": {},
+     "routeBasedCitations": {},
+     "allowSuppression": false,
+     "allowAllergySuppression": false,
+     "allowMarkTolerated": false,
+     "relevantAllergies": [],
+     "createdDate": "2026-11-12T20:42:11.257258132Z",
+     "lastModifiedDate": null,
+     "prompty": true
+    },
+    "groupKey": null,
+    "suppressionAllowed": false,
+    "routeDoseOptionOverride": {},
+    "routeWeightBasedDoseOptionOverride": {},
+    "routeDefaultDoseOverride": {},
+    "defaultDoseOverride": null,
+    "maxDose": null,
+    "maxDoseBuffer": null,
+    "routeBasedMaxDose": {},
+    "routeIndicationDoseOptions": {},
+    "routeDefaultIndications": {},
+    "suppressed": false
+   }
+  ],
+  "dosingFormState": {
+   "trackingTabId": "01a1d17f-1a0d-7718-98a2-3682a277cc68",
+   "guidance": [
+    {
+     "executionId": "01a1d17f-1dd2-7677-ada9-47ea7025ea99",
+     "resultId": "01a1d17f-1d26-77f0-911e-97447f3122ba",
+     "ruleId": "w-antibiotic-previous-doses",
+     "actions": [
+      {
+       "action": {
+        "doseOptions": [
+         {
+          "doseAmount": 2,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "2",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "2 g",
+          "rawLabel": "2 g"
+         },
+         {
+          "doseAmount": 1.75,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "1.75",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "1.75 g",
+          "rawLabel": "1.75 g"
+         },
+         {
+          "doseAmount": 2.75,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "2.75",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "2.75 g",
+          "rawLabel": "2.75 g"
+         },
+         {
+          "doseAmount": 1.5,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "1.5",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "1.5 g",
+          "rawLabel": "1.5 g"
+         },
+         {
+          "doseAmount": 1,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "1",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "1 g",
+          "rawLabel": "1 g"
+         }
+        ],
+        "target": "FLAT",
+        "type": "SET_DOSE_OPTIONS",
+        "priority": 0
+       },
+       "criteria": {
+        "applicableRoutes": [
+         "INTRAVENOUS"
+        ]
+       },
+       "priority": 1,
+       "type": "PREDICATE"
+      }
+     ],
+     "details": {
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "EVALUATION_DATE": "Thu Nov 12 20:42:10 UTC 2026",
+      "MEDICATION_NAME": "Vancomycin",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    },
+    {
+     "executionId": "01a1d17f-1dd2-7677-ada9-47ea7025ea99",
+     "resultId": "01a1d17f-1d8c-7890-8c0f-d0d32cbd7c6b",
+     "ruleId": "i-latest-medication",
+     "actions": [
+      {
+       "bannerDefinition": {
+        "evaluationResultId": "01a1d17f-1d8c-7890-8c0f-d0d32cbd7c6b",
+        "ruleId": "i-latest-medication",
+        "type": "INFO",
+        "body": "Last dose: 1.75 g at 14:35 on 11/12/2026",
+        "citations": []
+       },
+       "type": "SHOW_BANNER",
+       "priority": 0
+      }
+     ],
+     "details": {
+      "LATEST_ADMINISTRATION_DATE": "2026-11-12 20:35:00.0",
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "EVALUATION_DATE": "Thu Nov 12 20:42:10 UTC 2026",
+      "MEDICATION_NAME": "Vancomycin",
+      "LATEST_ADMINISTRATION_DATE_FORMATTED": "14:35 on 11/12/2026",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "LATEST_DOSE_AMOUNT": "1.75",
+      "LATEST_DOSE_UNITS": "g",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    },
+    {
+     "executionId": "01a1d17f-1dd2-7677-ada9-47ea7025ea99",
+     "resultId": "01a1d17f-1db5-7fae-ac78-fff0bd433083",
+     "ruleId": "w-vancomycin-dose",
+     "actions": [
+      {
+       "action": {
+        "doseOptions": [
+         {
+          "doseAmount": 2,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "2",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "2 g",
+          "rawLabel": "2 g"
+         },
+         {
+          "doseAmount": 1.5,
+          "doseUnits": "g",
+          "defaultOption": false,
+          "calculatedDoseAmount": "1.5",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": null,
+          "weightBased": false,
+          "calculatedLabel": "1.5 g",
+          "rawLabel": "1.5 g"
+         }
+        ],
+        "target": "FLAT",
+        "type": "SET_DOSE_OPTIONS",
+        "priority": 0
+       },
+       "criteria": {
+        "applicableRoutes": [
+         "INTRAVENOUS"
+        ]
+       },
+       "priority": 1,
+       "type": "PREDICATE"
+      },
+      {
+       "action": {
+        "doseOptions": [
+         {
+          "doseAmount": 15,
+          "doseUnits": "mg/kg",
+          "defaultOption": false,
+          "calculatedDoseAmount": "1.5",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+          "weightBased": true,
+          "calculatedLabel": "1.5 g",
+          "rawLabel": "15 mg/kg"
+         },
+         {
+          "doseAmount": 20,
+          "doseUnits": "mg/kg",
+          "defaultOption": false,
+          "calculatedDoseAmount": "2",
+          "calculatedDoseUnits": "g",
+          "weightBasedDoseCalculation": "20 mg/kg × 100 kg (recorded weight)<br/>=2,000 mg, rounded to the nearest 0.2 g<br/>≈2 g",
+          "weightBased": true,
+          "calculatedLabel": "2 g",
+          "rawLabel": "20 mg/kg"
+         }
+        ],
+        "target": "WEIGHT_BASED",
+        "type": "SET_DOSE_OPTIONS",
+        "priority": 0
+       },
+       "criteria": {
+        "applicableRoutes": [
+         "INTRAVENOUS"
+        ]
+       },
+       "priority": 1,
+       "type": "PREDICATE"
+      },
+      {
+       "citation": {
+        "id": "r-vancomycin-iv-reduced-clearance-dose",
+        "label": "Hospital Antibiotic Dosing Guidelines",
+        "citation": "See Appendix Table 2.<br/>Dose: 15-20 mg/kg for CrCl < 50 mL/min",
+        "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+       },
+       "evaluationResultId": "01a1d17f-1db5-7fae-ac78-fff0bd433083",
+       "ruleId": "w-vancomycin-dose",
+       "location": "NEXT_TO_DOSE_OPTIONS",
+       "type": "ADD_CITATION",
+       "priority": 0
+      }
+     ],
+     "details": {
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "MIN_DOSE_VALUE": "1.5",
+      "EVALUATION_DATE": "Thu Nov 12 20:42:10 UTC 2026",
+      "MEDICATION_NAME": "Vancomycin",
+      "CRCL": "37.77567816840278",
+      "CLEARANCE_BAND": "REDUCED",
+      "MIN_DOSE_UNIT": "g",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "MAX_DOSE_UNIT": "g",
+      "MAX_DOSE_VALUE": "2",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    },
+    {
+     "executionId": "01a1d17f-1dd2-7677-ada9-47ea7025ea99",
+     "resultId": "01a1d17f-1db9-7465-85f6-1c960acf09e2",
+     "ruleId": "w-vancomycin-renal-disease",
+     "actions": [
+      {
+       "citation": {
+        "id": "r-vancomycin-renal-disease",
+        "label": "Hospital Guidelines",
+        "citation": "See Antimicrobial selection, page 3.",
+        "url": "https://mgb.ellucid.com/documents/view/45172/active/1"
+       },
+       "evaluationResultId": "01a1d17f-1db9-7465-85f6-1c960acf09e2",
+       "ruleId": "w-vancomycin-renal-disease",
+       "location": "END_OF_BANNER",
+       "type": "ADD_CITATION",
+       "priority": 0
+      },
+      {
+       "bannerDefinition": {
+        "evaluationResultId": "01a1d17f-1db9-7465-85f6-1c960acf09e2",
+        "ruleId": "w-vancomycin-renal-disease",
+        "type": "WARNING",
+        "body": "CrCl = 37.8 mL/min. For patients with renal disease, consult pharmacy before administering additional vancomycin dose.",
+        "citations": [
+         {
+          "id": "r-vancomycin-renal-disease",
+          "label": "Hospital Guidelines",
+          "citation": "See Antimicrobial selection, page 3.",
+          "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+          "ruleId": "w-vancomycin-renal-disease"
+         }
+        ]
+       },
+       "type": "SHOW_BANNER",
+       "priority": 0
+      }
+     ],
+     "details": {
+      "MEDICATION_IDENTIFIER": "m-vancomycin-iv",
+      "CRCL_DISPLAY": "37.8 mL/min",
+      "EVALUATION_DATE": "Thu Nov 12 20:42:10 UTC 2026",
+      "MEDICATION_NAME": "Vancomycin",
+      "CRCL": "37.77567816840278",
+      "WEIGHT_CLASSIFICATION": "NORMAL",
+      "SUPPRESSED_ALLERGIES": "[]",
+      "PATIENT_ALLERGIES_FULL": "[]"
+     }
+    }
+   ],
+   "alerts": [],
+   "perRouteState": {
+    "INTRAVENOUS": {
+     "warnings": [
+      {
+       "evaluationResultId": "01a1d17f-1db9-7465-85f6-1c960acf09e2",
+       "ruleId": "w-vancomycin-renal-disease",
+       "type": "WARNING",
+       "body": "CrCl = 37.8 mL/min. For patients with renal disease, consult pharmacy before administering additional vancomycin dose.",
+       "citations": [
+        {
+         "id": "r-vancomycin-renal-disease",
+         "label": "Hospital Guidelines",
+         "citation": "See Antimicrobial selection, page 3.",
+         "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+         "ruleId": "w-vancomycin-renal-disease"
+        }
+       ]
+      }
+     ],
+     "infos": [
+      {
+       "evaluationResultId": "01a1d17f-1d8c-7890-8c0f-d0d32cbd7c6b",
+       "ruleId": "i-latest-medication",
+       "type": "INFO",
+       "body": "Last dose: 1.75 g at 14:35 on 11/12/2026",
+       "citations": []
+      }
+     ],
+     "doseOptions": [
+      {
+       "doseAmount": 15,
+       "doseUnits": "mg/kg",
+       "defaultOption": false,
+       "calculatedDoseAmount": "1.5",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": "15 mg/kg × 100 kg (recorded weight)<br/>=1,500 mg, rounded to the nearest 0.2 g<br/>≈1.5 g",
+       "weightBased": true,
+       "calculatedLabel": "1.5 g",
+       "rawLabel": "15 mg/kg"
+      },
+      {
+       "doseAmount": 20,
+       "doseUnits": "mg/kg",
+       "defaultOption": false,
+       "calculatedDoseAmount": "2",
+       "calculatedDoseUnits": "g",
+       "weightBasedDoseCalculation": "20 mg/kg × 100 kg (recorded weight)<br/>=2,000 mg, rounded to the nearest 0.2 g<br/>≈2 g",
+       "weightBased": true,
+       "calculatedLabel": "2 g",
+       "rawLabel": "20 mg/kg"
+      }
+     ],
+     "indicationDoseOptions": {},
+     "defaultIndication": null,
+     "doseUnits": {
+      "units": "g",
+      "label": "g"
+     },
+     "maxDoses": [],
+     "citations": [
+      {
+       "evaluationResultId": "01a1d17f-1db5-7fae-ac78-fff0bd433083",
+       "citation": {
+        "id": "r-vancomycin-iv-reduced-clearance-dose",
+        "label": "Hospital Antibiotic Dosing Guidelines",
+        "citation": "See Appendix Table 2.<br/>Dose: 15-20 mg/kg for CrCl < 50 mL/min",
+        "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+        "ruleId": "w-vancomycin-dose"
+       },
+       "location": "NEXT_TO_DOSE_OPTIONS"
+      },
+      {
+       "evaluationResultId": "01a1d17f-1db9-7465-85f6-1c960acf09e2",
+       "citation": {
+        "id": "r-vancomycin-renal-disease",
+        "label": "Hospital Guidelines",
+        "citation": "See Antimicrobial selection, page 3.",
+        "url": "https://mgb.ellucid.com/documents/view/45172/active/1",
+        "ruleId": "w-vancomycin-renal-disease"
+       },
+       "location": "END_OF_BANNER"
+      }
+     ],
+     "pendingDefaultDose": null
+    }
+   }
+  },
+  "trackingTabId": "01a1d17f-1a0d-7718-98a2-3682a277cc68",
+  "restoredTab": false,
+  "needsAction": true
+ }
+}

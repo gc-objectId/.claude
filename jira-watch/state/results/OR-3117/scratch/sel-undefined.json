@@ -1,0 +1,10 @@
+{
+ "pmrn": "V-fake-0d754210-0ea5-4709-bded-183820fdee86 19599",
+ "sel": {
+  "timestamp": "2026-11-12T20:34:07.921+00:00",
+  "status": 404,
+  "error": "Not Found",
+  "message": "Patient not found",
+  "path": "/api/cds/medication-selection/V-fake-0d754210-0ea5-4709-bded-183820fdee86%2019599/undefined"
+ }
+}
