@@ -48,7 +48,12 @@ each_proposal() {
         n=$(jq '(.automation.proposed_tests // []) | length' "${d}session.json" 2>/dev/null || echo 0)
         i=0
         while [ "$i" -lt "$n" ]; do
-            body=$(jq -r --argjson i "$i" '.automation.proposed_tests[$i]' "${d}session.json")
+            # Runs before in-run coverage proposed bare strings; newer ones carry the judgement.
+            body=$(jq -r --argjson i "$i" '
+                .automation.proposed_tests[$i]
+                | if type == "object"
+                  then (.test // "") + (if .write_now then "" else "  [deferred: " + (.why_not // "no reason given") + "]" end)
+                  else . end' "${d}session.json")
             printf '%s#%s\t%s\n' "$t" "$i" "$(text_of "${t}#${i}" "$body")"
             i=$((i + 1))
         done

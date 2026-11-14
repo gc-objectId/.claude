@@ -160,3 +160,6 @@
 - [Pushed-alert tests fail together](reference_pushed_alert_tests_fail_together.md) — dead STOMP socket; admin-only subscribe + RECENTLY_ADMINISTERED_MEDS kills guidance for non-admins
 - [OR-3054 orchestrator model](project_or3054_orchestrator_model.md) — one orchestrator, one agent per ticket, small PRs to main; lanes + terseness caps
 - [Engineering approval before merge](feedback_engineering_approval_before_merge.md) — Alex (product) approval passes GitHub but Ryan waits for Theo or Jordan
+- [Ask for VPN](feedback_ask_for_vpn.md) — ask Ryan to connect when a check needs dev/stage RDS; never leave it "unverified"
+- [Integration tests never run in CI](reference_integration_tests_never_run_in_ci.md) — 37 *IntegrationTest classes excluded by surefire; orci's 21 are green in 2:24
+- [Automation backlog vetting](project_automation_backlog_vetting.md) — 252 proposed / 3 written; the rubric, the declines, and why coverage must be written in-run

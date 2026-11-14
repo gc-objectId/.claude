@@ -35,3 +35,33 @@ OR-2790#3	declined	2026-09-25T18:27:42Z	marginal: the existing no-rxnorm skip ca
 OR-2792#2	declined	2026-09-25T18:27:42Z	contradicts current behaviour: AntibioticPathwayResolutionSpecTest.or2792_duodenalUlcerFirstRouteHasNoFallbackAndSilencesTheProcedure (OR-2801) pins that a cefazolin-allergic p-duodenal-ulcer case is silenced by rule 5, not RECOMMENDED with the fallback drugs
 OR-2801#2	declined	2026-09-25T18:27:42Z	duplicate: the rule only sees the ALL_CONTRAINDICATED outcome, not how it was reached, and KnownProcedureNoAntibioticRuleTest already asserts no action on it; the rule-5 path itself is pinned at resolution level by or2792_duodenalUlcerFirstRouteHasNoFallbackAndSilencesTheProcedure
 OR-2805#1	declined	2026-09-25T18:27:42Z	absorbed into #0: the absence assertion belongs in the same response check as the positive, which is also what makes it provably able to fail
+OR-3059#0	declined	2026-11-13T19:38:21Z	reserved: analytics - Alex owns validation and coverage for this work
+OR-3059#1	declined	2026-11-13T19:38:21Z	reserved: analytics - Alex owns validation and coverage for this work
+OR-3059#2	declined	2026-11-13T19:38:21Z	reserved: analytics - Alex owns validation and coverage for this work
+OR-3059#3	declined	2026-11-13T19:38:21Z	reserved: analytics - Alex owns validation and coverage for this work
+OR-2822#2	declined	2026-11-13T19:38:21Z	reserved: analytics, and a Testcontainers fixture to apply the mgb view SQL is heavy for a column rename
+OR-3021#0	declined	2026-11-13T19:38:21Z	not test coverage: a workflow-lint step is a CI change the coverage gate refuses, and the proposal declares itself optional
+OR-2964#0	declined	2026-11-13T19:38:21Z	not test coverage: a root-pom enforcer rule, and envers appears nowhere in the dependency tree today, so the risk is theoretical
+OR-2926#0	declined	2026-11-13T19:38:21Z	unwritable as described: management.info.java is disabled by default, so asserting the JVM version through /actuator/info needs a config change first; a stale image is already caught by the deploy tag
+OR-2926#1	declined	2026-11-13T19:38:21Z	not test coverage: a build-time classpath assertion over java.version, which the root pom already pins for every module
+OR-2782#4	declined	2026-11-13T19:38:21Z	duplicate: PRAC-003/004 already pin SIU practitioner attribution and its negative, and OR-2782#1 pins the if-not-set semantics at the level where they live
+OR-2822#0	declined	2026-11-13T19:38:21Z	duplicate: OR-2821#0 asserts the same PATCH acuity round trip plus the invalid-value 400 and the retired classification route
+OR-2822#1	declined	2026-11-13T19:38:21Z	duplicate: OR-2823#0 is the same changelog lint, scoped to the migration family where it belongs
+OR-2944#2	declined	2026-11-13T19:38:21Z	absorbed into OR-2944#0: PATHWAY_STATUS is asserted there on the firing that matters
+OR-2949#1	declined	2026-11-13T19:38:21Z	absorbed into OR-2949#0, which already asserts no fired, not-fired or failure row names the retired rule
+OR-3031#1	declined	2026-11-13T19:38:21Z	absorbed into OR-3031#0: the negative control is one more assertion in the same spec, not a second test
+OR-2945#2	declined	2026-11-13T19:38:21Z	self-declared optional
+OR-2965#2	declined	2026-11-13T19:38:21Z	self-declared optional, and conditional on the team wanting the dropped guard back
+OR-2795#1	declined	2026-11-13T19:38:21Z	not a proposal: it asks whether to assert current behaviour or change it first, which is a decision, not a test
+OR-3097#0	declined	2026-11-13T19:38:21Z	blocked on a product decision - needs a default indication marker on demo that does not exist yet
+OR-2986#0	declined	2026-11-13T19:38:21Z	brittle: asserting intermediate skeleton and spinner states behind a delayed route is a timing race over cosmetic behaviour
+OR-2986#1	declined	2026-11-13T19:38:21Z	brittle: same timing race, four placeholder tabs deep
+OR-2986#2	declined	2026-11-13T19:38:21Z	brittle: same timing race, and NDC-001-005 already cover the unmapped-NDC outcome
+OR-3105#0	declined	2026-11-13T19:38:21Z	cost/benefit: cache headers on preloaded audio, no clinical surface, and the assertion breaks on any CDN change
+OR-3105#1	declined	2026-11-13T19:38:21Z	brittle: fromDiskCache through a CDP Network session is the flakiest assertion in the suite for the least signal
+OR-3106#2	declined	2026-11-13T19:38:21Z	brittle: same CDP fromDiskCache assertion; OR-3106#1 covers the deploy hazard that actually matters
+OR-3069#0	declined	2026-11-13T19:38:21Z	cost/benefit: changeset 240 is a one-shot data migration that has already run everywhere, and the proposal declares itself skippable
+OR-3060#2	declined	2026-11-13T19:38:21Z	cost/benefit: changeset 248 has already run everywhere; a test for it can only ever pass
+OR-3117#0	declined	2026-11-13T19:38:21Z	cost/benefit: changeset 246 has already run everywhere; a test for it can only ever pass
+OR-2823#1	declined	2026-11-13T19:38:21Z	cost/benefit: a Testcontainers fixture rehearsing a one-shot guard migration that has already fired in production; OR-2823#0 carries the durable half
+OR-2951#3	declined	2026-11-13T19:38:21Z	marginal: blank PID-5/7/8 yielding null rather than empty strings, and the proposal declares itself supplemental to the three cases above it

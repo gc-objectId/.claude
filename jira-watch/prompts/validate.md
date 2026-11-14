@@ -40,8 +40,8 @@ You have no ability to comment on or transition the Jira ticket — those tools 
 process level, and a separate gate owns them. Do not attempt to work around this. Your verdict is
 a recommendation that the gate will accept or refuse based on the evidence you record.
 
-Do not push, do not open a pull request, do not commit. If the validation warrants automated
-tests, describe them in `automation`; a later supervised step writes them.
+Do not push, do not open a pull request, do not commit. Describe the tests in `automation`; a
+second session writes the ones you mark `write_now`, in this worktree, before it is torn down.
 
 ## What the verdict requires
 
@@ -111,6 +111,36 @@ the captured application log for your `red_check_signature`, so a signature that
 the run refused anyway — and a refusal reading "the red check did not happen as described" is far
 less useful to Ryan than you simply saying the ticket is not locally validatable.
 
+## Which proposed tests get written
+
+`write_now` is a claim that the test can be written today, in this worktree, and that the build will
+run it. Two hundred and fifty proposals were filed and three were ever written, because the bar was
+"would a test here be nice" rather than "will this run and can it fail". Mark `write_now: false` and
+say which bar it fails — a recorded refusal is worth more than a proposal nobody drains.
+
+A test earns `write_now: true` only if all of these hold:
+
+1. **The build runs it.** Surefire includes `**/*Test.java` and **excludes `**/*IntegrationTest.java`**.
+   Check whether any CI workflow passes `-P integration-tests`; if none does, a test written into a
+   `*IntegrationTest` class never executes anywhere. If the behaviour needs committed transactions, a
+   real Postgres or `afterCommit` ordering, and that profile is still unwired, it has no runnable home:
+   `write_now: false`, and `why_not` names the class.
+2. **It is not already covered.** Open the class or spec you named and say in `assessment` what is
+   there. "Probably covered somewhere" is not an assessment.
+3. **It can fail.** An absence assertion ships with the control that makes it go red, in the same
+   test. A test that asserts nothing happens, with nothing to prove it would have noticed, is noise.
+4. **It asserts behaviour, not plumbing.** No asserting on log strings. No golden tables that force
+   an edit for every new row — that trains blind updates. No third level of an assertion two
+   siblings already make.
+5. **It is a test file.** Not a workflow, not a pom, not application.yml, not a Liquibase changeset.
+   Those are real work when they are needed, but they belong in a ticket, not a coverage branch.
+6. **It is not a one-shot migration that has already run**, and not analytics SQL, which belongs to
+   another reviewer.
+
+For a qa-suite test, do **not** invent the `PREFIX-NNN` id. Run
+`~/.claude/bin/test-id.sh next PREFIX <count>` and use what it hands back; two runs picking ids from
+the repo alone both chose `LAMD-002`.
+
 ## Output
 
 Keep scratch work (helper scripts, saved payloads, pre-fix sources) in `__SCRATCH_DIR__`, which is
@@ -133,7 +163,14 @@ Write exactly one file, `__SESSION_JSON__`, and nothing else outside the worktre
   "caveats": ["anything that limits how far this validation reaches, even when the verdict is deploy-ready — a dependency you had to stub, a path you could not reach in this environment, a branch you did not exercise. One line each, empty array if genuinely none. Declaring a caveat NEVER costs you the verdict; it is recorded alongside it and flagged for Ryan. Omitting one that mattered is the actual failure."],
   "automation": {
     "assessment": "existing coverage, and what is worth locking in (or why nothing is)",
-    "proposed_tests": ["one line each, or empty"]
+    "proposed_tests": [
+      {
+        "test": "one line: what it asserts, and the control that makes the absence provable",
+        "home": "the exact file it goes in, e.g. qa-suite/clinical-rules/local-anesthetic.spec.ts or orci/src/test/java/.../FooTest.java",
+        "write_now": true,
+        "why_not": "required when write_now is false — which bar below it fails"
+      }
+    ]
   },
   "jira_comment": "PLAIN TEXT, IMPERSONAL VOICE, AND SHORT. Ryan reads these on a phone. Hard shape, no deviation:\n\nVerdict: deploy-ready.\n\nPositive: <ONE sentence — what was done, what was observed>\nNegative: <ONE sentence>\nRed check: <ONE sentence — what was flipped, what went red>\n\nAutomation: <ONE sentence>\n\nThat is the whole comment. Twelve lines maximum. One sentence per line, and a sentence is not a paragraph with semicolons in it. Do not restate the ticket, do not name every endpoint and identifier you touched, do not explain the mechanism, do not list what you did not do — the full account is already in your evidence fields and nobody reads it twice. Never use first person: no I, my, we. No markdown: no **bold**, no backticks, no bullets, no [links](). Omit the PR link and the caveats; the gate appends those."
 }

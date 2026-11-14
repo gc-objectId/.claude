@@ -48,7 +48,9 @@ parallel sweep is fully visible), `loopcmd runner`, `loopcmd kill`, `loopcmd hel
    actually seen fail. Heartbeat every 5 minutes with elapsed time and app request count.
 10. **capture the app log** before teardown, because container logs die with the container
 11. **gate** — see below
-12. **teardown** — environment and worktree removed
+12. **coverage** — on an admission, the tests the session marked `write_now` are written, run and
+    pushed as a draft PR, while the environment is still up. See below.
+13. **teardown** — environment and worktree removed, unless a coverage PR is holding the branch
 
 ## The gate
 
@@ -183,8 +185,21 @@ Two, deliberately different:
 
 ## Coverage — the point of the exercise
 
-Every validation proposes tests in `automation.assessment` / `automation.proposed_tests`. The loop
-never writes them; `automation.sh` is the backlog so they cannot evaporate when a ticket closes.
+Every validation proposes tests in `automation.assessment` / `automation.proposed_tests`, each one
+judged `write_now` against a rubric in `prompts/validate.md`: the build must actually run it, it must
+not already exist, and an absence assertion must ship with the control that makes it go red.
+
+A proposal marked `write_now` is written **in the same run**, by a second session, before the
+environment and worktree are torn down — step 11.5, between the gate and the trap. That is the only
+moment the app under test still exists, and deferring past it was why 250 proposals accumulated and
+three were ever drained. The branch goes through `automate-gate.sh` and lands as a draft PR; the
+worktree is held until it merges, then `loopcmd teardown` closes it out.
+
+`drain.sh` works the older backlog, whose proposals predate the judgement. It groups by the file the
+tests land in rather than by ticket — ten LAMD proposals from four tickets are one spec file and one
+review — judges each against the same rubric, and writes only what survives.
+
+`automation.sh` remains the backlog view, so nothing evaporates when a ticket closes.
 
 ```
 automation.sh                   open proposals, grouped by source ticket
@@ -206,7 +221,6 @@ because for test-writing the important properties are mechanically checkable.
 ## Not automated yet
 
 - **Nothing runs on a schedule.** No launchd. A sweep happens because you start one.
-- No automated tests are written — the session proposes them in `automation`, a human writes them.
 - Sessions run serially. Environments are isolated so they could overlap; the constraint is laptop
   resources, not correctness.
 - Sessions run as the invoking user with full authority. Containerised isolation is scoped, not built.

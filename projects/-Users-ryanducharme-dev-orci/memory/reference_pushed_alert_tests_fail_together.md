@@ -17,3 +17,5 @@ Seen 2026-11-10 on dev (three red runs, [[or3179-qa-report-failure-history]]): w
 - That console noise appears in passing tests too; it only fails tests that need a push.
 - `LAUNCH-003` only asserts a WebSocket object was created and `waitForCaseSubscription` falls through after 3s, so neither catches a dead socket.
 - CloudWatch is not readable with Ryan's IAM user, and dev RDS needs VPN, so flag audit history is not reachable off-VPN.
+
+**Update 2026-11-13:** fixed in #4847 (the list now listens on `guidance/...` for `MEDICATION_ADMINISTRATIONS_UPDATED`); the four tests pass on dev with the flag on. Dev's flag was hand-enabled 2026-11-10 15:44 UTC (`feature_flags.last_modified_date`); stage is off. Side effect: with the list refreshing live, a medication name appears twice on the page, so `getByText(name, { exact: true })` at `qa-suite/pages/dosing-form.page.ts:130` hits a strict-mode violation (ARD-002, LAMD-001 red on run 43467344503).
