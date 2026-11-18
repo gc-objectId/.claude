@@ -167,7 +167,7 @@
       "planModeRequired": false,
       "cwd": "/Users/ryanducharme/dev/orci",
       "backendType": "tmux",
-      "isActive": true
+      "isActive": false
     }
   ]
 }

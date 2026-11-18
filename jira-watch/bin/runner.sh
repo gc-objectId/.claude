@@ -56,6 +56,7 @@ die() {
 ticket="$1"
 shift
 keep=''
+keep_worktree=''
 commit=''
 for arg in "$@"; do
     case "$arg" in
@@ -236,7 +237,9 @@ cleanup() {
     st=$?
     if [ -z "$keep" ]; then
         "${CLAUDE_BIN}/env-down.sh" "$run_id" --keep-log >/dev/null 2>&1 || true
-        "${CLAUDE_BIN}/worktree-teardown.sh" "$worktree" >/dev/null 2>&1 || true
+        if [ -z "$keep_worktree" ]; then
+            "${CLAUDE_BIN}/worktree-teardown.sh" "$worktree" >/dev/null 2>&1 || true
+        fi
     else
         log "--keep: leaving ${worktree} and environment ${run_id} in place"
     fi
@@ -411,4 +414,19 @@ if [ "$gate_rc" -eq 0 ] && [ -n "$commit" ] && [ -z "$reserved" ]; then
     "${CLAUDE_BIN}/close-parent.sh" "$ticket" --commit 2>&1 | while IFS= read -r line; do
         log "close-parent: ${line}"
     done
+fi
+
+# Coverage runs here, before the trap, because here is the only moment the environment and the
+# worktree still exist. A proposal deferred to a backlog is a proposal nobody writes: 250 were filed
+# and 3 drained. Reserved tickets are skipped — their coverage belongs to whoever owns the review.
+if [ "$gate_rc" -eq 0 ] && [ -z "$reserved" ] && [ "${LOOP_COVER:-1}" = '1' ]; then
+    "${LOOP_HOME}/bin/cover-run.sh" "$run_dir" "$worktree" "$ticket" "$base_url" 2>&1 |
+        while IFS= read -r line; do log "cover: ${line}"; done || true
+    if [ -s "${run_dir}/coverage-pr.txt" ]; then
+        # The branch is the PR, so teardown waits for the merge: loopcmd teardown closes it out.
+        keep_worktree=1
+        log "cover: holding ${worktree} — draft PR at $(cat "${run_dir}/coverage-pr.txt")"
+        "${CLAUDE_BIN}/notify.sh" "$(printf '%s: coverage PR %s — review and mark ready.' \
+            "$ticket" "$(cat "${run_dir}/coverage-pr.txt")")" >/dev/null 2>&1 || true
+    fi
 fi

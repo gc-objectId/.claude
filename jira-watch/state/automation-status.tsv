@@ -65,3 +65,165 @@ OR-3060#2	declined	2026-11-13T19:38:21Z	cost/benefit: changeset 248 has already 
 OR-3117#0	declined	2026-11-13T19:38:21Z	cost/benefit: changeset 246 has already run everywhere; a test for it can only ever pass
 OR-2823#1	declined	2026-11-13T19:38:21Z	cost/benefit: a Testcontainers fixture rehearsing a one-shot guard migration that has already fired in production; OR-2823#0 carries the durable half
 OR-2951#3	declined	2026-11-13T19:38:21Z	marginal: blank PID-5/7/8 yielding null rather than empty strings, and the proposal declares itself supplemental to the three cases above it
+OR-2691#0	declined	2026-11-17T21:53:21Z	Bar 1+2: no CI workflow runs tools/deploy pytest; test_slack.py already asserts the exact channel/text body.
+OR-2691#2	declined	2026-11-17T21:53:21Z	Bar 1+4: tools/deploy pytest never runs in CI, and a per-env host table forces an edit per row.
+OR-2766#0	declined	2026-11-17T21:53:21Z	Bar 2: ScheduledRuleEngineTest insulinAdministration_caseAlreadyClosed_doesNoWorkAtAll with open-case control.
+OR-2766#1	declined	2026-11-17T21:53:21Z	Bar 2: afterProcedureEndWithNoCaseEndTime_stillSchedules + handleCaseStop_cancelsPostInsulinGlucoseCheckJobToo.
+OR-2796#0	declined	2026-11-17T21:53:21Z	Bar 1: integration-test class, never runs in CI (afterCommit needs the unwired integration-tests profile).
+OR-2796#1	declined	2026-11-17T21:53:21Z	Bar 1: integration-test class, never runs in CI.
+OR-2796#2	declined	2026-11-17T21:53:21Z	Bar 2: InfusionMedicationAdministrationTest already asserts hasCalculatedActivityBetween(later, earlier) is false.
+OR-2840#0	declined	2026-11-17T21:53:21Z	Bar 1: integration-test class, never runs in CI.
+OR-2840#1	declined	2026-11-17T21:53:21Z	Bar 1: integration-test class, never runs in CI.
+OR-2840#2	declined	2026-11-17T21:53:21Z	Bar 1: integration-test class, never runs in CI.
+OR-2840#4	declined	2026-11-17T21:53:21Z	Bar 4/5: a file move adds no assertion; relocation is tidy-up work, not coverage.
+OR-2845#0	declined	2026-11-17T21:53:21Z	Bar 2+4: sulfonamide resolution already pinned in the importer test; a 9-code count is a golden table.
+OR-2845#2	declined	2026-11-17T21:53:21Z	Bar 3: no admin surface stages an RxNorm-coded allergy; the endpoint takes allergen/medication ids only.
+OR-2845#3	declined	2026-11-17T21:53:21Z	Bar 3: SNOMED-coded allergies cannot be staged via the admin allergy endpoint.
+OR-2845#4	declined	2026-11-17T21:53:21Z	Bar 3: same staging gap, plus RXNORM_ALLERGY_MAPPING ships off with enabledTenants empty.
+OR-2886#0	declined	2026-11-17T21:53:21Z	Bar 2: STOP-only infusion covered in TOFSugammadexAdjustmentWarningRuleTest and NMBNoReversalNeededHighTOFRatioRuleTest.
+OR-2886#1	declined	2026-11-17T21:53:21Z	Bar 2: testPriorRocuroniumInfusionWithOnlyStopEventAbstains asserts that exact abstention message.
+OR-2950#0	declined	2026-11-17T21:53:21Z	Bar 2: TenantFilterTest asserts 403 for an X-Tenant-Id naming another tenant, shipped with the fix.
+OR-2950#1	declined	2026-11-17T21:53:21Z	Bar 2: TenantFilterTest covers the client_id 403 and both 200 cases (matching hint, no hint).
+OR-2950#2	declined	2026-11-17T21:53:21Z	Bar 4/5: teardown hygiene, not an assertion; the security specs already revoke minted tokens.
+OR-2993#0	declined	2026-11-17T21:53:21Z	Bar 2: testGastricTubePartnerDoseCompletesCombination, with the unrecognized-route sibling as control.
+OR-2993#1	declined	2026-11-17T21:53:21Z	Bar 2: testGastricTubeDoseCountsAsGiven asserts PARTIALLY_GIVEN; testOnlyCefazolinGiven pins the missing partner.
+OR-2993#2	declined	2026-11-17T21:53:21Z	Bar 2: ScheduledRuleEngineTest evaluate_gastricTubeAntibioticSchedulesReminder already arms the redose job.
+OR-3060#0	declined	2026-11-17T21:53:21Z	Bar 2: mayo_Type2DiabetesAloneGatesModerateScale covers age 80, no eGFR, no home insulin, 4 units.
+OR-3060#1	declined	2026-11-17T21:53:21Z	Bar 2: defaultSite_Type2Diabetes_EachCriterionGatesModerateScale covers the non-moderate default-site inverse.
+OR-3097#1	declined	2026-11-17T21:53:21Z	Bar 3: heparin indication rows exist only in mayo/mgb; the suite targets demo-qa, so it cannot be run.
+OR-3097#2	declined	2026-11-17T21:53:21Z	Bar 3: same heparin gap at demo-qa, and dose-option filtering is already pinned in the rule test.
+OR-3097#3	declined	2026-11-17T21:53:21Z	Bar 3: no heparin default-indication rows in demo, so the preselect-and-save path is unreachable at demo-qa.
+OR-3097#4	declined	2026-11-17T21:53:21Z	Bar 3: absence assertion with no reachable positive control; the data half is covered by the rule unit test.
+OR-2677#0	declined	2026-11-17T21:53:21Z	Bar 1: persistence form only lives in DefaultHL7ProcessingContextGlucoseDispatchIntegrationTest, never runs in CI
+OR-2677#2	declined	2026-11-17T21:53:21Z	Bar 4: third sibling of the same REQUIRES_NEW afterCommit assertion; cancelBolusAdmin behaviour already covered
+OR-2755#1	declined	2026-11-17T21:53:21Z	Bar 4: allow-list catalog assertion on annotation metadata, not behaviour; trains blind list edits
+OR-2755#2	declined	2026-11-17T21:53:21Z	Bar 4: golden table pinning every enum friendly name, an edit per new constant
+OR-2755#3	declined	2026-11-17T21:53:21Z	Bar 2/4: RuleDefinitionSyncTest already pins category write-back; blanket row scan is a catalog query
+OR-2792#0	declined	2026-11-17T21:53:21Z	Bar 4: widens an existing golden table pinned to the shipped CSV from 6 to 14 rows
+OR-2792#1	declined	2026-11-17T21:53:21Z	Bar 4: another containsExactly block against the same bundled CSV; same golden-table shape
+OR-2804#0	declined	2026-11-17T21:53:21Z	Bar 2: MayoHL7SiuCaseSchedulingProcessorTest mocks HL7ProcessingContext, so the Redis evict is unreachable there
+OR-2804#1	declined	2026-11-17T21:53:21Z	Bar 2/4: same unreachable home; a never-called verify on a mocked RedisService is plumbing, not behaviour
+OR-2804#2	declined	2026-11-17T21:53:22Z	Bar 2: unmappedAcuity_leavesAcuityNull plus SchedulingFieldsTest null-clobber test already cover it
+OR-2921#0	declined	2026-11-17T21:53:22Z	Bar 2: PreopDoxycyclineCheckRuleTest.firesForEachTargetProcedureWhenNoDoxycyclineGiven covers D&C alone
+OR-2921#1	declined	2026-11-17T21:53:22Z	Bar 2: abstainsWhenAnotherProcedureWantsAnAntibiotic asserts that exact p-hysterectomy-open message
+OR-2921#2	declined	2026-11-17T21:53:22Z	Bar 2: abstainsWhenASourceProcedureMappedToNothing asserts that exact message
+OR-2921#3	declined	2026-11-17T21:53:22Z	Bar 2: firesWhenEveryOtherProcedureWantsNoAntibiotic plus PreopDoxycyclineCheckResolutionTest cover it
+OR-2931#0	declined	2026-11-17T21:53:22Z	Bar 1/2: end-to-end home is an IntegrationTest class; scoring covered in DefaultDoseComplianceEvaluatorTest
+OR-2931#1	declined	2026-11-17T21:53:22Z	Bar 2: testWeightBasedCompliantWhenAdministeredMassCannotBeConvertedToExpectedVolume is this test
+OR-2933#0	declined	2026-11-17T21:53:22Z	Bar 2: MrsaAdjustedResolutionSpecTest r20 plus ProcedureBasedWrongAntibioticRuleTest r20 cover both halves
+OR-2933#1	declined	2026-11-17T21:53:22Z	Bar 2: aLaterNegativeMeansThePatientIsNotMrsaPositive plus the generic wrong-antibiotic firing tests cover it
+OR-2933#2	declined	2026-11-17T21:53:22Z	Bar 2: r22_vancomycinRuledOutOffersCefazolinWithDaptomycinOrLinezolid and r24 ALL_CONTRAINDICATED cover it
+OR-2933#3	declined	2026-11-17T21:53:22Z	Bar 2: r20_aStepOneThatOffersAChoiceIsLeftAsConfigured covers the CEFAZOLIN OR CEFUROXIME case
+OR-2933#4	declined	2026-11-17T21:53:22Z	Bar 2: IncompleteAntibioticPathwayRuleTest.r20_cefazolinAloneGivenToAnMrsaPositivePatientAsksForVancomycin
+OR-2951#0	declined	2026-11-17T21:53:22Z	Bar 1: Testcontainers concurrency home is a *IntegrationTest class, never runs in CI
+OR-2951#1	declined	2026-11-17T21:53:22Z	Bar 4: flowsheet and lab-result share MayoHL7OruBaseProcessor; the lab-result test already asserts this path
+OR-2951#2	declined	2026-11-17T21:53:22Z	Bar 4: patientNotFound_createsSkeletonPatientAndProcesses already asserts the PID-5/7/8 skeleton mapping
+OR-3010#0	declined	2026-11-17T21:53:22Z	Bar 2/3: MayoVancomycinDefaultDoseTest pins 110kg -> 1.75 g; "(recorded weight)" text exists nowhere
+OR-3010#1	declined	2026-11-17T21:53:22Z	Bar 2/3: no MGB tenant UI user in qa-suite; flat 2 g option already pinned in VancomycinDoseRuleTest
+OR-3010#2	declined	2026-11-17T21:53:22Z	Bar 3: at 60 kg the ideal- and actual-weight bases both round to 1 g, so it can never go red
+OR-3106#0	declined	2026-11-17T21:53:22Z	Bar 4: ENV-005 already asserts gzip plus max-age=2592000, immutable on a hashed bundle
+OR-3106#1	declined	2026-11-17T21:53:22Z	Bar 2: StaticAssetCacheConfigurationTest pins the no-store header on /index.html and the /app-launch forward
+OR-2680#0	declined	2026-11-17T21:53:22Z	Bar 2/4: ObservationControllerTest already asserts PatientNotFoundException; 404 is a @ResponseStatus annotation, not behavior
+OR-2709#0	declined	2026-11-17T21:53:22Z	Bar 2/4: ProcedureCombinationResolutionTest pins both halves (combinationRecommendsPiperacillinTazobactam, aFurtherProcedureFallsBack...)
+OR-2709#1	declined	2026-11-17T21:53:22Z	Bar 4: third level — rule firing on absent candidates covered by ProcedureBasedWrongAntibioticRuleTest; cefazolin-at-no-step by the combination test
+OR-2709#2	declined	2026-11-17T21:53:22Z	Bar 3: no shipped combination member is acuity-scoped in mayo antibiotic-pathways.csv, so nothing could resurface and the test cannot fail
+OR-2776#0	declined	2026-11-17T21:53:22Z	Bar 4: both combinations share one PANCREATIC_RESECTION_WITH_BILIARY_STENT constant, so the whipple parameter asserts nothing new
+OR-2776#1	declined	2026-11-17T21:53:22Z	Bar 4: same shared constant; whipple's outcome is driven by whippleConfiguresNoPathwayOfItsOwn, already asserted
+OR-2776#2	declined	2026-11-17T21:53:22Z	Bar 2/4: ProcedureBasedWrongAntibioticRuleTest covers fire/abstain; theCombinationOffersNoStepOf... covers the candidate set it reads
+OR-2795#0	declined	2026-11-17T21:53:22Z	Bar 4: a JSON-bundle fixture tests the HAPI parser, not ORCI; FhirUtilsTest already covers every value shape
+OR-2795#2	declined	2026-11-17T21:53:22Z	Bar 2: MGBGetLatestObservationsR4CommandTest covers narrative valueString (narrativeResultIsStoredWhole..., valueWithNoNumberAtAllIsRefused...)
+OR-2802#0	declined	2026-11-17T21:53:22Z	Bar 2/4: multi-procedure RECOMMENDED covered e2e by PABX-019; NOT_SELECTED statuses covered by AntibioticPathwayResolutionSpecTest
+OR-2806#0	declined	2026-11-17T21:53:22Z	Bar 2: DefaultHL7ProcessingContextMedAdminEvaluationTest.bolusEdit_evaluatesAsEditCarryingTheExistingTrackingId covers it
+OR-2806#1	declined	2026-11-17T21:53:22Z	Bar 2: secondBolusOnAKnownOrder_evaluatesAsNonEdit + infusionEventWithANewSubId_stampsTheAppendedEventWithTheRecordsId cover it
+OR-2806#2	declined	2026-11-17T21:53:22Z	Bar 2: bolusEdit_ofARowThatNeverCarriedATrackingId_stampsOneBeforeTheSnapshotIsTaken covers it
+OR-2938#1	declined	2026-11-17T21:53:22Z	Bar 2/3: shouldIgnoreAntibioticInfusionThatIsNotVancomycin covers it; absence assertion with its control in a different test
+OR-2938#2	declined	2026-11-17T21:53:22Z	Bar 2: shouldIgnoreVancomycinInfusionStartedBeforeItsLookbackEvenWhileStillRunning is the same scenario
+OR-2938#3	declined	2026-11-17T21:53:22Z	Bar 4: renal-warning logic covered by shouldShowRenalWarningForVancomycinInfusionWithLowCrCl; CREATININE wiring by ARD-005
+OR-2944#1	declined	2026-11-17T21:53:22Z	Bar 2: lockout covered by IncompleteAntibioticPathwayRuleTest.testAbstainsIfLockoutAlreadyClaimed and e2e by PABX-019's fired count of 1
+OR-2948#0	declined	2026-11-17T21:53:22Z	Bar 2: IncompleteAntibioticPathwayRuleTest.hysterectomyRedoseAndAbsent asserts that exact title and early-redose line
+OR-2948#1	declined	2026-11-17T21:53:22Z	Bar 2: kneeArthroscopyRedoseOnly plus testGroupCompletelyGivenAbstains cover both halves
+OR-2948#2	declined	2026-11-17T21:53:22Z	Bar 2/3: testAntibioticsAdministeredButNotValidCandidate covers the abstention; the second absence assertion has no control
+OR-2948#3	declined	2026-11-17T21:53:22Z	Bar 2: earlyNoRedoseTextUsesConfiguredLookback and appendectomyNoRedoseAndAbsent cover the "Evaluate X Status" + pharmacy line
+OR-2978#0	declined	2026-11-17T21:53:22Z	Bar 4: third level — SNOMED to MedicationAllergy covered by AllergyAssociationServiceTest, group-to-walk by aCrossReactionGroupAllergyRulesOut...
+OR-2978#1	declined	2026-11-17T21:53:22Z	Bar 2: testAbstainsWhenSelectedAntibioticWasRuledOutForThisPatient and testFiresWhenSelectedAntibioticIsAFallbackTheCaseDidNotReach
+OR-2978#2	declined	2026-11-17T21:53:22Z	Bar 2: allergyMatchingCrossReactionGroupViaSnomedCode... + duplicateCrossReactionGroupResultsDoNotProduceDuplicate... differ only in constants
+OR-3012#0	declined	2026-11-17T21:53:22Z	Bar 2: plainBupivacaineAtOrBelowHalfTheLiposomalDoseWithinFiveMinutes_doesNotFire in LocalAnestheticLiposomalBupivacaineExclusionTest
+OR-3012#1	declined	2026-11-17T21:53:22Z	Bar 2: plainBupivacaineMoreThanFiveMinutesBeforeLiposomalBupivacaine_fires covers the 10-minute case
+OR-3012#2	declined	2026-11-17T21:53:22Z	Bar 2: lidocaineToMaximumThenLiposomalBupivacaine_doesNotFire + lidocaineThenLiposomalBupivacaineThenRopivacaine_lidocaineCountsForRopivacaine
+OR-3031#0	declined	2026-11-17T21:53:22Z	Bar 2/3: LocalAnestheticWarningEvaluationTest asserts routeBasedPromptText verbatim; the "adjusted for:" absence has no control
+OR-2748#0	declined	2026-11-17T21:53:22Z	bar 2: non-max citation direction already asserted in LocalAnestheticWarningEvaluationTest
+OR-2748#1	declined	2026-11-17T21:53:22Z	bar 4: max-variant citation asserted 4x already; same remainingAllowedDoseMg read as sibling
+OR-2748#2	declined	2026-11-17T21:53:22Z	bar 2/4: four-figure branch already pinned by LocalAnestheticHighRemainingDoseTest both ways
+OR-2774#0	declined	2026-11-17T21:53:22Z	bar 1/5: proposal defers itself to a new ticket; DB-constraint race has no runnable home
+OR-2779#2	declined	2026-11-17T21:53:22Z	bar 4: third assertion on the same ERAS flag two siblings already make
+OR-2800#0	declined	2026-11-17T21:53:22Z	bar 3: describes an unfixed defect (header-only file empties the tenant); red on main, needs a fix ticket
+OR-2800#1	declined	2026-11-17T21:53:22Z	bar 5: build guard over shipped CSV config, not a behaviour test
+OR-2821#1	declined	2026-11-17T21:53:22Z	bar 2: acuity-scoped pathway resolution covered in AntibioticPathwayResolutionSpecTest; golden Mayo config
+OR-2821#2	declined	2026-11-17T21:53:22Z	bar 2: PV1-4 Urg/Emerg/Non-Urg/blank covered in MayoHL7SiuCaseSchedulingProcessorTest
+OR-2823#0	declined	2026-11-17T21:53:22Z	bar 4/5/6: hardcoded change-set number golden guard over changelogs plus reserved analytics
+OR-2945#0	declined	2026-11-17T21:53:22Z	bar 4: fourth instance of the DDC compliance pattern; SC insulin default covered by InsulinDefaultDoseWarningRuleTest
+OR-2945#1	declined	2026-11-17T21:53:23Z	bar 4: positive half of the same already-covered DDC pattern
+OR-2982#0	declined	2026-11-17T21:53:23Z	bar 2/4: Devine formula (PatientTest) and IDEAL/ACTUAL selection already covered; golden e2e numbers
+OR-2982#1	declined	2026-11-17T21:53:23Z	bar 2/3: MISC-007 covers the band and deliberately avoids the CrCl decimal, which drifts daily
+OR-3009#0	declined	2026-11-17T21:53:23Z	bar 2: 24h window boundary covered at 23h30m and +1s in AcetaminophenMaxDoseRuleTest
+OR-3009#1	declined	2026-11-17T21:53:23Z	bar 2: positive half of that same already-covered boundary pair
+OR-3009#2	declined	2026-11-17T21:53:23Z	bar 2: AcetaminophenMaxDoseSaveRuleTest covers the 23h30m save boundary both sides
+OR-3023#1	declined	2026-11-17T21:53:23Z	bar 3: expected behaviour undecided pending the follow-up fix, so nothing stable to assert today
+OR-3023#2	declined	2026-11-17T21:53:23Z	bar 3: expects 404 on dev where mgb is enabled and the three paths are permitAll; assertion is wrong
+OR-3038#0	declined	2026-11-17T21:53:23Z	bar 2: ScheduledRuleEngineTest scenario2 asserts the 120-min repeat and admin+2h start
+OR-3038#1	declined	2026-11-17T21:53:23Z	bar 2: PostInsulinGlucoseCheckScheduledRuleTest scenario2 asserts SUBCUTANEOUS and '2 hours'
+OR-3038#2	declined	2026-11-17T21:53:23Z	bar 2: scenario3/scenario6 already assert the 'glucose checked' abstain at Mayo
+OR-3038#3	declined	2026-11-17T21:53:23Z	bar 2: default hourly wording covered by testRecentInsulinBolusTriggersAlert and the app-launch default test
+OR-3038#4	declined	2026-11-17T21:53:23Z	bar 2: scenario7 (silent at 90m) and scenario8 (fires at 135m) in PostInsulinGlucoseCheckAppLaunchRuleTest
+OR-2726#0	declined	2026-11-17T21:53:23Z	Bar 4: asserts the cache payload shape and a no-second-walk mock interaction; empty resolution can't round-trip wrong
+OR-2726#1	declined	2026-11-17T21:53:23Z	Bar 4: same catch arm two siblings already exercise (stale body, WRONGTYPE read) with the same recompute assertion
+OR-2726#2	declined	2026-11-17T21:53:23Z	Bar 4: mock-verify of deleteValue vs deleteHashValue; runAfterCommit never fires in the transactional home
+OR-2726#3	declined	2026-11-17T21:53:23Z	Bar 1/4: afterCommit half only lives in DefaultHL7ProcessingContextSaveOperationIntegrationTest (inert); rest is mock-verify
+OR-2786#0	declined	2026-11-17T21:53:23Z	Bar 2: covered by afterMessage_withInRoomEvent... and epicTimingFeed_anesStart_... plus realAnesStart_...
+OR-2786#1	declined	2026-11-17T21:53:23Z	Bar 2: updateAnesthesiaStartTimeReplacesACaseStartRecordedByAnotherMilestone already writes an earlier correction
+OR-2786#2	declined	2026-11-17T21:53:23Z	Bar 4: third level over the processor dispatch test, EventService dispatch test and the repository write test
+OR-2801#0	declined	2026-11-17T21:53:23Z	Bar 4: outcome/appliesToCase/statuses already pinned in AntibioticPathwayResolutionSpecTest; cache order is mock plumbing
+OR-2801#1	declined	2026-11-17T21:53:23Z	Bar 3/4: heuristic proxy for the runtime rule, currently vacuous in all three shipped files; N-15/N-16/N-19 cover the behavior
+OR-2803#0	declined	2026-11-17T21:53:23Z	Bar 1/2: named home is an IntegrationTest (never runs); importsTheBundledMayoFile already pins the LOW/HIGH pair
+OR-2803#1	declined	2026-11-17T21:53:23Z	Bar 2: everyRowOfTheShippedFileImports already fails when dropIncompleteRiskScopes drops a shipped procedure
+OR-2803#2	declined	2026-11-17T21:53:23Z	Bar 1: p-pancreatectomy risk pathways ship only in the mayo file, so clinical-rules on demo-qa has no runnable home
+OR-2803#3	declined	2026-11-17T21:53:23Z	Bar 1/4: same missing demo config as the sibling, and it is the inverse of a proposal already declined
+OR-2842#0	declined	2026-11-17T21:53:23Z	Bar 4: OpenAPI metadata, not behavior; api-docs is off on dev so it needs a second full Spring context boot
+OR-2842#1	declined	2026-11-17T21:53:23Z	Bar 4: asserts that @Hidden does not unmap a handler, which is a springdoc contract, not our behavior
+OR-2842#2	declined	2026-11-17T21:53:23Z	Bar 4: generic $ref-to-class reflection over the OpenAPI doc; metadata plumbing at a full-context boot cost
+OR-2965#1	declined	2026-11-17T21:53:23Z	Bar 3: vacuous - the blanket catch makes "no exception" unfalsifiable and no sender means nothing to send
+OR-2983#0	declined	2026-11-17T21:53:23Z	Bar 4: testHasTwoAntiemeticsFromSameCategory already pins the full "of class ..." sentence at unit level
+OR-2983#1	declined	2026-11-17T21:53:23Z	Bar 4: not-fired path already covered by testHasTwoAntiemeticsFromDifferentCategories
+OR-2983#2	declined	2026-11-17T21:53:23Z	Bar 4: third level of the class-label assertion; per-enum label checks are a golden table
+OR-3020#0	declined	2026-11-17T21:53:23Z	Bar 4: two siblings already pin the latest-stop comparator (OldStopAndRecentStop, latestStopAlertsEvenWhen...)
+OR-3020#3	declined	2026-11-17T21:53:23Z	Bar 2/4: the PTT-observation branch is covered by testHerapinWithPTT, and the second case doubles the staging cost
+OR-3117#1	declined	2026-11-17T21:53:23Z	Bar 2: offers15And20MgPerKgWithNoPreselectionWhenCrClIsBelow50 and preselects15MgPerKg... already cover both branches
+OR-3117#2	declined	2026-11-17T21:53:23Z	Bar 1: the suite targets demo-qa and never touches demo-demo, so this has no runnable home
+OR-3117#3	declined	2026-11-17T21:53:23Z	Bar 2: SingleMin/SingleMaxDoseComplianceEvaluatorTest already cover in-band, below-minimum and above-maximum
+OR-2669#0	declined	2026-11-17T21:53:23Z	Bar 4: NO_MATCH vs FAILED outcomes already distinguish both catch branches; Sentry mockStatic is a third level
+OR-2669#1	declined	2026-11-17T21:53:23Z	Bar 2: practitionerNotFound_throwsRecordNotFound covers it; only delta is an exception-message string
+OR-2723#0	declined	2026-11-17T21:53:23Z	Bar 4: subsumed by OR-2723#1; asserting the page issued GET capabilities is plumbing, not behaviour
+OR-2790#0	declined	2026-11-17T21:53:23Z	Bar 3: join-fetch cannot go red inside a @DataJpaTest transaction; the IN/empty cases are JPQL plumbing
+OR-2790#1	declined	2026-11-17T21:53:23Z	Bar 4: mock-verify mirroring a one-line ternary; AllergyAssociationServiceTest covers both methods and the flag
+OR-2790#2	declined	2026-11-17T21:53:23Z	Bar 4: same ternary mirror as OR-2790#1, in a new class, over behaviour already unit-covered
+OR-2791#1	declined	2026-11-17T21:53:23Z	Bar 4: same assertion through the SNOMED sibling, already unit-covered in AllergyAssociationServiceTest
+OR-2791#2	declined	2026-11-17T21:53:23Z	Bar 4: mirror of the negative control already shipped inside OR-2791#0
+OR-2791#3	declined	2026-11-17T21:53:23Z	Bar 3: fails on current demo/mgb data, so it would land red; the data defect belongs with its fix
+OR-2805#0	declined	2026-11-17T21:53:23Z	Bar 2: TOFSugammadexAdjustmentWarningRuleTest asserts 36.9 kg -> 75 mg and the exact rounding annotation
+OR-2805#2	declined	2026-11-17T21:53:23Z	Bar 2: testAdultAtWeightThresholdKeepsConfiguredRounding already pins the 40 kg threshold
+OR-2819#0	declined	2026-11-17T21:53:23Z	Bar 1 integration-test class, never runs in CI; also covered by readOnlyContextLeavesTheCaseUntouched
+OR-2819#1	declined	2026-11-17T21:53:23Z	Bar 1 integration-test class, never runs in CI; audit type covered by PatientControllerOperationContextTest
+OR-2819#2	declined	2026-11-17T21:53:23Z	Bar 1 integration-test class for the tenant half; admin 403 gating covered across the admin @WebMvcTest suite
+OR-2819#3	declined	2026-11-17T21:53:23Z	Bar 1 integration-test class; exactly covered by anOperationThatIsNotFoundIsNotAudited
+OR-2939#0	declined	2026-11-17T21:53:23Z	Bar 2: MrsaAdjustedResolutionSpecTest r20_cefazolinStepOneGainsVancomycinWhileMrsaPositive covers it
+OR-2939#1	declined	2026-11-17T21:53:23Z	Bar 2: aLaterNegativeMeansThePatientIsNotMrsaPositive covers the NOT DETECTED case
+OR-2939#2	declined	2026-11-17T21:53:23Z	Bar 2: ProcedureBasedWrongAntibioticRuleTest already asserts the MRSA_INFECTION_STATUS citation set
+OR-2949#0	declined	2026-11-17T21:53:23Z	Bar 3: absence of a retired rule id has no in-test control; PARTIALLY_GIVEN covered by its rule test
+OR-2987#1	declined	2026-11-17T21:53:23Z	Bar 4: case variant of OR-2987#0; belongs as a parameter on NDCServiceTest, not a second e2e
+OR-2987#2	declined	2026-11-17T21:53:23Z	Bar 4: asserts an error-message string; rejection and no-save covered by NDCPatternImporterSyntaxTest
+OR-3027#0	declined	2026-11-17T21:53:24Z	Bar 1: integration-test class, never runs in CI
+OR-3027#1	declined	2026-11-17T21:53:24Z	Bar 1 integration-test class; the inner-join SQL assertion already exists in RuleFiredResultRepositoryTest
+OR-3032#0	declined	2026-11-17T21:53:24Z	Bar 2: LocalAnestheticLiposomalBupivacaineMaxDoseTest covers 266 pass, 300 fire and absent MAX_DOSE_MG_PER_KG
+OR-3032#1	declined	2026-11-17T21:53:24Z	Bar 2: anyAdultWeight_aboveFixedMaximum_firesAgainst266Mg is parameterized at 120 kg; ideal weight covered
+OR-3032#2	declined	2026-11-17T21:53:24Z	Bar 2: four-day and six-day lookback cases already covered in the liposomal bupivacaine max-dose test
+OR-3032#3	declined	2026-11-17T21:53:24Z	Bar 2: LiposomalBupivacaineSiteConfigTest asserts no retired EXPAREL category and the liposomal primary category
