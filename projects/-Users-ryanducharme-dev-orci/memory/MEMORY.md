@@ -161,5 +161,7 @@
 - [OR-3054 orchestrator model](project_or3054_orchestrator_model.md) — one orchestrator, one agent per ticket, small PRs to main; lanes + terseness caps
 - [Engineering approval before merge](feedback_engineering_approval_before_merge.md) — Alex (product) approval passes GitHub but Ryan waits for Theo or Jordan
 - [Ask for VPN](feedback_ask_for_vpn.md) — ask Ryan to connect when a check needs dev/stage RDS; never leave it "unverified"
-- [Integration tests never run in CI](reference_integration_tests_never_run_in_ci.md) — 37 *IntegrationTest classes excluded by surefire; orci's 21 are green in 2:24
-- [Automation backlog vetting](project_automation_backlog_vetting.md) — 252 proposed / 3 written; the rubric, the declines, and why coverage must be written in-run
+- [Integration-test naming excludes from CI](reference_integration_test_naming_excludes_from_ci.md) — surefire excludes on the name; 22 of 37 integration-grade classes already run, rename the other 15
+- [Automation backlog vetting](project_automation_backlog_vetting.md) — drained 183 → 21 writable; culling was the lever, not grouping
+- [OR-3200 config import wipe](project_or3200_config_import_wipe.md) — header-only CSV wipes a tenant's config; 11 of 12 importers unguarded
+- [QA report moving to GitHub](project_qa_report_moving_to_github.md) — Theo: app should not host test results; OR-3203 CTRF spike may retire /qa-suite-report

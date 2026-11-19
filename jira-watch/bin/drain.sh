@@ -18,6 +18,7 @@ set -eu
 LOOP_HOME="${JIRA_WATCH_HOME:-$HOME/.claude/jira-watch}"
 CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.claude/bin}"
 RESULTS="${LOOP_HOME}/state/results"
+ORCI_ROOT="${ORCI_ROOT:-$HOME/dev/orci}"
 DRAIN_MODEL="${DRAIN_MODEL:-claude-fable-5-1}"
 JUDGE_TIMEOUT="${JUDGE_TIMEOUT:-900}"
 
@@ -81,18 +82,21 @@ cmd_drain() {
     mkdir -p "$run_dir"
     lead=$(printf '%s' "$items" | head -1 | cut -f1 | cut -d'#' -f1)
 
-    worktree=$("${CLAUDE_BIN}/worktree-create.sh" "$lead" "coverage-$(printf '%s' "$group" | tr '[:upper:]' '[:lower:]')") ||
-        { say "worktree creation failed for ${group}"; exit 1; }
-    say "worktree=${worktree}"
+    # Judging reads the repo; it does not need the app. At an ~88% decline rate most groups die
+    # here, so the image and the environment are bought only once something has survived.
+    judge_tree="${run_dir}/judge-tree"
+    git -C "$ORCI_ROOT" worktree add --detach "$judge_tree" origin/main >/dev/null 2>&1 ||
+        { say "judging worktree failed for ${group}"; exit 1; }
 
-    image=$("${CLAUDE_BIN}/build-image.sh") || { say "build failed"; exit 1; }
-    env_json=$("${CLAUDE_BIN}/env-up.sh" "$run_id" "$image") || { say "env-up failed"; exit 1; }
-    base_url=$(printf '%s' "$env_json" | jq -r '.base_url')
-
+    worktree=''
+    image=''
     cleanup() {
         st=$?
-        [ -s "${run_dir}/coverage-pr.txt" ] || "${CLAUDE_BIN}/worktree-teardown.sh" "$worktree" >/dev/null 2>&1 || true
-        "${CLAUDE_BIN}/env-down.sh" "$run_id" >/dev/null 2>&1 || true
+        git -C "$ORCI_ROOT" worktree remove --force "$judge_tree" >/dev/null 2>&1 || true
+        [ -z "$image" ] || "${CLAUDE_BIN}/env-down.sh" "$run_id" >/dev/null 2>&1 || true
+        if [ -n "$worktree" ] && [ ! -s "${run_dir}/coverage-pr.txt" ]; then
+            "${CLAUDE_BIN}/worktree-teardown.sh" "$worktree" >/dev/null 2>&1 || true
+        fi
         exit "$st"
     }
     trap cleanup EXIT
@@ -100,11 +104,11 @@ cmd_drain() {
     # These proposals predate the write_now judgement, so it is applied now, against the repo,
     # before anything is written. The rubric is the one in prompts/validate.md.
     printf '%s' "$items" | awk -F'\t' '{print "- " $1 ": " $3}' >"${run_dir}/raw.md"
-    judge_prompt="Read ${LOOP_HOME}/prompts/validate.md, section 'Which proposed tests get written'. Apply that rubric to each proposal in ${run_dir}/raw.md, checking the actual repository at ${worktree} for each one — open the class or spec it names and see what is already there.
+    judge_prompt="Read ${LOOP_HOME}/prompts/validate.md, section 'Which proposed tests get written'. Apply that rubric to each proposal in ${run_dir}/raw.md, checking the actual repository at ${judge_tree} for each one — open the class or spec it names and see what is already there.
 
 Write ${run_dir}/session.json as {\"automation\": {\"assessment\": \"...\", \"proposed_tests\": [{\"test\": \"...\", \"home\": \"...\", \"write_now\": true|false, \"why_not\": \"...\"}]}}, one entry per proposal in ${run_dir}/raw.md, in the same order. Judge only. Write no tests and change no files."
 
-    ( cd "$worktree" && exec claude -p "$judge_prompt" \
+    ( cd "$judge_tree" && exec claude -p "$judge_prompt" \
         --model "$DRAIN_MODEL" --permission-mode bypassPermissions \
         --disallowed-tools 'mcp__claude_ai_Atlassian__*' \
         </dev/null >"${run_dir}/judge.log" 2>&1 ) &
@@ -129,6 +133,22 @@ Write ${run_dir}/session.json as {\"automation\": {\"assessment\": \"...\", \"pr
     done
 
     [ "$kept" -gt 0 ] || { say "${group}: nothing survived judging"; exit 4; }
+
+    worktree=$("${CLAUDE_BIN}/worktree-create.sh" "$lead" "coverage-$(printf '%s' "$group" | tr '[:upper:]' '[:lower:]')") ||
+        { say "worktree creation failed for ${group}"; exit 1; }
+    say "worktree=${worktree}"
+
+    # Backend tests run under mvn in the worktree. Only a qa-suite home needs the app up.
+    base_url=''
+    if jq -e '[(.automation.proposed_tests // [])[] | select(.write_now == true)
+               | .home // ""] | any(test("qa-suite"))' "${run_dir}/session.json" >/dev/null; then
+        image=$("${CLAUDE_BIN}/build-image.sh") || { say "build failed"; exit 1; }
+        env_json=$("${CLAUDE_BIN}/env-up.sh" "$run_id" "$image") || { say "env-up failed"; exit 1; }
+        base_url=$(printf '%s' "$env_json" | jq -r '.base_url')
+    else
+        say "${group}: backend-only, skipping the image build and environment"
+    fi
+
     "${LOOP_HOME}/bin/cover-run.sh" "$run_dir" "$worktree" "$lead" "$base_url"
 }
 

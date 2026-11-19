@@ -227,3 +227,16 @@ OR-3032#0	declined	2026-11-17T21:53:24Z	Bar 2: LocalAnestheticLiposomalBupivacai
 OR-3032#1	declined	2026-11-17T21:53:24Z	Bar 2: anyAdultWeight_aboveFixedMaximum_firesAgainst266Mg is parameterized at 120 kg; ideal weight covered
 OR-3032#2	declined	2026-11-17T21:53:24Z	Bar 2: four-day and six-day lookback cases already covered in the liposomal bupivacaine max-dose test
 OR-3032#3	declined	2026-11-17T21:53:24Z	Bar 2: LiposomalBupivacaineSiteConfigTest asserts no retired EXPAREL category and the liposomal primary category
+OR-2677#1	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2779#0	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2779#1	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2782#1	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2821#0	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2845#1	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2928#0	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2960#0	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2965#0	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-3009#3	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-3023#0	done	2026-11-18T15:51:02Z	written in OR-3201, PR #4865
+OR-2982#2	declined	2026-11-18T15:51:02Z	already covered by CaculatorUtilsTest.idealBodyWeightIsUnknownWhenTheFormulaIsNotPositive
+OR-2791#0	declined	2026-11-18T16:28:34Z	RXNORM_ALLERGY_MAPPING ships off (enabledTenants []), so the RxNorm association path never runs; belongs on OR-2925 with the crosswalk fix

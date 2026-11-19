@@ -86,3 +86,10 @@ Fix: `deleteJob` and `jobExists` try the tenant key, then the bare key, taken on
 current tenant (reuses `isOwnedBy`). Reschedule paths now lazily migrate old jobs. Bot re-review on 1c7d8c6e6: no new
 issues; its thread resolved. Theo's two threads left for him. **Follow-up owed:** tech-debt Task to remove the
 fallback once every environment has had one deploy plus 36h.
+
+## Theo's own commit (2026-11-17, f1e8d6dbc)
+Theo merged main (473bb19fa) and pushed f1e8d6dbc himself: deleteJob removes both the tenant-key and the legacy-key
+copy (rolling deploy: an old task can schedule a bare-key copy beside the new task's prefixed one), and the admin summary
+skips a job that finishes between listing and lookup. Bot: no new issues. Local worktree synced 2026-11-18. His two
+review threads were still unresolved and reviewDecision was REVIEW_REQUIRED on 2026-11-18. He is not asking to close
+the PR; his "do we need this" was about the migration runner only, which is gone.
