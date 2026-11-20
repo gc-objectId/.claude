@@ -1,6 +1,6 @@
 ---
 name: or2791-nsaid-group-crosswalk-defect
-description: OR-2791 NSAID cross-reaction group validated Done 2026-09-14; exposed pre-existing crosswalk rows mapping ibuprofen/naproxen to non-NSAID meds in demo/mgb, filed as OR-2925 for Jordan
+description: OR-2791 NSAID cross-reaction group validated Done 2026-09-14; exposed crosswalk rows mapping ibuprofen/naproxen to non-NSAID meds in demo/mgb — OR-2925 was closed without fixing them, refiled as OR-3222 2026-11-19
 metadata:
   type: project
 ---
@@ -11,6 +11,10 @@ Blocker it surfaced was NOT this ticket's code: demo and mgb `master-rxnorm-list
 
 **Why:** the RXNORM_ALLERGY_MAPPING flag is off for all tenants (changeset 037), so nothing is live, but OR-2925 must land before it is enabled. The allergen label preferring the mapped med name over the category is by design (MedicationAllergyRuleTest), not a bug.
 
-**Pending coverage, do this when OR-2925 is picked up:** OR-2791's proposed tests were never written or added to the jira-watch coverage backlog. They live only in `~/.claude/jira-watch/state/results/OR-2791/session.json` (automation.proposed_tests). Write them with OR-2925's data test on the OR-2925 branch: ALG supplemental API-only tests for RXNORM 3355 -> m-ketorolac fires a-general-allergy with ALLERGY_ALLERGEN NSAID and m-propofol does not; SNOMED 372665008 -> same; RXNORM 8782 (propofol) -> ketorolac silent, propofol fires with ALLERGY_ALLERGEN Propofol. Add an ibuprofen 5640 case asserting the label reads Ibuprofen (or NSAID where no ibuprofen med exists), which only passes once the rows are fixed.
+**2026-11-19: OR-2925 is Done but the rows are still on main.** All five per org (4x 5640, 1x 7258) are unchanged at 5992bcc9b; no commit anywhere references OR-2925 and the file's last substantive change was #4476, which predates the ticket. Refiled as **OR-3222** (Bug, To Do) with the fix decided: drop the rows rather than remap them, because neither demo nor mgb carries a standalone ibuprofen, naproxen or diclofenac medication, and the NSAID cross-reaction group already reaches the NSAID meds they do carry (ketorolac, celecoxib, aspirin). The 1100066 ibuprofen/famotidine combo rows are correct and stay.
+
+**The unit coverage was NOT dropped** — it landed under OR-2790's PR #4355 as `AllergyAssociationServiceTest` (15 methods: cross-reaction group, the SNOMED variant, both flag states), plus `AllergyCrossReactionGroupRepositoryTest`, `AllergyCrossReactionGroupCSVImporterTest` and `MedicationAllergyRuleTest`. Only the e2e layer is owed, and it needs RXNORM_ALLERGY_MAPPING enabled for demo-qa — which is an OR-3222 acceptance criterion.
+
+**Pending coverage, do this on OR-3222:** OR-2791's proposed tests were never written or added to the jira-watch coverage backlog. They live only in `~/.claude/jira-watch/state/results/OR-2791/session.json` (automation.proposed_tests). Write them with the category guard test on the OR-3222 branch: ALG supplemental API-only tests for RXNORM 3355 -> m-ketorolac fires a-general-allergy with ALLERGY_ALLERGEN NSAID and m-propofol does not; SNOMED 372665008 -> same; RXNORM 8782 (propofol) -> ketorolac silent, propofol fires with ALLERGY_ALLERGEN Propofol. Add an ibuprofen 5640 case asserting the label reads Ibuprofen (or NSAID where no ibuprofen med exists), which only passes once the rows are fixed.
 
 **How to apply:** when a coded-allergy validation shows a wrong drug name, check the org's master-rxnorm-list.csv join before suspecting the rule. Rerun the group-vs-category join across all three orgs to size it. See [[non-pen-ceph-allergy-path]] and [[jira-watch-autovalidate]].

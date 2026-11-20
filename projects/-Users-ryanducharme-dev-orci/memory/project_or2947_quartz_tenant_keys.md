@@ -93,3 +93,16 @@ copy (rolling deploy: an old task can schedule a bare-key copy beside the new ta
 skips a job that finishes between listing and lookup. Bot: no new issues. Local worktree synced 2026-11-18. His two
 review threads were still unresolved and reviewDecision was REVIEW_REQUIRED on 2026-11-18. He is not asking to close
 the PR; his "do we need this" was about the migration runner only, which is gone.
+
+## Tagged tenant segment (2026-11-19, commit 8fab96430, Jordan/JEphron review)
+Group format is now `t=<tenant>:<group>`; qualified means starts with `t=` and has a colon after it, so a group that
+merely contains a colon is bare. Only TenantJobKeys and its test spell the format out. Reply posted to Jordan; thread
+left for Jordan/Ryan to resolve. Scratchpad gets wiped between days: rebuild pr-body.md from `gh pr view --json body`.
+
+## Closed 2026-11-20
+
+#4809 merged as c14e9d16a (squash of 8fab96430). `worktree-done` ran clean; OR-2947 moved to Done with the description rewritten to the shipped scope (fallback instead of startup migration; TODO now tracks removing the fallback).
+
+Still owed:
+- Metadata-driven cleaner as its own PR under OR-2928 (resurrect from 67ca0e3e3 / 704c7a8a4; fold in Theo's "failed delete must still close metadata"; phrase as fewer per-row calls). Then delete `~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (`git branch -D`) and `origin/bugfix/OR-2947-metadata-driven-cleaner`; archive the five Sentry issues after that PR deploys.
+- Tech-debt Tasks to draft on request: remove the legacy-key fallback once every environment has had one deploy plus 36h; TimerBasedRuleEngine trigger-name drift.

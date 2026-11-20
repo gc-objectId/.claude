@@ -97,7 +97,7 @@
 - [Non-pen/ceph allergy path](reference_non_pen_ceph_allergy_path.md) — reach pathway only via RxNorm association
 - [OR-2875 all-procedures gate](project_or2875_all_procedures_gate.md) — done; PABX-019/020 + PMAP family
 - [Antibiotic guidance debug endpoint](reference_antibiotic_guidance_debug_endpoint.md) — admin GET re-resolves the candidates
-- [OR-2791 NSAID group + crosswalk defect](project_or2791_nsaid_group_crosswalk_defect.md) — done; ALG tests owed with OR-2925
+- [OR-2791 NSAID group + crosswalk defect](project_or2791_nsaid_group_crosswalk_defect.md) — OR-2925 closed without fixing the rows; refiled as OR-3222, unit coverage already landed under OR-2790
 - [OR-2924 MFHIR-012 hives drift](project_or2924_mfhir012_hives_drift.md) — DONE 2026-09-14 (#4561); verify first post-deploy run
 - [Triage: check closed PRs](feedback_triage_check_closed_prs.md) — "in flight?" means --state all
 - [Java 25 local JDK](reference_java25_local_jdk.md) — JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home
@@ -148,7 +148,7 @@
 - [DevTools restart on mvn test](reference_devtools_restart_on_mvn_test.md) — worktree app restarts when a concurrent build recompiles target/classes
 - [OR-2809 timestamptz validation](project_or2809_timestamptz_validation.md) — DONE 2026-10-30; tests PR #4802 merged 2026-11-10; worktree gone
 - [Lint changelogs, not the catalog](feedback_schema_conventions_lint_changelogs.md) — Theo: schema conventions are guarded by a changelog lint test, not a Testcontainers catalog query
-- [OR-2947 Quartz tenant keys](project_or2947_quartz_tenant_keys.md) — implemented 2026-11-02; `<tenant>:<group>` via TenantJobKeys; exclude the audio plugin module from `-am`; trigger-reading tests need the PostgreSQLDelegate override
+- [OR-2947 Quartz tenant keys](project_or2947_quartz_tenant_keys.md) — DONE 2026-11-20 (#4809, c14e9d16a); `t=<tenant>:<group>` via TenantJobKeys; legacy-key fallback owed a removal Task; metadata-driven cleaner PR still owed under OR-2928
 - [Sentry frontend observability locally](reference_sentry_frontend_observability_local.md) — runtime init via Vite dep URL; [::1] host bypasses isLocal for Playwright
 - [OR-3125 logged-out user-info 403](project_or3125_logged_out_user_info_403.md) — DONE 2026-11-03; no automation (Sentry→Jira already detects it); next free AUTH-005
 - [OR-2813 BETWEEN launch report](project_or2813_between_launch_report.md) — DONE 2026-11-03; only the launch report fixed (#4773), listed sites are window checks; no automation, #4810 withdrawn; worktree gone
