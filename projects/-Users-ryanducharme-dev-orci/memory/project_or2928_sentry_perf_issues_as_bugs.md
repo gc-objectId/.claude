@@ -1,6 +1,6 @@
 ---
 name: or2928-sentry-perf-issues-filed-as-bugs
-description: HANDOFF for OR-2947 session — five job-cleaner tickets (OR-2928/2934/2883/2916/2923) are Sentry N+1 detections; the metadata-driven cleaner fix is parked at commit 704c7a8a4, applies cleanly to main; exact steps inside
+description: Five job-cleaner tickets (OR-2928/2934/2883/2916/2923) are Sentry N+1 detections; the metadata-driven cleaner is parked on origin/bugfix/OR-2928-metadata-driven-cleaner (67ca0e3e3) and conflicts with post-#4809 main; retrieval steps inside
 metadata:
   type: project
 ---
@@ -61,3 +61,15 @@ commit. Whether OR-2947's wider key work ships in the same PR is Ryan's call.
 type at once. Local Sentry credentials, CloudWatch/ECS reads and dev RDS without VPN are blocked.
 `findIncompleteJobMetadata` in JobMetadataRepository is dead code (delete it in the same PR if touching the file).
 See [[sentry-events-have-no-release]], [[jira-watch-validation-loop]].
+
+
+## Parked 2026-11-20 (after #4809 merged)
+
+`origin/bugfix/OR-2928-metadata-driven-cleaner` = 67ca0e3e3 (Java-only cleaner; already in main's history because #4809
+was merge-committed, then undone forward by 3beab8dd6). OR-2928 comment posted with retrieval steps. It no longer
+applies cleanly: `git cherry-pick 67ca0e3e3` conflicts in QuartzJobService, JobCleanerJob, JobCleanerJobIntegrationTest,
+QuartzJobServiceTest; `git revert 3beab8dd6` conflicts in only QuartzJobService + QuartzJobServiceTest. Folds owed:
+failed deleteJob must still close metadata; say "fewer per-row Quartz calls". Note `isOwnedBy` is shared with the
+legacy-key fallback in deleteJob/jobExists, so whichever of this PR and the fallback removal lands second deletes it.
+Old branches still on origin, both redundant now: `bugfix/OR-2947-metadata-driven-cleaner` and
+`bugfix/OR-2928-job-cleaner-demo-qa` (tip 704c7a8a4 / aff024650, superseded triage script). No 2928 worktree exists.

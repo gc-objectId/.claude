@@ -104,7 +104,7 @@
 - [Production Postgres majors](reference_aurora_postgres_17.md) — Aurora 17.7, MGB 16; repo pins 16-alpine
 - [Feature specs program](project_feature_specs_program.md) — Theo initiative; med-selection baseline = OR-3017
 - [Sprint 93 Ryan scope](project_sprint93_ryan_scope.md) — OR-2941 DONE 2026-11-12 (#4779 merged), worktree gone; old #4761 branch still on origin; cefotaxime/ceftriaxone flag owed to Alex
-- [OR-2928 → OR-2947 handoff](project_or2928_sentry_perf_issues_as_bugs.md) — **READ FIRST in the OR-2947 session**: five job-cleaner tickets are N+1 detections; fix parked at 704c7a8a4 (Java files only, triage part superseded by #4627); exact checkout + test commands and close-out checklist inside
+- [OR-2928 metadata-driven cleaner parked](project_or2928_sentry_perf_issues_as_bugs.md) — origin/bugfix/OR-2928-metadata-driven-cleaner (67ca0e3e3); conflicts with main, revert 3beab8dd6 is the cheaper path; five tickets close with it
 - [Actions "job not acquired" = GitHub outage](reference_actions_job_not_acquired_is_github_outage.md) — check githubstatus, re-dispatch
 - [GitHub runs API stale pages](reference_github_runs_api_stale_pages.md) — trust a page only if it contains GITHUB_RUN_ID
 - [OR-3004 VIS-010 fixture](project_or3004_vis010_fixture.md) — DONE; nested npm :local scripts need trailing --
