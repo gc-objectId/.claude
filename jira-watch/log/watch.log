@@ -42,3 +42,7 @@
 2026-08-14 11:12:01  WOULD-QUEUE OR-2765  slug=type-1-goal-range
 2026-08-14 11:12:01  WOULD-QUEUE OR-2767  slug=isc-initialization-mayo-update
 2026-08-14 11:12:01  POLL  complete
+2026-11-23 09:41:15  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status = "Ready for Testing" AND status CHANGED TO "Ready for Testing" AFTER -24h ORDER BY updated ASC
+2026-11-23 09:41:16  POLL  complete
+2026-11-23 09:41:24  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status = "Ready for Testing" AND status CHANGED TO "Ready for Testing" AFTER -24h ORDER BY updated ASC
+2026-11-23 09:41:25  POLL  complete

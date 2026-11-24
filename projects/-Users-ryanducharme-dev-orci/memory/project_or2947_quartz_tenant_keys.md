@@ -106,3 +106,19 @@ left for Jordan/Ryan to resolve. Scratchpad gets wiped between days: rebuild pr-
 Still owed:
 - Metadata-driven cleaner as its own PR under OR-2928 (resurrect from 67ca0e3e3 / 704c7a8a4; fold in Theo's "failed delete must still close metadata"; phrase as fewer per-row calls). Then delete `~/dev/worktrees/OR-2928-job-cleaner-demo-qa` (`git branch -D`) and `origin/bugfix/OR-2947-metadata-driven-cleaner`; archive the five Sentry issues after that PR deploys.
 - Tech-debt Tasks to draft on request: remove the legacy-key fallback once every environment has had one deploy plus 36h; TimerBasedRuleEngine trigger-name drift.
+
+## Tech-debt tickets approved 2026-11-23, NOT yet created (Atlassian connector down all session; keychain token read denied)
+Ryan approved both as drafted. Create on next session; full bodies were in the scratchpad `ticket-drafts.md` (may be wiped).
+1. Task "Remove the pre-prefix Quartz key fallback", Relates to OR-2947: remove `legacyKeyOf`/`deleteUnderLegacyKey` + bare-key
+   branch of deleteJob/jobExists and the 4 legacy tests + `legacyJob` helper; drop bare-key cleaner removal in
+   `JobCleanerSetupRunner.removeCleanerJobsForDisabledTenants` (keep disabled-tenant part) + test; drop TENANT_ID data-map
+   fallback in `TenantJobKeys.tenantOf(JobDetail)` + `unmigratedJobOf` cases in QuartzControllerTest; `isOwnedBy` goes only if
+   the metadata-driven cleaner has landed. Precondition: dev/stage/AWS prod/MGB each ran a #4809 build 36h+ (MGB lags).
+2. Bug "TimerBasedRuleEngine job metadata never completes and names its job from the PatientId record": `JobMetadata.getTriggerKey()`
+   builds from jobName/jobGroup and ignores stored triggerName (predates #4809); timer engine stores `timer-rules-<jobName>` so
+   `markAllAsComplete` never matches, row closes only via the 72h sweep; other engines set triggerName == jobName. Also
+   `getJobName` concatenates the PatientId record → `patient-PatientId[value=123]-operation-456` (ScheduledRuleEngine uses
+   `.value()`). Deliver: getTriggerKey honours triggerName or engine stores triggerName = jobName; `.value()`; TimerBasedRuleEngineTest
+   coverage. Name change exposure bounded by the 36h trigger end, no fallback needed.
+Also owed: delete redundant `origin/bugfix/OR-2947-metadata-driven-cleaner` and `origin/bugfix/OR-2928-job-cleaner-demo-qa`
+(permission classifier denied `git push --delete`; Ryan to run it).
