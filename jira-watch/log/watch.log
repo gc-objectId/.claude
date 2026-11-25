@@ -46,3 +46,7 @@
 2026-11-23 09:41:16  POLL  complete
 2026-11-23 09:41:24  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status = "Ready for Testing" AND status CHANGED TO "Ready for Testing" AFTER -24h ORDER BY updated ASC
 2026-11-23 09:41:25  POLL  complete
+2026-11-25 09:36:06  POLL  dry_run=1  jql: project = "OR" AND sprint in openSprints() AND status = "Ready for Testing" AND status CHANGED TO "Ready for Testing" AFTER -24h ORDER BY updated ASC
+2026-11-25 09:36:07  WOULD-QUEUE OR-3242  slug=keep-the-tenant-on
+2026-11-25 09:36:07  WOULD-QUEUE OR-3176  slug=warn-when-a-once
+2026-11-25 09:36:07  POLL  complete

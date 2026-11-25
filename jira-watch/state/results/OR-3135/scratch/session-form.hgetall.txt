@@ -1,0 +1,8 @@
+lastAccessedTime
+1795534024038
+maxInactiveInterval
+21600
+creationTime
+1795534023857
+sessionAttr:SPRING_SECURITY_CONTEXT
+{"@class":"org.springframework.security.core.context.SecurityContextImpl","authentication":{"@class":"org.springframework.security.authentication.UsernamePasswordAuthenticationToken","authorities":["java.util.Collections$UnmodifiableRandomAccessList",[["com.guided.orci.models.user.UserRole","ROLE_USER"],{"@class":"org.springframework.security.core.authority.FactorGrantedAuthority","authority":"FACTOR_PASSWORD","issuedAt":1795534023.855304464}]],"details":{"@class":"org.springframework.security.web.authentication.WebAuthenticationDetails","remoteAddress":"192.168.65.1","sessionId":null},"authenticated":true,"principal":{"@class":"com.guided.orci.models.user.User","id":"01a20e27-c73b-7699-8ec9-02b1cdf9289f"},"credentials":null}}

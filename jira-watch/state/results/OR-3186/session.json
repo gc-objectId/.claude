@@ -1,0 +1,33 @@
+{
+  "verdict": "deploy-ready",
+  "evidence": {
+    "positive": "The running instance (local,docker profiles, no mail host) cannot boot the aws-stage profile, so the shipped internal-notifications block was copied byte-for-byte out of the image's /app/resources/application-aws-stage.yml (md5 e9e0a98b4b1a628214833c8ba0c42d3d) into /config/application-docker.yml inside the orci container together with spring.mail.host=host.docker.internal / port 2525 pointing at a node SMTP sink on the host; /actuator/env confirmed both keys resolved from 'file [config/application-docker.yml]'. After docker restart, a demo-demo patient + case were staged via the admin API and loopuser POSTed /api/feedback (200 true) and POST /api/cds/user-barcode-mappings/{pmrn}/{caseId} (204). The sink received: Subject '[STAGE] GuidedOR - New Feedback Submission' To guidedorfeedback@guidedclinical.com From noreply@guidedclinical.com Reply-To guidedorfeedback@guidedclinical.com, and Subject '[STAGE] User Barcode Mapping' To guidedorfeedback@guidedclinical.com. Both internal senders named in the ticket carry the prefix to the shared prod mailbox. The shipped InternalNotificationSubjectPrefixTest also ran green locally (Tests run: 5, Failures: 0).",
+    "negative": "Swapped the block for the image's shipped application-aws-dev.yml internal-notifications block and restarted; the same feedback submission arrived as Subject '[DEV] GuidedOR - New Feedback Submission' To guidedor.testing@guidedclinical.com. The prefix is read from the active profile's config rather than hardcoded, so non-stage environments do not get [STAGE] and dev keeps its own label and mailbox.",
+    "red_check": "Installed the pre-fix stage configuration: the parent commit's application-aws-stage.yml (git show d7a39a1e9^) has no internal-notifications block at all, so the override was reduced to the mail host/port only and the container restarted. Feedback submitted with comment 'OR-3186 red check: pre-fix stage config, expecting unprefixed subject' arrived at the sink as Subject 'GuidedOR - New Feedback Submission' To guidedorfeedback@guidedclinical.com with no prefix, i.e. indistinguishable from a prod notification, which is the ticket's bug; FeedbackController logged the marker comment at INFO (1 occurrence in the container log). Reverted by restoring the shipped block from the saved copy (md5 of the restored block, the saved copy and the image file all e9e0a98b4b1a628214833c8ba0c42d3d), restarted, and re-ran feedback + barcode mapping, which came back as '[STAGE] GuidedOR - New Feedback Submission' and '[STAGE] User Barcode Mapping'. Separately, the shipped unit test was flipped in the worktree by deleting the subject-prefix line from application-aws-stage.yml: stageIsLabelledBecauseItSharesTheProdFeedbackMailbox and nonProdProfilesThatSendMailLabelTheSubject[aws-stage] failed ('Expecting Optional to contain \"[STAGE]\" but was empty'); the file was restored with git checkout and the worktree is clean."
+  },
+  "red_check_signature": "OR-3186 red check: pre-fix stage config",
+  "blockers": [],
+  "ship_risk": "none",
+  "caveats": [
+    "The aws-stage profile itself was not booted (it needs the AWS datasource/cache); the shipped stage internal-notifications block was loaded into the local,docker instance via Spring's file:./config location, which is the same binding path and the same key dev and TST already use in production.",
+    "Mail was captured by a local SMTP sink, not SES; real delivery from stage to guidedorfeedback@ was not exercised and should be eyeballed after the first stage deploy.",
+    "The feedback link in the body points at the local hostname; unrelated to the prefix."
+  ],
+  "automation": {
+    "assessment": "The PR shipped InternalNotificationSubjectPrefixTest, which asserts the aws-stage yml carries '[STAGE]' and that every non-prod profile with a spring.mail.host sets a non-blank prefix (aws-dev, aws-stage, openshift-guidedor-tst); it was run here and shown to go red when the prefix line is removed. InternalNotificationServiceTest (GreenMail) asserts From/To/Reply-To per openshift profile but nothing asserts that a configured prefix actually reaches the delivered Subject, which is the ticket's 'done when'. Worth locking in: one GreenMail-backed parameterized test binding each shipped profile's config through Binder and asserting the delivered subject, with the prod profile as the control that proves the bare subject is what an unprefixed profile produces.",
+    "proposed_tests": [
+      {
+        "test": "Parameterized over aws-stage/[STAGE], aws-dev/[DEV], openshift-guidedor-tst/[TST] and openshift-guidedor-prod/(none): bind the shipped yml through Binder into InternalNotificationConfig, send 'User Barcode Mapping' via InternalNotificationService to GreenMail, assert the delivered Subject equals '<prefix> User Barcode Mapping' for the labelled profiles and exactly 'User Barcode Mapping' for prod (the prod row is the control that makes the absence provable).",
+        "home": "orci/src/test/java/com/guided/orci/service/InternalNotificationServiceTest.java",
+        "write_now": true
+      },
+      {
+        "test": "qa-suite e2e asserting the subject of the notification email after submitting feedback through the UI.",
+        "home": "qa-suite/smoke/feedback.spec.ts",
+        "write_now": false,
+        "why_not": "Fails bar 1 and 3: no test environment exposes a mail sink the suite can read, so the Subject cannot be observed and the assertion could never fail for the right reason."
+      }
+    ]
+  },
+  "jira_comment": "Verdict: deploy-ready.\n\nPositive: With the shipped stage notification config loaded into a disposable build of main and an SMTP sink attached, a feedback submission and a user barcode mapping both arrived with subjects starting [STAGE] addressed to guidedorfeedback@guidedclinical.com.\nNegative: With the shipped dev config in place the same submission arrived as [DEV] to guidedor.testing@, so the prefix follows the active profile rather than being hardcoded.\nRed check: Restoring the pre-fix stage config (no notification block) produced an unprefixed 'GuidedOR - New Feedback Submission' to the prod mailbox, and restoring the shipped block brought [STAGE] back; the shipped unit test also failed when the prefix line was removed.\n\nAutomation: The shipped config test is in place and proven to fail; a GreenMail test asserting the delivered subject per profile is proposed."
+}

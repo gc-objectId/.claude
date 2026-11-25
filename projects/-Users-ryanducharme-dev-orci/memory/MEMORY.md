@@ -165,3 +165,5 @@
 - [Automation backlog vetting](project_automation_backlog_vetting.md) — drained 183 → 21 writable; culling was the lever, not grouping
 - [OR-3200 config import wipe](project_or3200_config_import_wipe.md) — header-only CSV wipes a tenant's config; 11 of 12 importers unguarded
 - [QA report moving to GitHub](project_qa_report_moving_to_github.md) — Theo: app should not host test results; OR-3203 CTRF spike may retire /qa-suite-report
+- [OR-3204 startup admin token](project_or3204_startup_admin_token.md) — Theo's #4878 (PR-gate only) won, #4867 closed; scrub deferred as OR-3210, code on the remote branch
+- [Check stacked PRs before acting on review](feedback_check_stacked_prs_before_acting_on_review.md) — list PRs against the branch + top-level comments before addressing feedback or force-pushing

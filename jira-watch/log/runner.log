@@ -1958,3 +1958,83 @@ No tampering: status and comment count match the runner's baseline
 Posted validation comment on OR-3117
 Transitioned OR-3117 to Done
 2026-11-12 15:44:20  [OR-3117] close-parent: OR-3117 is already Done
+2026-11-24 10:20:48  [OR-3185] OR-3185 status is 'Ready for Testing'
+2026-11-24 10:20:48  [OR-3135] OR-3135 status is 'Ready for Testing'
+2026-11-24 10:20:49  [OR-3185] Building image from origin/main
+2026-11-24 10:20:49  [OR-3135] Building image from origin/main
+2026-11-24 10:22:09  [OR-3185] image=guidedclinical/orci:loop-712595a22 sha=712595a22ec0b953b78bb26ada3060918c6f2e5e
+2026-11-24 10:22:10  [OR-3135] image=guidedclinical/orci:loop-712595a22 sha=712595a22ec0b953b78bb26ada3060918c6f2e5e
+2026-11-24 10:22:11  [OR-3185] OR-3185 moved to Testing
+2026-11-24 10:22:12  [OR-3135] OR-3135 moved to Testing
+2026-11-24 10:22:12  [OR-3185] OR-3185 assigned to the configured account
+2026-11-24 10:22:13  [OR-3135] OR-3135 assigned to the configured account
+2026-11-24 10:22:13  [OR-3185] baseline: status='Testing' comments=0
+2026-11-24 10:22:13  [OR-3185] slug=send-mgb-feedback-notifications
+2026-11-24 10:22:14  [OR-3135] baseline: status='Testing' comments=0
+2026-11-24 10:22:14  [OR-3135] slug=a-disabled-sso-user
+2026-11-24 10:22:16  [OR-3185] worktree=/Users/ryanducharme/dev/worktrees/OR-3185-send-mgb-feedback-notifications
+2026-11-24 10:22:16  [OR-3135] worktree=/Users/ryanducharme/dev/worktrees/OR-3135-a-disabled-sso-user
+2026-11-24 10:23:41  [OR-3135] app under test at http://localhost:50745
+2026-11-24 10:23:41  [OR-3185] app under test at http://localhost:50744
+2026-11-24 10:23:41  [OR-3185] wrote ticket context (22 lines)
+2026-11-24 10:23:41  [OR-3135] wrote ticket context (42 lines)
+2026-11-24 10:23:41  [OR-3135] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3135/session.log)
+2026-11-24 10:23:41  [OR-3185] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3185/session.log)
+2026-11-24 10:28:26  [OR-3185]   … OR-3185 still running (300s elapsed, 0
+? app requests, app up)
+2026-11-24 10:28:26  [OR-3135]   … OR-3135 still running (300s elapsed, 5 app requests, app up)
+2026-11-24 10:32:26  [OR-3185] session finished after ~525s
+2026-11-24 10:32:27  [OR-3185] captured 11033 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3185 against 712595a22ec0b953b78bb26ada3060918c6f2e5e (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3185
+Transitioned OR-3185 to Done
+2026-11-24 10:32:32  [OR-3185] close-parent: OR-3185 is already Done
+2026-11-24 10:32:33  [OR-3185] cover: OR-3185: 1 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3185/proposals.md
+2026-11-24 10:33:27  [OR-3135]   … OR-3135 still running (600s elapsed, 10 app requests, app up)
+2026-11-24 10:33:57  [OR-3135] session finished after ~615s
+2026-11-24 10:33:57  [OR-3135] captured 8525 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3135 against 712595a22ec0b953b78bb26ada3060918c6f2e5e (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3135
+Transitioned OR-3135 to Done
+2026-11-24 10:34:01  [OR-3135] close-parent: OR-3135 is already Done
+2026-11-24 10:34:01  [OR-3135] cover: no write_now proposals for OR-3135
+2026-11-24 10:34:04  [OR-3186] OR-3186 status is 'Ready for Testing'
+2026-11-24 10:34:06  [OR-3186] Building image from origin/main
+2026-11-24 10:34:06  [OR-3186] image=guidedclinical/orci:loop-712595a22 sha=712595a22ec0b953b78bb26ada3060918c6f2e5e
+2026-11-24 10:34:09  [OR-3186] OR-3186 moved to Testing
+2026-11-24 10:34:09  [OR-3186] OR-3186 assigned to the configured account
+2026-11-24 10:34:11  [OR-3186] baseline: status='Testing' comments=0
+2026-11-24 10:34:11  [OR-3186] slug=mark-stage-internal-notifications
+2026-11-24 10:34:13  [OR-3186] worktree=/Users/ryanducharme/dev/worktrees/OR-3186-mark-stage-internal-notifications
+2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
+2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
+2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
+2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
+2026-11-24 10:35:03  [OR-3185] cover: Safe: 1 file(s), all test paths, nothing disabled, no assertions removed
+2026-11-24 10:35:09  [OR-3185] cover: OR-3185: https://github.com/guidedclinical/orci/pull/4894
+2026-11-24 10:35:09  [OR-3185] cover: holding /Users/ryanducharme/dev/worktrees/OR-3185-send-mgb-feedback-notifications — draft PR at https://github.com/guidedclinical/orci/pull/4894
+2026-11-24 10:35:20  [OR-3186] app under test at http://localhost:51024
+2026-11-24 10:35:21  [OR-3186] wrote ticket context (20 lines)
+2026-11-24 10:35:21  [OR-3186] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3186/session.log)
+2026-11-24 10:40:06  [OR-3186]   … OR-3186 still running (300s elapsed, 0
+? app requests, app up)
+2026-11-24 10:44:06  [OR-3186] session finished after ~525s
+2026-11-24 10:44:07  [OR-3186] captured 9385 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3186 against 712595a22ec0b953b78bb26ada3060918c6f2e5e (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3186
+Transitioned OR-3186 to Done
+2026-11-24 10:44:13  [OR-3186] close-parent: OR-3186 is already Done
+2026-11-24 10:44:13  [OR-3186] cover: OR-3186: 1 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3186/proposals.md
+2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
+2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
+2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
+2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
+2026-11-24 10:47:28  [OR-3186] cover: Safe: 1 file(s), all test paths, nothing disabled, no assertions removed
+2026-11-24 10:47:33  [OR-3186] cover: OR-3186: https://github.com/guidedclinical/orci/pull/4896
+2026-11-24 10:47:33  [OR-3186] cover: holding /Users/ryanducharme/dev/worktrees/OR-3186-mark-stage-internal-notifications — draft PR at https://github.com/guidedclinical/orci/pull/4896

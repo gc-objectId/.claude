@@ -1,0 +1,17 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Done. The one proposal is written, run, red-proven, and committed.
+
+- **Written:** a parameterized subject test in `InternalNotificationServiceTest` that binds each shipped profile yml through the Binder, sends through the real service to GreenMail, and asserts the delivered Subject header. Stage, dev, and TST expect their prefix. The OpenShift prod row expects the bare subject and is the control that makes the absence provable.
+- **Skipped:** nothing. The existing `InternalNotificationSubjectPrefixTest` only reads the yml property, so the delivered-header behaviour was not covered.
+- **Result:** the class runs 6 tests, 0 failures.
+- **Red proofs:** giving prod a prefix turned the control row red with the `[PROD]` subject in the failure message. Restoring the stage yml to its pre-ticket content turned the stage row red with the bare subject. Both yml edits were reverted and the working tree shows only the test change.
+- **Commit:** `d0c856bc9` on the ticket branch, not pushed, no PR.
+
+One side observation is recorded in `coverage.json`: blanking the stage block to just an empty `internal-notifications:` key makes the Binder drop the inherited notification addresses, so the service silently sends nothing. That is not a shippable state, so it is not a finding against the ticket.
+remote: 
+remote: Create a pull request for 'feature/OR-3186-mark-stage-internal-notifications' on GitHub by visiting:        
+remote:      https://github.com/guidedclinical/orci/pull/new/feature/OR-3186-mark-stage-internal-notifications        
+remote: 
+To https://github.com/guidedclinical/orci.git
+ * [new branch]          feature/OR-3186-mark-stage-internal-notifications -> feature/OR-3186-mark-stage-internal-notifications
+branch 'feature/OR-3186-mark-stage-internal-notifications' set up to track 'origin/feature/OR-3186-mark-stage-internal-notifications'.

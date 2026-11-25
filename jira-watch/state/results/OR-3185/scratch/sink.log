@@ -1,0 +1,9 @@
+10:27:23 sink listening on 2525
+10:28:54 ACCEPT #1 envelope-from=mghguidedor@mgb.org rcpt=['guidedor.testing@guidedclinical.com'] | From=mghguidedor@mgb.org | Reply-To=guidedorfeedback@guidedclinical.com | To=guidedor.testing@guidedclinical.com | Subject=[TST] GuidedOR - New Feedback Submission:
+ (https://guidedor-dev.partners.org)
+10:29:34 REJECT MAIL FROM noreply@guidedclinical.com
+10:29:34 ACCEPT #2 envelope-from=mghguidedor@mgb.org rcpt=['tnguyen-cao@mgh.harvard.edu', 'jephron@mgh.harvard.edu', 'rducharme@mgh.harvard.edu'] | From=mghguidedor@mgb.org | Reply-To=None | To=tnguyen-cao@mgh.harvard.edu, jephron@mgh.harvard.edu,
+	rducharme@mgh.harvard.edu | Subject=GuidedOR Error (https://guidedor-dev.partners.org)
+10:30:06 ACCEPT #3 envelope-from=mghguidedor@mgb.org rcpt=['guidedor.testing@guidedclinical.com'] | From=mghguidedor@mgb.org | Reply-To=guidedorfeedback@guidedclinical.com | To=guidedor.testing@guidedclinical.com | Subject=[TST] GuidedOR - New Feedback Submission:
+ (https://guidedor-dev.partners.org)
+10:30:49 ACCEPT #4 envelope-from=mghguidedor@mgb.org rcpt=['guidedorfeedback@guidedclinical.com'] | From=mghguidedor@mgb.org | Reply-To=guidedorfeedback@guidedclinical.com | To=guidedorfeedback@guidedclinical.com | Subject=GuidedOR - New Feedback Submission: (https://guidedor.partners.org)

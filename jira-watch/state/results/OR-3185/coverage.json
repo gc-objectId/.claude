@@ -1,0 +1,14 @@
+{
+  "written": [
+    {
+      "proposal": "OR-3185#0",
+      "test": "InternalNotificationServiceTest.awsProfilesKeepTheSesAlignedSender (parameterized: aws-dev, aws-stage, aws-prod)",
+      "file": "orci/src/test/java/com/guided/orci/service/InternalNotificationServiceTest.java",
+      "ran": "JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home mvn -q test -pl orci -am -Dtest=InternalNotificationServiceTest -Dsurefire.failIfNoSpecifiedTests=false (from the repository root; -am because the stale ~/.m2 orci-models jar lacks TenantJobKeys)",
+      "result": "Tests run: 5, Failures: 0, Errors: 0, Skipped: 0 -- in com.guided.orci.service.InternalNotificationServiceTest (3 new aws-* cases + 2 pre-existing openshift cases)",
+      "red_proof": "Appended 'internal-notifications:\\n  from-address: mghguidedor@mgb.org' to orci/src/main/resources/application-aws-prod.yml and re-ran: Tests run: 5, Failures: 1 -- awsProfilesKeepTheSesAlignedSender(String)[3] failed with AssertionFailedError: Expecting actual: [\"mghguidedor@mgb.org\"] to contain exactly: [\"noreply@guidedclinical.com\"]. Reverted with git checkout -- on the YAML (git status shows only the test file changed), re-ran green: Tests run: 5, Failures: 0, Errors: 0."
+    }
+  ],
+  "skipped": [],
+  "committed": "4006a4db712c18b96bbd488b5cc8f3e9cb6e3b4b"
+}

@@ -1,0 +1,147 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            redirect-uri: https://guidedor-dev.partners.org/login/oauth2/code/cognito
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari-primary:
+      minimum-idle: 15
+      maximum-pool-size: 15
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1740000
+      keepalive-time: 30000
+      auto-commit: false
+      poolName: Hikari Primary
+      leak-detection-threshold: 30000
+      connection-init-sql: "SET application_name = 'orci-primary'; SET idle_in_transaction_session_timeout = '60s'; SET lock_timeout = '10s'"
+    hikari-quartz:
+      minimum-idle: 5
+      maximum-pool-size: 5
+      connection-timeout: 20000
+      idle-timeout: 300000
+      max-lifetime: 1740000
+      keepalive-time: 30000
+      auto-commit: true
+      poolName: Hikari Quartz
+      leak-detection-threshold: 30000
+      connection-init-sql: "SET application_name = 'orci-quartz'; SET idle_in_transaction_session_timeout = '120s'; SET lock_timeout = '10s'"
+    username: orci-dev
+    url: jdbc:postgresql://guidedor-postgres-16:5432/orci
+    #rely on ENV variable
+    #password:
+  data:
+    redis:
+      host: redis
+      port: 6379
+      #rely on ENV variable
+      #password:
+      useSSL: false
+      client-type: lettuce
+  mail:
+    host: phsmgout.partners.org
+    username:
+    password:
+    port: 25
+
+cache.enabled: true
+
+internal-notifications:
+  notification-addresses:
+    - guidedor.testing@guidedclinical.com
+  subject-prefix: "[TST]"
+
+cors:
+  allowed-origins: https://guidedor-dev.partners.org
+
+frontend:
+  url: https://guidedor-dev.partners.org
+
+application.hostname: https://guidedor-dev.partners.org
+
+# using FDB creds from MGB
+fdb:
+  clientId: 1761
+  #rely on ENV variable
+  #secret:
+
+hl7:
+  outbound:
+    medication-administration:
+      host: hspecqx.partners.org
+      port: 45391
+      useTLS: false
+      dryRun: false
+
+rules.timer.save-mode: ACTION_NEEDED
+
+tenants:
+  initialize: true
+  mayo:
+    enabled: false
+    fhir-r4-server-base-url: https://test-tls.mcc.apix.mayo.edu/epic-api/api/FHIR/R4
+    oauth-token-endpoint: https://test-tls.mcc.apix.mayo.edu/epic-api/oauth2/token
+    oauth-client-id: ${epic.oauth.client-id}
+  demo:
+    timer-job-enabled: true
+    vital-signs: opt_in
+  mgb:
+    timer-job-enabled: false
+    vital-signs: always_disabled
+    show-sample-patients: true
+    fhir:
+      condition: R4
+      creatinine: R4
+      laboratory: R4
+      height: R4
+      weight: R4
+      blood-pressure: R4
+      patient: R4
+      # no R4 for medication statement
+      medication-statement: DSTU2
+      allergy: R4
+
+logging:
+  smtp:
+    from: mghguidedor@mgb.org
+    to: tnguyen-cao@mgh.harvard.edu,jephron@mgh.harvard.edu,rducharme@mgh.harvard.edu
+  level:
+    ROOT: WARN
+
+decorator:
+  datasource:
+    flexy-pool:
+      acquisition-strategy:
+        increment-pool:
+          max-overgrow-pool-size: 0
+      threshold:
+        connection:
+          acquisition: 1000
+    datasource-proxy:
+      slow-query:
+        threshold: 300ms
+
+#
+management:
+  dynatrace:
+    metrics:
+      export:
+        enabled: true
+        v2:
+          enrich-with-dynatrace-metadata: true
+          metric-key-prefix: "guidedor"
+          default-dimensions:
+            env: "dev"
+sentry:
+  environment: guidedor-dev.partners.org
+  enabled: true
+  logging:
+    enabled: true
+    minimum-event-level: error # Only send ERROR+ as events
+    minimum-breadcrumb-level: info # Capture INFO+ as breadcrumbs for context
+springdoc:
+  api-docs:
+    enabled: false

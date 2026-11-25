@@ -1,0 +1,12 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Validation of OR-3135 is complete. The result file is written at `/Users/ryanducharme/.claude/jira-watch/state/results/OR-3135/session.json` and the worktree is untouched.
+
+**Verdict: deploy-ready, ship risk material.**
+
+- **Positive.** Disabling `loopuser` in Postgres mid-session made the next `/api/user/info` call return 403, with the `DisabledUserLogoutFilter` line in the app log. The cookie stayed dead after re-enabling. The same held through the `/websocket` chain and for an OIDC-principal session planted in Valkey, both for a disabled account and for a Cognito sub with no account.
+- **Negative.** An enabled session returned 200 across repeated requests with no new filter line. Disabling a different account did not end it. A disabled account cannot start a new form login.
+- **Red check.** The parent commit's `UserService` was compiled in the container and swapped into `/app/classes`. A disabled `loopuser` then kept getting 200, and the planted log line `PRE-FIX RED CHECK: getCurrentUser served disabled account loopuser` appeared. The shipped class was restored, its md5 verified, and the 403 came back.
+
+**Caveat worth reading.** The SSO callback itself cannot be driven here because the instance has no identity provider. The disabled-user case is still caught on the next request by the filter, which I showed with a planted OIDC session. The "existing user with no tenant group" branch has no filter backstop and rests only on the MockMvc test shipped with PR #4837, which drives the real handler and filter chain.
+
+**Automation.** The tests shipped with the fix already cover all three acceptance cases with an enabled-user control, so nothing is marked `write_now`. A qa-suite end-to-end test was declined because the suite has no database client and the app has no admin endpoint that disables a user.

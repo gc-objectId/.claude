@@ -1,0 +1,18 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Validation of OR-3185 is complete and `session.json` is written with a deploy-ready verdict.
+
+**What was done**
+- Booted the running container under the shipped `openshift-guidedor-tst` and `openshift-guidedor-prod` profiles with mail routed to a local SMTP sink that only accepts mgb.org senders.
+- Positive: feedback submissions left as From and envelope sender mghguidedor@mgb.org, Reply-To guidedorfeedback@guidedclinical.com, recipients unchanged, under both profiles.
+- Negative: no noreply@guidedclinical.com sender appeared under either profile, and the sink logged zero rejects outside the red window. AWS profiles are untouched by the PR.
+- Red check: the parent commit's tst YAML (no from-address) made the app send as noreply@guidedclinical.com, the sink refused it with a 550, and the app logged the failed notification. The shipped YAML was restored, checksums re-matched, and the positive re-ran clean.
+- The shipped `InternalNotificationServiceTest` passed locally (2 runs, 0 failures).
+
+**Recorded caveats**
+- The real MGB relay and the DMARC pass on a delivered message can only be confirmed after the MGB prod deploy, as the ticket itself states.
+- The relay rejection is a stand-in for the receiver-side DMARC failure, chosen so the regression leaves a log line for the gate.
+
+**Automation**
+- One `write_now: true` proposal: a control test in the same class asserting the AWS profiles keep the SES-aligned noreply sender, so copying the mgb.org from-address into an AWS profile turns red.
+
+Scratch files (sink, client, backups, pre-fix YAML, restart helper) are in the ticket's scratch directory. The worktree is clean. The container is left bootable on the prod profile flags with the shipped YAMLs in place.

@@ -1,0 +1,1 @@
+-Dspring.profiles.active=openshift-guidedor-prod,local,docker -Dspring.mail.host=host.docker.internal -Dspring.mail.port=2525 -Dspring.mail.properties.mail.debug=true -Dsentry.enabled=false -Dmanagement.dynatrace.metrics.export.enabled=false -Dlogging.level.com.guided.orci.service.InternalNotificationService=DEBUG

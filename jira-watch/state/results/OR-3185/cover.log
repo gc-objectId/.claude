@@ -1,0 +1,29 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Done. The single proposal for OR-3185 is written, proven red, green on the restored state, and committed locally without a push.
+
+**What landed**
+- New parameterized test `awsProfilesKeepTheSesAlignedSender` in the existing `InternalNotificationServiceTest`, covering aws-dev, aws-stage, and aws-prod. It binds `internal-notifications` from each profile's YAML layered over `application.yml`, sends through GreenMail, and asserts From and Return-Path are `noreply@guidedclinical.com` with Reply-To `guidedorfeedback@guidedclinical.com`. It reuses the class's existing environment, mail-sender, and address helpers rather than adding parallel setup.
+- Commit `4006a4db7` on `feature/OR-3185-send-mgb-feedback-notifications`. Only the test file changed; no production code or config touched in the commit.
+
+**Run result**
+
+```
+mvn -q test -pl orci -am -Dtest=InternalNotificationServiceTest -Dsurefire.failIfNoSpecifiedTests=false
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+```
+
+The `-am` flag was needed because the shared `~/.m2` orci-models jar is stale and lacks `TenantJobKeys`, so a module-only run fails to compile. That is the known stale-classpath trap, not a problem with this branch.
+
+**Red proof**
+- Appended `from-address: mghguidedor@mgb.org` under `internal-notifications` in `application-aws-prod.yml` and re-ran. The aws-prod case failed with the expected assertion: actual `["mghguidedor@mgb.org"]`, expected `["noreply@guidedclinical.com"]`. Reverted the YAML with `git checkout --`, confirmed `git status` showed only the test file, and re-ran green.
+
+**Skipped**: none.
+
+The coverage report is at `~/.claude/jira-watch/state/results/OR-3185/coverage.json`. Push and PR are left for the gated step.
+remote: 
+remote: Create a pull request for 'feature/OR-3185-send-mgb-feedback-notifications' on GitHub by visiting:        
+remote:      https://github.com/guidedclinical/orci/pull/new/feature/OR-3185-send-mgb-feedback-notifications        
+remote: 
+To https://github.com/guidedclinical/orci.git
+ * [new branch]          feature/OR-3185-send-mgb-feedback-notifications -> feature/OR-3185-send-mgb-feedback-notifications
+branch 'feature/OR-3185-send-mgb-feedback-notifications' set up to track 'origin/feature/OR-3185-send-mgb-feedback-notifications'.

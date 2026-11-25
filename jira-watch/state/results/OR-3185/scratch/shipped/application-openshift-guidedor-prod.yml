@@ -1,0 +1,162 @@
+spring:
+  liquibase:
+    contexts: prod
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            redirect-uri: https://guidedor.partners.org/login/oauth2/code/cognito
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari-primary:
+      connection-timeout: 20000
+      minimum-idle: 20
+      maximum-pool-size: 20
+      idle-timeout: 600000
+      max-lifetime: 1740000
+      keepalive-time: 30000
+      auto-commit: false
+      poolName: Hikari Primary
+      register-mbeans: true
+      leak-detection-threshold: 30000
+      connection-init-sql: "SET application_name = 'orci-primary'; SET idle_in_transaction_session_timeout = '60s'; SET lock_timeout = '10s'"
+    hikari-quartz:
+      connection-timeout: 20000
+      minimum-idle: 20
+      maximum-pool-size: 20
+      idle-timeout: 600000
+      max-lifetime: 1740000
+      keepalive-time: 30000
+      auto-commit: true
+      poolName: Hikari Quartz
+      register-mbeans: true
+      leak-detection-threshold: 30000
+      connection-init-sql: "SET application_name = 'orci-quartz'; SET idle_in_transaction_session_timeout = '120s'; SET lock_timeout = '10s'"
+    username: orci-prod
+    url: jdbc:postgresql://guidedor-postgres-16:5432/orci
+    #rely on ENV variable
+  #    password:
+  data:
+    redis:
+      host: redis
+      port: 6379
+      # rely on ENV variable
+      #      password:
+      useSSL: false
+      client-type: lettuce
+  mail:
+    host: phsmgout.partners.org
+    username:
+    password:
+    port: 25
+management:
+  dynatrace:
+    metrics:
+      export:
+        enabled: true
+        v2:
+          enrich-with-dynatrace-metadata: true
+          metric-key-prefix: "guidedor"
+          default-dimensions:
+            env: "prod"
+
+cache.enabled: true
+
+internal-notifications:
+  from-address: mghguidedor@mgb.org
+
+cors:
+  allowed-origins: https://guidedor.partners.org
+
+frontend:
+  url: https://guidedor.partners.org
+
+application.hostname: https://guidedor.partners.org
+
+# using FDB creds from MGB
+fdb:
+  clientId: 1761
+  #rely on ENV variable
+  #secret:
+
+tenants:
+  initialize: true
+  mayo:
+    enabled: false
+    fhir-r4-server-base-url: https://tls.mcc.apix.mayo.edu/epic-api/api/FHIR/R4
+    oauth-token-endpoint: https://tls.mcc.apix.mayo.edu/epic-api/oauth2/token
+    oauth-client-id: ${epic.oauth.client-id}
+  demo:
+    timer-job-enabled: false
+    vital-signs: opt_in
+
+  mgb:
+    timer-job-enabled: false
+    vital-signs: always_disabled
+    service-account:
+      client-id: fe3ad103-80a4-4d0a-ae3c-68dc11a549a8
+    fhir:
+      dstu2-url: https://webapi.partners.org/PRD/api/FHIR/PHSFHIR/DSTU2
+      dstu3-url: https://webapi.partners.org/PRD/api/FHIR/PHSFHIR/STU3
+      r4-url: https://webapi.partners.org/PRD/api/FHIR/PHSFHIR/R4
+      condition: R4
+      creatinine: R4
+      laboratory: R4
+      height: R4
+      weight: R4
+      blood-pressure: R4
+      patient: R4
+      # no R4 for medication statement
+      medication-statement: DSTU2
+      allergy: R4
+    surgical-records-url: https://webapi.partners.org/Epic/SOAP/2014/PHS/Custom/GeneratedServices/Surgery3/getSurgicalRecords/PRD?wsdl
+    medication-administrations-url: https://webapi.partners.org/Other/Epic/Clinical/MedicationAdministrationRecord/PRD?WSDL
+    check-break-the-glass-url: https://webapi.partners.org/api/Epic/REST/2013/Security/BreakTheGlass/CheckBreakTheGlass/Security/BreakTheGlass/AccessCheck/PRD
+    accept-break-the-glass-url: https://webapi.partners.org/api/Epic/REST/2021/Security/BreakTheGlass/AcceptBreakTheGlass/Security/BreakTheGlass/Accept/PRD
+
+hl7:
+  outbound:
+    medication-administration:
+      host: hspecox.partners.org
+      port: 55391
+      useTLS: false
+      dryRun: false
+
+rules.timer.save-mode: ACTION_NEEDED
+logging:
+  smtp:
+    from: mghguidedor@mgb.org
+    to: tnguyen-cao@mgh.harvard.edu,jephron@mgh.harvard.edu,rducharme@mgh.harvard.edu
+  #  config: classpath:logback-spring.xml
+  level:
+    ROOT: WARN
+    com.guided.orci: INFO
+    org.springframework: WARN
+    com.zaxxer: WARN
+    ca.uhn.fhir.parser.LenientErrorHandler: ERROR
+    org.hibernate.SQL: INFO
+    net.ttddyy.dsproxy.listener.SLF4JQueryLoggingListener: INFO
+    net.ttddyy.dsproxy: INFO
+
+sentry:
+  environment: guidedor.partners.org
+  enabled: true
+  logging:
+    enabled: true
+    minimum-event-level: error # Only send ERROR+ as events
+    minimum-breadcrumb-level: info # Capture INFO+ as breadcrumbs for context
+
+decorator:
+  datasource:
+    flexy-pool:
+      acquisition-strategy:
+        increment-pool:
+          max-overgrow-pool-size: 0
+      threshold:
+        connection:
+          acquisition: 1000
+
+springdoc:
+  api-docs:
+    enabled: false

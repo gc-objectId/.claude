@@ -1,0 +1,14 @@
+{
+  "written": [
+    {
+      "proposal": "OR-3186#0",
+      "test": "InternalNotificationServiceTest#onlyNonProdProfilesLabelTheDeliveredSubject (aws-stage, aws-dev, openshift-guidedor-tst, openshift-guidedor-prod)",
+      "file": "orci/src/test/java/com/guided/orci/service/InternalNotificationServiceTest.java",
+      "ran": "JAVA_HOME=$(brew --prefix openjdk)/libexec/openjdk.jdk/Contents/Home mvn -q -o test -pl orci -am -Dtest=InternalNotificationServiceTest -Dsurefire.failIfNoSpecifiedTests=false (from the repo root; -am because the ~/.m2 orci-models jar is stale and the orci module alone fails to compile)",
+      "result": "Tests run: 6, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.370 s -- in com.guided.orci.service.InternalNotificationServiceTest",
+      "red_proof": "Flip 1 (prod control): added subject-prefix \"[PROD]\" under internal-notifications in application-openshift-guidedor-prod.yml; row [4] failed with 'expected: \"User Barcode Mapping\" but was: \"[PROD] User Barcode Mapping\"' (Tests run: 4, Failures: 1); reverted via git checkout. Flip 2 (stage): restored application-aws-stage.yml to its pre-ticket content (git show d7a39a1e9^:...), i.e. no internal-notifications block; row [1] failed with 'expected: \"[STAGE] User Barcode Mapping\" but was: \"User Barcode Mapping\"' (Tests run: 4, Failures: 1); reverted via git checkout, git status shows no resource changes. Side observation from a first, discarded flip attempt: deleting only the subject-prefix line leaves an empty 'internal-notifications:' node in the stage yml, and with that node present the Binder yields a config with no notification addresses so the service logs a warning and sends nothing (row [1] then failed on waitForIncomingEmail rather than on the subject). Not a production state, so not a finding against the ticket, but worth knowing if someone ever blanks that block."
+    }
+  ],
+  "skipped": [],
+  "committed": "d0c856bc9e44ddcf9f8517a8a2b6e940f8426fb8"
+}

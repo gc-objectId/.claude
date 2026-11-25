@@ -1,0 +1,12 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Validation of OR-3186 is complete and recorded in the session file. Verdict: deploy-ready.
+
+**What was exercised against the running app**
+
+- **Positive.** The instance runs `local,docker` with no mail host, so the shipped stage notification block was copied byte for byte from the image into the container's `file:./config` location alongside an SMTP sink on the host. Feedback and user barcode mapping both arrived as `[STAGE] ...` addressed to the prod feedback mailbox.
+- **Negative.** The shipped dev block produced `[DEV] ...` to the testing mailbox, so the prefix follows the profile rather than being hardcoded.
+- **Red check.** The parent commit's stage config has no notification block. Loading that produced an unprefixed subject to the prod mailbox, which is the ticket's bug. The shipped block was restored (checksums match) and `[STAGE]` came back. The shipped unit test was also flipped and failed on two assertions, then the worktree was restored to clean.
+
+**Automation.** The shipped `InternalNotificationSubjectPrefixTest` covers the config value. One `write_now` proposal: a GreenMail test in `InternalNotificationServiceTest` asserting the delivered subject per profile, with the prod profile as the control.
+
+**Caveats recorded.** The aws-stage profile itself was not booted, and mail went to a local sink rather than SES. First stage deploy should be eyeballed for a real `[STAGE]` email. Ship risk marked none.

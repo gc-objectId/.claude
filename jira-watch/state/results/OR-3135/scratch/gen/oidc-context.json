@@ -1,0 +1,6 @@
+                                  ^
+/tmp/Gen.java:18: warning: [removal] CoreJackson2Module in org.springframework.security.jackson2 has been deprecated and marked for removal
+        mapper.registerModule(new CoreJackson2Module());
+                                  ^
+3 warnings
+{"@class":"org.springframework.security.core.context.SecurityContextImpl","authentication":{"@class":"org.springframework.security.oauth2.client.authentication.OAuth2AuthenticationToken","principal":{"@class":"org.springframework.security.oauth2.core.oidc.user.DefaultOidcUser","authorities":["java.util.Collections$UnmodifiableSet",[{"@class":"org.springframework.security.core.authority.SimpleGrantedAuthority","authority":"ROLE_USER"}]],"idToken":{"@class":"org.springframework.security.oauth2.core.oidc.OidcIdToken","tokenValue":"tok","issuedAt":1795534326.069245340,"expiresAt":1795555926.069247298,"claims":{"@class":"java.util.Collections$UnmodifiableMap","sub":"red-sub-1"}},"userInfo":null,"nameAttributeKey":"sub"},"authorities":["java.util.Collections$UnmodifiableRandomAccessList",[{"@class":"org.springframework.security.core.authority.SimpleGrantedAuthority","authority":"ROLE_USER"}]],"authorizedClientRegistrationId":"cognito","details":null}}

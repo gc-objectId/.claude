@@ -1,0 +1,187 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          cognito:
+            clientId: "1fl3juplsjid7usat189i5u7av"
+            clientSecret: ENC(noWud+v+xOR/ZDmwQROiuAurlQ0guDthLm3VXe+9ZOhJft6D1r5kdPeeab+2AKEo4gr2Z039h5piL0qhBWR0me7lhP/G6oUGbDmWV5w34DqW5poPJTqg2EFSTqJcziSF)
+            redirect-uri: https://guidedor-stage.guidedclinical.com/login/oauth2/code/cognito
+        provider:
+          cognito:
+            issuerUri: https://cognito-idp.us-east-2.amazonaws.com/us-east-2_LV4stD3RP
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    hikari-primary:
+      connection-timeout: 20000
+      minimum-idle: 15
+      maximum-pool-size: 15
+      idle-timeout: 300000
+      max-lifetime: 600000
+      keepalive-time: 60000
+      auto-commit: false
+      poolName: Hikari Primary
+      leak-detection-threshold: 30000
+      connection-init-sql: "SET application_name = 'orci-primary'; SET idle_in_transaction_session_timeout = '60s'; SET lock_timeout = '10s'"
+
+    hikari-quartz:
+      connection-timeout: 20000
+      minimum-idle: 5
+      maximum-pool-size: 5
+      idle-timeout: 300000
+      max-lifetime: 600000
+      keepalive-time: 60000
+      auto-commit: true
+      poolName: Hikari Quartz
+      leak-detection-threshold: 30000
+      connection-init-sql: "SET application_name = 'orci-quartz'; SET idle_in_transaction_session_timeout = '120s'; SET lock_timeout = '10s'"
+    username: orci
+    url: jdbc:postgresql://guidedor-stage-aurora-postgres.cluster-ccyd1uvufmc7.us-east-2.rds.amazonaws.com:5432/orci
+    password: ENC(0lAv67kPoFH3awREPb45AeibdXPyAmIx5CwfztBRVBiO2HZnASTZyVC9EHp1cnQV)
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ENC(c/2ATwDSg6gDGadHCVFKzP4NdMGgjeICBTsixDVNOwfQmU+vES3z2P30TZk3Ekt7)
+      useSSL: false
+      client-type: lettuce
+  #  liquibase:
+  #    change-log: classpath:db/changelog/db.changelog-master.xml
+  #    enabled: false
+  quartz:
+    job-store-type: jdbc
+    jdbc:
+      initialize-schema: never
+    properties:
+      org:
+        quartz:
+          #          scheduler:
+          #            instanceId: AUTO
+          #          threadPool:
+          #            threadCount: 5
+          #          jobStore:
+          #            driverDelegateClass: org.quartz.impl.jdbcjobstore.PostgreSQLDelegate
+          dataSource:
+            defaultDS:
+              user: orci
+              URL: jdbc:postgresql://guidedor-stage-aurora-db-postgres.cluster-ccyd1uvufmc7.us-east-2.rds.amazonaws.com:5432/orci
+              password: ENC(hF8hcEmT3A79W07qh0vAdOAMoKCyhD/2rp1ICJnFwG/9YTrGqXlo7fkF8QzS6JL+)
+              provider: hikaricp
+              driver: org.postgresql.Driver
+  mail:
+    host: email-smtp.us-east-2.amazonaws.com
+    username: AKIA5PMW7TQY266X4S5I
+    password:
+    port:
+cache.enabled: true
+
+cors:
+  allowed-origins: https://guidedor-stage.guidedclinical.com
+
+frontend:
+  url: https://guidedor-stage.guidedclinical.com
+
+application.hostname: https://guidedor-stage.guidedclinical.com
+
+hl7:
+  outbound:
+    medication-administration:
+      host: hspecqx.partners.org
+      port: 45391
+      useTLS: false
+      dryRun: true
+
+rules.timer.save-mode: ACTION_NEEDED
+
+tenants:
+  initialize: true
+  mayo:
+    enabled: true
+    fhir-r4-server-base-url: https://test-tls.mcc.apix.mayo.edu/epic-api/api/FHIR/R4
+    oauth-token-endpoint: https://test-tls.mcc.apix.mayo.edu/epic-api/oauth2/token
+    oauth-client-id: ${epic.oauth.client-id}
+    observation-system: urn:oid:1.2.840.114350.1.13.451.3.7.2.768282
+    mrn-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.135000
+    person-id-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.135
+    provider-id-system: urn:oid:1.2.840.114350.1.13.451.3.7.5.737384.6
+  demo:
+    timer-job-enabled: false
+    vital-signs: opt_in
+    qa:
+      enabled: true
+  mgb:
+    # MGB is served on the on-prem partners.org deployments, not on AWS.
+    enabled: false
+    timer-job-enabled: false
+    vital-signs: always_disabled
+    fhir:
+      condition: R4
+      creatinine: R4
+      laboratory: R4
+      height: R4
+      weight: R4
+      blood-pressure: R4
+      patient: R4
+      # no R4 for medication statement
+      medication-statement: DSTU2
+      allergy: R4
+logging:
+  # See application-aws-dev.yml for why AWS environments log ECS-format JSON.
+  structured:
+    format:
+      console: ecs
+    ecs:
+      service:
+        name: ORCI
+        environment: stage
+  level:
+    com.zaxxer.hikari: WARN
+
+decorator:
+  datasource:
+    flexy-pool:
+      acquisition-strategy:
+        increment-pool:
+          max-overgrow-pool-size: 0
+      threshold:
+        connection:
+          acquisition: 1000
+    datasource-proxy:
+      slow-query:
+        threshold: 300ms
+
+sentry:
+  environment: guidedor-stage.guidedclinical.com
+  enabled: true
+  logging:
+    enabled: true
+    minimum-event-level: error # Only send ERROR+ as events
+    minimum-breadcrumb-level: info # Capture INFO+ as breadcrumbs for context
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: metrics,health,info
+
+  health:
+    defaults:
+      enabled: false
+    livenessstate:
+      enabled: true
+    readinessstate:
+      enabled: true
+    redis:
+      enabled: true
+    db:
+      enabled: true
+  metrics:
+    export:
+      cloudwatch:
+        namespace: OrciAppMetrics
+        batch-size: 20
+        step: 1m
+springdoc:
+  api-docs:
+    enabled: false

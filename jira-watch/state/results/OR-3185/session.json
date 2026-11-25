@@ -1,0 +1,34 @@
+{
+  "verdict": "deploy-ready",
+  "evidence": {
+    "positive": "Ran a local SMTP sink on the host (scratch/sink.py, port 2525, accepts @mgb.org senders, rejects any other MAIL FROM with a 550) and restarted the same orci container with the shipped profile YAML active: -Dspring.profiles.active=openshift-guidedor-tst,local,docker plus -Dspring.mail.host=host.docker.internal -Dspring.mail.port=2525 -Dspring.mail.properties.mail.debug=true (sentry/dynatrace disabled). Launched a demo case (POST /api/app-launch patient-1/case-3185, X-Tenant-Id demo-demo) and submitted feedback as loopuser via POST /api/feedback (200 true). Sink recorded: 'ACCEPT #1 envelope-from=mghguidedor@mgb.org rcpt=[guidedor.testing@guidedclinical.com] | From=mghguidedor@mgb.org | Reply-To=guidedorfeedback@guidedclinical.com | Subject=[TST] GuidedOR - New Feedback Submission: (https://guidedor-dev.partners.org)'. App log (mail.debug) showed 'MAIL FROM:<mghguidedor@mgb.org>' and 'From: mghguidedor@mgb.org'. Repeated with openshift-guidedor-prod,local,docker: sink ACCEPT #4 envelope-from=mghguidedor@mgb.org, From=mghguidedor@mgb.org, To=guidedorfeedback@guidedclinical.com, Reply-To=guidedorfeedback@guidedclinical.com, subject without prefix and with https://guidedor.partners.org. The shipped InternalNotificationServiceTest also passed locally (Tests run: 2, Failures: 0).",
+    "negative": "Under both OpenShift profiles nothing left as the old sender: grep of the container log for noreply@guidedclinical.com returned 0 lines before the red check, and the sink logged zero REJECTs across every send outside the red window (final tally: 1 reject total, the deliberate one). Reply-To stayed guidedorfeedback@guidedclinical.com and recipients stayed guidedor.testing@guidedclinical.com (tst) / guidedorfeedback@guidedclinical.com (prod), exactly as before the change. The PR diff touches only the two OpenShift YAMLs and the new test; application-aws-dev/stage/prod.yml are unchanged and still set no from-address, and the baseline run on the plain local,docker profiles sent nothing at all (no JavaMailSender without spring.mail.host).",
+    "red_check": "Copied the parent commit's application-openshift-guidedor-tst.yml (identical except the from-address line is absent; md5 8ce2b272... vs shipped 4122ad52...) over /app/resources in the container, restarted, and submitted feedback. The app fell back to the default sender: app log showed 'MAIL FROM:<noreply@guidedclinical.com>', the sink logged 'REJECT MAIL FROM noreply@guidedclinical.com', and the app logged ERROR 'Unable to send internal notification' with 'org.eclipse.angus.mail.smtp.SMTPSenderFailedException: 550 5.7.1 Sender not authorized for MGB relay: noreply@guidedclinical.com'. (That ERROR also went out through the logback SMTP appender as mghguidedor@mgb.org and was accepted, matching the ticket's claim that the appender already uses that sender.) Reverted by docker cp of the backed-up shipped YAML; md5 of both OpenShift YAMLs in the container re-matched shipped.md5 (4122ad52.../7a159fc9...), restarted, re-sent feedback: sink ACCEPT #3 From=mghguidedor@mgb.org, 'MAIL FROM:<mghguidedor@mgb.org>' in the app log, reject count unchanged at 1."
+  },
+  "red_check_signature": "550 5.7.1 Sender not authorized for MGB relay: noreply@guidedclinical.com",
+  "blockers": [],
+  "ship_risk": "none",
+  "caveats": [
+    "The MGB relay phsmgout.partners.org was stood in for by a local SMTP sink; the ticket's second done-when (spf=pass/dmarc=pass with header.from=mgb.org on a real message) can only be checked after the MGB prod deploy.",
+    "The OpenShift profiles were booted on top of local,docker with sentry and dynatrace disabled and the datasource/redis taken from the docker profile; only the mail and internal-notifications binding were exercised as shipped.",
+    "The relay rejection used for the red check is a proxy for the real failure mode (DMARC quarantine/reject at the receiver), chosen so the regression leaves a line in the application log.",
+    "The user-barcode-mapping notification path was not sent; it shares InternalNotificationService with the feedback path that was exercised."
+  ],
+  "automation": {
+    "assessment": "The PR shipped orci/src/test/java/com/guided/orci/service/InternalNotificationServiceTest.java: a parameterized GreenMail test that binds each OpenShift profile's YAML and asserts From and Return-Path equal logging.smtp.from (an @mgb.org address), To is the profile's recipient, and Reply-To stays guidedorfeedback@guidedclinical.com. It runs under surefire (name ends in Test) and passed locally. That already locks in the positive for both profiles. The one gap is the ticket's inverse clause: the AWS profiles must keep sending as the SES-aligned guidedclinical.com sender, and nothing fails today if someone copies from-address into an AWS YAML. No qa-suite surface exists: e2e environments have no mail sink to observe headers.",
+    "proposed_tests": [
+      {
+        "test": "awsProfilesKeepTheSesAlignedSender: parameterized over aws-dev, aws-stage, aws-prod, bind internal-notifications from each YAML, send via GreenMail, assert From and Return-Path are exactly noreply@guidedclinical.com and Reply-To is guidedorfeedback@guidedclinical.com; the control is the concrete From value, so adding from-address: mghguidedor@mgb.org to any AWS profile turns it red.",
+        "home": "orci/src/test/java/com/guided/orci/service/InternalNotificationServiceTest.java",
+        "write_now": true
+      },
+      {
+        "test": "qa-suite e2e: submit feedback through the UI and assert the notification's From header.",
+        "home": "qa-suite/smoke/feedback.spec.ts",
+        "write_now": false,
+        "why_not": "Fails bar 3/4: the dev/CI environments have no observable mail sink, so the test could only assert the POST returned 200, which proves nothing about the sender and cannot go red for this ticket."
+      }
+    ]
+  },
+  "jira_comment": "Verdict: deploy-ready.\n\nPositive: With the openshift-guidedor-tst and openshift-guidedor-prod profiles active and mail pointed at a local SMTP sink, a feedback submission arrived with From and envelope sender mghguidedor@mgb.org, Reply-To guidedorfeedback@guidedclinical.com, and the unchanged recipients.\nNegative: Nothing left as noreply@guidedclinical.com under either profile, and the sink, which rejects any non-mgb.org sender, logged no rejections outside the red check.\nRed check: Swapping in the pre-fix tst YAML made the app send as noreply@guidedclinical.com, which the sink refused with a 550 that the app logged as a failed notification; restoring the shipped YAML brought the mgb.org sender back.\n\nAutomation: The shipped InternalNotificationServiceTest already covers both OpenShift profiles and passes; one control test for the AWS profiles keeping the SES-aligned sender is proposed."
+}
