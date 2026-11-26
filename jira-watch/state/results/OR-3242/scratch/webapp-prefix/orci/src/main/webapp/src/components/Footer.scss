@@ -1,0 +1,41 @@
+.app-footer {
+  display: flex;
+  margin-top: auto;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--guided-space-3);
+  padding: var(--guided-space-1) var(--guided-space-3);
+  background: var(--guided-color-surface);
+  border-top: 1px solid var(--guided-color-border-muted);
+  color: var(--guided-color-secondary);
+  font-size: var(--guided-font-size-sm);
+  line-height: 1.4;
+
+  .btn-link {
+    color: var(--guided-color-heading);
+    font-size: inherit;
+    text-decoration: none;
+
+    &:hover,
+    &:focus-visible {
+      color: var(--guided-color-accent);
+      text-decoration: underline;
+    }
+  }
+}
+
+.app-footer__group {
+  display: flex;
+  align-items: center;
+  gap: var(--guided-space-2);
+  min-width: 0;
+}
+
+.app-footer__clock {
+  font-variant-numeric: tabular-nums;
+}
+
+.app-footer__logo {
+  width: 1.25rem;
+  height: auto;
+}

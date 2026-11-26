@@ -1,0 +1,12 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Validation of OR-3176 is complete and the result file is written. The worktree is clean and all scratch material lives outside it.
+
+**Verdict: deploy-ready**, recorded in `~/.claude/jira-watch/state/results/OR-3176/session.json`.
+
+- **Positive.** On the Mayo tenant, selecting aprepitant, palonosetron, or either granisetron form with a same-drug dose inside 24 hours returned the warning with the exact spec wording, the most recent dose named, and the Gan citation.
+- **Negative.** A 25-hour-old dose, a different once-daily antiemetic, ondansetron, the granisetron patch on either side, and a dose with no administration time all left the selection silent. A control selection on the same patient fired, so the silences were not staging failures.
+- **Red check.** Moving the 25-hour dose to 6 hours made the same selection fire, then reverting silenced it again. Removing the rule class from the running build made the positive case go silent, and restoring it (checksum matched) brought the warning back. The signature line appears exactly once in the live log.
+
+Two things worth Ryan's attention are recorded as caveats. The ticket's compliance wiring and its compliance acceptance criterion were dropped by the merged spec, which the ticket says is authoritative, so those criteria are superseded rather than met. The rendered citation still carries the ~40-hour aprepitant half-life that the PR review flagged.
+
+Automation: the PR's unit test already covers every fire and abstain bullet. Two API-only Mayo qa-suite tests, AER-001 and AER-002, are proposed as `write_now` with ids reserved via the test-id tool. They follow the existing ARD-007 pattern in `qa-suite/clinical-rules/antibiotic-redose.spec.ts`.

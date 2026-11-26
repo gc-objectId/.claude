@@ -1,0 +1,312 @@
+@use "sass:color";
+@use "sass:map";
+
+// Palette: the only place a color literal may appear in the webapp.
+$guided-brand-navy: #002238;
+$guided-brand-maroon: #8d1b3f;
+$guided-brand-cyan: #65ccee;
+$guided-brand-cream: #f6f1e4;
+$guided-brand-cyan-deep: #51a8c5;
+$guided-brand-cream-deep: #c1bbb0;
+
+$guided-white: #fff;
+$guided-grey-50: #f8f9fa;
+$guided-grey-100: #f7f7f7;
+$guided-grey-150: #f5f5f5;
+$guided-grey-200: #e0e0e0;
+$guided-grey-250: #dee2e6;
+$guided-grey-300: #d9d9d9;
+$guided-grey-400: #ced4da;
+$guided-grey-500: #c4c4c4;
+$guided-grey-600: #6c757d;
+$guided-grey-900: #212529;
+$guided-grey-950: #1a1a1a;
+$guided-black: #000;
+
+$guided-blue: #0d6efd;
+$guided-teal: #0dcaf0;
+$guided-green: #198754;
+$guided-yellow: #ffc107;
+$guided-red: #dc3545;
+$guided-indigo: #1c2864;
+
+$guided-banner-red: #f33535;
+$guided-banner-yellow: #f3da35;
+$guided-banner-yellow-deep: #d8c911;
+$guided-banner-yellow-pale: #fefaec;
+$guided-banner-blue: #5880ad;
+$guided-banner-blue-deep: #005493;
+$guided-banner-blue-pale: #edf5fc;
+
+$guided-chart-blue: #2a78d6;
+$guided-chart-orange: #eb6834;
+$guided-chart-aqua: #1baf7a;
+$guided-chart-yellow: #eda100;
+$guided-chart-magenta: #e87ba4;
+$guided-chart-green: #008300;
+$guided-chart-violet: #6250d6;
+$guided-chart-red: #e34948;
+
+@function guided-tint($color, $weight) {
+  @return color.mix($guided-white, $color, $weight);
+}
+
+@function guided-shade($color, $weight) {
+  @return color.mix($guided-black, $color, $weight);
+}
+
+$guided-color-primary: $guided-blue;
+$guided-color-secondary: $guided-grey-600;
+$guided-color-success: $guided-green;
+$guided-color-info: $guided-teal;
+$guided-color-warning: $guided-yellow;
+$guided-color-danger: $guided-red;
+$guided-color-light: $guided-grey-50;
+$guided-color-dark: $guided-grey-900;
+
+$guided-color-ground: $guided-brand-cream;
+$guided-color-surface: $guided-white;
+$guided-color-surface-muted: $guided-grey-100;
+$guided-color-surface-hover: $guided-brand-cream;
+$guided-color-tag: $guided-brand-cream;
+$guided-color-border-muted: $guided-grey-300;
+$guided-color-border-control: $guided-grey-400;
+$guided-color-border-check: rgba($guided-black, 0.25);
+$guided-color-text: $guided-grey-900;
+$guided-color-text-muted: $guided-grey-600;
+$guided-color-text-emphasis: $guided-black;
+$guided-color-skeleton: $guided-grey-200;
+$guided-color-skeleton-highlight: $guided-grey-150;
+
+$guided-color-action: $guided-brand-cyan;
+$guided-color-action-border: $guided-brand-cyan-deep;
+$guided-color-action-secondary: $guided-brand-cream;
+$guided-color-action-secondary-border: $guided-brand-cream-deep;
+$guided-color-accent: $guided-brand-maroon;
+$guided-color-heading: $guided-brand-navy;
+
+$guided-color-label-frame: $guided-grey-500;
+$guided-color-label-border-thin: $guided-grey-250;
+$guided-color-label-border-thick: $guided-black;
+$guided-color-label-blank: $guided-white;
+$guided-color-banner-alert: $guided-banner-red;
+$guided-color-banner-warning: $guided-banner-yellow;
+$guided-color-banner-warning-surface: $guided-banner-yellow-pale;
+$guided-color-banner-warning-border: rgba($guided-banner-yellow-deep, 0.4);
+$guided-color-banner-info: $guided-banner-blue;
+$guided-color-banner-info-surface: $guided-banner-blue-pale;
+$guided-color-banner-info-border: rgba($guided-banner-blue-deep, 0.4);
+$guided-color-text-data: $guided-indigo;
+
+$guided-color-chart-series: (
+  1: $guided-chart-blue,
+  2: $guided-chart-orange,
+  3: $guided-chart-aqua,
+  4: $guided-chart-yellow,
+  5: $guided-chart-magenta,
+  6: $guided-chart-green,
+  7: $guided-chart-violet,
+  8: $guided-chart-red,
+);
+$guided-color-chart-ground: $guided-color-surface-muted;
+$guided-color-chart-grid: $guided-color-border-muted;
+$guided-color-chart-axis: $guided-color-secondary;
+
+$guided-font-family-sans: system-ui, -apple-system, "Segoe UI", Roboto,
+  "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif,
+  "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$guided-font-size-base: 1rem;
+$guided-font-size-sm: $guided-font-size-base * 0.875;
+$guided-font-size-lg: $guided-font-size-base * 1.25;
+$guided-font-size-display: $guided-font-size-base * 2.25;
+$guided-font-size-h1: $guided-font-size-base * 2.5;
+$guided-font-size-h2: $guided-font-size-base * 2;
+$guided-font-size-h3: $guided-font-size-base * 1.75;
+$guided-font-size-h4: $guided-font-size-base * 1.5;
+$guided-font-size-h5: $guided-font-size-base * 1.25;
+$guided-font-size-h6: $guided-font-size-base;
+$guided-font-weight-normal: 400;
+$guided-font-weight-medium: 500;
+$guided-font-weight-semibold: 600;
+$guided-font-weight-bold: 700;
+$guided-font-weight-heavy: 800;
+$guided-line-height-base: 1.5;
+$guided-line-height-heading: 1.2;
+
+$guided-space-unit: 1rem;
+$guided-space-0: 0;
+$guided-space-1: $guided-space-unit * 0.25;
+$guided-space-2: $guided-space-unit * 0.5;
+$guided-space-3: $guided-space-unit;
+$guided-space-4: $guided-space-unit * 1.5;
+$guided-space-5: $guided-space-unit * 3;
+
+$guided-radius-sm: 0.25rem;
+$guided-radius-md: 0.5rem;
+$guided-radius-lg: 0.75rem;
+$guided-radius-pill: 50rem;
+
+$guided-color-focus-border: guided-tint($guided-brand-maroon, 45%);
+$guided-focus-ring: 0 0 0 0.25rem rgba($guided-brand-maroon, 0.12);
+$guided-color-focus-border-clinical: $guided-grey-950;
+$guided-focus-ring-clinical: 0 0 0 0.25rem rgba($guided-grey-950, 0.5);
+
+$guided-elevation-1: 0 0.125rem 0.25rem rgba($guided-black, 0.075);
+$guided-elevation-2: 0 0.5rem 1rem rgba($guided-black, 0.15);
+$guided-elevation-3: 0 1rem 3rem rgba($guided-black, 0.175);
+$guided-elevation-inset: inset 0 1px 2px rgba($guided-black, 0.075);
+
+$guided-color-surface-dark: guided-tint($guided-brand-navy, 8%);
+$guided-color-surface-muted-dark: guided-tint($guided-brand-navy, 4%);
+$guided-color-border-muted-dark: guided-tint($guided-brand-navy, 24%);
+$guided-color-border-control-dark: guided-tint($guided-brand-navy, 50%);
+$guided-color-text-dark: guided-tint($guided-brand-navy, 88%);
+$guided-color-text-muted-dark: guided-tint($guided-brand-navy, 66%);
+$guided-color-accent-dark: guided-tint($guided-brand-maroon, 55%);
+$guided-focus-ring-dark: 0 0 0 0.25rem rgba($guided-color-accent-dark, 0.4);
+
+$guided-color-border-high-contrast: $guided-grey-600;
+$guided-color-text-muted-high-contrast: guided-shade($guided-grey-600, 30%);
+$guided-focus-ring-high-contrast: 0 0 0 0.25rem rgba($guided-brand-navy, 0.5);
+
+// Published to :root as --guided-* for components that cannot reach Sass variables.
+$guided-css-tokens: (
+  "brand-navy": $guided-brand-navy,
+  "brand-maroon": $guided-brand-maroon,
+  "brand-cyan": $guided-brand-cyan,
+  "brand-cream": $guided-brand-cream,
+  "color-primary": $guided-color-primary,
+  "color-secondary": $guided-color-secondary,
+  "color-success": $guided-color-success,
+  "color-info": $guided-color-info,
+  "color-warning": $guided-color-warning,
+  "color-danger": $guided-color-danger,
+  "color-text-emphasis": $guided-color-text-emphasis,
+  "color-action": $guided-color-action,
+  "color-action-border": $guided-color-action-border,
+  "color-action-secondary": $guided-color-action-secondary,
+  "color-action-secondary-border": $guided-color-action-secondary-border,
+  "color-label-frame": $guided-color-label-frame,
+  "color-label-border-thin": $guided-color-label-border-thin,
+  "color-label-border-thick": $guided-color-label-border-thick,
+  "color-label-blank": $guided-color-label-blank,
+  "color-banner-alert": $guided-color-banner-alert,
+  "color-banner-warning": $guided-color-banner-warning,
+  "color-banner-warning-surface": $guided-color-banner-warning-surface,
+  "color-banner-warning-border": $guided-color-banner-warning-border,
+  "color-banner-info": $guided-color-banner-info,
+  "color-banner-info-surface": $guided-color-banner-info-surface,
+  "color-banner-info-border": $guided-color-banner-info-border,
+  "color-text-data": $guided-color-text-data,
+  "color-focus-border-clinical": $guided-color-focus-border-clinical,
+  "focus-ring-clinical": $guided-focus-ring-clinical,
+  "color-chart-series-1": map.get($guided-color-chart-series, 1),
+  "color-chart-series-2": map.get($guided-color-chart-series, 2),
+  "color-chart-series-3": map.get($guided-color-chart-series, 3),
+  "color-chart-series-4": map.get($guided-color-chart-series, 4),
+  "color-chart-series-5": map.get($guided-color-chart-series, 5),
+  "color-chart-series-6": map.get($guided-color-chart-series, 6),
+  "color-chart-series-7": map.get($guided-color-chart-series, 7),
+  "color-chart-series-8": map.get($guided-color-chart-series, 8),
+  "font-size-sm": $guided-font-size-sm,
+  "font-size-base": $guided-font-size-base,
+  "font-size-lg": $guided-font-size-lg,
+  "font-size-display": $guided-font-size-display,
+  "font-size-h1": $guided-font-size-h1,
+  "font-size-h2": $guided-font-size-h2,
+  "font-size-h3": $guided-font-size-h3,
+  "font-size-h4": $guided-font-size-h4,
+  "font-size-h5": $guided-font-size-h5,
+  "font-size-h6": $guided-font-size-h6,
+  "font-weight-normal": $guided-font-weight-normal,
+  "font-weight-medium": $guided-font-weight-medium,
+  "font-weight-semibold": $guided-font-weight-semibold,
+  "font-weight-bold": $guided-font-weight-bold,
+  "font-weight-heavy": $guided-font-weight-heavy,
+  "line-height-base": $guided-line-height-base,
+  "line-height-heading": $guided-line-height-heading,
+  "radius-sm": $guided-radius-sm,
+  "radius-md": $guided-radius-md,
+  "radius-lg": $guided-radius-lg,
+  "radius-pill": $guided-radius-pill,
+  "space-1": $guided-space-1,
+  "space-2": $guided-space-2,
+  "space-3": $guided-space-3,
+  "space-4": $guided-space-4,
+  "space-5": $guided-space-5,
+);
+
+$guided-color-modes: (
+  "light": (
+    "color-ground": $guided-color-ground,
+    "color-surface": $guided-color-surface,
+    "color-surface-muted": $guided-color-surface-muted,
+    "color-surface-hover": $guided-color-surface-hover,
+    "color-tag": $guided-color-tag,
+    "color-border-muted": $guided-color-border-muted,
+    "color-border-control": $guided-color-border-control,
+    "color-border-check": $guided-color-border-check,
+    "color-text": $guided-color-text,
+    "color-text-muted": $guided-color-text-muted,
+    "color-accent": $guided-color-accent,
+    "color-heading": $guided-color-heading,
+    "color-skeleton": $guided-color-skeleton,
+    "color-skeleton-highlight": $guided-color-skeleton-highlight,
+    "color-chart-ground": $guided-color-chart-ground,
+    "color-chart-grid": $guided-color-chart-grid,
+    "color-chart-axis": $guided-color-chart-axis,
+    "color-focus-border": $guided-color-focus-border,
+    "focus-ring": $guided-focus-ring,
+    "elevation-1": $guided-elevation-1,
+    "elevation-2": $guided-elevation-2,
+    "elevation-3": $guided-elevation-3,
+  ),
+  "dark": (
+    "color-ground": $guided-color-ground,
+    "color-surface": $guided-color-surface-dark,
+    "color-surface-muted": $guided-color-surface-muted-dark,
+    "color-surface-hover": $guided-color-surface-hover,
+    "color-tag": $guided-color-tag,
+    "color-border-muted": $guided-color-border-muted-dark,
+    "color-border-control": $guided-color-border-control-dark,
+    "color-border-check": $guided-color-border-control-dark,
+    "color-text": $guided-color-text-dark,
+    "color-text-muted": $guided-color-text-muted-dark,
+    "color-accent": $guided-color-accent-dark,
+    "color-heading": $guided-brand-cream,
+    "color-skeleton": $guided-color-border-muted-dark,
+    "color-skeleton-highlight": $guided-color-surface-muted-dark,
+    "color-chart-ground": $guided-color-surface-muted-dark,
+    "color-chart-grid": $guided-color-border-muted-dark,
+    "color-chart-axis": $guided-color-text-muted-dark,
+    "color-focus-border": $guided-color-accent-dark,
+    "focus-ring": $guided-focus-ring-dark,
+    "elevation-1": 0 0.125rem 0.25rem rgba($guided-black, 0.3),
+    "elevation-2": 0 0.5rem 1rem rgba($guided-black, 0.45),
+    "elevation-3": 0 1rem 3rem rgba($guided-black, 0.5),
+  ),
+  "high-contrast": (
+    "color-ground": $guided-color-ground,
+    "color-surface": $guided-white,
+    "color-surface-muted": $guided-grey-50,
+    "color-surface-hover": $guided-color-surface-hover,
+    "color-tag": $guided-color-tag,
+    "color-border-muted": $guided-color-border-high-contrast,
+    "color-border-control": $guided-color-text-muted-high-contrast,
+    "color-border-check": $guided-color-text-muted-high-contrast,
+    "color-text": $guided-black,
+    "color-text-muted": $guided-color-text-muted-high-contrast,
+    "color-accent": $guided-brand-maroon,
+    "color-heading": $guided-brand-navy,
+    "color-skeleton": $guided-color-border-high-contrast,
+    "color-skeleton-highlight": $guided-grey-50,
+    "color-chart-ground": $guided-white,
+    "color-chart-grid": $guided-color-border-high-contrast,
+    "color-chart-axis": $guided-color-text-muted-high-contrast,
+    "color-focus-border": $guided-brand-navy,
+    "focus-ring": $guided-focus-ring-high-contrast,
+    "elevation-1": $guided-elevation-1,
+    "elevation-2": $guided-elevation-2,
+    "elevation-3": $guided-elevation-3,
+  ),
+);

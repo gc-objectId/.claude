@@ -1,0 +1,23 @@
+.dev-mode-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--guided-space-2);
+  width: 100%;
+  padding: var(--guided-space-1) var(--guided-space-3);
+  border: 0;
+  background: var(--guided-color-warning);
+  color: var(--guided-color-text-emphasis);
+  font-size: var(--guided-font-size-sm);
+  font-weight: var(--guided-font-weight-semibold);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.dev-mode-banner__hint {
+  font-weight: var(--guided-font-weight-normal);
+  text-transform: none;
+  letter-spacing: 0;
+  opacity: 0.75;
+}

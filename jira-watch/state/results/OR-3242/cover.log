@@ -1,0 +1,16 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Coverage for OR-3242 is written, run, red-checked, and committed.
+
+- **Written:** the single proposal, as an extension of PAT-006 in `qa-suite/smoke/patient-data.spec.ts`. After the link assertions it opens Add Operation on the Home-entered patient page, picks a procedure type, submits, and asserts the create POST carried `X-Tenant-Id` equal to the tenant, that it succeeded, and that a new case row's Launch href carries the tenant. The smoke case row is untouched. Companion doc updated.
+- **Id:** the reserved PAT-005 is already used by an existing test. The validation session had already released that reservation. The proposal is an extension, so no new id was consumed.
+- **Result:** `1 passed` against the validation build on port 52629.
+- **Red proof:** a temporary route rewrote the create request's tenant header to `null`, the way the pre-fix bundle sent it. The header assertion failed with Expected demo-qa, Received null. Reverted and re-ran green.
+- **Environment caveat:** the loop container runs the local profile, which does not enable demo-qa, so the suite's tenant reset failed and demo-demo is refused by the reset endpoint. I recreated only the app service from the same image with the QA tenant flag enabled. Postgres and Redis were not touched. That override is worth folding into the loop's compose file if cover runs are meant to use the qa-suite unchanged.
+- **Commit:** `0b93683f1` on the branch, not pushed. Report at `state/results/OR-3242/coverage.json`.
+remote: 
+remote: Create a pull request for 'bugfix/OR-3242-keep-the-tenant-on' on GitHub by visiting:        
+remote:      https://github.com/guidedclinical/orci/pull/new/bugfix/OR-3242-keep-the-tenant-on        
+remote: 
+To https://github.com/guidedclinical/orci.git
+ * [new branch]          bugfix/OR-3242-keep-the-tenant-on -> bugfix/OR-3242-keep-the-tenant-on
+branch 'bugfix/OR-3242-keep-the-tenant-on' set up to track 'origin/bugfix/OR-3242-keep-the-tenant-on'.

@@ -1,0 +1,20 @@
+@keyframes skeleton-shimmer {
+  0% {
+    background-position: -400px 0;
+  }
+  100% {
+    background-position: 400px 0;
+  }
+}
+
+.skeleton {
+  border-radius: var(--guided-radius-sm);
+  background: linear-gradient(
+    90deg,
+    var(--guided-color-skeleton) 25%,
+    var(--guided-color-skeleton-highlight) 50%,
+    var(--guided-color-skeleton) 75%
+  );
+  background-size: 800px 100%;
+  animation: skeleton-shimmer 1.5s infinite linear;
+}

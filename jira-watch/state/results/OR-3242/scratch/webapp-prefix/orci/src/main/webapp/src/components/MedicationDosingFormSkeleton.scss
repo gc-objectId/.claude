@@ -1,0 +1,32 @@
+.MedicationDosingFormSkeleton {
+  display: flex;
+  width: 100%;
+
+  .medication-label {
+    width: 85px;
+    flex: 0 0 85px;
+  }
+
+  .medication-form {
+    flex-grow: 1;
+    padding-top: 0.5rem;
+    padding-bottom: 0.75rem;
+    padding-left: 0.75rem;
+    padding-right: 0.75rem;
+  }
+
+  .skeleton-row {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-top: 1rem;
+  }
+
+  .title-row {
+    margin-top: 0;
+  }
+
+  .button-row {
+    margin-top: 0;
+  }
+}

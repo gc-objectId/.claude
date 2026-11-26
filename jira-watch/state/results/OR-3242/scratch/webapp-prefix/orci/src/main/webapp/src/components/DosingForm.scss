@@ -1,0 +1,121 @@
+@import "bootstrap/scss/functions";
+@import "../styles/tokens";
+@import "bootstrap/scss/variables";
+@import "bootstrap/scss/variables-dark";
+@import "bootstrap/scss/maps";
+@import "bootstrap/scss/mixins";
+
+.DosingForm {
+  margin-left: 0;
+  margin-right: auto;
+
+  .btn.btn-secondary.form-option {
+    @include button-variant($guided-color-action-secondary, $guided-black);
+    color: $guided-black;
+  }
+
+  .btn-outline-secondary {
+    --bs-btn-color: #{$guided-black};
+    --bs-btn-border-color: #{$guided-black};
+  }
+
+  .dose-display {
+    display: flex;
+    width: 100%;
+  }
+
+  .medication-label {
+    width: 85px;
+    flex: 0 0 85px;
+  }
+
+  .medication-form {
+    flex-grow: 1;
+    padding-right: 0.75rem;
+    padding-left: 0.75rem;
+  }
+
+  .dose-option.btn {
+    padding: 0.4rem 0.75rem 0.3rem 0.75rem;
+    height: 50px;
+  }
+
+  .has-weight-based-dose {
+    .weight-based-dose-label {
+      font-size: 0.7rem;
+      line-height: 1;
+    }
+  }
+
+  .dose-button-container:not(.has-weight-based-dose) {
+    .weight-based-dose-label {
+      display: none;
+    }
+
+    .dose-option.btn {
+      padding: 0.71rem 0.75rem 0.71rem 0.75rem;
+    }
+  }
+
+  .dose-input {
+    position: relative;
+
+    .weight-based-dose-label {
+      position: absolute;
+      bottom: 1px;
+      left: calc(4rem + 12px - 1ch);
+      font-size: 0.8rem;
+    }
+  }
+}
+
+.weight-dose-calculation .tooltip-inner {
+  max-width: fit-content !important;
+}
+
+.time-input-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.25rem;
+  min-width: 160px;
+  background: $white;
+  border: 1px solid $gray-400;
+  border-radius: 0.25rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  z-index: 10;
+  padding: 0.25rem 0;
+
+  &__option {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0.35rem 0.75rem;
+    border: none;
+    background: transparent;
+    text-align: left;
+    font-size: 0.95rem;
+    gap: 0.5rem;
+    color: $gray-700;
+
+    &:hover {
+      background: $gray-100;
+      color: var(--bs-emphasis-color);
+    }
+  }
+
+  &__time {
+    min-width: 48px;
+  }
+}
+
+.time-input-toggle {
+  color: $guided-black;
+  background: transparent;
+  border: none;
+
+  &:hover {
+    color: $guided-black;
+    cursor: pointer;
+  }
+}

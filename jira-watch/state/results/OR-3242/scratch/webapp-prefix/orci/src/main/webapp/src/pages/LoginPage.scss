@@ -1,0 +1,70 @@
+.login-page {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--guided-space-4);
+}
+
+.login-panel {
+  width: 100%;
+  max-width: 26rem;
+  padding: var(--guided-space-5) var(--guided-space-4);
+}
+
+.login-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--guided-space-1);
+  margin-bottom: var(--guided-space-4);
+  text-align: center;
+}
+
+.login-title__product {
+  font-size: var(--guided-font-size-display);
+}
+
+.login-divider {
+  display: flex;
+  align-items: center;
+  gap: var(--guided-space-2);
+  margin: var(--guided-space-4) 0;
+  color: var(--guided-color-secondary);
+  font-size: var(--guided-font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+
+  &::before,
+  &::after {
+    content: "";
+    flex: 1;
+    border-top: 1px solid var(--guided-color-border-muted);
+  }
+}
+
+.login-panel .form-control {
+  &:focus {
+    border-color: var(--guided-color-focus-border);
+    box-shadow: var(--guided-focus-ring);
+  }
+
+  &:autofill,
+  &:-webkit-autofill {
+    filter: none;
+    box-shadow: 0 0 0 1000px var(--guided-color-surface) inset;
+    -webkit-text-fill-color: var(--guided-color-text);
+  }
+
+  &:autofill:focus,
+  &:-webkit-autofill:focus {
+    box-shadow: 0 0 0 1000px var(--guided-color-surface) inset,
+      var(--guided-focus-ring);
+  }
+}
+
+.login-logo {
+  display: block;
+  width: 9rem;
+  height: auto;
+  margin: var(--guided-space-5) auto 0;
+}

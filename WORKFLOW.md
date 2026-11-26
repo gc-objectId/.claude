@@ -41,11 +41,11 @@ runs. It is derived, not asked for.
 |---|---|---|---|
 | **IMPLEMENT** | ticket is To Do / In Progress | the branch build | draft PR; ticket stays In Progress until merge |
 | **VALIDATE** | ticket is Ready for Testing / Testing | the **main** build (fix already merged) | comment + Done at the deploy-ready verdict |
-| **REVIEW** **[gap]** | a PR is named | the **PR merged into main** | review verdict + coverage on a stacked PR; nothing merges |
+| **REVIEW** **[built]** | a PR is named | the **PR head** (control is `origin/main`) | review verdict + coverage on a stacked PR; nothing merges |
 | *EXPLORE* | issue type is Epic, any status | local only | nothing — epics are never implemented directly |
 
-Derivation order **[gap, partly]**: **a PR argument wins.** `workon --pr 4813` is REVIEW even if
-the linked ticket sits in To Do. Absent a PR, mode follows ticket status as it does today.
+Derivation order **[built]**: **a PR argument wins.** `workon --pr 4813` is REVIEW even if the
+linked ticket sits in To Do. Absent a PR, mode follows ticket status as it does today.
 
 ### Why REVIEW is worth having
 
@@ -72,7 +72,8 @@ not know how to do the work.
 - **Jira column** **[built]** — everything sitting in Ready for Testing, oldest first. This is
   what sweeps use. Skips the skip list, anything with an existing worktree or branch, anything
   already admitted, and anything whose last run failed with nothing changed since.
-- **A PR** **[gap]** — one PR by number, or open PRs awaiting my review.
+- **A PR** **[built for one, gap for the queue]** — `workon --pr <number>` works; walking the PRs
+  awaiting my review and feeding them in is not built.
 - **Me, by hand** — the default and always available. `workon OR-1234 slug`.
 
 Sources are pluggable **[gap]**; today the Jira column is hard-wired into `backlog.sh`.
@@ -92,13 +93,14 @@ claude                                    # then /workon
 ```
 
 ```sh
-workon --pr 4813                          # [gap] worktree on refs/pull/4813/merge
+workon --pr 4813                          # worktree on the PR head, coverage stacks on it
 claude                                    # then /workon → REVIEW
 ```
 
-The script always bases on `origin/main` today **[built]**; `--pr` is the one line that has to
-move **[gap]**. Branch prefix is derived from the Jira issue type (Bug→`bugfix/`, Epic→`epic/`,
-Story/Task→`feature/`).
+The script bases on `origin/main`, or on the PR's head with `--pr` **[built]**. Branch prefix is
+derived from the Jira issue type (Bug→`bugfix/`, Epic→`epic/`, Story/Task→`feature/`) in both cases;
+a review's slug carries `pr<number>`, which is how the skill knows the mode. `--pr` assigns nothing
+and transitions nothing: a review is no claim on someone else's ticket.
 
 This path is correct for: all IMPLEMENT work, anything needing supervision, anything with a
 blast radius, and any one-off. **The manual path is not a fallback — it's the default.** The
@@ -132,17 +134,23 @@ covered exactly none — 190 open of 227 proposed. A queue nobody drains is wors
 because it looks like capture. The curation sitting was the thing that never happened, so the
 fix cannot be a better curation prompt.
 
-**The rule: coverage is written inside the run that proposed it, and reviewed as a PR.** **[gap]**
+**The rule: coverage is written inside the run that proposed it, and reviewed as a PR.** **[built]**
 
-- The session marks each proposal `write_now` / `propose_only` / `not_automatable`. The bar for
-  `write_now` is "I can write this and watch it pass *and* watch it fail, right now, against
-  this environment."
+- The session marks each proposal `write_now` true or false **[built]** — the three-way
+  `propose_only` / `not_automatable` split was designed and never built, and a boolean plus a
+  `why_not` naming the failed bar has covered it. The bar is `~/.claude/sop/coverage-rubric.md`,
+  which the loop's prompt and the `workon` skill both read, so changing a bar is a one-file edit.
 - On admission, while the worktree and the bootstrapped environment are **still up** — the gate
   runs before teardown — a second session writes only the `write_now` set, runs it, reports
-  real output, and passes `automate-gate.sh` (test paths only, nothing skipped or disabled, no
-  assertions removed from existing tests).
-- A draft PR opens on the validation worktree's existing branch. No second worktree, no linked
-  automation ticket — the PR references the source key.
+  real output, and passes two mechanical gates: `automate-gate.sh` (test paths only, nothing skipped
+  or disabled, no assertions removed from existing tests) and `canfail.sh`, which replays the added
+  test *methods* against the fix's parent commit and holds the PR back if one passes there.
+- A draft PR opens on the validation worktree's existing branch, against `COVER_BASE` — `main` for
+  VALIDATE, the author's branch for REVIEW. No second worktree, no linked automation ticket — the PR
+  references the source key.
+- The target file is claimed before anything is written (`test-file-claim.sh`), because two tickets
+  in one sweep proposed into the same test class and produced two branches that conflicted at the
+  same anchor. A proposal whose file is held stays open in the backlog and names the holder.
 - `propose_only` goes to `automation.sh`, which now means "needs a human", not "everything".
 
 My steering moves from a sitting I never take to a PR review I already do daily, where I'm
@@ -157,13 +165,13 @@ of that from scratch, and that cost is a good part of why it never got run.
 ```
   IMPLEMENT          workon OR-X slug → /workon → tests pass → draft PR → In Progress
                                                                    ↓
-  REVIEW    [gap]    workon --pr N → /workon → red on main, green on merge-ref
+  REVIEW             workon --pr N → /workon → red on main, green on the PR head
                                              → coverage on a stacked PR → my verdict
                                                                    ↓
                                                             Theo/Jordan merge
                                                                    ↓
   VALIDATE           loopcmd 8 2 (or workon OR-X) → positive + negative + red check
-                     → gate → comment + Done → coverage PR in the same run [gap]
+                     → gate → comment + Done → coverage PR in the same run
                                                                    ↓
   TEARDOWN           merge → worktree-done (by hand) / loopcmd teardown OR-X (loop)
 ```
@@ -175,7 +183,8 @@ before it merged.
 
 - **Absence of failure is not evidence.** Every "should not happen" check gets flipped until it
   goes red, then reverted. A green absence assertion means nothing until I've watched it fail.
-  This applies to the guards in this machinery too, not just to product code.
+  This applies to the guards in this machinery too, not just to product code — and a session's
+  report that it watched a test go red is a claim, so `canfail.sh` checks it rather than taking it.
 - **The gate is the only thing that writes to Jira** in an unattended run, and it re-verifies
   rather than trusting.
 - **Never let a session certify itself.**
@@ -194,3 +203,7 @@ before it merged.
 - **Epic-implementation mode** — designed for OR-2863, never built.
 - **Container isolation and scheduling** — the two standing gaps in the loop. See
   `jira-watch/PROPOSALS.md`.
+- **A PR-queue source** — one PR works; walking the review queue does not exist.
+- **canfail for Playwright** — the arm is an honest stub. A qa-suite spec needs the ephemeral app
+  with the pre-fix class swapped in, which is the manufactured control REVIEW mode exists to avoid,
+  so the answer is probably to run it against `origin/main` rather than to build the swap.

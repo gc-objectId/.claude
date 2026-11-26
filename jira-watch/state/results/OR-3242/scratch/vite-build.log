@@ -1,0 +1,37 @@
+(!) Your Vite config uses features that are unsupported by `configLoader: 'native'`, which is planned to become the default in a future major version of Vite:
+  - ESM syntax in a file loaded as CommonJS (vite.config.js:1:1). Use a `.mjs` extension or set `"type": "module"` in the closest package.json
+Set `VITE_CONFIG_NATIVE_IGNORE_WARNING=true` to suppress this warning.
+vite v8.3.5 building client environment for production...
+[sentry-vite-plugin] Info: Sending telemetry data on issues and performance to Sentry. To disable telemetry, set `options.telemetry` to `false`.
+transforming...
+✓ 3506 modules transformed.
+rendering chunks...
+[sentry-vite-plugin] Warning: No auth token provided. Will not create release. Please set the `authToken` option. You can find information on how to generate a Sentry auth token here: https://docs.sentry.io/api/auth/
+[sentry-vite-plugin] Warning: No auth token provided. Will not upload source maps. Please set the `authToken` option. You can find information on how to generate a Sentry auth token here: https://docs.sentry.io/api/auth/
+error: Auth token is required for this request. Please run `sentry-cli login` and try again!
+
+Add --log-level=[info|debug] or export SENTRY_LOG_LEVEL=[info|debug] to see more output.
+Please attach the full debug log to all bug reports.
+[sentry-vite-plugin] Info: Successfully uploaded source maps to Sentry
+computing gzip size...
+build/index.html                                  2.32 kB │ gzip:   1.04 kB
+build/static/alert-notification.Dmag7hJn.mp3     14.88 kB
+build/static/hatch-pattern.Bi3zgFK5.png          48.18 kB
+build/static/logo-header.S3YyZprP.png           346.36 kB
+build/static/index.C8K-NU8-.css                 294.84 kB │ gzip:  42.38 kB
+build/static/rolldown-runtime.COTKg4IO.js         1.26 kB │ gzip:   0.69 kB
+build/static/index.DAYfOJPN.js                2,024.43 kB │ gzip: 584.17 kB │ map: 10,808.59 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 3.27s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 2.9s of this 3.3s build (88%).
+2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
+  - plugin vite:css transform (30 calls)
+  - plugin vite:asset load (4 calls)
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+
+exit 0

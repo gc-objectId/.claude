@@ -1,0 +1,29 @@
+.paginated-view__status {
+  padding: var(--guided-space-3) 0;
+  color: var(--guided-color-secondary);
+  font-size: var(--guided-font-size-sm);
+}
+
+.paginated-view__bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--guided-space-3);
+  margin-top: var(--guided-space-3);
+}
+
+.paginated-view__summary {
+  color: var(--guided-color-secondary);
+  font-size: var(--guided-font-size-sm);
+}
+
+.paginated-view__pages {
+  display: flex;
+  align-items: center;
+  gap: var(--guided-space-2);
+}
+
+.paginated-view__size {
+  max-width: 11rem;
+}

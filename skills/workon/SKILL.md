@@ -10,6 +10,7 @@ Drive a ticket — or a chain of tickets sharing one code path — end-to-end fr
 ## Inputs
 
 - **Ticket(s)** — from the argument, which may name one ticket (`OR-2620`) or a chain (`OR-2597 OR-2721 OR-2725`). If absent, derive from `git branch --show-current` (branch contains `OR-NNNN`). If neither yields a ticket, ask — never guess.
+- **A PR** — `workon --pr 4813` builds the worktree from the pull request's head instead of `origin/main`, reads the ticket from the PR title, and assigns nothing. A branch whose slug contains `pr<number>` means this session is a review; see REVIEW mode below.
 - **Jira cloud:** `guidedclinical` — cloudId `f0b968d3-2cbb-41a5-ac92-b80f2cd94e76`. If a tool rejects it, re-derive via `getAccessibleAtlassianResources`.
 
 ### Ticket chains
@@ -32,9 +33,11 @@ Steps 2 and 3 run **per ticket**: pull each one's Jira context, and derive each 
 - **GitHub:** `gh pr list --search "OR-NNNN" --state all --json number,title,state,url,mergedAt` and `git log --all --grep="OR-NNNN" --oneline`, once per ticket. If a PR exists, pull its diff (`gh pr diff`) — for validate mode it *is* the thing under test; for implement mode it's prior/related work to build on. A chain often resolves to one merged PR chain: get the combined diff (`git diff <first-merge>^ <last-merge>`) so the shared shape is visible in one place.
 - **Sentry-created tickets** embed the error + a Sentry link in the description — extract ip/uri/userAgent/message clues from there.
 
-## Step 3 — Determine mode from status
+## Step 3 — Determine mode
 
-Issue type is checked first: an **Epic** is always **EXPLORE**, whatever its status — an epic is never implemented directly, its children are. Otherwise mode follows status:
+**A PR argument wins.** If the session was started by `workon --pr <number>`, the mode is **REVIEW**, whatever status the linked ticket sits in — the branch name carries `pr<number>` and the worktree was cut from the PR head. Check this before anything else.
+
+Otherwise issue type is checked next: an **Epic** is always **EXPLORE**, whatever its status — an epic is never implemented directly, its children are. Failing both, mode follows status:
 
 | Status | Mode |
 |---|---|
@@ -61,15 +64,27 @@ Goal: a manual-validation verdict that closes the ticket (= deploy-ready), plus 
 
 Every ticket in a chain needs its own verdict. The shared code path gets stood up once, but each ticket's positive, negative, and flip-and-revert red check are its own — a chain is not validated by exercising the lead ticket and inferring the rest.
 
-1. **Manual validation first**, per the Validation Protocol in global CLAUDE.md. Step 2 already moved a Ready-for-Testing ticket to Testing; if it is somehow still Ready for Testing here, move it before touching anything else.
-   - Run the positive scenario AND the negative/inverse. The negative is usually where the ticket's value lives.
-   - **Flip-and-revert every "should not happen" check** — make the condition fire, watch the check go red, revert. A green absence assertion is meaningless until seen red.
+1. **Manual validation first.** Read `~/.claude/sop/evidence.md` — it is the standard the unattended loop is held to, and it is the same standard here. Positive, negative, and a red check you actually watched go red, each an account of something you did against the running app. Step 2 already moved a Ready-for-Testing ticket to Testing; if it is somehow still Ready for Testing here, move it before touching anything else.
    - Prefer the real app UI (local build of main is fastest — logs in console) over the test harness when the scenario is reachable through it.
 2. **Report the verdict plainly:** validated (deploy-ready) or not, with evidence.
 3. **Deploy-ready close-out — post the validation comment and move the ticket to Done as soon as the verdict is deploy-ready.** Don't wait for the automation work: the Done transition is the team's signal that the change is deploy-ready, even though a tests PR usually follows. The comment (Claude's voice, first person): verdict line, how it was validated (positive, negative, and the flip-and-revert red check — one line each), a link to the merged implementation PR by full URL, and the automation plan (coverage to be added, or why none is warranted). Keep it tight — a reader skimming the ticket should get the whole story in ~10 lines. If the verdict is **not** deploy-ready, post nothing, skip the transition, and surface the blockers instead. With a chain, do this per ticket as each verdict lands, scoping the comment to that ticket's own scenarios; one ticket falling short of deploy-ready does not hold back the others.
-4. **Automation assessment.** Survey existing coverage (backend unit/integration in `orci/src/test`, qa-suite e2e) for this behavior. Decide per gap: unit vs integration vs e2e, and whether it's worth locking in at all. Don't duplicate solid existing tests; favor negative/edge cases.
-5. **Write the tests that made the cut.** Edge-case/negative tests go in the supplemental tier, not core. qa-suite conventions: `PREFIX-NNN` IDs, exactly one tier tag, numeric order, `npm run check:tags` passes, `npx tsc --noEmit` clean.
+4. **Automation assessment — against the rubric, not taste.** Read `~/.claude/sop/coverage-rubric.md` and apply its six bars to each gap you find. "Would a test here be nice" is the bar that produced 250 proposals and 3 written tests; the rubric is the bar that replaced it. Name the file each test goes in, claim it (`test-file-claim.sh take <ticket> <path>`), and record which bar a rejected proposal fails.
+5. **Write the tests that made the cut.** Edge-case/negative tests go in the supplemental tier, not core. qa-suite conventions: `PREFIX-NNN` IDs from `test-id.sh next`, exactly one tier tag, numeric order, `npm run check:tags` passes, `npx tsc --noEmit` clean.
 6. **Verify, then close out:** run the tests from *inside this worktree* (qa-suite npm `:local` scripts), report the actual output, and continue into the close-out unless a hard stop applies — see the verification gate below.
+
+## REVIEW mode (a PR)
+
+Goal: a verdict on someone else's open PR *before* it merges, plus the coverage it is owed, landing on a branch stacked on theirs. Nothing merges — the verdict and the stacked PR are the output.
+
+The whole reason this mode is worth having: **main is already the un-fixed build.** In VALIDATE the control has to be manufactured — compile the parent commit's class, swap it into `/app/classes`, restart, restore. Here it is free. Run the check against `origin/main` and it is red; run it against this branch and it is green. Nothing is swapped and nothing has to be restored.
+
+1. **Read the PR as a reviewer.** `gh pr view <N>` and `gh pr diff <N>`. Read `REVIEW.md` at the repository root — it is the review contract. Pull the linked ticket for context per Step 2, but **do not transition or assign it**: the ticket is the author's and a review is no claim on it.
+2. **Exercise it, red then green.** Build and run from this worktree (the branch is cut from the PR head), and prove the behaviour the PR claims. Then prove the control: the same check against `origin/main` must fail. `canfail.sh <worktree> <pr-head-sha>` does this mechanically for new Java tests and is the cheapest version of it. State both results.
+3. **Write the coverage the PR is owed**, by the same rubric as VALIDATE step 4 — `~/.claude/sop/coverage-rubric.md`, same six bars, same file claim. This is the point of reviewing pre-merge: the automation lands *with* the fix instead of accruing as debt.
+4. **Stack the coverage PR on the author's branch.** `gh pr create --draft --base <pr-head-branch>` — never `--base main`, which would make the diff include everything on main the author's branch does not have. `worktree-create.sh --pr` prints the exact command.
+5. **Give the verdict to Ryan, not to Jira.** No Jira comment, no transition, no Done. Approving, requesting changes, and merging are all Ryan's — the session's job is the evidence and the stacked branch.
+
+The verification gate below applies. The close-out does not: there is no Jira write in this mode, and steps 4–6 of the close-out are about a ticket this session does not own.
 
 ## EXPLORE mode (epics)
 
@@ -87,6 +102,13 @@ The verification gate and close-out below do not apply in this mode; there is no
 ## Verification gate (either mode)
 
 Run the tests yourself and report the real output — pasted counts, not a summary of your intent. For **backend unit/integration tests** that is the gate: a passing run is standing authorization to continue straight into the close-out below without pausing. Re-running the same command in the same JVM against the same database catches nothing; what actually needs a human is whether the diff is the right work, and that happens on the draft PR.
+
+**Before the close-out, run the same mechanical checks the loop runs.** They are a pure function of the worktree, so they cost seconds and they catch what a passing run cannot:
+
+- `~/.claude/bin/automate-gate.sh <worktree>` — on any branch whose diff should be test files only. Refuses on production code, on an added `@Disabled`/`.skip(`/`xit(`, and on an assertion removed from a test file you modified.
+- `~/.claude/bin/canfail.sh <worktree> <fix-commit>` — on any branch adding Java tests for a fix that already exists. Replays each new test file against the fix's parent commit and refuses if one passes there. It is file-granular, not method-granular: a class whose siblings the fix also touched reports red whichever test carried it, so for a single new method in an existing class, confirm it yourself with `-Dtest='TheClass#theMethod'` against the baseline.
+
+A refusal from either is a hard stop, not a warning.
 
 **Hard stops — report and wait, do not proceed:**
 

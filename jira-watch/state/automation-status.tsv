@@ -242,3 +242,6 @@ OR-2982#2	declined	2026-11-18T15:51:02Z	already covered by CaculatorUtilsTest.id
 OR-2791#0	declined	2026-11-18T16:28:34Z	RXNORM_ALLERGY_MAPPING ships off (enabledTenants []), so the RxNorm association path never runs; belongs on OR-2925 with the crosswalk fix
 OR-3185#0	done	2026-11-24T15:35:09Z	written in-run, https://github.com/guidedclinical/orci/pull/4894
 OR-3186#0	done	2026-11-24T15:47:33Z	written in-run, https://github.com/guidedclinical/orci/pull/4896
+OR-3242#0	done	2026-11-25T15:23:02Z	written in-run, https://github.com/guidedclinical/orci/pull/4901
+OR-3176#0	done	2026-11-25T15:23:20Z	written in-run, https://github.com/guidedclinical/orci/pull/4902
+OR-3176#1	done	2026-11-25T15:23:20Z	written in-run, https://github.com/guidedclinical/orci/pull/4902

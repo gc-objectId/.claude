@@ -1,0 +1,28 @@
+.admin-header {
+  background: var(--guided-color-surface);
+  border-bottom: 1px solid var(--guided-color-border-muted);
+}
+
+.admin-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--guided-space-3);
+  min-height: 3.5rem;
+}
+
+.admin-header__brand {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--guided-space-2);
+}
+
+.admin-header__product {
+  font-size: var(--guided-font-size-h5);
+  text-decoration: none;
+
+  &:hover,
+  &:focus-visible {
+    color: var(--guided-color-heading);
+  }
+}

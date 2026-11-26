@@ -1,0 +1,39 @@
+.account-menu__toggle {
+  --bs-btn-color: var(--guided-color-accent);
+  --bs-btn-hover-color: var(--guided-color-accent);
+  --bs-btn-hover-bg: var(--guided-color-surface-hover);
+  --bs-btn-active-color: var(--guided-color-heading);
+  --bs-btn-active-bg: var(--guided-color-surface-hover);
+  display: inline-flex;
+  align-items: center;
+  padding: var(--guided-space-1);
+  border-radius: var(--guided-radius-pill);
+  line-height: 1;
+
+  &::after {
+    display: none;
+  }
+}
+
+.account-menu__menu {
+  min-width: 14rem;
+  border-color: var(--guided-color-border-muted);
+  box-shadow: var(--guided-elevation-2);
+}
+
+.account-menu__header {
+  display: flex;
+  flex-direction: column;
+  gap: var(--guided-space-2);
+  padding: var(--guided-space-2) var(--guided-space-3);
+}
+
+.account-menu__name {
+  color: var(--guided-color-text);
+  font-weight: var(--guided-font-weight-semibold);
+}
+
+.account-menu__client {
+  color: var(--guided-color-secondary);
+  font-size: var(--guided-font-size-sm);
+}

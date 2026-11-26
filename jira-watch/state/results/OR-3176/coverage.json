@@ -1,0 +1,23 @@
+{
+  "written": [
+    {
+      "proposal": "OR-3176#0",
+      "test": "AER-003: Aprepitant warns 6h after a prior dose and stays silent at 25h",
+      "file": "qa-suite/clinical-rules/antiemetic-redose.spec.ts",
+      "ran": "cd qa-suite && BASE_URL=http://localhost:52621 TEST_ENV=local npx playwright test --config ~/.claude/jira-watch/state/results/OR-3176/scratch/cover/playwright.loop.config.ts --grep \"AER-003|AER-004\" --project=clinical-rules --no-deps",
+      "result": "✓ AER-003 (302ms) — 2 passed (1.4s)",
+      "red_proof": "Flipped the second patient's aprepitant dose from 25h ago to 6h ago. The absence assertion failed: 'a 25h-old aprepitant dose is outside the 24h window — the warning must stay silent' expect(received).toBeNull(), received the w-antiemetic-early-redose result with displayText 'Patient received Aprepitant at 04:21 on 11/25/2026. Aprepitant is dosed once every 24 hours.' Reverted to 25h; green again."
+    },
+    {
+      "proposal": "OR-3176#1",
+      "test": "AER-004: Granisetron transdermal patch is excluded as prior dose and as selection",
+      "file": "qa-suite/clinical-rules/antiemetic-redose.spec.ts",
+      "ran": "cd qa-suite && BASE_URL=http://localhost:52621 TEST_ENV=local npx playwright test --config ~/.claude/jira-watch/state/results/OR-3176/scratch/cover/playwright.loop.config.ts --grep \"AER-003|AER-004\" --project=clinical-rules --no-deps",
+      "result": "✓ AER-004 (283ms) — 2 passed (1.4s)",
+      "red_proof": "Two flips. (1) Staged the 1h prior dose as m-granisetron instead of m-granisetron-transdermal: the first absence failed, 'a patch 1h ago is not a prior dose for IV granisetron — the warning must stay silent' expect(received).toBeNull(), received the warning 'Patient received Granisetron at 09:21 on 11/25/2026…'. (2) After the tablet control, selected m-granisetron-tablet instead of m-granisetron-transdermal: the final absence failed, 'selecting the patch stays silent even with a tablet inside the window' expect(received).toBeNull(). The pre-tablet patch-selection absence cannot be made red without a code change (no qualifying prior exists at that point), which is why the test re-checks the patch selection after the tablet is staged. Both flips reverted; green again."
+    }
+  ],
+  "skipped": [],
+  "committed": "0d194552ded85fd1408b0c6848b6feadd71757ed",
+  "notes": "The qa-suite's own globalSetup cannot run against the loop stack: it resets TENANT_CLIENT_ID (demo-qa), which the loop image does not enable (no demo-qa schema; reset of any other tenant is refused with 403 'Tenant reset is only permitted for the QA tenant'). The tests were run through a throwaway override config outside the repo (scratch/cover/playwright.loop.config.ts) that reuses the suite's playwright.config, projects, teardown and .env.local, but replaces globalSetup with token minting only. The tests themselves stage everything on mayo-mayo via the admin API and never touch the QA tenant. npm run check:tags passed (238 tests) and tsc --noEmit is clean. Under the standard command `npm run test:local -- --grep \"AER-003|AER-004\" --project=clinical-rules --no-deps` on an environment with demo-qa enabled (dev, PR gate) no override is needed."
+}

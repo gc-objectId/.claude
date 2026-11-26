@@ -1,0 +1,78 @@
+@import "../../styles/buttons";
+
+.in-case-overlay {
+  .modal-content {
+    background: var(--guided-color-ground);
+  }
+
+  .modal-header,
+  .modal-footer {
+    background: var(--guided-color-surface);
+    border-color: var(--guided-color-border-muted);
+  }
+
+  .modal-title {
+    color: var(--guided-color-heading);
+    font-weight: var(--guided-font-weight-semibold);
+  }
+
+  .modal-body {
+    display: flex;
+    min-height: 0;
+  }
+
+  &__case-id {
+    margin-left: var(--guided-space-2);
+    color: var(--guided-color-secondary);
+    font-size: var(--guided-font-size-sm);
+    font-weight: var(--guided-font-weight-normal);
+  }
+
+  &__layout {
+    flex: 1 1 auto;
+    min-height: 0;
+  }
+
+  &__nav,
+  &__content {
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  &__nav {
+    padding: var(--guided-space-3) var(--guided-space-2);
+
+    .nav-pills {
+      --bs-nav-link-color: var(--guided-color-heading);
+      --bs-nav-link-hover-color: var(--guided-color-accent);
+      --bs-nav-pills-link-active-color: var(--guided-color-heading);
+      --bs-nav-pills-link-active-bg: var(--guided-color-surface);
+      --bs-nav-pills-border-radius: var(--guided-radius-md);
+    }
+
+    .nav-link.active {
+      font-weight: var(--guided-font-weight-semibold);
+      box-shadow: var(--guided-elevation-1);
+    }
+  }
+
+  &__group {
+    padding: var(--guided-space-3) var(--guided-space-3) var(--guided-space-1);
+  }
+
+  &__content {
+    padding: var(--guided-space-3);
+  }
+
+  &__panel {
+    min-height: 100%;
+    padding: var(--guided-space-4);
+  }
+}
+
+.clinical-shell .in-case-overlay {
+  .btn.btn-primary,
+  .btn.btn-outline-primary {
+    @include guided-outline-button;
+  }
+}

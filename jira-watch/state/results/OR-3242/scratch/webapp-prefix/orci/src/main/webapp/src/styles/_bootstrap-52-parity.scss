@@ -1,0 +1,65 @@
+$table-color: var(--bs-body-color);
+$table-bg: transparent;
+$table-border-factor: 0.1;
+
+$input-border-color: var(--guided-color-border-control);
+$form-check-input-border: var(--bs-border-width) solid
+  var(--guided-color-border-check);
+$input-group-addon-bg: var(--bs-secondary-bg);
+$form-file-button-bg: var(--bs-secondary-bg);
+$form-file-button-hover-bg: color-mix(
+  in srgb,
+  var(--bs-secondary-bg),
+  #{$guided-black} 5%
+);
+
+$nav-tabs-link-active-color: var(--bs-gray-700);
+$dropdown-link-hover-color: shade-color($guided-color-text, 10%);
+$dropdown-link-hover-bg: var(--bs-secondary-bg);
+$card-cap-bg: rgba($guided-black, 0.03);
+$popover-header-bg: shade-color($guided-color-surface, 6%);
+
+$accordion-button-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{$guided-color-text}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+$accordion-button-active-icon: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='#{shade-color($guided-color-primary, 10%)}'><path fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/></svg>");
+
+$primary-text-emphasis: shade-color($guided-color-primary, 40%);
+$secondary-text-emphasis: shade-color($guided-color-secondary, 40%);
+$success-text-emphasis: shade-color($guided-color-success, 40%);
+$danger-text-emphasis: shade-color($guided-color-danger, 40%);
+$primary-border-subtle: tint-color($guided-color-primary, 70%);
+$secondary-border-subtle: tint-color($guided-color-secondary, 70%);
+$success-border-subtle: tint-color($guided-color-success, 70%);
+$info-border-subtle: tint-color($guided-color-info, 70%);
+$warning-border-subtle: tint-color($guided-color-warning, 70%);
+$danger-border-subtle: tint-color($guided-color-danger, 70%);
+
+@mixin bootstrap-52-parity-rules {
+  .tooltip {
+    padding: var(--bs-tooltip-arrow-height);
+  }
+
+  .bs-tooltip-top .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="top"] .tooltip-arrow {
+    bottom: 0;
+  }
+
+  .bs-tooltip-end .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="right"] .tooltip-arrow {
+    left: 0;
+  }
+
+  .bs-tooltip-bottom .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="bottom"] .tooltip-arrow {
+    top: 0;
+  }
+
+  .bs-tooltip-start .tooltip-arrow,
+  .bs-tooltip-auto[data-popper-placement^="left"] .tooltip-arrow {
+    right: 0;
+  }
+
+  .nav-link:focus-visible {
+    outline: revert;
+    box-shadow: none;
+  }
+}

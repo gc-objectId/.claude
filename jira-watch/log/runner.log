@@ -2038,3 +2038,64 @@ Transitioned OR-3186 to Done
 2026-11-24 10:47:28  [OR-3186] cover: Safe: 1 file(s), all test paths, nothing disabled, no assertions removed
 2026-11-24 10:47:33  [OR-3186] cover: OR-3186: https://github.com/guidedclinical/orci/pull/4896
 2026-11-24 10:47:33  [OR-3186] cover: holding /Users/ryanducharme/dev/worktrees/OR-3186-mark-stage-internal-notifications — draft PR at https://github.com/guidedclinical/orci/pull/4896
+2026-11-25 10:01:47  [OR-3176] OR-3176 status is 'Ready for Testing'
+2026-11-25 10:01:47  [OR-3242] OR-3242 status is 'Ready for Testing'
+2026-11-25 10:01:47  [OR-3176] Building image from origin/main
+2026-11-25 10:01:48  [OR-3242] Building image from origin/main
+2026-11-25 10:03:05  [OR-3176] image=guidedclinical/orci:loop-c52e8fb43 sha=c52e8fb43037ac0ff22bb1ddec70a820ed611706
+2026-11-25 10:03:07  [OR-3176] OR-3176 moved to Testing
+2026-11-25 10:03:08  [OR-3176] OR-3176 assigned to the configured account
+2026-11-25 10:03:09  [OR-3242] image=guidedclinical/orci:loop-c52e8fb43 sha=c52e8fb43037ac0ff22bb1ddec70a820ed611706
+2026-11-25 10:03:10  [OR-3176] baseline: status='Testing' comments=4
+2026-11-25 10:03:10  [OR-3176] slug=warn-when-a-once
+2026-11-25 10:03:11  [OR-3242] OR-3242 moved to Testing
+2026-11-25 10:03:12  [OR-3176] worktree=/Users/ryanducharme/dev/worktrees/OR-3176-warn-when-a-once
+2026-11-25 10:03:12  [OR-3242] OR-3242 assigned to the configured account
+2026-11-25 10:03:13  [OR-3242] baseline: status='Testing' comments=0
+2026-11-25 10:03:13  [OR-3242] slug=keep-the-tenant-on
+2026-11-25 10:03:14  [OR-3242] worktree=/Users/ryanducharme/dev/worktrees/OR-3242-keep-the-tenant-on
+2026-11-25 10:04:50  [OR-3242] app under test at http://localhost:52629
+2026-11-25 10:04:50  [OR-3242] wrote ticket context (29 lines)
+2026-11-25 10:04:50  [OR-3242] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3242/session.log)
+2026-11-25 10:04:53  [OR-3176] app under test at http://localhost:52621
+2026-11-25 10:04:53  [OR-3176] wrote ticket context (184 lines)
+2026-11-25 10:04:53  [OR-3176] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3176/session.log)
+2026-11-25 10:09:35  [OR-3242]   … OR-3242 still running (300s elapsed, 0
+? app requests, app up)
+2026-11-25 10:09:39  [OR-3176]   … OR-3176 still running (300s elapsed, 210 app requests, app up)
+2026-11-25 10:14:36  [OR-3242]   … OR-3242 still running (600s elapsed, 20 app requests, app up)
+2026-11-25 10:14:39  [OR-3176]   … OR-3176 still running (600s elapsed, 2013 app requests, app up)
+2026-11-25 10:15:24  [OR-3176] session finished after ~630s
+2026-11-25 10:15:24  [OR-3176] captured 11456 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3176 against c52e8fb43037ac0ff22bb1ddec70a820ed611706 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3176
+Transitioned OR-3176 to Done
+2026-11-25 10:15:30  [OR-3176] close-parent: OR-3176 is already Done
+2026-11-25 10:15:30  [OR-3176] cover: OR-3176: 2 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3176/proposals.md
+2026-11-25 10:16:36  [OR-3242] session finished after ~705s
+2026-11-25 10:16:36  [OR-3242] captured 10281 lines of application log
+Red check verified: signature present in the captured application log
+Re-verifying freshness for OR-3242 against c52e8fb43037ac0ff22bb1ddec70a820ed611706 (not trusting the session's claim)
+No tampering: status and comment count match the runner's baseline
+Posted validation comment on OR-3242
+Transitioned OR-3242 to Done
+2026-11-25 10:16:42  [OR-3242] close-parent: OR-3242 is already Done
+2026-11-25 10:16:42  [OR-3242] cover: OR-3242: 1 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3242/proposals.md
+2026-11-25 10:20:16  [OR-3176] cover:   … OR-3176 coverage still running (300s)
+2026-11-25 10:21:27  [OR-3242] cover:   … OR-3242 coverage still running (300s)
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: Safe: 2 file(s), all test paths, nothing disabled, no assertions removed
+2026-11-25 10:23:02  [OR-3242] cover: OR-3242: https://github.com/guidedclinical/orci/pull/4901
+2026-11-25 10:23:02  [OR-3242] cover: holding /Users/ryanducharme/dev/worktrees/OR-3242-keep-the-tenant-on — draft PR at https://github.com/guidedclinical/orci/pull/4901
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: Safe: 2 file(s), all test paths, nothing disabled, no assertions removed
+2026-11-25 10:23:20  [OR-3176] cover: OR-3176: https://github.com/guidedclinical/orci/pull/4902
+2026-11-25 10:23:20  [OR-3176] cover: holding /Users/ryanducharme/dev/worktrees/OR-3176-warn-when-a-once — draft PR at https://github.com/guidedclinical/orci/pull/4902

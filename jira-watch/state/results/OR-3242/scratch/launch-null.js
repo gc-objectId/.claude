@@ -1,0 +1,22 @@
+const { chromium } = require("/Users/ryanducharme/dev/orci/qa-suite/node_modules/playwright");
+const BASE = "http://localhost:52629";
+const [href, label] = process.argv.slice(2);
+(async () => {
+  const browser = await chromium.launch({ args: ["--host-resolver-rules=MAP *.sentry.io ~NOTFOUND"] });
+  const ctx = await browser.newContext();
+  const page = await ctx.newPage();
+  await page.goto(BASE + "/login");
+  await page.locator("#username").fill("admin");
+  await page.locator("#password").evaluate((el, pwd) => { const s = Object.getOwnPropertyDescriptor(HTMLInputElement.prototype, "value").set; s.call(el, pwd); el.dispatchEvent(new Event("input", { bubbles: true })); el.dispatchEvent(new Event("change", { bubbles: true })); }, "admin");
+  await page.locator('button[type="submit"]').click();
+  await page.waitForURL("**/", { timeout: 10000 });
+  const failed = [];
+  page.on("response", (r) => { if (r.url().includes("/api/") && r.status() >= 400) failed.push(r.status() + " " + r.url().replace(BASE, "")); });
+  await page.goto(BASE + href);
+  await page.waitForTimeout(8000);
+  console.log("url:", page.url());
+  console.log("body:", (await page.locator("body").innerText()).replace(/\s+/g, " ").slice(0, 300));
+  console.log("failed api:", JSON.stringify(failed));
+  await page.screenshot({ path: `${__dirname}/${label}-launch-null.png`, fullPage: true });
+  await browser.close();
+})().catch((e) => { console.error("ERR", e); process.exit(1); });

@@ -1,0 +1,11 @@
+.settings-tabs {
+  button.nav-link {
+    color: black;
+    &.active {
+      text-shadow: 0.25px 0 0.1px, -0.25px 0 0.1px;
+      border-bottom: 1px solid white !important;
+    }
+  }
+  button.nav-link.disabled {
+  }
+}

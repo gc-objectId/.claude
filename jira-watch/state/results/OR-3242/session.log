@@ -1,0 +1,17 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Validation of OR-3242 is complete and recorded. Verdict: deploy-ready.
+
+**What was observed on the shipped build**
+- Entering from Home with no client_id, the patient page's trail, Launch and View Operation links, the debugger, the copied launch link, and the create-case POST all carried demo-demo. Following Launch rendered the case.
+- The tenant-less login check returned 400 with no session when signed out, and needsLogin=false when signed in. No 500 in any of six combinations.
+- The log had zero missing-relation or NullPointerException lines across the positive and post-restore windows.
+
+**Red check**
+- Swapped the parent commit's controller class and a bundle with the two pre-fix components into the running container. Every link carried client_id=null, the debugger showed the missing-relation error, the null Launch link failed with "Unable to authenticate user", and the login check crashed at TenantKey.getOrg.
+- Restored both by checksum and bundle hash, restarted, and re-ran every probe green. The signature appears three times in the container log, all inside the red window.
+
+**Automation**
+- The fix shipped with LoginControllerTest and PAT-006, which cover nearly everything. One extension to PAT-006 is proposed as write_now for the create-case call, the only affected path the shipped test skips.
+- The id tool read the stale primary checkout and handed out PAT-005, which the real spec already uses. I released that reservation; the proposal needs no new id.
+
+Output is at `~/.claude/jira-watch/state/results/OR-3242/session.json`. Scratch artifacts and screenshots are in the scratch directory, and the worktree is clean.

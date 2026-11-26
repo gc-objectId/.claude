@@ -1,0 +1,15 @@
+@mixin guided-outline-button {
+  --bs-btn-color: var(--guided-color-heading);
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: var(--guided-color-heading);
+  --bs-btn-hover-color: var(--guided-color-surface);
+  --bs-btn-hover-bg: var(--guided-color-heading);
+  --bs-btn-hover-border-color: var(--guided-color-heading);
+  --bs-btn-active-color: var(--guided-color-surface);
+  --bs-btn-active-bg: var(--guided-color-heading);
+  --bs-btn-active-border-color: var(--guided-color-heading);
+  --bs-btn-disabled-color: var(--guided-color-heading);
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-disabled-border-color: var(--guided-color-heading);
+  --bs-btn-focus-box-shadow: var(--guided-focus-ring);
+}

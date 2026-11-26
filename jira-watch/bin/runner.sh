@@ -27,6 +27,7 @@ CLAUDE_BIN="${CLAUDE_BIN:-$HOME/.claude/bin}"
 RESULTS="${LOOP_HOME}/state/results"
 LOG="${LOOP_HOME}/log/runner.log"
 PROMPT_TEMPLATE="${LOOP_HOME}/prompts/validate.md"
+SOP_HOME="${SOP_HOME:-$HOME/.claude/sop}"
 LOOP_USER="${LOOP_USER:-loopuser}"
 # Case-insensitive ERE against the summary. A match means validate but never write.
 LOOP_RESERVED_PATTERN="${LOOP_RESERVED_PATTERN:-^analytics}"
@@ -68,6 +69,9 @@ done
 
 printf '%s' "$ticket" | grep -qE '^[A-Z][A-Z0-9]*-[0-9]+$' || die "'$ticket' is not a Jira key."
 [ -f "$PROMPT_TEMPLATE" ] || die "missing prompt template ${PROMPT_TEMPLATE}"
+for _sop in evidence coverage-rubric; do
+    [ -f "${SOP_HOME}/${_sop}.md" ] || die "missing shared SOP ${SOP_HOME}/${_sop}.md"
+done
 
 # Checked before the run directory is touched: a no-op run on a finished ticket must not overwrite
 # the record of the run that finished it.
@@ -283,7 +287,12 @@ context_file="${run_dir}/context.md"
     fi
 } >"$context_file"
 log "wrote ticket context ($(wc -l <"$context_file" | tr -d ' ') lines)"
+# The coverage rubric and the evidence standard are shared with the workon skill, so the loop reads
+# them from ~/.claude/sop rather than carrying its own copy. Changing a bar is a one-file edit.
 prompt=$(sed \
+    -e "/__SOP_EVIDENCE__/r ${SOP_HOME}/evidence.md" -e "/__SOP_EVIDENCE__/d" \
+    -e "/__SOP_COVERAGE_RUBRIC__/r ${SOP_HOME}/coverage-rubric.md" -e "/__SOP_COVERAGE_RUBRIC__/d" \
+    "$PROMPT_TEMPLATE" | sed \
     -e "s|__TICKET__|${ticket}|g" \
     -e "s|__BASE_URL__|${base_url}|g" \
     -e "s|__SHA__|${sha}|g" \
@@ -292,7 +301,7 @@ prompt=$(sed \
     -e "s|__SESSION_JSON__|${session_json}|g" \
     -e "s|__SCRATCH_DIR__|${scratch_dir}|g" \
     -e "s|__CONTEXT_FILE__|${context_file}|g" \
-    "$PROMPT_TEMPLATE")
+    )
 
 # Branches for the ticket usually already exist — dev's. Only ones appearing during the session mean
 # the session pushed, so compare against a snapshot rather than testing existence.

@@ -1,0 +1,19 @@
+Plugin "guided" is enabled in project settings but isn't installed — run `claude plugin install guided@guidedclinical --scope project`
+Both proposals are written, proven red, and committed. The report is at `~/.claude/jira-watch/state/results/OR-3176/coverage.json`.
+
+**Written** (commit `0d194552d`, two files, no production code touched):
+
+- **AER-003** in `qa-suite/clinical-rules/antiemetic-redose.spec.ts`. A Mayo patient with aprepitant 6h ago gets the warning with the exact spec wording and the Gan citation. A second patient with the dose 25h ago gets nothing. Red proof: moving the 25h dose to 6h made the absence fail with the full warning in the received value, then reverted.
+- **AER-004** in the same file. A patch 1h ago leaves both IV granisetron and the patch selection silent. A tablet 2h ago then makes the IV selection fire naming Granisetron, and the patch selection stays silent even with that tablet in the window. Red proofs: staging the first dose as IV granisetron turned the first absence red, and selecting the tablet instead of the patch at the end turned the last absence red. Both reverted.
+- Companion doc `antiemetic-redose.md` added alongside. Tag guard passes across 238 tests and the type check is clean.
+
+**One thing the pipeline should know.** The suite's own global setup cannot run against the loop stack. It resets the QA tenant, and this image has no demo-qa schema, while resetting any other tenant is refused with a 403. I ran the tests through a throwaway override config kept outside the repo that reuses the suite config but replaces the setup with token minting only. The tests stage everything on the Mayo tenant through the admin API and never touch demo-qa, so the standard npm command works unchanged on dev or the PR gate. The loop's cover step will hit the same wall for every qa-suite proposal until its image enables demo-qa.
+
+Nothing was skipped, nothing was pushed, and no PR was opened.
+remote: 
+remote: Create a pull request for 'feature/OR-3176-warn-when-a-once' on GitHub by visiting:        
+remote:      https://github.com/guidedclinical/orci/pull/new/feature/OR-3176-warn-when-a-once        
+remote: 
+To https://github.com/guidedclinical/orci.git
+ * [new branch]          feature/OR-3176-warn-when-a-once -> feature/OR-3176-warn-when-a-once
+branch 'feature/OR-3176-warn-when-a-once' set up to track 'origin/feature/OR-3176-warn-when-a-once'.

@@ -1,0 +1,90 @@
+@use "sass:map";
+
+@import "bootstrap/scss/functions";
+@import "bootstrap/scss/variables";
+
+$base-font-size: 1.1rem;
+
+$footer-height: 75px;
+
+.AppFooter {
+  height: $footer-height;
+}
+
+.app-body {
+  display: flex;
+  flex-direction: row;
+  height: calc(100vh - $footer-height - var(--dev-mode-banner-height, 0px));
+  overflow: hidden;
+}
+
+.app-body__main {
+  flex: 1;
+  overflow: auto;
+  min-width: 0;
+}
+
+.AppLaunch {
+  .btn-close {
+    --bs-btn-close-opacity: 0.75;
+    --bs-btn-close-hover-opacity: 1;
+    height: 0.5em;
+    width: 0.5em;
+  }
+  // :where keeps Bootstrap's weight so its open, active and pressed focus rules still win
+  .btn:focus:where(:not(.show, .active)) {
+    outline: none;
+    box-shadow: none;
+  }
+  .nav-tabs .nav-link {
+    color: $black;
+    padding-bottom: 5px;
+    padding-top: 5px;
+  }
+  .tab.selected {
+    font-weight: 700 !important;
+  }
+  .btn {
+    font-size: $base-font-size;
+    padding: 0.2rem 0.75rem;
+  }
+
+  .btn-sm,
+  .btn-group-sm > .btn {
+    font-size: 0.9rem;
+    padding: 0.2rem 0.75rem;
+  }
+
+  .form-control {
+    font-size: $base-font-size;
+    padding: 0.2rem 0.75rem;
+  }
+  .form-label {
+    font-size: $base-font-size;
+  }
+  .form-control:focus {
+    border-color: var(--guided-color-focus-border-clinical);
+    box-shadow: var(--guided-focus-ring-clinical);
+  }
+
+  @each $state, $data in $form-validation-states {
+    .form-control.is-#{$state} {
+      padding-right: $input-height-inner;
+
+      &:focus {
+        border-color: map.get($data, "border-color");
+        box-shadow: map.get($data, "focus-box-shadow");
+      }
+    }
+  }
+}
+
+:where(.AppLaunch, .clinical-shell .modal:not(.in-case-overlay)) {
+  .nav-link:not(.active) {
+    background-color: var(--guided-color-surface-muted) !important;
+  }
+
+  .nav-link {
+    border-color: var(--guided-color-border-muted) !important;
+  }
+}

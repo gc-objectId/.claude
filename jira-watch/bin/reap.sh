@@ -78,6 +78,13 @@ for dir in "$WORKTREE_ROOT"/OR-*; do
     fi
 done
 
+# Both reservation files key off a worktree that no longer exists, so they clear here rather than
+# needing anyone to remember to release them.
+if [ -n "$apply" ]; then
+    "${CLAUDE_BIN}/test-id.sh" reap 2>/dev/null | sed 's/^/test-id: /' || true
+    "${CLAUDE_BIN}/test-file-claim.sh" reap 2>/dev/null | sed 's/^/test-file: /' || true
+fi
+
 if [ "$found" -eq 0 ]; then
     printf 'Nothing stranded.\n'
 elif [ -z "$apply" ]; then

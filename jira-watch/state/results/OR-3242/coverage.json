@@ -1,0 +1,14 @@
+{
+  "written": [
+    {
+      "proposal": "OR-3242#0",
+      "test": "PAT-006: Patient and debugger pages reached from Home keep the tenant on their links (extended; reserved id PAT-005 was already in use by an existing test and the proposal is an extension, so no new id was consumed)",
+      "file": "qa-suite/smoke/patient-data.spec.ts",
+      "ran": "cd qa-suite && export BASE_URL=http://localhost:52629 && npm run test:local -- --grep \"PAT-006\" --no-deps",
+      "result": "1 passed (3.7s)",
+      "red_proof": "Added a temporary page.route on **/operations/create that continued the request with x-tenant-id rewritten to \"null\" (what the pre-fix bundle sent). Run failed at the header assertion: Expected: \"demo-qa\" Received: \"null\" (1 failed). Removed the route and re-ran: 1 passed. Environment note: the loop container runs the local profile, which does not enable demo-qa, so the suite's tenant reset returned 500 (relation job_metadata does not exist) and demo-demo is refused (403, QA tenant only). Recreated only the orci service from the same image guidedclinical/orci:loop-c52e8fb43 with -Dtenants.demo.qa.enabled=true (override at state/results/OR-3242/scratch/compose-qa-tenant.yml); postgres/redis untouched."
+    }
+  ],
+  "skipped": [],
+  "committed": "0b93683f106c9bb509bafb3f1259508fba28ea50"
+}

@@ -1,0 +1,9 @@
+services:
+  orci:
+    environment:
+      JVM_FLAGS: >-
+        -Dspring.profiles.active=local,docker
+        -Dtenants.demo.qa.enabled=true
+        -Ddefault_user_username=loopuser
+        -Ddefault_user_password=LoopValidate1!
+        -Ddefault_user_email=loopuser@guidedclinical.com

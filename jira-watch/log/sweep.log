@@ -1,12 +1,12 @@
 skip OR-3056: reserved for another reviewer
 skip OR-3057: reserved for another reviewer
 skip OR-3058: reserved for another reviewer
-2026-11-24 10:20:48  [OR-3185] OR-3185 status is 'Ready for Testing'
-2026-11-24 10:20:48  [OR-3135] OR-3135 status is 'Ready for Testing'
-2026-11-24 10:20:49  [OR-3185] Building image from origin/main
-2026-11-24 10:20:49  [OR-3135] Building image from origin/main
+2026-11-25 10:01:47  [OR-3176] OR-3176 status is 'Ready for Testing'
+2026-11-25 10:01:47  [OR-3242] OR-3242 status is 'Ready for Testing'
+2026-11-25 10:01:47  [OR-3176] Building image from origin/main
+2026-11-25 10:01:48  [OR-3242] Building image from origin/main
 another build holds /Users/ryanducharme/dev/worktrees/_loop-main.lock; waiting
-Building guidedclinical/orci:loop-712595a22 from 712595a22
+Building guidedclinical/orci:loop-c52e8fb43 from c52e8fb43
 using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Contents/Home
 [INFO] Scanning for projects...
 [WARNING] 
@@ -35,22 +35,22 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] orci                                                               [jar]
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml (1.7 kB at 5.7 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-javadoc-plugin/maven-metadata.xml (1.7 kB at 6.0 kB/s)
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/spotbugs/maven-metadata.xml
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/maven-metadata.xml
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/springframework/boot/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 10.0 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/maven-metadata.xml
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/maven-metadata.xml (240 B at 5.5 kB/s)
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/google/cloud/tools/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/spotbugs/maven-metadata.xml (240 B at 3.6 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/springframework/boot/maven-metadata.xml (249 B at 3.8 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/google/cloud/tools/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/cloud/tools/maven-metadata.xml (708 B at 25 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/google/cloud/tools/maven-metadata.xml (708 B at 19 kB/s)
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/apache/maven/plugins/maven-metadata.xml
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (10 kB at 513 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-metadata.xml (10 kB at 427 kB/s)
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/codehaus/mojo/maven-metadata.xml
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (20 kB at 1.1 MB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/codehaus/mojo/maven-metadata.xml (20 kB at 882 kB/s)
 [INFO] 
 [INFO] --------------------< com.guided.orci:orci-project >--------------------
 [INFO] Building orci project 0.1.107-SNAPSHOT                            [1/13]
@@ -69,14 +69,7 @@ using JDK 25 at /Library/Java/JavaVirtualMachines/amazon-corretto-25.jdk/Content
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/main/resources
 [INFO] 
 [INFO] --- compiler:3.16.0:compile (default-compile) @ orci-utils ---
-[INFO] Recompiling the module because of changed dependency.
-[INFO] Compiling 8 source files with javac [debug target 25] to target/classes
-WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
-WARNING: sun.misc.Unsafe::objectFieldOffset has been called by lombok.permit.Permit
-WARNING: Please consider reporting this to the maintainers of class lombok.permit.Permit
-WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
-[INFO] /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/main/java/com/guided/orci/service/TracingService.java: /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/main/java/com/guided/orci/service/TracingService.java uses or overrides a deprecated API.
-[INFO] /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/main/java/com/guided/orci/service/TracingService.java: Recompile with -Xlint:deprecation for details.
+[INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- resources:3.4.0:testResources (default-testResources) @ orci-utils ---
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/src/test/resources
@@ -88,7 +81,6 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- jar:3.5.0:jar (default-jar) @ orci-utils ---
-[INFO] Building jar: /Users/ryanducharme/dev/worktrees/_loop-main/orci-utils/target/orci-utils-0.1.107-SNAPSHOT.jar
 [INFO] 
 [INFO] --- jib:3.4.6:dockerBuild (default-cli) @ orci-utils ---
 [INFO] Skipping containerization because jib-maven-plugin: skip = true
@@ -97,9 +89,9 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Building orci-models 0.1.107-SNAPSHOT                             [3/13]
 [INFO]   from orci-models/pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
-[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/hibernate/orm/maven-metadata.xml
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/org/hibernate/orm/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/hibernate/orm/maven-metadata.xml (259 B at 12 kB/s)
+[INFO] Downloading from central: https://repo.maven.apache.org/maven2/org/hibernate/orm/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/org/hibernate/orm/maven-metadata.xml (259 B at 11 kB/s)
 [WARNING] Parameter 'failOnError' is unknown for plugin 'hibernate-maven-plugin:7.4.1.Final:enhance (default)'
 [INFO] 
 [INFO] --- spring-boot:4.1.2:build-info (default) @ orci-models ---
@@ -112,32 +104,36 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/resources
 [INFO] 
 [INFO] --- compiler:3.16.0:compile (default-compile) @ orci-models ---
-[INFO] Recompiling the module because of changed dependency.
+[INFO] Recompiling the module because of changed source code.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
 [INFO] Compiling 350 source files with javac [debug target 25] to target/classes
+WARNING: A terminally deprecated method in sun.misc.Unsafe has been called
+WARNING: sun.misc.Unsafe::objectFieldOffset has been called by lombok.permit.Permit
+WARNING: Please consider reporting this to the maintainers of class lombok.permit.Permit
+WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [WARNING] unknown enum constant org.apiguardian.api.API.Status.EXPERIMENTAL
   reason: class file for org.apiguardian.api.API$Status not found
 [WARNING] unknown enum constant org.apiguardian.api.API.Status.EXPERIMENTAL
 [WARNING] unknown enum constant org.apiguardian.api.API.Status.INTERNAL
 [WARNING] unknown enum constant org.apiguardian.api.API.Status.MAINTAINED
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/allergy/Allergy.java:[34,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/rule/context/ContextMedication.java:[26,46] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/observation/Observation.java:[40,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/MedicationDTO.java:[59,34] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/rule/context/ContextInfusionMedicationAdministration.java:[28,33] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/allergy/MedicationAllergy.java:[37,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/medication/MedicationAdministration.java:[40,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/rule/context/ContextCondition.java:[22,32] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/medication/MedicationOrder.java:[44,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/allergy/MedicationAllergy.java:[37,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/MedicationDTO.java:[58,34] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/medication/InfusionMedicationAdministration.java:[37,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/rules/CitationDefinition.java:[23,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/user/UserSession.java:[14,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/tracking/UserCaseActivitySpan.java:[22,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/rule/context/ContextInfusionMedicationAdministration.java:[28,33] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/allergy/Allergy.java:[34,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/dto/rule/context/ContextMedication.java:[26,46] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/medication/MedicationOrder.java:[44,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/observation/Observation.java:[40,21] @SuperBuilder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/feedback/FeedbackSubmission.java:[16,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/job/JobMetadata.java:[27,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/tracking/InteractiveCaseLaunchEvent.java:[20,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/rules/TenantRuleConfiguration.java:[24,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/user/UserSession.java:[14,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/tracking/WindowTrackingEvent.java:[15,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/rules/CitationDefinition.java:[23,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/tracking/UserCaseActivitySpan.java:[22,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/main/java/com/guided/orci/models/job/JobMetadata.java:[27,1] Generating equals/hashCode implementation but without a call to superclass, even though this class does not extend java.lang.Object. If this is intentional, add '@EqualsAndHashCode(callSuper=false)' to your type.
 [WARNING] unknown enum constant org.apiguardian.api.API.Status.EXPERIMENTAL
   reason: class file for org.apiguardian.api.API$Status not found
 [WARNING] unknown enum constant org.apiguardian.api.API.Status.EXPERIMENTAL
@@ -2112,7 +2108,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci-models ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
-[INFO] Compiling 35 source files with javac [debug target 25] to target/test-classes
+[INFO] Compiling 37 source files with javac [debug target 25] to target/test-classes
 [WARNING] The following options were not recognized by any processor: '[mapstruct.defaultComponentModel]'
 [INFO] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/test/java/com/guided/orci/models/InfusionMedicationAdministrationTest.java: Some input files use or override a deprecated API.
 [INFO] /Users/ryanducharme/dev/worktrees/_loop-main/orci-models/src/test/java/com/guided/orci/models/InfusionMedicationAdministrationTest.java: Recompile with -Xlint:deprecation for details.
@@ -2421,11 +2417,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] skip non existing resourceDirectory /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/src/main/resources
 [INFO] 
 [INFO] --- compiler:3.16.0:compile (default-compile) @ medication-audio-generator-plugin ---
-[INFO] Recompiling the module because of changed dependency.
-[WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
-[INFO] Compiling 1 source file with javac [debug target 25] to target/classes
-[INFO] /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/src/main/java/com/guided/orci/plugin/MedicationAudioGeneratorMojo.java: /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/src/main/java/com/guided/orci/plugin/MedicationAudioGeneratorMojo.java uses or overrides a deprecated API.
-[INFO] /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/src/main/java/com/guided/orci/plugin/MedicationAudioGeneratorMojo.java: Recompile with -Xlint:deprecation for details.
+[INFO] Nothing to compile - all classes are up to date.
 [INFO] 
 [INFO] --- plugin:3.16.0:descriptor (default-descriptor) @ medication-audio-generator-plugin ---
 [WARNING] Using platform encoding (UTF-8 actually) to read mojo source files, i.e. build is platform dependent!
@@ -2445,7 +2437,6 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- jar:3.5.0:jar (default-jar) @ medication-audio-generator-plugin ---
-[INFO] Building jar: /Users/ryanducharme/dev/worktrees/_loop-main/medication-audio-generator-plugin/target/medication-audio-generator-plugin-0.1.107-SNAPSHOT.jar
 [INFO] 
 [INFO] --- jib:3.4.6:dockerBuild (default-cli) @ medication-audio-generator-plugin ---
 [INFO] Skipping containerization because jib-maven-plugin: skip = true
@@ -2455,17 +2446,17 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO]   from orci/pom.xml
 [INFO] --------------------------------[ jar ]---------------------------------
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/ulisesbocchio/maven-metadata.xml
-[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/ulisesbocchio/maven-metadata.xml
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/github/git-commit-id/maven-metadata.xml
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 8.0 kB/s)
+[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/ulisesbocchio/maven-metadata.xml
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/io/github/git-commit-id/maven-metadata.xml (255 B at 7.5 kB/s)
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/guided/orci/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/ulisesbocchio/maven-metadata.xml (234 B at 3.8 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/ulisesbocchio/maven-metadata.xml (234 B at 6.3 kB/s)
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/guided/orci/maven-metadata.xml
 [INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/github/eirslett/maven-metadata.xml
 [INFO] Downloading from central: https://repo.maven.apache.org/maven2/com/github/eirslett/maven-metadata.xml
-[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/eirslett/maven-metadata.xml (240 B at 6.3 kB/s)
-[INFO] Downloaded from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/guided/orci/maven-metadata.xml (3.1 kB at 15 kB/s)
+[INFO] Downloaded from central: https://repo.maven.apache.org/maven2/com/github/eirslett/maven-metadata.xml (240 B at 6.7 kB/s)
+[INFO] Downloaded from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/com/guided/orci/maven-metadata.xml (3.1 kB at 14 kB/s)
 [WARNING] Parameter 'creationTime' is unknown for plugin 'jib-maven-plugin:3.4.6:dockerBuild (default-cli)'
 [INFO] 
 [INFO] --- build-helper:3.8.0:timestamp-property (timestamp-property) @ orci ---
@@ -2485,7 +2476,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] --- frontend:1.15.1:npm (npm install) @ orci ---
 [INFO] Running 'npm ci' in /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/webapp
 [INFO] 
-[INFO] added 642 packages, and audited 643 packages in 29s
+[INFO] added 642 packages, and audited 643 packages in 30s
 [INFO] 
 [INFO] 207 packages are looking for funding
 [INFO]   run `npm fund` for details
@@ -2512,7 +2503,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] vite v8.3.5 building client environment for production...
 [INFO] [sentry-vite-plugin] Info: Sending telemetry data on issues and performance to Sentry. To disable telemetry, set `options.telemetry` to `false`.
 [INFO] transforming...
-[INFO] ✓ 3505 modules transformed.
+[INFO] ✓ 3506 modules transformed.
 [INFO] rendering chunks...
 [INFO] [sentry-vite-plugin] Warning: No auth token provided. Will not create release. Please set the `authToken` option. You can find information on how to generate a Sentry auth token here: https://docs.sentry.io/api/auth/
 [INFO] [sentry-vite-plugin] Warning: No auth token provided. Will not upload source maps. Please set the `authToken` option. You can find information on how to generate a Sentry auth token here: https://docs.sentry.io/api/auth/
@@ -2527,16 +2518,16 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] build/static/hatch-pattern.Bi3zgFK5.png          48.18 kB
 [INFO] build/static/logo-header.S3YyZprP.png           346.36 kB
 [INFO] build/static/index.C8K-NU8-.css                 294.84 kB │ gzip:  42.38 kB
-[INFO] build/static/rolldown-runtime.Dcgm1qQu.js         1.26 kB │ gzip:   0.69 kB
-[INFO] build/static/index.05O_USkL.js                2,021.06 kB │ gzip: 583.36 kB │ map: 10,723.97 kB
+[INFO] build/static/rolldown-runtime.DNhYYI6D.js         1.26 kB │ gzip:   0.69 kB
+[INFO] build/static/index.LCIyAXid.js                2,024.41 kB │ gzip: 584.16 kB │ map: 10,737.73 kB
 [INFO] 
 [INFO] [plugin builtin:vite-reporter] 
 [INFO] (!) Some chunks are larger than 500 kB after minification. Consider:
 [INFO] - Using dynamic import() to code-split the application
 [INFO] - Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
 [INFO] - Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
-[INFO] ✓ built in 3.46s
-[INFO] [PLUGIN_TIMINGS] JavaScript callbacks ran for 3.1s of this 3.5s build (90%).
+[INFO] ✓ built in 3.36s
+[INFO] [PLUGIN_TIMINGS] JavaScript callbacks ran for 3.0s of this 3.4s build (89%).
 [INFO] 2 callbacks are listed without a time. Their calls overlapped, so the time inside one call includes work from other calls. To find their cost, profile the build with `node --cpu-prof`:
 [INFO]   - plugin vite:css transform (30 calls)
 [INFO]   - plugin vite:asset load (4 calls)
@@ -2558,14 +2549,14 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] --- compiler:3.16.0:compile (default-compile) @ orci ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
-[INFO] Compiling 584 source files with javac [debug target 25] to target/classes
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/events/MedicationAdministrationEvent.java:[22,21] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[INFO] Compiling 587 source files with javac [debug target 25] to target/classes
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/dto/ApplicationLaunchContext.java:[25,21] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/events/MedicationAdministrationEvent.java:[22,21] @Builder will ignore the initializing expression entirely. If you want the initializing expression to serve as default, add @Builder.Default. If it is not supposed to be settable during building, make the field final.
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/CitationDefinitionMapper.java:[17,24] Unmapped target properties: "createdDate, lastModifiedDate".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/ObservationMapper.java:[16,17] Unmapped target properties: "createdDate, lastModifiedDate, deleted, patient, sourceMetadata".
-[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PractitionerMapper.java:[14,18] Unmapped target properties: "createdDate, lastModifiedDate, id, lastRefreshedAt, user".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PatientTemplateMapper.java:[18,21] Unmapped target properties: "createdDate, lastModifiedDate".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PatientTemplateMapper.java:[21,21] Unmapped target properties: "createdDate, lastModifiedDate".
+[WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/mappers/PractitionerMapper.java:[14,18] Unmapped target properties: "createdDate, lastModifiedDate, id, lastRefreshedAt, user".
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/configuration/CacheConfiguration.java:[33,9] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/configuration/CacheConfiguration.java:[33,70] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/main/java/com/guided/orci/configuration/RedisConfiguration.java:[24,30] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
@@ -2597,7 +2588,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] --- compiler:3.16.0:testCompile (default-testCompile) @ orci ---
 [INFO] Recompiling the module because of changed dependency.
 [WARNING] File encoding has not been set, using platform encoding UTF-8, i.e. build is platform dependent!
-[INFO] Compiling 354 source files with javac [debug target 25] to target/test-classes
+[INFO] Compiling 362 source files with javac [debug target 25] to target/test-classes
 [WARNING] The following options were not recognized by any processor: '[mapstruct.defaultComponentModel]'
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/test/java/com/guided/orci/messaging/RedisMessageListenerAdapterLoggingTest.java:[51,19] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
 [WARNING] /Users/ryanducharme/dev/worktrees/_loop-main/orci/src/test/java/com/guided/orci/messaging/RedisMessageListenerAdapterLoggingTest.java:[51,19] org.springframework.data.redis.serializer.GenericJackson2JsonRedisSerializer in org.springframework.data.redis.serializer has been deprecated and marked for removal
@@ -2617,13 +2608,7 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Tests are skipped.
 [INFO] 
 [INFO] --- dependency:3.11.0:copy (copy-java-agents) @ orci ---
-[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-opentelemetry-agent/8.64.0/sentry-opentelemetry-agent-8.64.0.pom
-[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.64.0/sentry-opentelemetry-agent-8.64.0.pom
-[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.64.0/sentry-opentelemetry-agent-8.64.0.pom (1.5 kB at 8.3 kB/s)
-[INFO] Downloading from guided-clinical-maven-repo: https://guided-clinical-926418967601.d.codeartifact.us-east-2.amazonaws.com/maven/maven-repo/io/sentry/sentry-opentelemetry-agent/8.64.0/sentry-opentelemetry-agent-8.64.0.jar
-[INFO] Downloading from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.64.0/sentry-opentelemetry-agent-8.64.0.jar
-[INFO] Downloaded from repo1-maven-org: https://repo1.maven.org/maven2/io/sentry/sentry-opentelemetry-agent/8.64.0/sentry-opentelemetry-agent-8.64.0.jar (26 MB at 49 MB/s)
-[WARNING] Overwriting /Users/ryanducharme/dev/worktrees/_loop-main/orci/target/java-agent/sentry-opentelemetry-agent.jar
+[INFO] io.sentry:sentry-opentelemetry-agent:8.64.0:jar already exists in /Users/ryanducharme/dev/worktrees/_loop-main/orci/target/java-agent
 [INFO] 
 [INFO] --- jar:3.5.0:jar (default-jar) @ orci ---
 [INFO] Building jar: /Users/ryanducharme/dev/worktrees/_loop-main/orci/target/orci-0.1.107-SNAPSHOT.jar
@@ -2632,13 +2617,13 @@ WARNING: sun.misc.Unsafe::objectFieldOffset will be removed in a future release
 [INFO] Running extension: com.google.cloud.tools.jib.maven.extension.springboot.JibSpringBootExtension
 [INFO] Running Jib Spring Boot extension
 [INFO] 
-[INFO] Containerizing application to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.107-SNAPSHOT, guidedclinical/orci:loop-712595a22...
+[INFO] Containerizing application to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.107-SNAPSHOT, guidedclinical/orci:loop-c52e8fb43...
 [WARNING] Base image 'eclipse-temurin:25-jdk-jammy' does not use a specific image digest - build may not be reproducible
 [INFO] Getting manifest for base image eclipse-temurin:25-jdk-jammy...
 [INFO] Building dependencies layer...
 [INFO] Building project dependencies layer...
-[INFO] Building resources layer...
 [INFO] Building classes layer...
+[INFO] Building resources layer...
 [INFO] Building jvm arg files layer...
 [INFO] Building extra files layer...
 [INFO] Building extra files layer...
@@ -2672,216 +2657,155 @@ credentials not found in native keychain
 [INFO] Container entrypoint set to [bash, -c, /app/entrypoint.sh]
 [INFO] Loading to Docker daemon...
 [INFO] 
-[INFO] Built image to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.107-SNAPSHOT, guidedclinical/orci:loop-712595a22
-[INFO] 
-[INFO] A new version of jib-maven-plugin (3.5.2) is available (currently using 3.4.6). Update your build configuration to use the latest features and fixes!
-[INFO] https://github.com/GoogleContainerTools/jib/blob/master/jib-maven-plugin/CHANGELOG.md
-[INFO] 
-[INFO] Please see https://github.com/GoogleContainerTools/jib/blob/master/docs/privacy.md for info on disabling this update check.
-[INFO] 
+[INFO] Built image to Docker daemon as guidedclinical/orci, guidedclinical/orci:0.1.107-SNAPSHOT, guidedclinical/orci:loop-c52e8fb43
 [INFO] 
 [INFO] ------------------------------------------------------------------------
 [INFO] Reactor Summary for orci project 0.1.107-SNAPSHOT:
 [INFO] 
-[INFO] orci project ....................................... SUCCESS [  0.325 s]
-[INFO] orci-utils ......................................... SUCCESS [  0.982 s]
-[INFO] orci-models ........................................ SUCCESS [  5.249 s]
-[INFO] orci-repositories .................................. SUCCESS [  0.858 s]
-[INFO] orci-multitenancy .................................. SUCCESS [  0.368 s]
-[INFO] orci-featureflags .................................. SUCCESS [  0.369 s]
-[INFO] client-integration-api ............................. SUCCESS [  0.862 s]
-[INFO] epic-integration-support ........................... SUCCESS [  0.528 s]
-[INFO] mgb-client-integration ............................. SUCCESS [  0.999 s]
-[INFO] mayo-client-integration ............................ SUCCESS [  1.223 s]
-[INFO] orci-audit ......................................... SUCCESS [  0.200 s]
-[INFO] medication-audio-generator-plugin .................. SUCCESS [  0.890 s]
-[INFO] orci ............................................... SUCCESS [01:01 min]
+[INFO] orci project ....................................... SUCCESS [  0.337 s]
+[INFO] orci-utils ......................................... SUCCESS [  0.643 s]
+[INFO] orci-models ........................................ SUCCESS [  8.713 s]
+[INFO] orci-repositories .................................. SUCCESS [  0.943 s]
+[INFO] orci-multitenancy .................................. SUCCESS [  0.492 s]
+[INFO] orci-featureflags .................................. SUCCESS [  0.414 s]
+[INFO] client-integration-api ............................. SUCCESS [  0.975 s]
+[INFO] epic-integration-support ........................... SUCCESS [  0.587 s]
+[INFO] mgb-client-integration ............................. SUCCESS [  1.030 s]
+[INFO] mayo-client-integration ............................ SUCCESS [  1.290 s]
+[INFO] orci-audit ......................................... SUCCESS [  0.186 s]
+[INFO] medication-audio-generator-plugin .................. SUCCESS [  0.696 s]
+[INFO] orci ............................................... SUCCESS [ 56.511 s]
 [INFO] ------------------------------------------------------------------------
 [INFO] BUILD SUCCESS
 [INFO] ------------------------------------------------------------------------
-[INFO] Total time:  01:15 min
-[INFO] Finished at: 2026-11-24T10:22:09-05:00
+[INFO] Total time:  01:14 min
+[INFO] Finished at: 2026-11-25T10:03:05-05:00
 [INFO] ------------------------------------------------------------------------
-2026-11-24 10:22:09  [OR-3185] image=guidedclinical/orci:loop-712595a22 sha=712595a22ec0b953b78bb26ada3060918c6f2e5e
-Image guidedclinical/orci:loop-712595a22 already built for 712595a22 — reusing.
-2026-11-24 10:22:10  [OR-3135] image=guidedclinical/orci:loop-712595a22 sha=712595a22ec0b953b78bb26ada3060918c6f2e5e
-2026-11-24 10:22:11  [OR-3185] OR-3185 moved to Testing
-2026-11-24 10:22:12  [OR-3135] OR-3135 moved to Testing
-2026-11-24 10:22:12  [OR-3185] OR-3185 assigned to the configured account
-2026-11-24 10:22:13  [OR-3135] OR-3135 assigned to the configured account
-2026-11-24 10:22:13  [OR-3185] baseline: status='Testing' comments=0
-2026-11-24 10:22:13  [OR-3185] slug=send-mgb-feedback-notifications
+2026-11-25 10:03:05  [OR-3176] image=guidedclinical/orci:loop-c52e8fb43 sha=c52e8fb43037ac0ff22bb1ddec70a820ed611706
+2026-11-25 10:03:07  [OR-3176] OR-3176 moved to Testing
+2026-11-25 10:03:08  [OR-3176] OR-3176 assigned to the configured account
+Image guidedclinical/orci:loop-c52e8fb43 already built for c52e8fb43 — reusing.
+2026-11-25 10:03:09  [OR-3242] image=guidedclinical/orci:loop-c52e8fb43 sha=c52e8fb43037ac0ff22bb1ddec70a820ed611706
+2026-11-25 10:03:10  [OR-3176] baseline: status='Testing' comments=4
+2026-11-25 10:03:10  [OR-3176] slug=warn-when-a-once
 Jira issue type → branch prefix: feature/
-2026-11-24 10:22:14  [OR-3135] baseline: status='Testing' comments=0
-2026-11-24 10:22:14  [OR-3135] slug=a-disabled-sso-user
+Preparing worktree (new branch 'feature/OR-3176-warn-when-a-once')
+branch 'feature/OR-3176-warn-when-a-once' set up to track 'origin/main'.
+HEAD is now at c52e8fb43 OR-3236: Use the shared steward for CI fixes and merge conflicts (#4899)
+2026-11-25 10:03:11  [OR-3242] OR-3242 moved to Testing
+
+Worktree ready:
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-3176-warn-when-a-once
+  Branch: feature/OR-3176-warn-when-a-once
+  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
+  qa-suite/.env.dev symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.dev
+  OR-3176: assigned to Ryan Ducharme (unchanged)
+
+2026-11-25 10:03:12  [OR-3176] worktree=/Users/ryanducharme/dev/worktrees/OR-3176-warn-when-a-once
+Starting orci-loop-or-3176 (image guidedclinical/orci:loop-c52e8fb43, app port 52621)
+2026-11-25 10:03:12  [OR-3242] OR-3242 assigned to the configured account
+ Network orci-loop-or-3176_default Creating 
+ Network orci-loop-or-3176_default Created 
+ Container orci-loop-or-3176-postgres-1 Creating 
+ Container orci-loop-or-3176-redis-1 Creating 
+ Container orci-loop-or-3176-postgres-1 Created 
+ Container orci-loop-or-3176-redis-1 Created 
+ Container orci-loop-or-3176-orci-1 Creating 
+ Container orci-loop-or-3176-orci-1 Created 
+ Container orci-loop-or-3176-redis-1 Starting 
+ Container orci-loop-or-3176-postgres-1 Starting 
+ Container orci-loop-or-3176-postgres-1 Started 
+ Container orci-loop-or-3176-redis-1 Started 
+ Container orci-loop-or-3176-postgres-1 Waiting 
+ Container orci-loop-or-3176-redis-1 Waiting 
+2026-11-25 10:03:13  [OR-3242] baseline: status='Testing' comments=0
+2026-11-25 10:03:13  [OR-3242] slug=keep-the-tenant-on
 Jira issue type → branch prefix: bugfix/
-Preparing worktree (new branch 'feature/OR-3185-send-mgb-feedback-notifications')
-branch 'feature/OR-3185-send-mgb-feedback-notifications' set up to track 'origin/main'.
-Preparing worktree (new branch 'bugfix/OR-3135-a-disabled-sso-user')
-branch 'bugfix/OR-3135-a-disabled-sso-user' set up to track 'origin/main'.
-HEAD is now at 712595a22 OR-3236: Use the shared review and review gate from claude-plugins (#4893)
-HEAD is now at 712595a22 OR-3236: Use the shared review and review gate from claude-plugins (#4893)
+Preparing worktree (new branch 'bugfix/OR-3242-keep-the-tenant-on')
+branch 'bugfix/OR-3242-keep-the-tenant-on' set up to track 'origin/main'.
+HEAD is now at c52e8fb43 OR-3236: Use the shared steward for CI fixes and merge conflicts (#4899)
 
 Worktree ready:
-  Dir:    /Users/ryanducharme/dev/worktrees/OR-3185-send-mgb-feedback-notifications
-  Branch: feature/OR-3185-send-mgb-feedback-notifications
+  Dir:    /Users/ryanducharme/dev/worktrees/OR-3242-keep-the-tenant-on
+  Branch: bugfix/OR-3242-keep-the-tenant-on
   qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
   qa-suite/.env.dev symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.dev
-  OR-3185: assigned to Ryan Ducharme (unchanged)
+  OR-3242: assigned to Ryan Ducharme (unchanged)
 
-2026-11-24 10:22:16  [OR-3185] worktree=/Users/ryanducharme/dev/worktrees/OR-3185-send-mgb-feedback-notifications
-
-Worktree ready:
-  Dir:    /Users/ryanducharme/dev/worktrees/OR-3135-a-disabled-sso-user
-  Branch: bugfix/OR-3135-a-disabled-sso-user
-  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
-  qa-suite/.env.dev symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.dev
-  OR-3135: assigned to Ryan Ducharme (unchanged)
-
-2026-11-24 10:22:16  [OR-3135] worktree=/Users/ryanducharme/dev/worktrees/OR-3135-a-disabled-sso-user
-Starting orci-loop-or-3185 (image guidedclinical/orci:loop-712595a22, app port 50744)
-Starting orci-loop-or-3135 (image guidedclinical/orci:loop-712595a22, app port 50745)
- Network orci-loop-or-3185_default Creating 
- Network orci-loop-or-3135_default Creating 
- Network orci-loop-or-3185_default Created 
- Container orci-loop-or-3185-postgres-1 Creating 
- Container orci-loop-or-3185-redis-1 Creating 
- Network orci-loop-or-3135_default Created 
- Container orci-loop-or-3135-postgres-1 Creating 
- Container orci-loop-or-3135-redis-1 Creating 
- Container orci-loop-or-3135-redis-1 Created 
- Container orci-loop-or-3135-postgres-1 Created 
- Container orci-loop-or-3135-orci-1 Creating 
- Container orci-loop-or-3185-postgres-1 Created 
- Container orci-loop-or-3185-redis-1 Created 
- Container orci-loop-or-3185-orci-1 Creating 
- Container orci-loop-or-3135-orci-1 Created 
- Container orci-loop-or-3185-orci-1 Created 
- Container orci-loop-or-3135-postgres-1 Starting 
- Container orci-loop-or-3135-redis-1 Starting 
- Container orci-loop-or-3185-redis-1 Starting 
- Container orci-loop-or-3185-postgres-1 Starting 
- Container orci-loop-or-3185-redis-1 Started 
- Container orci-loop-or-3185-postgres-1 Started 
- Container orci-loop-or-3185-postgres-1 Waiting 
- Container orci-loop-or-3185-redis-1 Waiting 
- Container orci-loop-or-3135-redis-1 Started 
- Container orci-loop-or-3135-postgres-1 Started 
- Container orci-loop-or-3135-redis-1 Waiting 
- Container orci-loop-or-3135-postgres-1 Waiting 
- Container orci-loop-or-3185-postgres-1 Healthy 
- Container orci-loop-or-3185-redis-1 Healthy 
- Container orci-loop-or-3185-orci-1 Starting 
- Container orci-loop-or-3135-redis-1 Healthy 
- Container orci-loop-or-3135-postgres-1 Healthy 
- Container orci-loop-or-3135-orci-1 Starting 
- Container orci-loop-or-3135-orci-1 Started 
- Container orci-loop-or-3135-postgres-1 Waiting 
- Container orci-loop-or-3135-redis-1 Waiting 
- Container orci-loop-or-3135-orci-1 Waiting 
- Container orci-loop-or-3185-orci-1 Started 
- Container orci-loop-or-3185-orci-1 Waiting 
- Container orci-loop-or-3185-postgres-1 Waiting 
- Container orci-loop-or-3185-redis-1 Waiting 
- Container orci-loop-or-3135-orci-1 Healthy 
- Container orci-loop-or-3135-postgres-1 Healthy 
- Container orci-loop-or-3135-redis-1 Healthy 
- Container orci-loop-or-3185-postgres-1 Healthy 
- Container orci-loop-or-3185-redis-1 Healthy 
- Container orci-loop-or-3185-orci-1 Healthy 
+2026-11-25 10:03:14  [OR-3242] worktree=/Users/ryanducharme/dev/worktrees/OR-3242-keep-the-tenant-on
+Starting orci-loop-or-3242 (image guidedclinical/orci:loop-c52e8fb43, app port 52629)
+ Network orci-loop-or-3242_default Creating 
+ Network orci-loop-or-3242_default Created 
+ Container orci-loop-or-3242-postgres-1 Creating 
+ Container orci-loop-or-3242-redis-1 Creating 
+ Container orci-loop-or-3242-redis-1 Created 
+ Container orci-loop-or-3242-postgres-1 Created 
+ Container orci-loop-or-3242-orci-1 Creating 
+ Container orci-loop-or-3242-orci-1 Created 
+ Container orci-loop-or-3242-redis-1 Starting 
+ Container orci-loop-or-3242-postgres-1 Starting 
+ Container orci-loop-or-3176-postgres-1 Healthy 
+ Container orci-loop-or-3176-redis-1 Healthy 
+ Container orci-loop-or-3176-orci-1 Starting 
+ Container orci-loop-or-3242-redis-1 Started 
+ Container orci-loop-or-3242-postgres-1 Started 
+ Container orci-loop-or-3242-postgres-1 Waiting 
+ Container orci-loop-or-3242-redis-1 Waiting 
+ Container orci-loop-or-3176-orci-1 Started 
+ Container orci-loop-or-3176-redis-1 Waiting 
+ Container orci-loop-or-3176-orci-1 Waiting 
+ Container orci-loop-or-3176-postgres-1 Waiting 
+ Container orci-loop-or-3176-orci-1 Healthy 
+ Container orci-loop-or-3176-redis-1 Healthy 
+ Container orci-loop-or-3176-postgres-1 Healthy 
+ Container orci-loop-or-3242-redis-1 Healthy 
+ Container orci-loop-or-3242-postgres-1 Healthy 
+ Container orci-loop-or-3242-orci-1 Starting 
+ Container orci-loop-or-3242-orci-1 Started 
+ Container orci-loop-or-3242-orci-1 Waiting 
+ Container orci-loop-or-3242-postgres-1 Waiting 
+ Container orci-loop-or-3242-redis-1 Waiting 
+ Container orci-loop-or-3242-redis-1 Healthy 
+ Container orci-loop-or-3242-postgres-1 Healthy 
+ Container orci-loop-or-3242-orci-1 Healthy 
 Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
+App fully initialised in 91.677s at http://localhost:52629
+2026-11-25 10:04:50  [OR-3242] app under test at http://localhost:52629
+2026-11-25 10:04:50  [OR-3242] wrote ticket context (29 lines)
+2026-11-25 10:04:50  [OR-3242] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3242/session.log)
 Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
-App fully initialised in 77.706s at http://localhost:50745
-App fully initialised in 76.74s at http://localhost:50744
-2026-11-24 10:23:41  [OR-3185] app under test at http://localhost:50744
-2026-11-24 10:23:41  [OR-3135] app under test at http://localhost:50745
-2026-11-24 10:23:41  [OR-3185] wrote ticket context (22 lines)
-2026-11-24 10:23:41  [OR-3135] wrote ticket context (42 lines)
-2026-11-24 10:23:41  [OR-3135] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3135/session.log)
-2026-11-24 10:23:41  [OR-3185] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3185/session.log)
-2026-11-24 10:28:26  [OR-3185]   … OR-3185 still running (300s elapsed, 0
+App fully initialised in 92.69s at http://localhost:52621
+2026-11-25 10:04:53  [OR-3176] app under test at http://localhost:52621
+2026-11-25 10:04:53  [OR-3176] wrote ticket context (184 lines)
+2026-11-25 10:04:53  [OR-3176] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3176/session.log)
+2026-11-25 10:09:35  [OR-3242]   … OR-3242 still running (300s elapsed, 0
 ? app requests, app up)
-2026-11-24 10:28:26  [OR-3135]   … OR-3135 still running (300s elapsed, 5 app requests, app up)
-2026-11-24 10:32:26  [OR-3185] session finished after ~525s
-2026-11-24 10:32:27  [OR-3185] captured 11033 lines of application log
-{"ticket":"OR-3185","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-11-24T15:20:48Z"}
-2026-11-24 10:32:32  [OR-3185] close-parent: OR-3185 is already Done
-2026-11-24 10:32:33  [OR-3185] cover: OR-3185: 1 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3185/proposals.md
-2026-11-24 10:33:27  [OR-3135]   … OR-3135 still running (600s elapsed, 10 app requests, app up)
-2026-11-24 10:33:57  [OR-3135] session finished after ~615s
-2026-11-24 10:33:57  [OR-3135] captured 8525 lines of application log
-{"ticket":"OR-3135","disposition":"admitted_with_caveats","detail":"verdict=deploy-ready; posted and transitioned; caveats:\n  - SSOAuthHandler's own logout-before-redirect was not exercised at runtime: this instance has no identity provider, so the SSO callback cannot be driven. The disabled-user callback case is still caught on the next request by DisabledUserLogoutFilter (shown above with a planted OIDC session), but the 'existing user with no tenant group' branch has no filter-level backstop and rests only on the shipped MockMvc test callbackForExistingUserWithNoTenantGroupEndsTheSession, which drives the real handler and real security filter chain.\n  - The OIDC-principal evidence used a security context planted directly in Valkey rather than one Spring Security saved after a real Cognito login; the JSON was produced by the same Jackson modules SessionConfiguration registers, but authorizedClientRegistrationId 'cognito' was never used by the app in this run.\n  - The disable action was a direct `update users set enabled=false`; the app exposes no admin endpoint for it, so whatever tooling admins use in production was not part of the exercise.\n  - DisabledUserStompInterceptor (STOMP frames on an already-open socket) was not exercised; only the /websocket HTTP filter chain was. Covered by DisabledUserStompInterceptorTest and WebSocketConfigurationInboundChannelTest.\n  - The MGHEpicAuthController refusal of a disabled EHR-launch user was not exercised; covered by MGHEpicAuthControllerTest.","at":"2026-11-24T15:20:48Z"}
-2026-11-24 10:34:01  [OR-3135] close-parent: OR-3135 is already Done
-2026-11-24 10:34:01  [OR-3135] cover: no write_now proposals for OR-3135
-2026-11-24 10:34:04  [OR-3186] OR-3186 status is 'Ready for Testing'
-2026-11-24 10:34:06  [OR-3186] Building image from origin/main
-Image guidedclinical/orci:loop-712595a22 already built for 712595a22 — reusing.
-2026-11-24 10:34:06  [OR-3186] image=guidedclinical/orci:loop-712595a22 sha=712595a22ec0b953b78bb26ada3060918c6f2e5e
-2026-11-24 10:34:09  [OR-3186] OR-3186 moved to Testing
-2026-11-24 10:34:09  [OR-3186] OR-3186 assigned to the configured account
-2026-11-24 10:34:11  [OR-3186] baseline: status='Testing' comments=0
-2026-11-24 10:34:11  [OR-3186] slug=mark-stage-internal-notifications
-Jira issue type → branch prefix: feature/
-Preparing worktree (new branch 'feature/OR-3186-mark-stage-internal-notifications')
-branch 'feature/OR-3186-mark-stage-internal-notifications' set up to track 'origin/main'.
-HEAD is now at 712595a22 OR-3236: Use the shared review and review gate from claude-plugins (#4893)
-
-Worktree ready:
-  Dir:    /Users/ryanducharme/dev/worktrees/OR-3186-mark-stage-internal-notifications
-  Branch: feature/OR-3186-mark-stage-internal-notifications
-  qa-suite/.env.local symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.local
-  qa-suite/.env.dev symlinked from /Users/ryanducharme/dev/orci/qa-suite/.env.dev
-  OR-3186: assigned to Ryan Ducharme (unchanged)
-
-2026-11-24 10:34:13  [OR-3186] worktree=/Users/ryanducharme/dev/worktrees/OR-3186-mark-stage-internal-notifications
-Starting orci-loop-or-3186 (image guidedclinical/orci:loop-712595a22, app port 51024)
- Network orci-loop-or-3186_default Creating 
- Network orci-loop-or-3186_default Created 
- Container orci-loop-or-3186-redis-1 Creating 
- Container orci-loop-or-3186-postgres-1 Creating 
- Container orci-loop-or-3186-redis-1 Created 
- Container orci-loop-or-3186-postgres-1 Created 
- Container orci-loop-or-3186-orci-1 Creating 
- Container orci-loop-or-3186-orci-1 Created 
- Container orci-loop-or-3186-redis-1 Starting 
- Container orci-loop-or-3186-postgres-1 Starting 
- Container orci-loop-or-3186-postgres-1 Started 
- Container orci-loop-or-3186-redis-1 Started 
- Container orci-loop-or-3186-postgres-1 Waiting 
- Container orci-loop-or-3186-redis-1 Waiting 
- Container orci-loop-or-3186-postgres-1 Healthy 
- Container orci-loop-or-3186-redis-1 Healthy 
- Container orci-loop-or-3186-orci-1 Starting 
- Container orci-loop-or-3186-orci-1 Started 
- Container orci-loop-or-3186-postgres-1 Waiting 
- Container orci-loop-or-3186-redis-1 Waiting 
- Container orci-loop-or-3186-orci-1 Waiting 
- Container orci-loop-or-3186-postgres-1 Healthy 
- Container orci-loop-or-3186-orci-1 Healthy 
- Container orci-loop-or-3186-redis-1 Healthy 
-2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
-2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
-2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
-2026-11-24 10:35:03  [OR-3185] cover: grep: parentheses not balanced
-2026-11-24 10:35:03  [OR-3185] cover: Safe: 1 file(s), all test paths, nothing disabled, no assertions removed
-2026-11-24 10:35:09  [OR-3185] cover: OR-3185: https://github.com/guidedclinical/orci/pull/4894
-2026-11-24 10:35:09  [OR-3185] cover: holding /Users/ryanducharme/dev/worktrees/OR-3185-send-mgb-feedback-notifications — draft PR at https://github.com/guidedclinical/orci/pull/4894
-Granted loopuser access to ["demo-demo","mayo-mayo","mgb-mgh","mgb-icsnh"]
-App fully initialised in 59.401s at http://localhost:51024
-2026-11-24 10:35:20  [OR-3186] app under test at http://localhost:51024
-2026-11-24 10:35:21  [OR-3186] wrote ticket context (20 lines)
-2026-11-24 10:35:21  [OR-3186] Starting unattended session on claude-fable-5-1 (log: /Users/ryanducharme/.claude/jira-watch/state/results/OR-3186/session.log)
-2026-11-24 10:40:06  [OR-3186]   … OR-3186 still running (300s elapsed, 0
-? app requests, app up)
-2026-11-24 10:44:06  [OR-3186] session finished after ~525s
-2026-11-24 10:44:07  [OR-3186] captured 9385 lines of application log
-{"ticket":"OR-3186","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-11-24T15:34:03Z"}
-2026-11-24 10:44:13  [OR-3186] close-parent: OR-3186 is already Done
-2026-11-24 10:44:13  [OR-3186] cover: OR-3186: 1 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3186/proposals.md
-2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
-2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
-2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
-2026-11-24 10:47:28  [OR-3186] cover: grep: parentheses not balanced
-2026-11-24 10:47:28  [OR-3186] cover: Safe: 1 file(s), all test paths, nothing disabled, no assertions removed
-2026-11-24 10:47:33  [OR-3186] cover: OR-3186: https://github.com/guidedclinical/orci/pull/4896
-2026-11-24 10:47:33  [OR-3186] cover: holding /Users/ryanducharme/dev/worktrees/OR-3186-mark-stage-internal-notifications — draft PR at https://github.com/guidedclinical/orci/pull/4896
+2026-11-25 10:09:39  [OR-3176]   … OR-3176 still running (300s elapsed, 210 app requests, app up)
+2026-11-25 10:14:36  [OR-3242]   … OR-3242 still running (600s elapsed, 20 app requests, app up)
+2026-11-25 10:14:39  [OR-3176]   … OR-3176 still running (600s elapsed, 2013 app requests, app up)
+2026-11-25 10:15:24  [OR-3176] session finished after ~630s
+2026-11-25 10:15:24  [OR-3176] captured 11456 lines of application log
+{"ticket":"OR-3176","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-11-25T15:01:46Z"}
+2026-11-25 10:15:30  [OR-3176] close-parent: OR-3176 is already Done
+2026-11-25 10:15:30  [OR-3176] cover: OR-3176: 2 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3176/proposals.md
+2026-11-25 10:16:36  [OR-3242] session finished after ~705s
+2026-11-25 10:16:36  [OR-3242] captured 10281 lines of application log
+{"ticket":"OR-3242","disposition":"admitted","detail":"verdict=deploy-ready; posted and transitioned; caveats recorded, none material","at":"2026-11-25T15:01:46Z"}
+2026-11-25 10:16:42  [OR-3242] close-parent: OR-3242 is already Done
+2026-11-25 10:16:42  [OR-3242] cover: OR-3242: 1 proposal(s) -> /Users/ryanducharme/.claude/jira-watch/state/results/OR-3242/proposals.md
+2026-11-25 10:20:16  [OR-3176] cover:   … OR-3176 coverage still running (300s)
+2026-11-25 10:21:27  [OR-3242] cover:   … OR-3242 coverage still running (300s)
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: grep: parentheses not balanced
+2026-11-25 10:22:57  [OR-3242] cover: Safe: 2 file(s), all test paths, nothing disabled, no assertions removed
+2026-11-25 10:23:02  [OR-3242] cover: OR-3242: https://github.com/guidedclinical/orci/pull/4901
+2026-11-25 10:23:02  [OR-3242] cover: holding /Users/ryanducharme/dev/worktrees/OR-3242-keep-the-tenant-on — draft PR at https://github.com/guidedclinical/orci/pull/4901
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: grep: parentheses not balanced
+2026-11-25 10:23:16  [OR-3176] cover: Safe: 2 file(s), all test paths, nothing disabled, no assertions removed
+2026-11-25 10:23:20  [OR-3176] cover: OR-3176: https://github.com/guidedclinical/orci/pull/4902
+2026-11-25 10:23:20  [OR-3176] cover: holding /Users/ryanducharme/dev/worktrees/OR-3176-warn-when-a-once — draft PR at https://github.com/guidedclinical/orci/pull/4902

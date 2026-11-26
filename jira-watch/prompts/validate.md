@@ -43,109 +43,13 @@ a recommendation that the gate will accept or refuse based on the evidence you r
 Do not push, do not open a pull request, do not commit. Describe the tests in `automation`; a
 second session writes the ones you mark `write_now`, in this worktree, before it is torn down.
 
-## What the verdict requires
+__SOP_EVIDENCE__
 
-A verdict of `deploy-ready` is only defensible with three pieces of evidence, each of which you
-must have actually performed against the running app:
+The gate greps the captured application log for your `red_check_signature`, so a signature that never
+appeared gets the run refused anyway — and a refusal reading "the red check did not happen as
+described" is far less useful to Ryan than you simply saying the ticket is not locally validatable.
 
-1. **positive** — the fixed behaviour happens. Say what you did, and quote what you observed
-   (log line, API response, DB row, UI state).
-2. **negative** — the inverse case does NOT happen. Same standard of observation.
-3. **red_check** — you made the "should not happen" condition actually fire, watched the check go
-   red, and reverted. A green absence assertion proves nothing until it has been seen red. State
-   what you flipped, what turned red, and that you reverted it.
-
-Two techniques that work well for the red check, in rough order of strength:
-
-- **Run the pre-fix code.** Compile the parent commit's version of the changed class and swap it
-  into `/app/classes` in the app container, then restart the container. Back up the shipped class
-  first and restore it afterwards, and confirm the restore (compare checksums, then re-run the
-  positive case). Note that lombok is not on the runtime classpath, so a class using `@Slf4j` needs
-  its logger written out explicitly to compile in place.
-- **Flip the data.** Change the input so the clause you assert absent genuinely appears, then
-  revert the input.
-
-Doing both is better than doing one. Neither is risky here: this instance is disposable, and if a
-restore fails the damage dies with the container.
-
-The class swap does not work for every change. If the fix added an enum constant, a column, or
-anything else the running system now depends on, the pre-fix class will fail to *load* — the app
-dies on boot instead of behaving wrongly, and a boot failure is not the behaviour the ticket is
-about. When that happens: restore the shipped class immediately, confirm the app comes back, and
-use the data flip instead. Note in `red_check` that the swap was abandoned and why. Do not leave
-the instance unbootable and do not spend the remaining time fighting it.
-
-If you cannot perform all three against the running app — for any reason, including the app not
-behaving as the ticket implies — the verdict is `inconclusive` or `not-deploy-ready`, and you must
-list concrete blockers. **Reasoning about the source code is not a substitute for exercising the
-app.** An evidence field describing what the code does rather than what you observed at runtime is
-a failed validation, not a passed one. Say so plainly; a truthful `inconclusive` is a good outcome
-and costs nothing. A fabricated `deploy-ready` is the only real failure mode here.
-
-## A deliverable you could not reach is not a caveat
-
-Read what the ticket actually delivers. If part of it — a UI route, a button, an endpoint, a job —
-could not be exercised **at all** in this environment, that is not a footnote. Two rules:
-
-- Set `ship_risk` to `material` and say plainly which deliverable was unreachable and why. A
-  reviewer deciding whether to ship needs to know half the ticket was never rendered.
-- If the unreachable part is the substance of the ticket rather than an adjunct, the verdict is
-  `inconclusive`, not `deploy-ready`. Validating the backend half of a frontend ticket and calling
-  it deploy-ready is the failure this rule exists to prevent.
-
-Judgment call: a ticket whose main fix is a backend mechanism, with a small UI change alongside, can
-be `deploy-ready` with the UI gap declared material. A ticket whose point *is* the UI cannot.
-
-## Some tickets cannot be validated against a running app
-
-Not every ticket has a runtime surface. CI workflow changes, deploy scripts, build config, analytics
-SQL published to a tool this instance cannot reach — for these there is nothing to exercise here, and
-no red check is possible.
-
-Say so. Verdict `inconclusive`, with a blocker naming what would actually be needed ("this changes
-`.github/workflows/deploy.yml`; validating it needs a real workflow run, not a local app"). That is a
-correct, useful outcome and costs you nothing.
-
-What is **not** acceptable is inventing an app-level red check to satisfy the format. The gate greps
-the captured application log for your `red_check_signature`, so a signature that never appeared gets
-the run refused anyway — and a refusal reading "the red check did not happen as described" is far
-less useful to Ryan than you simply saying the ticket is not locally validatable.
-
-## Which proposed tests get written
-
-`write_now` is a claim that the test can be written today, in this worktree, and that the build will
-run it. Two hundred and fifty proposals were filed and three were ever written, because the bar was
-"would a test here be nice" rather than "will this run and can it fail". Mark `write_now: false` and
-say which bar it fails — a recorded refusal is worth more than a proposal nobody drains.
-
-A test earns `write_now: true` only if all of these hold:
-
-1. **The build runs it.** Surefire includes `**/*Test.java` and **excludes `**/*IntegrationTest.java`**.
-   The exclusion is on the *name*, not the kind of test: most classes extending
-   `AbstractIntegrationTest` / `AbstractCommittingIntegrationTest` are named `*Test` or `*SpecTest`
-   and run in CI on every build, Testcontainers and all. So needing committed transactions, a real
-   Postgres or `afterCommit` ordering is **not** a reason to defer — name the class `*Test`, extend
-   the integration base, and it runs. Only a test proposed *into an existing* `*IntegrationTest`
-   class has no runnable home. Prefer rehoming it to a `*Test` sibling over `write_now: false`; if
-   it genuinely cannot move, say so in `why_not` and name the class.
-2. **It is not already covered.** Read the diff that this ticket's own PR shipped — `git log -p` or
-   `gh pr diff` — and look at its test files first. Coverage that arrived with the fix is the single
-   most common reason a proposal is dead on arrival, and it is the one file you are guaranteed to
-   have. Then open the class or spec you named and say in `assessment` what is there. "Probably
-   covered somewhere" is not an assessment.
-3. **It can fail.** An absence assertion ships with the control that makes it go red, in the same
-   test. A test that asserts nothing happens, with nothing to prove it would have noticed, is noise.
-4. **It asserts behaviour, not plumbing.** No asserting on log strings. No golden tables that force
-   an edit for every new row — that trains blind updates. No third level of an assertion two
-   siblings already make.
-5. **It is a test file.** Not a workflow, not a pom, not application.yml, not a Liquibase changeset.
-   Those are real work when they are needed, but they belong in a ticket, not a coverage branch.
-6. **It is not a one-shot migration that has already run**, and not analytics SQL, which belongs to
-   another reviewer.
-
-For a qa-suite test, do **not** invent the `PREFIX-NNN` id. Run
-`~/.claude/bin/test-id.sh next PREFIX <count>` and use what it hands back; two runs picking ids from
-the repo alone both chose `LAMD-002`.
+__SOP_COVERAGE_RUBRIC__
 
 ## Output
 

@@ -7,9 +7,13 @@
 # generated coverage: green on the branch is assumed (the writer ran it); the question asked here is
 # whether it can go red. Paths default to the test files the branch adds or changes.
 #
-# Java tests are replayed against the fix's parent commit. Playwright specs need the running
-# ephemeral app with the pre-fix class swapped in, so they are reported, not run, unless --app-url
-# is given.
+# Java tests are replayed against the fix's parent commit, method by method. Whole-file replay was
+# the first cut and it lies by omission: a new method added to a class the fix also touched reports
+# red on its siblings' failures while passing itself. Only the methods this branch added are run, so
+# the verdict is about the new test and nothing else.
+#
+# Playwright specs need the running ephemeral app with the pre-fix class swapped in, so they are
+# reported, not run, unless --app-url is given.
 #
 # Emits one JSON object per test file on stdout, then a summary object.
 # Exit: 0 every test went red, 1 usage/error, 8 at least one test passed without the fix.
@@ -71,6 +75,15 @@ emit() {
         '{test: $f, kind: $k, verdict: $v, detail: $d}'
 }
 
+# The test methods this branch added to a file, as surefire's Class#a+b selector. Empty when the
+# diff cannot be read or no added line declares a method, in which case the whole class is run.
+added_methods() {
+    _base=$(git -C "$wt" merge-base HEAD origin/main 2>/dev/null) || return 0
+    git -C "$wt" diff -U0 "$_base" HEAD -- "$1" 2>/dev/null |
+        sed -n 's/^+.*[[:space:]]void[[:space:]]\{1,\}\([A-Za-z_][A-Za-z0-9_]*\)[[:space:]]*(.*/\1/p' |
+        sort -u | paste -sd+ -
+}
+
 for f in $paths; do
     case "$f" in
         */src/test/java/*.java)
@@ -80,16 +93,24 @@ for f in $paths; do
             cp "${wt}/${f}" "${scratch}/${f}" 2>/dev/null || {
                 emit "$f" java error "not present in the worktree"; skipped=$((skipped + 1)); continue
             }
-            out=$( (cd "$scratch" && mvn -B -q test -Dtest="$cls" \
+            methods=$(added_methods "$f")
+            if [ -n "$methods" ]; then
+                selector="${cls}#${methods}"
+                scope="the ${methods} method(s) this branch added"
+            else
+                selector="$cls"
+                scope="the whole class (no added method found in the diff)"
+            fi
+            out=$( (cd "$scratch" && mvn -B -q test -Dtest="$selector" \
                 -Dsurefire.failIfNoSpecifiedTests=false 2>&1) ) && rc=0 || rc=$?
             if [ "$rc" -eq 0 ]; then
-                emit "$f" java green "passed at ${baseline} — it does not exercise the fix"
+                emit "$f" java green "${scope} passed at ${baseline} — it does not exercise the fix"
                 greens=$((greens + 1))
             elif printf '%s' "$out" | grep -q 'COMPILATION ERROR'; then
                 emit "$f" java red-compile "did not compile at ${baseline}; the fix added API it needs"
                 reds=$((reds + 1))
             else
-                emit "$f" java red "failed at ${baseline}, as a test of this fix must"
+                emit "$f" java red "${scope} failed at ${baseline}, as a test of this fix must"
                 reds=$((reds + 1))
             fi
             ;;
